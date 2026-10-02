@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rubik & Groupes · un laboratoire de mathématiques</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#cours"><img src="/favicon.svg" alt="" width="34" height="34"><span>Rubik <i>&</i> Groupes<small>UN LABORATOIRE DE MATHÉMATIQUES</small></span></a>
+    <nav aria-label="Sections de l'application" id="routes">
+      <button data-route="cours" class="active">Cours & cube</button><button data-route="labo">Laboratoire</button><button data-route="resolution">Résolution</button><button data-route="exercices">Exercices</button>
+    </nav><span class="level-tag">MATHS SUP · MATHS SPÉ</span>
+  </header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">ALGÈBRE EN MOUVEMENT</p><h1>Le cube comme groupe.</h1><p>Comprendre les transformations. Construire une résolution.</p></div><div class="intro-fact"><strong>43 252 003 274 489 856 000</strong><span>configurations accessibles · un même langage algébrique</span></div></section>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <div class="workspace">
+      <aside class="chapters"><p class="eyebrow">LE PARCOURS</p><div id="lesson-list"></div><div class="aside-note">Lire → manipuler → démontrer<small>10 leçons, 12 exercices corrigés.<br>Tout fonctionne localement.</small></div><button id="sources-btn" class="text-button">Références du cours ↗</button></aside>
+      <div id="content" class="content" aria-live="polite"><p>Chargement du cours…</p></div>
+      <section class="simulator card" aria-label="Cube interactif">
+        <div class="card-head"><div><p class="eyebrow">LE CUBE INTERACTIF</p><h2 id="cube-title">État courant</h2></div><span id="state-badge" class="badge">Résolu</span></div>
+        <div class="cube-stage" id="cube-stage"><svg id="cube-svg" viewBox="0 0 420 300" role="img" aria-label="Vue en perspective du cube"></svg><span class="drag-hint">Glissez pour changer le point de vue</span></div>
+        <div class="view-options"><label><input type="checkbox" id="show-labels"> Repères des facettes</label><label><input type="checkbox" id="show-changed" checked> Pièces modifiées</label><button id="camera-reset" class="text-button">Vue initiale</button></div>
+        <div id="moves" class="move-pad" aria-label="Tours de faces"></div>
+        <div class="sequence-row"><label for="sequence" class="sr-only">Séquence de mouvements</label><input id="sequence" placeholder="R U R' U'" value="R U R' U'" spellcheck="false"><button id="play-sequence" class="primary">Jouer</button></div>
+        <div class="transport"><button id="reset-cube">Cube résolu</button><button id="undo">Annuler 1 geste</button><button id="pause" disabled>Pause</button></div>
+        <div id="playback-status" class="playback-status" aria-live="polite">Prêt à manipuler.</div>
+        <div class="net-container"><p class="eyebrow">LES SIX FACES · VUES DE L'EXTÉRIEUR</p><svg id="net-svg" viewBox="0 0 420 320" role="img" aria-label="Patron des six faces du cube"></svg></div>
+        <div class="stats"><div><strong id="correct-corners">8/8</strong><span>coins corrects</span></div><div><strong id="correct-edges">12/12</strong><span>arêtes correctes</span></div><div><strong id="in-h">Oui</strong><span>dans le sous-groupe H</span></div></div>
+        <details class="state-details"><summary>Permutations, orientations et invariants</summary><div id="state-details"></div></details>
+        <details class="history"><summary>Historique et état exportable</summary><p id="history-text">e</p><p class="tiny">Lettres URFDLB, par faces dans cet ordre :</p><textarea id="export-state" rows="3" readonly aria-label="État du cube exportable"></textarea><button id="copy-state" class="text-button">Copier l'état</button></details>
+      </section>
+    </div>
+  </main>
+  <footer><span><b class="live-dot"></b> Application Python locale · sans connexion pour le cours</span><span>Multiplication chronologique : RU = R puis U · métrique HTM</span></footer>
+  <dialog id="sources-dialog"><div class="dialog-head"><h2>Pour approfondir</h2><button id="close-dialog" aria-label="Fermer">✕</button></div><div id="sources-content"></div></dialog>
+  <noscript>Activez JavaScript pour l'interface interactive. Les calculs sont effectués par le programme Python local.</noscript>
+</body>
+</html>
