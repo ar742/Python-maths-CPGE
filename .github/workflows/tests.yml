@@ -1,0 +1,30 @@
+name: Vérifications mathématiques
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rubik:
+    name: Rubik — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: rubik_groupes
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Tests du moteur et du serveur local
+        run: python -X utf8 -m unittest -v test_cube
