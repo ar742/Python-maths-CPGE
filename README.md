@@ -5,15 +5,35 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Trois ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**
-et **Probabilités & Expériences**, de la théorie des groupes aux extrema, puis des
-modèles aléatoires aux lois limites et aux spectres de matrices.
+Quatre ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+**Probabilités & Expériences** et **Calcul différentiel & Transformations**. Ils relient
+groupes, extrema, modèles aléatoires, espaces tangents et intégrales.
 
 | Volet | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
 | 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Parcours](PREMIER-PARCOURS.md) |
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
 | 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md) |
+| 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md) |
+
+## Volet 04 · Calcul différentiel & Transformations
+
+![Gaussienne étendue : ellipses décentrées et dérivée de log I](calcul_differentiel/illustrations/gaussienne.svg)
+
+**8 laboratoires, 14 leçons, 18 exercices corrigés et 8 figures autonomes**, avec
+priorité aux **TP du recueil de A. R.**, aux **algèbres de Lie** et à l’**intégrale
+gaussienne étendue** du TXT.
+
+- **TP :** jacobiennes polaire, cylindrique et sphérique ; changement de variables sur une ellipse ; déterminant, inverse, quadratiques, Rayleigh et Newton.
+- **Lie :** tangents de GL, SL et SO ; exponentielle, trace, rotations et crochet de commutateur.
+- **Gaussienne étendue :** anisotropie et décentrage, formule exacte en dimension 2 à 8, dérivées donnant moyenne et covariance.
+- **Méthodes :** différentielle, Taylor, Hessienne, classification corrigée des points critiques ; Green et contre-exemple de Fubini.
+
+**Python 3.10+ et NumPy**. Double-cliquer sur `Lancer_Calcul_Differentiel.cmd`.
+L’atelier fonctionne sur <http://127.0.0.1:8768>, hors ligne après installation.
+**48 tests** confrontent les résultats à des références indépendantes et vérifient
+le serveur local. Un TP symbolique facultatif utilise SymPy.
+[Présentation, preuves et illustrations](calcul_differentiel/README.md).
 
 ## Volet 03 · Probabilités & Expériences
 
