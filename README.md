@@ -5,15 +5,44 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Le premier atelier est **Rubik & Groupes**, consacré à la théorie des groupes
-et à son application à la résolution du Rubik's Cube 3×3.
+Deux ateliers sont disponibles : **Rubik & Groupes**, consacré à la théorie des groupes
+et au Rubik's Cube 3×3, et **Optimisation & Distances**, consacré aux projections,
+aux extrema et à la géométrie des ellipsoïdes.
+
+| Volet | Lancement Windows | Programme et parcours |
+| --- | --- | --- |
+| 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Parcours](PREMIER-PARCOURS.md) |
+| 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
+
+## Volet 02 · Optimisation & Distances
+
+![Deux ellipsoïdes orientés et leurs points les plus proches](optimisation_distances/illustrations/deux_ellipsoides.svg)
+
+**5 laboratoires, 10 leçons, 14 exercices corrigés et 5 figures autonomes**, à partir
+du TP d'approximation affine de cosinus, des exercices 4 et 6 du recueil de A. R.,
+et du problème des matrices antisymétriques de déterminant 1.
+
+- Cosinus : projection L², degrés et poids variables, meilleure droite uniforme, descente de gradient.
+- Matrices : projection de Frobenius, dimension d'un sous-espace diagonalisable, distance exacte **√n** en dimension paire ; ensemble vide en dimension impaire.
+- Ellipsoïde : maximum de \|xyz\|, boîte inscrite de volume maximal, produits pondérés.
+- Point–ellipsoïde orienté : distances minimale et maximale à la surface, avec cas singuliers traités.
+- Deux ellipsoïdes disjoints : distance des solides, contrôle par bornes inférieure et supérieure, plan à marge maximale et lien avec les SVM.
+
+**Python 3.10+ et NumPy**. Sous Windows, double-cliquer sur `Lancer_Optimisation.cmd` ;
+la première ouverture installe NumPy si nécessaire. L'atelier fonctionne ensuite hors ligne sur
+<http://127.0.0.1:8766>. [Lancement sur tous systèmes et détails numériques](optimisation_distances/LISEZ_MOI.md).
+
+**29 tests** vérifient les formules, les extrema globaux, les invariances, les bornes et le serveur.
+Les bornes sont calculées en virgule flottante ; les conventions surface/solide sont explicites.
+
+## Volet 01 · Rubik & Groupes
 
 ![Rubik & Groupes : cours sur les commutateurs et cube interactif](rubik_groupes/apercu_application.jpg)
 
-## Démarrer
+### Démarrer Rubik
 
 Télécharger le dépôt avec **Code → Download ZIP**, puis extraire l'archive.
-Python **3.10 ou plus récent** est requis ; le cours ne demande aucune bibliothèque
+Python **3.10 ou plus récent** est requis ; le volet Rubik ne demande aucune bibliothèque
 supplémentaire.
 
 **Windows :** double-cliquer sur `Lancer_Rubik.cmd` à la racine du dossier.
