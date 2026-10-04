@@ -5,14 +5,35 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Deux ateliers sont disponibles : **Rubik & Groupes**, consacré à la théorie des groupes
-et au Rubik's Cube 3×3, et **Optimisation & Distances**, consacré aux projections,
-aux extrema et à la géométrie des ellipsoïdes.
+Trois ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**
+et **Probabilités & Expériences**, de la théorie des groupes aux extrema, puis des
+modèles aléatoires aux lois limites et aux spectres de matrices.
 
 | Volet | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
 | 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Parcours](PREMIER-PARCOURS.md) |
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
+| 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md) |
+
+## Volet 03 · Probabilités & Expériences
+
+![Polarisation d’un processus et convergence de ses moments](probabilites_cpge/illustrations/polarisation.svg)
+
+**6 laboratoires, 12 leçons, 16 exercices corrigés et 6 figures autonomes**, avec une
+priorité aux **exercices 6, 7 et 8** de la fiche M12 du recueil de A. R.
+
+- **Exercice 6 :** processus de polarisation, moyenne conservée, moments, concentration et limite Bernoulli.
+- **Exercice 7 :** maximum/minimum uniformes, statistiques d’ordre, vitesse exponentielle et estimation d’une borne.
+- **Exercice 8 :** loi arcsinus, spectre et modes propres d’un chemin ; Wigner, demi-cercle et moments de Catalan en approfondissement.
+- Fondations : urnes avec/sans remise, dépendance, marche aléatoire, fréquences, grands nombres et Tchebychev.
+
+**Python 3.10+ et NumPy**. Sous Windows, double-cliquer sur `Lancer_Probabilites.cmd`.
+L’atelier fonctionne localement sur <http://127.0.0.1:8767>, hors ligne après installation.
+Les expériences sont reproductibles et leurs résultats exportables.
+[Présentation et illustrations](probabilites_cpge/README.md).
+
+**39 tests** vérifient dénombrements, moments, lois limites, spectres et serveur local.
+Les simulations accompagnent les preuves ; les extensions et les hypothèses sont explicites.
 
 ## Volet 02 · Optimisation & Distances
 
