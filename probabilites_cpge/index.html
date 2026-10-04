@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Probabilités & Expériences · Python-maths-CPGE</title>
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body>
+<header><a class="brand" href="/" aria-label="Accueil Probabilités"><img src="favicon.svg" alt=""><b>Python · maths CPGE</b></a><span class="edition">EXPLORER · CONJECTURER · DÉMONTRER</span><a class="repo" href="https://github.com/ar742/Python-maths-CPGE" target="_blank" rel="noopener">Le recueil sur GitHub ↗</a></header>
+<main>
+<section class="hero"><div><p class="eyebrow">VOLET 03 · MATHS SUP / MATHS SPÉ</p><h1>Probabilités <em>& Expériences</em></h1><p>Du hasard observé aux lois démontrées. Six laboratoires pour apprendre à raisonner.</p></div><div class="hero-note"><b>6 · 7 · 8</b><span>Trois exercices, trois idées majeures.<br>Polarisation · extrêmes · spectres</span></div></section>
+<nav aria-label="Espaces de l’atelier" id="tabs"></nav>
+<div id="error" role="alert" hidden></div><p id="status" role="status" class="status">Chargement du laboratoire…</p>
+<section id="laboratory">
+<div class="lab-heading"><div><p class="eyebrow" id="lab-source"></p><h2 id="lab-title"></h2><p id="lab-intro"></p></div><button id="export" class="secondary">Exporter les résultats</button></div>
+<div class="workspace"><aside><h3>Préparer l’expérience</h3><div id="presets"></div><div id="controls"></div><fieldset><legend>Expérience reproductible</legend><label class="control">Répétitions indépendantes<select id="reps"><option value="500">500</option><option value="2000">2 000</option><option value="4000" selected>4 000</option><option value="10000">10 000</option></select></label><label class="control">Graine aléatoire<input id="seed" type="number" min="0" max="4294967295" step="1" value="742"></label><button id="reroll" class="secondary">Autre échantillon</button><p class="control-note" id="seed-note">Une même graine et les mêmes paramètres reproduisent l’expérience dans une même version de NumPy.</p></fieldset></aside>
+<div><div id="metrics" class="metrics"></div><div class="plots" id="plots"></div><div class="details" id="details"></div></div></div>
+<details class="theory" open><summary>Comprendre et démontrer</summary><div id="theory-text"></div><button id="open-lesson" class="secondary">Lire la leçon complète</button></details>
+</section>
+<section id="course" hidden><div class="lab-heading"><div><p class="eyebrow">12 LEÇONS · MÉTHODES ET PREUVES</p><h2>Le cours, à votre rythme</h2><p>Les extensions sont signalées. Chaque preuve peut être reliée à une expérience.</p></div></div><div class="course-layout"><aside id="lesson-list" aria-label="Leçons"></aside><article id="lesson"></article></div><h2 class="exercise-heading">16 exercices, avec corrections guidées</h2><div id="exercises"></div><h2 class="exercise-heading">Sources et conventions</h2><div id="sources"></div></section>
+<footer><span>Fiche M12 de A. R. · Priorité aux exercices 6, 7 et 8</span><span>Calculs Python locaux · Hors ligne après installation · Les simulations accompagnent les preuves.</span></footer>
+</main></body></html>
