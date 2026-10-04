@@ -72,3 +72,27 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Tests des lois, des moments et du serveur local
         run: python -X utf8 -m unittest -v test_mathematiques
+  differentiel:
+    name: Calcul différentiel — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: calcul_differentiel
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy et le complément SymPy
+        run: python -m pip install -r requirements.txt -r requirements-symbolique.txt
+      - name: Tests des différentielles, intégrales, groupes et serveur
+        run: python -X utf8 -m unittest -v test_mathematiques
+      - name: Vérifier le TP symbolique
+        run: python -X utf8 tp_symbolique.py
