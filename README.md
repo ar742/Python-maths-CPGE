@@ -1,13 +1,15 @@
 # Python-maths-CPGE
 
-Des mathématiques de **maths sup et maths spé** à expérimenter avec Python :
+Des mathématiques et de la physique moderne de **maths sup et maths spé** à expérimenter avec Python :
 cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Quatre ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
-**Probabilités & Expériences** et **Calcul différentiel & Transformations**. Ils relient
-groupes, extrema, modèles aléatoires, espaces tangents et intégrales.
+Six ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+**Probabilités & Expériences**, **Calcul différentiel & Transformations** et
+**Physique quantique & Qubits**, puis **Physique statistique & Équilibres**. Ils relient
+groupes, extrema, modèles aléatoires, espaces tangents, ondes, information quantique
+et états thermiques.
 
 | Volet | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -15,6 +17,46 @@ groupes, extrema, modèles aléatoires, espaces tangents et intégrales.
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
 | 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md) |
 | 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md) |
+| 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) |
+| 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) |
+
+## Volet 06 · Physique statistique & Équilibres
+
+![Ising : domaines magnétiques et référence d’Onsager–Yang](physique_statistique/illustrations/ising.svg)
+
+**8 laboratoires, 16 leçons, 24 exercices corrigés et 10 figures autonomes**,
+avec priorité au **TP du recueil de A. R.**, dans un parcours de sept séances.
+
+- **TP :** vitesses de Maxwell, pression cinétique, effusion, échanges par une paroi poreuse ; énergie de Fermi et condensation de Bose.
+- **Liens à la PQ :** boîte cubique, oscillateur harmonique quantique et équipartition ; gaz parfait, fonctions de partition et limite classique.
+- **Deux niveaux :** microcanonique et canonique, dégénérescence, fluctuations, anomalie de Schottky et paramagnétisme.
+- **Ising :** chaîne périodique calculée exactement ; domaines et fluctuations du réseau carré simulé, avec référence d’Onsager–Yang dans la limite infinie.
+- **Rayonnement :** Planck, Wien, Stefan–Boltzmann et fraction énergétique visible.
+
+**Python 3.10+ et NumPy**. Double-cliquer sur `Lancer_Physique_Statistique.cmd`.
+L’atelier fonctionne sur <http://127.0.0.1:8770>, hors ligne après installation.
+**72 tests** confrontent les calculs à des intégrales, dénombrements et équilibres
+indépendants. Les mesures Monte-Carlo sont distinguées des résultats analytiques.
+[Présentation, parcours et clarifications](physique_statistique/README.md).
+
+## Volet 05 · Physique quantique & Qubits
+
+![Rabi et précession sur la sphère de Bloch](physique_quantique/illustrations/rabi.svg)
+
+**9 laboratoires, 18 leçons, 24 exercices corrigés et 9 figures autonomes**,
+à partir des TP et exercices du recueil de A. R., avec un parcours de sept séances.
+
+- **TP :** particule libre dans un volume cubique, confinement, dégénérescences, superpositions ; Heisenberg, diffraction et échelles classiques ; intrication et corrélations de Bell.
+- **Applications :** marche de potentiel, effet tunnel, Josephson/SQUID, RMN et oscillations de Rabi.
+- **Oscillateur :** fonctions d’Hermite, énergie de point zéro et état cohérent.
+- **Informatique quantique :** sphère de Bloch en 3D, états purs/mélangés, portes, mesures, circuit de Bell et recherche de Grover sur quatre états.
+
+**Python 3.10+ et NumPy**. Double-cliquer sur `Lancer_Physique_Quantique.cmd`.
+L’atelier fonctionne sur <http://127.0.0.1:8769>, hors ligne après installation.
+**77 tests** vérifient les résultats physiques et le serveur. Les conditions aux
+limites, unités et approximations sont explicites ; les clarifications du recueil
+accompagnent les preuves. [Présentation et illustrations](physique_quantique/README.md).
+[Le volet 06](physique_statistique/README.md) prolonge ces niveaux quantiques vers les états thermiques.
 
 ## Volet 04 · Calcul différentiel & Transformations
 
