@@ -1,4 +1,4 @@
-name: Vérifications mathématiques
+name: Vérifications mathématiques et physiques
 
 on:
   push:
@@ -96,3 +96,47 @@ jobs:
         run: python -X utf8 -m unittest -v test_mathematiques
       - name: Vérifier le TP symbolique
         run: python -X utf8 tp_symbolique.py
+  quantique:
+    name: Physique quantique — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: physique_quantique
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des états, des courants, des circuits et du serveur
+        run: python -X utf8 -m unittest -v test_modeles test_serveur
+  statistique:
+    name: Physique statistique — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: physique_statistique
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des états thermiques, de Maxwell, d’Ising et du serveur
+        run: python -X utf8 -m unittest -v test_modeles test_ising test_serveur
