@@ -26,7 +26,7 @@ matricielles.
 
 ![Voir l’algèbre agir : réseaux, représentations et mécanique](algebre_lineaire/apercu.jpg)
 
-**17 laboratoires, 25 leçons, 40 exercices corrigés et dix missions**, avec priorité aux **TP du recueil de A. R.** Les expériences partent de problèmes de géométrie, de dynamique et de structure ; les objets, variables et étapes de preuve sont définis dans chaque laboratoire.
+**17 laboratoires, 25 leçons, 40 exercices corrigés et dix missions**, avec priorité aux **TP du recueil de A. R.** Les expériences partent de problèmes de géométrie, de dynamique et de structure. Chaque TP commence par son but, les techniques du cours à réinvestir, les repères **sup / spé / au-delà**, les leçons associées et un premier parcours conseillé ; les objets, variables et étapes de preuve sont ensuite définis.
 
 - **Matrices denses 4×4 à 6×6 :** Jordan, Dunford, Frobenius, mêmes polynômes caractéristiques et invariants différents, cyclicité, Krylov, récurrences, Newton et Cayley–Hamilton.
 - **Lie et représentations :** rotations d’axes obliques, trois termes de Jacobi non nuls, action ad et sl₂ sur des formes homogènes de degrés 2 à 6, avec diagramme des poids.
