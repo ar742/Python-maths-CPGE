@@ -28,8 +28,6 @@ les résultats** produit un JSON lisible, avec paramètres, tableaux et hypothè
 
 [Les dix missions](PARCOURS.md) proposent une progression de plusieurs séances.
 [Le cours](COURS.md) rassemble les démonstrations et les 48 corrigés.
-[Les clarifications](ERRATA.md) expliquent les conventions et les points du
-recueil qui demandent une correction ou un complément.
 
 Pour choisir un autre port :
 

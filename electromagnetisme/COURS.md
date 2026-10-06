@@ -1,6 +1,6 @@
 # Électromagnétisme — cours, expériences et exercices corrigés
 
-36 leçons, 24 laboratoires et 48 exercices intégralement corrigés. Les dix missions transversales sont dans [PARCOURS.md](PARCOURS.md) ; [ERRATA.md](ERRATA.md) explique les conventions et corrections du support source sans le redistribuer.
+36 leçons, 24 laboratoires et 48 exercices intégralement corrigés. Les dix missions transversales sont dans [PARCOURS.md](PARCOURS.md).
 
 Convention commune : les champs réels sont Re[Ã exp(−iωt)], les ondes vers +z exp(ikz−iωt), les amplitudes harmoniques sont crête sauf mention efficace. Pour une branche passive dans un demi-espace +z, Im(k)≥0. μ₀≈4π×10⁻⁷ H·m⁻¹ est une approximation numérique.
 

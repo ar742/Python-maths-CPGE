@@ -84,7 +84,7 @@ les SVG sont fournis, et les laboratoires demandent uniquement NumPy.
 ## Lire, préparer et prolonger
 
 [Guide de prise en main](LISEZ_MOI.md) · [Dix missions](PARCOURS.md) ·
-[Cours et corrigés](COURS.md) · [Clarifications scientifiques](ERRATA.md).
+[Cours et corrigés](COURS.md).
 
 Le point de départ est le recueil de **A. R., fiches P11 à P14**, transmis pour
 ce travail. Les illustrations sont originales ; les pages du PDF ne sont pas
