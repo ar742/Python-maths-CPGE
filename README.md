@@ -24,23 +24,20 @@ matricielles.
 
 ## Maths, volet 05 · Atelier 07 · Algèbre & Réductions
 
-![Dunford : partie semi-simple et nilpotente du TP](algebre_lineaire/illustrations/dunford.svg)
+![Voir l’algèbre agir : réseaux, représentations et mécanique](algebre_lineaire/apercu.jpg)
 
-**12 laboratoires, 20 leçons, 30 exercices corrigés et 12 figures autonomes**,
-avec priorité aux **TP d’algèbre et d’algèbre linéaire du recueil de A. R.**, dans un
-parcours de huit séances.
+**17 laboratoires, 25 leçons, 40 exercices corrigés et dix missions**, avec priorité aux **TP du recueil de A. R.** Les expériences partent de problèmes de géométrie, de dynamique et de structure ; les objets, variables et étapes de preuve sont définis dans chaque laboratoire.
 
-- **Structures :** GLₙ sur un corps ou un anneau, unités, inverse par l’adjugée, groupes linéaires finis et algèbres de Lie.
-- **Réductions exactes :** Jordan, Dunford, Frobenius, facteurs invariants, endomorphismes cycliques et bases de Krylov.
-- **Déterminant et traces :** Cayley–Hamilton, Newton, Faddeev–LeVerrier, Vandermonde du TP, puissances et pfaffien.
-- **Méthodes :** pivots de Gauss, noyau, image, systèmes, Bézout, projecteurs et formes quadratiques.
+- **Matrices denses 4×4 à 6×6 :** Jordan, Dunford, Frobenius, mêmes polynômes caractéristiques et invariants différents, cyclicité, Krylov, récurrences, Newton et Cayley–Hamilton.
+- **Lie et représentations :** rotations d’axes obliques, trois termes de Jacobi non nuls, action ad et sl₂ sur des formes homogènes de degrés 2 à 6, avec diagramme des poids.
+- **Symplectique et pfaffien :** oscillateurs couplés, Sp₄/Sp₆, conservation canonique, comparaison Cayley/Euler et appariements de matrices alternées denses.
+- **Applications graphiques :** transformation d’un cube en 3D, réseaux et Laplacien, diffusion, Fiedler, arbres couvrants, circulation et mélange d’une chaîne de Markov à six états.
+- **Méthodes :** unités d’un anneau, adjugée, Gauss, Bézout, projecteurs, congruence et formes quadratiques.
 
 **Python 3.10+, NumPy et SymPy**. Double-cliquer sur `Lancer_Algebre_Lineaire.cmd`.
 L’atelier fonctionne sur <http://127.0.0.1:8771>, hors ligne après installation.
-Les matrices rationnelles personnelles sont acceptées ; les calculs exacts,
-les étapes de construction et les illustrations accompagnent les démonstrations.
-**75 tests** vérifient les résultats et le serveur local.
-[Présentation et clarifications du recueil](algebre_lineaire/README.md).
+Les vues 3D se tournent ; les graphes et distributions s’animent. Les calculs exacts et illustrations numériques sont distingués. **19 figures scientifiques autonomes et 128 tests** accompagnent ce volet.
+[Présentation et conventions](algebre_lineaire/README.md) · [Dix missions](algebre_lineaire/PARCOURS.md).
 
 ## Volet 06 · Physique statistique & Équilibres
 
