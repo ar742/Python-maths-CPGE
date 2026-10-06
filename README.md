@@ -5,13 +5,14 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Six ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Sept ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations** et
-**Physique quantique & Qubits**, puis **Physique statistique & Équilibres**. Ils relient
-groupes, extrema, modèles aléatoires, espaces tangents, ondes, information quantique
-et états thermiques.
+**Physique quantique & Qubits**, **Physique statistique & Équilibres**, et
+**Algèbre & Réductions** (cinquième volet de mathématiques). Ils relient groupes,
+extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
+matricielles.
 
-| Volet | Lancement Windows | Programme et parcours |
+| Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
 | 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Parcours](PREMIER-PARCOURS.md) |
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
@@ -19,6 +20,27 @@ et états thermiques.
 | 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md) |
 | 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) |
 | 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) |
+| 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md) |
+
+## Maths, volet 05 · Atelier 07 · Algèbre & Réductions
+
+![Dunford : partie semi-simple et nilpotente du TP](algebre_lineaire/illustrations/dunford.svg)
+
+**12 laboratoires, 20 leçons, 30 exercices corrigés et 12 figures autonomes**,
+avec priorité aux **TP d’algèbre et d’algèbre linéaire du recueil de A. R.**, dans un
+parcours de huit séances.
+
+- **Structures :** GLₙ sur un corps ou un anneau, unités, inverse par l’adjugée, groupes linéaires finis et algèbres de Lie.
+- **Réductions exactes :** Jordan, Dunford, Frobenius, facteurs invariants, endomorphismes cycliques et bases de Krylov.
+- **Déterminant et traces :** Cayley–Hamilton, Newton, Faddeev–LeVerrier, Vandermonde du TP, puissances et pfaffien.
+- **Méthodes :** pivots de Gauss, noyau, image, systèmes, Bézout, projecteurs et formes quadratiques.
+
+**Python 3.10+, NumPy et SymPy**. Double-cliquer sur `Lancer_Algebre_Lineaire.cmd`.
+L’atelier fonctionne sur <http://127.0.0.1:8771>, hors ligne après installation.
+Les matrices rationnelles personnelles sont acceptées ; les calculs exacts,
+les étapes de construction et les illustrations accompagnent les démonstrations.
+**75 tests** vérifient les résultats et le serveur local.
+[Présentation et clarifications du recueil](algebre_lineaire/README.md).
 
 ## Volet 06 · Physique statistique & Équilibres
 
