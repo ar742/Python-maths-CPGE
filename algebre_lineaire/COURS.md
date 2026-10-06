@@ -1,0 +1,517 @@
+# Algèbre & Réductions — cours et exercices
+
+Maths, volet 05 · Atelier 07 de Python-maths-CPGE. Douze laboratoires pour relier les structures algébriques, les calculs exacts et les démonstrations.
+
+Les résultats théoriques et les observations numériques sont distingués. Les approfondissements sont signalés.
+
+## 1 · Choisir l'anneau avant d'inverser
+
+*SUP · FONDATIONS*
+
+Un anneau unitaire possède une addition de groupe commutatif, une multiplication associative et distributive, et une unité 1. Un corps est un anneau commutatif non nul où tout élément non nul est inversible. L'expression « non nul » suffit dans un corps ; elle ne suffit pas dans ℤ ou dans ℤ/nℤ. Dans cet atelier, un idéal peut être {0} ; un anneau principal est, par convention, intègre et possède seulement des idéaux principaux.
+
+A inversible dans Mₙ(R) ⇔ det(A) est une unité de R, pour R commutatif unitaire.
+A·adj(A)=adj(A)·A=det(A)I.
+
+**Preuve.** Si AB=I, les déterminants donnent det(A)det(B)=1. Réciproquement, si det(A) possède un inverse dans R, la formule de l'adjugée construit celui de A. Ainsi diag(2,1) est inversible sur ℚ, ne l'est pas sur ℤ, et ne l'est pas modulo 6. Modulo 5, son inverse est diag(3,1). L'interface conserve les fractions exactes : 1/3 est un rationnel, pas une approximation décimale.
+
+a est une unité modulo n ⇔ pgcd(a,n)=1.
+Caractéristique de R : générateur positif du noyau de ℤ→R, k↦k·1, ou 0 si ce noyau est nul.
+
+Bézout prouve le critère des unités : ua+vn=1 fournit u comme inverse ; une relation ab≡1 fournit une combinaison donnant le pgcd 1. ℚ, ℝ et ℂ ont caractéristique 0 ; 𝔽ₚ a caractéristique p. Cette différence réapparaîtra lorsque nous diviserons une identité de traces par 2, 3 ou n.
+
+## 2 · Compter GL et explorer les entiers de Gauss
+
+*SUP → SPÉ · TP D'ALGÈBRE*
+
+Sur 𝔽ₚ, une matrice est inversible si ses colonnes forment une base. La première colonne peut être tout vecteur sauf 0 ; après k colonnes indépendantes, leur espace engendré contient pᵏ vecteurs. Le choix suivant exclut exactement ces vecteurs.
+
+|GLₙ(𝔽ₚ)|=∏ₖ₌₀ⁿ⁻¹(pⁿ−pᵏ).
+|GL₂(ℤ/pᵅℤ)|=p⁴⁽ᵅ⁻¹⁾(p²−1)(p²−p).
+
+La réduction modulo p décide l'inversibilité modulo pᵅ. Chacune des quatre entrées admet pᵅ⁻¹ relèvements : il faut donc la puissance 4 dans le facteur. Le théorème chinois transforme un module composé de puissances premières distinctes en produit d'anneaux ; les cardinalités des groupes linéaires se multiplient. Les unités modulo n ont un ordre divisant φ(n), sans avoir toutes cet ordre.
+
+**TP de groupes finis.** La probabilité que deux éléments uniformes d'un groupe G commutent vaut |G|⁻²Σ_g|C_G(g)|. Si G n'est pas abélien, |Z(G)|≤|G|/4 : un quotient G/Z(G) cyclique forcerait G abélien. Pour g non central, C_G(g) est un sous-groupe propre, donc de taille ≤|G|/2. La somme donne une probabilité ≤5/8, avec égalité pour le groupe diédral d'ordre 8. C'est une borne large, pas une inégalité toujours stricte.
+
+Pour un sous-groupe fini de GLₙ(ℤ), la réduction modulo un nombre premier p≥3 est injective. Si A est dans son noyau, C=(A−I)/p est entière. A étant d'ordre fini, elle est diagonalisable sur ℂ ; les valeurs propres de C sont (ζ−1)/p, de module ≤2/p<1. Donc Cᵏ→0. Ses entrées entières deviennent nulles, puis la diagonalisation impose C=0 et A=I. Pour p=2, −I fournit un contre-exemple.
+
+**Extension guidée, sur papier.** Dans ℤ[i], N(a+ib)=a²+b² est multiplicative. Les unités sont ±1 et ±i car leur norme vaut 1. Pour diviser α par β≠0, arrondir séparément les deux coordonnées de α/β donne q∈ℤ[i] et r=α−qβ avec N(r)≤N(β)/2<N(β). Le même algorithme d'Euclide qu'en ℤ prouve Bézout puis la principalité. Il mène au critère des deux carrés : les exposants des nombres premiers congrus à 3 modulo 4 doivent être pairs. Le laboratoire traite ℚ, ℤ et ℤ/nℤ ; cette extension ne prétend pas y calculer directement dans ℤ[i].
+
+## 3 · Transporter une structure et tester une loi
+
+*SUP · TP SUR LES STRUCTURES*
+
+Une liste d'axiomes devient plus lisible lorsqu'on cherche un modèle connu. L'application (x,y)↦(ln x,y) transporte sur ℝ₊*×ℝ la structure de ℝ² : l'addition devient (x,y)⊕(x′,y′)=(xx′,y+y′), et α⊙(x,y)=(xᵅ,αy), pour tout α∈ℝ, y compris 0. Le vecteur nul est (1,0). Le laboratoire géométrique travaille dans les coordonnées linéaires usuelles ; le changement logarithmique se justifie à la main.
+
+Sur une chaîne totalement ordonnée, min et max sont associatives, commutatives, idempotentes et distributives l'une sur l'autre. Sur ℝ, elles n'ont pas d'élément neutre ; sur une chaîne finie, le minimum est neutre pour max et le maximum pour min. Une loi idempotente ne peut être une loi de groupe sur un ensemble de plusieurs éléments : x*x=x et la simplification forceraient x=e.
+
+Sur ℝ∖{0,1} : x, 1/x, 1−x, 1/(1−x), x/(x−1), 1−1/x.
+s(x)=1/x ; t(x)=1−x ; s∘t=1/(1−x) ; t∘s=1−1/x.
+
+Ces six homographies permutent {0,1,∞} dans la droite projective et composent un groupe isomorphe à S₃. Les deux compositions affichées diffèrent : l'ordre compte, comme pour AB et BA dans l'illustration. Pour reconnaître le groupe, suivre les images de 0,1,∞ suffit ; trois images distinctes déterminent une homographie. Ce TP relie un calcul de fonctions à une action de groupe, sans déduire les axiomes d'une simple ressemblance graphique.
+
+## 4 · Bases de polynômes et suppléments
+
+*SUP · TP D'ESPACES VECTORIELS*
+
+Pour tester qu'un ensemble est un espace vectoriel, commencer par 0, puis addition et multiplication par un scalaire. L'ensemble des polynômes non nuls n'est pas un espace vectoriel. Une famille de polynômes n'est pas son espace engendré. Ces deux distinctions évitent des conclusions de dimension qui seraient fausses dès l'énoncé.
+
+a₀,…,aₙ distincts ; Lᵢ(X)=∏ⱼ≠ᵢ(X−aⱼ)/(aᵢ−aⱼ).
+Lᵢ(aⱼ)=δᵢⱼ ; P=ΣᵢP(aᵢ)Lᵢ pour deg(P)≤n.
+
+**Preuve.** Évaluer ΣcᵢLᵢ=0 en aⱼ donne cⱼ=0. Il y a n+1 vecteurs libres dans l'espace de dimension n+1 ; ils forment une base. En particulier ΣLᵢ=1. Si des nœuds très proches rendent la matrice d'évaluation sensible aux arrondis, cela ne supprime pas l'indépendance exacte tant que les nœuds restent distincts.
+
+Pour Q non nul de degré d≤n, la division euclidienne donne Kₙ[X]=QKₙ₋d[X]⊕K_d₋₁[X], avec K₋₁[X]={0}. Le quotient et le reste sont uniques. Les polynômes Xᵏ(1−X)ⁿ⁻ᵏ, k=1,…,n, engendrent le sous-espace des polynômes de degré ≤n s'annulant en 0 ; les constantes en sont un supplément. La liberté se prouve en prenant le plus petit k d'une combinaison non triviale et en examinant son premier coefficient non nul. Dans le laboratoire, les colonnes de leurs coordonnées deviennent une famille dont le rang se calcule par Gauss.
+
+## 5 · Matrices, composition et changements de base
+
+*SUP · GÉOMÉTRIE*
+
+Si dim E=n et dim F=p, la matrice de u:E→F possède p lignes et n colonnes. Sa j-ième colonne est la coordonnée de u(eⱼ). Pour des vecteurs colonnes, appliquer B puis A donne ABx. Le laboratoire compose un étirement et des cisaillements ; il permet de comparer le même vecteur soumis aux deux ordres.
+
+[u(x)]_C=A[x]_B.
+P=(colonnes des nouveaux vecteurs écrits dans l'ancienne base) : [x]_ancienne=P[x]_nouvelle.
+A_nouvelle=P⁻¹A_ancienneP.
+
+Une similitude change la description du même endomorphisme. Elle conserve rang, trace, déterminant, polynômes caractéristique et minimal. Une opération de lignes remplace A par EA : elle conserve le rang, mais généralement ni trace ni spectre. Le déterminant mesure l'aire orientée : l'image du cercle unité par A est une ellipse lorsque A est inversible ; son aire vaut π|det A|.
+
+GLₙ⁺(ℝ)={A:det A>0} ; GLₙ⁻(ℝ)={A:det A<0}.
+SLₙ(ℝ)={A:det A=1} ⊂ GLₙ⁺(ℝ).
+
+L'orientation et la conservation du volume sont deux questions distinctes. diag(2,1) conserve l'orientation mais double l'aire. Si det A=0, l'image se contracte sur un segment ou un point ; il n'y a plus d'inverse. La déformation visuelle illustre ces propriétés, tandis que le calcul du déterminant les établit.
+
+## 6 · Gauss : résoudre, compter, certifier
+
+*SUP → SPÉ · TP DE CALCUL*
+
+Le pivot de Gauss utilise des échanges de lignes, des multiplications par un scalaire non nul et des additions de multiples de lignes. Appliquées au système augmenté [A|b], ces opérations ne changent pas ses solutions. Elles conduisent à une forme échelonnée ou réduite, sans donner en général une matrice semblable à A. Elles s'appliquent aussi aux matrices rectangulaires.
+
+Ax=b est compatible ⇔ rg[A|b]=rg A.
+Si compatible : ensemble des solutions = x₀+Ker A ; dim Ker A=n−rg A.
+
+Les colonnes pivots indiquent quelles colonnes de la matrice initiale forment une base de son image. Les variables libres produisent une base du noyau. Une ligne [0,…,0|c] avec c≠0 prouve l'incompatibilité. Pour le déterminant : une addition de ligne ne le change pas, un échange change son signe, une multiplication le multiplie par le même scalaire.
+
+**TP numérique.** Commencer par des entiers ou fractions exacts, puis comparer aux décimales. Un petit résidu ‖Ax−b‖ ne garantit pas une petite erreur sur x si A est mal conditionnée. L'arrondi et le seuil d'un pivot sont des décisions numériques ; ils ne remplacent pas une preuve que ce pivot est nul. Les matrices de Vandermonde rapprochant leurs nœuds et les matrices de Hilbert donnent des exemples formateurs. Le laboratoire fournit des identités rationnelles exactes pour les exemples admissibles.
+
+## 7 · Projeter : décomposition, orthogonalité, distance
+
+*SUP → SPÉ · PROJECTEURS*
+
+P²=P ⇒ E=Im P⊕Ker P ; x=Px+(I−P)x.
+Projection orthogonale dans une base orthonormée : P†=P.
+Projection sur les colonnes indépendantes de C : P=C(C†C)⁻¹C†.
+
+La décomposition est immédiate car P(I−P)=0 ; si y est à la fois image et noyau, y=Py=0. Une projection oblique suit un supplément qui n'est pas nécessairement perpendiculaire. Seule la projection orthogonale minimise la distance euclidienne : pour y dans l'image, x−y=(x−Px)+(Px−y) est une somme orthogonale, donc le carré de sa norme est minimal en y=Px.
+
+**Exemple du laboratoire.** P=[[1,−s],[0,0]] projette sur l'axe horizontal parallèlement à la droite engendrée par (s,1). Pour s≠0, Px peut être plus loin de x que (x₁,0). L'identité P²=P suffit pour une décomposition algébrique ; elle ne suffit pas pour une optimisation métrique.
+
+⟨A,B⟩_F=tr(A†B) ; ‖A‖_F²=Σᵢⱼ|aᵢⱼ|².
+Sur les matrices réelles : A=S+K, S=(A+Aᵀ)/2, K=(A−Aᵀ)/2.
+dist_F(A,Symₙ)=‖K‖_F.
+
+Les matrices symétriques et antisymétriques sont orthogonales pour ce produit scalaire ; le théorème de Pythagore prouve la dernière formule. Sur ℂ, la transposée doit être remplacée par l'adjoint conjugué pour la norme. Les matrices hermitiennes constituent un espace vectoriel réel, pas complexe. Cette application rejoint le volet d'optimisation : une distance à un sous-espace est un problème de projection.
+
+## 8 · Le spectre dépend du corps
+
+*SPÉ · RÉDUCTION*
+
+χ_A(X)=det(XI−A), monique de degré n.
+λ valeur propre ⇔ Ker(A−λI)≠{0}.
+A diagonalisable sur K ⇔ somme des dimensions des espaces propres sur K = n.
+
+La multiplicité algébrique dans χ et la dimension de l'espace propre ne sont pas la même donnée. Une matrice peut posséder n racines comptées avec multiplicité sans posséder n vecteurs propres indépendants. J₂(1) a χ=(X−1)² et un seul vecteur propre indépendant ; I₂ a le même χ et deux. χ seul ne classe donc pas les similitudes.
+
+La rotation R=[[0,−1],[1,0]] a χ=X²+1. Sur ℝ, elle n'a pas de valeur propre et n'est pas diagonalisable ; sur ℂ, les valeurs i et −i sont distinctes et elle l'est. Le mot « scindé » signifie que le polynôme se factorise en facteurs linéaires dans le corps choisi. Un exemple rationnel peut se scinder sur ℝ sans se scinder sur ℚ.
+
+Une matrice réelle symétrique possède une base orthonormée réelle de vecteurs propres. Une matrice hermitienne possède une telle base complexe et des valeurs propres réelles. Le laboratoire distingue ces preuves structurelles des valeurs approchées affichées : pour un calcul flottant, contrôler Av−λv et l'indépendance de la famille ; des valeurs numériquement proches ne prouvent pas une égalité exacte.
+
+## 9 · Commuter, codiagonaliser, interpoler
+
+*SPÉ · TP DE RÉDUCTION*
+
+Si AB=BA et Ax=λx, alors A(Bx)=λBx : B conserve chaque espace propre de A. Si A et B sont diagonalisables, la restriction de B à chacun de ces espaces est encore diagonalisable, car elle est annulée par le même polynôme scindé simple que B. Diagonaliser ces restrictions donne une base commune. Une famille finie de matrices diagonalisables qui commutent deux à deux se traite par récurrence.
+
+A diagonalisable, valeurs distinctes λ₁,…,λᵣ :
+Eᵢ=∏ⱼ≠ᵢ(A−λⱼI)/(λᵢ−λⱼ).
+ΣEᵢ=I ; EᵢEⱼ=δᵢⱼEᵢ ; A=ΣλᵢEᵢ ; f(A)=Σf(λᵢ)Eᵢ.
+
+Ce sont les polynômes de Lagrange de la leçon 4 évalués en A. Ils sont des projecteurs algébriques ; ils ne sont orthogonaux au sens métrique que sous des hypothèses supplémentaires, par exemple A symétrique réelle. Lorsque deux valeurs se confondent, les fractions deviennent invalides : il faut utiliser les sous-espaces caractéristiques et Bézout, plutôt que prolonger cette formule par un calcul non défini.
+
+Si A possède n valeurs propres distinctes, toute matrice B qui commute avec A est diagonale dans cette base. Interpoler ses n coefficients diagonaux fournit B=P(A) avec deg P<n. Ainsi le commutant C(A)={B:AB=BA} vaut K[A]. Si A est scalaire, son commutant est tout Mₙ(K), beaucoup plus grand que K[A] : l'hypothèse de spectre simple compte.
+
+## 10 · Cayley–Hamilton et polynôme minimal
+
+*SPÉ · PREUVE FONDAMENTALE*
+
+Les polynômes qui annulent A forment un idéal non nul de K[X], engendré par un unique polynôme monique μ_A. Il est non nul car I,A,…,Aⁿ² sont liés. Tout polynôme annulateur est multiple de μ_A. Le théorème de Cayley–Hamilton affirme χ_A(A)=0 ; en particulier μ_A divise χ_A et son degré est ≤n.
+
+**Preuve par l'adjugée, sur tout corps.** Écrire adj(XI−A)=Σₖ₌₀ⁿ⁻¹BₖXᵏ et χ=Xⁿ+c₁Xⁿ⁻¹+⋯+cₙ. Comparer les coefficients dans (XI−A)adj(XI−A)=χI donne Bₙ₋₁=I, puis Bₖ₋₁−ABₖ égal au coefficient scalaire correspondant, enfin −AB₀=cₙI. La récurrence montre que chaque Bₖ est un polynôme en A. En éliminant successivement les Bₖ, on obtient Aⁿ+c₁Aⁿ⁻¹+⋯+cₙI=0. Cela justifie la substitution, sans prétendre évaluer arbitrairement une identité de polynômes à coefficients non commutatifs.
+
+Aᵐ=R(A), R=reste de Xᵐ modulo μ_A.
+A diagonalisable sur K ⇔ μ_A est scindé à racines simples.
+A nilpotente ⇔ μ_A=Xʳ pour un r≥1.
+
+La preuve du critère de diagonalisation utilise Bézout pour séparer les noyaux des facteurs X−λ. Pour calculer de grandes puissances, le reste polynomial évite de multiplier sans fin des matrices. Si cₙ≠0, Cayley–Hamilton exprime également A⁻¹ comme polynôme en A. Le laboratoire affiche le reste exact et le contrôle de l'identité ; cette vérification illustre le théorème mais n'en remplace pas la preuve.
+
+## 11 · Traces, déterminants et hypothèses de Newton
+
+*SPÉ · TP TRACES*
+
+sⱼ=tr(Aʲ), c₀=1 ; k cₖ=−Σⱼ₌₁ᵏcₖ₋ⱼsⱼ.
+det A=(s₁²−s₂)/2 en dimension 2.
+det A=(s₁³−3s₁s₂+2s₃)/6 en dimension 3.
+
+La convention est χ=Xⁿ+c₁Xⁿ⁻¹+⋯+cₙ ; det A=(−1)ⁿcₙ. Les identités de Newton s'obtiennent en comparant les coefficients dans χ′/χ=Σᵢ1/(X−λᵢ), comme série formelle à l'infini, sur une extension où χ est scindé. Pour résoudre la récurrence, il faut pouvoir diviser par 1,…,n : la caractéristique 0 suffit. La récurrence de Faddeev–LeVerrier B₀=I, cₖ=−tr(ABₖ₋₁)/k, Bₖ=ABₖ₋₁+cₖI termine par Bₙ=0.
+
+En caractéristique 0, tr(Aʲ)=0 pour j=1,…,n implique χ=Xⁿ, puis Aⁿ=0. Dans 𝔽ₚ, Iₚ a toutes ses traces de puissances nulles, mais n'est pas nilpotente. La trace cyclique tr(AB)=tr(BA), elle, reste vraie sur tout corps : développer les deux doubles sommes suffit.
+
+D det(A)[H]=Σᵢⱼcofᵢⱼ(A)hᵢⱼ ; si A inversible : D det(A)[H]=det(A)tr(A⁻¹H).
+det(exp A)=exp(tr A).
+
+La formule de Jacobi avec inverse ne vaut que sur les matrices inversibles ; celle par cofacteurs vaut aussi aux matrices singulières. L'identité tr log(I+zA)=log det(I+zA) utilise une branche locale près de z=0 ; sa série Σₖ≥₁(−1)ᵏ⁺¹zᵏtr(Aᵏ)/k converge par exemple pour |z|‖A‖<1. Elle n'est pas une formule globale valable pour tout z complexe. Le TP Vandermonde contrôle trace 137 et déterminant 48 par plusieurs méthodes indépendantes.
+
+## 12 · Décomposer selon Dunford
+
+*SPÉ · TP DUNFORD*
+
+Supposons μ_A scindé sur K : μ_A=∏ᵢ(X−λᵢ)ʳⁱ. Les facteurs sont premiers entre eux. Bézout construit des polynômes eᵢ congrus à 1 modulo le i-ième facteur et à 0 modulo les autres. Leurs valeurs Eᵢ=eᵢ(A) sont les projecteurs sur Gᵢ=Ker(A−λᵢI)ʳⁱ, parallèlement à la somme des autres sous-espaces caractéristiques.
+
+E=⊕Gᵢ ; D=ΣλᵢEᵢ ; N=A−D.
+A=D+N ; DN=ND ; D diagonalisable ; N nilpotente.
+D et N sont des polynômes en A.
+
+Sur Gᵢ, D=λᵢI et N=A−λᵢI, ce qui prouve les propriétés et borne l'indice de nilpotence par max rᵢ. Pour l'unicité, une autre décomposition D′+N′ commute avec les polynômes en A, donc avec D et N. D−D′ est diagonalisable car D et D′ commutent ; N′−N est nilpotente car ses deux termes commutent. Leur égalité impose une matrice à la fois diagonalisable et nilpotente, donc nulle.
+
+Méthode affichée par le laboratoire, en caractéristique 0 :
+q=produit des facteurs irréductibles distincts de μ_A ; h₀=X.
+hₖ₊₁=hₖ−q(hₖ)·[q′(hₖ)]⁻¹ modulo μ_A ; D=h_final(A).
+
+L'inverse est calculé par Bézout dans K[X]/(μ_A), pas par division numérique. Puisque q est sans facteur multiple, q′ est inversible modulo q ; les itérés restent congrus à X modulo q. La formule de Taylor montre que le nouveau défaut q(hₖ₊₁) est un multiple de q(hₖ)². Initialement nilpotent dans le quotient, ce défaut devient exactement nul après un nombre fini d'étapes. Alors q(D)=0, donc D est semisimple, et diagonalisable si q est scindé ; h_final≡X modulo q impose aussi la nilpotence de A−D. Cette méthode de Newton évite de calculer explicitement les racines ; elle complète la preuve par projecteurs.
+
+**TP du recueil.** Prendre P de colonnes (1,2,0), (2,1,0), (1,0,1), et J=J₃(1). Pour A=PJP⁻¹, D=I et N=A−I avec N³=0, N²≠0. Il faut exhiber la base, pas seulement annoncer la décomposition.
+
+**Extension de corps.** Sur un corps parfait, il existe une version D semisimple, c'est-à-dire diagonalisable après extension à une clôture algébrique. Sur ℝ, une rotation peut être semisimple sans être diagonalisable sur ℝ. Les corps ℚ, ℝ et ℂ sont parfaits. La formulation « D diagonalisable sur K » de ce TP demande un polynôme scindé sur K ; elle ne doit pas être exportée sans hypothèse à un corps arbitraire.
+
+## 13 · Lire Jordan et calculer des fonctions de A
+
+*SPÉ · EXTENSION GUIDÉE*
+
+Lorsque χ est scindé, on peut choisir une base de chaînes et écrire A comme somme directe de blocs Jₘ(λ)=λI+Nₘ, où Nₘ possède des 1 sur la surdiagonale. La multiplicité de λ dans χ est la somme des tailles de ses blocs ; son exposant dans μ est la taille du plus grand. Ces invariants distinguent une multiplicité répétée d'un défaut de diagonalisation.
+
+dₖ=dim Ker(A−λI)ᵏ sur le sous-espace caractéristique de λ, d₀=0.
+dₖ−dₖ₋₁ = nombre de blocs de taille ≥k.
+Nombre de blocs de taille k = 2dₖ−dₖ₋₁−dₖ₊₁.
+
+Sur un bloc de taille m, la dimension du noyau de Nᵏ vaut min(k,m). Additionner ces contributions prouve les formules. Les accroissements doivent décroître ; c'est un contrôle utile d'un calcul de noyaux. Une réduction de Jordan n'est définie sur ℝ que si χ y est scindé. La forme de Frobenius, prochaine extension, ne demande pas cela.
+
+f(λI+N)=Σₖ₌₀ᵐ⁻¹f⁽ᵏ⁾(λ)Nᵏ/k! pour f analytique près de λ.
+exp(tJₘ(λ))=exp(tλ)Σₖ₌₀ᵐ⁻¹tᵏNᵏ/k!.
+λ≠0, exp(ℓ)=λ : log(λI+N)=ℓI+Σₖ₌₁ᵐ⁻¹(−1)ᵏ⁺¹(N/λ)ᵏ/k.
+
+Les sommes sont finies grâce à la nilpotence. Le logarithme scalaire ℓ est ajouté au terme nilpotent ; il ne multiplie pas toute la série. Toute matrice complexe inversible possède ainsi au moins un logarithme complexe. Pour les logarithmes réels, det A>0 est nécessaire mais pas suffisant. Le laboratoire se limite à des familles exactes contrôlées : on comprend leur construction avant de demander une réduction à un logiciel.
+
+## 14 · Cyclicité : un vecteur qui engendre tout
+
+*SPÉ · TP KRYLOV*
+
+A cyclique ⇔ ∃v tel que (v,Av,…,Aⁿ⁻¹v) soit une base.
+⇔ deg μ_A=n ⇔ μ_A=χ_A ⇔ A semblable à une matrice compagnon.
+
+Le quantificateur est existentiel. Même pour A diagonale à valeurs distinctes, un vecteur propre n'engendre qu'une droite. Pour un v fixé, l'idéal des P tels que P(A)v=0 possède un générateur monique μ_v ; le sous-espace de Krylov engendré par v a dimension deg μ_v. Une matrice peut posséder un vecteur dont μ_v=μ_A tout en restant non cyclique si deg μ_A<n.
+
+p(X)=Xⁿ+aₙ₋₁Xⁿ⁻¹+⋯+a₀.
+C(p)eⱼ=eⱼ₊₁ (j<n) ; C(p)eₙ=−Σⱼ₌₀ⁿ⁻¹aⱼeⱼ₊₁.
+χ_C=μ_C=p ; e₁ est cyclique.
+
+La relation sur la dernière colonne vient de p(A)v=0 dans la base de Krylov. Le laboratoire teste le rang exact de cette base et calcule AP=PC ; s'il est inférieur à n, il explique pourquoi le vecteur choisi ne convient pas. Pour une diagonale diag(λ₁,…,λₙ) à valeurs distinctes, le déterminant de Krylov est (∏vᵢ)∏ᵢ<ⱼ(λⱼ−λᵢ) : v est cyclique exactement quand aucune coordonnée n'est nulle. Un nilpotent est cyclique exactement quand son indice vaut n.
+
+## 15 · Frobenius : une classification sur tout corps
+
+*SPÉ · EXTENSION GUIDÉE*
+
+Faire agir X sur E par X·v=Av transforme E en module de torsion sur K[X]. Le théorème de structure sur cet anneau principal donne des polynômes moniques non constants p₁|p₂|⋯|pᵣ et une décomposition E≃⊕K[X]/(pᵢ). Dans le quotient par p de degré d, les classes de 1,X,…,Xᵈ⁻¹ forment une base ; la multiplication par X y est C(p).
+
+A ∼ diag(C(p₁),…,C(pᵣ)).
+χ_A=∏pᵢ ; μ_A=pᵣ ; Σdeg pᵢ=n.
+A cyclique ⇔ r=1.
+
+Les facteurs invariants classent les similitudes sur le corps K, sans exiger que χ soit scindé. Sur ℚ, C(X²+1) reste un bloc irréductible ; sur ℂ, sa forme de Jordan possède deux blocs de taille 1. La décomposition rationnelle de Frobenius et la décomposition de Jordan décrivent le même endomorphisme sous des hypothèses de factorisation différentes.
+
+**Méthode expérimentale.** Le laboratoire construit une somme de compagnons, puis la conjugue par une matrice inversible. Retrouver les facteurs et vérifier le changement de base est un certificat exact. Changer le cisaillement change les coefficients de A mais pas les facteurs invariants. Un polynôme caractéristique identique ne suffit pas pour conclure à la similitude : il faut aussi ces facteurs. L'existence générale via le théorème des modules est une extension ; les identités sur chaque famille se démontrent directement avec des bases de Krylov.
+
+## 16 · Circulantes, Vandermonde et récurrences
+
+*SPÉ · APPLICATIONS*
+
+Soit S la permutation cyclique qui envoie (x₁,…,xₙ) sur (x₂,…,xₙ,x₁). Elle vérifie Sⁿ=I. Sur ℂ, avec ζ=exp(2πi/n), les vecteurs vₖ=(1,ζᵏ,…,ζ⁽ⁿ⁻¹⁾ᵏ) vérifient Svₖ=ζᵏvₖ. Les racines sont distinctes ; cette base de Fourier diagonalise chaque matrice circulante A=Σⱼ₌₀ⁿ⁻¹aⱼSʲ.
+
+λₖ(A)=Σⱼaⱼζʲᵏ ; det A=∏ₖλₖ(A).
+Vᵢⱼ=aⱼⁱ⁻¹ ⇒ det V=∏ᵢ<ⱼ(aⱼ−aᵢ).
+
+Le déterminant de Vandermonde s'annule lorsque deux colonnes coïncident ; les facteurs aⱼ−aᵢ le divisent. Leur produit possède déjà le degré total du déterminant et le même coefficient dominant : l'égalité suit. Le signe dépend de l'ordre des colonnes. Pour les nœuds (1,2,3,5), la matrice du TP a trace 137 et déterminant 48.
+
+Une récurrence linéaire d'ordre n s'écrit avec un vecteur d'état et une matrice compagnon. Son polynôme caractéristique contrôle les modes λᵐ et, pour une racine répétée, les facteurs polynomiaux en m issus des blocs de Jordan. Pour la permutation S, e₁ est cyclique sur tout corps, même si Xⁿ−1 n'a pas de racines simples dans ce corps. Le calcul de la base de Krylov appartient au laboratoire ; la diagonalisation de Fourier est ici démontrée sur ℂ.
+
+## 17 · Des groupes de matrices à leurs tangentes
+
+*SPÉ · EXTENSION LIE*
+
+Un groupe de matrices satisfait une contrainte non linéaire, tandis que son espace tangent en I est linéaire. Pour une courbe M(t)=I+tX+o(t) dans le groupe, dériver la contrainte donne la condition sur X. La dimension d'un groupe ne doit pas être confondue avec celle de l'espace ambiant des matrices.
+
+GLₙ : glₙ=Mₙ ; SLₙ : slₙ={X:tr X=0}.
+SOₙ : soₙ={X:Xᵀ+X=0}.
+Sp₂ₘ, J=[[0,I],[−I,0]] : sp₂ₘ={X:XᵀJ+JX=0}.
+Uₙ : uₙ={X:X†+X=0}, espace réel.
+
+Pour SL, utiliser det(I+tX)=1+t tr X+o(t). Pour SO, dériver MᵀM=I ; pour Sp, dériver MᵀJM=J. L'exponentielle rétablit la contrainte : si XᵀJ+JX=0, la dérivée de exp(tX)ᵀJexp(tX) est nulle et sa valeur initiale est J. Les mêmes arguments traitent orthogonalité et unitarité. Pour SL, det exp(tX)=exp(t tr X)=1.
+
+Le laboratoire compare la trajectoire exp(tX) à sa tangente I+tX et mesure les contraintes. Les dimensions réelles sont n², n²−1, n(n−1)/2 et m(2m+1) pour les quatre familles réelles proposées. Le groupe orthogonal indéfini O(p,q) préserve J_pq=diag(Iₚ,−I_q), non I. La théorie générale des groupes de Lie dépasse certains programmes CPGE ; les preuves matricielles de cette leçon restent accessibles avec dérivation, trace et exponentielle.
+
+## 18 · Commutateurs, adjoint et Heisenberg
+
+*SPÉ · EXTENSION LIE*
+
+[X,Y]=XY−YX ; [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.
+Ad_g(X)=gXg⁻¹ ; ad_X(Y)=[X,Y].
+exp(hX)exp(hY)exp(−hX)exp(−hY)=I+h²[X,Y]+O(h³).
+
+Développer les douze produits de Jacobi les fait s'annuler deux à deux. Cela prouve que le commutateur fournit une algèbre de Lie : le crochet est bilinéaire et alterné. En dérivant exp(tX)Yexp(−tX), on obtient ad_X ; résoudre l'équation linéaire donne Ad_exp(tX)=exp(t ad_X). Pour GLₙ, Ad possède le centre scalaire comme noyau : c'est une représentation, sans être en général injective.
+
+**Heisenberg en dimension 3.** X=E₁₂, Y=E₂₃, Z=E₁₃ donnent [X,Y]=Z et [X,Z]=[Y,Z]=0. Z est central dans cette algèbre et n'est pas I₃. Sur un corps de caractéristique 0, aucune paire de matrices carrées finies ne vérifie [A,B]=I : la trace du membre gauche vaut 0 et celle du droit vaut n. Les opérateurs quantiques satisfaisant une relation canonique exigent un espace infini et des domaines appropriés.
+
+Pour so₃, la matrice x̂ qui représente y↦x×y vérifie [x̂,ŷ]=(x×y)̂. Dans su₂, les Pauli σₖ sont hermitiennes ; les matrices Tₖ=−iσₖ/2 sont antihermitiennes de trace nulle et [Tₓ,Tᵧ]=T_z. Ces deux algèbres réelles sont isomorphes, sans identifier les groupes SU₂ et SO₃. Le laboratoire illustre la non-commutation et son ordre h² ; les exemples Heisenberg et Pauli se vérifient sur papier.
+
+## 19 · Pfaffien, antisymétrie et symplectique
+
+*SPÉ · EXTENSION GUIDÉE*
+
+En caractéristique différente de 2, une matrice antisymétrique Aᵀ=−A de taille impaire a déterminant nul : det A=det Aᵀ=det(−A)=−det A. En taille paire 2m, le déterminant est le carré d'un polynôme de degré m, le pfaffien. Chaque terme associe les indices en paires, avec un signe qui dépend de l'ordre ; prendre une racine carrée positive du déterminant ferait perdre ce signe.
+
+Pf([[0,a,b,c],[−a,0,d,e],[−b,−d,0,f],[−c,−e,−f,0]])=af−be+cd.
+Pf(A)²=det A ; Pf(PAPᵀ)=det(P)Pf(A).
+Pf([[0,M],[−Mᵀ,0]])=(−1)ᵐ⁽ᵐ⁻¹⁾/²det M.
+
+**Preuve guidée.** Associer à A la forme alternée ω=Σᵢ<ⱼaᵢⱼeᵢ*∧eⱼ*. Dans ωᵐ/m!, le coefficient de e₁*∧⋯∧e₂ₘ* est Pf(A). Le changement de coordonnées multiplie une forme de degré 2m par det P, ce qui donne la congruence. Une réduction par congruence en blocs [[0,d],[-d,0]] établit le carré du déterminant pour les matrices non singulières ; l'identité polynomiale s'étend aux singulières. Le laboratoire compare exactitude, changement d'orientation et perte de rang, y compris pour P singulière.
+
+MᵀJM=J ⇒ M⁻¹=J⁻¹MᵀJ=−JMᵀJ et det M=1.
+Si A(t) inversible : dPf(A)/dt=½Pf(A)tr(A⁻¹A′).
+
+Prendre les déterminants de la relation symplectique ne donne d'abord que (det M)²=1. Appliquer la congruence du pfaffien à MᵀJM et annuler Pf(J)≠0 choisit exactement det M=1. La formule de l'inverse se contrôle en M=I. La dérivée avec A⁻¹ exige l'inversibilité, comme Jacobi. Les formes alternées et le produit extérieur sont des extensions expliquées ici pour justifier les signes ; le calcul 4×4 reste entièrement élémentaire.
+
+## 20 · Formes quadratiques : congruence et inertie
+
+*SUP → SPÉ · GÉOMÉTRIE ET OPTIMISATION*
+
+q(x)=xᵀSx, S réelle symétrique.
+x=Py ⇒ q(Py)=yᵀ(PᵀSP)y : transformation par congruence.
+Inertie (n₊,n₋,n₀) : nombres de coefficients positifs, négatifs et nuls dans une forme diagonale, ou de valeurs propres avec multiplicité.
+
+La similitude P⁻¹SP décrit un endomorphisme ; la congruence PᵀSP décrit une forme. L'inertie est invariante par congruence inversible, tandis que les valeurs propres ne le sont généralement pas. Pour une matrice orthogonale, les deux transformations coïncident, ce qui permet le théorème spectral : une somme de carrés signés classe la forme réelle.
+
+Si les valeurs propres sont toutes positives, q=1 est une ellipse dont les demi-axes sont 1/√λᵢ dans les directions propres. Un signe positif et un négatif produisent une hyperbole. Un zéro rend la forme dégénérée. Un vecteur non nul peut être isotrope, q(x)=0, sans être dans Ker S : pour q=x²−y², (1,1) est isotrope mais S(1,1)=(1,−1)≠0. Le laboratoire permet de déplacer le vecteur et de voir cette différence.
+
+S positive définie ⇔ toutes ses valeurs propres sont positives.
+⇔ tous ses mineurs principaux successifs sont strictement positifs (Sylvester).
+∇q(x)=2Sx ; Hess(q)=2S.
+
+La positivité caractérise la convexité stricte de q ; une forme indéfinie possède des directions de montée et de descente. On retrouve ainsi les Hessiennes du volet de calcul différentiel. Pour les matrices symétriques, une puissance impaire conserve assez d'information pour être inversée spectralement : A⁵=B⁵ implique A=B. Une puissance paire perd les signes, comme I²=(−I)². L'interprétation géométrique se construit après le calcul exact de l'inertie, pas à partir des seuls contours dessinés.
+
+## Exercices corrigés
+
+### 1 · Le même déterminant sur trois anneaux
+
+<p>Pour A=diag(2,1), décider de l'inversibilité sur ℚ, ℤ, ℤ/6ℤ et ℤ/5ℤ. Prouver le critère général et expliquer pourquoi det A≠0 ne suffit pas.</p>
+
+**Correction.** <p>det A=2. C'est une unité sur ℚ et modulo 5, avec inverses diag(1/2,1) et diag(3,1). Ce n'est pas une unité dans ℤ ou modulo 6. Si AB=I, det A possède det B comme inverse. Si det A est une unité, (det A)⁻¹adj(A) est un inverse. Le changement d'anneau change donc le résultat, sans changer les coefficients de A.</p>
+
+### 2 · Dénombrer GL₂ et relever modulo 9
+
+<p>Calculer |GL₂(𝔽₃)| et |GL₂(ℤ/9ℤ)|. Généraliser à pᵅ, puis expliquer le produit chinois pour un module composé.</p>
+
+**Correction.** <p>La première colonne a 3²−1=8 choix et la seconde 3²−3=6, donc 48 matrices. Chaque matrice modulo 3 possède 3⁴ relèvements modulo 9 et tous sont inversibles : 3888 matrices. En général le facteur est p⁴⁽ᵅ⁻¹⁾. Le théorème chinois donne un produit d'anneaux, donc un produit de groupes linéaires. Il ne faut pas attribuer l'ordre φ(n) à chaque unité : modulo 8, toutes les unités non triviales ont ordre 2 alors que φ(8)=4.</p>
+
+### 3 · Deux carrés et division dans ℤ[i]
+
+<p>Démontrer les unités de ℤ[i] et la division euclidienne pour sa norme. Trouver deux écritures de 65 comme somme de carrés ; pourquoi 21 n'en admet-il aucune ? TP théorique associé au laboratoire des anneaux.</p>
+
+**Correction.** <p>La norme multiplicative vaut 1 exactement pour ±1,±i. Arrondir les parties réelle et imaginaire de α/β donne un reste de norme ≤N(β)/2. Euclide fournit Bézout et la principalité. 65=1²+8²=4²+7². Si 3 divise a²+b², les carrés modulo 3 imposent 3|a et 3|b, donc 9|(a²+b²). Le nombre 21, divisible par 3 mais pas 9, est impossible. Le calcul général des deux carrés utilise la factorisation dans ℤ[i] ; le laboratoire ne calcule pas directement dans cet anneau.</p>
+
+### 4 · Deux lois et six homographies
+
+<p>Pourquoi min et max ne définissent-elles pas des groupes non triviaux ? Comparer s∘t et t∘s pour s(x)=1/x et t(x)=1−x sur ℝ∖{0,1}. Identifier les six transformations du TP.</p>
+
+**Correction.** <p>L'idempotence x*x=x dans un groupe imposerait x=e par simplification. Les deux compositions valent 1/(1−x) et 1−1/x ; elles diffèrent, par exemple en x=3. L'action sur {0,1,∞} identifie les six transformations à S₃ : identité, trois transpositions et deux cycles de longueur 3. Les deux cycles avec l'identité forment le sous-groupe d'ordre 3. Le laboratoire montre l'analogue matriciel de l'ordre de composition ; la table des homographies se construit sur papier.</p>
+
+### 5 · Lagrange à trois nœuds
+
+<p>Aux nœuds 0,1,2, construire les trois Lᵢ et interpoler les données 1,2,5. Justifier l'unicité sans inverser une matrice approchée.</p>
+
+**Correction.** <p>L₀=(X−1)(X−2)/2, L₁=−X(X−2), L₂=X(X−1)/2. L₀+2L₁+5L₂=X²+1. Les évaluations isolent chaque coefficient, donc la famille est libre et forme une base de K₂[X]. La différence de deux interpolants aurait trois racines distinctes et degré ≤2, donc serait nulle. Dans le preset, V a pour colonnes les monômes évalués aux trois nœuds ; le système Vc=(1,2,5) donne c=(1,0,1).</p>
+
+### 6 · Réparer et résoudre un problème de supplément
+
+<p>Pour E=K₃[X] et Q=X²+1, trouver un supplément de G=QK₁[X] et décomposer X³+2X+2. Comparer au cas des fonctions continues sur [0,2] d'intégrale nulle et des constantes.</p>
+
+**Correction.** <p>H=K₁[X]. La division donne X³+2X+2=(X²+1)X+(X+2), et le reste de degré &lt;2 est unique. Pour une fonction f, c=(1/2)∫₀²f et g=f−c donnent f=g+c, avec ∫g=0. Une constante d'intégrale nulle est 0 : somme directe. En revanche, les constantes sont déjà dans {f:f(0)=f(1)} ; ces deux espaces ne sont pas supplémentaires. La matrice du preset possède les coordonnées des générateurs de G puis 1,X ; son rang 4 certifie leur base.</p>
+
+### 7 · Composition et aire orientée
+
+<p>Avec A=[[2,1],[0,1]] et B=[[1,0],[1,1]], calculer AB et BA, leurs déterminants, puis leurs images du vecteur (1,0). A appartient-elle à SL₂ ?</p>
+
+**Correction.** <p>AB=[[3,1],[1,1]] et BA=[[2,1],[2,2]], donc AB(1,0)=(3,1), BA(1,0)=(2,2). Leurs déterminants valent det A·det B=2. L'aire du disque unité devient 2π et l'orientation est conservée. A∈GL₂⁺ mais A∉SL₂, puisque det A=2≠1. Les produits ont même trace 4 et sont semblables car A est inversible : A⁻¹(AB)A=BA, malgré des images de vecteurs différentes.</p>
+
+### 8 · Similitude ou congruence ?
+
+<p>Pour S=diag(1,2) et P=[[1,1],[0,1]], calculer P⁻¹SP et PᵀSP. Lesquelles des données spectre et inertie sont conservées ?</p>
+
+**Correction.** <p>P⁻¹SP=[[1,−1],[0,2]], avec les valeurs propres 1 et 2. PᵀSP=[[1,1],[1,3]], de valeurs 2±√2 : elles changent, mais les deux restent positives, donc l'inertie reste (2,0,0). Les coordonnées d'un endomorphisme changent par similitude ; celles d'une forme par congruence. Le preset illustre le cisaillement P, sans confondre ces deux opérations.</p>
+
+### 9 · Une résolution exacte par Gauss
+
+<p>Résoudre A x=b pour A=[[1,2,1],[2,4,0],[1,1,1]], b=(1,2,0). Suivre le signe du déterminant à chaque étape.</p>
+
+**Correction.** <p>L₂←L₂−2L₁ et L₃←L₃−L₁ donnent les lignes (0,0,−2|0) et (0,−1,0|−1). Échanger les deux dernières lignes fournit une matrice triangulaire de diagonale 1,−1,−2. Son déterminant vaut 2 ; celui de A vaut −2 à cause de l'échange. Le système donne z=0, y=1 et x=−1. Contrôler A(−1,1,0)=b. La forme triangulaire issue de Gauss n'est pas une forme de Jordan de A.</p>
+
+### 10 · Compatibilité et variables libres
+
+<p>Étudier A=[[1,2,1],[2,4,2]], d'abord avec b=(1,2), puis b=(1,3). Décrire tout l'ensemble des solutions du premier système.</p>
+
+**Correction.** <p>La seconde ligne est deux fois la première. Pour b=(1,2), rang A=rang[A|b]=1 et les solutions sont (1−2s−t,s,t), s,t∈K. Le noyau est engendré par (−2,1,0) et (−1,0,1). Pour b=(1,3), soustraire deux fois la première ligne donne 0=1 ; le rang augmenté est 2 et le système est incompatible. L'absence d'inverse d'une matrice ne suffit pas à dire que son système n'a aucune solution.</p>
+
+### 11 · Prouver l'inégalité de Sylvester
+
+<p>Pour f:E→F et g:F→G en dimension finie, prouver rg(gf)≥rg f+rg g−dim F et rg(gf)≤min(rg f,rg g). Donner un cas d'égalité inférieure.</p>
+
+**Correction.** <p>Restreindre g à Im f : rg(gf)=dim Im f−dim(Im f∩Ker g)≥rg f−dim Ker g=rg f+rg g−dim F. L'image de gf est contenue dans Im g ; elle est aussi l'image d'un espace de dimension rg f, ce qui donne les deux bornes supérieures. Pour f=diag(1,0), g=diag(0,1) sur K², les rangs valent 1,1 et 0 : la borne inférieure est atteinte. Le preset affiche le produit nul.</p>
+
+### 12 · Projection oblique et meilleure approximation
+
+<p>Avec P=[[1,1],[0,0]], déterminer Im P, Ker P et P(0,1). Est-ce le point de l'axe horizontal le plus proche de (0,1) ?</p>
+
+**Correction.** <p>P²=P, Im P=Vect(1,0), Ker P=Vect(−1,1), et P(0,1)=(1,0). Sa distance à (0,1) vaut √2 ; la projection orthogonale (0,0) est à distance 1. Pour tout (t,0), la distance au carré vaut t²+1, minimale pour t=0. L'idempotence prouve un supplément, tandis que Pᵀ≠P exclut l'orthogonalité dans cette base orthonormée.</p>
+
+### 13 · Une distance entre matrices
+
+<p>Pour A=[[1,3],[−1,2]], trouver la matrice symétrique la plus proche pour la norme de Frobenius. Montrer l'orthogonalité utilisée. Quel adjoint utiliser sur ℂ ?</p>
+
+**Correction.** <p>S=(A+Aᵀ)/2=[[1,1],[1,2]], K=[[0,2],[−2,0]], et ‖K‖_F=2√2. Pour tout T symétrique, tr(KᵀT)=0 car les termes hors diagonale s'annulent et ceux de la diagonale sont nuls. Ainsi ‖A−T‖²=‖K‖²+‖S−T‖², d'où l'unique minimiseur S. Sur ℂ, ‖A‖²=tr(A†A)=Σ|aᵢⱼ|² ; une transposée seule ne donne pas une norme. Cet exercice théorique prolonge l'illustration des projections.</p>
+
+### 14 · Rotation sur ℝ et sur ℂ
+
+<p>Pour R=[[0,−1],[1,0]], calculer χ, μ et Rᵐ. Comparer la diagonalisation sur ℝ et ℂ.</p>
+
+**Correction.** <p>R²=−I et R n'est pas scalaire, donc χ=μ=X²+1. Les puissances sont périodiques de période 4. Sur ℝ il n'y a aucune valeur propre ; sur ℂ, i et −i ont les vecteurs (1,−i) et (1,i), qui forment une base. R est donc diagonalisable sur ℂ et non sur ℝ. Changer le corps ne change pas l'identité R²=−I, mais change la possibilité d'une base propre.</p>
+
+### 15 · Même χ, différente diagonalisation
+
+<p>Comparer I₃ et J₃(1). Calculer leurs polynômes minimaux, dimensions des espaces propres et degrés de Krylov possibles.</p>
+
+**Correction.** <p>Les deux χ valent (X−1)³. Pour I₃, μ=X−1 et tout vecteur non nul engendre une droite. Pour J₃(1)=I+N, N³=0 mais N²≠0, donc μ=(X−1)³ ; l'espace propre est Ker N=Vect e₁, et e₃ est cyclique. La première est diagonalisable ; la seconde ne l'est pas. Dans le preset, matrix impose exactement J₃(1), indépendamment des autres familles.</p>
+
+### 16 · Commutant d'une matrice à spectre simple
+
+<p>Pour A=diag(1,3), déterminer toutes les B commutant avec A et les exprimer comme aI+bA. Construire ses projecteurs spectraux.</p>
+
+**Correction.** <p>Écrire B=(bᵢⱼ). L'égalité AB=BA donne (1−3)b₁₂=(3−1)b₂₁=0, donc B est diagonale. Si B=diag(u,v), b=(v−u)/2 et a=(3u−v)/2. E₁=(3I−A)/2=diag(1,0), E₂=(A−I)/2=diag(0,1). Ils somment à I et leur produit est nul. Le preset du laboratoire illustre la méthode en dimension 3 avec diag(1,1,3), et non cette matrice 2×2. Ses projecteurs sont diag(1,1,0) et diag(0,0,1) ; son commutant est plus grand que K[A] puisque la valeur 1 est répétée. Une conjugaison permet ensuite d'observer des projecteurs obliques.</p>
+
+### 17 · Le TP Vandermonde en calcul exact
+
+<p>Pour les nœuds (1,2,3,5), reprendre la matrice V du TP : lignes de puissances 0,1,2,3. Retrouver det V, tr V et les coefficients de χ par Newton. Pourquoi des valeurs propres arrondies ne certifient-elles pas ces nombres ?</p>
+
+**Correction.** <p>det V=(2−1)(3−1)(5−1)(3−2)(5−2)(5−3)=48 et tr V=1+2+9+125=137. Les traces des puissances 1 à 4 valent 137, 17171, 2244902, 293920255. Newton donne χ=X⁴−137X³+799X²−646X+48 ; le laboratoire contrôle χ(V)=0. La somme et le produit des valeurs propres donnent trace et déterminant avec multiplicité ; les arrondis ne permettent qu'une comparaison approchée. Le signe de Vandermonde se contrôle déjà en dimension 2.</p>
+
+### 18 · Puissance 40 sans 39 produits matriciels
+
+<p>Pour A=[[1,1],[0,1]], réduire X⁴⁰ modulo μ_A et calculer A⁴⁰. Retrouver le résultat par le binôme.</p>
+
+**Correction.** <p>μ_A=(X−1)². Le reste R de X⁴⁰ a degré &lt;2 et satisfait R(1)=1, R′(1)=40 ; R=40X−39. Donc A⁴⁰=40A−39I=[[1,40],[0,1]]. Comme A=I+N avec N²=0, le binôme donne directement (I+N)⁴⁰=I+40N. Le contrôle exact de ces deux méthodes explique le calcul par reste polynomial.</p>
+
+### 19 · Un commutateur impose la nilpotence
+
+<p>En caractéristique 0, supposer [A,B]=A. Prouver [Aᵏ,B]=kAᵏ, puis la nilpotence de A. Donner des matrices non nulles satisfaisant la relation.</p>
+
+**Correction.** <p>La formule [UV,B]=U[V,B]+[U,B]V prouve la récurrence. Prendre la trace donne k tr(Aᵏ)=0, donc tr(Aᵏ)=0 pour k=1,…,n. Newton puis Cayley–Hamilton donnent Aⁿ=0. Pour A=N₃ à surdiagonale 1 et B=diag(0,1,2), chaque entrée non nulle de AB−BA est multipliée par 1 : [A,B]=A. La division par k explique l'hypothèse de caractéristique 0.</p>
+
+### 20 · Le TP Dunford du recueil
+
+<p>Utiliser la base de colonnes u₁=(1,2,0), u₂=(2,1,0), u₃=(1,0,1) et J₃(1). Construire A=PJP⁻¹, sa décomposition et une formule pour exp(tA).</p>
+
+**Correction.** <p>det P=−3 et A=[[5/3,−1/3,4/3],[4/3,1/3,−1/3],[0,0,1]]. On a Au₁=u₁, Au₂=u₁+u₂, Au₃=u₂+u₃ : AP=PJ. Ainsi D=I, N=A−I=P N₃P⁻¹, N³=0 et N²≠0. Alors exp(tA)=exp(t)(I+tN+t²N²/2). Le laboratoire affiche les égalités exactes. La valeur propre unique 1 ne permettait pas, à elle seule, de décider de la diagonalisation.</p>
+
+### 21 · Retrouver des blocs par des noyaux
+
+<p>Un nilpotent sur K⁴ possède dim Ker N=2, dim Ker N²=3 et dim Ker N³=4. Trouver les blocs, χ, μ et l'indice. Est-il cyclique ?</p>
+
+**Correction.** <p>Les accroissements 2,1,1 comptent respectivement les blocs de taille ≥1, ≥2, ≥3. Il y a donc un bloc de taille 3 et un de taille 1. χ=X⁴, μ=X³, indice 3. Comme deg μ=3&lt;4, il n'est pas cyclique. Le preset impose diag(N₃,0), qui possède exactement ces noyaux. Tout autre nilpotent avec ces dimensions est semblable à lui.</p>
+
+### 22 · Une exponentielle et un logarithme finis
+
+<p>Pour A=2I+N₃, calculer exp(tA) et un logarithme complexe de A. Vérifier le logarithme en exponentiant ; discuter le choix de branche.</p>
+
+**Correction.** <p>exp(tA)=exp(2t)(I+tN₃+t²N₃²/2). Un logarithme est L=(ln 2)I+N₃/2−N₃²/8. Si T=N₃/2−N₃²/8, T²=N₃²/4 et T³=0, donc exp T=I+T+T²/2=I+N₃/2 ; exp L=A. Ajouter 2πikI, k∈ℤ, donne d'autres logarithmes complexes. Ce résultat ne vient pas d'une série infinie mal contrôlée : tous les termes nilpotents s'arrêtent exactement.</p>
+
+### 23 · ∃ n'est pas ∀ dans la cyclicité
+
+<p>Pour A=diag(1,2,3), comparer les vecteurs v=(1,1,1) et w=(1,0,0). Démontrer que A est cyclique sans prétendre que tous ses vecteurs non nuls le sont.</p>
+
+**Correction.** <p>K_v=[[1,1,1],[1,2,4],[1,3,9]] a déterminant (2−1)(3−1)(3−2)=2, donc v est cyclique. Les itérés de w valent tous w ; K_w a rang 1. Le polynôme minimal global est (X−1)(X−2)(X−3), tandis que μ_w=X−1. Le preset prend w : un test négatif pour ce vecteur n'est pas un test négatif de la cyclicité de la matrice.</p>
+
+### 24 · Construire un compagnon
+
+<p>Pour p=X³−2X−1, écrire C(p), vérifier que e₁ est cyclique et établir μ=χ=p. Comment lire les vecteurs propres du transposé ?</p>
+
+**Correction.** <p>C=[[0,0,1],[1,0,2],[0,1,0]]. Ses itérés de e₁ sont e₁,e₂,e₃ ; la relation C³−2C−I=0 et l'indépendance de ces trois itérés imposent μ=p. Cayley–Hamilton et les degrés donnent χ=p. Si p(λ)=0, le vecteur (1,λ,λ²) vérifie Cᵀv=λv. Le compagnon lui-même et son transposé ont même χ mais des conventions de vecteurs propres différentes.</p>
+
+### 25 · Le produit et le dernier facteur
+
+<p>Dans la famille « deux_facteurs », retrouver les facteurs invariants indiqués par le laboratoire. Expliquer pourquoi χ est leur produit et μ leur plus grand facteur. Le cisaillement peut-il les changer ?</p>
+
+**Correction.** <p>p₁=X²−1 et p₂=(X²−1)(X−2)². Chaque bloc compagnon C(pᵢ) possède χ=μ=pᵢ. Le polynôme caractéristique d'une somme directe est le produit ; son minimal est le ppcm des minimaux des blocs. Ici χ=(X²−1)²(X−2)² de degré 6 et μ=(X²−1)(X−2)² de degré 4. La famille comporte deux blocs, donc elle n'est pas cyclique. Un cisaillement inversible ne change que la base : ces facteurs restent inchangés. Vérifier AP=PF certifie la construction.</p>
+
+### 26 · Un bloc irréductible et plusieurs corps
+
+<p>Pour la famille Frobenius « irreductible », comparer la lecture sur ℚ à une éventuelle lecture après extension de corps. Pourquoi la forme de Frobenius existe-t-elle avant de connaître les racines ?</p>
+
+**Correction.** <p>La famille possède deux facteurs invariants égaux X²+1 ; χ=(X²+1)² et μ=X²+1. La forme de Frobenius travaille dans K[X], sans demander les racines. Sur ℚ ou ℝ, aucun de ces blocs n'a de valeur propre dans le corps de base. Sur ℂ, les valeurs ±i sont simples dans μ, donc l'endomorphisme est diagonalisable, chaque valeur ayant multiplicité 2. Il n'est cyclique sur aucun de ces trois corps car deg μ=2&lt;4. Chaque bloc pris isolément, en revanche, possède son vecteur cyclique.</p>
+
+### 27 · Une tangente symplectique
+
+<p>Pour J=[[0,I₂],[−I₂,0]], montrer que X=[[A,B],[C,−Aᵀ]] est dans sp₄ exactement lorsque B et C sont symétriques. En déduire la dimension et la conservation par exp(tX).</p>
+
+**Correction.** <p>Multiplier les blocs dans XᵀJ+JX donne C−Cᵀ, Bᵀ−B et les relations reliant les deux blocs diagonaux. A est libre (4 paramètres), B et C symétriques (3 chacun), donc dimension 10. La dérivée de exp(tX)ᵀJexp(tX) est exp(tX)ᵀ(XᵀJ+JX)exp(tX)=0 ; la valeur initiale est J. Cette preuve vaut pour tout t réel, sans se limiter à un contrôle numérique de la contrainte.</p>
+
+### 28 · Heisenberg et trace : distinguer central et identité
+
+<p>Calculer les crochets de E₁₂,E₂₃,E₁₃. Pourquoi le troisième peut-il être central sans être l'identité ? Montrer que Ad sur GLₙ n'est pas injective.</p>
+
+**Correction.** <p>EᵢⱼEₖₗ=δⱼₖEᵢₗ donne [E₁₂,E₂₃]=E₁₃ et les deux autres crochets nuls. Ce centre est relatif à l'algèbre engendrée ; E₁₃ ne commute pas avec toutes les matrices et n'est pas I. Si [A,B]=I en dimension n&gt;0 et caractéristique 0, prendre la trace donnerait 0=n. Enfin Ad_{cI}(X)=X pour tout c≠0 : le noyau contient les scalaires, et commute avec toutes les unités matricielles seulement une matrice scalaire. Le preset illustre un commutateur dans sl₂ ; l'exemple Heisenberg est calculé sur papier.</p>
+
+### 29 · Le signe du pfaffien et det Sp
+
+<p>Développer le pfaffien d'une antisymétrique 4×4, puis celui de J=[[0,I₂],[−I₂,0]]. Déduire det M=1 de MᵀJM=J et contrôler la formule de l'inverse.</p>
+
+**Correction.** <p>Les trois appariements donnent a₁₂a₃₄−a₁₃a₂₄+a₁₄a₂₃. Pour J, a₁₃=a₂₄=1 et les autres termes utiles sont nuls : Pf J=−1, tandis que det J=1. La congruence donne Pf(MᵀJM)=det M·Pf J=Pf J, donc det M=1. De MᵀJM=J, on tire M⁻¹=J⁻¹MᵀJ=−JMᵀJ. En M=I, cette formule rend I car J²=−I. Le preset permet de contrôler Pf²=det et la congruence, même lorsque le transformateur est singulier.</p>
+
+### 30 · Isotropie, convexité et puissance impaire
+
+<p>Pour S=diag(1,−1), étudier q=x²−y² et le vecteur (1,1). Distinguer noyau et cône isotrope. Puis prouver A⁵=B⁵⇒A=B pour deux matrices réelles symétriques.</p>
+
+**Correction.** <p>q(1,1)=0 mais S(1,1)=(1,−1)≠0 ; S est inversible d'inertie (1,1,0). Les directions y=±x sont isotropes ; la Hessienne 2S est indéfinie. Pour C=A⁵=B⁵, le théorème spectral permet d'interpoler sur les valeurs propres réelles distinctes de C un polynôme P tel que P(t)=racine cinquième réelle de t. Dans une base propre de A, P(A⁵)=A, et de même pour B. Donc A=P(C)=B. L'unicité de la racine réelle impaire est essentielle ; pour une puissance paire, I et −I donnent un contre-exemple.</p>
+
+## Sources et conventions
+
+Recueil personnel A. R. : MemoCPGEScientifAR2027-Alg-AlgLin.pdf, pages imprimées 124–155. TP prioritaires 128–132, 137–138 et 145–147. Le présent atelier reformule les preuves et propose des prolongements ; le PDF personnel n'est pas redistribué.
+
+MIT OpenCourseWare, Algebra I Student Notes (2021), cours de Davesh Maulik, notes de Jakin Ng, Sanjana Das et Ethan Yang : groupes, réduction, Jordan, Cayley–Hamilton. https://ocw.mit.edu/courses/res-18-011-algebra-i-student-notes-fall-2021/
+
+MIT OpenCourseWare, Gilbert Strang, Linear Algebra 18.06SC (2011) : opérations de lignes, espaces, projections, déterminants, théorème spectral et formes positives. https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/resource-index/
+
+Keith Conrad, The Gaussian Integers, notes originales : norme, division euclidienne, unités, factorisation. https://kconrad.math.uconn.edu/blurbs/ugradnumthy/Zinotes.pdf
+
+Alireza Salehi Golsefidy, UC San Diego, Math 200B (hiver 2018), leçons 12–13 : modules sur K[X] et facteurs invariants de la forme rationnelle. https://mathweb.ucsd.edu/~asalehig/math200b-18-w.html
+
+Pavel Etingof, MIT 18.745, Lie Groups and Lie Algebras I (2020) : groupes matriciels, exponentielle, commutateur, action adjointe. https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/mit18_745_f20_lec_full.pdf
+
+Michel X. Goemans, MIT 18.455, Algebraic Approach to Matchings (2020) : antisymétrie, appariements et identité du pfaffien. https://math.mit.edu/~goemans/18455S20/lecs-algmat.pdf
+
+Les raisonnements, exemples et illustrations de l'atelier sont originaux. Les références servent à vérifier les conventions et à approfondir ; aucune de leurs figures n'est reproduite. Les rubriques « extension guidée » doivent être choisies selon la filière et le programme de la classe.
