@@ -1,0 +1,194 @@
+[
+  {
+    "file": "dipoles.svg",
+    "title": "Deux charges et leur approximation dipolaire",
+    "labs": [
+      "dipoles"
+    ],
+    "caption": "Deux charges opposées séparées de a, p dirigé de −q vers +q. Les lignes sont celles de E ; ce ne sont pas des trajectoires. L’erreur relative de l’approximation dipolaire décroît loin des charges."
+  },
+  {
+    "file": "gauss.svg",
+    "title": "Une symétrie, deux intégrations",
+    "labs": [
+      "gauss"
+    ],
+    "caption": "Sphère uniformément chargée en volume : E est linéaire à l’intérieur et décroît en 1/r² à l’extérieur. Le potentiel choisi nul à l’infini est continu, ainsi que sa dérivée, en l’absence de charge surfacique."
+  },
+  {
+    "file": "biotsavart.svg",
+    "title": "Une spire est aussi un dipôle magnétique",
+    "labs": [
+      "biotsavart"
+    ],
+    "caption": "Biot–Savart est intégré sur la spire. Le champ axial exact μ₀IR²/[2(R²+z²)^(3/2)] retrouve au loin le champ d’un moment m=IπR² ; les lignes de B n’ont pas de source magnétique."
+  },
+  {
+    "file": "helmholtz.svg",
+    "title": "Annuler la courbure pour gagner en uniformité",
+    "labs": [
+      "helmholtz"
+    ],
+    "caption": "Deux bobines identiques, parcourues dans le même sens. Pour d=R, B″(0)=0 : le premier écart axial est d’ordre quatre. La carte hors axe est obtenue par intégration de Biot–Savart, pas par prolongement arbitraire du profil axial."
+  },
+  {
+    "file": "drude.svg",
+    "title": "Une conductivité complexe avec une mémoire",
+    "labs": [
+      "drude"
+    ],
+    "caption": "Avec exp(−iωt), σ=ne²τ/[m(1−iωτ)]. La partie réelle dissipe et la partie imaginaire décrit une réponse inertielle. Un changement du signe des porteurs inverse leur vitesse, sans inverser la conductivité longitudinale."
+  },
+  {
+    "file": "hall.svg",
+    "title": "Des bornes explicites pour interpréter le signe",
+    "labs": [
+      "hall"
+    ],
+    "caption": "Courant I vers +x, B suivant +z et UHall=V(y=−w/2)−V(y=+w/2). L’équilibre q(EH+v×B)=0 donne UHall=IB/(nqt). Le signe dépend des porteurs et du choix des bornes."
+  },
+  {
+    "file": "induction.svg",
+    "title": "Lenz ferme aussi un bilan de puissance",
+    "labs": [
+      "induction"
+    ],
+    "caption": "Barreau sur rails, i orienté vers +y : L di/dt+Ri=−Bℓv et m dv/dt=Bℓi. L’énergie cinétique et l’énergie magnétique se convertissent en chaleur Joule. Un cadre entièrement immergé dans un champ uniforme a au contraire un flux constant."
+  },
+  {
+    "file": "hautparleur.svg",
+    "title": "La même constante relie force et contre-fem",
+    "labs": [
+      "hautparleur"
+    ],
+    "caption": "u=Ri+L di/dt+κv et m dv/dt+bv+kx=κi. Les puissances κiv s’annulent dans le bilan total ; la résonance mécanique modifie aussi l’impédance électrique vue par le générateur."
+  },
+  {
+    "file": "hysteresis.svg",
+    "title": "Une mémoire mesurée par son aire",
+    "labs": [
+      "hysteresis"
+    ],
+    "caption": "Modèle de domaines à relais : une branche dépend de l’histoire. L’aire positive ∮H dB est l’énergie perdue par unité de volume et par cycle. Le transformateur permet de reconstruire H par i₁ et B par intégration de la tension secondaire orientée."
+  },
+  {
+    "file": "synchrone.svg",
+    "title": "Angle de charge et stabilité synchrone",
+    "labs": [
+      "synchrone"
+    ],
+    "caption": "Le modèle dipolaire a une paire de pôles et un champ tournant à Ωs. Le couple varie comme sin δ et la stabilité locale de la branche motrice exige cos δ>0. L’angle électrique et l’angle mécanique coïncident seulement dans ce modèle."
+  },
+  {
+    "file": "asynchrone.svg",
+    "title": "Le glissement organise la conversion",
+    "labs": [
+      "asynchrone"
+    ],
+    "caption": "Dans le schéma équivalent retenu, Pjoule,rotor=s Pentrefer et Pmécanique=(1−s)Pentrefer. Le couple s’annule à s=0 : une cage asynchrone a besoin d’un glissement pour produire un couple."
+  },
+  {
+    "file": "peau.svg",
+    "title": "Diffusion magnétique et effet de peau",
+    "labs": [
+      "peau"
+    ],
+    "caption": "Conducteur ohmique, déplacement négligé : ∂tB=(μσ)⁻¹ΔB et δ=√[2/(μσω)]. Le profil harmonique est amorti et déphasé ; le transitoire s’étale comme √t. Cette dissipation résistive n’est pas l’effet Meissner."
+  },
+  {
+    "file": "maxwell.svg",
+    "title": "L’onde transporte ou échange de l’énergie",
+    "labs": [
+      "maxwell"
+    ],
+    "caption": "E et B sont transverses ; B=(k/ω)×E pour une onde plane progressive. S=E×B/μ₀ est un flux instantané. Deux ondes opposées forment une onde stationnaire de flux moyen nul, avec échanges locaux entre énergies électrique et magnétique."
+  },
+  {
+    "file": "interfaces.svg",
+    "title": "Raccorder les champs, comparer les flux",
+    "labs": [
+      "interfaces"
+    ],
+    "caption": "Interface plane sans pertes, indices réels : les amplitudes de Fresnel vérifient les raccordements de Maxwell. R+T=1 avec le facteur de flux normal ; |t|² seul n’est pas T. Brewster concerne TM ; en réflexion totale, le champ transmis est évanescent."
+  },
+  {
+    "file": "guide.svg",
+    "title": "Une condition électrique impose la coupure",
+    "labs": [
+      "guide"
+    ],
+    "caption": "Guide métallique idéal, TE₁₀ : Ey∝sin(πx/a), fc=c/(2a), β²=(ω/c)²−(π/a)². Les parois imposent E tangentiel nul. Sous la coupure, β imaginaire décrit la décroissance, sans vitesse de groupe propagative."
+  },
+  {
+    "file": "antenne.svg",
+    "title": "L’ouverture commande un diagramme angulaire",
+    "labs": [
+      "antenne"
+    ],
+    "caption": "Champ lointain d’une ouverture uniforme : puissance normalisée sinc²[π(a/λ)(sin θ−sin θ₀)]. La formule porte sur sin θ. Une ouverture plus petite que λ peut ne posséder aucun zéro dans le domaine visible."
+  },
+  {
+    "file": "plasma.svg",
+    "title": "Choisir la racine qui absorbe dans le bon sens",
+    "labs": [
+      "plasma"
+    ],
+    "caption": "Plasma froid de Drude : εr=1−ωp²/[ω(ω+iν)] pour exp(−iωt). La racine passive donne Im k≥0. Une coupure nette concerne le modèle sans collisions ; lorsque ν>0, l’absorption doit être prise en compte."
+  },
+  {
+    "file": "dielectrique.svg",
+    "title": "Résonance, absorption et charges liées",
+    "labs": [
+      "dielectrique"
+    ],
+    "caption": "Lorentz : χ=χ₀/[1−(ω/ω₀)²−iγω/ω₀²]. Dans un milieu non magnétique, n²=εr. La sphère électrostatique utilise la limite statique de cette loi : σliée=P·n, ρliée=−div P et champ intérieur uniforme."
+  },
+  {
+    "file": "aimantation.svg",
+    "title": "Les moments voient le champ intérieur",
+    "labs": [
+      "aimantation"
+    ],
+    "caption": "Langevin classique et tanh pour deux niveaux décrivent deux paramagnétismes distincts ; le diamagnétisme orbital oppose sa réponse au champ. Dans un ellipsoïde uniformément aimanté, Hint=Hext−NM. La courbe ne constitue pas un modèle de ferromagnétisme."
+  },
+  {
+    "file": "meissner.svg",
+    "title": "Deux faces, deux courants de London",
+    "labs": [
+      "meissner"
+    ],
+    "caption": "Plaque x∈[−a,a] : B=B₀ cosh(x/λL)/cosh(a/λL), jy=−(1/μ₀)dB/dx. Le profil expulse le champ à l’équilibre. Dans un conducteur parfait idéal, le champ dépend au contraire du flux initial conservé."
+  },
+  {
+    "file": "faraday.svg",
+    "title": "Une rotation qui s’ajoute au retour",
+    "labs": [
+      "faraday"
+    ],
+    "caption": "Deux indices circulaires différents donnent θ=VBL. L’aller-retour additionne les angles dans des axes fixes du laboratoire. La transmission par un analyseur suit la loi de Malus ; un rotateur réciproque présente un autre comportement au retour."
+  },
+  {
+    "file": "kerr.svg",
+    "title": "Diffraction et non-linéarité peuvent se compenser",
+    "labs": [
+      "kerr"
+    ],
+    "caption": "Milieu Kerr optique focalisant : n=n₀+n₂I. Le modèle paraxial cubique unidimensionnel admet un profil sech localisé auto-guidé. Les intensités calculées donnent aussi un critère de validité ; il ne s’agit ni du Kerr électro-optique statique ni du Kerr magnéto-optique."
+  },
+  {
+    "file": "rayonnement.svg",
+    "title": "Rayleigh et Thomson ne suivent pas la même loi",
+    "labs": [
+      "rayonnement"
+    ],
+    "caption": "Un dipôle électrique rayonne une puissance angulaire en sin²θ. Avec une polarisabilité quasi constante, la diffusion de Rayleigh varie comme ω⁴ ; pour un électron libre, la réponse inertielle produit la limite de Thomson indépendante de la fréquence."
+  },
+  {
+    "file": "dynamo.svg",
+    "title": "Entretenir un champ dans un fluide conducteur",
+    "labs": [
+      "dynamo"
+    ],
+    "caption": "Modèle local α² prescrit : un mode hélicoïdal évolue comme exp[(±αk−ηmk²)t], ηm=1/(μσ). La diffusion concurrence l’induction. Rm>1 n’est pas une condition suffisante de dynamo ; le noyau externe terrestre est un fluide conducteur en mouvement."
+  }
+]
