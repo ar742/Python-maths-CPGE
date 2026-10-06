@@ -57,7 +57,7 @@ def parse_matrix(value,max_size=4,square=False):
 
 
 def parse_vector(value,n):
-    if isinstance(n,bool) or not isinstance(n,int) or not 1<=n<=6:raise ValueError("Dimension de vecteur invalide.")
+    if isinstance(n,bool) or not isinstance(n,int) or not 1<=n<=8:raise ValueError("Dimension de vecteur invalide (1 à 8 composantes).")
     if isinstance(value,str):
         if len(value)>1024:raise ValueError("Vecteur trop long.")
         text=value.strip()

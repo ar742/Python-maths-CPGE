@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "AlgebreLineaire/1.0"
+    server_version = "AlgebreLineaire/2.0"
 
     def log_message(self, format, *args):
         pass
@@ -65,6 +65,7 @@ class Handler(BaseHTTPRequestHandler):
                  "/index.html": ("index.html", "text/html; charset=utf-8"),
                  "/style.css": ("style.css", "text/css; charset=utf-8"),
                  "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+                 "/explorations.js": ("explorations.js", "text/javascript; charset=utf-8"),
                  "/favicon.svg": ("favicon.svg", "image/svg+xml")}
         if path not in files:
             self.send({"error": "Ressource inconnue."}, 404)

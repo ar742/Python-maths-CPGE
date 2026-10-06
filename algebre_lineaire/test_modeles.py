@@ -43,6 +43,8 @@ class ParseurRationnel(unittest.TestCase):
         expected=sp.Matrix([1,sp.Rational(-2,3),sp.Rational(1,5)])
         for value in ("1;-2/3;.2",[1,"-2/3",.2],[[1],["-2/3"],[.2]]):self.assertEqual(ce.parse_vector(value,3),expected)
         with self.assertRaises(ValueError):ce.parse_vector("1;2",3)
+        self.assertEqual(ce.parse_vector([1]*8,8),sp.ones(8,1))
+        with self.assertRaises(ValueError):ce.parse_vector([1]*9,9)
 
     def test_parametres_invalides(self):
         for value in (True,float('nan'),float('inf'),10**500,"1"):
@@ -107,7 +109,7 @@ class Anneaux(unittest.TestCase):
 class GeometrieEtLie(unittest.TestCase):
     def test_aire_orientation_et_ordre(self):
         for sx,sy in ((2,1),(-2,1),(0,1)):
-            result=m.calculate(dict(lab="geometrie",sx=sx,sy=sy,shear=1,lower=1))
+            result=m.calculate(dict(lab="geometrie",dimension='2',sx=sx,sy=sy,shear=1,lower=1))
             blocks={x['label']:ce.parse_matrix(x['entries']) for x in result['matrices']}
             A=blocks['A'];B=blocks['B'];self.assertEqual(A.det(),sx*sy)
             self.assertEqual(blocks['AB'],A*B);self.assertEqual(blocks['BA'],B*A)
@@ -115,6 +117,18 @@ class GeometrieEtLie(unittest.TestCase):
             vertices=[A*sp.Matrix(v) for v in ((0,0),(1,0),(1,1),(0,1))]
             area=sum(vertices[i][0]*vertices[(i+1)%4][1]-vertices[(i+1)%4][0]*vertices[i][1] for i in range(4))/2
             self.assertEqual(area,A.det())
+
+    def test_volume_3d_et_composition(self):
+        for sz in (-2,0,sp.Rational(3,2)):
+            result=m.calculate(dict(lab='geometrie',sz=float(sz)))
+            blocks={x['label']:ce.parse_matrix(x['entries']) for x in result['matrices']}
+            A=blocks['A'];B=blocks['B']
+            volume=(A[:,0].cross(A[:,1])).dot(A[:,2])
+            self.assertEqual(volume,2*sz)
+            self.assertEqual(blocks['AB'],A*B);self.assertEqual(blocks['BA'],B*A)
+            self.assertEqual((A*B).det(),(B*A).det())
+            self.assertNotEqual(A*B,B*A)
+            self.assertTrue(any(s['kind']=='space3d' for s in result['scenes']))
 
     def test_jacobi_bilinearite_et_trace(self):
         A=sp.Matrix([[2,1,3],[1,0,-1],[4,2,1]]);B=sp.Matrix([[0,1,2],[3,1,0],[2,-1,1]]);C=sp.diag(1,2,3)
@@ -150,7 +164,8 @@ class GeometrieEtLie(unittest.TestCase):
 
     def test_signe_commutateur_groupe_degre2(self):
         A,B,_=m.lie_generators("sl");h=sp.Symbol('h')
-        group=(sp.eye(2)+h*A)*(sp.eye(2)+h*B)*(sp.eye(2)-h*A)*(sp.eye(2)-h*B)
+        def exponential2(M):return sp.eye(2)+h*M+h*h*M*M/2
+        group=exponential2(A)*exponential2(B)*exponential2(-A)*exponential2(-B)
         term=group.applyfunc(lambda v:sp.expand(v).coeff(h,2))
         self.assertEqual(term,m.commutator(A,B))
 
@@ -191,6 +206,24 @@ class Gauss(unittest.TestCase):
 
 
 class Pfaffien(unittest.TestCase):
+    def test_default_dense_et_appariements_visuels(self):
+        result=m.calculate({'lab':'pfaffien'});A=ce.parse_matrix(result['matrices'][0]['entries'],max_size=6)
+        self.assertEqual(A.rows,6);self.assertTrue(all(A[i,j]!=0 for i in range(6) for j in range(i+1,6)))
+        self.assertEqual(A.det(),810000);self.assertEqual(m.pfaffian(A),900)
+        scene=next(s for s in result['scenes'] if s['kind']=='matching')
+        total=0
+        for matching in scene['matchings']:
+            flattened=[i for pair in matching['pairs'] for i in pair]
+            self.assertEqual(sorted(flattened),list(range(6)))
+            sign=permutation_sign(flattened)
+            product=sp.prod(A[i,j] for i,j in matching['pairs'])
+            self.assertEqual(sign,matching['sign']);self.assertEqual(str(product),matching['product'])
+            self.assertEqual(str(sign*product),matching['term']);total+=sign*product
+        self.assertEqual(total,900)
+        collapsed=m.calculate(dict(lab='pfaffien',scale=0))
+        B=ce.parse_matrix(collapsed['matrices'][2]['entries'],max_size=6)
+        self.assertEqual(B.rank(),4);self.assertEqual(m.pfaffian(B),0)
+
     def test_formule_4_et_definition_permutations(self):
         A=sp.Matrix([[0,2,3,5],[-2,0,7,11],[-3,-7,0,13],[-5,-11,-13,0]])
         direct=A[0,1]*A[2,3]-A[0,2]*A[1,3]+A[0,3]*A[1,2]
@@ -309,10 +342,14 @@ class ContratJSON(unittest.TestCase):
                 self.assertTrue(np.isfinite(np.array(grid['z'])).all())
         for b in result['matrices']:self.assertTrue(all(isinstance(v,str) for row in b['entries'] for v in row))
 
-    def test_douze_labs_par_defaut(self):
-        self.assertEqual(len(m.LABS),12)
+    def test_dix_sept_labs_par_defaut(self):
+        self.assertEqual(len(m.LABS),17)
         for lab in m.LABS:
-            with self.subTest(lab=lab):self.validate(m.calculate({'lab':lab}))
+            with self.subTest(lab=lab):
+                result=m.calculate({'lab':lab});self.validate(result)
+                for field in ('mission','objects','reading','proof'):self.assertTrue(result['pedagogy'][field])
+                reproduced=m.calculate(dict(result['parameters'],lab=lab))
+                self.assertEqual(reproduced,result)
 
     def test_cas_limites_et_controles(self):
         cases=[dict(lab='anneaux',ring='mod',matrix='0 0;0 0',modulus=30),

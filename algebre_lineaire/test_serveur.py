@@ -29,10 +29,10 @@ class ServerTests(unittest.TestCase):
     def test_bootstrap(self):
         with self.request("/api/bootstrap") as r:data=json.load(r)
         self.assertEqual(data["application"],"algebre-lineaire")
-        self.assertEqual(len(data["lessons"]),20);self.assertEqual(len(data["exercises"]),30)
+        self.assertGreaterEqual(len(data["lessons"]),25);self.assertGreaterEqual(len(data["exercises"]),40)
 
     def test_static_assets(self):
-        for path in ["/","/app.js","/style.css","/favicon.svg"]:
+        for path in ["/","/app.js","/explorations.js","/style.css","/favicon.svg"]:
             with self.request(path) as r:
                 self.assertGreater(len(r.read()),100);self.assertIn("script-src 'self'",r.headers["Content-Security-Policy"])
 

@@ -3,7 +3,7 @@
 Les certificats portent sur QQ ; les graphiques du spectre sont seulement des
 approximations pour l'affichage. Aucun texte utilisateur n'est évalué par SymPy.
 """
-from itertools import product
+from itertools import product, chain
 import math
 
 import sympy as sp
@@ -136,6 +136,60 @@ def _jordan_family(J):
     return P*J*P.inv(), P, J
 
 
+def dense_basis(n=6):
+    """Réflexion de Householder rationnelle : P=Pᵀ=P⁻¹, sans décimales."""
+    v = sp.Matrix(range(1, n+1))
+    return sp.eye(n)-2*v*v.T/(v.T*v)[0]
+
+
+def _dense_family(J):
+    P = dense_basis(J.rows)
+    return P*J*P.T, P, J
+
+
+def _dense_multiple():
+    return _dense_family(sp.diag(jordan_block(3, 1), jordan_block(2, -2), sp.Matrix([[3]])))
+
+
+RECURRENCE6 = (X-1)**2*(X+1)*(X**2-X-1)*(X-2)
+
+
+def _pedagogy(mission, objects, reading, proof, questions):
+    return dict(mission=mission, objects=[dict(symbol=s, meaning=m) for s, m in objects],
+                reading=reading, proof=proof, questions=questions)
+
+
+def _jordan_scene(blocks, title="Les chaînes de Jordan"):
+    chains = []
+    for b in blocks:
+        for i, length in enumerate(b["sizes"]):
+            chains.append(dict(**{"lambda": _text(b["eigenvalue"])}, length=length,
+                               label="λ="+_text(b["eigenvalue"])+" : chaîne "+str(i+1)))
+    return dict(kind="jordan", title=title,
+                description="Pour une chaîne u₁,…,uₛ : (A−λI)u₁=0 et (A−λI)uⱼ=uⱼ₋₁. Une flèche est une action linéaire, pas une transition probabiliste.",
+                chains=chains)
+
+
+def _companion_scene(factors, title="La mécanique des blocs compagnons"):
+    nodes, edges, start = [], [], 0
+    for block, p in enumerate(factors):
+        size = p.degree()
+        for j in range(size):
+            idx = start+j
+            nodes.append(dict(id=str(idx), label=("v"+str(block+1) if j == 0 else "A^"+str(j)+"v"+str(block+1)),
+                              x=1.6*j, y=-1.8*block, group=block))
+            if j:
+                edges.append(dict(source=str(idx-1), target=str(idx), weight=1, label="A", color="green"))
+            coefficient = -p.nth(j)
+            if coefficient:
+                edges.append(dict(source=str(start+size-1), target=str(idx), weight=float(coefficient),
+                                  label=_text(coefficient), color="rose", feedback=True))
+        start += size
+    return dict(kind="graph", title=title,
+                description="A avance dans chaque base de Krylov. La dernière image revient vers la chaîne selon les coefficients opposés du polynôme monique.",
+                nodes=nodes, edges=edges, directed=True)
+
+
 def _rotation_jordan():
     R = sp.Matrix([[0, -1], [1, 0]])
     A = R.row_join(sp.eye(2)).col_join(sp.zeros(2).row_join(R))
@@ -143,24 +197,32 @@ def _rotation_jordan():
 
 
 SPECTRE_FAMILIES = {
+    "jordan42": lambda: _dense_family(sp.diag(jordan_block(4, 1), jordan_block(2, 1))),
+    "jordan321": lambda: _dense_family(sp.diag(jordan_block(3, 1), jordan_block(2, 1), sp.Matrix([[1]]))),
+    "symetrique6": lambda: _dense_family(sp.diag(-2, -1, 0, 1, 2, 2)),
     "symetrique": lambda: (sp.Matrix([[2, 1, 0], [1, 2, 1], [0, 1, 2]]), None, None),
     "jordan": lambda: _jordan_family(jordan_block(3, 1)),
     "rotation": lambda: (sp.diag(sp.Matrix([[0, -1], [1, 0]]), sp.Matrix([[2]])), None, None),
     "double": lambda: _jordan_family(sp.diag(1, 1, 2)),
 }
 DUNFORD_FAMILIES = {
+    "dense6": _dense_multiple,
+    "nilpotent42": lambda: _dense_family(sp.diag(jordan_block(4), jordan_block(2))),
     "tp": _tp_matrix,
     "deux_blocs": lambda: _jordan_family(sp.diag(jordan_block(3, 1), sp.Matrix([[2]]))),
     "nilpotent": lambda: _jordan_family(jordan_block(4)),
     "rotation_jordan": _rotation_jordan,
 }
 CYCLIQUE_FAMILIES = {
+    "recurrence6": lambda: _dense_family(companion(RECURRENCE6)),
+    "deux_chaines6": lambda: _dense_family(sp.diag(jordan_block(4, 1), jordan_block(2, 1))),
     "compagnon": lambda: (companion((X-1)*(X-2)*(X-3)), None, None),
     "diagonale": lambda: (sp.diag(1, 2, 3), sp.eye(3), sp.diag(1, 2, 3)),
     "scalaire": lambda: (2*sp.eye(3), sp.eye(3), 2*sp.eye(3)),
     "jordan": lambda: (jordan_block(3, 1), sp.eye(3), jordan_block(3, 1)),
 }
 CAYLEY_FAMILIES = {
+    "dense6": _dense_multiple,
     "tp": _vandermonde_matrix,
     "jordan": lambda: _jordan_family(jordan_block(4, 2)),
     "rotation": lambda: (sp.Matrix([[0, -1], [1, 0]]), None, None),
@@ -238,7 +300,7 @@ def _display_jordan(A, characteristic, known_P=None, known_J=None):
 
 
 def spectre(d):
-    A, family, known_P, known_J = _input(d, SPECTRE_FAMILIES, "symetrique")
+    A, family, known_P, known_J = _input(d, SPECTRE_FAMILIES, "jordan42")
     field = _choice(d, "corps", "R", ["Q", "R", "C"])
     chi, mu, factors, blocks, squarefree, split_q, split_r = spectral_structure(A)
     split = {"Q": split_q, "R": split_r, "C": True}[field]
@@ -260,7 +322,15 @@ def spectre(d):
                 charts=[_spectrum_chart(blocks), _kernel_chart(blocks, A.rows)],
                 table={"headers": ["λ exacte", "Multiplicité algébrique", "dim Eλ", "Tailles des blocs"],
                        "rows": [[_text(b["eigenvalue"]), b["algebraic"], b["geometric"], ", ".join(map(str, b["sizes"]))] for b in blocks]},
-                matrices=matrices, notes=notes,
+                matrices=matrices, notes=notes, scenes=[_jordan_scene(blocks)],
+                pedagogy=_pedagogy("Reconstruire les chaînes de Jordan d'une matrice dense à partir des noyaux successifs.",
+                    [("χ", "Multiplicités algébriques des valeurs propres"), ("μ", "Plus grande taille de chaîne pour chaque valeur propre"),
+                     ("dₖ", "Dimension du noyau de (A−λI)^k")],
+                    ["Suivre les flèches : chaque chaîne fournit un vecteur supplémentaire au noyau jusqu'à sa longueur.",
+                     "Comparer Jordan 4+2 et 3+2+1 : même χ=(X−1)^6, mais μ et les pentes des noyaux diffèrent."],
+                    ["Dans un bloc de taille s, dim ker(Jₛ(λ)−λI)^k=min(k,s).",
+                     "dₖ−dₖ₋₁ compte les blocs de taille au moins k ; une nouvelle différence retrouve les blocs de taille exactement k."],
+                    ["Pourquoi χ seul ne détermine-t-il pas les tailles de Jordan ?", "Quel plateau prouve que la valeur propre est semi-simple ?"]),
                 theory=dict(family=family, field=field, characteristic=_text(chi), minimal=_text(mu),
                             invariant_factors=[_text(p) for p in factors], split=split,
                             semisimple=squarefree, diagonalizable=diagonalizable,
@@ -295,7 +365,7 @@ def dunford_newton(A):
 
 
 def dunford(d):
-    A, family, known_P, known_J = _input(d, DUNFORD_FAMILIES, "tp")
+    A, family, known_P, known_J = _input(d, DUNFORD_FAMILIES, "dense6")
     field = _choice(d, "corps", "C", ["Q", "R", "C"])
     result = dunford_newton(A)
     chi, mu, factors, blocks, _, split_q, split_r = spectral_structure(A)
@@ -322,7 +392,14 @@ def dunford(d):
                         _kernel_chart(blocks, A.rows)],
                 table={"headers": ["Étape", "hₖ modulo μ", "q(hₖ) modulo μ"],
                        "rows": [[item["index"], _text(item["polynomial"]), _text(item["residual"])] for item in history]},
-                matrices=matrices, steps=steps, notes=notes,
+                matrices=matrices, steps=steps, notes=notes, scenes=[_jordan_scene(blocks, "D agit par λ ; N descend les chaînes")],
+                pedagogy=_pedagogy("Séparer la croissance due aux valeurs propres de la mémoire nilpotente d'un endomorphisme dense.",
+                    [("D", "Partie semi-simple h(A)"), ("N", "A−D, déplacement le long des chaînes"), ("q", "Radical sans carré du polynôme minimal")],
+                    ["Sur une chaîne associée à λ, D multiplie par λ et N envoie chaque vecteur vers le précédent.",
+                     "Le graphe de rang N^k révèle l'indice nilpotent ; les corrections de Newton construisent D sans changer de base."],
+                    ["Dans Q[X]/(μ), q′(hₖ) est inversible par Bézout et le défaut q(hₖ₊₁) est multiple du carré du défaut précédent.",
+                     "La nilpotence du radical assure la terminaison ; q(D)=0, N=A−D et [D,N]=0 sont certifiés exactement."],
+                    ["Que devient N lorsque μ est sans carré ?", "Pourquoi une D rationnelle semi-simple peut-elle ne pas être diagonalisable sur R ?"]),
                 theory=dict(family=family, field=field, characteristic=_text(chi), minimal=_text(mu),
                             squarefree=_text(result["q"]), dunford_polynomial=_text(result["polynomial"]),
                             nilpotence_index=result["nilpotence_index"], newton_iterations=len(history)-1,
@@ -365,9 +442,8 @@ def cyclic_vector(A, minimal=None):
     n = A.rows
     if minimal.degree() < n:
         return sp.ones(n, 1)
-    candidates = [sp.eye(n)[:, i] for i in range(n)] + [sp.ones(n, 1)]
-    for entries in product(range(n+1), repeat=n):
-        candidates.append(sp.Matrix(entries))
+    candidates = chain([sp.eye(n)[:, i] for i in range(n)], [sp.ones(n, 1)],
+                       (sp.Matrix(entries) for entries in product(range(n+1), repeat=n)))
     for v in candidates:
         if krylov(A, v).det() != 0:
             return v
@@ -375,13 +451,15 @@ def cyclic_vector(A, minimal=None):
 
 
 def commutant_dimension(A):
-    n = A.rows
-    operator = sp.kronecker_product(sp.eye(n), A)-sp.kronecker_product(A.T, sp.eye(n))
-    return n*n-operator.rank()
+    # Le rang d'un système dense n²×n² est inutile : le module fournit un
+    # certificat exact de même dimension, via Hom(Q[X]/fᵢ,Q[X]/fⱼ).
+    factors = exact_invariants(A)[2]
+    return sum(a.gcd(b).degree() for a in factors for b in factors)
 
 
 def cyclique(d):
-    A, family, _, _ = _input(d, CYCLIQUE_FAMILIES, "compagnon")
+    A, family, known_P, _ = _input(d, CYCLIQUE_FAMILIES, "recurrence6")
+    terms = _integer(d, "terms", 18, 8, 40)
     mode = _choice(d, "vecteur", "cyclique", ["cyclique", "propre", "manuel"])
     chi, mu, factors = exact_invariants(A)
     if mode == "manuel":
@@ -395,13 +473,15 @@ def cyclique(d):
         eigenvalue = -rational_eigenvalues[0].nth(0)/rational_eigenvalues[0].nth(1)
         v = (A-eigenvalue*sp.eye(A.rows)).nullspace()[0]
     else:
-        v = cyclic_vector(A, mu)
+        seed = known_P[:, 0] if known_P is not None else None
+        v = seed if seed is not None and krylov(A, seed).rank() == A.rows else cyclic_vector(A, mu)
     K = krylov(A, v)
     p_v = vector_minimal(A, v)
     rank = K.rank()
     cyclic_A = mu.degree() == A.rows
     cyclic_v = rank == A.rows
-    commutant = commutant_dimension(A)
+    # Hom(Q[X]/fᵢ,Q[X]/fⱼ) a dimension deg pgcd(fᵢ,fⱼ).
+    commutant = sum(a.gcd(b).degree() for a in factors for b in factors)
     matrices = [_matrix("A", A), _matrix("v", v), _matrix("K(v)=(v,Av,…,Aⁿ⁻¹v)", K, "Le rang décide si ce vecteur engendre tout l'espace.")]
     steps = [_step("Construire la famille de Krylov", K,
                    "dim Vect(v,Av,…) = deg pᵥ = "+str(p_v.degree())+" ; pᵥ(X)="+_text(p_v))]
@@ -414,6 +494,15 @@ def cyclique(d):
         C = companion(p_v)
         matrices.append(_matrix("Restriction à Vect(v,Av,…)", C, "Compagnon de pᵥ dans la base de Krylov de ce sous-espace stable."))
     ranks = [krylov(A, v, k).rank() for k in range(A.rows+1)]
+    observable = (known_P.inv() if known_P is not None else sp.eye(A.rows))[-1, :]
+    sequence, current = [], v
+    for _ in range(terms):
+        sequence.append((observable*current)[0])
+        current = A*current
+    if any(sum(p_v.nth(j)*sequence[k+j] for j in range(p_v.degree()+1)) != 0
+           for k in range(max(0, terms-p_v.degree()))):
+        raise ArithmeticError("La suite observée ne respecte pas la récurrence de pᵥ.")
+    scenes = [_companion_scene([p_v], "Le sous-espace engendré par v") ] if rank else []
     notes = ["Le bon quantificateur est ∃v : A est cyclique si un vecteur engendre une base de Krylov. Ce n'est pas une propriété de tous les vecteurs non nuls.",
              "A est cyclique ⇔ deg μ=n ⇔ μ=χ ⇔ il n'y a qu'un facteur invariant non unité.",
              "pᵥ divise μ et son degré est la dimension du sous-espace stable engendré par v. Un vecteur propre peut être non cyclique pour une matrice cyclique.",
@@ -424,14 +513,26 @@ def cyclique(d):
                            _metric("dim commutant C(A)", commutant), _metric("dim Q[A]", mu.degree())],
                 charts=[_chart("Croissance du sous-espace de Krylov", "Nombre de colonnes k", "rang de Kₖ(v)",
                                [_series("Vecteur choisi", range(A.rows+1), ranks),
-                                _series("Maximum possible", range(A.rows+1), range(A.rows+1), "gold")])],
+                                _series("Maximum possible", range(A.rows+1), range(A.rows+1), "gold")]),
+                        _chart("Une suite linéaire observe les itérés A^k v", "k", "yₖ = ℓ(A^k v)",
+                               [_series("Suite exacte, affichage approché", range(terms), [float(s) for s in sequence], "rose")])],
                 table={"headers": ["k", "rang (v,…,Aᵏ⁻¹v)", "Gain de dimension"],
                        "rows": [[k, ranks[k], ranks[k]-ranks[k-1] if k else 0] for k in range(A.rows+1)]},
-                matrices=matrices, steps=steps, notes=notes,
+                matrices=matrices, steps=steps, notes=notes, scenes=scenes,
+                pedagogy=_pedagogy("Transformer un problème matriciel en une récurrence scalaire, puis mesurer ce qu'un vecteur permet d'observer.",
+                    [("K(v)", "Colonnes v, Av,…,Aⁿ⁻¹v"), ("pᵥ", "Première relation linéaire monique entre les itérés"),
+                     ("yₖ", "Une observation linéaire ℓ(A^k v), dernière coordonnée dans la base construite quand elle est connue")],
+                    ["La dernière colonne du compagnon revient vers les colonnes précédentes : ses poids donnent la récurrence.",
+                     "Passer au vecteur propre réduit le rang à 1, même si A est cyclique ; la suite perd alors des modes."],
+                    ["Si pᵥ(X)=ΣcⱼXʲ, alors ΣcⱼA^(k+j)v=0 ; appliquer ℓ donne Σcⱼyₖ₊ⱼ=0.",
+                     "Une base de Krylov impose A K=K C(pᵥ) ; deg pᵥ=dim Vect(v,Av,…)."],
+                    ["La récurrence d'une seule observation est-elle toujours minimale ?", "Pourquoi le commutant est-il de dimension n lorsque A est cyclique ?"]),
                 theory=dict(family=family, vector_mode=mode, characteristic=_text(chi), minimal=_text(mu),
                             vector_minimal=_text(p_v), vector=serialize_matrix(v), rank=rank,
                             cyclic_matrix=cyclic_A, cyclic_vector=cyclic_v, commutant_dimension=commutant,
-                            polynomial_algebra_dimension=mu.degree(), references=REFERENCES))
+                            polynomial_algebra_dimension=mu.degree(), terms=terms,
+                            observable=serialize_matrix(observable), sequence=[str(s) for s in sequence],
+                            recurrence_coefficients=[str(p_v.nth(j)) for j in range(p_v.degree()+1)], references=REFERENCES))
 
 
 def frobenius_family(name, shear=1):
@@ -440,16 +541,20 @@ def frobenius_family(name, shear=1):
         "deux_facteurs": [X**2-1, (X**2-1)*(X-2)**2],
         "puissances": [X-1, (X-1)**3],
         "cyclique": [(X**2+1)**2],
+        "meme_chi_a": [(X-1)**2, (X-1)**2*(X+2)**2],
+        "meme_chi_b": [(X-1)**4*(X+2)**2],
     }
     factors = [_poly(p) for p in polynomials[name]]
     F = sp.diag(*[companion(p) for p in factors])
     P = _shear(F.rows, shear)
+    if name in ("meme_chi_a", "meme_chi_b"):
+        P = dense_basis(F.rows)*P
     A = P*F*P.inv()
     return A, P, F, factors
 
 
 def frobenius(d):
-    family = _choice(d, "famille", "deux_facteurs", ["irreductible", "deux_facteurs", "puissances", "cyclique"])
+    family = _choice(d, "famille", "meme_chi_a", ["meme_chi_a", "meme_chi_b", "irreductible", "deux_facteurs", "puissances", "cyclique"])
     shear = _integer(d, "shear", 1, 0, 3)
     A, P, F, expected = frobenius_family(family, shear)
     chi, mu, factors = exact_invariants(A)
@@ -478,7 +583,14 @@ def frobenius(d):
                 matrices=[_matrix("A = P F P⁻¹", A), _matrix("P : bases cycliques réunies", P),
                           _matrix("F : forme de Frobenius sur Q", F)],
                 steps=[_step("Sous-espace cyclique "+str(i+1), K, "Colonnes : vᵢ,Avᵢ,… ; annulateur minimal fᵢ="+_text(factors[i])) for i, K in enumerate(chain_columns)],
-                notes=notes,
+                notes=notes, scenes=[_companion_scene(factors)],
+                pedagogy=_pedagogy("Lire la décomposition rationnelle en sous-espaces cycliques et expliquer pourquoi un même χ peut cacher plusieurs similitudes.",
+                    [("f₁|…|fᵣ", "Facteurs invariants de XI−A sur Q[X]"), ("F", "Somme de blocs compagnons"), ("P", "Réunion des bases de Krylov")],
+                    ["Chaque ligne du réseau est un sous-espace cyclique stable ; les retours pondérés réalisent C(fᵢ).",
+                     "Comparer les deux familles 6×6 : χ=(X−1)^4(X+2)^2 dans les deux cas, mais deg μ vaut 4 ou 6."],
+                    ["La forme de Smith sur Q[X] certifie indépendamment les facteurs, leur divisibilité et leur produit χ.",
+                     "Le module Qⁿ est la somme des Q[X]/(fᵢ) ; son annulateur minimal est le dernier facteur μ."],
+                    ["Quel changement rend la matrice cyclique sans modifier χ ?", "Que devient C(X²+1) après extension à C ?"]),
                 theory=dict(family=family, shear=shear, characteristic=_text(chi), minimal=_text(mu),
                             invariant_factors=[_text(p) for p in factors],
                             A=serialize_matrix(A), P=serialize_matrix(P), F=serialize_matrix(F), references=REFERENCES))
@@ -509,7 +621,7 @@ def faddeev_leverrier(A):
 
 
 def cayley(d):
-    A, family, _, _ = _input(d, CAYLEY_FAMILIES, "tp")
+    A, family, _, _ = _input(d, CAYLEY_FAMILIES, "dense6")
     power = _integer(d, "power", 12, 0, 40)
     chi, mu, _ = exact_invariants(A)
     from_traces, coefficients, traces = newton_coefficients(A)
@@ -533,6 +645,10 @@ def cayley(d):
         matrices.append(_matrix("A⁻¹ = s(A)", inverse_matrix, "s(X)="+_text(inverse_polynomial)))
     xs = list(range(A.rows+3))
     span_dimensions = [min(k+1, mu.degree()) for k in xs]
+    reduced_powers = [_poly(X**k).rem(mu) for k in range(max(13, min(power+1, 21)))]
+    coefficient_series = [_series("Coefficient de X^"+str(j), range(len(reduced_powers)),
+                                  [float(p.nth(j)) for p in reduced_powers], ["green", "rose", "gold", "mint", "blue", "purple"][j % 6])
+                          for j in range(mu.degree())]
     notes = ["χA(X)=det(XI−A). Cayley–Hamilton affirme χA(A)=0, une identité entre matrices.",
              "Newton : c₀=1 et cₖ=−(1/k)Σⱼ₌₁ᵏ cₖ₋ⱼ tr(Aʲ). Faddeev–LeVerrier : B₀=I, cₖ=−tr(ABₖ₋₁)/k, Bₖ=ABₖ₋₁+cₖI.",
              "Ces algorithmes divisent par k : ce laboratoire travaille en caractéristique zéro. On ne les applique pas tels quels modulo un nombre premier.",
@@ -543,12 +659,21 @@ def cayley(d):
                            _metric("det A", _text(A.det())),
                            _metric("Polynôme de l'inverse", _text(inverse_polynomial) if inverse_polynomial is not None else "A singulière")],
                 charts=[_chart("L'algèbre Q[A] finit par se stabiliser", "Plus grande puissance k", "dim Vect(I,A,…,A^k)",
-                               [_series("Dimension exacte", xs, span_dimensions)])],
+                               [_series("Dimension exacte", xs, span_dimensions)]),
+                        _chart("Calculer A^k avec seulement deg μ coefficients", "k", "Coefficient dans le reste de X^k modulo μ", coefficient_series)],
                 table={"headers": ["k", "tr(A^k)", "cₖ par Newton", "cₖ par Faddeev"],
                        "rows": [[k, _text(traces[k-1]), _text(coefficients[k]), _text(states[k-1]["coefficient"])] for k in range(1, A.rows+1)]},
                 matrices=matrices,
                 steps=[_step("Faddeev–LeVerrier : B"+str(s["index"]), s["matrix"], "c"+str(s["index"])+"="+_text(s["coefficient"])+" ; Bₖ=ABₖ₋₁+cₖI") for s in states],
-                notes=notes,
+                notes=notes, scenes=[_companion_scene([mu], "Multiplier par X dans Q[X]/(μ)")],
+                pedagogy=_pedagogy("Calculer exactement une grande puissance de A à partir des traces et d'une division euclidienne.",
+                    [("tr(Aʲ)", "Sommes de puissances des valeurs propres, avec multiplicités"), ("rₖ", "Reste de X^k modulo μ"),
+                     ("Q[A]", "Algèbre de dimension deg μ")],
+                    ["Les courbes suivent les coefficients de rₖ : seuls deg μ nombres sont nécessaires pour représenter A^k.",
+                     "Le réseau est celui de la multiplication par X dans l'algèbre quotient ; le dernier retour porte la relation μ=0."],
+                    ["Les identités de Newton reconstruisent les coefficients de χ à partir des traces ; Faddeev–LeVerrier fournit Bₙ=0.",
+                     "X^k=qμ+rₖ et μ(A)=0 donnent A^k=rₖ(A). Si χ(0)≠0, la même identité exprime A⁻¹ comme polynôme en A."],
+                    ["Pourquoi réduire modulo μ plutôt que χ ?", "Quelles divisions empêchent d'appliquer Newton sans précaution en caractéristique positive ?"]),
                 theory=dict(family=family, power=power, characteristic=_text(chi), minimal=_text(mu),
                             coefficients=[str(c) for c in coefficients], traces=[str(t) for t in traces],
                             power_quotient=_text(quotient), power_remainder=_text(remainder),

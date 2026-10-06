@@ -5,11 +5,11 @@
 3. Double-cliquer sur **Lancer_Algebre_Lineaire.cmd** à la racine du dossier. Le premier lancement installe NumPy et SymPy au besoin.
 4. Garder la fenêtre du programme ouverte. L’atelier s’affiche dans le navigateur à <http://127.0.0.1:8771>.
 
-Les douze laboratoires, vingt leçons et trente exercices fonctionnent ensuite hors ligne. **Ctrl+C** arrête le serveur.
+Les dix-sept laboratoires, vingt-cinq leçons et quarante exercices corrigés fonctionnent ensuite hors ligne. **Ctrl+C** arrête le serveur.
 
 ## Premier essai
 
-Ouvrir **GL & Anneaux**. La matrice `2 0;0 1` est inversible sur ℚ ; choisir ℤ, puis ℤ/6ℤ pour voir pourquoi le déterminant doit être une unité. Ouvrir ensuite **Dunford**, reprendre le TP du recueil et parcourir les étapes. Le [parcours en huit séances](PARCOURS.md) guide la suite.
+Depuis l’accueil, ouvrir **Réseaux & Laplacien** : diminuer la conductance du pont, observer le mode lent, puis couper le pont. Explorer ensuite **Jacobi** pour suivre la compensation de trois doubles crochets non nuls, et **Mécanique symplectique** pour comparer Cayley à Euler sur deux oscillateurs couplés. Dans **Dunford**, choisir le TP du recueil et parcourir les étapes du calcul. Les [dix missions progressives](PARCOURS.md) guident la suite.
 
 ## Saisir les matrices
 

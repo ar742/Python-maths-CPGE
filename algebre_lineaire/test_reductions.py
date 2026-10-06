@@ -47,8 +47,8 @@ class InvariantsAndSpectrumTests(unittest.TestCase):
             self.assertEqual(result["theory"]["split"], expected)
 
     def test_symmetric_matrix_can_require_an_extension_of_Q(self):
-        self.assertFalse(r.spectre(dict(corps="Q"))["theory"]["diagonalizable"])
-        self.assertTrue(r.spectre(dict(corps="R"))["theory"]["diagonalizable"])
+        self.assertFalse(r.spectre(dict(famille="symetrique", corps="Q"))["theory"]["diagonalizable"])
+        self.assertTrue(r.spectre(dict(famille="symetrique", corps="R"))["theory"]["diagonalizable"])
 
     def test_repeated_eigenvalue_is_not_a_defect_by_itself(self):
         result = r.spectre(dict(famille="double"))
@@ -174,7 +174,7 @@ class CyclicTests(unittest.TestCase):
         self.assertFalse(result["theory"]["cyclic_vector"])
 
     def test_zero_vector_and_irreducible_no_rational_eigenvector(self):
-        result = r.cyclique(dict(vecteur="manuel", v=[0, 0, 0]))
+        result = r.cyclique(dict(famille="compagnon", vecteur="manuel", v=[0, 0, 0]))
         self.assertEqual(result["theory"]["rank"], 0)
         self.assertEqual(result["theory"]["vector_minimal"], "1")
         with self.assertRaises(ValueError):
@@ -271,7 +271,7 @@ class CayleyTests(unittest.TestCase):
 class ContractTests(unittest.TestCase):
     def test_all_presets_are_strict_JSON(self):
         families = dict(spectre=r.SPECTRE_FAMILIES, dunford=r.DUNFORD_FAMILIES,
-                        cyclique=r.CYCLIQUE_FAMILIES, frobenius=dict.fromkeys(["irreductible", "deux_facteurs", "puissances", "cyclique"]),
+                        cyclique=r.CYCLIQUE_FAMILIES, frobenius=dict.fromkeys(["irreductible", "deux_facteurs", "puissances", "cyclique", "meme_chi_a", "meme_chi_b"]),
                         cayley=r.CAYLEY_FAMILIES)
         for lab, options in families.items():
             for family in options:
@@ -296,10 +296,116 @@ class ContractTests(unittest.TestCase):
                 r.calculate_lab(data)
 
     def test_UI_semicolon_inputs(self):
-        result = r.cyclique(dict(vecteur="manuel", v="1;1;1"))
+        result = r.cyclique(dict(famille="compagnon", vecteur="manuel", v="1;1;1"))
         self.assertEqual(result["theory"]["vector"], [["1"], ["1"], ["1"]])
         result = r.cayley(dict(matrix="1 0;0 1"))
         self.assertEqual(result["theory"]["minimal"], "X - 1")
+
+
+class DenseEnrichmentTests(unittest.TestCase):
+    def test_controlled_dense_change_of_basis_is_exactly_orthogonal(self):
+        P = r.dense_basis()
+        self.assertEqual(P.T*P, sp.eye(6))
+        self.assertEqual(P.det(), -1)
+        for family in ["jordan42", "jordan321", "symetrique6"]:
+            A, Q, J = r.SPECTRE_FAMILIES[family]()
+            self.assertEqual(A*Q, Q*J)
+            self.assertGreaterEqual(sum(value != 0 for value in A), 30)
+
+    def test_same_characteristic_different_Jordan_from_direct_kernels(self):
+        expected = {"jordan42": [0, 2, 4, 5, 6, 6, 6], "jordan321": [0, 3, 5, 6, 6, 6, 6]}
+        characteristics = []
+        for family, dimensions in expected.items():
+            A, *_ = r.SPECTRE_FAMILIES[family]()
+            characteristics.append(A.charpoly(r.X).as_expr())
+            self.assertEqual([6-((A-sp.eye(6))**k).rank() for k in range(7)], dimensions)
+            result = r.spectre(dict(famille=family))
+            self.assertEqual(result["theory"]["jordan_blocks"][0]["kernels"], dimensions)
+        self.assertEqual(characteristics[0], characteristics[1])
+        self.assertEqual(characteristics[0], sp.expand((r.X-1)**6))
+
+    def test_dense_Dunford_against_known_generalized_eigenspaces(self):
+        A, P, J = r.DUNFORD_FAMILIES["dense6"]()
+        result = r.dunford_newton(A)
+        expected_D = P*sp.diag(1, 1, 1, -2, -2, 3)*P.T
+        self.assertEqual(result["D"], expected_D)
+        self.assertEqual(result["N"], P*(J-sp.diag(1, 1, 1, -2, -2, 3))*P.T)
+        self.assertEqual(result["N"]**3, sp.zeros(6))
+        self.assertNotEqual(result["N"]**2, sp.zeros(6))
+        self.assertEqual(result["D"]*result["N"], result["N"]*result["D"])
+
+    def test_dense_nilpotent42_has_D_zero_and_exact_index_four(self):
+        A, *_ = r.DUNFORD_FAMILIES["nilpotent42"]()
+        result = r.dunford_newton(A)
+        self.assertEqual(result["D"], sp.zeros(6))
+        self.assertEqual(result["N"], A)
+        self.assertEqual(A**4, sp.zeros(6))
+        self.assertNotEqual(A**3, sp.zeros(6))
+        self.assertEqual([6-(A**k).rank() for k in range(5)], [0, 2, 4, 5, 6])
+
+    def test_dense_recurrence_matches_direct_companion_dynamics(self):
+        A, P, C = r.CYCLIQUE_FAMILIES["recurrence6"]()
+        result = r.cyclique(dict(terms=24))
+        sequence = [sp.Rational(s) for s in result["theory"]["sequence"]]
+        current = sp.eye(6)[:, 0]
+        expected = []
+        for k in range(24):
+            expected.append(current[-1])
+            current = C*current
+        self.assertEqual(sequence, expected)
+        coefficients = sp.Poly(r.RECURRENCE6, r.X).all_coeffs()[::-1]
+        for k in range(18):
+            self.assertEqual(sum(coefficients[j]*sequence[k+j] for j in range(7)), 0)
+        self.assertEqual(sequence[:6], [0, 0, 0, 0, 0, 1])
+        self.assertEqual(matrix_from_strings(result["theory"]["vector"]), P[:, 0])
+        self.assertEqual(result["theory"]["commutant_dimension"], 6)
+
+    def test_noncyclic_six_dimensional_commutant_has_extra_directions(self):
+        result = r.cyclique(dict(famille="deux_chaines6"))
+        A, *_ = r.CYCLIQUE_FAMILIES["deux_chaines6"]()
+        self.assertFalse(result["theory"]["cyclic_matrix"])
+        self.assertEqual(result["theory"]["rank"], 4)
+        self.assertEqual(result["theory"]["commutant_dimension"], 10)
+        self.assertEqual(r.commutant_dimension(A), 10)
+        J = sp.diag(r.jordan_block(4, 1), r.jordan_block(2, 1))
+        operator = sp.kronecker_product(sp.eye(6), J)-sp.kronecker_product(J.T, sp.eye(6))
+        self.assertEqual(36-operator.rank(), 10)
+
+    def test_six_dimensional_Frobenius_same_chi_but_different_minimal(self):
+        A, P, F, factors = r.frobenius_family("meme_chi_a", 2)
+        B, Q, G, other = r.frobenius_family("meme_chi_b", 2)
+        self.assertEqual(A.charpoly(r.X), B.charpoly(r.X))
+        self.assertEqual(A.charpoly(r.X).as_expr(), sp.expand((r.X-1)**4*(r.X+2)**2))
+        self.assertEqual(independent_minimal(A).degree(), 4)
+        self.assertEqual(independent_minimal(B).degree(), 6)
+        self.assertEqual(A*P, P*F)
+        self.assertEqual(B*Q, Q*G)
+        self.assertEqual(factors[1].rem(factors[0]).as_expr(), 0)
+        self.assertEqual(len(other), 1)
+
+    def test_dense_Cayley_traces_are_independent_of_nilpotent_parts(self):
+        A, *_ = r.CAYLEY_FAMILIES["dense6"]()
+        result = r.cayley(dict(power=15))
+        expected = [3+2*(-2)**k+3**k for k in range(1, 7)]
+        self.assertEqual([sp.Rational(s) for s in result["theory"]["traces"]], expected)
+        self.assertEqual(matrix_from_strings(result["theory"]["power_matrix"]), A**15)
+        self.assertEqual(A.det(), 12)
+        self.assertEqual(sp.trace(A), 2)
+
+    def test_new_defaults_have_semantic_scenes_and_pedagogy(self):
+        for lab in r.REDUCTION_LABS:
+            result = r.calculate_lab(dict(lab=lab))
+            self.assertTrue(result["scenes"])
+            pedagogy = result["pedagogy"]
+            for key in ("mission", "objects", "reading", "proof", "questions"):
+                self.assertTrue(pedagogy[key])
+            for scene in result["scenes"]:
+                if scene["kind"] == "graph":
+                    ids = {node["id"] for node in scene["nodes"]}
+                    for edge in scene["edges"]:
+                        self.assertIn(edge["source"], ids)
+                        self.assertIn(edge["target"], ids)
+            json.dumps(result, allow_nan=False)
 
 
 if __name__ == "__main__":
