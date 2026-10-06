@@ -1,16 +1,16 @@
 # Python-maths-CPGE
 
-Des mathématiques et de la physique moderne de **maths sup et maths spé** à expérimenter avec Python :
+Des mathématiques et de la physique de **maths sup et maths spé** à expérimenter avec Python :
 cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Sept ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Huit ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations** et
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**, et
-**Algèbre & Réductions** (cinquième volet de mathématiques). Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), et **Fluides & Ondes**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles.
+matricielles, écoulements et acoustique.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -21,6 +21,20 @@ matricielles.
 | 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) |
 | 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) |
 | 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md) |
+| 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
+
+## Physique · Atelier 08 · Fluides & Ondes
+
+![Houle : propagation et orbites des particules](mecanique_fluides/apercu_houle.png)
+
+**18 laboratoires, 28 leçons et 40 exercices corrigés**, à partir des fiches P4, P6, P7 et P8 du recueil de A. R. Chaque TP commence par ses objectifs, les techniques à réinvestir, les repères **sup / spé / au-delà** et un parcours guidé reliant prédiction, expérience et preuve.
+
+- **Bilans et matière :** continuité, dérivée particulaire, Euler, Navier–Stokes, contrainte newtonienne et dissipation ; Couette–Poiseuille, diffusion visqueuse, Blasius et résistance hydraulique.
+- **Forces et énergie :** Bernoulli généralisé, pompes et pertes de charge, sphère entre Stokes et inertie, tourbillon de Rankine et effet Magnus à circulation prescrite.
+- **Ondes dans les fluides :** houle gravito-capillaire, orbites, phase et groupe ; acoustique, impédance, réflexion et transmission, modes et seuils d’un conduit, diffraction et échantillonnage.
+- **Passerelles :** hydrostatique et atmosphère, compressibilités thermodynamiques, Hartmann et ondes d’Alfvén ; Taylor–Green en 2D et ouverture datée sur le problème du millénaire.
+
+**Python 3.10+ et NumPy**. Double-cliquer sur `Lancer_Mecanique_Fluides.cmd`. L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8772>. Les scènes animées, modèles analytiques, intégrations numériques et corrélations sont explicités. [Présentation et conventions](mecanique_fluides/README.md) · [Missions](mecanique_fluides/PARCOURS.md).
 
 ## Maths, volet 05 · Atelier 07 · Algèbre & Réductions
 
