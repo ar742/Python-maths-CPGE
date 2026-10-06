@@ -1,0 +1,1886 @@
+# Électromagnétisme — cours, expériences et exercices corrigés
+
+36 leçons, 24 laboratoires et 48 exercices intégralement corrigés. Les dix missions transversales sont dans [PARCOURS.md](PARCOURS.md) ; [ERRATA.md](ERRATA.md) explique les conventions et corrections du support source sans le redistribuer.
+
+Convention commune : les champs réels sont Re[Ã exp(−iωt)], les ondes vers +z exp(ikz−iωt), les amplitudes harmoniques sont crête sauf mention efficace. Pour une branche passive dans un demi-espace +z, Im(k)≥0. μ₀≈4π×10⁻⁷ H·m⁻¹ est une approximation numérique.
+
+Sup et Spé désignent les outils mobilisés, avec un statut dépendant de la filière. Rails de Laplace, induction et bilans offrent des entrées de première année ; le champ électromoteur général n’est pas exigible en MPSI. Le programme PSI traite explicitement matériaux magnétiques, transformateur et machine synchrone. Circuit équivalent asynchrone, London, Faraday tensoriel, Kerr localisé et dynamo α² sont ici des prolongements accompagnés, sans assimilation à un programme commun obligatoire.
+
+## 1. Champs, unités et convention complexe
+
+*Sup → Spé* — laboratoire `maxwell`.
+
+**Le problème.** Une force, un flux et une puissance ne se lisent pas sur la même courbe. E est en V·m⁻¹, B en T, D en C·m⁻², H en A·m⁻¹ ; ρ et j sont en C·m⁻³ et A·m⁻². Pour une charge q, F=q(E+v×B). La force magnétique ne travaille pas puisque v·(v×B)=0.
+
+**Convention commune.** Toute grandeur harmonique réelle est Re[Ã exp(−iωt)], avec ω=2πf en rad·s⁻¹. Une onde vers +z s’écrit exp(ikz−iωt). ∂t devient −iω et ∂z devient ik. Pour un milieu passif semi-infini, choisir Im(k)≥0, afin que l’amplitude décroisse quand z augmente.
+
+Z_R=R ; Z_L=−iωL ; Z_C=1/(−iωC)  
+〈u i〉=½ Re(ũ ĩ*) pour des amplitudes crête
+
+**Pourquoi le conjugué ?** Développer les deux parties réelles produit un terme constant et deux termes à 2ω dont la moyenne est nulle. Une valeur efficace vaut l’amplitude crête divisée par √2 : la formule n’a alors plus le facteur ½.
+
+**Un contrôle numérique.** Un conducteur de σ=5,8×10⁷ S·m⁻¹ soumis à Ecrête=1 V·m⁻¹ dissipe en régime ohmique 2,9×10⁷ W·m⁻³ en moyenne. Ce nombre est une densité de puissance, pas la puissance d’un échantillon ; il faut encore multiplier par son volume.
+
+**Technique attendue.** Avant un calcul, préciser axes, sens du courant, bornes de la tension et nature crête/efficace. Changer exp(−iωt) en exp(+iωt) conjugue toutes les impédances ; mélanger les deux conventions change les signes des pertes apparentes.
+
+## 2. La symétrie choisit la méthode
+
+*Sup → Spé* — laboratoire `gauss`.
+
+**But.** Un théorème intégral ne donne un champ local que si la symétrie permet de le sortir de l’intégrale. Une sphère uniformément chargée impose E=E(r)er ; un fil infini impose B=B(r)eφ. Une spire n’a pas cette symétrie cylindrique de translation : Ampère reste vrai, mais ne suffit pas à calculer tout son champ.
+
+∯ E·dS=Qint/ε₀ ; ∮ B·dl=μ₀ Iint en magnétostatique
+
+**Raisonnement complet.** Les rotations autour du centre et les plans de symétrie de la charge fixent la direction radiale de E. Sur une sphère de rayon r, E est constant et le flux vaut 4πr²E. Pour une charge volumique constante, Qint=Q(r/R)³ à l’intérieur ; à l’extérieur Qint=Q.
+
+E(r)=Q r/(4πε₀R³) si r≤R ; E(r)=Q/(4πε₀r²) si r≥R
+
+**Interpréter.** E est continu en R en l’absence de charge surfacique, mais sa dérivée change parce que ρ passe de sa valeur interne à zéro. Un conducteur chargé en équilibre donne au contraire E=0 à l’intérieur et une discontinuité normale liée à σs.
+
+**Au laboratoire.** Doubler R à Q fixé divise le champ de surface par quatre. Comparer les lois radiales d’une sphère volumique et d’un coaxial ; la géométrie explique leurs puissances différentes, sans ajustement empirique.
+
+## 3. Potentiels, Poisson et liberté de jauge
+
+*Spé ; entrée Sup par l’intégration* — laboratoire `gauss`.
+
+**Objets.** En électrostatique E=−∇V, avec V en volts et V(∞)=0 pour une source localisée. La loi de Gauss donne ΔV=−ρ/ε₀. En régime dépendant du temps, B=∇×A et E=−∇V−∂tA, où A est en Wb·m⁻¹.
+
+A′=A+∇χ ; V′=V−∂tχ ⇒ E′=E et B′=B
+
+**Démonstration.** Le rotationnel d’un gradient est nul ; les deux termes mixtes ∇∂tχ s’annulent dans E. La liberté de jauge concerne donc les potentiels et non les champs mesurables. En jauge de Lorenz, div A+c⁻²∂tV=0 ; les équations des potentiels deviennent des équations d’onde à sources.
+
+V(r)=Q/(4πε₀r) hors de la sphère  
+V(r)=Q(3−r²/R²)/(8πε₀R) dans la sphère uniforme
+
+**Raccordement.** Intégrer E entre r et R, puis ajouter V(R), fixe la constante intérieure. V et sa dérivée radiale sont continues ici. L’énergie électrostatique de la sphère est ½∫ρV dV=3Q²/(20πε₀R). Le facteur ½ évite de compter deux fois les interactions entre charges assemblées.
+
+**Limite de cette formule.** Une charge test q dans un potentiel extérieur déjà imposé possède l’énergie qVext, sans facteur ½. Confondre ces deux problèmes donne une force deux fois trop petite.
+
+## 4. Dipôle électrique : développement et domaine de validité
+
+*Sup → Spé* — laboratoire `dipoles`.
+
+**Géométrie.** Placer +q en +a/2 et −q en −a/2 ; le vecteur a va de la charge négative à la positive. Le moment p=q a est en C·m. Pour une distribution neutre, p=Σqiri ne dépend pas de l’origine, car une translation ajoute un terme proportionnel à Σqi=0.
+
+Vexact(r)=q/(4πε₀)[1/|r−a/2|−1/|r+a/2|]  
+Vdip=(p·er)/(4πε₀r²) ; Edip=[3(p·er)er−p]/(4πε₀r³)
+
+**Développement.** Taylor donne 1/|r−s|=1/r+(s·er)/r²+… . La différence des deux termes supprime tous les ordres pairs en a : au centre choisi, le terme suivant le dipôle est d’ordre a³/r⁴ pour V. L’erreur relative usuelle est d’ordre (a/r)², hors des directions où la grandeur comparée s’annule.
+
+**Sur l’axe.** Pour r>a/2, le potentiel exact vaut qa/[4πε₀(r²−a²/4)]. Le rapport Vexact/Vdip=1/[1−a²/(4r²)] quantifie directement l’erreur. À r=5a, le potentiel dipolaire sous-estime l’exact de 1 % relativement au potentiel exact.
+
+**Lire une figure.** Les équipotentielles sont normales aux lignes de E. Sur le plan équatorial V=0 mais E n’est pas nul : le champ est opposé à p. Un potentiel nul ne signifie jamais, à lui seul, un champ nul.
+
+**Technique.** Faire une prévision de l’erreur avant de modifier r/a, puis vérifier son ordre en multipliant la distance par deux. Le modèle dipolaire est une approximation géométrique contrôlée, pas une nouvelle loi de Coulomb.
+
+## 5. Couple, énergie et interaction de dipôles
+
+*Sup → Spé* — laboratoire `dipoles`.
+
+**Champ extérieur.** Pour un dipôle permanent suffisamment petit, U=−p·Eext et Γ=p×Eext. Une orientation parallèle minimise l’énergie ; une orientation antiparallèle la maximise. En électrostatique, F=∇(p·Eext) pour p fixé : un champ uniforme produit un couple mais aucune résultante.
+
+U12=[p₁·p₂−3(p₁·n)(p₂·n)]/(4πε₀r³), n=r/r
+
+**Deux géométries décisives.** Deux dipôles parallèles à leur ligne des centres ont U=−2p²/(4πε₀r³), donc Fr=−∂rU=−6p²/(4πε₀r⁴) : attraction. Placés parallèlement l’un à l’autre et perpendiculairement à cette ligne, ils ont U=p²/(4πε₀r³) et Fr=+3p²/(4πε₀r⁴) : répulsion. Le mot « parallèles » ne suffit donc pas à fixer le signe.
+
+**Dipôle induit.** Si p=αE et que l’on construit progressivement le champ, le travail d’assemblage donne U=−½αE² pour une polarisabilité réelle positive. Le facteur ½ vient cette fois de la variation de p pendant la mise en place ; il ne s’applique pas à un dipôle permanent fixé.
+
+**Exemple.** Pour p=10⁻²⁹ C·m dans E=10⁶ V·m⁻¹, la différence d’énergie entre orientations parallèle et antiparallèle vaut 2×10⁻²³ J, soit environ 0,0048 kBT à 300 K. L’agitation thermique peut donc dominer un couple microscopique pourtant non nul.
+
+**Lien CPGE.** Passer d’une énergie à une force, identifier un minimum et vérifier la dimension sont les gestes transférables à la mécanique et à la thermodynamique statistique.
+
+## 6. Coaxial, capacité et énergie : trois calculs concordants
+
+*Sup → Spé* — laboratoire `gauss`.
+
+**Hypothèses.** Deux conducteurs cylindriques coaxiaux de rayons a<b et de longueur ℓ≫b portent ±Q. Négliger les effets de bord ; le milieu est linéaire, homogène, de permittivité ε. Poser λ=Q/ℓ et U=V(a)−V(b).
+
+E(r)=λ/(2πεr) er ; U=λ ln(b/a)/(2πε)  
+C=2πεℓ/ln(b/a) ; W=½CU²=Q²/(2C)
+
+**Preuve par Gauss.** Une surface cylindrique donne E·2πrℓ=Q/ε. Le potentiel décroît vers l’extérieur pour Q>0, puisque dV/dr=−E. Intégrer de a à b donne U>0 ; une inversion des bornes du voltmètre inverse U, sans rendre C négative.
+
+**Preuve par le champ.** Intégrer w=½εE² sur les anneaux 2πrℓdr donne W=λ²ℓ ln(b/a)/(4πε), puis substituer U. Ce calcul vérifie simultanément le signe, l’unité et le facteur ½ de l’énergie.
+
+**Exemple.** Dans le vide, pour a=1 cm, b=2 cm, ℓ=1 m, C≈80,3 pF. Sous 100 V, Q≈8,03 nC et W≈0,401 μJ. Doubler la longueur double C ; doubler les deux rayons à rapport fixé laisse C inchangée dans ce modèle.
+
+**Attention aux conditions.** À charge fixée, introduire un diélectrique diminue W ; à tension fixée, l’énergie du champ augmente. Le générateur fournit alors du travail : discuter une force sans déclarer ce qui est maintenu constant est incomplet.
+
+## 7. De Biot–Savart au solénoïde fini
+
+*Sup → Spé* — laboratoire `biotsavart`.
+
+**Magnétostatique.** Les courants sont stationnaires et les charges se conservent : div j=0. Biot–Savart intègre leur géométrie ; Ampère exploite une symétrie lorsqu’elle est suffisante. Pour un courant filiforme orienté, dB=μ₀I dl×er/(4πr²). Ce n’est pas une formule contenant une densité linéique de charge à la place de I.
+
+Bz(z)=μ₀IR²/[2(R²+z²)³ᐟ²] pour une spire  
+Bz(z)=μ₀nI/2 [(z+ℓ/2)/√(R²+(z+ℓ/2)²)−(z−ℓ/2)/√(R²+(z−ℓ/2)²)]
+
+**Intégration.** Sur l’axe de la spire, les composantes transverses se compensent par rotation ; le produit vectoriel projeté sur z fournit le facteur R². Pour le solénoïde, sommer n dz′ spires entre −ℓ/2 et +ℓ/2, puis utiliser la primitive x/√(R²+x²).
+
+**Limites.** Au centre d’une bobine longue, B≈μ₀nI ; près d’une extrémité, B≈μ₀nI/2. Très loin d’une spire, Bz≈μ₀IR²/(2|z|³), égal au champ axial du dipôle magnétique m=IπR².
+
+**Exemple.** N=100, I=2 A, ℓ=1 m et R=0,1 m donnent au centre B=μ₀NI/√(ℓ²+4R²)≈0,246 mT, contre 0,251 mT pour la limite longue.
+
+**En régime variable.** Remplacer seulement j(t) par j(t−r/c) dans Biot–Savart ne suffit pas généralement : le champ rayonné comporte aussi un terme en ∂tj. Les laboratoires de courant statique ne simulent pas ce régime retardé.
+
+## 8. Helmholtz : annuler une courbure plutôt qu’aplatir à vue
+
+*Spé ; calculs accessibles en Sup* — laboratoire `helmholtz`.
+
+**Montage.** Deux bobines identiques de N spires, rayon R, centres z=±d/2, sont parcourues par le même courant I. Leur superposition donne un champ axial pair : B′(0)=0 quel que soit d. Il faut encore annuler B″(0) pour obtenir une zone uniforme plus large.
+
+B(z)=μ₀NIR²/2 { [R²+(z−d/2)²]⁻³ᐟ²+[R²+(z+d/2)²]⁻³ᐟ² }  
+B″(0)=3μ₀NIR²(d²−R²)/[R²+d²/4]⁷ᐟ²
+
+**Conclusion démontrée.** La courbure s’annule exactement à d=R. Le développement pair devient B(z)/B(0)=1−(144/125)(z/R)⁴+O((z/R)⁶). Les deux premières dérivées ne disent pas que le champ est rigoureusement constant : le terme quartique demeure.
+
+B(0)=(4/5)³ᐟ² μ₀NI/R
+
+**Calibration.** R=0,15 m, N=100 et I=1 A donnent 0,599 mT au centre. À |z|=0,1R, la variation relative axiale est environ −1,15×10⁻⁴. Une sonde de Hall permet ensuite d’étalonner B par comparaison avec un courant connu.
+
+**Hors de l’axe.** Dans une région sans courant, div B=0 et curl B=0 relient les dérivées radiales aux dérivées axiales. L’annulation de B″(0) améliore aussi l’uniformité transverse ; la simple inspection d’une courbe axiale ne suffit toutefois pas à certifier tout un volume.
+
+## 9. Drude : de la collision au courant continu
+
+*Sup → Spé* — laboratoire `drude`.
+
+**Modèle.** Des porteurs de charge q, masse effective m* et densité n subissent un champ homogène et un frottement moyen −m*v/τ. Le temps τ décrit la relaxation de la vitesse moyenne, pas un mouvement balistique sans collision. Les électrons et les trous sont des quasiparticules fermioniques ; un gaz de Bose n’est pas leur modèle statistique général.
+
+m* dv/dt=qE−m*v/τ ; j=nqv  
+σ₀=nq²τ/m* ; μmobilité=|q|τ/m*
+
+**Échelon.** Pour v(0)=0 et E constant, v(t)=qτE/m* [1−exp(−t/τ)]. La vitesse change de signe avec q, mais j et σ₀ restent de même sens que E. La mobilité est souvent définie positive ; annoncer une mobilité signée évite toute ambiguïté.
+
+**Bilan.** Multiplier l’équation de vitesse par nv donne d(nm*v²/2)/dt=j·E−nm*v²/τ. Au régime stationnaire toute puissance électrique devient chaleur transmise au réseau ; pendant le transitoire, une partie augmente l’énergie cinétique moyenne.
+
+**Échelle.** n=8×10²⁸ m⁻³, τ=25 fs et m*=me donnent σ₀≈5,64×10⁷ S·m⁻¹. Sous 100 V·m⁻¹, la vitesse moyenne des électrons est d’environ −0,440 m·s⁻¹, bien différente de leur vitesse microscopique thermique ou de Fermi.
+
+**Technique.** Résoudre une équation linéaire, distinguer signe du porteur et positivité de la dissipation, puis vérifier une loi macroscopique : cette chaîne relie mécanique, circuits et matière.
+
+## 10. Drude harmonique, mémoire et causalité
+
+*Spé ; prolongement dispersion* — laboratoire `drude`.
+
+**Réponse harmonique.** Avec exp(−iωt), (1/τ−iω)ṽ=qẼ/m*. La conductivité est une fonction complexe, car le courant dépend du champ passé. La partie réelle décrit les pertes, la partie imaginaire l’échange réversible lié à l’inertie.
+
+σ(ω)=σ₀/(1−iωτ) ; Re σ=σ₀/[1+(ωτ)²]≥0  
+j(t)=∫₀∞ (σ₀/τ)exp(−s/τ) E(t−s) ds
+
+**Causalité démontrée.** Résoudre l’équation avec une condition à t=−∞ donne le noyau retardé ci-dessus ; il est nul pour s<0. Son transformé possède un pôle ω=−i/τ, dans le demi-plan inférieur. Une réponse passive ne peut pas être rendue amplificatrice par un choix incohérent de signe.
+
+εr(ω)=1+iσ/(ε₀ω)=1−ωp²/[ω(ω+i/τ)] ; ωp²=nq²/(ε₀m*)
+
+**Construction.** Puisque j=∂tP=−iωP, P=iσE/ω. En incluant ce courant dans D, on obtient la permittivité de Drude ; le compter encore comme courant libre dans Ampère compterait deux fois la même réponse.
+
+**Expérience.** À ωτ=1, |σ|=σ₀/√2 et arg σ=+45°. Dans le temps réel, j est proportionnel à cos(ωt−45°) lorsque E∝cosωt : il est en retard. Les graphiques complexes doivent être interprétés avec la convention temporelle annoncée.
+
+## 11. Hall : axes, porteurs et tension mesurée
+
+*Sup → Spé* — laboratoire `hall`.
+
+**Axes fixés.** Le courant I>0 va vers +x dans une plaquette de largeur w selon y et d’épaisseur t selon z ; B=Bz ez. Un seul type de porteur domine, de charge q et densité n. La condition transverse en circuit ouvert est jy=0.
+
+v=j/(nq) ; EH=−v×B=B×j/(nq)  
+Ey=jx Bz/(nq) ; UH=V(−w/2)−V(+w/2)=Ey w=I Bz/(nq t)
+
+**Le signe observé.** Avec ces bornes, UH<0 pour des électrons et UH>0 pour des porteurs positifs si I et Bz sont positifs. Pour q=−e, EH=−(B×j)/(ne)=(j×B)/(ne). Le coefficient dépend de l’ordre du produit vectoriel ; inverser les bornes inverse UH. Les axes, la charge et les bornes sont indissociables d’un signe Hall.
+
+**Exemple.** Pour n=10²³ m⁻³, I=0,2 A, Bz=0,5 T et t=0,2 mm, UH≈−31,2 mV avec des électrons. La largeur disparaît parce que jx=I/(wt) ; augmenter w réduit Ey mais augmente le trajet entre les bornes.
+
+**Mesure robuste.** Inverser B et soustraire les deux tensions supprime une contribution longitudinale parasite paire en B. Le modèle à un porteur est insuffisant si électrons et trous contribuent simultanément : signe et mobilité des deux populations interviennent.
+
+**Extension tensorielle.** Un champ magnétique couple vx et vy ; inverser la matrice du système de Drude donne une conductivité tensorielle. Sa partie antisymétrique décrit Hall, mais ne produit pas directement de chaleur puisque j·(j×B)=0.
+
+## 12. Faraday pour un contour mobile
+
+*Sup → Spé* — laboratoire `induction`.
+
+**Orienter avant de calculer.** Choisir un contour C(t) et une normale n par la règle de la main droite. Le flux Φ=∫S B·n dS est en Wb. Pour un contour matériel qui se déplace à vitesse v, la fém inclut le terme de Lorentz ; pour un contour fixe, seul le champ induit intervient.
+
+e=∮C(E+v×B)·dl=−dΦ/dt  
+Rail RL : L di/dt+Ri=−Bℓv ; m dv/dt=Bℓi
+
+**Lenz et puissance.** Comme dans le laboratoire, le barreau avance vers +x, B est vers +z et i est orienté vers +y : e=−Bℓv. À faible inductance i a le signe opposé à v et la force +Bℓi freine. Multiplier les deux équations par i et v : les termes Bℓiv s’annulent dans la somme.
+
+d(½mv²+½Li²)/dt=−Ri²≤0
+
+**Limite résistive.** Si L est négligeable, i=−Bℓv/R et v=v₀exp(−t/τm), avec τm=mR/(B²ℓ²). Pour m=0,1 kg, R=1 Ω, B=0,5 T et ℓ=0,2 m, τm=10 s. Avec une inductance importante, l’énergie magnétique peut restituer de l’énergie mécanique : une oscillation amortie reste compatible avec ce bilan.
+
+**Méthode.** Un signe de freinage se vérifie par la conservation de l’énergie. En revanche, une phrase générale sur « l’opposition au mouvement » ne remplace pas le calcul du flux : certaines géométries en mouvement ont un flux constant.
+
+## 13. Cadre entrant, cadre immergé et spire freinée
+
+*Sup → Spé* — laboratoire `induction`.
+
+**Cadre tombant.** Mesurer y vers le bas à partir de l’entrée de son bord inférieur. Le champ B est uniforme seulement sous la frontière. Pour une largeur a et une hauteur b, choisir Φ=Ba clamp(y,0,b). Négliger l’inductance du cadre et prendre R constant.
+
+0<y<b : e=−Ba ẏ ; m ÿ=mg−(B²a²/R)ẏ  
+y≥b : Φ=Bab constant ; e=i=0 ; ÿ=g
+
+**Une vitesse limite locale.** Pendant l’entrée, v(t)=vlim+(ventrée−vlim)exp(−t/τ), avec τ=mR/(B²a²) et vlim=gτ. Le cadre peut atteindre sa pleine immersion avant de s’approcher de vlim. Après immersion complète, il accélère de nouveau : vlim n’est donc pas une limite globale lorsque la zone de champ est infinie sous la frontière.
+
+**Spire tournante résistive.** Négliger ici l’inductance de la spire : i=e/R. Dans un champ fixe, Φ=BS cosα, e=BS α̇ sinα. La normale fait l’angle α avec B. Le couple vaut Γz=−(B²S²/R)sin²α α̇ : dans ce modèle résistif, il extrait l’énergie cinétique sans changer spontanément le sens de rotation.
+
+J α̈=−c sin²α α̇ ; d(½Jα̇²)/dt=−c sin²α α̇² ; c=B²S²/R
+
+**Pourquoi pas de rebond ici ?** La solution α̇(t)=α̇(0)exp[−(c/J)∫₀ᵗsin²α(s)ds] garde son signe à tout temps fini. Une inductance importante pourrait restituer de l’énergie et changer ce résultat, comme pour le rail. Pour une spire filiforme tournant autour d’un diamètre, J=ma²/2, et non ma² correspondant à l’axe normal à son plan.
+
+## 14. Haut-parleur : un couplage, deux bilans
+
+*Sup → Spé* — laboratoire `hautparleur`.
+
+**Variables.** x est le déplacement de la membrane, v=ẋ, m sa masse, b l’amortissement, k la raideur, R et L les paramètres électriques. Choisir le courant de sorte que la force soit +κi, avec κ=Bℓactif en N·A⁻¹, aussi égal à V·s·m⁻¹.
+
+u=Ri+L di/dt+κv ; m dv/dt+bv+kx=κi
+
+**Conservation.** Multiplier la première équation par i et la seconde par v. L’énergie totale W=½Li²+½mv²+½kx² vérifie dW/dt=ui−Ri²−bv². Le terme de contre-fém +κv et la force +κi sont liés : changer un seul signe fabriquerait de l’énergie.
+
+Zm=b−iωm+i k/ω ; ṽ=κĩ/Zm  
+Zentrée=R−iωL+κ²/Zm
+
+**Résonance.** À ω₀=√(k/m), la partie réactive mécanique s’annule : Zm=b et la contribution électromécanique vaut κ²/b, réelle positive. Le courant peut alors diminuer tandis que la vitesse est grande. Avec m=15 g, k=1500 N·m⁻¹, f₀≈50,3 Hz ; κ=5 et b=1 ajoutent 25 Ω à R à cette fréquence.
+
+**Lecture utile.** La résonance de déplacement, de vitesse ou de puissance ne coïncide pas systématiquement quand le circuit électrique charge la mécanique. Le modèle décrit la conversion de la bobine ; il ne prédit pas à lui seul le rendement acoustique ou la pression rayonnée d’une enceinte réelle.
+
+## 15. Transformer une mesure en cycle B–H
+
+*Spé ; applications surtout selon filière* — laboratoire `hysteresis`.
+
+**Montage.** Un tore de longueur magnétique moyenne ℓ, section S et primaire N₁ est supposé à champ presque uniforme. Le secondaire de N₂ spires est ouvert : son courant est négligeable. Ampère donne H≈N₁i₁/ℓ et Faraday e₂=−N₂S dB/dt.
+
+B(t)=B(t₀)−[1/(N₂S)]∫ₜ₀ᵗ e₂(s)ds  
+Wdiss/volume=∮ H dB ; Pdiss=f Vcore ∮ H dB
+
+**Pourquoi intégrer ?** Une tension de secondaire indique une dérivée de flux. L’intégration exige un zéro et une condition initiale ; un petit décalage continu accumule une dérive. Le signe du graphe dépend du bobinage et des entrées de l’oscilloscope, qu’il faut calibrer.
+
+**Énergie et mémoire.** Dans un milieu réversible, B(H) est une fonction et l’intégrale fermée est nulle. Un matériau hystérétique conserve une mémoire : l’aire positive du cycle parcouru représente de la chaleur par volume. Il n’existe pas une énergie stockée unique ½BH valable sur tout cycle.
+
+**Exemple.** Un cycle quasi rectangulaire de coercivité Hc=1000 A·m⁻¹ et de contribution saturable à l’induction Bs=μ₀Ms=1 T a une aire idéale 4HcBs=4000 J·m⁻³. L’aimantation Ms est en A·m⁻¹. Un noyau de 60 cm³ à 50 Hz dissiperait 12 W dans cette approximation.
+
+**Limites.** La banque de relais du laboratoire est un modèle de mémoire, pas un calcul microscopique des domaines. Les courants de Foucault et pertes dynamiques réels peuvent ajouter une dépendance en fréquence absente d’une hystérésis quasi statique prescrite.
+
+## 16. Moment magnétique et diamagnétisme orbital
+
+*Spé → approfondissement guidé* — laboratoire `aimantation`.
+
+**Du courant au moment.** Une spire plane possède m=IS n en A·m². Pour des charges ponctuelles en mouvement, m=½Σq r×v ; une charge de masse me sur une orbite donne m=qL/(2me). Le facteur ½ distingue le moment magnétique du simple produit r×qv.
+
+U=−m·B ; Γ=m×B ; Bdip=μ₀[3(m·er)er−m]/(4πr³)
+
+**Réponse induite.** Dans le modèle orbital classique à champ lent et faible, la rotation de Larmor induit un moment opposé à B. Pour une distribution isotrope et n atomes par volume : χdia=−μ₀ne²Σ〈ri²〉/(6me). Le rayon quadratique est celui des orbites électroniques du modèle, et n est en m⁻³.
+
+**Signe et limite.** Le signe négatif traduit une opposition au champ. Cette dérivation classique fournit un ordre de grandeur ; la description quantitative de la matière exige des états quantiques. Diamagnétisme normal et expulsion Meissner ne sont pas interchangeables : le premier est généralement faible.
+
+**Estimation.** Avec n=10²⁸ m⁻³, un électron et √〈r²〉=0,1 nm, χdia≈−5,9×10⁻⁷. La relation B=μ₀(H+M) et M=χH donne alors μr=1+χ légèrement inférieur à un.
+
+**Technique.** Relier une intégrale de courant à un moment, puis distinguer moment permanent et induit. Dans le laboratoire, comparer la contribution diamagnétique choisie à la contribution paramagnétique ; un signe total seul ne révèle pas leur mécanisme.
+
+## 17. Langevin, spin ½ et stabilité d’un champ moyen
+
+*Spé → Au-delà* — laboratoire `aimantation`.
+
+**Dipôles classiques.** Des moments permanents de norme μ peuvent prendre toute orientation. Dans B, leur énergie est −μB cosθ. Poser x=μB/(kBT) ; le poids de Boltzmann est exp(x cosθ) et l’élément d’angle solide inclut sinθ dθ.
+
+Zorient=4π sinh(x)/x ; 〈cosθ〉=d lnZ/dx=L(x)=coth x−1/x  
+M=nμL(x) ; L(x)=x/3−x³/45+O(x⁵)
+
+**Curie.** À champ faible, M≈nμ²B/(3kBT), donc χ≈μ₀nμ²/(3kBT) si B≈μ₀H. À grand x, L→1 : M tend vers nμ. La fonction se calcule avec sa série près de zéro pour éviter la soustraction de deux termes divergents.
+
+**Deux niveaux quantiques.** Un spin ½ dont la projection du moment vaut ±μ a Z=2cosh x et M=nμ tanh x. Son coefficient faible champ vaut nμ²/(kBT), sans facteur 1/3. Le nombre d’orientations autorisées change la loi, même si les deux courbes saturent.
+
+**Weiss accompagné.** Un champ moyen effectif B+λM mène à une équation implicite M=nμL[μ(B+λM)/(kBT)]. Linéariser autour de M=0 fournit un seuil de champ moyen. Toutes les racines ne sont pas stables : examiner une énergie libre ou la pente de la dynamique de relaxation. Ce modèle ne donne pas les exposants critiques universels d’un matériau réel.
+
+**Échelle.** Pour μ=μB, B=1 T et T=300 K, x≈0,00224 ; l’alignement classique est seulement 0,000746. La saturation exige un rapport B/T bien plus grand, ou des moments collectifs importants.
+
+## 18. Polarisation : E, D, charges liées et champ local
+
+*Spé ; prolongement matière* — laboratoire `dielectrique`.
+
+**Définitions.** P est le moment dipolaire par volume, en C·m⁻². D=ε₀E+P permet d’écrire divD=ρlibre. Les charges et courants liés ne sont pas supprimés : ils sont regroupés dans P et M, avec H=B/μ₀−M.
+
+ρliée=−divP ; σliée=P·n ; jpolarisation=∂tP  
+jmagnétisation=∇×M ; Kmagnétisation=M×n
+
+**Preuve du signe.** La polarisation d’un petit volume déplace les charges positives vers la direction de P. Le flux sortant de P correspond à une charge positive sur la frontière et à une charge volumique −divP à l’intérieur ; la conservation ∂tρliée+div jpolarisation=0 fixe ensuite le signe du courant.
+
+**Dipôles permanents.** Le modèle classique d’orientation donne P=np L(pEloc/(kBT)), avec n en m⁻³ et p en C·m. Au faible champ P≈np²Eloc/(3kBT). Ajouter une polarisabilité induite α distingue orientation thermique et déformation électronique.
+
+**Trois champs à séparer.** Une sphère uniformément polarisée crée le champ dépolarisant −P/(3ε₀). Le champ macroscopique peut donc différer du champ extérieur. Le champ local de Lorentz E+P/(3ε₀) relève d’une autre construction, une cavité isotrope. Superposer ces formules sans déclarer géométrie et fermeture conduit à une fausse transition universelle.
+
+**Exemple.** Une sphère de P=10⁻⁵ C·m⁻² produit à l’intérieur Ed≈−3,76×10⁵ V·m⁻¹. Pour un diélectrique linéaire non magnétique sans pertes, εr=1+χe et nopt²=εr ; l’indice nopt n’est ni une densité de particules ni √εr inversé.
+
+## 19. Synchrone : couple, angle de charge et décrochage
+
+*Spé ; machines selon filière* — laboratoire `synchrone`.
+
+**Convention.** Le champ tournant possède l’angle électrique ωt. Le rotor a p paires de pôles et un angle mécanique θ ; définir son retard δ=ωt−pθ. La vitesse synchrone mécanique est Ωs=ω/p. L’énergie d’interaction du modèle est −mB cosδ.
+
+T(δ)=p m B sinδ=Tmax sinδ ; J θ̈=T(δ)−Tcharge
+
+**Verrouillage.** À charge constante, le synchronisme impose Tcharge=Tmax sinδ₀. Il existe deux angles pour 0<Tcharge<Tmax. Comme δ̈=−(p/J)[T(δ)−Tcharge], une perturbation ε vérifie ε̈+(p Tmax cosδ₀/J)ε=0. La branche cosδ₀>0 est stable dans le modèle conservatif ; un amortissement la rend attractive.
+
+**Décrochage.** À Tcharge>Tmax aucun angle stationnaire n’existe. Un couple moyen nul lorsque le rotor tourne uniformément à une autre vitesse n’est pas, à lui seul, un théorème sur tous les transitoires : capture, démarrage assisté et alimentation variable peuvent changer le problème.
+
+**Exemple.** Pour le dipôle physique à une paire de pôles du laboratoire, p=1, m=2 A·m² et B=0,5 T donnent Tmax=1 N·m. À moitié charge, δ₀=30° ou 150° ; seule la première branche est stable. À fchamp=50 Hz, Ωs=314 rad·s⁻¹ et Pm≈157 W. La généralisation multipolaire précédente exige une énergie périodique en pθ ; elle n’est pas ajoutée artificiellement à un simple dipôle.
+
+**Ce que montre l’atelier.** La pente de la courbe couple-angle explique le rappel et le seuil statique. Le modèle à une paire de pôles affiche les équilibres et le potentiel incliné ; il ne prétend pas intégrer une capture dynamique ou un démarrage complet de machine triphasée.
+
+## 20. Asynchrone : glissement et bilan de puissance
+
+*Spé ; machines selon filière* — laboratoire `asynchrone`.
+
+**Définition.** Le champ statorique tourne à Ωs=ω/p, le rotor à Ωr. Le glissement s=(Ωs−Ωr)/Ωs fixe la fréquence électrique vue du rotor, sω. À s=0, un rotor passif idéal ne reçoit aucune fém induite ; un couple moteur nécessite un glissement.
+
+Pg=T Ωs ; Pm=T Ωr=(1−s)Pg ; PJ,rotor=s Pg
+
+**Circuit équivalent.** Une phase rotorique ramenée au stator a une branche R₂/s−iωL₂ avec notre convention. La partie R₂ représente les pertes Joule ; R₂(1−s)/s représente la conversion mécanique. Le modèle de l’atelier comprend aussi une branche de magnétisation et les pertes statoriques.
+
+**Spire simplifiée.** Pour une bobine de flux Φ₀cos(Δωt−φ), la fém vaut Φ₀Δω sin(Δωt−φ). Avec résistance R seule, le couple moyen est Φ₀²Δω/(2R), indépendant de φ. Une inductance réduit ce couple d’un facteur R²/[R²+(LΔω)²] ; sa variation avec Δω n’est donc pas toujours monotone.
+
+**Exemple.** À Ωs=157 rad·s⁻¹, s=0,05 et Pg=1000 W, la chaleur du rotor vaut 50 W et la conversion mécanique 950 W ; T≈6,37 N·m. Le rendement global est inférieur à 95 % si le stator et la mécanique dissipent aussi.
+
+**Régimes.** Pour s<0, T et Pg sont négatifs : la machine restitue de la puissance électrique tandis que sPg reste positif. Pour s>1, elle freine un rotor tournant en sens inverse. Déclarer les puissances signées évite de qualifier à tort une résistance négative de gain gratuit.
+
+## 21. Maxwell, conditions aux limites et Poynting
+
+*Spé* — laboratoire `maxwell`.
+
+**Forme macroscopique.** Les sources libres sont ρf et jf ; la réponse liée est décrite par D et H. Les lois constitutives, éventuellement tensorielles et dispersives, complètent les quatre équations. Elles ne sont pas une cinquième équation de Maxwell universelle.
+
+divD=ρf ; divB=0 ; curlE=−∂tB ; curlH=jf+∂tD  
+n·(D₂−D₁)=σf ; n·(B₂−B₁)=0  
+n×(E₂−E₁)=0 ; n×(H₂−H₁)=Kf
+
+**Démonstration des sauts.** Une boîte aplatie traversant l’interface donne les deux relations normales par Gauss ; un rectangle aplati donne les relations tangentielles par Stokes. Les termes volumiques restent bornés et leur intégrale tend vers zéro, tandis qu’une source surfacique subsiste. Les champs E et B ne se raccordent pas comme D et H dans toute matière.
+
+S=E×H ; ∂t w+divS=−jf·E ; w=½(E·D+B·H)
+
+**Domaine énergétique.** La formule de w ci-dessus suppose un milieu linéaire, sans dispersion ni hystérésis, de coefficients réels constants. Dans le vide, w=½ε₀E²+B²/(2μ₀). En milieu dispersif, il faut compter l’énergie des degrés de liberté matériels ; remplacer ε par une valeur complexe dans cette énergie instantanée est incorrect.
+
+**Un test causal.** Prendre la divergence d’Ampère et utiliser Gauss donne ∂tρf+divjf=0. Le courant de déplacement garantit cette conservation, notamment entre les armatures d’un condensateur où le courant de conduction ne traverse pas le vide.
+
+## 22. Onde plane : transversalité, impédance et branche passive
+
+*Spé* — laboratoire `maxwell`.
+
+**Hypothèses.** Milieu homogène, isotrope, sans source libre, ε et μ scalaires. Pour une onde exp(ikz−iωt), Maxwell impose k·D=0 et k·B=0. E est transverse si ε n’est pas nul ; cette conclusion ne vaut pas automatiquement pour un milieu anisotrope ni pour un champ proche.
+
+B̃=(k/ω) ez×Ẽ ; k²=ω²με ; n²=εrμr  
+Zonde=ωμ/k ; 〈Sz〉=½ Re(k/(ωμ)) |Ẽ|² pour μ réel
+
+**Preuve.** Faraday donne k×Ẽ=ωB̃. Appliquer k× une seconde fois et utiliser Ampère sans courant libre donne −k²Ẽ=−ω²μεẼ. Choisir ensuite la racine compatible avec la direction de l’énergie et, en présence de pertes, avec la décroissance à l’infini.
+
+**Phase et transport.** La vitesse de phase vaut ω/Re k, tandis que la vitesse de groupe dω/dk n’a un sens simple que pour un paquet étroit dans un régime adapté. Elles ne sont pas généralement égales ; une vitesse de phase supérieure à c ne transporte pas une information plus vite que c.
+
+**Exemple.** Dans un diélectrique non magnétique d’indice réel 1,5, la longueur d’onde à 600 nm dans le vide devient 400 nm et Zonde≈251 Ω. L’intensité vaut nε₀cEcrête²/2 ; une même amplitude électrique ne transporte donc pas la même puissance dans tous les milieux.
+
+**Limite structurante.** Une OPPM est une solution particulière ou une composante de Fourier. Les champs statiques, ondes guidées, champs proches et superpositions ne sont pas tous des OPPM.
+
+## 23. Effet de peau : une diffusion, pas une expulsion statique
+
+*Spé* — laboratoire `peau`.
+
+**Domaine.** Un métal ohmique de σ et μ réels constants occupe x>0. En régime où ωε≪σ et où σ ne varie pas trop avec ω, négliger le courant de déplacement. Le champ tangent est B=By(x,t)ey.
+
+∂tB=ηm ∂xxB ; ηm=1/(μσ)  
+k=(1+i)/δ ; δ=√[2/(μσω)] ; B̃(x)=B₀ exp[−x/δ+i x/δ]
+
+**Dérivation des signes.** Ampère donne jz=(1/μ)∂xBy ; Ohm Ez=jz/σ et Faraday ∂tBy=∂xEz. On obtient une diffusion à coefficient positif. Substituer exp(ikx−iωt) donne k²=iμσω et la racine amortie ci-dessus.
+
+**Échelon continu.** Pour B(x,0)=0 et B(0,t)=B₀, la solution du demi-espace est B/B₀=erfc[x/(2√(ηmt))]. La profondeur diffusée augmente comme √t. Il n’existe pas une couche d’épaisseur δ fixe en courant continu ; la limite harmonique ω→0 n’est pas un état Meissner.
+
+**Exemple.** Dans le cuivre, σ=58 MS·m⁻¹ et μ≈μ₀ donnent δ≈2,09 mm à 1 kHz, puis 0,209 mm à 100 kHz. Multiplier f par 100 divise δ par dix. La dissipation locale moyenne vaut |j̃|²/(2σ).
+
+**À vérifier.** Le critère ωε≪σ dépend du matériau ; un seuil universel en « Hz » pour une pulsation est trompeur. Une plaque finie exige les conditions aux deux faces, contrairement au demi-espace borné à l’infini utilisé ici.
+
+## 24. Interface : Fresnel et bilan de flux
+
+*Spé* — laboratoire `interfaces`.
+
+**Incidence normale.** Deux milieux transparents, non magnétiques, d’indices n₁,n₂ réels sont séparés par z=0. E incident, réfléchi et transmis ont la même polarisation tangentielle ; le champ magnétique réfléchi change de signe relativement à E parce que sa propagation est vers −z.
+
+1+r=t ; n₁(1−r)=n₂t  
+r=(n₁−n₂)/(n₁+n₂) ; t=2n₁/(n₁+n₂)  
+R=|r|² ; T=(n₂/n₁)|t|² ; R+T=1
+
+**Démonstration.** La continuité de E tangent et H tangent donne les deux équations linéaires. Le coefficient t est une amplitude électrique : son carré seul n’est pas le flux transmis. Le rapport des impédances fournit le facteur n₂/n₁.
+
+**Exemple.** Air vers verre n₂=1,5 : r=−0,2, t=0,8, R=0,04 et T=0,96. L’onde réfléchie subit un déphasage π ; la somme des intensités est un contrôle indépendant du système de raccordement.
+
+**Incidence oblique.** La phase tangentielle est continue : n₁sinθ₁=n₂sinθ₂. Les polarisations TE et TM donnent des coefficients différents ; pour deux diélectriques non magnétiques, tanθB=n₂/n₁ annule la réflexion TM. Au-delà de l’angle critique d’un passage vers un indice plus faible, le champ transmis est évanescent mais non nul.
+
+**Milieu absorbant.** Choisir kz transmis de partie imaginaire positive et calculer le flux via E×H*. Une amplitude décroissante ne dispense pas d’un bilan d’énergie ; la part manquante est absorbée dans le milieu, pas perdue dans le calcul.
+
+## 25. Guide rectangulaire : séparer les variables et reconnaître la coupure
+
+*Spé → Au-delà selon filière* — laboratoire `guide`.
+
+**Géométrie.** Un guide idéal à parois parfaitement conductrices, section a×b, est rempli d’un milieu homogène sans pertes. À la paroi E tangent=0. Les modes TE ont Ez=0 ; les modes TM ont Hz=0. Un guide creux simplement connexe n’a pas de mode TEM.
+
+TE₁₀ : Ey∝sin(πx/a) exp(ikz z−iωt)  
+kz²=(ω/c)²−(π/a)² ; fc=c/(2a)
+
+**Séparation.** Insérer Ey=X(x)Z(z)exp(−iωt) dans l’équation d’onde donne X″/X+Z″/Z+ω²/c²=0. Les conditions X(0)=X(a)=0 quantifient kx=mπ/a. Le mode TE₁₀ utilise m=1 et aucune variation selon y ; il n’exige pas m=n=0.
+
+ω>ωc : vphase=ω/kz ; vg=c²kz/ω ; vphase vg=c²  
+ω<ωc : kz=i√[(π/a)²−(ω/c)²]
+
+**Exemple.** Pour a=22,86 mm, fc≈6,56 GHz. À 10 GHz, vg≈0,755c et vphase≈1,325c. Sous la coupure, une excitation depuis une extrémité décroît exponentiellement ; à la coupure exacte kz=0, la vitesse de groupe est nulle, et non une propagation ordinaire.
+
+**Technique transférable.** Les conditions aux limites sélectionnent des valeurs propres comme pour une corde, une cavité acoustique ou une particule quantique. La quantification ici vient de la géométrie, sans invoquer une quantification de l’énergie d’un photon.
+
+## 26. Plasma froid : coupure et séparation transverse/longitudinale
+
+*Spé → Au-delà* — laboratoire `plasma`.
+
+**Modèle.** Un plasma homogène contient des électrons libres de densité n, les ions étant fixes pour la fréquence étudiée. Négliger température, collisions et champ magnétique statique ; le modèle de Drude sans frottement donne εr=1−ωp²/ω².
+
+ωp²=ne²/(ε₀me) ; k²=(ω²−ωp²)/c²
+
+**Onde transverse.** Pour ω>ωp, k est réel, vphase>c et vg=c√(1−ωp²/ω²)<c. Pour ω<ωp, k=i√(ωp²−ω²)/c : une onde incidente est évanescente dans le demi-espace. À ωp, ε=0 exige un examen séparé ; divD=0 ne permet plus de diviser par ε pour imposer divE=0.
+
+**Oscillation longitudinale.** Un déplacement collectif des électrons par rapport aux ions produit un champ de rappel. L’équation ẍ+ωp²x=0 décrit un mode longitudinal de plasma ; il n’a pas le même lien E–B qu’une onde transverse. Ajouter pression et collisions modifie sa dispersion et son amortissement.
+
+**Exemple.** n=10¹⁶ m⁻³ donne fp≈0,898 GHz. À ω=2ωp, nopt=√3/2 et vg≈0,866c ; une fréquence plus basse que fp est réfléchie ou fortement amortie selon les conditions et collisions.
+
+**Limite.** Le plasma de l’ionosphère est stratifié, magnétisé et collisionnel. Le laboratoire isole la coupure froide homogène ; en déduire directement une altitude de réflexion ou un signal radio réel dépasserait ses hypothèses.
+
+## 27. Lorentz : absorption, dispersion et largeur d’une résonance
+
+*Spé → Au-delà* — laboratoire `dielectrique`.
+
+**Oscillateur lié.** Un électron de masse m est rappelé par une raideur mω₀² et amorti par mΓ. L’équation est ẍ+Γẋ+ω₀²x=−eE/m. Γ est en s⁻¹ ; si un frottement mécanique est écrit −bẋ, il faut Γ=b/m.
+
+α(ω)=e²/[m(ω₀²−ω²−iΓω)] ; p̃=α Ẽ  
+χe=nα/ε₀ ; εr=1+χe
+
+**Passivité.** Im α=e²Γω/[m((ω₀²−ω²)²+Γ²ω²)] est positive pour ω>0 et Γ>0. La puissance moyenne reçue par un dipôle vaut (ω/2)Imα |Ẽ|² ; elle égale la dissipation mécanique du régime périodique.
+
+**Résonance et dispersion.** La partie réelle de α change de signe autour de ω₀ tandis que l’absorption atteint un maximum voisin. Ces parties proviennent du même noyau causal : on ne peut pas choisir arbitrairement une variation d’indice sans tenir compte de la réponse absorbante associée.
+
+**Ordre de grandeur.** À basse fréquence α≈e²/(mω₀²). Pour ω₀=3×10¹⁵ rad·s⁻¹, α≈3,13×10⁻³⁹ C·m²·V⁻¹ ; n=10²⁸ m⁻³ donnerait χ≈3,54 dans le modèle dilué, signalant que les interactions et champs locaux ne sont plus forcément négligeables.
+
+**Au laboratoire.** Distinguer densité de dipôles, pulsation de résonance et amortissement. Suivre simultanément dispersion et absorption ; un pic de polarisabilité ne peut être utilisé sans préciser la largeur ni la validité du modèle linéaire.
+
+## 28. Dipôle rayonnant : retard, transversalité et puissance
+
+*Spé → Au-delà* — laboratoire `rayonnement`.
+
+**Trois échelles.** Une source de taille a est dipolaire si ka≪1. Le champ électrostatique décroît en r⁻³, le champ d’induction en r⁻², le champ rayonné en r⁻¹. La zone lointaine exige kr≫1 et r≫a. Ces conditions ne se réduisent pas toutes à « loin » sans comparaison à λ.
+
+Eloin(r,t)=[er×(er×p̈(t−r/c))]/(4πε₀c²r)  
+Bloin=(1/c)er×Eloin ; 〈dP/dΩ〉=ω⁴p₀²sin²θ/(32π²ε₀c³)
+
+**Direction.** Le double produit vectoriel retire la composante longitudinale de p̈ : Eloin·er=0. Pour p(t)=p₀cosωt ez, p̈=−ω²p et le champ électrique est dirigé selon la projection transverse de p. Une fonction scalaire f(t−r/c)/r multipliée par un vecteur constant n’a généralement pas divE=0.
+
+〈P〉=ω⁴p₀²/(12πε₀c³), car ∫sin²θ dΩ=8π/3
+
+**Énergie.** S≈ε₀c E² er en zone lointaine ; multiplier par r² efface la dépendance en distance. Le diagramme sin²θ s’annule sur l’axe du dipôle et est maximal à l’équateur. Le champ proche ne peut pas être assimilé à ce flux purement radial.
+
+**Méthode.** Vérifier le retard t−r/c, la projection transverse et l’indépendance de la puissance totale en r. Ces trois contrôles empêchent une solution séduisante de l’équation d’onde scalaire de devenir une fausse solution de Maxwell.
+
+## 29. Antenne : addition de phases et directivité
+
+*Spé → Au-delà* — laboratoire `antenne`.
+
+**Ouverture uniforme.** Une ouverture rectangulaire de dimensions a×b dans le plan transverse rayonne un champ lointain dont l’amplitude est la transformée de Fourier de son excitation. On suppose une polarisation fixée et une observation de Fraunhofer ; les détails du courant d’alimentation sont prescrits.
+
+A(θx,θy)∝sinc[(πa/λ)sinθx] sinc[(πb/λ)sinθy], sinc u=sin u/u
+
+**Dérivation.** Un élément situé en x accumule la phase −k x sinθx par différence de trajet. Intégrer exp(−ikxsinθx) entre −a/2 et a/2 donne a sinc(ka sinθx/2). Une ouverture plus grande rapproche les premiers zéros de l’axe : sinθzéro=λ/a, si λ≤a.
+
+**Sans faux petit angle.** Si a<λ, aucun premier zéro n’existe dans les directions accessibles. L’approximation θ≈λ/a n’est justifiée que pour λ/a≪1. Pour a=3λ, le premier zéro est à 19,5°, pas exactement 1/3 rad.
+
+**Réseau.** Des éléments séparés de d portent un déphasage ψ. Le facteur de réseau est Σj exp[ij(kd sinθ+ψ)]. Une direction constructive vérifie kd sinθ+ψ=2πm. Des lobes supplémentaires apparaissent si l’espacement et l’orientation autorisent plusieurs solutions.
+
+**Directivité et limites.** D=4πUmax/∫U dΩ mesure la concentration angulaire, pas un gain d’énergie. Une antenne réelle associe diagramme de l’élément, rendement et adaptation d’impédance. Le modèle d’ouverture n’est pas une mesure du gain d’une antenne fabriquée.
+
+## 30. Rayleigh : pourquoi une longueur d’onde compte quatre fois
+
+*Spé → Au-delà* — laboratoire `rayonnement`.
+
+**Source induite.** Une petite molécule ou particule polarisable, de taille a≪λ, acquiert p̃=α(ω)Ẽinc. Dans le vide, l’intensité incidente vaut Iinc=ε₀c|Ẽinc|²/2, en W·m⁻². Une puissance diffusée en W se compare à Iinc par une section efficace en m².
+
+σdiff=ω⁴|α|²/(6πε₀²c⁴) ; Pdiff=Iinc σdiff
+
+**Régime Rayleigh.** Si ω≪ω₀, loin d’une résonance, α≈α₀ : σ∝ω⁴∝λ⁻⁴. À intensités incidentes égales, 450 nm diffuse environ (650/450)⁴≈4,35 fois plus que 650 nm. La lumière diffusée à angle droit par un dipôle peut être fortement polarisée.
+
+**Ciel et coucher du Soleil.** Une traversée atmosphérique retire davantage les courtes longueurs d’onde du faisceau direct ; la lumière latérale est enrichie en bleu tandis que le faisceau long devient plus rouge. La couleur perçue implique aussi spectre solaire, sensibilité visuelle, absorption et aérosols : la loi λ⁻⁴ seule ne calcule pas toute la couleur d’un ciel réel.
+
+**Autre limite.** Dans le modèle classique libre à haute fréquence, α≈−e²/(mω²), la section cesse de dépendre de ω : σTh=8πre²/3, re=e²/(4πε₀mc²). Cette limite de Thomson n’autorise pas à ignorer les corrections quantiques à toute fréquence.
+
+**Bilan subtil.** Un dipôle rayonne même si le frottement matériel est nul. Pour un bilan complet de l’extinction, sa polarisabilité doit inclure la réaction radiative. Le calcul simplifié de Rayleigh est un régime perturbatif, pas une création d’énergie.
+
+## 31. London–Meissner : une condition d’équilibre supplémentaire
+
+*Au-delà, techniques Spé* — laboratoire `meissner`.
+
+**Distinction.** Un conducteur parfait impose E=0 et donc ∂tB=0 : il conserve le champ initial. Un état Meissner expulse le champ lors de la transition, dans les limites du champ critique et sans traiter ici vortex ou piégeage. La résistance nulle ne suffit donc pas à déduire Meissner.
+
+curl js=−B/(μ₀λL²) ; curlB=μ₀js ⇒ ΔB=B/λL²  
+λL=√[ms/(μ₀ns qs²)]
+
+**Démonstration.** Prendre le rotationnel d’Ampère et utiliser divB=0 donne −ΔB=μ₀curljs. La seconde équation de London impose la valeur négative de curljs et fournit une équation d’écrantage, non une équation de diffusion temporelle.
+
+Demi-espace x>0 : By=B₀exp(−x/λL), jz=−B₀exp(−x/λL)/(μ₀λL)  
+Plaque −a≤x≤a, mêmes champs aux faces : By=B₀ cosh(x/λL)/cosh(a/λL)
+
+**Échelle.** Avec λL=50 nm, le champ d’un demi-espace ne vaut plus que e⁻³≈5 % à 150 nm. Pour a≪λL, la plaque est presque entièrement pénétrée ; pour a≫λL, son centre est écranté. La profondeur de London existe en statique, contrairement à δpeau∝ω⁻¹ᐟ².
+
+**Jauge et modèle.** L’écriture js=−A/(μ₀λL²) exige un choix de phase du condensat et de jauge compatible. La relation en rotationnel, utilisée ici, exprime le résultat physique sans attribuer à A un caractère directement observable. Une composante normale ohmique ajoute pertes et dynamique à ce modèle d’équilibre.
+
+## 32. Faraday : diagonaliser dans une base circulaire
+
+*Spé → Au-delà* — laboratoire `faraday`.
+
+**Bases déclarées.** La propagation initiale et le champ statique sont vers +z. Poser e±=(ex±i ey)/√2 et conserver les axes de laboratoire au retour. Avec exp(−iωt), Re[e+exp(−iωt)] tourne de +x vers +y à position fixe. Éviter les mots droite/gauche sans convention d’observation.
+
+εr,transverse = [[a,−ig],[ig,a]] ; εr e±=(a±g)e±  
+k±=(ω/c)√(a±g), branches passives
+
+**Rotation calculée.** Une polarisation ex est (e++e−)/√2. Après une longueur L, Ex∝cos[(k+−k−)L/2] et Ey∝−sin[(k+−k−)L/2] si les deux indices sont réels. L’angle dans les axes fixes vaut θF=(k−−k+)L/2. Des absorptions différentes donnent une ellipticité en plus de la rotation.
+
+**Non-réciprocité.** Sous un champ fixé, une traversée retour ajoute la même rotation dans une base transverse de laboratoire calibrée ; un miroir idéal peut contribuer une phase commune. L’aller-retour vaut 2θF. Inverser B inverse g et la rotation. Une activité optique réciproque se comporte différemment au retour.
+
+**Exemple.** Si n−−n+=2×10⁻⁵, λvide=633 nm et L=1 cm, θF=πL(n−−n+)/λ≈0,993 rad, soit 56,9°. La linéarisation en g/a exige |g|≪|a| et des pertes suffisamment faibles pour parler d’une rotation pure.
+
+**Technique.** Diagonaliser une matrice hermitienne 2×2 puis recombiner les modes relie algèbre linéaire et polarisation. L’extension anisotrope demande eigenmodes et flux ; divD=0 n’est pas un raccourci universel vers divE=0.
+
+## 33. Kerr optique : construire une solution en sech
+
+*Au-delà, outils Spé* — laboratoire `kerr`.
+
+**Modèle réduit.** Une enveloppe transverse monochromatique u(x) vérifie u″−a u+b u³=0, avec a>0 en m⁻² et b>0 en m⁻² par unité de u². Elle résulte d’un équilibre entre diffraction et réponse optique focalisante ; a et b doivent être déduits ou prescrits avant d’utiliser la solution.
+
+½u′²−½a u²+¼b u⁴=C  
+u(x)=√(2a/b) sech[√a(x−x₀)] pour C=0
+
+**Démonstration.** Multiplier l’ODE par u′ et intégrer fournit l’intégrale première. Une solution localisée avec u,u′→0 à l’infini impose C=0. Au maximum u′=0, d’où u₀²=2a/b ; séparer les variables ou dériver sech vérifie la solution exacte de cette ODE.
+
+**Relation amplitude-largeur.** La largeur caractéristique w=1/√a et u₀=√(2a/b) vérifient u₀w=√(2/b). La largeur à mi-hauteur d’intensité u² vaut 2 arcosh√2/√a≈1,763/√a. Une amplitude double exige une largeur moitié à b fixé.
+
+**Exemple.** a=10⁶ m⁻² et b=2×10⁶ m⁻² pour une amplitude u adimensionnée donnent u₀=1 et w=1 mm. L’intégrale ∫u²dx=4√a/b vaut 2 mm dans cette normalisation ; ce n’est une puissance qu’après multiplication par la constante d’intensité appropriée.
+
+**Portée et normalisation.** La solution est exacte pour l’équation réduite, pas pour tout Maxwell non linéaire. Une polarisation instantanée E³ crée aussi 3ω ; le coefficient effectif du fondamental intègre le facteur 3/4. Dans le laboratoire, Iref=n₀ε₀c|E|²/2 sert à définir n₂, tandis que le flux exact du sech vaut Sz=[k/(n₀k₀)]Iref. La gaussienne libre de comparaison a la même puissance intégrée physique, mais pas le même profil initial ni le même pic ; sa distance est Z=z/(n₀k₀y₀²).
+
+## 34. Trois effets nommés Kerr, et un test de validité
+
+*Spé → Au-delà* — laboratoire `kerr`.
+
+**Kerr optique.** Une réponse d’ordre trois à l’intensité optique donne n=n₀+n₂I et une phase Δφ=(2π/λ)n₂IL dans un faisceau presque uniforme. Le modèle sech de la leçon précédente utilise cette non-linéarité pour équilibrer la diffraction.
+
+**Kerr électro-optique.** Un champ électrique quasi statique peut provoquer une biréfringence quadratique en son amplitude. Le champ de commande et le champ lumineux n’ont pas le même rôle ; la dépendance tensorielle fixe les axes propres de polarisation.
+
+**Kerr magnéto-optique.** La réflexion sur un matériau magnétisé peut modifier orientation et ellipticité. C’est un problème de coefficients de réflexion couplés à l’aimantation ; il se distingue de Faraday en transmission et de l’auto-focalisation scalaire.
+
+E³=E₀³[3cos(ωt)+cos(3ωt)]/4 ; Pω,nonlin=(3/4)ε₀χ⁽³⁾E₀³
+
+**Ordre de grandeur.** Avec n₂=3×10⁻²⁰ m²·W⁻¹, I=10¹² W·m⁻², L=1 mm et λ=800 nm, Δn=3×10⁻⁸ et Δφ≈2,36×10⁻⁴ rad. Une petite variation d’indice peut accumuler une phase mesurable ; elle n’implique pas automatiquement une soliton stable.
+
+**Contrôle scientifique.** Vérifier |Δn|≪n₀, échelles de variation lentes, pertes, dispersion et harmonique générée. Une loi scalaire n(I) pour une polarisation ne démontre pas à elle seule une biréfringence : il faut comparer au moins deux eigenmodes.
+
+## 35. Induction MHD : étirement et diffusion du champ
+
+*Au-delà, liens avec Spé* — laboratoire `dynamo`.
+
+**Hypothèses.** Fluide conducteur non relativiste, σ et μ uniformes, courant de déplacement négligeable. La loi d’Ohm mobile est j=σ(E+v×B) ; Ampère donne j=curlB/μ et Faraday ∂tB=−curlE.
+
+∂tB=curl(v×B)+ηmΔB ; divB=0 ; ηm=1/(μσ)  
+Rm=UL/ηm=μσUL
+
+**Dérivation.** Éliminer E puis j ; curlcurlB=−ΔB fournit le signe diffusif positif. Le facteur 1/μ est indispensable aux dimensions. Pour un fluide incompressible, l’identité vectorielle donne DB/Dt=(B·∇)v+ηmΔB : le gradient de vitesse peut étirer les lignes de champ.
+
+**Régime idéal.** Lorsque ηm→0, E+v×B→0 tandis que j peut rester fini. La conservation du flux matériel découle de Faraday pour un contour entraîné par v ; elle n’impose pas j=0. La force j×B transfère de l’énergie entre fluide et champ.
+
+**La géodynamo terrestre.** Le noyau externe est un métal liquide conducteur, riche en fer. Le refroidissement et la différenciation, notamment associés à la croissance du noyau interne, entretiennent des flottabilités thermique et compositionnelle qui alimentent la convection. La rotation et Coriolis organisent les écoulements ; Coriolis ne travaille pas directement, car v·(Ω×v)=0. Le terme curl(v×B) étire et transporte le champ, la résistivité dissipe une puissance j²/σ et la force j×B réagit sur le fluide. L’énergie thermique et gravitationnelle est ainsi convertie en énergie cinétique puis magnétique. Le modèle α² suivant ne retient qu’une fermeture prescrite de cette induction : il isole un mécanisme spectral dans cette chaîne physique.
+
+**Échelles.** U=10⁻⁴ m·s⁻¹, L=10⁶ m et ηm=1 m²·s⁻¹ donnent Rm=100 et un temps diffusif L²/ηm≈3,17×10⁴ ans. Ce sont des paramètres illustratifs, non une mesure du noyau terrestre.
+
+**Limite décisive.** Rm≫1 compare advection et diffusion ; il ne garantit pas une dynamo. Une simple translation uniforme transporte un champ sans l’amplifier. Géométrie, étirement, conditions aux limites et rétroaction déterminent l’entretien réel.
+
+Sources du lien terrestre : [USGS — flottabilité et géomagnétisme](https://www.usgs.gov/programs/geomagnetism/introduction-geomagnetism) ; [BGS — convection, rotation et diffusion](https://geomag.bgs.ac.uk/education/reversals.html). Les [modèles BGS des observations](https://geomag.bgs.ac.uk/research/modelling/MEME.html) décrivent le champ mesuré ; ils ont un rôle distinct du mode α² prescrit ici.
+
+## 36. Une dynamo α² locale : modes hélicoïdaux et seuil
+
+*Au-delà accompagné* — laboratoire `dynamo`.
+
+**Modèle prescrit.** On étudie un champ moyen dans un domaine périodique idéal, avec α constant en m·s⁻¹ et diffusivité ηT en m²·s⁻¹ : ∂tB=α curlB+ηTΔB. α résume une fermeture statistique donnée ; ce laboratoire ne calcule pas la convection, la rotation ni la structure du noyau terrestre.
+
+B₊=B₀(cos kz,−sin kz,0), curlB₊=kB₊  
+B₋=B₀(cos kz,+sin kz,0), curlB₋=−kB₋  
+γ±=±αk−ηT k²
+
+**Valeurs propres.** Les deux champs sont de divergence nulle et de laplacien −k²B. Substituer B(t)=exp(γt)B(0) transforme l’EDP en deux valeurs propres. Une hélicité est favorisée par le signe de α, l’autre amortie davantage.
+
+Croissance si |α|>ηT k ; k*=|α|/(2ηT) ; γmax=α²/(4ηT)
+
+**Exemple.** α=1 m·s⁻¹, ηT=0,1 m²·s⁻¹ et k=2 m⁻¹ donnent γ+=1,6 s⁻¹ et γ−=−2,4 s⁻¹. Au seuil α=ηT k, le mode favorisé est neutre. Un domaine fini n’autorise que certaines valeurs de k : l’optimum continu peut y être inaccessible.
+
+**Vers la Terre.** L’énergie magnétique croissante provient de l’écoulement représenté indirectement par α. Sans rétroaction, la croissance exponentielle ne sature pas ; elle ne prédit ni intensité finale, ni inversions, ni durée des cycles terrestres. L’intérêt formateur est de déduire un seuil spectral et de déclarer précisément ce qui est prescrit.
+
+## Les 24 introductions de laboratoire
+
+### Laboratoire `dipoles`
+
+Passer de deux charges exactes à un dipôle approché et décider à quelle distance le modèle est assez précis. Les équipotentielles et les lignes de champ rendent visibles la direction de E et les zéros de V.
+
+**Objets et unités**
+
+- q en nC, séparation a en m, moment p=qa en C·m
+- Angle en degrés ; distance d’observation r/a sans unité ; E en V·m⁻¹, V en V
+
+**Hypothèses de l’expérience**
+
+- Deux charges ±q fixes, placées symétriquement, dans le vide
+- Approximation dipolaire seulement pour r≫a ; erreur relative à manier avec prudence près d’un zéro
+
+**Techniques à mobiliser**
+
+- Développement limité et contrôle de son ordre
+- Gradient d’un potentiel et symétries
+- Lecture d’un écart relatif et test d’échelle
+
+**Prédire → expérimenter → justifier**
+
+1. Avant l’observation, calculer sur papier l’erreur du potentiel axial à r/a=5 et prévoir l’effet d’un doublement de cette distance.
+2. Choisir le préréglage horizontal, passer de r/a=5 à 10 puis 20 et comparer champ exact et dipolaire ; tourner ensuite le dipôle à 90°.
+3. Expliquer pourquoi V=0 sur le plan équatorial alors que E y reste non nul ; retrouver l’ordre (a/r)² de l’erreur hors des zéros.
+
+**Niveaux et approfondissements**
+
+- Sup : Superposition de Coulomb, dimensions et symétrie ; l’entrée ne demande pas de théorie multipolaire complète.
+- Spé : Taylor multivariable, gradient, énergie et forces ; choisir une grandeur pour quantifier l’approximation.
+- Au-delà : Moments multipolaires et sensibilité d’une approximation près d’un zéro.
+
+Leçons de référence : 4, 5.
+
+**Résultat attendu.** Une distance justifiée pour un seuil donné, et une distinction claire entre potentiel nul et champ nul.
+
+### Laboratoire `gauss`
+
+Choisir une surface adaptée à la symétrie puis confronter champ, potentiel, capacité et énergie. La sphère volumique et le coaxial donnent deux exemples où un théorème intégral permet un calcul local.
+
+**Objets et unités**
+
+- Sphère : Q en nC, R en m, E en V·m⁻¹
+- Coaxial : a en cm, rapport b/a, longueur en m, U=Vinterne−Vexterne en V ; C en F, W en J
+
+**Hypothèses de l’expérience**
+
+- Charge volumique uniforme pour la sphère ; potentiel nul à l’infini
+- Coaxial idéal sans effets de bord ; vide, conducteurs en équilibre
+
+**Techniques à mobiliser**
+
+- Théorème de Gauss et invariances
+- Intégration radiale du potentiel
+- Double calcul de l’énergie
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir les lois en r de E à l’intérieur et à l’extérieur de la sphère, puis l’effet de R doublé à Q fixé.
+2. Choisir la sphère, inverser Q et augmenter R ; passer ensuite au coaxial et doubler sa longueur à b/a fixé.
+3. Retrouver sur papier C=2πε₀ℓ/ln(b/a) et comparer W=½CU² à l’intégrale du champ ; discuter la différence entre Q fixé et U fixé.
+
+**Niveaux et approfondissements**
+
+- Sup : Intégration, géométrie et unités ; Gauss est introduit ici comme outil si la filière ne l’a pas encore étudié.
+- Spé : Symétries de champs, potentiel, capacité et bilans électrostatiques selon la filière.
+- Au-delà : Unicité de Poisson et variations d’énergie avec une source de tension.
+
+Leçons de référence : 2, 3, 6.
+
+**Résultat attendu.** Deux lois radiales démontrées et une capacité dont le signe et les dimensions sont vérifiés.
+
+### Laboratoire `biotsavart`
+
+Relier la géométrie d’un courant au champ magnétique, reconnaître une limite de fil long ou de solénoïde long et contrôler l’approximation dipolaire d’une spire.
+
+**Objets et unités**
+
+- I orienté en A ; rayon R et longueur en m ; nombre N de spires
+- B en T ou μT selon l’affichage ; moment magnétique IπR² en A·m²
+
+**Hypothèses de l’expérience**
+
+- Courants stationnaires dans le vide ; fils idéalisés
+- Le champ axial d’une bobine finie diffère de sa limite longue, surtout près des extrémités
+
+**Techniques à mobiliser**
+
+- Produit vectoriel et superposition
+- Intégration de Biot–Savart
+- Passage à une limite et comparaison relative
+
+**Prédire → expérimenter → justifier**
+
+1. Dessiner le sens de B pour I>0 puis prévoir le changement lorsque I devient négatif.
+2. Comparer spire et solénoïde ; à rayon fixé augmenter la longueur, puis inverser I et observer les profils.
+3. Dériver le champ axial de la spire ; retrouver son moment dipolaire loin sur l’axe et quantifier l’erreur à z=5R sur papier.
+
+**Niveaux et approfondissements**
+
+- Sup : Produit vectoriel, intégration et compensation par symétrie.
+- Spé : Magnétostatique, distinction Biot–Savart/Ampère et limites de bobines.
+- Au-delà : Champs retardés et termes radiatifs absents du calcul stationnaire.
+
+Leçons de référence : 7, 16.
+
+**Résultat attendu.** Une justification de la méthode selon la source, sans appliquer Ampère comme formule universelle de calcul local.
+
+### Laboratoire `helmholtz`
+
+Fabriquer une région presque uniforme par annulation d’une dérivée. Le réglage géométrique d/R=1 devient une conséquence du calcul et permet une calibration de champ utilisable avec Hall.
+
+**Objets et unités**
+
+- Rayon R en m, écartement d/R sans unité, I en A, N par bobine
+- B en T ; uniformité relative sans unité, évaluée dans une région annoncée
+
+**Hypothèses de l’expérience**
+
+- Deux bobines identiques et coaxiales ; courants de même sens
+- Centre sans courant ; symétrie z↦−z et modèle de spires minces
+
+**Techniques à mobiliser**
+
+- Superposition et fonctions paires
+- Dérivées secondes et développement quartique
+- Calibration et tolérance relative
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir le signe de B″(0) pour d<R et d>R ; expliquer pourquoi B′(0)=0 dans les deux cas.
+2. Comparer les préréglages d/R=0,5,1 et 1,5 ; modifier ensuite I sans changer la géométrie.
+3. Retrouver d=R par B″(0)=0, puis estimer sur papier une demi-longueur axiale à 0,1 % et contrôler la formule exacte.
+
+**Niveaux et approfondissements**
+
+- Sup : Somme de fonctions, parité et dérivation ; estimation dimensionnelle de B.
+- Spé : Développement limité contrôlé et symétries du champ ; liaison mesure/modèle.
+- Au-delà : Développement hors axe par divB=curlB=0 et optimisation d’une région volumique.
+
+Leçons de référence : 8, 11.
+
+**Résultat attendu.** Un réglage dérivé et une zone d’uniformité définie par un seuil et une géométrie précis.
+
+### Laboratoire `drude`
+
+Comprendre une conductivité comme réponse avec mémoire. L’échelon et le régime harmonique font distinguer vitesse des porteurs, courant, énergie stockée et chaleur.
+
+**Objets et unités**
+
+- n obtenu à partir de log₁₀(n/m⁻³), τ en fs, masse effective en me
+- f en THz, Ecrête en V·m⁻¹ ; σ en S·m⁻¹, j en A·m⁻² ; q=±e
+
+**Hypothèses de l’expérience**
+
+- Porteurs identiques indépendants, frottement moyen −m*v/τ
+- Champ homogène ; pas de rappel élastique ni de transport balistique résolu
+
+**Techniques à mobiliser**
+
+- Équation différentielle du premier ordre
+- Réponse complexe avec exp(−iωt)
+- Bilan de puissance et convolution causale
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir le signe de v et de j pour des électrons puis des porteurs positifs ; calculer ωτ pour le réglage choisi.
+2. Comparer faible fréquence et réponse inertielle ; changer le signe des porteurs puis doubler τ à densité fixée.
+3. Retrouver σ=σ₀/(1−iωτ), identifier la partie dissipative et expliquer pourquoi j ne change pas de sens stationnaire lorsque q change de signe.
+
+**Niveaux et approfondissements**
+
+- Sup : Résolution d’un échelon et loi d’Ohm obtenue à partir d’un modèle mécanique.
+- Spé : Phasors, énergie et réponse linéaire ; contrôle des amplitudes crête et efficace.
+- Au-delà : Causalité, pôles complexes, permittivité de Drude et statistiques des porteurs.
+
+Leçons de référence : 9, 10.
+
+**Résultat attendu.** Un courant avec phase et une dissipation positive, accompagnés du domaine de validité du modèle.
+
+### Laboratoire `hall`
+
+Déterminer le signe des porteurs à partir d’une tension transverse dont les bornes sont explicitement définies. Le laboratoire prolonge la force de Lorentz et les mesures de champ calibrées par Helmholtz.
+
+**Objets et unités**
+
+- I vers +x en A ; Bz vers +z en T ; largeur w suivant y et épaisseur t suivant z en mm
+- UH=V(y=−w/2)−V(y=+w/2) en V ; q=±e et n en m⁻³
+
+**Hypothèses de l’expérience**
+
+- Un type de porteur majoritaire ; régime stationnaire
+- Circuit ouvert suivant y : jy=0 ; EH=−v×B et UH=IB/(nqt)
+
+**Techniques à mobiliser**
+
+- Trièdre direct et signe d’une charge
+- Différence de potentiel et mesure antisymétrisée
+- Identification d’une densité dans un modèle déclaré
+
+**Prédire → expérimenter → justifier**
+
+1. Avec I>0,Bz>0, prévoir vx,Ey puis UH pour q=−e en conservant les bornes annoncées.
+2. Comparer électrons et trous ; inverser B, puis doubler l’épaisseur et changer la largeur séparément.
+3. Montrer que UH est indépendant de w à I fixé, proposer [U(B)−U(−B)]/2 contre un parasite pair et discuter le cas de deux populations.
+
+**Niveaux et approfondissements**
+
+- Sup : Lorentz, vitesse moyenne et définition du potentiel ; aucune mémorisation d’un signe sans axes.
+- Spé : Conductivité tensorielle, symétries de mesure et extraction de paramètres selon la filière.
+- Au-delà : Transport multibande, pondération par mobilités et Hall quantique, hors du modèle présenté.
+
+Leçons de référence : 11, 8.
+
+**Résultat attendu.** Une prédiction du signe reproduite par les inversions et une interprétation prudente de la densité extraite.
+
+### Laboratoire `induction`
+
+Fermer le bilan électromécanique et distinguer un rail toujours actif d’un cadre dont le flux cesse de varier après immersion. Lenz est confronté aux équations et à la chaleur dissipée.
+
+**Objets et unités**
+
+- B en T, largeur active et hauteur du cadre en m, R en Ω
+- Rail : L en mH, masse en g, v en m·s⁻¹ ; cadre : distance vers le bas et temps en s
+
+**Hypothèses de l’expérience**
+
+- Rail : v vers +x, B vers +z, i vers +y ; Li̇+Ri=−Bℓv, mv̇=Bℓi
+- Cadre : inductance négligée, champ uniforme après une frontière nette ; immersion complète ⇒ flux constant
+
+**Techniques à mobiliser**
+
+- Flux orienté et fém d’un contour mobile
+- Système d’ODE et critère d’amortissement
+- Somme des bilans mécanique et électrique
+
+**Prédire → expérimenter → justifier**
+
+1. Prédire le signe du courant initial du rail et la dérivée de W=mv²/2+Li²/2 avant tout calcul.
+2. Comparer rail résistif et préréglage inductif oscillant ; choisir ensuite le cadre et repérer l’instant de pleine immersion.
+3. Démontrer Ẇ=−Ri² pour le rail et Φ constant pour le cadre immergé ; expliquer pourquoi une vitesse limite d’entrée n’est pas une limite globale.
+
+**Niveaux et approfondissements**
+
+- Sup : Lenz, énergie et résolution d’une équation linéaire après introduction guidée du flux.
+- Spé : Induction, couplages, transitoires et traitement par morceaux.
+- Au-delà : Inductances mutuelles, géométries continues et freinage magnétique distribué.
+
+Leçons de référence : 12, 13.
+
+**Résultat attendu.** Un bilan fermé et deux scénarios distingués par la variation réelle de flux, pas par le seul mouvement.
+
+### Laboratoire `hautparleur`
+
+Lire un transducteur comme deux systèmes couplés par le même coefficient. À la résonance, vitesse élevée et courant faible deviennent compatibles grâce à la contre-fém.
+
+**Objets et unités**
+
+- R en Ω, L en mH, masse en g, raideur k en N·m⁻¹, b en N·s·m⁻¹
+- κ en N·A⁻¹=V·s·m⁻¹, f en Hz, tension crête en V ; x,v,i et puissances SI
+
+**Hypothèses de l’expérience**
+
+- Suspension linéaire, coefficient κ constant, une masse et un amortissement
+- u=Ri+Li̇+κv et mv̇+bv+kx=κi ; pas de calcul complet d’enceinte acoustique
+
+**Techniques à mobiliser**
+
+- Oscillateur harmonique forcé
+- Impédance réfléchie par un couplage
+- Moyenne harmonique et conservation de l’énergie
+
+**Prédire → expérimenter → justifier**
+
+1. Calculer f₀=√(k/m)/(2π) et prévoir la valeur de κ²/b ajoutée à l’impédance à cette fréquence.
+2. Placer f près de f₀ puis au-dessus ; doubler κ et comparer vitesse, courant et bilan de puissance.
+3. Retrouver Zmot=κ²/[b−i(mω−k/ω)] et montrer que ses pertes sont positives ; distinguer résonance mécanique et maxima d’une réponse chargée.
+
+**Niveaux et approfondissements**
+
+- Sup : Équations d’oscillateur, circuit RL et bilans séparés.
+- Spé : Couplage réciproque, phasors et conversion électromécanique selon la filière.
+- Au-delà : Charge acoustique, rayonnement d’un piston et modèles distribués de membrane.
+
+Leçons de référence : 14.
+
+**Résultat attendu.** Une explication du pic d’impédance et un bilan ui=pertes+variation d’énergie, avec unités de κ vérifiées.
+
+### Laboratoire `hysteresis`
+
+Reconstruire H depuis le courant primaire et B depuis la tension du secondaire ouvert. L’aire du cycle distingue dissipation et énergie stockée dans une réponse à mémoire.
+
+**Objets et unités**
+
+- Hc en A·m⁻¹, Hmax/Hc, Bs en T, μr réversible
+- f en Hz, longueur du tore en m, section en cm², N₁,N₂ ; e₂ en V et pertes en J·m⁻³ par cycle
+
+**Hypothèses de l’expérience**
+
+- Tore à champ approximativement uniforme, secondaire ouvert
+- Banque de relais prescrite ; pas de domaines microscopiques ou courants de Foucault calculés
+
+**Techniques à mobiliser**
+
+- Ampère et Faraday en montage mesurable
+- Intégration avec constante initiale
+- Aire orientée d’un cycle et mémoire
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir e₂ lorsqu’un B sinusoïdal est imposé et calculer son déphasage ; estimer l’aire d’un cycle rectangulaire.
+2. Comparer cycle majeur, cycle mineur et Bs=0 ; changer la fréquence et observer ce qui relève du modèle quasi statique.
+3. Retrouver H=N₁i₁/ℓ et e₂=−N₂S Ḃ, puis convertir ∮H dB en chaleur et puissance ; expliquer pourquoi ½BH n’est pas une énergie unique du cycle.
+
+**Niveaux et approfondissements**
+
+- Sup : Intégration d’une tension et lecture d’une aire ; orientation du bobinage explicitée.
+- Spé : Milieux magnétiques, transformateurs et bilans selon la filière.
+- Au-delà : Preisach, pertes dynamiques et identification d’une distribution de domaines.
+
+Leçons de référence : 15, 21.
+
+**Résultat attendu.** Un cycle avec axes et unités calibrés, et une distinction entre mémoire, dissipation et réponse réversible.
+
+### Laboratoire `synchrone`
+
+Comprendre pourquoi deux angles donnant le même couple n’ont pas la même stabilité. Le modèle de dipôle à une paire de pôles rend visibles retard, potentiel incliné et seuil statique de verrouillage.
+
+**Objets et unités**
+
+- Moment m en A·m², B en T, fréquence du champ tournant en Hz
+- Retard δ=θchamp−θrotor en degrés, J en kg·m² et charge normalisée Tcharge/(mB)
+
+**Hypothèses de l’expérience**
+
+- Dipôle physique à une paire de pôles : Tmax=mB, Ωs=2πfchamp
+- Charge constante ; diagramme d’équilibre et petite oscillation, pas de démarrage dynamique complet
+
+**Techniques à mobiliser**
+
+- Couple issu d’une énergie
+- Équilibres et linéarisation
+- Puissance mécanique et seuil
+
+**Prédire → expérimenter → justifier**
+
+1. Pour Tcharge/Tmax=0,5, trouver les deux retards possibles et prévoir la stabilité de chacun.
+2. Comparer 30° et 150° à même charge, puis porter la charge au-dessus de 1 ; observer la pente et le potentiel incliné.
+3. Dériver δ̈=−(Tmax sinδ−Tcharge)/J et expliquer le signe de cosδ ; calculer la petite pulsation et préciser ce qu’un seuil statique ne dit pas du démarrage.
+
+**Niveaux et approfondissements**
+
+- Sup : Produit vectoriel, trigonométrie et minimum d’énergie.
+- Spé : Stabilité, verrouillage et machines tournantes, particulièrement dans les parcours où elles sont au programme.
+- Au-delà : Dynamique de capture, alimentation variable et modèle multipolaire périodique en pθ.
+
+Leçons de référence : 19.
+
+**Résultat attendu.** Deux branches classées par leur pente et un seuil interprété sans inventer une simulation de décrochage.
+
+### Laboratoire `asynchrone`
+
+Lire le glissement comme la cause du courant rotorique, puis suivre séparément chaleur du rotor, conversion mécanique et flux d’entrefer dans un circuit équivalent triphasé.
+
+**Objets et unités**
+
+- Tension simple efficace en V, f en Hz, p paires de pôles, s=(Ωs−Ωr)/Ωs
+- R₁,R₂ en Ω ; L₁,L₂,Lm en mH ; puissances signées en W et couple en N·m
+
+**Hypothèses de l’expérience**
+
+- Triphasé équilibré, paramètres ramenés au stator
+- Modèle linéaire établi ; s=0 traité par la limite d’une admittance, pertes mécaniques non calculées
+
+**Techniques à mobiliser**
+
+- Phasors et associations d’impédances
+- Bilan Pg=Pm+PJrotor
+- Lecture de trois régimes par les signes
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir ce qui arrive au courant rotorique à s=0 et aux signes des puissances pour s<0.
+2. Comparer faible glissement, rotor arrêté et génératrice ; modifier R₂ et relever le déplacement du maximum de couple.
+3. Vérifier PJrotor=sPg≥0 et Pm=(1−s)Pg ; sur papier, montrer que la phase initiale d’une spire ne change pas son couple moyen.
+
+**Niveaux et approfondissements**
+
+- Sup : Lenz, vitesse relative et bilan de puissance ; le circuit triphasé est une entrée guidée.
+- Spé : Phasors, induction et bilans de Spé ; le circuit triphasé asynchrone est ici un prolongement accompagné, à distinguer du programme explicite des machines synchrones en PSI.
+- Au-delà : Modèles à paramètres variables, saturation et commande vectorielle.
+
+Leçons de référence : 20.
+
+**Résultat attendu.** Un partage de puissance cohérent pour moteur et génératrice, et une explication du couple nul au synchronisme.
+
+### Laboratoire `peau`
+
+Distinguer pénétration harmonique et diffusion d’un échelon continu. La même équation de diffusion explique une profondeur δ à fréquence fixée et une profondeur croissant en √t.
+
+**Objets et unités**
+
+- Fréquence f donnée par log₁₀(f/Hz), σ en MS·m⁻¹, μr constant
+- Bsurf en mT, temps depuis l’échelon en ms ; δ et √ηmt en m
+
+**Hypothèses de l’expérience**
+
+- Demi-espace x>0 ; champ tangent, loi d’Ohm locale à coefficients constants
+- Courant de déplacement négligeable ; milieu normal, sans équation de London
+
+**Techniques à mobiliser**
+
+- Diffusion et choix de la racine complexe
+- Test d’échelle en f⁻¹ᐟ² ou t¹ᐟ²
+- Dissipation locale et conditions à l’infini
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir le rapport des profondeurs pour f multipliée par 100, puis pour le temps d’échelon multiplié par quatre.
+2. Comparer cuivre à 1 et 100 kHz en harmonique ; passer en échelon et augmenter le temps.
+3. Déduire ∂tB=(μσ)⁻¹∂xxB de Maxwell et Ohm ; expliquer pourquoi ω→0 ne produit pas un état Meissner.
+
+**Niveaux et approfondissements**
+
+- Sup : Racine carrée, unités et interprétation d’un profil décroissant ; diffusion introduite progressivement.
+- Spé : Propagation dissipative, phasors et séparation entre régime établi et transitoire.
+- Au-delà : Conductivité dispersive, plaque finie et couplage London/composante normale.
+
+Leçons de référence : 23, 31.
+
+**Résultat attendu.** Deux lois de pénétration différenciées et une vérification du signe diffusif positif.
+
+### Laboratoire `maxwell`
+
+Voir si une onde transporte une puissance moyenne ou échange localement énergie électrique et magnétique. Comparer les champs instantanés au flux de Poynting plutôt que confondre amplitude et énergie.
+
+**Objets et unités**
+
+- f en GHz, amplitude électrique crête de chaque onde en V·m⁻¹
+- Ellipticité signée, temps t/T ; B en T, énergie en J·m⁻³ et S en W·m⁻²
+
+**Hypothèses de l’expérience**
+
+- Vide, ondes planes ; progressive +z ou deux ondes opposées égales
+- Convention exp(−iωt), superposition cohérente et polarisations déclarées
+
+**Techniques à mobiliser**
+
+- Superposition harmonique
+- Poynting et moyenne temporelle
+- Conditions de transversalité
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir B=E/c et le signe du flux pour une onde progressive ; prévoir la moyenne du flux pour deux ondes opposées égales.
+2. Comparer progressive, circulaire et stationnaire ; parcourir t/T et observer les positions des maxima de E,B et énergie.
+3. Retrouver S=E×H et le bilan local ; distinguer un flux instantané non nul d’un transport moyen nul dans la stationnaire.
+
+**Niveaux et approfondissements**
+
+- Sup : Superposition, phases et bilans ; les équations locales sont accompagnées.
+- Spé : Maxwell, ondes électromagnétiques et énergie selon la filière.
+- Au-delà : Paquets, milieux dispersifs et différence entre vitesse de phase et vitesse de transport.
+
+Leçons de référence : 1, 21, 22.
+
+**Résultat attendu.** Une interprétation séparée du champ, de l’énergie et du flux, avec moyenne et instant distingués.
+
+### Laboratoire `interfaces`
+
+Utiliser des conditions aux limites pour prédire amplitudes et flux. Brewster et réflexion totale donnent deux phénomènes différents qu’une courbe de réflexion seule ne doit pas confondre.
+
+**Objets et unités**
+
+- n₁,n₂ réels sans unité ; incidence en degrés ; TE/TM
+- λvide en nm ; r,t complexes, R,T flux normaux relatifs ; longueur évanescente en m
+
+**Hypothèses de l’expérience**
+
+- Interface plane entre diélectriques isotropes non magnétiques sans pertes
+- Pas de charges ou courant libres de surface ; kz transmis choisi décroissant si évanescent
+
+**Techniques à mobiliser**
+
+- Snell comme continuité de phase
+- Raccordement E/H et système linéaire
+- Bilan R+T=1 et racine évanescente
+
+**Prédire → expérimenter → justifier**
+
+1. À incidence normale air→verre, prévoir le signe de r et calculer R,T ; ne pas utiliser |t|² seul comme T.
+2. Comparer TE/TM, sélectionner Brewster puis réflexion totale ; modifier λ à angle fixé et observer l’échelle de pénétration.
+3. Retrouver les continuités, expliquer l’onde évanescente non nulle avec flux normal moyen nul, puis calculer ses limites sur papier.
+
+**Niveaux et approfondissements**
+
+- Sup : Réfraction et phases ; nombres complexes introduits sur un exemple concret.
+- Spé : Conditions aux limites et polarisation selon la filière ; contrôler les flux plutôt que les seules amplitudes.
+- Au-delà : Milieux absorbants, films minces et couplage par réflexion totale frustrée.
+
+Leçons de référence : 21, 24.
+
+**Résultat attendu.** Un bilan exact et une distinction justifiée entre zéro de réflexion TM et seuil d’évanescence.
+
+### Laboratoire `guide`
+
+Comprendre qu’une paroi sélectionne un nombre d’onde transverse et une fréquence de coupure. Le TE₁₀ relie séparation des variables, valeurs propres et vitesse de transport.
+
+**Objets et unités**
+
+- Largeur a en mm, f en GHz, Ecrête en V·m⁻¹
+- Distance z/a et phase t/T ; β en rad·m⁻¹, fc en Hz, vitesses en m·s⁻¹
+
+**Hypothèses de l’expérience**
+
+- Guide vide rectangulaire idéal, parois parfaitement conductrices
+- Mode TE₁₀ isolé ; excitation depuis z=0, branche décroissante sous coupure
+
+**Techniques à mobiliser**
+
+- Séparation des variables et conditions aux limites
+- Dispersion, coupure et eigenmode
+- Comparaison phase/groupe/flux
+
+**Prédire → expérimenter → justifier**
+
+1. Calculer fc=c/(2a), puis prévoir le signe de β² pour 3 et 8 GHz lorsque a=30 mm.
+2. Comparer propagatif, sous coupure et coupure exacte ; parcourir t/T et augmenter la longueur affichée.
+3. Retrouver sin(πx/a), β²=(ω/c)²−(π/a)² et vphasevg=c² au-dessus de la coupure ; expliquer l’absence d’un TEM dans le guide creux.
+
+**Niveaux et approfondissements**
+
+- Sup : Sinusoïdes, conditions aux extrémités et racine réelle/imaginaire sur un exemple accompagné.
+- Spé : Modes et séparation des variables, selon la filière ou en prolongement guidé.
+- Au-delà : Familles TE/TM complètes, topologie TEM et guides dissipatifs.
+
+Leçons de référence : 25.
+
+**Résultat attendu.** Une coupure calculée et une vitesse de phase supérieure à c interprétée sans confusion avec l’information.
+
+### Laboratoire `antenne`
+
+Déduire un diagramme angulaire d’une intégrale de phases. Taille d’ouverture et pointage font apparaître diffraction, absence possible de zéro et approximation des petits angles.
+
+**Objets et unités**
+
+- Largeur a/λ, λ en mm, pointage en degrés
+- Intensité angulaire normalisée sinc² ; phases en radians, sans puissance absolue imposée
+
+**Hypothèses de l’expérience**
+
+- Ouverture uniforme à rampe de phase prescrite ; observation de Fraunhofer
+- Diagramme scalaire dans un plan ; pas de rendement, adaptation ou circuit d’alimentation calculés
+
+**Techniques à mobiliser**
+
+- Intégrale exponentielle complexe
+- Différence de trajet et transformée de Fourier
+- Domaine angulaire exact versus petit angle
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir les premiers zéros pour a/λ=4 et démontrer leur absence à a/λ=0,5.
+2. Comparer les deux ouvertures, puis utiliser le pointage à 30° ; noter l’asymétrie en angle mais la symétrie en variable de phase.
+3. Intégrer exp[−ikx(sinθ−sinθ₀)] et expliquer pourquoi θ≈λ/a n’est permis que pour une ouverture grande devant λ ; traiter le réseau de l’exercice 32 sur papier.
+
+**Niveaux et approfondissements**
+
+- Sup : Interférences et trigonométrie ; l’intégrale introduit la diffraction.
+- Spé : Fraunhofer, phasors et formulation de Fourier selon la filière.
+- Au-delà : Directivité tridimensionnelle, facteur de réseau et réciprocité d’une antenne.
+
+Leçons de référence : 29, 28.
+
+**Résultat attendu.** Un diagramme relié à la géométrie et une limite de petit angle explicitement vérifiée.
+
+### Laboratoire `plasma`
+
+Relier une réponse électronique passive à une coupure et à l’absorption. Le choix de la racine de k est confronté au flux de Poynting et à la chaleur, pas seulement au tracé d’une amplitude.
+
+**Objets et unités**
+
+- ω/ωp et ν/ωp ; densité en 10¹⁸ m⁻³ ; Ecrête en V·m⁻¹
+- Distance en cm, temps t/T ; εr,k complexes, fp en Hz, pertes en W·m⁻³
+
+**Hypothèses de l’expérience**
+
+- Plasma froid homogène non magnétisé ; ions immobiles
+- Drude avec collisions constantes ; mode transverse et milieu semi-infini
+
+**Techniques à mobiliser**
+
+- Réponse harmonique et racine passive
+- Coupure, évanescence et dispersion
+- Bilan absorption/Joule
+
+**Prédire → expérimenter → justifier**
+
+1. Sans collisions, prévoir propagation pour ω/ωp=1,5 et évanescence pour 0,5 ; calculer fp à la densité choisie.
+2. Comparer ces régimes puis ajouter des collisions près de ω=ωp ; suivre décroissance et pertes.
+3. Retrouver εr=1−ωp²/[ω(ω+iν)] et le choix Imk≥0 ; sur papier, distinguer le mode longitudinal de l’exercice 34.
+
+**Niveaux et approfondissements**
+
+- Sup : Force de rappel collective et équation harmonique ; comparaison à une coupure d’oscillateur.
+- Spé : Propagation dans un milieu conducteur, dispersion et énergie selon la filière.
+- Au-delà : Plasmas chauds, magnétisés ou stratifiés ; eigenmodes et amortissements cinétiques.
+
+Leçons de référence : 10, 26.
+
+**Résultat attendu.** Une coupure et une absorption séparées, avec passivité vérifiée et limites de l’ionosphère déclarées.
+
+### Laboratoire `dielectrique`
+
+Associer dispersion et absorption d’un oscillateur lié, puis relier la polarisation d’une sphère à ses charges de surface. Les champs extérieur, intérieur et local sont distingués.
+
+**Objets et unités**
+
+- ω/ω₀, force d’oscillateur χ₀, γ/ω₀ et ε∞
+- Eextérieur en V·m⁻¹, rayon en mm ; P en C·m⁻², εr complexe et charges liées SI
+
+**Hypothèses de l’expérience**
+
+- Oscillateurs de Lorentz linéaires, amortissement positif
+- Sphère électrostatique uniforme pour la limite statique ; pas de transition ferroélectrique universelle déduite
+
+**Techniques à mobiliser**
+
+- Oscillateur forcé et puissance absorbée
+- Poisson, raccordement et polarisation
+- Distinction charge libre/charge liée
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir le signe de Imεr et celui de Reχ loin au-dessous et au-dessus de la résonance.
+2. Comparer les préréglages sous résonance, résonance et au-dessus ; modifier l’amortissement puis Eextérieur et lire la sphère statique.
+3. Démontrer ρliée=−divP et σliée=P·n ; retrouver le champ dépolarisant et préciser pourquoi le champ local de Lorentz est une autre construction.
+
+**Niveaux et approfondissements**
+
+- Sup : Oscillateur, dérivées et intégration ; polarisation introduite comme densité de dipôles.
+- Spé : Milieux linéaires, énergie et propagation selon la filière.
+- Au-delà : Champs locaux, Clausius–Mossotti et orientation dipolaire thermique, à traiter sur papier.
+
+Leçons de référence : 18, 27.
+
+**Résultat attendu.** Deux parties d’une réponse causale reliées et une charge liée de signe correct avec conservation vérifiée.
+
+### Laboratoire `aimantation`
+
+Comparer trois mécanismes : orientation classique, deux niveaux quantiques et moment orbital induit. Le champ démagnétisant d’un ellipsoïde oblige à distinguer champ extérieur et champ interne.
+
+**Objets et unités**
+
+- T en K, μ₀Hextérieur en T, densité en 10²⁷ m⁻³
+- Moment en μB, rayon orbital en pm, facteur démagnétisant N ; M,H en A·m⁻¹
+
+**Hypothèses de l’expérience**
+
+- Moments indépendants ou modèle orbital faible champ ; ellipsoïde uniformément aimanté
+- Hint=Hext−NM ; pas de ferromagnétisme ou de transition collective calculés
+
+**Techniques à mobiliser**
+
+- Poids de Boltzmann et dérivée de lnZ
+- Série de Langevin et saturation
+- Équation auto-cohérente avec champ démagnétisant
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir pourquoi les pentes de Langevin et tanh diffèrent d’un facteur trois à moment égal, puis le signe de la contribution diamagnétique.
+2. Comparer classique et deux niveaux à faible puis basse température ; passer au diamagnétisme et modifier le rayon orbital puis N.
+3. Retrouver L=cothx−1/x et ses limites ; distinguer cette auto-cohérence géométrique d’un champ moyen de Weiss attractif décrit au cours.
+
+**Niveaux et approfondissements**
+
+- Sup : Moments, énergie −μ·B, agitation thermique et limites d’une fonction.
+- Spé : Statistique à deux niveaux et bilans matière, selon la filière ou par un prolongement guidé.
+- Au-delà : Weiss, énergie libre et stabilité collective ; modèle de domaines distinct de la réponse calculée.
+
+Leçons de référence : 16, 17, 18.
+
+**Résultat attendu.** Trois lois de réponse distinguées par mécanisme, signe et orientations accessibles, sans assimilation à Meissner.
+
+### Laboratoire `meissner`
+
+Voir l’écrantage depuis les deux faces d’une plaque et comprendre ce que London ajoute à la conductivité parfaite. Le test d’histoire initiale distingue conservation du champ et sélection d’un état d’équilibre.
+
+**Objets et unités**
+
+- Demi-épaisseur a et λL en nm, Bextérieur en mT
+- Bz(x) en T, jy=−Bz′/μ₀ en A·m⁻² ; choix d’histoire pour la comparaison idéale
+
+**Hypothèses de l’expérience**
+
+- Plaque homogène dans l’état Meissner, mêmes champs aux faces
+- Faible champ, pas de vortex ou de piégeage calculés ; conducteur parfait comparé comme modèle à mémoire
+
+**Techniques à mobiliser**
+
+- Équation différentielle à deux conditions aux limites
+- Rotationnel et signe du courant
+- Ordre des limites et histoire initiale
+
+**Prédire → expérimenter → justifier**
+
+1. Calculer B(0)/B₀=1/cosh(a/λL) pour a/λL=1 et 5 et prévoir le sens des courants aux deux faces.
+2. Comparer plaque épaisse et deux faces proches ; changer l’histoire du conducteur parfait sans changer London.
+3. Démontrer ΔB=B/λL² et expliquer pourquoi E=0 impose seulement Ḃ=0 ; comparer à la diffusion normale du laboratoire peau.
+
+**Niveaux et approfondissements**
+
+- Sup : Exponentielle, hyperboliques et conditions aux limites, avec physique introduite.
+- Spé : Maxwell et résolution d’ODE ; le phénomène supraconducteur est un prolongement.
+- Au-delà : Phase du condensat, jauge, fluxoïde, type II et vortex, hors de la plaque London simple.
+
+Leçons de référence : 31, 23.
+
+**Résultat attendu.** Un profil satisfaisant les deux faces et une distinction explicite entre London, peau et conducteur parfait.
+
+### Laboratoire `faraday`
+
+Expliquer une rotation par deux phases propres et tester sa non-réciprocité. Une base circulaire déclarée et des axes de laboratoire fixes permettent un signe reproductible à l’aller-retour.
+
+**Objets et unités**
+
+- Verdet V en rad·T⁻¹·m⁻¹, B longitudinal en T, longueur en cm, λ en nm
+- Angles initial/analyseur en degrés ; θ=VBL en radians et modes e±=(ex±i ey)/√2
+
+**Hypothèses de l’expérience**
+
+- Milieu transparent à rotation pure prescrite ; axes transverses calibrés et miroir à phase commune
+- V est prescrit à la longueur d’onde choisie, pas une loi spectrale microscopique calculée
+
+**Techniques à mobiliser**
+
+- Diagonalisation dans une base circulaire
+- Matrice de Jones et loi de Malus
+- Retour non réciproque versus retour réciproque
+
+**Prédire → expérimenter → justifier**
+
+1. Calculer θ=VBL et prévoir la transmission entre analyseurs croisés pour un puis deux passages.
+2. Comparer passage simple et aller-retour ; inverser B puis déplacer l’analyseur pour retrouver l’orientation.
+3. Décomposer ex en e±, retrouver θ=(k−−k+)L/2 et montrer R(θ)²=R(2θ) ; annoncer ce qui reste prescrit quand λ est modifiée.
+
+**Niveaux et approfondissements**
+
+- Sup : Trigonométrie, phase et loi de Malus ; diagonalisation introduite par un exemple.
+- Spé : Polarisation et matrices complexes selon la filière ou par un complément guidé.
+- Au-delà : Gyrotropie tensorielle, dichroïsme circulaire et relations de réciprocité.
+
+Leçons de référence : 32, 22.
+
+**Résultat attendu.** Un signe lié à des bases fixes et un double passage qui distingue Faraday d’une simple rotation réciproque.
+
+### Laboratoire `kerr`
+
+Construire et vérifier un profil localisé auto-guidé, puis le comparer à la diffraction libre. Le laboratoire traite le Kerr optique dépendant de l’intensité, avec ses unités et sa réduction monochromatique.
+
+**Objets et unités**
+
+- λvide en μm, n₀, n₂ en 10⁻²⁰ m²·W⁻¹, I₀ en GW·cm⁻² (1 GW·cm⁻²=10¹³ W·m⁻²)
+- Distance normalisée z/(n₀k₀y₀²), champ en V·m⁻¹, largeur en m ; I₀=n₀ε₀cE₀²/2
+
+**Hypothèses de l’expérience**
+
+- Non-linéarité focalisante, enveloppe lente et modèle monochromatique ; Iref=n₀ε₀cE²/2, flux exact Sz=[k/(n₀k₀)]Iref
+- Gaussienne libre de même puissance physique intégrée, avec un profil et un pic différents ; pas de Kerr DC ou magnéto-optique
+
+**Techniques à mobiliser**
+
+- Intégrale première d’une ODE non linéaire
+- Solution sech et relation amplitude-largeur
+- Adimensionnement et test d’une approximation
+
+**Prédire → expérimenter → justifier**
+
+1. À n₂ fixé, prévoir l’effet de I₀ multipliée par quatre sur le champ crête et la largeur du profil localisé.
+2. Comparer les préréglages d’intensité puis augmenter la distance normalisée ; observer le profil auto-guidé et la référence de diffraction libre.
+3. Vérifier la sech par dérivation et son intégrale première ; sur papier décomposer E³ en ω et 3ω et expliciter la normalisation de l’intensité.
+
+**Niveaux et approfondissements**
+
+- Sup : Fonctions hyperboliques, énergie d’un oscillateur fictif et changements d’échelle.
+- Spé : ODE, phasors et diffusion/diffraction comme techniques ; la non-linéarité est un prolongement.
+- Au-delà : Enveloppes non linéaires, stabilité et solitons ; différencier les trois effets nommés Kerr.
+
+Leçons de référence : 33, 34.
+
+**Résultat attendu.** Une amplitude et une largeur liées par calcul, et une portée de modèle annoncée sans identifier tout Kerr à une sech.
+
+### Laboratoire `rayonnement`
+
+Passer d’un diagramme dipolaire transverse à une puissance intégrée, puis d’une polarisation induite à une section de diffusion. Rayleigh, résonance et Thomson révèlent trois régimes d’un même modèle.
+
+**Objets et unités**
+
+- Fréquence incidente et propre en THz, γ/ω₀ ; p₀ en 10⁻²⁹ C·m
+- Eincident crête en V·m⁻¹ ; intensité en W·m⁻², puissance en W, section efficace en m²
+
+**Hypothèses de l’expérience**
+
+- Dipôle ponctuel, zone lointaine, source imposée ou électron lié linéaire
+- ka≪1 ; kr≫1 ; réaction radiative non résolue dans l’oscillateur simple
+
+**Techniques à mobiliser**
+
+- Projection transverse et retard
+- Intégrale d’angle solide
+- Analyse asymptotique et section efficace
+
+**Prédire → expérimenter → justifier**
+
+1. Prévoir les directions où le rayonnement est nul et le facteur de diffusion si f est doublée loin sous f₀.
+2. Comparer Rayleigh, résonance et Thomson ; choisir ensuite un dipôle imposé et doubler son amplitude.
+3. Intégrer sin²θ sur la sphère, retrouver P∝ω⁴p₀² et σ=P/I ; relier la loi λ⁻⁴ au ciel bleu avec les limites spectrales et perceptives.
+
+**Niveaux et approfondissements**
+
+- Sup : Puissance, trigonométrie et ordre de grandeur ; angle solide introduit progressivement.
+- Spé : Ondes, Poynting et développement dipolaire selon la filière.
+- Au-delà : Réaction radiative, extinction, diffusion multiple et corrections quantiques.
+
+Leçons de référence : 28, 30.
+
+**Résultat attendu.** Une puissance indépendante de r, une section en m² et des régimes comparés avec leurs hypothèses.
+
+### Laboratoire `dynamo`
+
+Déduire un seuil d’amplification à partir des valeurs propres d’un modèle α² local. L’hélicité et la diffusion sont confrontées à Rm pour montrer pourquoi un nombre élevé ne suffit pas à entretenir un champ.
+
+**Objets et unités**
+
+- α et U en mm·s⁻¹, diffusivité magnétique en m²·s⁻¹, longueur d’onde L en km
+- k=2π/L, temps en années, B₀ en mT ; γ en s⁻¹ et croissance affichée aussi en logarithme
+
+**Hypothèses de l’expérience**
+
+- Fermeture α² constante prescrite ; deux modes hélicoïdaux de divergence nulle
+- Aucune simulation du noyau, convection ou rétroaction ; amplification non saturée du modèle linéaire
+
+**Techniques à mobiliser**
+
+- Élimination E/j dans l’induction MHD
+- Eigenmode du rotationnel et taux de croissance
+- Échelles temporelles, seuil et contre-exemple
+
+**Prédire → expérimenter → justifier**
+
+1. Calculer k=2π/L et prévoir le signe de γ=±αk−ηmk² pour les deux hélicités.
+2. Comparer bon mode, mauvaise hélicité et α=0 ; choisir grand Rm sans croissance et modifier U sans changer α.
+3. Retrouver le seuil |α|>ηmk et montrer que U intervient dans Rm mais pas automatiquement dans α ; expliquer ce qu’il manquerait pour une dynamo terrestre saturée.
+
+**Niveaux et approfondissements**
+
+- Sup : Exponentielle, unités et bilan croissance/décroissance sur un modèle accompagné.
+- Spé : Calcul vectoriel, diffusion et valeurs propres comme techniques ; MHD/dynamo sont des prolongements.
+- Au-delà : Fermeture turbulente, conditions globales, anti-dynamos et rétroaction du champ sur le fluide.
+
+Leçons de référence : 35, 36.
+
+**Résultat attendu.** Un seuil spectral démontré et une interprétation explicitement limitée d’un modèle local prescrit.
+
+## Les 48 exercices corrigés
+
+### 1. Le dipôle se trompe-t-il de 1 % à cinq séparations ?
+
+*Sup → Spé* — laboratoire `dipoles`.
+
+**Énoncé.** Deux charges ±q sont placées en ±a/2 sur x. Pour r>a/2 sur l’axe positif, calculer les potentiels exact et dipolaire et leur erreur relative rapportée à l’exact. Même question pour le champ. Prendre r=5a, puis déterminer la distance assurant 1 % d’erreur sur V.
+
+**Corrigé.** Soustraire les deux potentiels : Vex=qa/[4πε₀(r²−a²/4)], Vdip=qa/(4πε₀r²). Donc (Vex−Vdip)/Vex=a²/(4r²), soit 1 % à 5a. Dériver en r : Eex=2qar/[4πε₀(r²−a²/4)²] et Edip=2qa/(4πε₀r³). Le rapport Edip/Eex=(1−a²/(4r²))² donne une erreur de 1,99 % à 5a. La condition sur V est r≥5a ; la même distance n’assure pas le même seuil pour une dérivée. À r doublé, les deux erreurs sont approximativement divisées par quatre.
+
+### 2. Deux dipôles parallèles peuvent se repousser
+
+*Spé* — laboratoire `dipoles`.
+
+**Énoncé.** Deux dipôles de norme p=10⁻²⁹ C·m, séparés de r=1 nm, sont maintenus parallèles. Calculer énergie et force radiale lorsque p est parallèle, puis perpendiculaire à la ligne des centres. Quelle orientation donne une attraction ?
+
+**Corrigé.** Avec K=1/(4πε₀), U=K[p₁·p₂−3(p₁·n)(p₂·n)]/r³. Sur l’axe U=−2Kp²/r³≈−1,80×10⁻²¹ J et Fr=−∂rU=−6Kp²/r⁴≈−5,39 pN : attraction. Dans la géométrie équatoriale U=+Kp²/r³≈8,99×10⁻²² J et Fr=+3Kp²/r⁴≈+2,70 pN : répulsion. Le signe découle de l’énergie, pas du seul parallélisme. Ces valeurs utilisent le modèle ponctuel ; il faut encore que la taille de chaque dipôle soit petite devant 1 nm et que leur orientation soit effectivement contrainte.
+
+### 3. Sphère chargée : deux chemins vers la même énergie
+
+*Spé* — laboratoire `gauss`.
+
+**Énoncé.** Une sphère de rayon R et charge volumique uniforme Q est dans le vide. Déterminer E et V avec V(∞)=0, puis son énergie par ½∫ρV et par l’intégrale de ε₀E²/2. Quelle fraction de l’énergie est située hors de la sphère ?
+
+**Corrigé.** Gauss donne E=KQr/R³ dans la sphère et KQ/r² dehors, K=1/(4πε₀). Intégration : Vint=KQ(3−r²/R²)/(2R), Vext=KQ/r. Avec ρ=3Q/(4πR³), ½∫₀ᴿρV 4πr²dr=3KQ²/(5R). L’intégrale du champ intérieur donne KQ²/(10R), celle du champ extérieur KQ²/(2R) ; leur somme vaut 3KQ²/(5R). La fraction extérieure est 5/6 : « charge intérieure » ne signifie pas « énergie uniquement intérieure ». Les raccordements en R et les dimensions Q²/(ε₀R) vérifient le calcul.
+
+### 4. Coaxial : tension imposée ou charge imposée
+
+*Sup → Spé* — laboratoire `gauss`.
+
+**Énoncé.** Un coaxial a=1 cm, b=2 cm, ℓ=1 m est sous U=100 V dans le vide. Calculer C,Q,W. Remplir ensuite d’un diélectrique εr=4 : comparer le champ et l’énergie si le générateur reste branché, puis si le câble est isolé avant l’insertion.
+
+**Corrigé.** C₀=2πε₀ℓ/ln2≈80,3 pF ; Q₀=C₀U≈8,03 nC ; W₀=½C₀U²≈0,401 μJ. À U fixé, C=4C₀, Q=4Q₀ et W=4W₀ ; E(r)=U/[r ln2] reste inchangé. À Q fixé, U=U₀/4, E=E₀/4 et W=Q²/(2C)=W₀/4. Les énergies changent différemment parce que le générateur échange du travail dans le premier cas. Déterminer une force d’insertion exige d’inclure le travail de la source et la géométrie partiellement remplie ; comparer uniquement W à U fixé ne ferme pas ce bilan.
+
+### 5. Spire, champ axial et approximation dipolaire
+
+*Sup → Spé* — laboratoire `biotsavart`.
+
+**Énoncé.** Une spire de rayon R=0,1 m porte I=2 A. Calculer B(0), B(R) et le moment magnétique. À z=5R, quantifier l’erreur du champ dipolaire axial relativement au champ exact.
+
+**Corrigé.** Biot–Savart donne B(z)=μ₀IR²/[2(R²+z²)³ᐟ²]. Ainsi B(0)=12,57 μT, B(R)=B(0)/2³ᐟ²≈4,44 μT. Le moment vaut m=IπR²≈0,0628 A·m². Le champ dipolaire vaut μ₀m/(2πz³). Son rapport à l’exact est [1+(R/z)²]³ᐟ² ; à 5R, il surestime de 1,04³ᐟ²−1≈6,06 %. Cette erreur est d’ordre (R/z)². Inverser I inverse le champ et m sans modifier l’erreur relative en valeur absolue. L’axe simplifie l’intégrale par compensation des composantes transverses.
+
+### 6. L’inductance interne d’un coaxial n’est pas toujours négligeable
+
+*Spé* — laboratoire `biotsavart`.
+
+**Énoncé.** Un câble de longueur ℓ possède un conducteur intérieur plein de rayon a, portant un courant uniforme I, et un retour surfacique en b. Calculer l’inductance par unité de longueur, puis expliquer ce qui change à haute fréquence lorsque le courant intérieur se concentre à la surface.
+
+**Corrigé.** Ampère donne B=μ₀Ir/(2πa²) pour r<a, B=μ₀I/(2πr) pour a<r<b et B=0 au-delà. Intégrer B²/(2μ₀) sur les anneaux : Wint/ℓ=μ₀I²/(16π), Wext/ℓ=μ₀I²ln(b/a)/(4π). Comme W=½LI², L/ℓ=μ₀/(8π)+μ₀ln(b/a)/(2π). Pour b/a=2, cela vaut environ 0,1886 μH·m⁻¹. Dans la limite d’une couche superficielle très mince, le champ intérieur disparaît et le terme μ₀/(8π)=0,0500 μH·m⁻¹ disparaît aussi. La résistance augmente néanmoins par effet de peau ; une inductance réduite ne signifie pas une diminution de toutes les pertes.
+
+### 7. Retrouver l’écartement de Helmholtz
+
+*Spé* — laboratoire `helmholtz`.
+
+**Énoncé.** Deux bobines identiques de rayon R sont centrées en ±d/2. Démontrer que B′(0)=0, calculer B″(0), puis trouver d qui annule cette dérivée. Donner B(0) pour N=100,I=1 A,R=0,15 m.
+
+**Corrigé.** B(z)=μ₀NIR²[f(z−d/2)+f(z+d/2)]/2 avec f(x)=(R²+x²)⁻³ᐟ². La parité impose B′(0)=0. Or f″(x)=3(4x²−R²)/(R²+x²)⁷ᐟ², donc B″(0)=3μ₀NIR²(d²−R²)/(R²+d²/4)⁷ᐟ². L’unique écartement positif annulant la courbure est d=R. Alors B(0)=(4/5)³ᐟ²μ₀NI/R≈0,599 mT. Si d<R, le centre est un maximum axial ; si d>R, c’est un minimum. Le réglage d=R laisse un terme quartique, il ne rend pas B constant partout.
+
+### 8. Dimensionner une zone de mesure uniforme
+
+*Spé* — laboratoire `helmholtz`.
+
+**Énoncé.** Au réglage de Helmholtz, B(z)/B(0)=1−(144/125)(z/R)⁴+O((z/R)⁶). Estimer la demi-longueur axiale où l’erreur reste inférieure à 0,1 %, puis discuter la validité de cette estimation et l’effet d’un doublement du courant.
+
+**Corrigé.** Résoudre (144/125)(z/R)⁴≤10⁻³ donne |z|/R≤(125×10⁻³/144)¹ᐟ⁴≈0,172. Pour R=0,15 m, cela fournit |z|≈25,7 mm. Le terme suivant n’est pas nul : cette borne est une estimation asymptotique à contrôler par la formule exacte, particulièrement si l’on revendique une tolérance certifiée. Doubler I double B(z) et B(0), donc laisse inchangée l’erreur relative, mais double l’erreur absolue en teslas. La variation transverse exige un autre contrôle : une tolérance sur une ligne axiale n’est pas automatiquement une tolérance dans un cylindre de même rayon.
+
+### 9. Une vitesse moyenne lente dans un courant intense
+
+*Sup* — laboratoire `drude`.
+
+**Énoncé.** Pour n=8×10²⁸ m⁻³, τ=25 fs, m*=me et un champ E=100 V·m⁻¹ établi à t=0, déterminer σ₀, v∞,j∞ et le temps pour atteindre 95 % du courant final. Fermer le bilan énergétique du transitoire.
+
+**Corrigé.** σ₀=ne²τ/me≈5,64×10⁷ S·m⁻¹, v∞=−eτE/me≈−0,440 m·s⁻¹ et j∞=σ₀E≈5,64×10⁹ A·m⁻². La solution j=j∞(1−e⁻ᵗᐟτ) atteint 95 % à t=−τln0,05≈2,996τ≈74,9 fs. Multiplier me dv/dt=−eE−mev/τ par nv donne d(nmev²/2)/dt=jE−nmev²/τ. La puissance reçue ne devient donc pas entièrement chaleur avant le régime final. La vitesse calculée est une dérive moyenne ; elle n’est ni la vitesse de propagation d’un signal ni la vitesse microscopique de chaque électron.
+
+### 10. Un même noyau donne amplitude, phase et chaleur
+
+*Spé* — laboratoire `drude`.
+
+**Énoncé.** Calculer σ(ω) à ωτ=1. Pour Ecrête=100 V·m⁻¹ et σ₀=5×10⁷ S·m⁻¹, déterminer la chaleur moyenne par volume. Montrer que le noyau causal K(s)=(σ₀/τ)e⁻ˢᐟτ pour s≥0 redonne cette conductivité.
+
+**Corrigé.** σ=σ₀/(1−i)=σ₀(1+i)/2, de module σ₀/√2 et d’argument +π/4. Avec exp(−iωt), j(t) retarde E(t) de π/4. La puissance moyenne est Reσ Ecrête²/2=σ₀Ecrête²/4=1,25×10¹¹ W·m⁻³ ; utiliser |σ| à la place de Reσ serait faux. Pour E(t−s)∝e⁻ⁱωᵗeⁱωˢ, intégrer K(s)eⁱωˢ ds donne σ₀/[1−iωτ]. Le support s≥0 garantit que la réponse ne dépend pas d’un champ futur, et le pôle ω=−i/τ correspond à une relaxation stable.
+
+### 11. Hall : des bornes qui fixent le signe
+
+*Sup → Spé* — laboratoire `hall`.
+
+**Énoncé.** I=0,2 A va vers +x ; B=0,5 T vers +z. La plaquette a w=5 mm,t=0,2 mm,n=10²³ m⁻³ et des électrons. Définir UH=V(y=−w/2)−V(y=+w/2). Calculer vx,Ey,UH puis recommencer avec q=+e.
+
+**Corrigé.** jx=I/(wt)=2×10⁵ A·m⁻². Pour q=−e, vx=jx/(nq)≈−12,48 m·s⁻¹. La condition q(E+v×B)=0 donne Ey=vxB≈−6,24 V·m⁻¹. Puis UH=Ey w≈−31,2 mV, également IB/(nqt). Pour q=+e, vx,Ey et UH inversent leurs signes à courant identique. L’inversion des bornes seule change le signe mesuré sans changer les porteurs. La largeur disparaît de UH à I fixé, alors que l’épaisseur subsiste : le résultat est une tension transverse, pas une propriété géométrique universelle du matériau.
+
+### 12. Supprimer une erreur de placement des contacts
+
+*Spé* — laboratoire `hall`.
+
+**Énoncé.** Un voltmètre mal aligné mesure Umes(B)=UH(B)+Uparasite(B), où la contribution parasite est paire en B. Proposer une combinaison de mesures isolant Hall. Une valeur antisymétrisée de −10 mV sous I=0,1 A,B=1 T,t=0,1 mm donne quelle densité de porteurs dans le modèle à électrons ?
+
+**Corrigé.** UH,isolé=[Umes(B)−Umes(−B)]/2, puisque le terme Hall est impair en B dans le modèle linéaire et le parasite pair. Avec les bornes de l’exercice précédent, UH=−IB/(net), donc n=IB/(e t |UH|)≈6,24×10²³ m⁻³. Une seconde inversion de I contrôle une tension thermique indépendante du courant. Cette mesure fournit n seulement dans le modèle à un porteur ; avec deux populations, leurs mobilités pondèrent le coefficient de Hall et l’on ne peut pas convertir automatiquement une tension en densité totale. Vérifier les unités : A·T/(C·m·V) vaut m⁻³.
+
+### 13. Barreau RL : classer le régime avant de le simuler
+
+*Spé* — laboratoire `induction`.
+
+**Énoncé.** Un barreau de masse m se déplace sur des rails, avec Ldi/dt+Ri=−c v et mdv/dt=c i, c=Bℓ. Déduire l’ODE sur v, le critère d’oscillation et le bilan d’énergie. Prendre m=0,01 kg,L=0,1 H,R=0,1 Ω,B=1 T,ℓ=0,5 m.
+
+**Corrigé.** i=m v̇/c, puis Lm v̈+Rm v̇+c²v=0. Le régime est sous-amorti si R²<4Lc²/m. Ici R²=0,01 Ω² contre 4Lc²/m=10 Ω². Le taux d’amortissement vaut R/(2L)=0,5 s⁻¹ et ωd=√[c²/(mL)−R²/(4L²)]≈15,80 rad·s⁻¹. L’énergie W=½mv²+½Li² vérifie Ẇ=−Ri²≤0 : un retour de vitesse reste possible par restitution de l’énergie inductive. Il ne contredit pas Lenz. Dans la limite L→0, l’équation se réduit à v̇=−c²v/(mR), sans oscillation.
+
+### 14. Un cadre n’a pas de vitesse limite après immersion
+
+*Sup → Spé* — laboratoire `induction`.
+
+**Énoncé.** Un cadre de largeur a=0,2 m et hauteur b=0,2 m tombe depuis l’entrée dans un champ uniforme B=0,5 T. Sa masse est 0,1 kg, R=1 Ω et sa vitesse initiale nulle. Négliger son inductance. Écrire le mouvement pendant l’entrée puis après y=b, axe y descendant. Peut-on annoncer une vitesse limite globale ?
+
+**Corrigé.** Pendant l’entrée, Φ=Bay, i=−Ba ẏ/R et m ÿ=mg−B²a²ẏ/R. τ=mR/(B²a²)=10 s, vlim=gτ=98,1 m·s⁻¹ ; v=vlim(1−e⁻ᵗᐟτ), y=vlim[t−τ(1−e⁻ᵗᐟτ)]. L’immersion a lieu quand y=b, bien avant τ : timmersion est voisin de √(2b/g)=0,202 s et vimmersion voisin de 1,98 m·s⁻¹. Après cette date Φ=Bab constant, e=i=0 ; v=vimmersion+g(t−timmersion). La valeur 98,1 m·s⁻¹ est une asymptote de l’équation d’entrée prolongée artificiellement, pas une limite du mouvement complet.
+
+### 15. L’impédance de résonance d’un haut-parleur
+
+*Spé* — laboratoire `hautparleur`.
+
+**Énoncé.** Un haut-parleur a m=15 g,k=1500 N·m⁻¹,b=1 N·s·m⁻¹,κ=5 N·A⁻¹,R=6 Ω,L=0,5 mH. Sous une tension crête de 2 V, calculer fréquence propre, impédance et vitesse crête à ω₀. Utiliser exp(−iωt).
+
+**Corrigé.** ω₀=√(k/m)=316,23 rad·s⁻¹ et f₀=50,33 Hz. À cette fréquence Zm=b et Zentrée=R−iω₀L+κ²/b=31−0,158i Ω. |ĩ|=2/|Z|≈64,5 mA, puis |ṽ|=κ|ĩ|/b≈0,323 m·s⁻¹ et |x̃|=|ṽ|/ω₀≈1,02 mm. La contre-fém augmente fortement l’impédance au lieu de laisser un courant 2/6 A. Les déplacements restent dans le domaine linéaire seulement si la suspension et le champ actif restent constants sur cette course ; le modèle ne déduit pas de ces nombres une pression acoustique complète.
+
+### 16. Un seul signe erroné crée de l’énergie
+
+*Sup → Spé* — laboratoire `hautparleur`.
+
+**Énoncé.** Partir de u=Ri+Li̇+κv et mv̇+bv+kx=κi. Démontrer le bilan total. Que deviendrait-il si l’on remplaçait uniquement +κv par −κv ? Vérifier en régime harmonique que la partie réelle de l’impédance motrice est positive.
+
+**Corrigé.** ui=Ri²+Li i̇+κiv et κiv=mv v̇+bv²+kx ẋ. D’où Ẇ=ui−Ri²−bv² pour W=½Li²+½mv²+½kx². Changer le seul signe électrique donnerait Ẇ=ui−Ri²−bv²+2κiv : un échange interne non compensé subsisterait, incompatible avec un transducteur passif. Avec X=ωm−k/ω, Zmot=κ²/(b−iX), donc Re Zmot=κ²b/(b²+X²)≥0. Elle représente la puissance mécanique dissipée vue du circuit. Si b=0, cette partie est nulle hors de la résonance idéale ; traiter la résonance sans pertes demande une limite, pas une division par zéro.
+
+### 17. Transformer : reconstruire B à partir de e₂
+
+*Spé* — laboratoire `hysteresis`.
+
+**Énoncé.** Un tore a ℓ=0,3 m,S=2 cm²,N₁=N₂=100 et un secondaire ouvert. Le primaire porte un courant crête 3 A. B(t)=1 T sin(2π×50t). Donner Hcrête et e₂(t). Pourquoi faut-il intégrer une tension pour tracer le cycle ?
+
+**Corrigé.** H=N₁i₁/ℓ donne Hcrête=1000 A·m⁻¹. Faraday impose e₂=−N₂S Ḃ=−6,283 cos(314,16t) V. La tension secondaire est en quadrature avec B et renseigne dB/dt : elle doit être intégrée, B=B(t₀)−∫e₂dt/(N₂S), avant une représentation H–B. L’ouverture du secondaire justifie de négliger N₂i₂ dans Ampère ; sous charge ce serait faux. Une composante continue parasite de e₂ produit une dérive linéaire de B reconstruit ; l’étalonnage de l’intégrateur et le choix de la constante sont donc nécessaires. Les signes dépendent des orientations des bobinages, à annoncer sur le montage.
+
+### 18. Une aire d’hystérésis devient une puissance
+
+*Spé* — laboratoire `hysteresis`.
+
+**Énoncé.** Un cycle quasi rectangulaire parcourt les branches H=±Hc entre B=−Bs et +Bs, Hc=1000 A·m⁻¹,Bs=1 T. Calculer l’énergie dissipée par cycle pour un noyau de 60 cm³, puis à 50 Hz. Que change une contribution réversible B=μH ajoutée au cycle ?
+
+**Corrigé.** L’aire positive ∮H dB=4HcBs=4000 J·m⁻³. Le volume vaut 6×10⁻⁵ m³ : Wcycle=0,24 J et P=12 W. Une contribution réversible linéaire apporte ∮H d(μH)=μ∮d(H²/2)=0 ; elle incline le graphe mais ne change pas son aire fermée. Ceci n’autorise pas à écrire partout Wstockée=½BH pour le matériau hystérétique : son état dépend de son histoire. La proportionnalité P∝f suppose le cycle quasi statique inchangé ; des pertes de Foucault ou une mémoire dynamique peuvent modifier l’aire avec f.
+
+### 19. Retard de 30° ou de 150° : même couple, stabilité différente
+
+*Spé* — laboratoire `synchrone`.
+
+**Énoncé.** Un dipôle rotorique à une paire de pôles a m=2 A·m²,B=0,5 T,J=0,1 kg·m². Le couple résistant vaut 0,5 N·m. Trouver les équilibres synchrones et la pulsation des petites oscillations autour de la branche stable.
+
+**Corrigé.** Tmax=mB=1 N·m et δ=θchamp−θrotor. Le synchronisme donne sinδ₀=0,5 : δs=30° et δu=150° modulo 2π. Comme δ̈=−(Tmax sinδ−Tcharge)/J, une perturbation ε vérifie ε̈+[Tmax cosδ₀/J]ε=0. À 30°, ωosc=√(cos30°/0,1)≈2,943 rad·s⁻¹ ; à 150° le coefficient est négatif et une perturbation croît exponentiellement. Sans amortissement la branche stable oscille, elle ne converge pas spontanément. Le couple seul ne distingue donc pas les deux états ; sa dérivée et la convention de retard fixent le rappel.
+
+### 20. Le seuil statique n’est pas un scénario de démarrage
+
+*Spé → Au-delà* — laboratoire `synchrone`.
+
+**Énoncé.** Pour le rotor précédent, fchamp=50 Hz. Calculer vitesse et puissance mécanique en synchronisme sous 0,5 N·m. Examiner l’existence d’un équilibre sous 1,2 N·m. Que permet de conclure un couple-angle, et que ne permet-il pas de conclure sur le démarrage ?
+
+**Corrigé.** À une paire de pôles, Ωs=2πfchamp≈314,16 rad·s⁻¹, soit 3000 tr·min⁻¹. La puissance convertie à 0,5 N·m est 157,1 W. À 1,2 N·m>Tmax, l’équation sinδ=Tcharge/Tmax n’a aucune solution réelle : aucun verrouillage statique n’existe pour ces paramètres. Le diagramme démontre ce seuil et classe les branches. Il ne calcule pas une capture depuis l’arrêt : il faudrait intégrer les équations mécaniques avec alimentation, inertie, pertes et conditions initiales. Un couple moyen nul pour deux rotations uniformes de vitesses différentes n’exclut pas un démarrage assisté ou une variation de fréquence.
+
+### 21. À cinq pour cent de glissement, où va la puissance ?
+
+*Spé* — laboratoire `asynchrone`.
+
+**Énoncé.** Une machine tourne avec f=50 Hz,p=2 paires de pôles,s=0,05 et une puissance d’entrefer Pg=1000 W. Calculer Ωs,Ωr,T,PJrotor,Pm. Donner les mêmes relations signées si s=−0,05 et Pg=−1000 W.
+
+**Corrigé.** Ωs=2πf/p=157,08 rad·s⁻¹ ; Ωr=(1−s)Ωs=149,23 rad·s⁻¹. T=Pg/Ωs=6,366 N·m, PJrotor=sPg=50 W et Pm=(1−s)Pg=950 W. Les 50 W restants sont chaleur rotorique ; les pertes statoriques et mécaniques réduisent encore la puissance utile. En génératrice, Ωr=164,93 rad·s⁻¹,T=−6,366 N·m,PJrotor=50 W et Pm=−1050 W : la mécanique fournit 1050 W, 1000 W traversent l’entrefer vers le stator et 50 W chauffent le rotor. Le produit sPg reste non négatif ; un glissement négatif n’est pas une dissipation négative.
+
+### 22. La phase initiale ne change pas le couple moyen asynchrone
+
+*Spé* — laboratoire `asynchrone`.
+
+**Énoncé.** Une bobine rotorique a Φ(t)=Φ₀cos(Δωt−φ), résistance R et inductance L. Dans le régime établi, déduire le couple moyen de la puissance Joule. Montrer son indépendance en φ et trouver le glissement angulaire donnant son maximum en valeur absolue.
+
+**Corrigé.** La fém crête vaut |Φ₀Δω|. Le courant crête vaut |Φ₀Δω|/√[R²+(LΔω)²]. La chaleur moyenne est RΦ₀²Δω²/[2(R²+L²Δω²)]. Elle vaut TmoyΔω, d’où Tmoy=Φ₀²RΔω/[2(R²+L²Δω²)] avec le signe de Δω. Une phase temporelle φ disparaît de la moyenne des carrés. Dériver x/(R²+L²x²) donne un extremum à |Δω|=R/L ; le couple tend vers zéro au synchronisme et diminue à très grand glissement inductif. Pour L=0, la croissance linéaire du modèle résistif n’a plus ce maximum : extrapoler ce modèle vers tout régime serait trompeur.
+
+### 23. Peau : une loi en racine carrée
+
+*Spé* — laboratoire `peau`.
+
+**Énoncé.** Calculer la profondeur de peau du cuivre σ=58 MS·m⁻¹,μ=μ₀ à 1 kHz et 100 kHz. À 1 kHz, donner amplitude relative et retard temporel à x=3δ. Expliquer le signe de la racine avec exp(−iωt).
+
+**Corrigé.** δ=√[2/(μσω)]=√[1/(πμσf)] donne 2,09 mm puis 0,209 mm. La solution bornée dans x>0 est B̃=B₀exp(−x/δ+i x/δ), soit k=(1+i)/δ. À x=3δ, l’amplitude vaut e⁻³≈0,0498 et le champ réel est B₀e⁻³cos(ωt−3) : il retarde le champ de surface de 3 rad, modulo une période. La racine opposée croîtrait à l’infini et ne décrit pas une excitation passive depuis la surface. Le modèle suppose σ constant et courant de déplacement négligeable ; il ne suffit pas d’augmenter f arbitrairement en gardant ces hypothèses.
+
+### 24. Échelon : la pénétration continue de grandir
+
+*Spé* — laboratoire `peau`.
+
+**Énoncé.** Un demi-espace normal a ηm=1/(μσ) et B(0,t)=B₀ pour t>0, B(x,0)=0. Partant de B/B₀=erfc[x/(2√ηmt)], déterminer la profondeur où B=B₀erfc1. Que vaut le flux magnétique pénétré par unité de largeur ?
+
+**Corrigé.** Le niveau erfc1≈0,1573 se situe à x=2√ηmt : quadrupler t double la profondeur. Pour le cuivre ηm≈0,01372 m²·s⁻¹, à 1 ms ce niveau est à 7,41 mm. Intégrer sur x≥0 et poser u=x/(2√ηmt) donne ∫Bdx=2B₀√ηmt ∫₀∞erfc u du=2B₀√(ηmt/π). L’intégrale de erfc vaut 1/√π, obtenue en permutant les deux intégrales de sa définition gaussienne. La croissance en √t distingue cette diffusion d’un écrantage London statique. La solution du demi-espace cesse d’être adaptée lorsque la pénétration atteint l’autre face d’une plaque finie.
+
+### 25. Courant de déplacement : choisir deux surfaces
+
+*Spé* — laboratoire `maxwell`.
+
+**Énoncé.** Un condensateur plan circulaire de rayon a, entrefer vide, est chargé avec courant I(t). Négliger les bords. Calculer le champ Bφ à rayon r<a entre les plaques et montrer qu’une surface passant dans le fil ou dans l’entrefer donne la même circulation d’Ampère–Maxwell.
+
+**Corrigé.** E=Q/(ε₀πa²), donc ε₀Ė=I/(πa²). Pour r<a, le disque plan dans l’entrefer reçoit Idisp=I r²/a² ; Ampère–Maxwell donne Bφ=μ₀Ir/(2πa²). Pour le même contour, une surface bombée coupant le fil reçoit I mais aussi un flux de déplacement annulaire orienté −I(1−r²/a²) : la somme reste I r²/a². Pour un contour englobant toute l’armature, r≥a, la comparaison se réduit à I dans le fil et Idisp=I dans l’entrefer, d’où Bφ=μ₀I/(2πr) dans l’approximation. Omettre le déplacement rendrait le résultat dépendant de la surface. Il faut comparer deux surfaces du même contour, pas deux rayons différents.
+
+### 26. Poynting dans un câble : l’énergie entre dans le conducteur
+
+*Spé* — laboratoire `maxwell`.
+
+**Énoncé.** Un fil résistif cylindrique de rayon a,longueur ℓ,conductivité σ porte un courant stationnaire I uniforme selon +z. À sa surface, calculer E,B,H et le flux de Poynting entrant. Vérifier qu’il égale RI².
+
+**Corrigé.** E=I/(σπa²) ez, H=I/(2πa)eφ et B=μ₀H. Donc S=E×H=−I²/(2σπ²a³) er : l’énergie électromagnétique entre radialement dans le fil. Le flux entrant sur 2πaℓ vaut I²ℓ/(σπa²)=RI² puisque R=ℓ/(σπa²). Le champ électrique extérieur et les connexions du circuit sont nécessaires à ce transfert ; le résultat local ne signifie pas que l’énergie est transportée seulement à l’intérieur par les électrons. La direction de S fournit un contrôle de signe indépendant du calcul de résistance et la puissance positive confirme la passivité.
+
+### 27. Fresnel : le carré de t n’est pas T
+
+*Spé* — laboratoire `interfaces`.
+
+**Énoncé.** Une onde arrive normalement de l’air dans du verre n=1,5 sans pertes ni magnétisme. Déduire r et t des continuités, calculer R,T, puis refaire le bilan pour une incidence du verre vers l’air.
+
+**Corrigé.** Continuité de E : 1+r=t ; de H : n₁(1−r)=n₂t. On obtient r=(n₁−n₂)/(n₁+n₂),t=2n₁/(n₁+n₂). Air→verre : r=−0,2,t=0,8,R=0,04,T=(1,5)|0,8|²=0,96. Verre→air : r=+0,2,t=1,2,R=0,04,T=(1/1,5)|1,2|²=0,96. Une amplitude transmise supérieure à l’incidente ne viole donc pas l’énergie, car l’impédance change. La réflexion a une phase π dans le premier sens et zéro dans le second. Dans les deux cas R+T=1 ; utiliser seulement |t|² aurait donné 0,64 ou 1,44, deux résultats physiquement incorrects.
+
+### 28. Brewster et réflexion totale ne sont pas le même angle
+
+*Spé* — laboratoire `interfaces`.
+
+**Énoncé.** Donner l’angle de Brewster pour air→verre n=1,5 et l’angle critique pour verre→air. À 60° dans le verre, calculer la longueur de décroissance du champ transmis dans l’air à λvide=600 nm.
+
+**Corrigé.** Pour deux diélectriques non magnétiques, tanθB=n₂/n₁, donc θB≈56,31° pour air→verre, avec réflexion TM nulle. En sens verre→air, sinθc=1/1,5 donne θc≈41,81°. À 60°, la phase tangentielle conserve kx=k₀1,5sin60°. Le vecteur normal transmis vérifie kz²=k₀²[1−(1,5sin60°)²]=−0,6875k₀². Choisir kz=i k₀√0,6875 donne une profondeur 1/Imkz=λ/(2π√0,6875)≈115 nm. Le champ évanescent n’est pas nul ; sa moyenne de flux normal est nulle dans le demi-espace idéal sans pertes, bien qu’un second milieu proche puisse coupler de l’énergie.
+
+### 29. TE₁₀ dans un guide : une vitesse de phase supérieure à c
+
+*Spé → Au-delà* — laboratoire `guide`.
+
+**Énoncé.** Un guide vide idéal a a=22,86 mm. Calculer fc,kz,λguidée,vphase,vg à f=10 GHz. Vérifier le produit des vitesses et expliquer pourquoi il n’y a pas de contradiction relativiste.
+
+**Corrigé.** fc=c/(2a)≈6,557 GHz. kz=(2πf/c)√[1−(fc/f)²]≈158,3 rad·m⁻¹, donc λg=2π/kz≈39,7 mm. vphase=c/√[1−(fc/f)²]≈1,324c et vg=c√[1−(fc/f)²]≈0,755c, d’où vphasevg=c². La phase d’un sinus monochromatique n’est pas une information nouvelle ; le paquet étroit et le flux d’énergie se déplacent selon une vitesse inférieure à c dans ce guide sans pertes. À la coupure kz tend vers zéro et vg aussi. La formule de λg diverge, mais il ne s’agit pas d’une onde transportant une puissance ordinaire à vitesse infinie.
+
+### 30. Pourquoi le guide creux n’a-t-il pas un mode TEM ?
+
+*Spé → Au-delà* — laboratoire `guide`.
+
+**Énoncé.** Supposer Ez=Hz=0 dans un guide creux idéal simplement connexe, sans conducteur interne. En déduire pourquoi un mode TEM non nul est impossible. Comparer au coaxial.
+
+**Corrigé.** Pour un mode TEM, le champ transverse se représente par Et=−∇tV et divtEt=0, donc ΔtV=0 dans la section sans charges. Sur l’unique paroi conductrice connexe, V est constant. Le théorème d’unicité du problème de Laplace impose alors V constant partout, donc Et=0 et Ht=0. Un coaxial possède deux conducteurs distincts auxquels on peut imposer deux potentiels : la solution logarithmique est non constante et un TEM existe sans coupure idéale. Ce résultat dépend de la topologie et des conditions aux limites, pas d’un simple choix arbitraire m=n=0 dans une formule TE/TM.
+
+### 31. Le premier zéro d’une ouverture n’existe pas toujours
+
+*Spé* — laboratoire `antenne`.
+
+**Énoncé.** Une ouverture uniforme de largeur a rayonne avec A(θ)∝sinc[(πa/λ)sinθ]. Démontrer cette loi par l’intégrale de phase. Trouver le premier zéro si a=3λ, puis discuter a=λ/2 et l’approximation des petits angles.
+
+**Corrigé.** Intégrer exp(−ikxsinθ) sur −a/2≤x≤a/2 donne 2sin(ka sinθ/2)/(k sinθ)=a sinc[(πa/λ)sinθ]. Le premier zéro exige |sinθ|=λ/a. Pour a=3λ, θ=arcsin(1/3)≈19,47°. Pour a=λ/2, il faudrait |sinθ|=2 : aucun premier zéro n’est accessible. La formule θ≈λ/a vaut seulement si λ/a≪1 et θ en radians ; elle ne doit pas être prolongée à une ouverture sub-longueur d’onde. La courbe est normalisée : son affinement angulaire décrit une redistribution, pas une augmentation gratuite de puissance totale.
+
+### 32. Un réseau dirige son maximum en réglant une phase
+
+*Spé → Au-delà* — laboratoire `antenne`.
+
+**Énoncé.** Quatre éléments sont espacés de d=λ/2 ; leur facteur est Σj=0…3 exp[ij(kd sinθ+ψ)]. Choisir ψ pour viser θ₀=30°. Déterminer s’il existe une autre direction de maximum principal, puis refaire avec d=λ.
+
+**Corrigé.** Les phases se renforcent si kd sinθ+ψ=2πm. Pour d=λ/2, kd=π ; choisir ψ=−πsin30°=−π/2. La condition donne sinθ=1/2+2m, dont seule m=0 est accessible : un maximum principal à 30° dans ce plan, avec des lobes secondaires dus au nombre fini. Pour d=λ, choisir ψ=−π ; sinθ=1/2+m. m=0 et m=−1 donnent +30° et −30° : un lobe de réseau supplémentaire apparaît. Le diagramme réel multiplie ce facteur par celui de chaque élément ; un calcul de phases seul ne fixe pas le rendement ni les pertes d’alimentation.
+
+### 33. Mesurer une densité électronique avec une coupure
+
+*Spé → Au-delà* — laboratoire `plasma`.
+
+**Énoncé.** Un plasma froid non magnétisé a une coupure transverse fp=1 GHz. En déduire n. Pour f=2fp, calculer l’indice et la vitesse de groupe ; pour f=fp/2, calculer la longueur d’évanescence.
+
+**Corrigé.** n=ε₀me(2πfp)²/e²≈1,240×10¹⁶ m⁻³. À 2fp, nopt=√(1−1/4)=√3/2 et vg=(c²k/ω)=c nopt≈0,866c. À fp/2, k=i(2πfp/c)√(1−1/4), donc la profondeur est c/(2πfp√3/2)≈55,1 mm. Ces déductions supposent homogénéité, ions fixes, collisions et magnétisme négligeables. Une coupure dans un plasma stratifié réel ne suffit pas à fournir une densité unique sans modèle de trajet et de mode. L’indice optique nopt ne doit pas être confondu avec la densité électronique n.
+
+### 34. Une oscillation de plasma peut être longitudinale
+
+*Spé → Au-delà* — laboratoire `plasma`.
+
+**Énoncé.** Dans un modèle plan, déplacer collectivement de x les électrons de densité n par rapport à des ions fixes. Déterminer le champ de rappel et l’équation du déplacement. Pourquoi la preuve de transversalité d’une onde diélectrique échoue-t-elle à ω=ωp ?
+
+**Corrigé.** Le déplacement crée deux couches opposées de charge surfacique ; à l’intérieur E=ne x/ε₀ dans le sens du déplacement électronique, donc la force sur un électron est −eE=−ne²x/ε₀. L’équation me ẍ=−ne²x/ε₀ donne ẍ+ωp²x=0 avec ωp²=ne²/(ε₀me). Cette oscillation peut avoir E longitudinal et B nul dans la limite électrostatique plane. Pour une onde sans charge libre, k·D=ε k·E=0 impose k·E=0 seulement si ε≠0. À ωp, le modèle froid donne ε=0 : diviser par ε ferait perdre précisément ce mode. Une pression électronique finie ajouterait un terme dispersif.
+
+### 35. Des charges liées de signes opposés se compensent
+
+*Spé* — laboratoire `dielectrique`.
+
+**Énoncé.** Une sphère de rayon R possède P(r)=P₀(r/R)er à l’intérieur et P=0 dehors. Calculer charge volumique liée, charge surfacique liée et charge liée totale. Vérifier le courant de polarisation si P₀ dépend du temps.
+
+**Corrigé.** div(P₀r er/R)=3P₀/R, donc ρliée=−3P₀/R. À la surface σliée=P·er=P₀. La charge volumique vaut −(3P₀/R)(4πR³/3)=−4πP₀R² et la charge surfacique +4πP₀R² ; la somme est nulle, conformément à une polarisation de dipôles neutres. Si P₀=P₀(t), jP=∂tP=Ṗ₀r er/R, dont la divergence est +3Ṗ₀/R. Ainsi ∂tρliée+divjP=0 dans le volume. Le courant vers la frontière alimente la variation de la charge de surface ; mettre un signe négatif devant ∂tP violerait cette conservation.
+
+### 36. Un oscillateur absorbe une puissance positive
+
+*Spé → Au-delà* — laboratoire `dielectrique`.
+
+**Énoncé.** Pour α=e²/[m(ω₀²−ω²−iΓω)], montrer que la puissance moyenne reçue P=(ω/2)Imα |Ẽ|² est positive et égale au frottement mécanique. Calculer α à la résonance ω=ω₀ et donner l’unité de Γ.
+
+**Corrigé.** Imα=e²Γω/[m((ω₀²−ω²)²+Γ²ω²)]≥0. Comme p=−ex, |x̃|²=|α|²|Ẽ|²/e² ; le frottement dissipe mΓ〈ẋ²〉=mΓω²|α|²|Ẽ|²/(2e²), égal à (ω/2)Imα|Ẽ|² après substitution. À ω₀, α=i e²/(mΓω₀), purement imaginaire positive. Γ est en s⁻¹ ; un coefficient b de force −bẋ serait en kg·s⁻¹ et Γ=b/m. Négliger cette conversion mélange les dimensions du terme ω₀²−ω² avec celles du frottement. La divergence quand Γ→0 exige de réintroduire réactions radiatives ou limites du régime établi.
+
+### 37. Langevin ou tanh : compter les orientations
+
+*Spé → Au-delà* — laboratoire `aimantation`.
+
+**Énoncé.** Comparer M=nμL(x) et M=nμtanhx, x=μB/(kBT), à faible champ. Retrouver L à partir de l’intégrale orientée et donner l’alignement classique pour μ=μB,B=1 T,T=300 K.
+
+**Corrigé.** Z=2π∫₀π exp(xcosθ)sinθ dθ=4πsinhx/x. Dériver lnZ donne L=cothx−1/x=x/3−x³/45+… . Les deux états ±μ du spin ½ donnent Z=2coshx et tanhx=x−x³/3+… . Pour une même norme μ, le coefficient faible champ du modèle à deux états est trois fois plus grand, car toutes les orientations ne sont plus disponibles. Avec μB/kB≈0,6717 K·T⁻¹, x≈0,002239 et L≈0,000746. Les deux modèles saturent à un mais ne représentent pas la même statistique ; l’accord à saturation ne justifie pas de les interchanger.
+
+### 38. Diamagnétisme : vérifier signe, densité et rayon
+
+*Spé → Au-delà* — laboratoire `aimantation`.
+
+**Énoncé.** Utiliser χdia=−μ₀ne²〈r²〉/(6me) pour un électron orbital par atome, n=10²⁸ m⁻³ et √〈r²〉=0,1 nm. Calculer χdia,μr et M sous H=10⁵ A·m⁻¹. Comparer au sens d’un moment permanent aligné.
+
+**Corrigé.** 〈r²〉=10⁻²⁰ m² et χdia≈−5,90×10⁻⁷. Ainsi μr=1+χdia≈0,999999410 et M=χdiaH≈−0,0590 A·m⁻¹, opposé au champ imposé. Un ensemble de moments permanents thermalisés a au contraire une contribution paramagnétique positive. La grandeur n est une densité, pas le nombre total d’atomes : insérer un nombre sans division par volume détruirait les unités. Le modèle orbital classique fournit ici un ordre de grandeur, pas une propriété mesurée de tous les atomes. Ce diamagnétisme faible ne correspond pas à l’écrantage presque complet d’un état Meissner macroscopique.
+
+### 39. London dans une plaque : les deux faces comptent
+
+*Au-delà, outils Spé* — laboratoire `meissner`.
+
+**Énoncé.** Une plaque −a≤x≤a est dans l’état Meissner, Bz(±a)=B₀ et Bz″=Bz/λL². Déterminer Bz et jy. Comparer Bz(0)/B₀ pour a=λL et a=5λL.
+
+**Corrigé.** La solution générale est A cosh(x/λL)+C sinh(x/λL). Les deux champs identiques imposent C=0 et A=B₀/cosh(a/λL). Donc Bz=B₀cosh(x/λL)/cosh(a/λL), jy=−Bz′/μ₀=−B₀sinh(x/λL)/[μ₀λLcosh(a/λL)]. Le courant est opposé sur les deux faces. Au centre le rapport vaut 1/cosh1≈0,648 pour a=λL et 1/cosh5≈0,0135 pour a=5λL. Une unique exponentielle adaptée à un demi-espace ne satisfait pas simultanément les deux conditions de cette plaque. Les résultats supposent état Meissner et champs assez faibles, sans vortex.
+
+### 40. Un métal parfait conserve ; Meissner sélectionne
+
+*Spé → Au-delà* — laboratoire `meissner`.
+
+**Énoncé.** Un matériau contient initialement un champ uniforme Binit. Comparer ce que prédit E=0 dans un conducteur parfait et ce qu’impose London dans une masse supraconductrice simplement connexe à faible champ. Pourquoi δpeau→0 n’est-elle pas une preuve de Meissner ?
+
+**Corrigé.** E=0 entraîne ∂tB=−curlE=0 : le champ Binit est conservé, même s’il est non nul. London ajoute curljs=−B/(μ₀λL²), donc ΔB=B/λL² en équilibre. Dans une masse grande devant λL, un champ de bord pénètre seulement sur λL et le cœur est écranté. La profondeur de peau δ=√[2/(μσω)] provient d’une excitation harmonique d’un métal normal ; σ→∞ bloque les changements du champ mais n’efface pas le champ initial. Les limites de fréquence, temps et conductivité ne sont pas interchangeables. Piégeage de flux et vortex demandent des hypothèses supplémentaires absentes de ce modèle Meissner simple.
+
+### 41. Deux indices circulaires produisent une rotation signée
+
+*Spé → Au-delà* — laboratoire `faraday`.
+
+**Énoncé.** Prendre e±=(ex±i ey)/√2 et k±=2πn±/λvide. Une onde ex traverse L. Démontrer θF=(k−−k+)L/2 dans les axes de laboratoire. Calculer θ pour n−−n+=2×10⁻⁵,L=1 cm,λ=633 nm.
+
+**Corrigé.** Le champ sortant est [e+eⁱᵏ⁺ᴸ+e−eⁱᵏ⁻ᴸ]/√2. Extraire eⁱ⁽ᵏ⁺⁺ᵏ⁻⁾ᴸᐟ² donne Ex=cosΔ, Ey=−sinΔ, Δ=(k+−k−)L/2. L’orientation vaut donc −Δ=(k−−k+)L/2. Numériquement θ=πL(n−−n+)/λ≈0,9926 rad≈56,87°. Les noms droite/gauche seraient ambigus sans les vecteurs de base et la convention exp(−iωt). Si Imk+ et Imk− diffèrent, les amplitudes circulaires ne sont plus égales : la sortie est généralement elliptique, et la formule de rotation réelle doit être complétée par une ellipticité.
+
+### 42. Aller-retour : distinguer Faraday et activité réciproque
+
+*Spé → Au-delà* — laboratoire `faraday`.
+
+**Énoncé.** Dans des axes transverses fixes, une traversée Faraday est R(θ), matrice de rotation réelle. Un miroir calibré ajoute seulement une phase commune. Calculer l’aller-retour puis la transmission par un analyseur parallèle à la polarisation incidente, pour θ=22,5°. Comparer une rotation réciproque.
+
+**Corrigé.** La seconde traversée Faraday conserve le sens de rotation dans les axes fixés par le montage : Jaller-retour=eⁱφR(θ)R(θ)=eⁱφR(2θ). Un analyseur parallèle transmet une fraction cos²(2θ), soit cos²45°=1/2 pour θ=22,5°, hors pertes. Pour une activité optique réciproque, le retour donne R(−θ) et la rotation nette s’annule ; l’analyseur parallèle transmet alors tout le flux idéal. Il faut garder la même définition des bases et calibrer le miroir : redéfinir « droite » selon le sens de propagation peut masquer le doublement. Inverser le champ statique inverse θ dans le dispositif Faraday.
+
+### 43. Vérifier la sech plutôt que la reconnaître visuellement
+
+*Au-delà, outils Spé* — laboratoire `kerr`.
+
+**Énoncé.** Résoudre u″−a u+b u³=0 avec a,b>0 et u,u′→0 à l’infini. Donner amplitude, largeur caractéristique, largeur à mi-intensité et ∫u²dx. Vérifier directement l’équation.
+
+**Corrigé.** Multiplier par u′ donne ½u′²−½au²+¼bu⁴=0. Au maximum u₀²=2a/b. Poser w=1/√a : u=u₀sech[(x−x₀)/w]. Comme (sech s)″=sech s−2sech³s, u″=au−(2a/u₀²)u³=au−bu³. La mi-intensité impose sech²s=1/2, donc la largeur totale vaut 2 arcosh√2/√a≈1,763/√a. Enfin ∫u²dx=u₀²w∫sech²s ds=4√a/b. Cette intégrale porte l’unité de u² fois une longueur ; elle devient une puissance seulement après les constantes de normalisation du champ et de la géométrie.
+
+### 44. Une non-linéarité cubique crée aussi une harmonique
+
+*Spé → Au-delà* — laboratoire `kerr`.
+
+**Énoncé.** Avec Pnonlin=ε₀χ⁽³⁾E³ et E=E₀cosωt, séparer le fondamental et 3ω. Pour n₂=3×10⁻²⁰ m²·W⁻¹,I=10¹² W·m⁻²,L=1 mm,λ=800 nm, calculer Δn et Δφ. Cette donnée suffit-elle à prouver une biréfringence ?
+
+**Corrigé.** cos³u=(3cosu+cos3u)/4 donne Pω=¾ε₀χ⁽³⁾E₀³cosωt et P3ω=¼ε₀χ⁽³⁾E₀³cos3ωt. Une réduction monochromatique incorpore le facteur 3/4 dans son coefficient effectif et néglige ou traite séparément 3ω. Δn=n₂I=3×10⁻⁸ ; Δφ=(2π/λ)ΔnL≈2,36×10⁻⁴ rad. |Δn|≪n₀ justifie une perturbation d’indice, mais pas toutes les hypothèses spatiales ou temporelles d’un soliton. Une loi scalaire pour une seule polarisation ne compare pas deux modes : la biréfringence exige des indices propres distincts, donc une information tensorielle supplémentaire.
+
+### 45. Intégrer le diagramme dipolaire
+
+*Spé → Au-delà* — laboratoire `rayonnement`.
+
+**Énoncé.** Un dipôle harmonique p₀cosωt ez rayonne dP/dΩ=Csin²θ avec C=ω⁴p₀²/(32π²ε₀c³). Calculer la puissance totale, la directivité maximale et la fraction dans la bande polaire θ∈[π/3,2π/3].
+
+**Corrigé.** P=2πC∫₀πsin³θdθ=2πC(4/3)=8πC/3=ω⁴p₀²/(12πε₀c³). Le maximum de U=dP/dΩ vaut C ; Dmax=4πC/P=3/2. Poser u=cosθ dans la bande : ∫π/3²π/3sin³θdθ=∫−1/2¹/2(1−u²)du=11/12. La fraction est (11/12)/(4/3)=11/16≈68,75 %. Les pôles ne rayonnent pas dans l’approximation lointaine. Le r² de la surface sphérique compense la densité de flux en r⁻² issue d’un champ en r⁻¹, ce qui rend P indépendant du rayon d’observation.
+
+### 46. Bleu, rouge et section efficace de Thomson
+
+*Spé → Au-delà* — laboratoire `rayonnement`.
+
+**Énoncé.** Comparer la diffusion à 450 et 650 nm pour une polarisabilité presque constante et des intensités incidentes égales. Montrer que α≈−e²/(mω²) donne une section constante, puis calculer son ordre de grandeur pour un électron.
+
+**Corrigé.** σdiff=ω⁴|α|²/(6πε₀²c⁴). À α constant, le rapport bleu/rouge vaut (650/450)⁴≈4,35. Dans la limite classique libre, |α|²=e⁴/(m²ω⁴), donc σ=e⁴/(6πε₀²m²c⁴)=8πre²/3 avec re=e²/(4πε₀mc²)≈2,818 fm. Il vient σTh≈6,65×10⁻²⁹ m². Iinc est une intensité en W·m⁻² et Iincσ une puissance en W. La première comparaison explique une tendance du ciel, mais couleur perçue, absorption, aérosols et diffusion multiple demandent d’autres données ; la limite Thomson doit aussi être remplacée quand les corrections quantiques deviennent importantes.
+
+### 47. Rm élevé sans amplification : un contre-exemple
+
+*Spé → Au-delà* — laboratoire `dynamo`.
+
+**Énoncé.** Pour v=Uez uniforme et B=B₀cos(kz)ex, résoudre l’équation résistive d’induction. Calculer Rm pour U=10⁻⁴ m·s⁻¹,L=10⁶ m,ηm=1 m²·s⁻¹. Ce nombre suffit-il à conclure à une dynamo ?
+
+**Corrigé.** Le fluide est incompressible et ∇v=0 : ∂tB+U∂zB=ηm∂zzB. La solution est B=B₀exp(−ηmk²t)cos[k(z−Ut)]ex, de divergence nulle. Le motif est transporté mais son amplitude décroît pour toute valeur de U. Rm=UL/ηm=100 compare transport et diffusion sans assurer un étirement régénérateur. Le temps diffusif à l’échelle L vaut L²/ηm=10¹² s≈3,17×10⁴ ans, alors que la dynamique du mode dépend de 1/(ηmk²). Une dynamo exige une configuration capable d’entretenir ou d’amplifier le champ avec ses limites et rétroactions ; une translation rapide est un contre-exemple explicite.
+
+### 48. Une valeur propre donne le seuil α²
+
+*Au-delà accompagné* — laboratoire `dynamo`.
+
+**Énoncé.** Pour ∂tB=αcurlB+ηTΔB, utiliser B±=B₀(cos kz,∓sin kz,0). Calculer les taux de croissance et l’optimum continu. Prendre α=1 m·s⁻¹,ηT=0,1 m²·s⁻¹,k=2 m⁻¹. Quel ingrédient manque pour prédire une saturation terrestre ?
+
+**Corrigé.** divB±=0,curlB±=±kB± et ΔB±=−k²B±, d’où γ±=±αk−ηTk². Ici γ+=1,6 s⁻¹ et γ−=−2,4 s⁻¹. Le mode favorisé croît si |α|>ηTk ; optimiser |α|k−ηTk² donne k*=|α|/(2ηT)=5 m⁻¹ et γmax=α²/(4ηT)=2,5 s⁻¹. Un domaine fini peut exclure k*. Ce modèle local prescrit α et ηT : il ne ferme ni mouvement, ni source d’énergie, ni force de Lorentz de retour. Sans rétroaction l’exponentielle reste illimitée ; elle ne prédit pas une intensité saturée, des inversions ou la géométrie du champ terrestre.
+
+## Sources primaires et programmes
+
+- [BO 2021 — programmes MPSI](https://www.education.gouv.fr/bo/21/Special1/ESRS2035779A.htm) : repères de première année ; les entrées Sup désignent les outils accessibles, pas tous les sujets obligatoires.
+- [BO 2021 — physique-chimie MP](https://www.education.gouv.fr/bo/21/Hebdo31/ESRS2111702A.htm), [PC](https://www.education.gouv.fr/bo/21/Hebdo31/ESRS2111703A.htm) et [PSI](https://www.education.gouv.fr/bo/21/Hebdo31/ESRS2111748A.htm) : choisir le parcours selon la filière ; machines, matière et extensions n’ont pas un statut identique partout.
+- [MIT — Electromagnetics and Applications, notes de cours](https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-fall-2005/resources/lecture-notes/) : champs, bilans, guides et antennes ; nos calculs sont rédigés avec exp(−iωt).
+- [MIT — D. Staelin, Electromagnetics and Applications](https://live.ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/d3be4ea78b036a6362230fb41780cf54_MIT6_013S09_notes.pdf) : conditions aux limites, propagation et effet de peau.
+- [MIT — Haus et Melcher, Polarization](https://ocw.mit.edu/courses/res-6-001-electromagnetic-fields-and-energy-spring-2008/pages/chapter-6/) : distinction champ macroscopique, polarisation et charges liées.
+- [MIT — propriétés magnétiques des matériaux](https://ocw.mit.edu/courses/3-23-electrical-optical-and-magnetic-properties-of-materials-fall-2007/resources/lec16/) : réponse de la matière et variables B/H.
+- [MIT — T. Orlando, équations de London](https://www.ocw.mit.edu/courses/6-763-applied-superconductivity-fall-2005/resources/lecture5/) et [MIT Junior Lab — superconductivité](https://ocw.mit.edu/courses/8-13-14-experimental-physics-i-ii-junior-lab-fall-2016-spring-2017/pages/experiments/superconductivity/) : écrantage et différence entre conductivité parfaite et Meissner.
+- [MIT — F. Kärtner, Ultrafast Optics](https://ocw.mit.edu/courses/6-977-ultrafast-optics-spring-2005/f806ff596f9bffb74003360e2c05c086_MIT6_977S05_textbook.pdf) : Kerr optique, enveloppes non linéaires et solutions sech ; ces extensions sont accompagnées.
+- [Phys. Rev. A — nonreciprocal media, 2024](https://doi.org/10.1103/PhysRevA.109.043533) : cadre de non-réciprocité ; la rotation de Faraday est ici déduite des eigenmodes circulaires et de bases explicites.
+- [P. Charbonneau — Dynamo Models of the Solar Cycle](https://doi.org/10.12942/lrsp-2005-2) : fermeture de champ moyen et effet α ; le modèle α² local présenté n’est pas une simulation géophysique.
+- [USGS — introduction au géomagnétisme](https://www.usgs.gov/programs/geomagnetism/introduction-geomagnetism) et [BGS — mécanisme de géodynamo](https://geomag.bgs.ac.uk/education/reversals.html) : noyau externe conducteur, flottabilité, convection, rotation et diffusion. [BGS — MEME](https://geomag.bgs.ac.uk/research/modelling/MEME.html) : observations et modèles du champ terrestre, à distinguer d’une simulation auto-cohérente du noyau.
+- [NIST — charge élémentaire](https://physics.nist.gov/cuu/Constants/Value/e.html) : e=1,602176634×10⁻¹⁹ C, valeur exacte du SI ; μ₀≈4π×10⁻⁷ H·m⁻¹ est utilisé comme approximation numérique.
