@@ -16,7 +16,9 @@
 - **Les trois termes de Jacobi sont non nuls.** Voir leur compensation, développer les douze mots et justifier que l’action ad est un morphisme d’algèbres de Lie.
 - **Un déterminant antisymétrique est un carré.** Parcourir les 15 ou 105 appariements d’une matrice dense, suivre les signes, puis relier congruence, pfaffien et géométrie symplectique.
 
-Chaque expérience définit ses variables, annonce une question, explique comment lire la figure et propose des étapes de preuve. Les matrices et certificats se déplient séparément. Les exemples préconstruits atteignent les dimensions 6 à 8 ; les représentations de degré 6 agissent en dimension 7.
+Chaque expérience commence par **son but et son lien avec le cours** : les techniques à réinvestir, le résultat attendu et des repères **sup, spé et au-delà**. Des boutons ouvrent directement les leçons utiles ; un premier parcours en trois gestes aide à passer de l'observation à une justification. Les repères distinguent les acquis à utiliser des notions nouvelles, avec les différences de filière précisées lorsqu'elles comptent.
+
+Le TP définit ensuite ses variables, explique comment lire la figure et propose des étapes de preuve. Les matrices et certificats se déplient séparément. Les exemples préconstruits atteignent les dimensions 6 à 8 ; les représentations de degré 6 agissent en dimension 7.
 
 ![Représentation de degré 4 : poids, monômes, action sur le cercle et orbite des coefficients](apercu_representations.jpg)
 
@@ -104,4 +106,5 @@ Les sources primaires et les formulations corrigées du recueil figurent dans [l
 | [applications.py](applications.py) | Chaînes de Markov, diffusion et Laplaciens. |
 | [explorations.js](explorations.js) | Caméra 3D, graphes, chronologie et scènes pédagogiques. |
 | [cours.py](cours.py) | Définitions, exemples résolus et exercices corrigés. |
+| [reperes.py](reperes.py) | Buts des TP, techniques du cours, progression sup/spé/au-delà et premiers gestes. |
 | [algebre_lineaire.py](algebre_lineaire.py) | Serveur local et lancement. |

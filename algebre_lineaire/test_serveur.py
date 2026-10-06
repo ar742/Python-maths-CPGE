@@ -30,6 +30,13 @@ class ServerTests(unittest.TestCase):
         with self.request("/api/bootstrap") as r:data=json.load(r)
         self.assertEqual(data["application"],"algebre-lineaire")
         self.assertGreaterEqual(len(data["lessons"]),25);self.assertGreaterEqual(len(data["exercises"]),40)
+        self.assertEqual(len(data["lab_guides"]),17)
+        for guide in data["lab_guides"].values():
+            self.assertEqual(set(guide["levels"]),{"sup","spe","beyond"})
+            self.assertEqual(len(guide["first_steps"]),3)
+            self.assertTrue(guide["purpose"] and guide["expected"])
+            for number in guide["lesson_numbers"]:
+                self.assertTrue(1 <= number <= len(data["lessons"]))
 
     def test_static_assets(self):
         for path in ["/","/app.js","/explorations.js","/style.css","/favicon.svg"]:
@@ -44,11 +51,13 @@ class ServerTests(unittest.TestCase):
         for h in [{"X-Algebre-Token":""},{"Host":"example.org"},{"Origin":"https://example.org"}]:
             with self.assertRaises(HTTPError) as cm:self.request("/api",b"{}",h)
             self.assertEqual(cm.exception.code,403)
+            cm.exception.close()
 
     def test_bad_json(self):
         for payload in [b"{",b"[]",b'{"r":NaN}',b'{"lab":"anneaux","matrix":"x 0;0 1"}']:
             with self.assertRaises(HTTPError) as cm:self.request("/api",payload)
             self.assertEqual(cm.exception.code,400)
+            cm.exception.close()
 
     def test_snapshot_download_and_expiry(self):
         with self.request("/api",b'{"lab":"anneaux"}') as r:data=json.load(r)
@@ -58,11 +67,13 @@ class ServerTests(unittest.TestCase):
             with self.request("/api",b'{"lab":"anneaux"}') as r:json.load(r)
         with self.assertRaises(HTTPError) as cm:self.request("/api/export/"+data["export_id"])
         self.assertEqual(cm.exception.code,404)
+        cm.exception.close()
 
     def test_private_files_not_served(self):
         for path in ["/cours.py","/../README.md","/COURS.md"]:
             with self.assertRaises(HTTPError) as cm:self.request(path)
             self.assertEqual(cm.exception.code,404)
+            cm.exception.close()
 
 
 if __name__=="__main__":unittest.main()

@@ -9,6 +9,8 @@ Les dix-sept laboratoires, vingt-cinq leçons et quarante exercices corrigés fo
 
 ## Premier essai
 
+Lire d'abord le bloc **But du TP et lien avec le cours** : il annonce ce que l'expérience doit vous apprendre et les techniques à mobiliser. Les repères **Sup**, **Spé** et **Au-delà** distinguent les acquis de votre niveau des prolongements à découvrir. Les boutons ouvrent les leçons de préparation ; **Un premier parcours en trois gestes** propose les premières manipulations à justifier.
+
 Depuis l’accueil, ouvrir **Réseaux & Laplacien** : diminuer la conductance du pont, observer le mode lent, puis couper le pont. Explorer ensuite **Jacobi** pour suivre la compensation de trois doubles crochets non nuls, et **Mécanique symplectique** pour comparer Cayley à Euler sur deux oscillateurs couplés. Dans **Dunford**, choisir le TP du recueil et parcourir les étapes du calcul. Les [dix missions progressives](PARCOURS.md) guident la suite.
 
 ## Saisir les matrices

@@ -14,6 +14,7 @@ import webbrowser
 
 from modeles import calculate
 from cours import LESSONS, EXERCISES, SOURCES
+from reperes import LAB_GUIDES
 
 ROOT = Path(__file__).resolve().parent
 
@@ -38,7 +39,9 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Disposition", f'attachment; filename="{download}"')
         self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'")
         self.end_headers()
-        self.wfile.write(content)
+        # Envoyer les réponses volumineuses par blocs bornés.
+        for start in range(0, len(content), 32_768):
+            self.wfile.write(content[start:start+32_768])
 
     def allowed_host(self):
         p = self.server.server_port
@@ -59,7 +62,8 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/bootstrap":
             self.send({"application": "algebre-lineaire", "token": self.server.api_token,
-                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES})
+                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES,
+                       "lab_guides": LAB_GUIDES})
             return
         files = {"/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),

@@ -6,6 +6,16 @@ Les **17 laboratoires** manipulent des objets de tailles variées : matrices den
 
 Pour chaque mission, suivre cinq étapes : **déclarer les objets et hypothèses ; prévoir une observation ; construire l'objet et lire les figures ; produire une preuve ou un certificat ; traiter un contre-exemple**. Les calculs rationnels admissibles sont exacts ; les trajectoires, courbes et vecteurs propres approchés sont numériques. Le rendu demandé combine une figure annotée, une explication des contrôles et une démonstration lisible sans Python.
 
+## Choisir sa porte d'entrée dans un TP
+
+Chaque laboratoire s'ouvre sur **But du TP et lien avec le cours**. Avant de toucher un curseur, lire le phénomène à comprendre, les techniques à réinvestir et le résultat que l'on devra savoir justifier. Les leçons associées sont accessibles depuis ce bloc. Le détail **Un premier parcours en trois gestes** propose une observation, une comparaison et une conclusion à établir.
+
+- **Sup** : entrer avec les outils de première année — systèmes, bases, matrices, polynômes, déterminants — même lorsque l'objet final est nouveau.
+- **Spé** : mobiliser les outils de seconde année pour approfondir l'expérience ; les différences de filière comptent, notamment pour le polynôme minimal et la décomposition des noyaux.
+- **Au-delà** : découvrir une construction ou un résultat supplémentaire, avec des définitions fournies et une preuve guidée. Ces notions ne sont pas supposées connues.
+
+Les grandes matrices sont structurées pour éclairer une méthode ; leur traitement intégral à la main n'est pas le but de l'expérience. Les repères décrivent une progression pédagogique, à adapter à la filière. Les programmes officiels de [MPSI](https://www.education.gouv.fr/bo/21/Special1/ESRS2035779A.htm), de [MP](https://www.education.gouv.fr/bo/21/Hebdo31/ESRS2111702A.htm) et des [autres filières de seconde année](https://www.education.gouv.fr/pid285/bulletin_officiel.html?pid_bo=40451) permettent de situer les prolongements.
+
 ## Séance 1 · Des unités aux structures
 
 **Leçons 1–3 ; exercices 1–4 ; laboratoires anneaux et géométrie.**

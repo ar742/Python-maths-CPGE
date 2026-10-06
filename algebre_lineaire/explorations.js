@@ -9,7 +9,7 @@ function fillObjects(target,objects){
  for(const o of objects){dl.append(elem('dt',o.symbol),elem('dd',o.meaning));}target.append(dl);
 }
 function renderPedagogy(r){
- const p=r.pedagogy||{};$('mission').replaceChildren();$('mission').hidden=!p.mission;
+ const p=r.pedagogy||{};$('mission').replaceChildren();$('mission').hidden=Boolean(labGuides[r.lab])||!p.mission;
  if(p.mission)$('mission').append(elem('span','LA QUESTION À RÉSOUDRE','eyebrow'),elem('p',p.mission));
  fillObjects($('objects'),p.objects);
  $('reading').replaceChildren();$('reading').hidden=!p.reading?.length;

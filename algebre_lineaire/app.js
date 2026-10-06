@@ -6,11 +6,21 @@ const labs={"anneaux": {"title": "Le déterminant doit être une unité", "sourc
 const labNames={"anneaux": "GLₙ & Anneaux", "geometrie": "GL₃ & Géométrie", "lie": "Groupes & Algèbres de Lie", "jacobi": "Identité de Jacobi", "representations": "Représentations de Lie", "symplectique": "Mécanique symplectique", "gauss": "Gauss & Systèmes", "spectre": "Spectre & Jordan", "dunford": "Dunford", "cyclique": "Vecteurs cycliques", "frobenius": "Frobenius", "cayley": "Cayley & Traces", "pfaffien": "Pfaffien", "projecteurs": "Projecteurs", "quadratiques": "Formes quadratiques", "markov": "Chaînes de Markov", "reseaux": "Réseaux & Laplacien"};
 const labGroups={"Algèbre en action": ["reseaux", "markov", "symplectique"], "Matrices et réduction": ["gauss", "spectre", "dunford", "cyclique", "frobenius", "cayley"], "Lie, groupes et représentations": ["anneaux", "geometrie", "lie", "jacobi", "representations"], "Formes, dualité et invariants": ["pfaffien", "projecteurs", "quadratiques"]};
 const labQuestions={"reseaux": "Pourquoi un pont ralentit-il la diffusion ?", "markov": "Un équilibre peut-il porter un courant ?", "symplectique": "Conserver le volume suffit-il ?", "gauss": "Une équation peut-elle être de trop ?", "spectre": "Même spectre, même matrice ?", "dunford": "Séparer deux dynamiques qui commutent", "cyclique": "Toute une dynamique à partir d’un vecteur", "frobenius": "Ce que le polynôme caractéristique oublie", "cayley": "Calculer une grande puissance sans tout multiplier", "anneaux": "Quand le déterminant donne-t-il un inverse ?", "geometrie": "Voir l’ordre des transformations", "lie": "Pourquoi deux rotations ne commutent-elles pas ?", "jacobi": "Trois termes non nuls, une somme nulle", "representations": "Faire agir sl₂ sur une quartique", "pfaffien": "Un déterminant cache-t-il un carré ?", "projecteurs": "Décomposer avant de calculer", "quadratiques": "Choisir la bonne notion de changement de base"};
-let current='anneaux',token,lessons=[],exercises=[],latest,serial=0,timer,lessonIndex=1;
+let current='anneaux',token,lessons=[],exercises=[],labGuides={},latest,serial=0,timer,lessonIndex=1;
 function defaultState(id){return {...Object.fromEntries(labs[id].controls.map(c=>[c[0],Array.isArray(c[2])||c[2]==='text'?c[3]:c[5]])),_custom:false,_matrix:'2 1 -1 2;0 2 0 1;0 0 3 1;0 0 0 3'};}
 const state=Object.fromEntries(Object.keys(labs).map(id=>[id,defaultState(id)]));
 const fmt = v => v===null?'—':typeof v==='boolean'?(v?'Oui':'Non'):typeof v==='string'?v:Number.isInteger(v)?String(v):Math.abs(v)<.0001&&v!==0?v.toExponential(3):Number(v.toPrecision(6)).toLocaleString('fr-FR',{maximumFractionDigits:6});
 function elem(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
+function renderLabGuide(id){
+ const target=$('lab-guide'),guide=labGuides[id];target.replaceChildren();target.hidden=!guide;if(!guide)return;
+ target.append(elem('p','POUR ABORDER LE TP','eyebrow'),elem('h3','But du TP et lien avec le cours'),elem('p',guide.purpose,'guide-purpose'));
+ const expected=elem('p',undefined,'guide-expected');expected.append(elem('strong','À l’issue du TP : '),document.createTextNode(guide.expected));target.append(expected);
+ const tools=elem('section',undefined,'guide-tools');tools.append(elem('h4','Les techniques à réinvestir'));const list=elem('ul');for(const item of guide.techniques)list.append(elem('li',item));tools.append(list);target.append(tools);
+ const levels=elem('div',undefined,'guide-levels');for(const [key,label]of [['sup','Sup'],['spe','Spé'],['beyond','Au-delà']]){const card=elem('section',undefined,'guide-level guide-'+key);card.append(elem('h4',label),elem('p',guide.levels[key]));levels.append(card);}target.append(levels);
+ target.append(elem('p','Sup et spé indiquent les acquis à réinvestir, selon votre filière. « Au-delà » introduit des notions nouvelles ; les grandes matrices sont structurées pour éclairer une méthode.','guide-note'));
+ const links=elem('div',undefined,'guide-lessons');links.append(elem('span','Préparer et justifier avec le cours :'));for(const number of guide.lesson_numbers){const lesson=lessons[number-1];if(!lesson)continue;const button=elem('button',lesson.title,'secondary');button.onclick=()=>{showCourse(number-1);window.scrollTo({top:0,behavior:'instant'});};links.append(button);}target.append(links);
+ const start=elem('details',undefined,'guide-start');start.append(elem('summary','Un premier parcours en trois gestes'));const steps=elem('ol');for(const item of guide.first_steps)steps.append(elem('li',item));start.append(steps);target.append(start);
+}
 function constrain(){}
 function activeLesson(){const matches=lessons.map((l,i)=>[l,i]).filter(([l])=>l.lab===current);if(current==='projecteurs')return state.projecteurs.mode==='oblique'?matches[0][1]:matches.at(-1)[1];if(current==='geometrie')return matches.at(-1)[1];return matches.length?matches[0][1]:0;}
 function syncTheory(){const index=activeLesson();$('theory-text').innerHTML=lessons[index]?.html||'';$('open-lesson').onclick=()=>showCourse(index);}
@@ -26,7 +36,7 @@ function showLab(id,params={},reset=false){
  const lab=labs[id];$('lab-title').textContent=lab.title;$('lab-source').textContent=lab.source;$('lab-intro').textContent=lab.intro;
  $('presets').replaceChildren();
  for(const [name,p] of lab.presets){const b=elem('button',name);b.onclick=()=>showLab(id,p,true);$('presets').append(b);}
- renderControls();syncTheory();update();
+ renderLabGuide(id);renderControls();syncTheory();update();
 }
 function pending(){++serial;$('result-panels').classList.add('stale');$('export').disabled=true;$('status').textContent='Nouvelles données · calcul à actualiser';}
 function renderControls(){
@@ -102,7 +112,7 @@ function prepareCourse(sources){
 }
 $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export/'+latest.export_id;a.download=`algebre-${latest.lab}.json`;document.body.append(a);a.click();a.remove();};
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{document.querySelectorAll('canvas').forEach(c=>c._scene?drawScene(c):c._data?draw(c,c._data):null);drawHero();document.querySelectorAll('.mini-figure').forEach(c=>drawMini(c));},100);});
-(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
+(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;labGuides=bootstrap.lab_guides||{};
  $('course-count').textContent=lessons.length+' LEÇONS · MÉTHODES ET PREUVES';$('exercise-count').textContent=exercises.length+' exercices, avec corrections guidées';
  prepareNavigation();prepareCourse(bootstrap.sources);prepareHome();drawHero();const target=location.hash.slice(1);if(target==='course')showCourse(0);else if(labs[target])showLab(target);else showHome();
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();

@@ -29,3 +29,13 @@ textarea:focus-visible,select:focus-visible{outline:3px solid var(--gold);outlin
 .camera-controls{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.camera-controls button{font-size:11px;padding:6px 9px}.scene-footer:has(.camera-controls){display:block}.scene-space3d .camera-controls .secondary{margin-top:0}
 .word-controls{padding:0 24px 16px;display:flex;gap:15px;align-items:center}.word-controls label{font-size:12px}.word-controls select{width:120px}.word-term.chosen-word{border-color:var(--gold);background:#f6ebcc;box-shadow:0 0 0 1px var(--gold)}.word-caption{padding:0 24px;font-size:12px;color:var(--muted)}
 @media(max-width:1000px){[data-lab=symplectique] .scenes,[data-lab=representations] .scenes{grid-template-columns:1fr}.scene-oscillators canvas{height:300px}}
+
+/* Chaque TP annonce ses buts et situe les outils avant les objets et les figures. */
+.lab-guide{padding:24px 26px;margin:22px 0;background:#fffdf7;border:1px solid var(--line);border-top:3px solid var(--green);border-radius:10px}
+.lab-guide>.eyebrow{margin:0 0 8px}.lab-guide>h3{font:25px/1.3 Georgia,serif;margin:0 0 13px}
+.guide-purpose{max-width:1000px;font-size:15px;line-height:1.7;margin:0 0 11px}.guide-expected{font-size:13px;line-height:1.65;margin:0 0 19px;color:var(--green)}
+.guide-tools{padding:13px 17px;background:#eef2e8;border-radius:7px;margin-bottom:17px}.guide-tools h4{font-size:12px;margin:0 0 8px}.guide-tools ul{display:flex;flex-wrap:wrap;gap:9px 28px;padding-left:17px;margin:0}.guide-tools li{font-size:13px;line-height:1.6;flex:1 1 250px}
+.guide-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.guide-level{border-left:3px solid var(--mint);padding:10px 16px;background:#f4f5ed}.guide-spe{border-color:var(--green)}.guide-beyond{border-color:var(--gold);background:#f8f2e4}.guide-level h4{font:19px Georgia,serif;margin:0 0 8px}.guide-level p{font-size:13px;line-height:1.65;margin:0}
+.guide-note{font-size:11px;line-height:1.65;color:var(--muted);margin:11px 0 18px}.guide-lessons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.guide-lessons>span{font-size:12px;line-height:1.6;margin-right:5px}.guide-lessons button{font-size:11px;padding:7px 10px;max-width:100%;text-align:left;white-space:normal}
+.guide-start{border-top:1px solid var(--line);padding-top:14px;margin-top:17px}.guide-start summary{font-size:13px;color:var(--green)}.guide-start ol{padding-left:22px;margin:15px 0 0}.guide-start li{font-size:13px;line-height:1.75;margin:8px 0}
+@media(max-width:780px){.lab-guide{padding:21px 19px}.guide-levels{grid-template-columns:1fr}.guide-tools ul{display:block}.guide-tools li{margin:8px 0}.guide-purpose{font-size:14px}.guide-lessons{align-items:flex-start}.guide-lessons>span{width:100%}}
