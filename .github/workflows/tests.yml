@@ -162,3 +162,26 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Tests des invariants, réductions, formes et serveur
         run: python -X utf8 -m unittest -v test_modeles test_reductions test_structures test_applications test_interface test_serveur
+
+  fluides:
+    name: Fluides et ondes — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: mecanique_fluides
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des écoulements, des ondes, des bilans et du serveur
+        run: python -X utf8 -m unittest -v test_modeles test_pedagogie test_serveur
