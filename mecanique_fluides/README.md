@@ -29,7 +29,7 @@ python -m pip install -r requirements.txt
 python -X utf8 mecanique_fluides.py
 ```
 
-[Première ouverture](LISEZ_MOI.md) · [Missions et parcours](PARCOURS.md) · [Cours imprimable et corrections](COURS.md) · [Conventions et clarifications](ERRATA.md) · [Galerie scientifique](illustrations/README.md).
+[Première ouverture](LISEZ_MOI.md) · [Missions et parcours](PARCOURS.md) · [Cours imprimable et corrections](COURS.md) · [Galerie scientifique](illustrations/README.md).
 
 ## Lire les résultats
 

@@ -157,7 +157,7 @@ class PedagogicalNavigationTests(unittest.TestCase):
         self.assertEqual(covered, LAB_IDS)
 
     def test_documentation_links_resolve_locally_or_to_primary_sources(self):
-        for filename in ("PARCOURS.md", "ERRATA.md"):
+        for filename in ("PARCOURS.md",):
             text = (ROOT / filename).read_text(encoding="utf-8")
             targets = markdown_targets(text)
             self.assertTrue(targets)

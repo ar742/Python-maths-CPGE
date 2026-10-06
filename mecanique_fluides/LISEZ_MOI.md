@@ -22,6 +22,6 @@ La page d’accueil regroupe les expériences en fondations, écoulements, ondes
 
 ## Étudier et prolonger
 
-Le bouton **Cours & exercices** donne accès aux leçons, aux corrections dépliables et aux figures autonomes. [COURS.md](COURS.md) permet une lecture imprimable sans lancer le serveur. [PARCOURS.md](PARCOURS.md) propose des missions ; [ERRATA.md](ERRATA.md) précise les conventions et quelques points du recueil à rectifier.
+Le bouton **Cours & exercices** donne accès aux leçons, aux corrections dépliables et aux figures autonomes. [COURS.md](COURS.md) permet une lecture imprimable sans lancer le serveur. [PARCOURS.md](PARCOURS.md) propose des missions.
 
 Les modèles idéalisés sont explicités : couche limite laminaire, circulation prescrite pour Magnus, tourbillon de Rankine horizontal, acoustique linéaire, MHD simplifiée. Le laboratoire de Navier–Stokes étudie une solution périodique 2D ; l’ouverture sur le problème du millénaire figure dans le cours avec des sources datées.

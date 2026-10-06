@@ -122,7 +122,7 @@ Dans Hartmann, `h` est une **demi-hauteur**, `B` est en T, `σ` en S·m⁻¹, `H
 
 **Trace attendue :** un bilan de puissance et une substitution dans une équation ; distinguer résidu numérique, exactitude dans un modèle et validité de ce modèle.
 
-**Sup :** exponentielle, dérivée et bilan d’énergie. **Spé :** produit vectoriel, induction, analyse de champs et bilans selon filière. **Au-delà :** Hartmann, Alfvén et équations locales de Navier–Stokes. La solution particulière périodique 2D ne tranche pas la régularité générale 3D. Le [repère daté de Clay](https://www.claymath.org/news/navier-stokes-announcement/) et sa portée exacte figurent dans [ERRATA.md](ERRATA.md).
+**Sup :** exponentielle, dérivée et bilan d’énergie. **Spé :** produit vectoriel, induction, analyse de champs et bilans selon filière. **Au-delà :** Hartmann, Alfvén et équations locales de Navier–Stokes. La solution particulière périodique 2D ne tranche pas la régularité générale 3D. Le repère daté du [Clay Mathematics Institute](https://www.claymath.org/news/navier-stokes-announcement/) figure dans le [cours](COURS.md).
 
 ## Pour préparer un oral
 
