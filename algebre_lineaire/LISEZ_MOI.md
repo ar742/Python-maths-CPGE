@@ -37,4 +37,4 @@ python algebre_lineaire.py --port 8773
 
 Le terminal indique l’adresse à ouvrir. `--no-browser` permet de lancer le serveur sans ouvrir automatiquement le navigateur. Ouvrir `index.html` seul ne lance pas les calculs.
 
-[Présentation](README.md) · [Cours autonome](COURS.md) · [Clarifications du recueil](ERRATA.md) · [Galerie scientifique](illustrations/README.md)
+[Présentation](README.md) · [Cours autonome](COURS.md) · [Galerie scientifique](illustrations/README.md)

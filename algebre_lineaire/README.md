@@ -38,7 +38,7 @@ python algebre_lineaire.py
 
 Selon le système, utiliser `python3`. Garder le terminal ouvert ; `Ctrl+C` arrête le programme. Pour un autre port : `python algebre_lineaire.py --port 8773`.
 
-[Guide de lancement](LISEZ_MOI.md) · [Dix missions](PARCOURS.md) · [Cours et corrections](COURS.md) · [Clarifications du recueil](ERRATA.md)
+[Guide de lancement](LISEZ_MOI.md) · [Dix missions](PARCOURS.md) · [Cours et corrections](COURS.md)
 
 Depuis l’accueil, choisir une question ou utiliser le menu **Explorer un laboratoire**. Faire glisser les vues 3D pour tourner la caméra ; survoler les sommets pour isoler leurs liaisons ; parcourir ou animer les étapes d’un réseau ; faire varier les appariements du pfaffien. **Exporter les résultats** conserve les paramètres et le calcul validé dans un fichier JSON reproductible.
 
@@ -96,7 +96,7 @@ python -X utf8 -m unittest -v test_modeles test_reductions test_structures test_
 
 Les **128 tests** comparent les résultats à des références indépendantes : produits exacts, changements de base construits, polynômes, dénombrements, identités de représentations, conservation hamiltonienne, lois stationnaires et arbres couvrants. Les contrôles vérifient aussi chaque exemple visible, la reproduction des exports, les descriptions des objets et les données des scènes. GitHub les exécute sous Windows et Linux avec Python 3.10 et 3.12.
 
-Les sources primaires et les formulations corrigées du recueil figurent dans [le cours](COURS.md) et [ERRATA.md](ERRATA.md). Le PDF personnel n’est pas publié.
+Les sources primaires figurent dans [le cours](COURS.md). Le PDF personnel n’est pas publié.
 
 | Fichier | Rôle |
 | --- | --- |
