@@ -326,6 +326,22 @@ class ContratJSON(unittest.TestCase):
             with self.subTest(params=params):self.validate(m.calculate(params))
         for size in ('5','8.0',True,5):
             with self.assertRaises(ValueError):m.calculate(dict(lab='pfaffien',size=size))
+        # Reproduction du JSON exporté, avec famille par défaut et famille
+        # explicite. Le vecteur manuel exporté est une liste de colonnes.
+        for lab,family in (('spectre','jordan'),('dunford','nilpotent'),
+                           ('cyclique','diagonale'),('cayley','rotation')):
+            for explicit_family in (False,True):
+                params=dict(lab=lab,matrix='1 1/2;0 1')
+                if explicit_family:params['famille']=family
+                if lab=='cyclique':params.update(vecteur='manuel',v='1;2')
+                original=m.calculate(params)
+                exported=json.loads(json.dumps(original,allow_nan=False))
+                reproduced=m.calculate(dict(exported['parameters'],lab=exported['lab']))
+                with self.subTest(lab=lab,explicit_family=explicit_family):
+                    self.assertNotEqual(exported['parameters']['famille'],'personnalisée')
+                    self.assertEqual(reproduced,original)
+                    if lab=='cyclique':
+                        self.assertEqual(exported['parameters']['v'],[['1'],['2']])
 
 
 if __name__=='__main__':unittest.main()

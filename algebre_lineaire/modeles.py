@@ -434,7 +434,13 @@ def reduction_wrapper(data):
         if key in theory:params[key]=theory[key]
     if "vector_mode" in theory:
         params["vecteur"]=theory["vector_mode"];params["v"]=theory["vector"]
-    if theory.get("family")=="personnalisée":params["matrix"]=result["matrices"][0]["entries"]
+    if theory.get("family")=="personnalisée":
+        # « personnalisée » décrit le résultat, mais n'est pas un choix d'entrée.
+        # _input valide d'abord la famille : conserver celle déjà validée ou son
+        # défaut officiel permet de relancer l'export avec la matrice exacte.
+        defaults={"spectre":"symetrique","dunford":"tp","cyclique":"compagnon","cayley":"tp"}
+        params["famille"]=data.get("famille",defaults[data.get("lab","spectre")])
+        params["matrix"]=result["matrices"][0]["entries"]
     result["parameters"]=params
     return result
 
