@@ -20,7 +20,7 @@ python physique_quantique.py
 
 Garder le terminal ouvert ; `Ctrl+C` arrête le programme. Selon le système, utiliser `python3`. Pour changer de port : `python physique_quantique.py --port 8771`. GitHub présente les sources et le cours ; ouvrir le HTML seul ne démarre pas les calculs Python.
 
-[Guide de lancement](LISEZ_MOI.md) · [Parcours en sept séances](PARCOURS.md) · [Cours et corrections](COURS.md) · [Clarifications du recueil](ERRATA.md)
+[Guide de lancement](LISEZ_MOI.md) · [Parcours en sept séances](PARCOURS.md) · [Cours et corrections](COURS.md)
 
 ## Les neuf laboratoires
 

@@ -474,6 +474,4 @@ Conventions : unités SI pour les exemples physiques déclarés ; ℏ=m=1 pour l
 
 Conventions d’intrication : Φ⁺=(|00>+|11>)/√2 ; analyseurs de polarisation M(a)=cos(2a)Z+sin(2a)X ; CHSH avec les signes +,+,+,−. Matrices de qubits dans l’ordre |0>,|1> ; deux qubits dans l’ordre |00>,|01>,|10>,|11>, contrôle CNOT à gauche.
 
-Corrections explicitées du recueil : conditions de bord de la boîte sans égalité imposée des dérivées ; énergie libre positive ; coefficients de superposition par projection ; identité [A,BC]=[A,B]C+B[A,C] ; signe positif de l’intégrale de (V−E)ψ dans le saut de ψ′ ; densité spatiale distincte de l’opérateur densité ; relation énergie–temps non déduite directement de Robertson ; Φ⁺ distinct du singulet ; charge de paire et différence d’énergie précisées pour Josephson ; Hamiltonien Zeeman non proportionnel à l’identité.
-
 Limites des modèles : fente rectangulaire traitée par largeur de lobe, et non par variance finie ; hydrogène heuristique distingué d’une démonstration variationnelle ; SQUID sans inductance ni dissipation ; Rabi sans relaxation ; champ circulaire exact distingué de l’approximation tournante d’un champ linéaire ; circuits simulés sur ordinateur classique.
