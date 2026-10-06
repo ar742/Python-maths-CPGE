@@ -107,8 +107,8 @@ indépendants. Les mesures Monte-Carlo sont distinguées des résultats analytiq
 **Python 3.10+ et NumPy**. Double-cliquer sur `Lancer_Physique_Quantique.cmd`.
 L’atelier fonctionne sur <http://127.0.0.1:8769>, hors ligne après installation.
 **77 tests** vérifient les résultats physiques et le serveur. Les conditions aux
-limites, unités et approximations sont explicites ; les clarifications du recueil
-accompagnent les preuves. [Présentation et illustrations](physique_quantique/README.md).
+limites, unités et approximations sont explicites.
+[Présentation et illustrations](physique_quantique/README.md).
 [Le volet 06](physique_statistique/README.md) prolonge ces niveaux quantiques vers les états thermiques.
 
 ## Volet 04 · Calcul différentiel & Transformations
