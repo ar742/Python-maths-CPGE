@@ -1,0 +1,242 @@
+[
+  {
+    "file": "formule.svg",
+    "title": "Formule brute : insaturations et signatures isotopiques",
+    "caption": "Probabilités conditionnelles aux isotopes légers de C, H, N, O ; M+1 (¹³C) et fragmentation non simulés.",
+    "labs": [
+      "formule"
+    ]
+  },
+  {
+    "file": "stereo.svg",
+    "title": "Chiralité : orientation, R/S et excès énantiomérique",
+    "caption": "Axes de vue fixes ; la rotation du solide conserve la configuration. Les quatre rangs sont donnés, pas calculés par un moteur CIP.",
+    "labs": [
+      "stereo"
+    ]
+  },
+  {
+    "file": "conformeres.svg",
+    "title": "Conformations : Newman et populations de Boltzmann",
+    "caption": "Interpolation cosinus entre Eanti=0, Egauche(60°)=3,8, Eeclipsé(120°)=16 et Esyn(0°)=21 kJ/mol : profil pédagogique, pas un champ de force moléculaire.",
+    "labs": [
+      "conformeres"
+    ]
+  },
+  {
+    "file": "ir.svg",
+    "title": "IR : fonctions chimiques et loi de Beer–Lambert",
+    "caption": "Les positions, amplitudes et largeurs sont des paramètres pédagogiques typiques, pas un enregistrement expérimental.",
+    "labs": [
+      "ir"
+    ]
+  },
+  {
+    "file": "rmn.svg",
+    "title": "RMN : intégrales, couplages et identification croisée",
+    "caption": "Positions typiques, raies lorentziennes ; les paquets aromatiques représentent des zones, sans prétendre résoudre leur système de spins.",
+    "labs": [
+      "rmn"
+    ]
+  },
+  {
+    "file": "ccm.svg",
+    "title": "CCM : séparation, suivi et limites de l’identification",
+    "caption": "Modèle k′ = k′₀ exp(−4φ), Rf = 1/(1+k′). Les intensités indiquent des quantités relatives avec même réponse détecteur, hypothèse pédagogique.",
+    "labs": [
+      "ccm"
+    ]
+  },
+  {
+    "file": "extraction.svg",
+    "title": "Extraction : pH, partage et extractions successives",
+    "caption": "À chaque étape, on conserve le soluté aqueux et collecte une nouvelle phase organique. Les quantités ci-dessous sont rapportées à n₀ = 1 mol.",
+    "labs": [
+      "extraction"
+    ]
+  },
+  {
+    "file": "esterification.svg",
+    "title": "Esters : équilibre, hydrolyse et saponification",
+    "caption": "Même squelette acyle ; en milieu basique le produit est le carboxylate, qui doit être acidifié si l’on veut isoler l’acide.",
+    "labs": [
+      "esterification"
+    ]
+  },
+  {
+    "file": "acylation.svg",
+    "title": "Acylation : activation et bilan du piège à acide",
+    "caption": "Les flèches déplacent un doublet du nucléophile puis la liaison π C=O ; élimination et déprotonation achèvent la substitution.",
+    "labs": [
+      "acylation"
+    ]
+  },
+  {
+    "file": "protection.svg",
+    "title": "Protection : rendre une stratégie compatible",
+    "caption": "L’acétal est stable au réducteur basique choisi ; la déprotection acide restaure ensuite la cétone.",
+    "labs": [
+      "protection"
+    ]
+  },
+  {
+    "file": "aldol.svg",
+    "title": "Aldolisation : créer C–C puis conjuguer",
+    "caption": "Ph = phényle ; la forme mésomère C de l’énolate porte le doublet qui forme C–C. Les groupes CO sont des carbonyles abrégés.",
+    "labs": [
+      "aldol"
+    ]
+  },
+  {
+    "file": "michaelwittig.svg",
+    "title": "Michael et Wittig : deux constructions C–C",
+    "caption": "Un nucléophile stabilisé ou organocuprate favorise souvent 1,4 ; le carbonyle est restauré après protonation.",
+    "labs": [
+      "michaelwittig"
+    ]
+  },
+  {
+    "file": "dielsalder.svg",
+    "title": "Diels–Alder : géométrie, orbitales et sélection",
+    "caption": "Le produit conserve cis/trans du diènophile. Les coins indiquent cette relation ; le ratio tout endo/tout exo n’est calculé que pour le diène cyclique + diènophile cis.",
+    "labs": [
+      "dielsalder"
+    ]
+  },
+  {
+    "file": "retrosynthese.svg",
+    "title": "Rétrosynthèse : cibles, ordre et rendement global",
+    "caption": "Liaison O(phénol)–C(acyle), groupe COOH conservé Encart : structure de la cible visée.",
+    "labs": [
+      "retrosynthese"
+    ]
+  },
+  {
+    "file": "polymeres.svg",
+    "title": "Polymères : conversion, stœchiométrie et longueur",
+    "caption": "AA+BB bifonctionnels : DPₙ compte les entités AA et BB incorporées. Une répétition structurale du nylon-6,6 contient une unité de chaque, soit environ DPₙ/2 répétitions à grande chaîne.",
+    "labs": [
+      "polymeres"
+    ]
+  },
+  {
+    "file": "electrons.svg",
+    "title": "Flèches : où vont réellement les électrons ?",
+    "caption": "Deux flèches de doublet : O de HO⁻ donne vers H ; la liaison O–H cède vers O.",
+    "labs": [
+      "electrons"
+    ]
+  },
+  {
+    "file": "acidebase.svg",
+    "title": "Acidité, basicité et avancement : choisir avant d’attaquer",
+    "caption": "Activités assimilées aux concentrations dans le même solvant ; contre-ions non représentés.",
+    "labs": [
+      "acidebase"
+    ]
+  },
+  {
+    "file": "sn2.svg",
+    "title": "SN2 : cinétique bimoléculaire et inversion de Walden",
+    "caption": "SN2 classique envisageable ; le k choisi n’est pas prédit par la structure.",
+    "labs": [
+      "sn2"
+    ]
+  },
+  {
+    "file": "sn1.svg",
+    "title": "SN1 : intermédiaire, solvolyse et mémoire stéréochimique",
+    "caption": "La planéité permet les deux faces ; une paire d’ions peut rendre leur capture inégale.",
+    "labs": [
+      "sn1"
+    ]
+  },
+  {
+    "file": "competition.svg",
+    "title": "SN1 / SN2 / E1 / E2 : une compétition explicite",
+    "caption": "SN1 et E1 partagent l’ionisation commune ; capture/(capture+élimination) est imposé.",
+    "labs": [
+      "competition"
+    ]
+  },
+  {
+    "file": "elimination.svg",
+    "title": "E2 : anti-périplanarité et verrou cyclohexanique",
+    "caption": "Conformation anti exacte disponible.",
+    "labs": [
+      "elimination"
+    ]
+  },
+  {
+    "file": "alcene.svg",
+    "title": "Alcènes : régiochimie, stéréochimie et réarrangements",
+    "caption": "Hydroboration concertée, puis oxydation avec rétention au carbone portant B ; pas de carbocation libre.",
+    "labs": [
+      "alcene"
+    ]
+  },
+  {
+    "file": "alcyne.svg",
+    "title": "Alcynes : deux additions, réduction et tautomérie",
+    "caption": "Choix des conditions et quantité stœchiométrique explicités.",
+    "labs": [
+      "alcyne"
+    ]
+  },
+  {
+    "file": "radical.svg",
+    "title": "Radicaux : chaîne, effet peroxyde et sélectivité",
+    "caption": "Isobutane : 9 hydrogènes primaires équivalents et 1 hydrogène tertiaire ; nombres de sites et réactivité par site se multiplient.",
+    "labs": [
+      "radical"
+    ]
+  },
+  {
+    "file": "carbonyle.svg",
+    "title": "Carbonyles : addition, substitution acyle et énolates",
+    "caption": "L’énolate de l’éthanal attaque le C du carbonyle d’un autre éthanal.",
+    "labs": [
+      "carbonyle"
+    ]
+  },
+  {
+    "file": "grignard.svg",
+    "title": "Organomagnésiens : former C–C et survivre aux protons",
+    "caption": "Le carbone du RMgBr est nucléophile et fortement basique. Solvant éthéré anhydre ; hydrolyse seulement après addition.",
+    "labs": [
+      "grignard"
+    ]
+  },
+  {
+    "file": "oxydoreduction.svg",
+    "title": "Oxydoréduction : choisir une fonction et un réactif",
+    "caption": "Transformation retenue dans les conditions usuelles. L’ester fournit aussi l’alcool du groupe OR après hydrolyse.",
+    "labs": [
+      "oxydoreduction"
+    ]
+  },
+  {
+    "file": "aromatique.svg",
+    "title": "SEA : orientation, activation et ordre de synthèse",
+    "caption": "L’orientation chimique qualitative et les fractions du modèle de barrières sont séparées.",
+    "labs": [
+      "aromatique"
+    ]
+  },
+  {
+    "file": "orbitales.svg",
+    "title": "Orbitales : CLOA, Hückel et Diels–Alder",
+    "caption": "Les signes indiquent une phase d’orbitales ; changer globalement le signe d’une OM ne change aucun observable.",
+    "labs": [
+      "orbitales"
+    ]
+  },
+  {
+    "file": "cinetique.svg",
+    "title": "Cinétique ou thermodynamique : deux sélectivités",
+    "caption": "ΔG‡ fixe les vitesses ; ΔG des produits fixe leur équilibre si une interconversion est possible.",
+    "labs": [
+      "cinetique"
+    ]
+  }
+]
