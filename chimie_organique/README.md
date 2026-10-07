@@ -6,6 +6,8 @@ Un atelier Python pour **identifier une structure, déplacer les électrons, cho
 
 ![SN2 : suivre les doublets, l’inversion et la consommation des réactifs](apercu_mecanisme.png)
 
+[Voir aussi une rétrosynthèse guidée de l’aspirine](apercu_synthese.png).
+
 La progression concerne principalement **PCSI et PC–PC***. La [matrice du programme](MATRICE_PROGRAMME.md) distingue le tronc commun, l’option PC, la deuxième année et les prolongements accompagnés. Les mécanismes plus avancés ne sont pas attribués indistinctement à toutes les filières.
 
 ## Lancer l’atelier

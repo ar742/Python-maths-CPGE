@@ -258,7 +258,7 @@ def rmn(p):
             positions=center+(np.arange(multiplicity)-(multiplicity-1)/2)*J/frequency
             gamma=width/2*(12 if 'Paquet' in label else 1)
             profile=sum(q*gamma/np.pi/((x-pos)**2+gamma**2) for pos,q in zip(positions,coeff))
-            trapezoid=getattr(np,'trapezoid',np.trapz)
+            trapezoid=getattr(np,'trapezoid',None) or np.trapz
             profile*=integral/trapezoid(profile,x);y+=profile
             signals.append(dict(delta=center,integral=integral,multiplicity=multiplicity,J=J,label=label,positions=positions,weights=coeff,area=float(trapezoid(profile,x))))
             peaks.extend(dict(position=float(pos),label=label,intensity=float(q)) for pos,q in zip(positions,coeff))
