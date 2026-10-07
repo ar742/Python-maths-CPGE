@@ -1,16 +1,16 @@
 # Python-maths-CPGE
 
-Des mathématiques et de la physique de **maths sup et maths spé** à expérimenter avec Python :
+Des mathématiques, de la physique et de la chimie de **maths sup et maths spé** à expérimenter avec Python :
 cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Dix ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Onze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** et **Lumière & Images — Optique**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** **Lumière & Images — Optique** et **Liaisons & Synthèses — Chimie organique**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments et formation des images.
+matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire et stratégies de synthèse.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -24,6 +24,28 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
 | 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
 | 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
+| 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Parcours](chimie_organique/PARCOURS.md) · [Cours](chimie_organique/COURS.md) |
+
+## Chimie · Atelier 11 · Liaisons & Synthèses — Chimie organique
+
+![SN2 : suivre les doublets et l’inversion de configuration](chimie_organique/apercu_mecanisme.png)
+
+**30 laboratoires, 42 leçons, 60 exercices corrigés et 30 figures originales**,
+à partir de la fiche **C4** du recueil de A. R. Les introductions expliquent
+les objectifs, les structures, les variables, les hypothèses et les techniques ;
+les repères **sup / spé / au-delà** accompagnent la progression, principalement
+**PCSI et PC–PC***. La [matrice du programme](chimie_organique/MATRICE_PROGRAMME.md)
+précise les domaines et les prolongements.
+
+- **Identifier :** formule brute, isotopes, stéréochimie, conformations, IR, RMN, CCM et extraction.
+- **Prévoir :** effets électroniques, acidité, SN1/SN2, E1/E2, additions aux alcènes et alcynes, radicaux, carbonyles, organomagnésiens, oxydoréduction et substitutions aromatiques.
+- **Construire :** acylation, estérification, protections, aldolisation/crotonisation, Michael, Wittig, Diels–Alder, rétrosynthèse et polymères.
+- **Justifier :** bilans, cinétique, sélectivité, orbitales, rendement cumulé et contrôle analytique, dans douze missions.
+
+**Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Chimie_Organique.cmd`.
+L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8775>.
+Les spectres sont simulés ; les mécanismes illustrés suivent les déplacements de doublets.
+[Présentation](chimie_organique/README.md) · [Douze missions](chimie_organique/PARCOURS.md).
 
 ## Physique · Atelier 10 · Lumière & Images — Optique
 
