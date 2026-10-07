@@ -5,12 +5,12 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Neuf ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Dix ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes** et **Champs & Matière — Électromagnétisme**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** et **Lumière & Images — Optique**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles, écoulements, acoustique, champs et conversion électromagnétique.
+matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments et formation des images.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -23,6 +23,28 @@ matricielles, écoulements, acoustique, champs et conversion électromagnétique
 | 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md) |
 | 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
 | 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
+| 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
+
+## Physique · Atelier 10 · Lumière & Images — Optique
+
+![Fourier : objet, spectre, masque et image](optique/apercu_fourier.png)
+
+**24 laboratoires, 36 leçons, 48 exercices corrigés et 24 figures scientifiques**,
+à partir des fiches **P9 et P10** du recueil de A. R. Les buts, les objets et
+unités, les hypothèses, les techniques et les repères **sup / spé / au-delà**
+précèdent chaque TP ; trois premières manipulations relient prédiction,
+expérience et justification.
+
+- **Rayons et instruments :** Snell, lentilles, Fermat et Bessel ; lunette astronomique, microscope, œil, accommodation et correction.
+- **Milieux :** fibre et dispersion modale, mirage, arc-en-ciel primaire/secondaire, prisme et goniomètre, aberration sphérique.
+- **Ondes et mesures :** Young, réseau et doublet, diffraction et apodisation, Jones et Poincaré, Michelson, cohérence, Fabry–Perot.
+- **Images et lasers :** banc 4f et filtrage de Fourier, étoiles doubles et Airy, faisceau gaussien, cavité stable et seuil laser, conversion de fréquence non linéaire.
+
+**Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Optique.cmd`.
+L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8774>.
+Les images filtrées, les franges et les tracés proviennent des calculs ; les
+approximations et échelles d’affichage sont explicites.
+[Présentation et conventions](optique/README.md) · [Dix missions](optique/PARCOURS.md).
 
 ## Physique · Atelier 09 · Champs & Matière — Électromagnétisme
 
