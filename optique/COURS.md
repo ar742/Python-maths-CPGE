@@ -529,7 +529,7 @@ gseuil=α−ln(Rmiroir1 Rmiroir2)/(2L)
 
 **Limites.** Les frontières de stabilité sont marginales ; des configurations dégénérées demandent un examen spécifique, notamment le confocal. Le modèle de saturation ne décrit ni compétition multimode, ni dynamique de population, ni largeur de raie ou bruit. Les modes longitudinaux sont espacés approximativement de c/(2nL).
 
-## 34. Faisceau gaussien : conserver la puissance en divergent
+## 34. Faisceau gaussien : conserver la puissance en divergeant
 
 *Spé → Au-delà accompagné* — laboratoire `gaussien`.
 
