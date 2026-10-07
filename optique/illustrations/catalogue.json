@@ -1,0 +1,194 @@
+[
+  {
+    "file": "snell.svg",
+    "title": "Snell : réfraction et réflexion totale",
+    "labs": [
+      "snell"
+    ],
+    "caption": "L'incidence et la réfraction se mesurent à la normale horizontale, jamais à la surface verticale. L'opacité des rayons indique qualitativement leur fraction de flux."
+  },
+  {
+    "file": "lentille.svg",
+    "title": "Conjugaison : image réelle, virtuelle ou à l'infini",
+    "labs": [
+      "lentille"
+    ],
+    "caption": "Les traits pleins suivent la propagation ; les pointillés prolongent les rayons qui donnent une image virtuelle. L'axe est orienté vers la droite."
+  },
+  {
+    "file": "bessel.svg",
+    "title": "Bessel : mesurer une focale et ses incertitudes",
+    "labs": [
+      "bessel"
+    ],
+    "caption": "Le faisceau issu du point axial doit converger sur l'écran. Les deux positions échangent les tailles objet et image ; à D=4f′ elles se confondent."
+  },
+  {
+    "file": "telescope.svg",
+    "title": "Lunette astronomique : grossir ou résoudre ?",
+    "labs": [
+      "telescope"
+    ],
+    "caption": "Un faisceau parallèle incliné forme une image intermédiaire au foyer de l'objectif. À la séparation f₁+f₂, l'oculaire restitue un faisceau parallèle, de direction inversée."
+  },
+  {
+    "file": "microscope.svg",
+    "title": "Microscope : image intermédiaire et ouverture numérique",
+    "labs": [
+      "microscope"
+    ],
+    "caption": "Le microscope est réglé pour une observation sans accommodation lorsque l'image intermédiaire est dans le plan focal objet de l'oculaire. Les axes sont étirés pour rendre visibles les petites hauteurs."
+  },
+  {
+    "file": "oeil.svg",
+    "title": "Œil : accommodation, défauts et correction",
+    "labs": [
+      "oeil"
+    ],
+    "caption": "L'œil réduit remplace les dioptres oculaires par une lentille mince dans l'air. Le faisceau montré provient d'un point axial à la distance indiquée ; le point objet peut être hors du dessin."
+  },
+  {
+    "file": "fibre.svg",
+    "title": "Fibre : cône d'acceptance et dispersion modale",
+    "labs": [
+      "fibre"
+    ],
+    "caption": "La scène affiche seulement une section de longueur 20a, pas les kilomètres du contrôle L. Le retard est calculé sur L. Un rayon méridien reste dans un plan contenant l'axe."
+  },
+  {
+    "file": "mirage.svg",
+    "title": "Mirage : un rayon courbe dans un gradient d'indice",
+    "labs": [
+      "mirage"
+    ],
+    "caption": "Le profil n(z)=n₀√(1+z/a) produit une parabole. Les rayons physiques s'arrêtent au sol ; les pointillés prolongent seulement la tangente reçue par un observateur placé à l'arrivée. Ils indiquent l'altitude apparente de la source à x=0. Les échelles des axes sont différentes."
+  },
+  {
+    "file": "arcenciel.svg",
+    "title": "Arc-en-ciel : stationnarité et dispersion d'une goutte",
+    "labs": [
+      "arcenciel"
+    ],
+    "caption": "Le tracé calcule Snell à l'entrée et à la sortie, puis les réflexions spéculaires internes. Le nombre de réflexions distingue l'arc primaire et le secondaire ; seuls les trajets demandés sont montrés."
+  },
+  {
+    "file": "prisme.svg",
+    "title": "Prisme : goniomètre, minimum et Cauchy",
+    "labs": [
+      "prisme"
+    ],
+    "caption": "L'entrée est sur la face verticale et les incidences se mesurent aux normales locales. Le tracé suit aussi des réflexions totales jusqu'à une autre face, avec au plus quatre réflexions représentées."
+  },
+  {
+    "file": "aberrations.svg",
+    "title": "Miroir : la sphère face au paraboloïde",
+    "labs": [
+      "aberrations"
+    ],
+    "caption": "Les normales sont calculées sur la surface ; la réflexion utilise u′=u−2(u·N)N. Le paraboloïde est exactement stigmatique pour le faisceau axial, la sphère l'est seulement dans la limite paraxiale."
+  },
+  {
+    "file": "fermat.svg",
+    "title": "Fermat : choisir le passage le plus rapide",
+    "labs": [
+      "fermat"
+    ],
+    "caption": "Le trait turquoise suit le minimum du temps de trajet ; le trait orangé suit le passage choisi. Dans ce montage à deux segments, L est strictement convexe et le minimum est unique."
+  },
+  {
+    "file": "young.svg",
+    "title": "Young : franges, enveloppe et déséquilibre",
+    "labs": [
+      "young"
+    ],
+    "caption": "L'éclairement est calculé ; l'exposition visuelle est commune au profil et à l'écran."
+  },
+  {
+    "file": "reseau.svg",
+    "title": "Réseau : résoudre un doublet spectral",
+    "labs": [
+      "reseau"
+    ],
+    "caption": "Le profil détaillé porte sur l'ordre choisi ; deux fréquences distinctes donnent une somme d'intensités."
+  },
+  {
+    "file": "diffraction.svg",
+    "title": "Ouvertures : rectangle et apodisation",
+    "labs": [
+      "diffraction"
+    ],
+    "caption": "Intensité normalisée au maximum propre à la pupille ; le bilan de puissance est indiqué séparément."
+  },
+  {
+    "file": "polarisation.svg",
+    "title": "Jones : lame à retard et analyseur",
+    "labs": [
+      "polarisation"
+    ],
+    "caption": "Le champ réel est Re(E exp(−iωt)) ; S₃ = 2 Im(Ex* Ey). L'ellipse précède l'analyseur."
+  },
+  {
+    "file": "michelson.svg",
+    "title": "Michelson : anneaux et coin d'air",
+    "labs": [
+      "michelson"
+    ],
+    "caption": "Lame d'air : δ=2e cos θ, avec tan θ=r/f. Coin d'air : δ≃2e+2αx dans le plan du coin imagé."
+  },
+  {
+    "file": "coherence.svg",
+    "title": "Cohérence : spectre, source étendue et battements",
+    "labs": [
+      "coherence"
+    ],
+    "caption": "Le profil local résout les franges optiques ; la courbe globale résout leur enveloppe. Une corrélation négative décale les franges d'une demi-période."
+  },
+  {
+    "file": "fabryperot.svg",
+    "title": "Fabry–Perot : coefficient d'Airy et finesse",
+    "labs": [
+      "fabryperot"
+    ],
+    "caption": "Des miroirs identiques sans absorption peuvent transmettre 100 % sur résonance."
+  },
+  {
+    "file": "fourier.svg",
+    "title": "Banc 4f : filtrer vraiment une image",
+    "labs": [
+      "fourier"
+    ],
+    "caption": "Seule la vue du spectre utilise un affichage logarithmique. Objet et image conservent une unité d'intensité commune ; aucun flou artificiel n'est ajouté."
+  },
+  {
+    "file": "laser.svg",
+    "title": "Laser : stabilité, seuil et saturation",
+    "labs": [
+      "laser"
+    ],
+    "caption": "La géométrie confine le mode ; le bilan d'énergie impose un gain supérieur aux pertes. Une géométrie marginale exige une analyse particulière."
+  },
+  {
+    "file": "gaussien.svg",
+    "title": "Faisceau gaussien : waist, diffraction et Gouy",
+    "labs": [
+      "gaussien"
+    ],
+    "caption": "w est le rayon à 1/e² d'intensité, pas un diamètre. Le profil 2D longitudinal est calculé depuis la même puissance."
+  },
+  {
+    "file": "airy.svg",
+    "title": "Airy : séparer deux étoiles",
+    "labs": [
+      "airy"
+    ],
+    "caption": "Les étoiles sont incohérentes : I=I₁+I₂. L'obstruction centrale redistribue l'énergie vers les anneaux et change le premier minimum."
+  },
+  {
+    "file": "nonlineaire.svg",
+    "title": "χ² : doubler la fréquence et épuiser la pompe",
+    "labs": [
+      "nonlineaire"
+    ],
+    "caption": "Les intensités normalisées sont des fractions d'énergie. À accord parfait, la pompe décroît en sech²(gz), l'harmonique croît en tanh²(gz)."
+  }
+]
