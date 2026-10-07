@@ -1,4 +1,4 @@
-name: Vérifications mathématiques et physiques
+name: Vérifications mathématiques, physiques et chimiques
 
 on:
   push:
@@ -235,3 +235,26 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Tests des rayons, instruments, interférences, images et serveur
         run: python -X utf8 -m unittest -v test_geometrie test_ondes test_entree test_pedagogie test_serveur
+
+  chimie_organique:
+    name: Chimie organique — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: chimie_organique
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des structures, mécanismes, spectres, synthèses et serveur
+        run: python -X utf8 -m unittest -v test_analyse test_reactivite test_entree test_pedagogie test_serveur
