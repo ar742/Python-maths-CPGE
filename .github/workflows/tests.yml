@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   rubik:
     name: Rubik — ${{ matrix.os }} — Python ${{ matrix.python }}
@@ -208,3 +212,4 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Tests des champs, ondes, milieux, machines et serveur
         run: python -X utf8 -m unittest -v test_conversion test_ondes test_entree test_pedagogie test_serveur
+
