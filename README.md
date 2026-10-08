@@ -5,12 +5,12 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Douze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Treize ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique** et **Séries & Signaux** (sixième volet de mathématiques). Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques) et **Topologie & Ensembles** (septième volet de mathématiques). Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées et analyse du signal.
+matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité et connexité.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -26,6 +26,25 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
 | 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
 | 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md) |
+| 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md) |
+
+## Maths, volet 07 · Atelier 13 · Topologie & Ensembles
+
+![Topologie & Ensembles : du point au voisinage, du dessin à la preuve](topologie_ensembles/apercu.png)
+
+**30 laboratoires, 60 leçons, 60 exercices corrigés et 30 figures scientifiques originales**,
+à partir de la **fiche M1**, avec priorité aux **définitions et propriétés**, au **TP p.17**,
+à la **synthèse p.22** et aux **exercices 6 à 9**. Chaque TP annonce ses buts, objets,
+variables, hypothèses, techniques et repères **sup / spé / au-delà**.
+
+- **Définir :** boules, voisinages, ouvert/fermé, intérieur, adhérence, frontière, topologie relative et opérations sur les ensembles.
+- **Comparer :** convexité, enveloppes et projections ; connexité et chemins dans le plan épointé, ovales de Cassini, sinus du topologue.
+- **Prouver :** Bolzano–Weierstrass et TP aléatoire, Cauchy et complétude, recouvrements, Heine, extrema, produits et images de compacts.
+- **Séparer les notions :** rationnels denses dénombrables, diagonale et compact de Cantor ; normes et boule de fonctions en dimension infinie ; matrices denses, GL₄/O₄/SL₄ et contractions.
+
+**Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Topologie.cmd`.
+L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8777>.
+[Présentation et définitions](topologie_ensembles/README.md) · [Douze missions](topologie_ensembles/PARCOURS.md).
 
 ## Maths, volet 06 · Atelier 12 · Séries & Signaux
 
