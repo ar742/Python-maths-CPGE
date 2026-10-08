@@ -109,7 +109,17 @@ class MolecularTests(unittest.TestCase):
     def test_translation_has_zero_elastic_energy(self):
         masses,k,_,_=co2_modes(16*U,12*U,1000)
         x=np.array([1.,1.,1.])*3e-12
-        self.assertEqual(float(x@k@x),0)
+        # Chaque produit scalaire a trois termes : borne d'arrondi γ₃,
+        # rapportée aux contributions avant leur annulation, et non à zéro.
+        epsilon=np.finfo(float).eps
+        gamma3=3*epsilon/(1-3*epsilon)
+        force_scale=np.abs(k)@np.abs(x)
+        for residual,scale in zip(k@x,force_scale):
+            self.assertLessEqual(abs(float(residual)),gamma3*float(scale))
+        # La première multiplication doit donner le vecteur nul ; le second
+        # produit scalaire ajoute au plus un facteur (1+γ₃) à son erreur.
+        energy_scale=float(np.abs(x)@force_scale)
+        self.assertLessEqual(abs(float(x@k@x)),gamma3*(1+gamma3)*energy_scale)
 
 class FoucaultTests(unittest.TestCase):
     def test_initial_position_and_velocity(self):

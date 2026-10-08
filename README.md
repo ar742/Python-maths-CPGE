@@ -8,7 +8,7 @@ Ce dépôt complète les ateliers de physique de
 Quatorze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques) **Topologie & Ensembles** (septième volet de mathématiques) et **Mécanique & Mouvements**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques) et **Mécanique & Mouvements**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
