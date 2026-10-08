@@ -304,3 +304,26 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Tests des ensembles, compacts, chemins, guides et serveur
         run: python -X utf8 -m unittest -v test_geometrie test_analyse test_ensembles test_entree test_pedagogie test_serveur
+
+  mecanique_classique:
+    name: Mécanique classique — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: mecanique_classique
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des orbites, oscillateurs, solides, guides et serveur
+        run: python -X utf8 -m unittest discover -v

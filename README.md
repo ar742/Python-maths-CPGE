@@ -5,12 +5,12 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Treize ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Quatorze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques) et **Topologie & Ensembles** (septième volet de mathématiques). Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques) **Topologie & Ensembles** (septième volet de mathématiques) et **Mécanique & Mouvements**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité et connexité.
+matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -27,6 +27,21 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
 | 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md) |
 | 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md) |
+| 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
+
+## Physique · Atelier 14 · Mécanique & Mouvements
+
+![Mécanique : Kepler, anharmonicités et lois de Coulomb](mecanique_classique/apercu.png)
+
+**24 laboratoires animés, 48 leçons, 72 exercices corrigés et 24 figures scientifiques**, à partir des fiches **P1–P3**. Chaque TP explique ses buts, variables, hypothèses et techniques, avec des repères **sup / spé / au-delà**.
+
+- **P1, théorèmes p.268–269 :** Kepler, barycentre et deux corps, potentiel effectif, Hohmann, assistance gravitationnelle, marées, fusée et Coriolis.
+- **P2, exercices 2, 3, 6 et surtout 7 :** chaîne atomique, CO₂, Foucault, pendule exact, harmoniques, deux ressorts transverses, potentiel quartique et Duffing.
+- **P3, théorèmes p.286–287 et exercices 1–3 :** Huygens et König, barres, cylindre au bord de la table, Coulomb avec arrêt/inversion, roulement et gyroscope.
+
+**Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Mecanique.cmd`. L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8778>.
+
+[Présentation](mecanique_classique/README.md) · [Guide](mecanique_classique/LISEZ_MOI.md) · [12 séances](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) · [Exercices](mecanique_classique/EXERCICES.md).
 
 ## Maths, volet 07 · Atelier 13 · Topologie & Ensembles
 

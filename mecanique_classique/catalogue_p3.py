@@ -1,0 +1,38 @@
+"""P3 : huit expériences sur le mouvement des solides et leurs contacts."""
+from commun import slider, select, preset, lab
+
+CATEGORY = 'P3 · Solides, rotation et contacts'
+LABS = [
+lab('inertie_huygens', 'Six masses : quel axe résiste le plus à la rotation ?', CATEGORY,
+    'Déplacer le point O et orienter un axe. Pour un assemblage de six masses inégales, comparer le calcul direct du moment d’inertie au théorème de Huygens. Les axes principaux donnent ensuite les directions de plus faible et de plus forte inertie.',
+    [slider('mass','Masse totale',.5,12,.5,3,'kg'), slider('stretch','Allongement suivant x',.5,3,.1,1.8), slider('dx','Coordonnée x de G par rapport à O',-1,1,.05,.4,'m'), slider('dy','Coordonnée y de G par rapport à O',-1,1,.05,.2,'m'), slider('theta','Angle de l’axe avec la verticale',0,180,1,55,'°'), slider('phi','Azimut de l’axe',0,360,1,30,'°')],
+    [preset('Axe passant par G',dx=0,dy=0),preset('Axe décalé et oblique',dx=.6,dy=.4,theta=60,phi=40),preset('Assemblage très allongé',stretch=3,theta=90,phi=0)]),
+lab('konig', 'Décomposer le mouvement d’un solide : les deux théorèmes de König', CATEGORY,
+    'Suivre les vitesses de six masses d’un même solide, en translation et en rotation. Vérifier que les termes croisés disparaissent lorsque les positions sont mesurées depuis G. L’énergie de rotation s’ajoute à celle de translation ; le moment cinétique possède aussi une contribution orbitale.',
+    [slider('mass','Masse totale',.5,8,.5,2,'kg'),slider('vx','Vitesse de G suivant x',-3,3,.1,1,'m/s'),slider('vy','Vitesse de G suivant y',-3,3,.1,.4,'m/s'),slider('omega','Vitesse angulaire autour de z',-8,8,.2,3,'rad/s'),slider('gx','Position initiale x de G',-2,2,.1,.3,'m'),slider('gy','Position initiale y de G',-2,2,.1,.8,'m')],
+    [preset('Translation seule',omega=0,vx=1,vy=.5),preset('Rotation autour de G',omega=4,vx=0,vy=0),preset('Translation et rotation',omega=3,vx=1.5,vy=.8)]),
+lab('barre_bascule', 'Une barre bascule : énergie, durée et réaction du pivot', CATEGORY,
+    'La barre homogène de longueur 2L tourne autour de son extrémité O. L’angle θ est mesuré depuis la verticale ascendante. Étudier le mouvement limite d’une barre initialement dressée et légèrement perturbée : calculer sa vitesse, le temps entre deux angles et la force du pivot.',
+    [slider('mass','Masse M',.5,8,.5,2,'kg'),slider('L','Demi-longueur L',.2,2,.05,.8,'m'),slider('theta1','Premier angle observé',.2,30,.2,3,'°'),slider('theta2','Dernier angle observé',40,170,1,100,'°')],
+    [preset('Approcher l’équilibre instable',theta1=.2,theta2=90),preset('Barre courte',L=.25,theta1=3,theta2=120),preset('Barre longue',L=1.8,theta1=3,theta2=120)]),
+lab('barre_rotule', 'Une barre sur rotule : mouvement spatial et moment cinétique', CATEGORY,
+    'Lancer une barre dans une direction qui ne reste pas dans un plan vertical. La rotule fixe O mais n’exerce aucun couple. Suivre l’axe de la barre dans l’espace et vérifier la conservation de l’énergie et de la composante verticale du moment cinétique.',
+    [slider('mass','Masse M',.5,8,.5,2,'kg'),slider('L','Demi-longueur L',.2,2,.05,.7,'m'),slider('theta','Angle initial avec la verticale ascendante',15,165,1,100,'°'),slider('theta_dot','Vitesse initiale de cet angle',-3,3,.1,0,'rad/s'),slider('phi_dot','Vitesse initiale d’azimut',-5,5,.1,1.8,'rad/s'),slider('duration','Durée observée',1,12,.5,6,'s')],
+    [preset('Pendule plan',theta=110,theta_dot=0,phi_dot=0),preset('Trajectoire spatiale',theta=100,phi_dot=2),preset('Rotation presque conique',theta=120,phi_dot=4.585,theta_dot=0)]),
+lab('cylindre_bord', 'Un cylindre au bord de la table : quel événement survient d’abord ?', CATEGORY,
+    'Pendant l’adhérence, le cylindre pivote autour de l’arête. Calculer les réactions normale N et tangentielle T, puis repérer le premier événement : glissement lorsque |T|=fₛN, ou perte de contact lorsque N=0. Le calcul s’arrête dès que ses hypothèses cessent d’être valables.',
+    [slider('mass','Masse m',.5,8,.5,2,'kg'),slider('radius','Rayon R',.03,.4,.01,.12,'m'),slider('fs','Coefficient de frottement statique fₛ',0,3,.02,.5),slider('theta1','Petit angle initial observé',.05,2,.05,.2,'°')],
+    [preset('Surface presque lisse',fs=.06),preset('Frottement usuel',fs=.5),preset('Frottement très fort',fs=2.5)]),
+lab('coulomb_horizontal', 'Tirer, freiner puis inverser une caisse : changer de régime', CATEGORY,
+    'Comparer le démarrage d’une caisse au repos et le freinage d’une caisse déjà lancée. À l’arrêt, tester l’adhérence : la caisse reste immobile si la force peut être équilibrée, ou repart en sens inverse si la traction dépasse le seuil statique. Suivre le changement de signe du frottement, la continuité de la vitesse et l’énergie dissipée.',
+    [select('initial','État initial',[('rest','Caisse initialement au repos'),('moving','Caisse lancée vers la droite à v₀')],'rest'),slider('v0','Vitesse initiale v₀ (mode caisse lancée)',.2,6,.1,3,'m/s'),slider('mass','Masse m',.5,12,.5,3,'kg'),slider('fs','Coefficient statique fₛ',.05,1.2,.01,.45),slider('ratio','Rapport f_d / fₛ',0,1,.02,.7),slider('force','Force horizontale constante',-100,100,1,18,'N'),slider('duration','Durée de l’observation',.5,8,.1,2,'s')],
+    [preset('La caisse reste immobile',initial='rest',mass=3,fs=.45,force=10),preset('Le seuil est franchi',initial='rest',mass=3,fs=.45,force=18),preset('Tirer dans l’autre sens',initial='rest',force=-18),preset('Freiner puis rester au repos',initial='moving',v0=3,mass=3,fs=.45,ratio=.7,force=-6,duration=2),preset('Freiner puis repartir à gauche',initial='moving',v0=3,mass=3,fs=.45,ratio=.7,force=-18,duration=2)]),
+lab('plan_incline', 'Glisser ou rouler sur un plan incliné ?', CATEGORY,
+    'Comparer une caisse, un cylindre plein, une boule et un cerceau lâchés sans vitesse. Déterminer l’adhérence avant d’employer une formule de roulement. Suivre ensuite l’énergie et distinguer le travail sur le centre de masse de la puissance totale du frottement au point de contact.',
+    [select('body','Objet étudié',[('block','Caisse sans rotation'),('cylinder','Cylindre plein : I=½mR²'),('sphere','Boule homogène : I=⅖mR²'),('ring','Cerceau : I=mR²')],'cylinder'),slider('mass','Masse m',.5,8,.5,2,'kg'),slider('radius','Rayon R (objets roulants)',.03,.3,.01,.1,'m'),slider('alpha','Inclinaison du plan',0,65,1,25,'°'),slider('fs','Coefficient statique fₛ',.02,1,.01,.35),slider('ratio','Rapport f_d / fₛ',0,1,.02,.7),slider('duration','Durée observée',.5,4,.1,1.5,'s')],
+    [preset('Cylindre en roulement',body='cylinder',alpha=25,fs=.35),preset('Cerceau qui glisse',body='ring',alpha=50,fs=.12),preset('Caisse immobile',body='block',alpha=15,fs=.4)]),
+lab('gyroscope', 'Toupie pesante : précession lente et nutation', CATEGORY,
+    'Le moment du poids fait évoluer le moment cinétique d’une toupie, au lieu de simplement la faire tomber. Comparer l’approximation de précession lente à l’intégration du mouvement complet d’un solide de révolution. Une mise en mouvement brusque fait apparaître une nutation.',
+    [slider('mass','Masse m',.5,3,.1,1,'kg'),slider('ell','Distance OG',.06,.25,.01,.15,'m'),slider('radius','Rayon du rotor',.03,.12,.005,.06,'m'),slider('spin','Rotation propre initiale',2,60,1,18,'tr/s'),slider('theta','Inclinaison initiale',15,75,1,40,'°'),select('launch','Lancement',[('rest','Axe lâché sans précession initiale'),('slow','Précession initiale lente approchée')],'rest'),slider('duration','Durée observée',1,10,.5,4,'s')],
+    [preset('Rotation rapide',spin=50,launch='slow'),preset('Nutation visible',spin=12,launch='rest'),preset('Approximation moins bonne',spin=3,launch='rest')]),
+]
