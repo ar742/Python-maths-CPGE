@@ -67,19 +67,19 @@ def boules_normes(p):
         ns = np.max(np.abs(uv), axis=1) if k == math.inf else np.sum(np.abs(uv) ** k, axis=1) ** (1 / k)
         curves.append(series(name, theta * 180 / math.pi, r / ns))
     extent = max(2.25, r * 1.2, max(abs(x)) + .3)
-    return result([metric('Norme choisie ‖x‖', d), metric('Marge exacte r−‖x‖', margin),
-                   metric('Appartient à la boule', 'Oui' if belongs else 'Non'),
-                   metric('Rayon de voisinage garanti', max(0., margin))],
-                  [chart('Rayon euclidien du bord suivant la direction', 'Angle (°)', 'Rayon', *curves)],
-                  _geometry('Une définition, plusieurs boules', 'Le point et les quatre contours proviennent des normes calculées.', paths,
-                            [_point([0, 0], 'Centre', 4), _point(x, 'Point x', 3)],
+    return result([metric('Distance du point à 0, dans la norme choisie', d), metric('Marge entre cette distance et le rayon r', margin),
+                   metric('Le point est-il dans la boule ?', 'Oui' if belongs else 'Non'),
+                   metric('Rayon d’une petite boule contenue dans la première', max(0., margin))],
+                  [chart('Comparer les contours dans une direction donnée', 'Direction depuis 0 (°)', 'Distance euclidienne de 0 au bord', *curves)],
+                  _geometry('Placer un point et regarder la place qui reste', 'Chaque contour est calculé avec sa norme. Comparer les formes, puis justifier l’appartenance par l’inégalité correspondante.', paths,
+                            [_point([0, 0], 'Centre 0', 4), _point(x, 'Point testé', 3)],
                             bounds=(-extent, extent, -extent, extent), norm=q if q != math.inf else 'inf',
                             margin=margin, membership=bool(belongs)),
-                  ['Dans la norme choisie, B(0,r) est définie par ‖x‖<r (ou ≤r).',
-                   'Si la marge m=r−‖x‖ est positive, l’inégalité triangulaire donne B(x,m)⊂B(0,r).',
-                   'Les normes sont équivalentes en dimension finie : elles définissent les mêmes ouverts, malgré les formes différentes.'],
-                  ['Les boules sont centrées en 0 dans ℝ² ; le rayon de voisinage indiqué utilise la norme choisie.',
-                   'Le contour polygonal est une illustration. L’appartenance et la marge utilisent la formule de la norme.'])
+                  ['Calculer la norme du point (x,y), puis la comparer à r. L’inégalité stricte signifie que le bord est exclu ; l’inégalité large l’inclut. C’est la définition d’une boule au programme de MP.',
+                   'Si m=r−‖(x,y)‖>0, tout point distant de moins de m du point testé reste dans B(0,r), par l’inégalité triangulaire. On a trouvé une petite boule contenue dans l’ensemble : elle constitue un voisinage intérieur.',
+                   'Reprendre (0,7 ; 0,7) et r=1 : la norme 1 vaut 1,4, alors que la norme 2 est inférieure à 1. Les boules de même rayon diffèrent. En dimension finie, des rayons adaptés permettent néanmoins de retrouver les mêmes ouverts : c’est l’équivalence des normes en MP.'],
+                  ['Les longueurs et le rayon intérieur sont mesurés dans la norme choisie. L’exposant p ne sert que lorsque la norme p est sélectionnée.',
+                   'Un rayon affiché égal à 0 ne fournit aucun voisinage intérieur. Le contour suggère la forme ; la formule de la norme décide de l’appartenance.'])
 
 
 def classify_shape(shape, x, radius):
@@ -113,24 +113,24 @@ def interieur_frontiere(p):
         discs.append(_disc([0, 0], r / 2, 'Bord intérieur', 1, True, False))
     if shape == 'punctured':
         discs.append(_disc([0, 0], .025, '0 est exclu', 1, False, False))
-    discs.append(_disc(x, p['epsilon'], 'Voisinage B(x,ε)', 3, False, False))
+    discs.append(_disc(x, p['epsilon'], 'Petit disque autour du point', 3, False, False))
     t = np.linspace(0, 1.25 * r, 251)
     flags = [classify_shape(shape, [z, 0], r) for z in t]
     curves = [series(label, t, [int(a[key]) + offset for a in flags])
-              for key, label, offset in [('belongs', 'Dans A', 0), ('interior', 'Dans Int(A) + 1,5', 1.5),
-                                         ('adherent', 'Dans adh(A) + 3', 3)]]
+              for key, label, offset in [('belongs', 'Appartenance : 0 ou 1', 0), ('interior', 'Intérieur : 1,5 ou 2,5', 1.5),
+                                         ('adherent', 'Adhérence : 3 ou 4', 3)]]
     title = 'Intérieur' if info['interior'] else ('Frontière' if info['boundary'] else 'Extérieur de l’adhérence')
     extent = max(2.5, r + .5, max(abs(x)) + p['epsilon'] + .3)
-    return result([metric('Position topologique', title), metric('Appartient à A', 'Oui' if info['belongs'] else 'Non'),
-                   metric('Point adhérent', 'Oui' if info['adherent'] else 'Non'), metric('Distance à la frontière', info['boundary_distance'])],
-                  [chart('Test radial : 1 signifie oui, avec décalages verticaux', 'Rayon ρ', 'Indicateur décalé', *curves)],
-                  _geometry('A, son bord et un voisinage', 'La classification est analytique, y compris aux points exclus.', paths,
-                            [_point(x, 'Point x', 3)], discs, (-extent, extent, -extent, extent), classification=info),
-                  ['x est intérieur lorsqu’un rayon ε>0 permet B(x,ε)⊂A.',
-                   'x est adhérent lorsque chaque voisinage rencontre A ; il n’a pas besoin d’appartenir à A.',
-                   'Fr(A)=adh(A) privé de Int(A). Pour le disque épointé, 0 est un point frontière supplémentaire.'],
-                  ['Les ensembles sont définis par les inégalités radiales indiquées ; l’anneau inclut ses deux cercles.',
-                   'Les indicateurs dessinés sur une grille ne servent pas à décider de l’appartenance exacte au bord.'])
+    return result([metric('Position du point par rapport à A', title), metric('Le point appartient-il à A ?', 'Oui' if info['belongs'] else 'Non'),
+                   metric('Peut-on approcher le point par des points de A ?', 'Oui' if info['adherent'] else 'Non'), metric('Distance du point au bord de A', info['boundary_distance'])],
+                  [chart('Comparer appartenance, intérieur et adhérence sur un rayon', 'Distance ρ du point à 0', 'Courbes décalées : valeur haute = oui', *curves)],
+                  _geometry('Réduire un disque autour du point testé', 'Un disque contenu dans A montre un point intérieur. Au bord, tous les petits disques rencontrent A et son complémentaire.', paths,
+                            [_point(x, 'Point testé', 3)], discs, (-extent, extent, -extent, extent), classification=info),
+                  ['Pour chercher un point intérieur, diminuer ε : peut-on obtenir un petit disque entier dans A ? Il suffit d’un rayon positif. Cette construction traduit x∈Int(A) et la définition d’un voisinage en MP.',
+                   'Pour chercher un point adhérent, demander si tous les disques autour du point, aussi petits soient-ils, rencontrent A. Le centre retiré répond oui : on peut l’approcher par des points non nuls du disque, même s’il n’appartient pas à A.',
+                   'À la frontière, chaque petit disque rencontre A et des points hors de A. Ainsi Fr(A)=adh(A) privé de Int(A). Pour le disque privé de son centre, la frontière comprend le cercle extérieur et le point 0 ; pour le disque fermé, son cercle appartient à A.'],
+                  ['La distance est euclidienne. L’anneau contient ses deux cercles ; le disque épointé est un disque ouvert dont seul le centre a été retiré.',
+                   'Le disque de rayon ε illustre un voisinage, mais les critères d’intérieur et d’adhérence portent sur des rayons quantifiés. Les inégalités radiales déterminent les réponses, y compris sur les bords.'])
 
 
 def reciprocal_distance(x, include_zero=False):
@@ -164,21 +164,21 @@ def adherence_suite(p):
     pts += [_point([x, .17], 'x', 3), _point([0, 0], '0 : limite', 1)]
     discs = [_disc([0, 0], .014, '0 inclus' if zero else '0 exclu', 1, zero, zero)]
     if info['attained']:
-        pts.append(_point([info['nearest'], -.17], 'Point minimisant', 2))
-    return result([metric('Distance exacte à A', info['distance']), metric('Infimum atteint', 'Oui' if info['attained'] else 'Non'),
-                   metric('x appartient à A', 'Oui' if info['belongs'] else 'Non'),
-                   metric('Témoin 1/n dans ]0,ε[ : n', n_witness), metric('A est compact', 'Oui' if zero else 'Non')],
-                  [chart('Le nuage fini peut masquer une distance nulle', 'Point x', 'Distance', series('À A infini', grid, exact), series(f'Aux {N} points dessinés', grid, plotted)),
-                   chart('Une suite converge vers le point adhérent 0', 'Indice n', '1/n', _dots('Éléments de A', np.arange(1, N + 1), seq))],
-                  _geometry('Les points isolés s’accumulent en 0', 'Le nombre N commande le dessin, jamais la définition infinie de A.',
-                            [_path([[x - eps, .17], [x + eps, .17]], 'Voisinage sur l’axe', 3)], pts, discs,
+        pts.append(_point([info['nearest'], -.17], 'Point de A le plus proche', 2))
+    return result([metric('Distance de x à l’ensemble A', info['distance']), metric('Un point de A atteint-il cette distance ?', 'Oui' if info['attained'] else 'Non'),
+                   metric('x est-il un élément de A ?', 'Oui' if info['belongs'] else 'Non'),
+                   metric('Rang n donnant 0<1/n<ε', n_witness), metric('A est-il compact dans ℝ ?', 'Oui' if zero else 'Non')],
+                  [chart('Comparer la distance à A et la distance au dessin fini', 'Point réel x', 'Distance minimale ou borne inférieure', series('Distance à l’ensemble infini A', grid, exact), series(f'Distance aux {N} points visibles', grid, plotted)),
+                   chart('Approcher 0 par des éléments de A', 'Indice entier n', 'Valeur du terme 1/n', _dots('Termes de la suite', np.arange(1, N + 1), seq))],
+                  _geometry('Chercher des éléments de A dans un intervalle autour de x', 'Les points 1/n appartiennent tous à A. Leur limite 0 s’ajoute à l’adhérence, qu’elle soit incluse dans A ou non.',
+                            [_path([[x - eps, .17], [x + eps, .17]], 'Intervalle ouvert autour de x', 3)], pts, discs,
                             (-.35, 1.35, -.4, .45), infinite_set=True, include_zero=zero, distance=info,
                             witness=dict(n=n_witness, value=1 / n_witness, epsilon=eps)),
-                  ['Pour x>0, les deux réciproques qui encadrent x donnent le minimum exact ; on n’énumère pas seulement N termes.',
-                   'Pour x≤0, d(x,A)=−x ; sans 0, cette borne inférieure n’est pas atteinte.',
-                   'Chaque voisinage de 0 contient un 1/n dès que n>1/ε. Ajouter 0 rend A fermé et borné, donc compact dans ℝ.'],
-                  ['A désigne l’ensemble infini. Le nuage visible est uniquement une troncature.',
-                   'L’adhérence vaut toujours {1/n : n≥1}∪{0}. Chaque 1/n est isolé.'])
+                  ['En MPSI, la suite 1/n converge vers 0. Pour un ε>0 donné, choisir n>1/ε place son terme dans ]0,ε[ : chaque voisinage de 0 rencontre A. On retrouve ainsi la caractérisation séquentielle de l’adhérence en MP.',
+                   'Sans ajouter 0, d(0,A)=0 mais aucun élément de A ne réalise cette distance. Pour x≤0, d(x,A)=−x ; pour 0<x≤1, comparer les termes qui encadrent x, et pour x≥1 retenir le point 1. La borne inférieure et le minimum ne sont donc pas interchangeables.',
+                   'Tester 1/4 : un petit intervalle l’isole des autres points de A. Tester ensuite 0 : aucun intervalle ne l’isole des termes 1/n. Ajouter cette limite rend A fermé ; comme il est aussi borné dans ℝ, le critère de MP le rend compact.'],
+                  ['A contient les 1/n pour tous les entiers n≥1, même si seuls N termes sont visibles. La distance à A utilise cet ensemble infini.',
+                   'Le rang affiché pour 0<1/n<ε sert à étudier le voisinage de 0. L’adhérence reste {1/n : n≥1}∪{0} ; ajouter 0 change l’appartenance et la fermeture, pas cette adhérence.'])
 
 
 def topologie_relative(p):
@@ -187,27 +187,27 @@ def topologie_relative(p):
     ambient = 0 < x < min(1., b)
     contains = belongs and (b > 1 or x + eps <= b)
     right = min(1., b)
-    paths = [_path([[0, 0], [1, 0]], 'Espace X=[0,1]', 0),
-             _path([[0, .14], [right, .14]], 'A, ouvert relatif', 1),
-             _path([[max(0., x - eps), -.14], [min(1., x + eps), -.14]], 'B(x,ε)∩X', 3)]
+    paths = [_path([[0, 0], [1, 0]], 'Espace de travail X=[0,1]', 0),
+             _path([[0, .14], [right, .14]], 'Points de l’intervalle qui restent dans X', 1),
+             _path([[max(0., x - eps), -.14], [min(1., x + eps), -.14]], 'Voisinage limité à X', 3)]
     discs = [_disc([0, .14], .012, '0 inclus dans A', 1, True, True),
              _disc([right, .14], .012, 'Bord droit', 1, b > 1, b > 1)]
     grid = np.linspace(0, 1, 401)
-    return result([metric('x est intérieur dans X', 'Oui' if belongs else 'Non'),
-                   metric('x est intérieur dans ℝ', 'Oui' if ambient else 'Non'),
-                   metric('B(x,ε)∩X est contenu dans A', 'Oui' if contains else 'Non'),
-                   metric('Rayon relatif garanti si x∈A', max(0., (b - x) / 2))],
-                  [chart('Même ensemble, deux notions d’intérieur', 'x dans X', 'Indicateur',
-                         series('Intérieur relatif', grid, (grid < b).astype(int)),
-                         series('Intérieur ambiant, décalé de 1,5', grid, ((grid > 0) & (grid < min(1., b))).astype(int) + 1.5))],
-                  _geometry('Le voisinage est coupé par X', 'Les trois lignes sont décalées pour comparer leurs extrémités.', paths,
+    return result([metric('x est-il intérieur à A dans X ?', 'Oui' if belongs else 'Non'),
+                   metric('x est-il intérieur à A dans ℝ ?', 'Oui' if ambient else 'Non'),
+                   metric('Le voisinage choisi reste-t-il dans A ?', 'Oui' if contains else 'Non'),
+                   metric('Rayon sûr d’un voisinage relatif, si x∈A', max(0., (b - x) / 2))],
+                  [chart('Comparer l’intérieur de A dans X et dans ℝ', 'Point x de [0,1]', 'Courbes décalées : valeur haute = oui',
+                         series('Intérieur dans X : 0 ou 1', grid, (grid < b).astype(int)),
+                         series('Intérieur dans ℝ : 1,5 ou 2,5', grid, ((grid > 0) & (grid < min(1., b))).astype(int) + 1.5))],
+                  _geometry('Ne garder du voisinage que ses points dans X', 'Comparer les trois lignes : l’espace X, l’ensemble A et le voisinage autour de x. Le décalage vertical facilite la lecture des bords.', paths,
                             [_point([x, -.14], 'x', 3)], discs, (-.25, 1.5, -.4, .45),
                             relative_interior=belongs, ambient_interior=ambient, neighborhood_inside=contains),
-                  ['La topologie induite sur X utilise les traces U∩X des ouverts U de ℝ.',
-                   'Ici U=]−1/2,b[, donc A est ouvert dans X pour toute valeur proposée de b.',
-                   'Pour x<b, ε=(b−x)/2 garantit Bℝ(x,ε)∩X⊂A. En 0, aucun voisinage ambiant n’est contenu dans A.'],
-                  ['x est contraint à X=[0,1]. Les lignes du dessin ont des décalages verticaux de présentation.',
-                   'La borne droite b est exclue ; 1 appartient à A seulement si b>1.'])
+                  ['Commencer par annoncer l’espace : dans X=[0,1], un voisinage de x ne contient que les points de X proches de x. On prend donc l’intervalle ]x−ε,x+ε[, puis son intersection avec X. C’est la notion de voisinage relatif en MP.',
+                   'A est obtenu de la même façon : A=X∩]−1/2,b[. L’intervalle est ouvert dans ℝ, donc sa restriction est un ouvert relatif de X. Autour de 0, il suffit que ε<b pour que [0,ε[ reste dans A.',
+                   'Pour un point x<b, ε=(b−x)/2 fournit un voisinage relatif contenu dans A. Dans ℝ, chaque intervalle autour de 0 contient des réels négatifs, hors de A : 0 n’y est pas intérieur. Si b>1, A devient tout X, ouvert et fermé dans lui-même.'],
+                  ['Le point testé est toujours dans X=[0,1]. Les lignes représentent des parties de la droite réelle et sont seulement décalées pour les comparer.',
+                   'La borne b n’appartient jamais à ]−1/2,b[. Le point 1 appartient à A uniquement pour b>1 ; préciser l’espace est indispensable pour les conclusions sur l’intérieur.'])
 
 
 def operations_ouverts(p):
@@ -225,21 +225,21 @@ def operations_ouverts(p):
                       _disc([b, y], .014, '', j % 4, not intersection, not intersection)])
     ngrid = np.arange(1, N + 1)
     fflags = np.abs(x) < 1 / ngrid if intersection else ((1 / ngrid <= x) & (x <= 1))
-    return result([metric('Appartient au résultat fini', 'Oui' if finite else 'Non'),
-                   metric('Appartient au résultat infini', 'Oui' if infinite else 'Non'),
-                   metric('Résultat fini', f']−1/{N},1/{N}[' if intersection else f'[1/{N},1]'),
-                   metric('Résultat infini', '{0}, non ouvert' if intersection else ']0,1], non fermé')],
-                  [chart('La borne mobile tend vers zéro', 'n', 'Borne 1/n', series('1/n', ngrid, 1 / ngrid)),
-                   chart('Appartenance de x aux opérations finies', 'Dernier indice n', 'Indicateur', series('Résultat fini', ngrid, fflags.astype(int)))],
-                  _geometry('Une famille infinie, quelques membres visibles', 'Chaque ligne représente un membre exact de la famille.', paths,
+    return result([metric('x reste-t-il après les N premiers intervalles ?', 'Oui' if finite else 'Non'),
+                   metric('x reste-t-il pour la famille entière ?', 'Oui' if infinite else 'Non'),
+                   metric('Ensemble obtenu avec N intervalles', f']−1/{N},1/{N}[' if intersection else f'[1/{N},1]'),
+                   metric('Ensemble obtenu avec tous les intervalles', '{0}, non ouvert' if intersection else ']0,1], non fermé')],
+                  [chart('Suivre la borne 1/n qui se rapproche de 0', 'Indice entier n', 'Position de la borne', series('Borne 1/n', ngrid, 1 / ngrid)),
+                   chart('Tester x après chaque opération finie', 'Nombre n d’intervalles retenus', '1 : x appartient ; 0 : x est absent', series('Appartenance au résultat fini', ngrid, fflags.astype(int)))],
+                  _geometry('Comparer quelques intervalles de la famille', 'Les petits cercles signalent les extrémités : vides pour les ouverts, pleins pour les fermés. Chercher les points communs ou réunir les segments selon le cas choisi.', paths,
                             [_point([x, -.2], 'Point x', 3), _point([0, -.2], '0', 1)], discs,
                             (-1.3, 1.3, -.4, .2 * len(ns) + .2), finite_membership=bool(finite),
                             infinite_membership=bool(infinite), finite_limit_radius=1 / N),
-                  ['Une intersection finie d’ouverts est ouverte ; une union quelconque d’ouverts est ouverte.',
-                   'Une union finie de fermés est fermée ; une intersection quelconque de fermés est fermée.',
-                   'Les opérations inversées ne conservent pas ces propriétés en général : ces deux familles sont des contre-exemples exacts.'],
-                  ['Le résultat infini est calculé par les quantificateurs sur tous les n≥1, pas par un très grand N.',
-                   'Dans le cas intersection, les deux extrémités sont exclues ; dans le cas union, elles sont incluses.'])
+                  ['Pour l’intersection, garder les points qui satisfont toutes les contraintes retenues. Après N étapes, il reste ]−1/N,1/N[. On peut encore entourer 0 d’un intervalle ouvert contenu dans cet ensemble ; pour tous les n à la fois, seul 0 reste et aucun rayon positif ne convient.',
+                   'Pour la réunion, il suffit d’appartenir à un des segments [1/n,1]. Chaque x>0 jusqu’à 1 finit par y figurer, mais 0 ne figure jamais. La suite 1/n converge pourtant vers 0 : la caractérisation séquentielle de MP montre que la réunion ]0,1] n’est pas fermée.',
+                   'Retenir les quatre propriétés de MP : réunion quelconque d’ouverts et intersection finie d’ouverts ; intersection quelconque de fermés et réunion finie de fermés. Dans une intersection finie d’ouverts, le minimum des rayons autour d’un point reste positif ; l’exemple infini explique pourquoi le mot « finie » compte.'],
+                  ['N fixe une opération finie. L’opération sur tous les n≥1 est déterminée séparément par le raisonnement, même pour un grand N.',
+                   'Les intervalles ]−1/n,1/n[ excluent leurs extrémités ; les segments [1/n,1] les incluent. Tous les mots ouvert et fermé se rapportent ici à ℝ.'])
 
 
 def project_disk(x, center, radius):
@@ -269,21 +269,21 @@ def distance_ensemble(p):
     dist = np.array([disk_union_distance([a, x[1]], sep, r)[0] for a in grid])
     paths = [_path([x, q], f'Projection {i + 1}', i + 1) for i, q in enumerate(projections)]
     points = [_point(x, 'x', 3)] + [_point(q, f'p{i + 1}', i + 1) for i, q in enumerate(projections)]
-    return result([metric('Distance exacte d(x,A)', d), metric('Nombre de projections', len(projections)),
-                   metric('A est connexe', 'Oui' if sep <= 2 * r else 'Non'),
-                   metric('A est convexe', 'Oui' if sep == 0 else 'Non')],
-                  [chart('Coupe horizontale de la fonction distance', 'Abscisse u à ordonnée y fixée', 'Distance', series('d((u,y),A)', grid, dist)),
-                   chart('Lipschitz : pentes des sécantes, bornées par 1', 'Abscisse u', 'Pente en valeur absolue',
-                         series('Pente calculée', (grid[1:] + grid[:-1]) / 2, abs(np.diff(dist) / np.diff(grid))),
-                         series('Borne théorique 1', grid, np.ones_like(grid)))],
-                  _geometry('La projection peut avoir deux valeurs', 'La distance est le minimum des deux distances exactes aux disques.', paths, points,
+    return result([metric('Distance du point à A', d), metric('Points de A réalisant cette distance', len(projections)),
+                   metric('Peut-on relier tous les points dans A ?', 'Oui' if sep <= 2 * r else 'Non'),
+                   metric('Tous les segments entre points de A restent-ils dans A ?', 'Oui' if sep == 0 else 'Non')],
+                  [chart('Déplacer le point horizontalement et suivre sa distance à A', 'Abscisse u, avec la même ordonnée y', 'Distance d((u,y),A)', series('Distance à la réunion des disques', grid, dist)),
+                   chart('Comparer variation de distance et déplacement', 'Abscisse u', 'Variation de distance / déplacement',
+                         series('Quotient pour deux points voisins du dessin', (grid[1:] + grid[:-1]) / 2, abs(np.diff(dist) / np.diff(grid))),
+                         series('Limite garantie : 1', grid, np.ones_like(grid)))],
+                  _geometry('Chercher le ou les trajets les plus courts vers A', 'Les segments relient le point testé à tous ses points les plus proches dans A. La distance est unique, même quand ces points sont deux.', paths, points,
                             [_disc(c, r, f'Disque {i + 1}', i, True, True) for i, c in enumerate(centers)],
                             (-3.6, 3.6, -2.8, 2.8), projections=projections, distance=d, distance_to_disks=ds),
-                  ['Pour un disque fermé D(c,r), d(x,D)=max(‖x−c‖−r,0).',
-                   'Pour leur union A, prendre le minimum des deux distances et garder tous les points minimisants.',
-                   'Pour tout ensemble non vide, |d(x,A)−d(y,A)|≤‖x−y‖. L’unicité de la projection exige un cadre supplémentaire, notamment la convexité.'],
-                  ['La distance est euclidienne. Les deux disques ont le même rayon et des centres sur l’axe horizontal.',
-                   'Le tracé des sécantes illustre la borne ; sa preuve vient de l’inégalité triangulaire, pour tous les points.'])
+                  ['Pour atteindre un disque D(c,r) depuis l’extérieur, aller vers son centre puis s’arrêter sur le cercle. Il reste la longueur ‖x−c‖−r ; si x est déjà dans le disque, la distance vaut 0. Ainsi d(x,D)=max(‖x−c‖−r,0).',
+                   'Pour atteindre la réunion A, comparer les deux trajets et choisir la plus petite longueur. Sur la médiatrice de disques séparés, les deux trajets sont aussi courts : deux points réalisent le minimum. Ce cas aide à distinguer distance et point projeté.',
+                   'Déplacer le point d’une longueur δ ne peut faire varier sa distance à A de plus de δ, par l’inégalité triangulaire : |d(P,A)−d(Q,A)|≤‖P−Q‖. C’est la propriété 1-lipschitzienne de MP. L’unicité de la projection sur un ensemble général demande des hypothèses supplémentaires, contrairement à la projection orthogonale sur un sous-espace étudiée en MPSI.'],
+                  ['A est la réunion de deux disques fermés non vides de même rayon ; les distances sont euclidiennes. Leur fermeture en dimension finie garantit que le minimum est atteint.',
+                   'Les quotients sur la courbe illustrent la borne 1. Sa justification vaut pour tous les points et vient de l’inégalité triangulaire, indépendamment du tracé.'])
 
 
 def segment_min_norm(a, b):
@@ -332,7 +332,7 @@ def convexite(p):
         discs = [_disc(c, r, f'Disque {i + 1}', i, True, True) for i, c in enumerate(centers)]
         global_convex = sep == 0
         distance = lambda z: disk_union_distance(z, sep, r)[0]
-        criterion = 'Le paramètre t doit appartenir à la réunion des deux intervalles quadratiques, qui doit couvrir [0,1].'
+        criterion = 'Parcourir le segment par z(t)=(1−t)a+tb. Pour chaque disque, résoudre ‖z(t)−c‖²≤r² donne les valeurs de t admises. Le segment entier reste dans la réunion si ces deux intervalles couvrent [0,1], sans laisser de passage hors des disques.'
     else:
         minimum, _ = segment_min_norm(a, b)
         valid = shape == 'disk' or minimum >= .5
@@ -345,7 +345,7 @@ def convexite(p):
         else:
             discs = [_disc([0, 0], 1, 'Disque convexe', 0, True, True)]
             distance = lambda z: max(np.linalg.norm(z) - 1, 0.)
-        criterion = 'La norme maximale est aux extrémités. Dans l’anneau, minimiser la norme au carré sur le segment et vérifier min‖z(t)‖≥1/2.'
+        criterion = 'Parcourir le segment par z(t)=(1−t)a+tb. La norme ne dépasse pas la plus grande des normes des extrémités. Pour l’anneau, il faut aussi éviter le trou : minimiser la fonction quadratique ‖z(t)‖² et vérifier que son minimum correspond à un rayon au moins égal à 1/2.'
     minimum, t_min = segment_min_norm(a, b)
     t = np.linspace(0, 1, 301)
     z = (1 - t[:, None]) * a + t[:, None] * b
@@ -353,21 +353,21 @@ def convexite(p):
     points = [_point(a, 'a', 3), _point(b, 'b', 3), _point((1 - t_min) * a + t_min * b, 'Point le plus proche de 0', 2)]
     if not global_convex:
         mid = (witness_a + witness_b) / 2
-        paths.append(_path([witness_a, witness_b], 'Témoin de non-convexité', 1))
-        points += [_point(witness_a, 'u', 1), _point(witness_b, 'v', 1), _point(mid, '(u+v)/2 hors de A', 1)]
+        paths.append(_path([witness_a, witness_b], 'Un segment qui sort de A', 1))
+        points += [_point(witness_a, 'u', 1), _point(witness_b, 'v', 1), _point(mid, 'Milieu hors de A', 1)]
     else:
         mid = (a + b) / 2
-    return result([metric('Tout le segment choisi est dans A', 'Oui' if valid else 'Non'),
-                   metric('A est convexe', 'Oui' if global_convex else 'Non'), metric('Minimum de ‖z(t)‖ sur le segment', minimum),
-                   metric('Distance du milieu témoin à A', float(distance(mid)))],
-                  [chart('La distance positive repère la sortie du segment', 'Paramètre t de [a,b]', 'd(z(t),A)', series('Distance exacte', t, [distance(q) for q in z]))],
-                  _geometry('La convexité porte sur tous les segments', 'Le segment choisi et un témoin indépendant sont distingués.', paths, points, discs,
+    return result([metric('Le segment choisi reste-t-il entièrement dans A ?', 'Oui' if valid else 'Non'),
+                   metric('A est-il convexe ?', 'Oui' if global_convex else 'Non'), metric('Plus petite distance du segment à 0', minimum),
+                   metric('Distance à A du milieu du segment témoin', float(distance(mid)))],
+                  [chart('Repérer les endroits où le segment sort de A', 'Paramètre t : de a en 0 à b en 1', 'Distance du point z(t) à A', series('Distance : positive hors de A', t, [distance(q) for q in z]))],
+                  _geometry('Relier deux points, puis chercher un contre-exemple', 'Le premier segment dépend des points choisis. Quand A n’est pas convexe, un autre segment fournit un milieu hors de A et démontre cette non-convexité.', paths, points, discs,
                             (-3, 3, -1.7, 1.7), segment_contained=bool(valid), global_convex=global_convex,
                             endpoints=[a, b], witness_endpoints=[witness_a, witness_b], witness_midpoint=mid),
-                  [criterion, 'Un segment réussi ne prouve pas que A est convexe : la définition quantifie sur toutes les paires (a,b)∈A².',
-                   'Un seul segment qui sort suffit à réfuter la convexité. Pour deux disques distincts de même rayon, les deux points supérieurs fournissent toujours ce témoin.'],
-                  ['Les points choisis appartiennent à A pour tous les paramètres proposés.',
-                   'L’acceptation du segment repose sur un minimum quadratique ou des intervalles exacts ; le graphe est une illustration.'])
+                  [criterion, 'La définition de MP demande que tout segment entre deux points de A reste dans A. Le disque la vérifie pour toutes les paires, grâce à l’inégalité triangulaire. Réussir avec la seule paire choisie ne suffit donc pas à conclure pour l’ensemble.',
+                   'Pour réfuter la convexité, une seule paire suffit. Dans l’anneau, prendre deux points opposés : leur milieu 0 manque A. Pour deux disques distincts de même rayon, prendre leurs points supérieurs : le milieu est au-dessus du passage entre les disques et hors de chacun.'],
+                  ['Les angles a et b placent les points autour de leur centre. ρ règle la fraction du rayon extérieur utilisée ; les points choisis sont toujours dans A.',
+                   'Les calculs de minima et d’intervalles décident pour tout le segment. Le graphe aide à repérer la sortie, mais ses points dessinés ne remplacent pas le raisonnement.'])
 
 
 def convex_hull(points):
@@ -415,21 +415,21 @@ def enveloppe_convexe(p):
     area = polygon_signed_area(hull)
     stems = series('Poids λᵢ', np.arange(1, N + 1), weights)
     stems['style'] = 'stems'
-    return result([metric('Nombre de sommets extrêmes', len(hull)), metric('Aire de l’enveloppe', area),
-                   metric('Somme des poids', float(weights.sum())), metric('Marge minimale du barycentre aux côtés', float(margins.min()))],
-                  [chart('Une combinaison convexe : poids positifs de somme 1', 'Indice i', 'Poids λᵢ', stems),
-                   chart('Tests des demi-plans intérieurs du barycentre', 'Côté de l’enveloppe', 'Distance signée',
-                         _dots('Marge intérieure', np.arange(1, len(hull) + 1), margins))],
-                  _geometry('L’enveloppe se construit à partir des points', 'Les sommets du polygone sont calculés, le barycentre dépend de α.',
+    return result([metric('Sommets nécessaires pour tracer le bord', len(hull)), metric('Aire du polygone convexe', area),
+                   metric('Somme des poids du barycentre', float(weights.sum())), metric('Distance intérieure minimale du barycentre aux côtés', float(margins.min()))],
+                  [chart('Vérifier les poids du barycentre', 'Numéro i du point', 'Poids λᵢ, non négatif', stems),
+                   chart('Vérifier que le barycentre est du bon côté de chaque bord', 'Numéro du côté du polygone', 'Distance signée : positive vers l’intérieur',
+                         _dots('Distance vers l’intérieur', np.arange(1, len(hull) + 1), margins))],
+                  _geometry('Entourer le nuage et déplacer son barycentre', 'Le bord utilise les sommets extérieurs du nuage. Le point barycentre utilise tous les poids, que l’on modifie avec α.',
                             [_path(hull, 'Enveloppe convexe', 0, True, True)],
                             [_point(q, str(i + 1) if i < 6 else '', 1) for i, q in enumerate(pts)] + [_point(bary, 'Barycentre', 3)],
                             bounds=(-1.6, 2, -1.4, 1.4), hull=hull, cloud=pts, barycenter=bary, weights=weights,
                             margins=margins, area=area),
-                  ['Le déterminant de deux directions donne l’orientation ; les chaînes monotones suppriment les tournants vers l’intérieur.',
-                   'L’enveloppe convexe est l’ensemble des combinaisons Σλᵢxᵢ, avec λᵢ≥0 et Σλᵢ=1.',
-                   'Le point 1 est imposé comme sommet extrême droit. α=1 y concentre tous les poids ; α=0 donne la moyenne uniforme.'],
-                  ['La graine rend le nuage reproductible. Les arêtes calculées forment un polygone convexe dans ℝ².',
-                   'Les marges peuvent présenter un résidu d’arrondi d’environ 10⁻¹⁵ lorsque le barycentre est exactement sur le bord.'])
+                  ['Partir du point le plus à gauche et chercher les bords inférieurs, puis supérieurs. Le signe d’un déterminant de deux directions indique dans quel sens on tourne ; l’algorithme écarte les points qui ne sont pas nécessaires au bord. C’est une application géométrique du déterminant.',
+                   'Former un barycentre Σλᵢxᵢ avec des poids λᵢ≥0 et de somme 1. Il reste dans tout convexe contenant les points. L’ensemble de ces barycentres est donc le plus petit convexe qui les contient : l’enveloppe convexe, étudiée ici comme prolongement du calcul vectoriel de MPSI et de la convexité en MP.',
+                   'Le point 1 est le sommet le plus à droite. Le réglage réserve une part α à ce point et partage 1−α également entre tous les points. À α=0, on obtient leur moyenne ; à α=1, le barycentre est le point 1. Comparer les poids et la position pour justifier qu’il ne sort pas du polygone.'],
+                  ['Le numéro du nuage reproduit les mêmes coordonnées. L’enveloppe est celle des N points présents, et non celle de tous les nuages possibles.',
+                   'La distance signée à un côté est positive vers l’intérieur, nulle sur ce côté. Un résidu d’environ 10⁻¹⁵ au bord vient de l’arrondi ; les poids non négatifs et de somme 1 donnent la justification mathématique.'])
 
 
 def project_polygon(x, vertices):
@@ -466,21 +466,21 @@ def projection_convexe(p):
     boundary = np.array([boundary_point(v, a) for a in s])
     inner = (boundary - q) @ (x - q)
     pythagorean = float(np.sum((x - z) ** 2) - np.sum((x - q) ** 2) - np.sum((z - q) ** 2))
-    return result([metric('Distance à C', float(np.linalg.norm(x - q))), metric('Abscisse de la projection', float(q[0])),
-                   metric('Ordonnée de la projection', float(q[1])), metric('Maximum variationnel sur les sommets', float(variation.max())),
-                   metric('Écart dans l’inégalité de Pythagore', pythagorean)],
-                  [chart('Le produit scalaire est affine en z', 'Position normalisée sur le bord', '⟨x−p,z−p⟩',
-                         series('Produit scalaire calculé', s, inner), series('Borne théorique 0', s, np.zeros_like(s)))],
-                  _geometry('Le segment orthogonal atteint le convexe', 'L’unicité vient de la convexité, la projection est calculée sur chaque arête.',
-                            [_path(v, 'Convexe C', 0, True, True), _path([x, q], 'Distance minimale', 3), _path([q, z], 'Vecteur z−p', 1)],
-                            [_point(x, 'x', 3), _point(q, 'p=projC(x)', 2), _point(z, 'z∈C', 1)],
+    return result([metric('Distance du point à C', float(np.linalg.norm(x - q))), metric('Abscisse du point le plus proche p', float(q[0])),
+                   metric('Ordonnée du point le plus proche p', float(q[1])), metric('Plus grand produit scalaire aux sommets', float(variation.max())),
+                   metric('Différence ‖x−z‖²−‖x−p‖²−‖z−p‖²', pythagorean)],
+                  [chart('Vérifier l’angle entre x−p et les directions de C', 'Fraction du tour du bord parcourue par z', 'Produit scalaire ⟨x−p,z−p⟩',
+                         series('Produit scalaire le long du bord', s, inner), series('Il doit rester inférieur ou égal à 0', s, np.zeros_like(s)))],
+                  _geometry('Trouver le point de C qui réalise la distance', 'Le point p minimise la distance. Le point z permet de vérifier qu’aucune direction de p vers C ne rapproche de x au premier ordre.',
+                            [_path(v, 'Ensemble convexe C', 0, True, True), _path([x, q], 'Trajet le plus court', 3), _path([q, z], 'Direction de p vers z', 1)],
+                            [_point(x, 'Point x', 3), _point(q, 'Point le plus proche p', 2), _point(z, 'Point z sur le bord', 1)],
                             bounds=(-2.8, 2.8, -2.8, 2.8), projection=q, vertices=v,
                             vertex_variations=variation, test_point=z, pythagorean_gap=pythagorean),
-                  ['Si x est dans C, sa projection est x. Sinon, minimiser sur chacune des arêtes par un paramètre t tronqué à [0,1].',
-                   'p est la projection si et seulement si ⟨x−p,z−p⟩≤0 pour tout z∈C.',
-                   'Cette expression est affine en z : sur le polygone, la vérifier aux sommets suffit pour tous les points. Elle donne ‖x−z‖²≥‖x−p‖²+‖z−p‖².'],
-                  ['Le théorème concerne ici un convexe fermé non vide d’un espace euclidien ; la métrique est issue du produit scalaire.',
-                   'Un maximum variationnel de l’ordre de 10⁻¹⁵ représente un arrondi numérique, pas une violation du théorème.'])
+                  ['Si le point x est déjà dans C, la distance est nulle et p=x. Sinon, chercher le point le plus proche sur chaque côté. La projection sur la droite portant ce côté se calcule avec le produit scalaire, comme en MPSI ; si elle dépasse le segment, retenir une de ses extrémités.',
+                   'Depuis le point candidat p, prendre une direction vers un point z de C. La condition ⟨x−p,z−p⟩≤0 signifie que cette direction ne rapproche pas de x au premier ordre. Pour un polygone, il suffit de la vérifier aux sommets : tout point de C est une combinaison convexe de ces sommets.',
+                   'Développer le carré de la distance donne ‖x−z‖²≥‖x−p‖²+‖z−p‖². Le point p réalise donc le minimum, et tout autre point donne une distance plus grande. Cette projection sur un convexe fermé est un prolongement distinct de la projection orthogonale sur un sous-espace au programme de MPSI.'],
+                  ['Le résultat utilise le produit scalaire euclidien et un convexe fermé non vide. Ces hypothèses garantissent l’existence et l’unicité du point le plus proche.',
+                   'ζ repère la fraction du tour du bord parcourue par z ; ζ=0 et ζ=1 donnent le même sommet de départ. Un produit scalaire positif d’environ 10⁻¹⁵ peut venir de l’arrondi : la caractérisation mathématique porte sur la valeur non positive.'])
 
 
 def connexite_chemins(p):
@@ -509,17 +509,17 @@ def connexite_chemins(p):
         direct_min, _ = segment_min_norm(a, b)
         values = radii
         existence, components = True, 1
-        detail = 'La norme sur le chemin reste entre min(r₁,r₂) et max(r₁,r₂). Le trou est donc évité exactement.'
+        detail = 'Partir du premier point en suivant son rayon jusqu’au cercle de rayon max(r₁,r₂), parcourir ce cercle, puis rejoindre le second point sur son rayon. La distance à 0 reste entre min(r₁,r₂) et max(r₁,r₂) : le chemin évite 0 et reste aussi dans l’anneau lorsque ce cas est choisi.'
         metric_radius = min(r1, r2)
     elif space == 'disks':
         radius, sep = .65, 1.3 + float(p['gap'])
         a, b = np.array([-sep / 2, 0.]), np.array([sep / 2, 0.])
         discs = [_disc(a, radius, 'Composante gauche', 0, True, True), _disc(b, radius, 'Composante droite', 1, True, True)]
-        paths = [_path([a, b], 'Segment interdit dans le vide', 3)]
+        paths = [_path([a, b], 'Segment qui quitte les disques', 3)]
         segment = (1 - t[:, None]) * a + t[:, None] * b
         values = np.array([disk_union_distance(q, sep, radius)[0] for q in segment])
         direct_min, existence, components, metric_radius = 0., False, 2, 0.
-        detail = 'Les deux disques sont séparés par un écart strictement positif. Un chemin continu entre eux produirait des abscisses dans cet écart, par le TVI.'
+        detail = 'Les points a et b sont ici les centres des deux disques. Pour passer d’un disque à l’autre, l’abscisse d’un chemin continu devrait prendre une valeur dans l’écart vide entre eux, par le TVI de MPSI. Aucun point de X n’a cette abscisse : ce chemin est impossible.'
         data['gap'] = float(p['gap'])
     else:
         a, b = np.array([r1, 0.]), np.array([-r2, 0.])
@@ -528,21 +528,21 @@ def connexite_chemins(p):
         discs = [_disc([0, 0], .025, '0 exclu', 2, False, False)]
         values = (1 - t) * r1 - t * r2
         direct_min, existence, components, metric_radius = 0., False, 2, 0.
-        detail = 'Un chemin de la demi-droite positive à la demi-droite négative devrait prendre la valeur 0 par le TVI. Ce point a été exclu.'
+        detail = 'Les points choisis sont d’un côté et de l’autre de 0 sur la droite. Tout chemin continu entre eux devrait prendre la valeur 0, par le TVI de MPSI. Comme 0 a été retiré, le chemin ne pourrait pas rester dans X.'
     points = [_point(a, 'a', 3), _point(b, 'b', 3)]
-    axis_label = 'Norme sur le chemin construit' if existence else ('Distance du segment à X' if space == 'disks' else 'Abscisse sur le segment')
+    axis_label = 'Distance à 0 le long du chemin construit' if existence else ('Distance à X le long du segment essayé' if space == 'disks' else 'Abscisse le long du segment essayé')
     grid = np.linspace(0, 1, len(values))
-    return result([metric('Chemin dans X entre a et b', 'Construit' if existence else 'Impossible'),
-                   metric('Nombre de composantes de X', components), metric('Rayon minimal du chemin construit', metric_radius),
-                   metric('Rayon minimal du segment direct', direct_min)],
-                  [chart(axis_label, 'Paramètre de parcours', axis_label, series(axis_label, grid, values))],
-                  _geometry('Un trou ne sépare pas toujours l’espace', 'La construction ou l’obstruction est reliée à une preuve explicite.', paths, points, discs,
+    return result([metric('Peut-on relier a et b sans quitter X ?', 'Construit' if existence else 'Impossible'),
+                   metric('Nombre de composantes connexes par arcs', components), metric('Plus petite distance du chemin construit à 0', metric_radius),
+                   metric('Plus petite distance du segment direct à 0', direct_min)],
+                  [chart(axis_label, 'Fraction du parcours effectuée', axis_label, series(axis_label, grid, values))],
+                  _geometry('Essayer un segment, puis construire un détour', 'Le détour est un chemin dans X quand il existe. Dans les deux cas séparés, le segment dessiné sert à expliquer pourquoi aucun chemin dans X ne peut relier a à b.', paths, points, discs,
                             (-2.5, 2.5, -2, 2), path_exists=existence, components=components,
                             endpoints=[a, b], path_minimum_radius=metric_radius, **data),
-                  [detail, 'Un ensemble convexe est connexe par arcs ; la réciproque échoue pour l’anneau ou le plan épointé.',
-                   'Dans ℝ, les connexes sont les intervalles. Dans ℝ², un obstacle ponctuel peut être contourné.'],
-                  ['Les rayons proposés sont strictement positifs et restent dans [1/2,3/2] pour le cas anneau.',
-                   'Pour les espaces non connexes, le segment dessiné montre l’obstruction et n’est pas présenté comme un chemin dans X.'])
+                  [detail, 'En MP, X est connexe par arcs si toute paire de points peut être reliée par un chemin continu qui reste dans X. Un convexe a cette propriété grâce aux segments. L’anneau montre que la réciproque est fausse : des détours existent alors que certains segments passent dans le trou.',
+                   'Les points que l’on peut relier entre eux constituent une composante connexe par arcs. La droite privée de 0 en a deux, ses deux demi-droites ; le plan privé de 0 n’en a qu’une. La construction par deux segments dans le plan reprend aussi l’exercice 7 du recueil.'],
+                  ['Dans le plan et l’anneau, l’angle donne la direction du second point ; r₁ et r₂ sont les distances des deux points à 0. Dans la droite, ces distances placent les points de signes opposés. Dans le cas des disques, seul l’écart gap change leur séparation.',
+                   'Les rayons du chemin construit sont strictement positifs et restent dans [1/2,3/2] pour l’anneau. Quand le chemin est impossible, le rayon minimal affiché comme 0 ne décrit aucun chemin construit : le segment essayé montre l’obstacle.'])
 
 
 MODELS = {f.__name__: f for f in (boules_normes, interieur_frontiere, adherence_suite,

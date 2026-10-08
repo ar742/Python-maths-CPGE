@@ -33,14 +33,14 @@ def bolzano_weierstrass(p):
     points=[dict(x=int(n),y=float(values[n]),label=f'n={n}',colorIndex=int(n%2)) for n in ns[:min(N+1,81)]]
     return result(
         [metric('Borne exacte |uₙ|≤',2),metric('Valeur d’adhérence paire',1),metric('Valeur d’adhérence impaire',-1),metric('Rang k suffisant, sous-suite paire',rank_even),metric('Rang k suffisant, sous-suite impaire',rank_odd),metric('Convergence de la suite entière','Non')],
-        [chart('Deux extractions explicites','Indice original n','uₙ',_dots('n pairs',even,values[even]),_dots('n impairs',odd,values[odd]),series('Limite paire',ns,np.ones_like(ns)),series('Limite impaire',ns,-np.ones_like(ns))),
-         chart('Une erreur exacte, indépendante du maillage','Indice n','Distance à la limite de sa sous-suite',series('1/(n+1)',ns,errors),series('Tolérance ε',ns,np.full_like(ns,eps,dtype=float)))],
-        _geometry('Une suite bornée à deux amas','Les couleurs isolent des indices strictement croissants. La séparation des limites exclut la convergence de la suite entière.',points=points,bounds=[-1,min(N+1,82),-1.4,2.3],subsequences=[dict(indices=even,values=values[even],limit=1),dict(indices=odd,values=values[odd],limit=-1)]),
-        ['1. La formule donne −1<uₙ≤2, donc une suite bornée de ℝ.',
-         '2. Pour φ(k)=2k et ψ(k)=2k+1, les applications d’indices sont strictement croissantes.',
-         '3. u₂ₖ→1 et u₂ₖ₊₁→−1 avec les erreurs 1/(2k+1) et 1/(2k+2). Les deux limites diffèrent.',
-         f'4. Pour obtenir une erreur strictement inférieure à ε={eps:g}, prendre k≥{rank_even} pour les pairs et k≥{rank_odd} pour les impairs.'],
-        ['Le dessin montre seulement les N+1 premiers termes ; les limites reposent sur la formule exacte.','Bolzano–Weierstrass garantit une extraction convergente pour toute suite bornée de ℝᵈ, sans garantir une limite unique.'])
+        [chart('Séparer les termes pairs et impairs','Indice n dans la suite initiale','uₙ',_dots('Termes pairs',even,values[even]),_dots('Termes impairs',odd,values[odd]),series('Limite des termes pairs : 1',ns,np.ones_like(ns)),series('Limite des termes impairs : −1',ns,-np.ones_like(ns))),
+         chart('Garantir une erreur inférieure à ε','Indice n','Erreur de la suite extraite correspondante',series('Erreur exacte : 1/(n+1)',ns,errors),series('Erreur demandée ε',ns,np.full_like(ns,eps,dtype=float)))],
+        _geometry('Deux suites extraites de la même suite','Les deux couleurs montrent les termes pairs et impairs. Chaque couleur se rapproche d’une limite différente : la suite entière ne peut pas converger.',points=points,bounds=[-1,min(N+1,82),-1.4,2.3],subsequences=[dict(indices=even,values=values[even],limit=1),dict(indices=odd,values=values[odd],limit=-1)]),
+        ['1. Commencer par une borne valable pour tous les indices n≥0 : −1<uₙ≤2. La suite est donc bornée, comme dans une étude de suite en MPSI.',
+         '2. Garder les indices 2k, puis les indices 2k+1. Dans les deux cas les indices augmentent strictement : on a bien deux suites extraites, et k est leur propre indice.',
+         '3. Calculer u₂ₖ=1+1/(2k+1) et u₂ₖ₊₁=−1+1/(2k+2). Les limites 1 et −1 sont des valeurs d’adhérence, c’est-à-dire des limites de suites extraites. Leur différence exclut une limite de la suite entière.',
+         f'4. Relier la définition de la limite au calcul d’un rang : pour une erreur <ε={eps:g}, k≥{rank_even} suffit pour les pairs et k≥{rank_odd} pour les impairs. Augmenter N permet de voir les termes correspondants.'],
+        ['N règle uniquement le nombre de termes dessinés ; les limites sont établies pour tous les indices par leurs formules.','Lien MPSI : Bolzano–Weierstrass assure qu’une suite réelle bornée possède une suite extraite convergente. En MP, cette propriété sert à définir les parties compactes ; plusieurs valeurs d’adhérence restent possibles.'])
 
 
 def record_indices(values,target=1.0):
@@ -83,19 +83,19 @@ def extraction_aleatoire(p):
     show=np.unique(np.r_[np.linspace(0,N-1,max(1,min(N,600-len(indices))),dtype=int),indices])
     probability=float(nearest_survival(d,N))
     log_probability=N*math.log1p(-2*d/3)/math.log(10)
-    probability_display=probability if probability>0 else f'10^({log_probability:.3f}) : sous la précision flottante'
+    probability_display=probability if probability>0 else f'10^({log_probability:.3f}) : trop petit pour l’écriture décimale de l’ordinateur'
     return result(
         [metric('Nouveaux records stricts',len(indices)),metric('Dernier indice retenu',int(indices[-1])),metric('Dernière distance à 1',float(distances[-1])),metric('Espérance exacte de D_N',nearest_expectation(N)),metric('Probabilité exacte D_N>d',probability_display),metric('Fréquence expérimentale D_N>d',float(np.mean(minima>d)))],
-        [chart('Records de proximité : chaque indice avance','Indice original j','Distance |Xⱼ−1|',_dots('Tirages montrés',show,np.abs(xs[show]-1)),_dots('Records stricts',indices,distances)),
-         chart('Le rapprochement de chaque nouveau record','Rang k de l’extraction','Xφ(k)',_dots('Valeurs extraites',np.arange(len(indices)),xs[indices]),series('Cible 1',[0,max(1,len(indices)-1)],[1,1])),
-         chart('Loi du meilleur rapprochement, à l’échelle naturelle','w=2ND_N/3','Densité',_dots('Histogramme simulé',centers,density),series('Densité exacte sur cette fenêtre',w,exact),series('Limite exponentielle e⁻ʷ',w,np.exp(-w)))],
-        _geometry('L’extraction du TP sans répétition','Un point correspond à un record strict, avec son indice original. Un échantillon fini ne constitue pas la preuve de convergence.',points=[dict(x=int(i),y=float(x),label=f'j={i}',colorIndex=0) for i,x in zip(indices,xs[indices])],bounds=[-N*.03,N*1.03,-.1,3.1],record_indices=indices,record_values=xs[indices],distances=distances,trial_minima=minima,log10_survival=log_probability),
-        ['1. Tirer N valeurs indépendantes Xⱼ uniformes sur [0,3] ; la graine reproduit l’expérience.',
-         '2. Retenir j seulement si |Xⱼ−1| est strictement inférieur à tous les rapprochements antérieurs. Les indices sont distincts et strictement croissants.',
-         '3. Pour 0≤d≤1, P(D_N>d)=(1−2d/3)ᴺ, car un tirage évite ]1−d,1+d[ avec probabilité 1−2d/3.',
-         '4. Pour chaque ε>0, P(D_N>ε)→0 et les D_N décroissent : leur limite est nulle presque sûrement. Une intersection dénombrable des événements pour ε=1/k suffit.',
-         '5. Presque sûrement, aucun tirage ne vaut exactement 1 et il y a une infinité de records ; cette extraction converge vers 1.'],
-        ['La propriété presque sûre suppose une suite infinie de tirages indépendants, absente de l’expérience finie.','L’histogramme utilise des expériences indépendantes de la trajectoire affichée. Les événements et la densité sont calculés analytiquement.','La fenêtre de densité 0≤w≤6 reste dans d≤1 car N≥100. La masse non représentée n’est pas renormalisée.'])
+        [chart('Garder seulement les rapprochements strictement meilleurs','Indice j du tirage','Distance |Xⱼ−1|',_dots('Tirages représentés',show,np.abs(xs[show]-1)),_dots('Nouveaux records retenus',indices,distances)),
+         chart('Les valeurs de la suite extraite','Rang k dans la suite extraite','Xφ(k)',_dots('Termes gardés',np.arange(len(indices)),xs[indices]),series('Valeur visée : 1',[0,max(1,len(indices)-1)],[1,1])),
+         chart('Prolongement : comparer les meilleurs rapprochements','Distance ramenée à l’échelle w=2ND_N/3','Densité',_dots('Fréquences des expériences',centers,density),series('Densité calculée par la loi',w,exact),series('Densité limite lorsque N augmente : e⁻ʷ',w,np.exp(-w)))],
+        _geometry('Lire les indices de la suite extraite','Un point indique un nouveau record de proximité à 1, avec l’indice du tirage initial. Les termes affichés permettent d’étudier l’algorithme ; ils ne prouvent pas à eux seuls une convergence.',points=[dict(x=int(i),y=float(x),label=f'j={i}',colorIndex=0) for i,x in zip(indices,xs[indices])],bounds=[-N*.03,N*1.03,-.1,3.1],record_indices=indices,record_values=xs[indices],distances=distances,trial_minima=minima,log10_survival=log_probability),
+        ['1. Tirer N nombres Xⱼ indépendants entre 0 et 3. La graine fixe les mêmes tirages pour refaire une expérience ; d fixe le rayon du voisinage ]1−d,1+d[.',
+         '2. Garder le tirage d’indice j seulement si |Xⱼ−1| améliore strictement tous les records précédents. Les indices augmentent : on construit une suite extraite au sens du cours MPSI.',
+         '3. En prolongement probabiliste, D_N=min|Xⱼ−1| est le meilleur rapprochement parmi N tirages. Pour 0≤d≤1, un tirage évite le voisinage avec probabilité 1−2d/3 ; l’indépendance donne P(D_N>d)=(1−2d/3)ᴺ.',
+         '4. La conclusion pour une suite infinie demande une preuve supplémentaire : D_N décroît et P(D_N>ε)→0. Pour les rayons ε=1/k, puis tous les rayons, cela établit D_N→0 avec probabilité 1, ce qu’on appelle presque sûrement.',
+         '5. Avec probabilité 1, aucun tirage ne vaut exactement 1, mais les rapprochements deviennent arbitrairement petits : il existe alors une infinité de nouveaux records, et la suite extraite tend vers 1.'],
+        ['Lien au TP : une suite bornée et des indices d’extraction. Les variables aléatoires à densité, la loi uniforme continue et la convergence presque sûre sont ici des prolongements, et non des connaissances exigibles en MPSI/MP.','N est fini dans le programme. La preuve avec probabilité 1 concerne une suite infinie de tirages indépendants ; l’histogramme ne remplace pas cette preuve.','Chaque expérience de l’histogramme a ses propres tirages. Sur 0≤w≤6, la densité correspond à d≤1 puisque N≥100 ; les fréquences hors de cette fenêtre restent hors du dessin.'])
 
 
 def heron_fractions(n):
@@ -116,18 +116,18 @@ def cauchy_rationnels(p):
     # Le dernier majorant reste représentable à n=8, même si u_n arrondit à √2.
     upper=np.array([float(b) for b in bounds]); tail=float(bounds[-1])
     fractions=[dict(index=k,numerator=str(u.numerator),denominator=str(u.denominator),value=float(u),error_upper=float(bounds[k]),square_residual=str(residuals[k])) for k,u in enumerate(values)]
-    lines=[f'u{k}={u}' if k<=4 else f'u{k} : fraction exacte de {len(str(u.numerator))} chiffres au numérateur' for k,u in enumerate(values)]
+    lines=[f'u{k}={u}' if k<=4 else f'u{k} : numérateur exact écrit avec {len(str(u.numerator))} chiffres' for k,u in enumerate(values)]
     return result(
-        [metric('Valeur approchée de uₙ',float(values[-1])),metric('Majorant exact converti de uₙ−√2',tail),metric('uₙ²−2 est strictement positif','Oui'),metric('Tous les termes appartiennent à ℚ','Oui'),metric('Limite dans ℚ','Non'),metric('Queue de Cauchy certifiée à ε','Oui' if bounds[-1]<Fraction(str(epsilon)) else 'Pas encore à ce rang')],
-        [chart('Convergence monotone vers la complétion','Indice n','Valeur',_dots('Termes rationnels',ns,numerical),series('√2',[0,max(n,1)],[math.sqrt(2)]*2)),
-         chart('Un majorant exact du reste','Indice n','Majorant de |uₙ−√2|',_dots('(uₙ²−2)/uₙ',ns,upper),series('ε',[0,max(n,1)],[epsilon]*2))],
-        _geometry('Des rationnels de plus en plus précis','La représentation décimale finit par confondre uₙ et √2 ; les fractions exactes gardent uₙ²−2>0.',points=[dict(x=k,y=float(u),label=f'u{k}',colorIndex=0) for k,u in enumerate(values)],bounds=[-.5,max(1,n)+.5,1.35,2.1],fractions=fractions,fraction_labels=lines),
-        ['1. Les opérations rationnelles préservent ℚ et uₙ>√2. La suite décroît car uₙ₊₁−uₙ=(2−uₙ²)/(2uₙ)<0.',
-         '2. En posant eₙ=uₙ−√2, eₙ₊₁=eₙ²/(2uₙ) : l’erreur devient quadratique.',
-         '3. Pour tout q≥p, 0≤u_p−u_q≤u_p−√2<(u_p²−2)/u_p. Ce majorant tend vers zéro et prouve Cauchy.',
-         '4. Si √2=a/b avec a et b premiers entre eux, a²=2b² impose a puis b pairs, contradiction. ℚ n’est donc pas complet.',
-         f'5. Fraction exacte au rang n={n} : {values[-1]}.'],
-        ['√2 sert à identifier la limite dans ℝ ; son irrationalité se prouve par la parité, jamais par une décimale.','La comparaison de Cauchy est faite sur des fractions exactes. Les courbes et la métrique décimale peuvent atteindre la limite de précision des flottants.'])
+        [metric('Valeur approchée de uₙ',float(values[-1])),metric('Erreur uₙ−√2 : majorant calculé exactement',tail),metric('uₙ²−2 est strictement positif','Oui'),metric('Tous les termes appartiennent à ℚ','Oui'),metric('Limite dans ℚ','Non'),metric('Tous les termes après n sont proches à ε','Oui' if bounds[-1]<Fraction(str(epsilon)) else 'Pas encore à ce rang')],
+        [chart('Une suite récurrente décroissante vers √2','Rang n','Valeur de uₙ',_dots('Fractions rationnelles',ns,numerical),series('Limite réelle : √2',[0,max(n,1)],[math.sqrt(2)]*2)),
+         chart('Garantir une précision par une majoration','Rang n','Borne de l’erreur |uₙ−√2|',_dots('Majorant : (uₙ²−2)/uₙ',ns,upper),series('Erreur demandée ε',[0,max(n,1)],[epsilon]*2))],
+        _geometry('La limite peut sortir de l’ensemble des rationnels','Chaque terme est une fraction exacte. Les valeurs arrondies finissent par ressembler à √2, alors que le calcul fractionnaire garde toujours uₙ²−2>0.',points=[dict(x=k,y=float(u),label=f'u{k}',colorIndex=0) for k,u in enumerate(values)],bounds=[-.5,max(1,n)+.5,1.35,2.1],fractions=fractions,fraction_labels=lines),
+        ['1. Étudier la récurrence comme en MPSI : les opérations gardent les termes dans ℚ et uₙ>√2. La différence uₙ₊₁−uₙ=(2−uₙ²)/(2uₙ)<0 prouve la décroissance ; une suite décroissante minorée converge.',
+         '2. Poser eₙ=uₙ−√2. L’identité eₙ₊₁=eₙ²/(2uₙ) explique pourquoi l’erreur diminue très vite : elle est élevée au carré à chaque étape.',
+         '3. Pour q≥p, 0≤u_p−u_q≤u_p−√2<(u_p²−2)/u_p. Ce majorant tend vers zéro : tous les termes assez tardifs sont proches deux à deux. C’est la condition de Cauchy, étudiée ici en prolongement.',
+         '4. Une écriture √2=a/b en fraction irréductible imposerait a puis b pairs, car a²=2b². Cette contradiction prouve l’irrationalité de la limite. Les fractions restent dans ℚ, mais leur limite n’y est pas.',
+         f'5. Comparer la fraction exacte au rang n={n} avec sa valeur arrondie : {values[-1]}.'],
+        ['Lien MPSI : invariance d’un intervalle, monotonie, limite d’une suite récurrente et preuve de l’irrationalité de √2. Les suites de Cauchy, la complétude et les espaces de Banach sont explicitement hors programme MP.','Le prolongement dit que ℚ est incomplet : une suite de Cauchy de rationnels peut ne pas avoir de limite rationnelle. La preuve utilise les fractions exactes ; les décimales affichées peuvent être limitées par les arrondis de l’ordinateur.'])
 
 
 def compact_cover(m,r):
@@ -150,16 +150,16 @@ def compacts_recouvrements(p):
     outside=1-1/(2*N)
     discs=[dict(x=float(c),y=0.,r=r,fill=True,closed=False,colorIndex=int(j%4)) for j,c in enumerate(centers)]
     return result(
-        [metric('[0,1] couvert par les ouverts','Oui' if covered else 'Non'),metric('Seuil strict du rayon',threshold),metric('Marge de Lebesgue certifiée',margin),metric('Nombre d’ouverts du réseau',m+1),metric('Point hors de U₁∪…∪U_N',outside),metric('Union finie jusqu’à',float(ends[-1]))],
-        [chart('Compter les ouverts contenant chaque point','x∈[0,1]','Nombre d’ouverts',series('Comptage sur le dessin',x,counts),_dots('Milieux : témoins exacts',witnesses,midpoint_counts)),
-         chart('La famille ouverte du contre-exemple','n','Borne droite de Uₙ',_dots('1−1/n',ns,ends),series('Bord absent 1',[1,N],[1,1]))],
-        _geometry('Intervalles ouverts centrés sur le compact','Les disques schématisent les voisinages ouverts de centres j/m. Leurs traces sur l’axe couvrent [0,1] si et seulement si r>1/(2m).',paths=[_path('[0,1]',[[0,0],[1,0]],False,False,3)],discs=discs,points=[dict(x=float(c),y=0,label=f'{j}/{m}',colorIndex=3) for j,c in enumerate(centers)],bounds=[-r-.05,1+r+.05,-max(.2,r*1.3),max(.2,r*1.3)],uncovered_witnesses=[] if covered else witnesses),
-        ['1. Le point le plus éloigné du réseau j/m est un milieu (j+1/2)/m : sa distance exacte vaut 1/(2m).',
-         '2. Les boules sont ouvertes. L’égalité r=1/(2m) laisse précisément les milieux hors du recouvrement ; il faut une inégalité stricte.',
-         '3. Si la marge δ=r−1/(2m)>0, toute partie de [0,1] de diamètre <δ est contenue dans un de ces ouverts : une marge de Lebesgue est ainsi certifiée.',
-         '4. Les Uₙ=]−1,1−1/n[ recouvrent [0,1[, mais une sous-famille finie est incluse dans U_N pour son plus grand indice.',
-         f'5. Le point x_N=1−1/(2N)={outside:g} appartient à [0,1[ mais pas à U_N. Il n’existe pas de sous-recouvrement fini.'],
-        ['La couverture est décidée par la distance exacte au réseau, et non par le nombre de points colorés du maillage.','Le contre-exemple concerne [0,1[, qui n’est pas fermé dans ℝ ; il ne contredit pas Borel–Lebesgue sur [0,1].'])
+        [metric('[0,1] couvert par les ouverts','Oui' if covered else 'Non'),metric('Seuil strict du rayon',threshold),metric('Marge de couverture δ garantie',margin),metric('Nombre d’intervalles ouverts placés',m+1),metric('Point hors de U₁∪…∪U_N',outside),metric('Borne droite exclue de l’union finie',float(ends[-1]))],
+        [chart('Combien d’intervalles contiennent chaque point ?','x∈[0,1]','Nombre d’intervalles',series('Comptage aux points dessinés',x,counts),_dots('Milieux entre deux centres',witnesses,midpoint_counts)),
+         chart('Pourquoi aucun nombre fini de Uₙ ne suffit','Indice n de l’ouvert Uₙ','Extrémité droite, exclue de Uₙ',_dots('1−1/n',ns,ends),series('Valeur limite : 1',[1,N],[1,1]))],
+        _geometry('Les traces sur l’axe sont des intervalles ouverts','Chaque disque représente le voisinage de rayon r autour d’un point j/m. Sa trace sur l’axe est ]j/m−r,j/m+r[. Le bord pointillé est exclu : au seuil r=1/(2m), les milieux restent découverts.',paths=[_path('Segment fermé [0,1]',[[0,0],[1,0]],False,False,3)],discs=discs,points=[dict(x=float(c),y=0,label=f'{j}/{m}',colorIndex=3) for j,c in enumerate(centers)],bounds=[-r-.05,1+r+.05,-max(.2,r*1.3),max(.2,r*1.3)],uncovered_witnesses=[] if covered else witnesses),
+        ['1. Placer les centres 0,1/m,…,1. Les milieux entre deux centres sont les points les plus éloignés du réseau : leur distance vaut 1/(2m). Cette formule permet de vérifier tous les points du segment.',
+         '2. Un intervalle ouvert exclut ses extrémités. Avec r=1/(2m), les intervalles se touchent seulement à des points qui ne leur appartiennent pas ; il faut r>1/(2m) pour couvrir [0,1].',
+         '3. Lorsque δ=r−1/(2m)>0, toute partie de [0,1] de diamètre <δ entre dans un des intervalles. C’est une marge commune de couverture, appelée ici marge de Lebesgue en prolongement.',
+         '4. Comparer avec Uₙ=]−1,1−1/n[ : chaque x<1 finit par appartenir à Uₙ, donc cette famille couvre [0,1[. Comme les Uₙ grandissent, un choix fini est contenu dans le dernier U_N retenu.',
+         f'5. Trouver un point qui échappe à ce choix fini : x_N=1−1/(2N)={outside:g} est dans [0,1[, mais hors de U_N. Aucun choix fini de ces ouverts ne couvre donc [0,1[.'],
+        ['Lien MP : [0,1] est fermé et borné dans ℝ, donc compact ; [0,1[ n’est pas fermé. Le critère de compacité au programme est celui des suites extraites. La propriété par recouvrements de Borel–Lebesgue est hors programme MP et constitue ici un prolongement.','La formule r>1/(2m) décide la couverture de tout le segment. Un dessin qui paraît rempli, ou une vérification sur quelques points, ne suffit pas à prouver un recouvrement.'])
 
 
 def ellipse_support(a,b,theta):
@@ -171,23 +171,23 @@ def valeurs_extremes(p):
     a=float(p['a']); b=float(p['b']); theta=math.radians(float(p['theta'])); N=int(p['N']); closed=p['domain']=='closed'
     h,vertex=ellipse_support(a,b,theta); approach=(1-1/N)*vertex
     t=np.linspace(-1,1,401); ks=np.arange(2,max(20,N)+1)
-    description='Les points extrémaux appartiennent au domaine fermé.' if closed else 'Les points marqués sup/inf sont sur la frontière exclue ; le point d’approche appartient au domaine ouvert.'
+    description='Le maximum et le minimum sont réalisés sur le bord, qui appartient au domaine fermé.' if closed else 'Les deux points creux du bord ne sont pas dans le domaine : les bornes supérieure et inférieure ne sont pas atteintes. Le point plein est intérieur et approche la borne supérieure.'
     ellipse=_ellipse(a,b)
     outline=_path('Frontière de l’ellipse',ellipse,True,True,0)
     outline['boundaryClosed']=closed
     optimizer_markers=[dict(x=float(vertex[0]),y=float(vertex[1]),label='max',colorIndex=1),dict(x=float(-vertex[0]),y=float(-vertex[1]),label='min',colorIndex=1)] if closed else []
-    excluded_markers=[] if closed else [dict(x=float(sign*vertex[0]),y=float(sign*vertex[1]),r=.025,fill=False,closed=False,label='Supremum exclu' if sign==1 else 'Infimum exclu',colorIndex=1) for sign in (1,-1)]
+    excluded_markers=[] if closed else [dict(x=float(sign*vertex[0]),y=float(sign*vertex[1]),r=.025,fill=False,closed=False,label='Point de la borne supérieure : exclu' if sign==1 else 'Point de la borne inférieure : exclu',colorIndex=1) for sign in (1,-1)]
     return result(
-        [metric('Supremum exact de ℓθ',h),metric('Infimum exact de ℓθ',-h),metric('Extrema atteints','Oui' if closed else 'Non'),metric('Valeur au point d’approche',(1-1/N)*h),metric('Écart exact au supremum',h/N),metric('Domaine compact','Oui' if closed else 'Non')],
-        [chart('La forme linéaire sur un diamètre optimisant','Paramètre t du point tx_max','ℓθ(tx_max)',series('th',t,t*h)),
-         chart('Une suite intérieure qui approche le supremum','N','Valeur',series('(1−1/N)h',ks,(1-1/ks)*h),series('Supremum h',ks,np.full_like(ks,h,dtype=float)))],
-        _geometry('Les points de support de l’ellipse',description,paths=[outline,_path('Diamètre optimisant',[-vertex,vertex],False,False,2)],points=optimizer_markers+[dict(x=float(approach[0]),y=float(approach[1]),label='Point intérieur',colorIndex=2)],discs=excluded_markers,bounds=[-a*1.25,a*1.25,-b*1.25,b*1.25],support_point=vertex,approach_point=approach,boundary_included=closed),
-        ['1. Écrire x=aX, y=bY ; la contrainte devient X²+Y²≤1 (ou <1).',
-         '2. Cauchy–Schwarz donne ℓθ(x,y)≤√(a²cos²θ+b²sin²θ)=h.',
-         '3. L’égalité a lieu au point (a²cosθ/h,b²sinθ/h), situé sur la frontière. Le minimum est le point opposé.',
-         '4. Sur le domaine fermé, une fonction continue sur un compact atteint ses bornes.',
-         '5. Sur l’intérieur, les points (1−1/N)x_max approchent h sans jamais l’atteindre : être borné ne suffit pas.'],
-        ['La forme linéaire est non nulle puisque sa direction est un vecteur unitaire.','Le remplissage du dessin représente le domaine ; la frontière tracée est exclue dans le cas ouvert, comme le précise la légende.'])
+        [metric('Borne supérieure exacte de ℓθ',h),metric('Borne inférieure exacte de ℓθ',-h),metric('Maximum et minimum atteints','Oui' if closed else 'Non'),metric('Valeur au point d’approche',(1-1/N)*h),metric('Écart exact à la borne supérieure',h/N),metric('Domaine compact','Oui' if closed else 'Non')],
+        [chart('Lire ℓθ sur le diamètre des points extrémaux','t : position du point tx_max','ℓθ(tx_max)',series('Valeur th',t,t*h)),
+         chart('Approcher la borne supérieure depuis l’intérieur','Rang N de la suite','Valeur de ℓθ',series('Valeur intérieure : (1−1/N)h',ks,(1-1/ks)*h),series('Borne supérieure h',ks,np.full_like(ks,h,dtype=float)))],
+        _geometry('Où les bornes de la forme linéaire sont-elles réalisées ?',description,paths=[outline,_path('Diamètre des points extrémaux',[-vertex,vertex],False,False,2)],points=optimizer_markers+[dict(x=float(approach[0]),y=float(approach[1]),label='Point intérieur',colorIndex=2)],discs=excluded_markers,bounds=[-a*1.25,a*1.25,-b*1.25,b*1.25],support_point=vertex,approach_point=approach,boundary_included=closed),
+        ['1. Définir ℓθ(x,y)=x cosθ+y sinθ. L’ellipse pleine vérifie x²/a²+y²/b²≤1 ; pour son intérieur seul, remplacer ≤ par <. Poser x=aX et y=bY ramène le calcul au disque unité.',
+         '2. Cauchy–Schwarz donne ℓθ(x,y)≤h=√(a²cos²θ+b²sin²θ). Cette valeur est le plus petit majorant possible : la borne supérieure. De même, −h est le plus grand minorant : la borne inférieure.',
+         '3. Le point x_max=(a²cosθ/h,b²sinθ/h) du bord réalise h quand il appartient au domaine ; son opposé réalise −h. Une borne atteinte est respectivement un maximum ou un minimum.',
+         '4. Sur l’ellipse pleine avec son bord, le domaine est fermé et borné dans ℝ², donc compact. Le théorème MP des bornes atteintes s’applique à la fonction continue ℓθ.',
+         '5. Sans le bord, (1−1/N)x_max reste intérieur et sa valeur tend vers h, avec erreur h/N. La borne supérieure existe donc encore, mais aucun point du domaine ne la réalise : aucun maximum.'],
+        ['Lien MPSI : majorant, minorant, borne supérieure et borne inférieure. Lien MP : Cauchy–Schwarz, continuité et bornes atteintes sur un compact. La forme linéaire n’est jamais nulle, puisque (cosθ,sinθ) est un vecteur unitaire.','Le choix avec ou sans bord change l’hypothèse de compacité : un ensemble borné ouvert n’est pas compact ici. Le bord pointillé et les points creux représentent des points exclus.'])
 
 
 def heine_continuite(p):
@@ -200,25 +200,25 @@ def heine_continuite(p):
         xn=math.sqrt(2*math.pi*n); yn=math.sqrt(2*math.pi*n+math.pi/2)
         gap=(math.pi/2)/(xn+yn)
         metrics=[metric('Constante Lipschitz certifiée sur [−R,R]',2*R),metric('Écart xₙ−yₙ en valeur absolue',gap),metric('Écart exact des images',1),metric('Continuité uniforme sur ℝ','Non'),metric('xₙ',xn),metric('yₙ',yn)]
-        graphs=[chart('Un compact protège la continuité uniforme','x','sin(x²)',series('f(x)',x,y)),chart('Les arguments se rapprochent, les images restent séparées','n','Écart',series('|yₙ−xₙ|',ranks,gaps),series('|f(yₙ)−f(xₙ)|',ranks,np.ones_like(ranks)))]
-        steps=['1. Sur [−R,R], |f′(x)|=|2x cos(x²)|≤2R : |f(x)−f(y)|≤2R|x−y|.',
-               '2. La compacité et la continuité suffisent aussi par le théorème de Heine ; la dérivée fournit ici un module explicite.',
-               '3. Sur ℝ, choisir xₙ=√(2πn), yₙ=√(2πn+π/2). Alors f(xₙ)=0 et f(yₙ)=1 exactement.',
-               '4. La différence des arguments vaut (π/2)/(xₙ+yₙ)→0 ; celle des images reste 1. Cela exclut la continuité uniforme sur ℝ.']
-        description='Deux points témoins très éloignés du compact dessiné peuvent se rapprocher sans que leurs images se rapprochent.'
+        graphs=[chart('Sur un segment, contrôler les variations de sin(x²)','x','sin(x²)',series('f(x)',x,y)),chart('Deux points proches dont les images restent éloignées','Rang n','Écart',series('Distance des points : |yₙ−xₙ|',ranks,gaps),series('Écart des images : |f(yₙ)−f(xₙ)|',ranks,np.ones_like(ranks)))]
+        steps=['1. Sur le segment [−R,R], |f′(x)|=|2x cos(x²)|≤2R. L’inégalité des accroissements finis donne |f(x)−f(y)|≤2R|x−y| : c’est une technique MPSI de contrôle des variations.',
+               '2. Pour une erreur ε>0, choisir δ=ε/(2R). Ce rayon convient pour tous les couples de points du segment. C’est la continuité uniforme, que le théorème MP de Heine garantit aussi parce que le segment est compact.',
+               '3. Pour tester la même propriété sur tout ℝ, choisir xₙ=√(2πn) et yₙ=√(2πn+π/2). Leurs images valent exactement 0 et 1.',
+               '4. La distance (π/2)/(xₙ+yₙ) tend vers zéro, tandis que l’écart des images reste 1. Aucun rayon δ ne convient partout sur ℝ pour une erreur ε<1 : la continuité uniforme y échoue.']
+        description='Quand n augmente, les deux points xₙ et yₙ se rapprochent et sortent de tout segment fixé. Leurs images restent 0 et 1 : ce sont les témoins qui réfutent la continuité uniforme sur ℝ.'
         extra=dict(witness_x=xn,witness_y=yn,witness_values=[0,1],witness_gap=gap)
     else:
         x=np.linspace(0,1,501); y=np.sqrt(x); gap=1/n**2
         metrics=[metric('Module de continuité ω(δ)',f'√δ'),metric('Écart exact des arguments',gap),metric('Écart exact des images',1/n),metric('Quotient de Lipschitz sur la paire',n),metric('Uniformément continue sur [0,1]','Oui'),metric('Lipschitz sur [0,1]','Non')]
-        graphs=[chart('Un module de Hölder à l’origine','x','√x',series('f(x)',x,y)),chart('Un quotient qui exclut une constante Lipschitz','n','Quotient / écart',series('|f(1/n²)−f(0)|',ranks,1/ranks),series('Quotient = n',ranks,ranks))]
-        steps=['1. Pour x,y≥0, |√x−√y|≤√|x−y| : un module de continuité indépendant du point vaut ω(δ)=√δ.',
-               '2. Choisir δ=ε² prouve la continuité uniforme sur [0,1].',
-               '3. Avec xₙ=0 et yₙ=1/n², le quotient |√yₙ−√xₙ|/|yₙ−xₙ| vaut n.',
-               '4. Aucune constante Lipschitz finie ne convient. La continuité uniforme est donc strictement plus faible.']
-        description='Le voisinage de zéro admet le module √δ, mais aucun module linéaire Cδ sur l’intervalle entier.'
+        graphs=[chart('√x près de zéro : variations contrôlées','x','√x',series('f(x)',x,y)),chart('Le quotient variation / distance devient non borné','Rang n','Quotient ou écart',series('Écart des images : |f(1/n²)−f(0)|',ranks,1/ranks),series('Quotient = n',ranks,ranks))]
+        steps=['1. Pour x,y≥0, l’inégalité |√x−√y|≤√|x−y| donne une borne commune des variations. On note parfois ω(δ)=√δ ce module de continuité, c’est-à-dire la borne associée à une distance δ.',
+               '2. Pour obtenir un écart des images <ε, la condition |x−y|<ε² suffit partout sur [0,1]. Un même δ=ε² convient donc pour tous les points : la fonction est uniformément continue.',
+               '3. Une propriété lipschitzienne demanderait un L unique dans |f(x)−f(y)|≤L|x−y|. Pour xₙ=0 et yₙ=1/n², le quotient variation / distance vaut n.',
+               '4. Comme n est arbitrairement grand, aucune constante L finie ne convient. Cet exemple distingue bien la continuité uniforme d’une majoration lipschitzienne.']
+        description='Près de zéro, une distance δ entre les arguments donne un écart au plus √δ entre leurs racines. Cette borne assure la continuité uniforme, même si aucun multiple Lδ ne convient sur tout le segment.'
         extra=dict(witness_x=0,witness_y=gap,witness_values=[0,1/n],witness_gap=gap)
-    return result(metrics,graphs,scene('functions','Des témoins et un module explicite',description,**extra),steps,
-                  ['Les écarts entre témoins sont calculés analytiquement, sans soustraire deux racines très proches.','Un contre-exemple sur ℝ ne contredit pas Heine : les témoins de sin(x²) sortent de tout compact fixé.'])
+    return result(metrics,graphs,scene('functions','Un même rayon δ convient-il pour tous les points ?',description,**extra),steps,
+                  ['Lien MPSI : continuité et inégalité des accroissements finis. Lien MP : définition de la continuité uniforme et théorème de Heine sur un compact. Le module √δ est une borne concrète ; sa lecture comme condition de Hölder est un prolongement de vocabulaire.','La fenêtre [−R,R] et les points comparés ne définissent pas le même domaine : l’échec pour sin(x²) concerne tout ℝ. Les suites de points qui le prouvent quittent chaque compact fixé ; cela respecte les hypothèses de Heine.'])
 
 
 def minkowski_support(a,b,s,theta,phi):
@@ -247,15 +247,15 @@ def image_compacte(p):
     area=math.pi*a*b+4*s*math.hypot(a*math.sin(theta),b*math.cos(theta))
     ex=a+s*abs(v[0]); ey=b+s*abs(v[1])
     return result(
-        [metric('Appui exact dans la direction φ',h),metric('Aire exacte de A+B',area),metric('Produit A×B compact','Oui'),metric('Somme A+B compacte','Oui'),metric('Somme A+B convexe','Oui'),metric('Abscisse du point de support',float(support_point[0]))],
-        [chart('La fonction d’appui transforme la somme en addition','Angle de la normale (°)','Appui h',series('Ellipse h_A',np.degrees(aa),he),series('Segment h_B',np.degrees(aa),hs),series('Somme h_A+h_B',np.degrees(aa),he+hs))],
-        _geometry('Image continue d’un produit de compacts','Le stade elliptique est A+B={a+b : a∈A,b∈B}. Les deux côtés plats sont les images des segments de support.',paths=[_path('A+B',points,True,True,0),_path('Ellipse A',_ellipse(a,b),True,False,1),_path('Segment B',[-s*v,s*v],False,False,2)],points=[dict(x=float(support_point[0]),y=float(support_point[1]),label='Support φ',colorIndex=3)],bounds=[-ex*1.2,ex*1.2,-ey*1.2,ey*1.2],support_point=support_point,area=area),
-        ['1. A est l’ellipse pleine fermée ; B={tv : |t|≤s} est un segment. Ils sont fermés et bornés en dimension finie, donc compacts.',
-         '2. Pour toute suite (aₙ,bₙ) du produit, extraire d’abord aφ(n), puis extraire bφ(ψ(n)) de cette sous-suite ; les deux composantes convergent avec les mêmes indices.',
-         '3. L’application continue (a,b)↦a+b envoie ce produit compact sur A+B : la somme est compacte.',
-         '4. L’appui h_A+B(u)=max u·(a+b)=h_A(u)+h_B(u), car les deux maximisations sont indépendantes.',
-         '5. L’aire de l’ellipse augmente de la longueur 2s du segment multipliée par la largeur perpendiculaire 2√(a²sin²θ+b²cos²θ).'],
-        ['La courbe de l’ellipse est échantillonnée pour le dessin ; les fonctions d’appui, la convexité et la compacité sont établies exactement.','Aux normales perpendiculaires au segment, le point de support n’est pas unique ; tout un segment réalise le même maximum.'])
+        [metric('Projection maximale dans la direction φ',h),metric('Aire exacte de A+B',area),metric('Produit A×B compact','Oui'),metric('Somme A+B compacte','Oui'),metric('Somme A+B convexe','Oui'),metric('Abscisse du point réalisant la projection',float(support_point[0]))],
+        [chart('La plus grande projection de A+B est la somme de celles de A et B','Angle φ de la direction de projection (°)','Projection maximale h',series('Ellipse : h_A',np.degrees(aa),he),series('Segment : h_B',np.degrees(aa),hs),series('Somme : h_A+h_B',np.degrees(aa),he+hs))],
+        _geometry('Chaque point de A+B est une somme de deux points','Le domaine bleu est A+B={P+Q : P∈A,Q∈B}. L’ellipse A et le segment B sont tracés comme repères. Le point marqué réalise la plus grande projection sur le vecteur de direction φ.',paths=[_path('Somme A+B',points,True,True,0),_path('Ellipse A',_ellipse(a,b),True,False,1),_path('Segment B',[-s*v,s*v],False,False,2)],points=[dict(x=float(support_point[0]),y=float(support_point[1]),label='Projection maximale, direction φ',colorIndex=3)],bounds=[-ex*1.2,ex*1.2,-ey*1.2,ey*1.2],support_point=support_point,area=area),
+        ['1. A est l’ellipse pleine avec son bord. B={tv : |t|≤s} est le segment orienté par v=(cosθ,sinθ). Chacun est fermé et borné dans ℝ², donc compact par le théorème MP en dimension finie.',
+         '2. Pour une suite de couples (Pₙ,Qₙ), extraire d’abord les Pₙ convergents. Dans cette même suite d’indices, extraire ensuite les Qₙ convergents. Les Pₙ restent convergents : les deux coordonnées convergent ensemble. C’est la technique des extractions successives.',
+         '3. L’addition (P,Q)↦P+Q est continue. Elle envoie le produit compact A×B sur A+B, qui est donc compact. On utilise ici le théorème MP de l’image continue d’un compact.',
+         '4. Pour un vecteur unitaire w, la fonction d’appui h_A(w)=max w·P est simplement la plus grande projection des points de A. Comme P et Q se choisissent indépendamment, h_A+B(w)=h_A(w)+h_B(w).',
+         '5. En allongeant la figure dans la direction du segment, l’aire ajoutée est sa longueur 2s multipliée par la largeur perpendiculaire de l’ellipse, 2√(a²sin²θ+b²cos²θ). Le calcul de l’appui et de l’aire prolonge le résultat de compacité.'],
+        ['Lien MP : produit fini de compacts, extractions successives et image par une application continue. La fonction d’appui est un outil géométrique complémentaire, défini comme une projection maximale ; elle n’est pas nécessaire à la preuve de compacité.','Le contour est dessiné avec un nombre fini de points ; les propriétés viennent des théorèmes et des formules. Perpendiculairement au segment, toute une portion droite du bord réalise le même maximum : le point maximisant n’est pas toujours unique.'])
 
 
 def dense_matrix(n,kappa,seed):
@@ -273,16 +273,16 @@ def applications_lineaires(p):
     ratios=np.linalg.norm(A@samples,axis=0)
     t=np.linspace(0,2*math.pi,401)
     return result(
-        [metric('Dimension réelle du problème',n),metric('Norme d’opérateur 1',norm1),metric('Norme d’opérateur 2',norm2),metric('Norme d’opérateur ∞',norminf),metric('Conditionnement euclidien',float(s[0]/s[-1])),metric('Résidu du vecteur optimisant',residual)],
-        [chart('Spectre singulier d’une matrice dense','Indice j','σⱼ',_dots('Valeurs singulières',np.arange(1,n+1),s)),
-         chart('Tous les vecteurs tests restent sous la norme','Vecteur test','‖Ax‖₂ pour ‖x‖₂=1',_dots('300 directions',np.arange(1,301),ratios),series('Norme atteinte σ₁',[1,300],[norm2,norm2]))],
-        _geometry('Image d’un cercle dans le plan singulier dominant','Le cercle est dans span(v₁,v₂) de ℝⁿ et son image est représentée dans span(u₁,u₂). Les calculs de normes utilisent la matrice complète.',paths=[_path('Cercle source',np.column_stack((np.cos(t),np.sin(t))),True,False,1),_path('Image dans le plan singulier',np.column_stack((s[0]*np.cos(t),s[1]*np.sin(t))),True,True,0)],points=[dict(x=float(s[0]),y=0,label='σ₁u₁',colorIndex=2)],bounds=[-s[0]*1.15,s[0]*1.15,-max(1,s[1])*1.15,max(1,s[1])*1.15],matrix=A,singular_values=s,right_optimizer=x,image_optimizer=Ax),
-        ['1. Générer A=Q diag(σ₁,…,σₙ)Pᵀ avec Q et P orthogonales et σ₁/σₙ=κ ; la matrice est dense et inversible.',
-         '2. Les formules exactes sont ‖A‖₁=maxⱼ∑ᵢ|aᵢⱼ| et ‖A‖∞=maxᵢ∑ⱼ|aᵢⱼ|.',
-         '3. La norme euclidienne vaut σ₁=√λ_max(AᵀA). Le vecteur singulier droit v₁ la réalise : ‖Av₁‖₂=σ₁.',
-         '4. Pour toute norme choisie, ‖Ax−Ay‖≤‖A‖‖x−y‖ prouve la continuité et même le caractère lipschitzien.',
-         '5. Sur la sphère unité compacte de dimension finie, une fonction continue atteint son maximum ; cette étape explique le supremum réalisé.'],
-        ['La SVD, les vecteurs tests et les normes portent sur la dimension n affichée. Le dessin dans deux plans singuliers est une coupe représentative.','Les 300 vecteurs tests ne définissent pas la norme : sa valeur provient de la SVD et des formules de sommes.'])
+        [metric('Dimension réelle du problème',n),metric('Norme d’opérateur 1',norm1),metric('Norme d’opérateur 2',norm2),metric('Norme d’opérateur ∞',norminf),metric('Conditionnement : gain maximal / minimal',float(s[0]/s[-1])),metric('Erreur numérique sur la direction de gain maximal',residual)],
+        [chart('Valeurs singulières : les facteurs d’étirement de A','Indice j','Facteur σⱼ',_dots('Valeurs singulières calculées',np.arange(1,n+1),s)),
+         chart('Comparer des directions à la plus grande amplification possible','Numéro du vecteur testé','‖Ax‖₂ avec ‖x‖₂=1',_dots('300 vecteurs unitaires',np.arange(1,301),ratios),series('Gain maximal : σ₁',[1,300],[norm2,norm2]))],
+        _geometry('L’application x↦Ax transforme un cercle en ellipse','Le cercle se trouve dans le plan engendré par v₁,v₂, directions fournies par le calcul numérique. Son image est dessinée dans le plan engendré par u₁,u₂. Les longueurs sont multipliées par σ₁ et σ₂ ; les normes utilisent bien toutes les n coordonnées.',paths=[_path('Cercle avant application',np.column_stack((np.cos(t),np.sin(t))),True,False,1),_path('Ellipse image dans le plan choisi',np.column_stack((s[0]*np.cos(t),s[1]*np.sin(t))),True,True,0)],points=[dict(x=float(s[0]),y=0,label='σ₁u₁ : direction du gain maximal',colorIndex=2)],bounds=[-s[0]*1.15,s[0]*1.15,-max(1,s[1])*1.15,max(1,s[1])*1.15],matrix=A,singular_values=s,right_optimizer=x,image_optimizer=Ax),
+        ['1. La matrice A=Q diag(σ₁,…,σₙ)Pᵀ applique successivement une transformation orthogonale, des étirements, puis une autre transformation orthogonale. Les facteurs σⱼ>0 sont ses valeurs singulières ; κ compare le plus grand au plus petit.',
+         '2. La norme d’opérateur, aussi appelée norme subordonnée, est la plus petite constante C dans ‖Ax‖≤C‖x‖. Pour les normes vectorielles 1 et ∞, les formules sont ‖A‖₁=maxⱼ∑ᵢ|aᵢⱼ| et ‖A‖∞=maxᵢ∑ⱼ|aᵢⱼ|.',
+         '3. En norme euclidienne, ‖A‖₂=σ₁=√λ_max(AᵀA). La direction unitaire v₁ réalise ce gain : ‖Av₁‖₂=σ₁. La décomposition en valeurs singulières, abrégée SVD, est ici un outil numérique de calcul et de visualisation en prolongement.',
+         '4. Le critère MP de continuité linéaire s’applique : ‖Ax−Ay‖≤‖A‖‖x−y‖. Cette borne contrôle toutes les directions, pas seulement les vecteurs dessinés.',
+         '5. La sphère unité est fermée et bornée en dimension finie, donc compacte. Le théorème des bornes atteintes garantit qu’une direction réalise la borne supérieure des gains : c’est un maximum.'],
+        ['Lien MPSI : matrice d’une application linéaire et transformations orthogonales. Lien MP : norme subordonnée et critère de continuité linéaire. La SVD et les plans qu’elle fournit servent de prolongement numérique ; aucune maîtrise préalable de cet algorithme n’est demandée.','Le dessin montre deux directions d’un problème de dimension n. Les 300 vecteurs tests illustrent la borne ; ils ne la définissent pas. Les valeurs affichées sont calculées avec les arrondis de l’ordinateur à partir des formules matricielles.'])
 
 
 def normes_dimension_infinie(p):
@@ -291,16 +291,16 @@ def normes_dimension_infinie(p):
     selected=np.unique([1,2,5,max(1,N//3),N]); curves=[series(f'x^{j}',x,x**j) for j in selected]
     ns=np.unique(np.r_[np.arange(1,min(N,70)+1),np.linspace(1,N,min(300,N),dtype=int)])
     return result(
-        [metric('Norme uniforme exacte',1),metric('Norme L¹ exacte',1/(N+1)),metric('Norme L² exacte',1/math.sqrt(2*N+1)),metric('Rapport ‖f_N‖∞ / ‖f_N‖₁',N+1),metric('Rapport ‖f_N‖∞ / ‖f_N‖₂',math.sqrt(2*N+1)),metric('Équivalence sur C([0,1])','Non')],
-        [chart('Une masse concentrée près du bord','x∈[0,1]','fₙ(x)',*curves),
-         chart('Trois normes, trois comportements','Exposant n','Norme',series('Uniforme : 1',ns,np.ones_like(ns)),series('L¹ : 1/(n+1)',ns,1/(ns+1)),series('L² : 1/√(2n+1)',ns,1/np.sqrt(2*ns+1)))],
-        scene('functions','Un contre-exemple en dimension infinie','Les normes sont calculées par intégration exacte ; le maillage sert uniquement à voir la concentration près de x=1.',exact_norms=dict(sup=1,L1=1/(N+1),L2=1/math.sqrt(2*N+1))),
-        ['1. Chaque fₙ(x)=xⁿ est continue et vaut 1 en x=1, donc ‖fₙ‖∞=1.',
-         '2. L’intégration exacte donne ‖fₙ‖₁=∫₀¹xⁿdx=1/(n+1) et ‖fₙ‖₂=(∫₀¹x²ⁿdx)¹ᐟ²=1/√(2n+1).',
-         '3. Si ‖f‖∞≤C‖f‖₁ pour tout f∈C([0,1]), alors n+1≤C pour tout n, impossible. Le même raisonnement vaut pour L².',
-         '4. Les normes intégrales tendent vers zéro mais la norme uniforme reste 1 : les topologies ne sont pas identiques.',
-         '5. Cela ne contredit pas l’équivalence des normes sur un sous-espace de dimension finie fixé : les degrés n ne sont pas bornés ici.'],
-        ['Sur les fonctions continues, les normes L¹ et L² sont bien des normes : une fonction continue nulle presque partout est identiquement nulle.','La limite simple vaut 0 sur [0,1[ et 1 en x=1 ; elle est discontinue, donc la convergence ne peut pas être uniforme.'])
+        [metric('Norme ∞ : plus grande erreur',1),metric('Norme 1 : erreur absolue moyenne',1/(N+1)),metric('Norme 2 : erreur moyenne quadratique',1/math.sqrt(2*N+1)),metric('Rapport ‖f_N‖∞ / ‖f_N‖₁',N+1),metric('Rapport ‖f_N‖∞ / ‖f_N‖₂',math.sqrt(2*N+1)),metric('Normes équivalentes sur C([0,1])','Non')],
+        [chart('L’erreur se concentre près de x=1','x∈[0,1]','fₙ(x), écart à la fonction nulle',*curves),
+         chart('Comparer convergence en moyenne et convergence uniforme','Exposant n','Mesure de l’erreur',series('Norme ∞ : 1',ns,np.ones_like(ns)),series('Norme 1 : 1/(n+1)',ns,1/(ns+1)),series('Norme 2 : 1/√(2n+1)',ns,1/np.sqrt(2*ns+1)))],
+        scene('functions','Des erreurs moyennes petites, mais une erreur maximale égale à 1','Les normes 1 et 2 mesurent une erreur répartie sur le segment. La norme ∞ cherche la plus grande erreur en un point. Les formules intégrales donnent leurs valeurs indépendamment du nombre de points dessinés.',exact_norms=dict(sup=1,L1=1/(N+1),L2=1/math.sqrt(2*N+1))),
+        ['1. Comparer fₙ(x)=xⁿ à la fonction nulle sur [0,1]. La plus grande erreur, appelée norme ∞ ou norme uniforme, vaut 1 car fₙ(1)=1.',
+         '2. La norme 1 mesure l’erreur absolue moyenne : ∫₀¹xⁿdx=1/(n+1). La norme 2 mesure l’erreur moyenne quadratique : (∫₀¹x²ⁿdx)¹ᐟ²=1/√(2n+1). Les deux tendent vers zéro.',
+         '3. Des normes équivalentes se compareraient avec des constantes indépendantes de la fonction. Une inégalité ‖f‖∞≤C‖f‖₁ imposerait ici n+1≤C pour tout n, impossible ; de même, ‖fₙ‖∞/‖fₙ‖₂=√(2n+1) est non borné.',
+         '4. Les fonctions convergent donc vers zéro en moyenne et en moyenne quadratique, mais pas uniformément. Cela relie une convergence à la norme choisie, plutôt qu’à la seule apparence du graphe.',
+         '5. Le théorème MP d’équivalence des normes exige une dimension finie fixée. Ici les degrés n augmentent sans limite dans C([0,1]), espace de toutes les fonctions continues : le programme MP demande justement de savoir utiliser une suite pour prouver que deux normes ne sont pas équivalentes.'],
+        ['Sur le segment [0,1], de longueur 1, les intégrales correspondent directement aux moyennes. Sur les fonctions continues, elles définissent bien des normes : une intégrale d’une fonction continue positive ne peut être nulle que si cette fonction est identiquement nulle.','Lien MP : normes de convergence uniforme, en moyenne et en moyenne quadratique ; non-équivalence démontrée par une suite ; équivalence en dimension finie. La limite simple vaut 0 pour x<1 et 1 en x=1 : elle est discontinue, donc ne peut pas être une limite uniforme des fonctions continues fₙ.'])
 
 
 def boule_non_compacte(p):
@@ -309,16 +309,16 @@ def boule_non_compacte(p):
     gram=np.eye(M)
     difference=np.abs(amplitude*np.exp(1j*n*x)-amplitude*np.exp(1j*(n+1)*x))
     return result(
-        [metric('Norme L² exacte de chaque vₙ',1),metric('Distance L² exacte entre modes distincts',math.sqrt(2)),metric('Nombre de modes de Gram affichés',M),metric('Rang exact de Gram',M),metric('Boule unité compacte','Non'),metric('Sous-suite de Cauchy de (vₙ)','Aucune')],
-        [chart('Un mode complexe est formé de deux fonctions réelles','x∈[0,2π]','vₙ(x)',series('Partie réelle',x,amplitude*np.cos(n*x)),series('Partie imaginaire',x,amplitude*np.sin(n*x))),
-         chart('Deux modes voisins restent séparés en norme','x∈[0,2π]','|vₙ(x)−vₙ₊₁(x)|',series('Écart ponctuel',x,difference))],
-        scene('matrix','La matrice de Gram des modes','La diagonale vaut 1 et les termes hors diagonale valent 0 par intégration exacte. Une matrice finie illustre la formule valable pour tous les indices.',matrix=gram,labels=[str(j) for j in range(M)],mode=n),
-        ['1. Définir vₙ(x)=eⁱⁿˣ/√(2π) dans l’espace des fonctions continues muni de la norme L² sur [0,2π].',
-         '2. ⟨vₙ,vₘ⟩=(1/2π)∫₀²πeⁱ⁽ⁿ⁻ᵐ⁾ˣdx vaut 1 si n=m et 0 sinon.',
-         '3. Pour n≠m, ‖vₙ−vₘ‖₂²=1+1−0=2. Tous les termes sont pourtant dans la boule unité fermée.',
-         '4. Une extraction conserve des indices distincts, donc la distance √2 : aucune sous-suite n’est de Cauchy, aucune ne converge.',
-         '5. La boule unité n’est pas compacte. Le théorème « fermé et borné ⇒ compact » exige la dimension finie.'],
-        ['La preuve concerne une infinité de modes et ne dépend pas du nombre M affiché.','L’espace de fonctions continues muni de L² est un espace normé ; sa complétion usuelle est L². Le contre-exemple s’applique aux deux espaces.'])
+        [metric('Norme 2 exacte de chaque vₙ',1),metric('Distance en norme 2 entre fonctions distinctes',math.sqrt(2)),metric('Nombre de fonctions comparées dans Gram',M),metric('Rang exact de Gram',M),metric('Boule unité fermée compacte','Non'),metric('Suite extraite convergente de (vₙ)','Aucune')],
+        [chart('Lire la fonction complexe à travers son cosinus et son sinus','x∈[0,2π]','vₙ(x)',series('Partie réelle',x,amplitude*np.cos(n*x)),series('Partie imaginaire',x,amplitude*np.sin(n*x))),
+         chart('L’écart entre deux fonctions oscillantes voisines','x∈[0,2π]','|vₙ(x)−vₙ₊₁(x)|',series('Écart en chaque point x',x,difference))],
+        scene('matrix','Gram : le tableau des produits scalaires','La case (n,m) contient ⟨vₙ,vₘ⟩. Les fonctions sont de norme 1 et orthogonales deux à deux : la diagonale vaut 1, les autres cases 0. Les M fonctions affichées illustrent la même formule pour tous les indices.',matrix=gram,labels=[str(j) for j in range(M)],mode=n),
+        ['1. Les fonctions vₙ(x)=eⁱⁿˣ/√(2π) sont continues sur [0,2π]. On les considère comme des vecteurs, avec norme ‖f‖₂=(∫₀²π|f(x)|²dx)¹ᐟ². Le cosinus et le sinus donnent leurs parties réelle et imaginaire.',
+         '2. Le produit scalaire intégral donne ⟨vₙ,vₘ⟩=(1/2π)∫₀²πeⁱ⁽ⁿ⁻ᵐ⁾ˣdx : il vaut 1 si n=m et 0 sinon. Le tableau de ces produits s’appelle la matrice de Gram.',
+         '3. Pour n≠m, développer la norme carrée de la différence donne ‖vₙ−vₘ‖₂²=1+1−0=2. Les fonctions sont toutes dans la boule unité fermée, mais restent à distance √2 deux à deux.',
+         '4. Une suite extraite garde des indices distincts et donc cette même distance. Les termes d’une suite convergente doivent au contraire devenir proches deux à deux : aucune suite extraite ne converge ici.',
+         '5. Le critère MP par suites extraites exclut alors la compacité de la boule. Ce prolongement précise pourquoi « fermé et borné ⇒ compact » exige une dimension finie.'],
+        ['M fixe seulement la taille du tableau ; la preuve porte sur une infinité de fonctions. Lien MP : norme en moyenne quadratique des fonctions continues et critère de compacité par suites extraites. L’interprétation des produits intégrés comme produit scalaire hermitien est un prolongement hors programme MP.','La norme 2 utilise ici l’intégrale sur un intervalle de longueur 2π, sans division par cette longueur. Les notions de suite de Cauchy, de complétude, d’espace de Banach et de complétion L² sont hors programme MP ; elles ne sont pas nécessaires pour constater l’absence de suite extraite convergente.'])
 
 
 MODELS={name:globals()[name] for name in ('bolzano_weierstrass','extraction_aleatoire','cauchy_rationnels','compacts_recouvrements','valeurs_extremes','heine_continuite','image_compacte','applications_lineaires','normes_dimension_infinie','boule_non_compacte')}

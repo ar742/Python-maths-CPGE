@@ -236,14 +236,14 @@ class OperatorAndInfiniteTests(unittest.TestCase):
         t,w=np.polynomial.legendre.leggauss(90); x=(t+1)/2
         for n in [1,5,40,80]:
             data=m.normes_dimension_infinie(dict(N=n)); vals=metrics(data)
-            self.assertAlmostEqual(np.dot(w,x**n)/2,vals['Norme L¹ exacte'],delta=1e-14)
-            self.assertAlmostEqual(math.sqrt(np.dot(w,x**(2*n))/2),vals['Norme L² exacte'],delta=1e-13)
+            self.assertAlmostEqual(np.dot(w,x**n)/2,vals['Norme 1 : erreur absolue moyenne'],delta=1e-14)
+            self.assertAlmostEqual(math.sqrt(np.dot(w,x**(2*n))/2),vals['Norme 2 : erreur moyenne quadratique'],delta=1e-13)
 
     def test_norm_ratios_have_no_common_constant(self):
         a=metrics(m.normes_dimension_infinie(dict(N=10)))
         b=metrics(m.normes_dimension_infinie(dict(N=1000)))
         self.assertGreater(b['Rapport ‖f_N‖∞ / ‖f_N‖₁'],90*a['Rapport ‖f_N‖∞ / ‖f_N‖₁'])
-        self.assertEqual(b['Norme uniforme exacte'],1)
+        self.assertEqual(b['Norme ∞ : plus grande erreur'],1)
 
     def test_gram_formula_by_independent_periodic_quadrature(self):
         M=24; x=np.arange(2048)*2*math.pi/2048

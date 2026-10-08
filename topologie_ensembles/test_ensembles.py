@@ -88,11 +88,11 @@ class ConnexiteTests(unittest.TestCase):
     def test_cassini_component_change_depends_on_strictness(self):
         for b,closed,expected in [(.8,'yes',2),(.8,'no',2),(1,'yes',1),(1,'no',2),(1.2,'no',1)]:
             metrics={m['label']:m['value'] for m in run('chemins_niveaux',b=b,closed=closed)['metrics']}
-            self.assertEqual(metrics['Composantes connexes'],expected)
+            self.assertEqual(metrics['Régions reliées par arcs (composantes)'],expected)
     def test_cassini_origin_membership(self):
         for b,closed in [(1,'no'),(1,'yes'),(1.4,'no')]:
             metrics={m['label']:m['value'] for m in run('chemins_niveaux',b=b,closed=closed)['metrics']}
-            self.assertEqual(metrics['L’origine appartient au sous-niveau'],b>1 or b==1 and closed=='yes')
+            self.assertEqual(metrics['L’origine appartient à l’ensemble'],b>1 or b==1 and closed=='yes')
     def test_cassini_large_sublevel_star_segments(self):
         for b in [1.1,1.8]:
             pts=cassini_paths(b)[0]['points']
@@ -144,7 +144,7 @@ class MatricesEtContractionsTests(unittest.TestCase):
     def test_cos_posteriori_bound_contains_true_error(self):
         for N in [2,5,15,45]:
             r=run('point_fixe',N=N);metrics={m['label']:m['value'] for m in r['metrics']}
-            self.assertLessEqual(metrics['Écart au point fixe de référence'],metrics['Borne a posteriori']+2e-16)
+            self.assertLessEqual(metrics['Écart au point fixe de référence'],metrics['Majoration de l’erreur par les deux derniers termes']+2e-16)
     def test_affine_iteration_against_closed_formula(self):
         for q in [-1.1,-.7,.5,.95,1.05]:
             r=run('point_fixe',family='affine',q=q,N=30,x0=.2);seq=r['charts'][1]['series'][0]['y'];star=.7/(1-q)
@@ -152,7 +152,7 @@ class MatricesEtContractionsTests(unittest.TestCase):
     def test_noncontractive_has_no_banach_error_bound(self):
         for q in [-1.1,-1,1,1.05]:
             r=run('point_fixe',family='affine',q=q,N=30)
-            self.assertNotIn('Borne a posteriori',[m['label'] for m in r['metrics']])
+            self.assertNotIn('Majoration de l’erreur par les deux derniers termes',[m['label'] for m in r['metrics']])
     def test_every_preset_has_finite_json(self):
         for lab in LABS:
             for preset in lab['presets']:
