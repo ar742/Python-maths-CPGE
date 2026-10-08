@@ -81,7 +81,7 @@ La caractérisation figure dans chaque fiche : fonctions, formule, connectivité
 python -X utf8 -m unittest discover -v
 ```
 
-Les tests confrontent les résultats à des bilans atomiques et électriques, aux produits attendus, aux configurations calculées indépendamment et aux cas ouverts depuis les fiches. Ils vérifient les cours, guides, paramètres, exports et ressources du serveur. L’intégration continue les lance sur **Windows et Linux, Python 3.10 et 3.12**.
+Les **360 tests automatiques** confrontent les résultats à des bilans atomiques et électriques, aux produits attendus, aux configurations calculées indépendamment et aux cas ouverts depuis les fiches. Ils vérifient les cours, guides, paramètres, exports et ressources du serveur. L’intégration continue les lance sur **Windows et Linux, Python 3.10 et 3.12** ; les résultats sont consultables dans [GitHub Actions](https://github.com/ar742/Python-maths-CPGE/actions).
 
 Matplotlib permet de recréer les figures :
 
