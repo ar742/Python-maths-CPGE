@@ -5,12 +5,12 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Onze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Douze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** **Lumière & Images — Optique** et **Liaisons & Synthèses — Chimie organique**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme** **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique** et **Séries & Signaux** (sixième volet de mathématiques). Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
-matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire et stratégies de synthèse.
+matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées et analyse du signal.
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -25,6 +25,24 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
 | 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
 | 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
+| 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md) |
+
+## Maths, volet 06 · Atelier 12 · Séries & Signaux
+
+![Séries & Signaux : de la convergence à la chaîne de mesure](series_transformees_signal/apercu.png)
+
+**30 laboratoires, 60 leçons, 60 exercices corrigés et 30 figures scientifiques originales**,
+à partir des fiches **M10 et M11**, avec priorité au **TP p.99**, aux **exercices 4, 5, 10, 11 et 12**,
+au **TP p.107** et à la **page 108**. Chaque expérience explicite ses buts, ses variables,
+ses hypothèses, les techniques et les repères **sup / spé / au-delà**.
+
+- **Convergences et séries :** pic mobile et maxima exacts, concentration d’aire, convergence normale, EDO et coefficients, équivalent d’une série entière, binôme généralisé, pendule elliptique, intégrales et domination.
+- **Transformées et systèmes :** Laplace causale et état initial, RC/RLC, pôles et Bode, Dirichlet-Abel, porte et sinc, gaussienne, convolution, Gibbs/Fejér, Parseval et noyau de Poisson.
+- **Chaîne de mesure :** Poisson, Shannon, repliement et filtre analogique, FFT et fenêtres, résolution, spectrogramme d’un chirp, modulation, corrélation et temps de vol, débruitage et distorsion.
+
+**Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Series_Signaux.cmd`.
+L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8776>.
+[Présentation et conventions](series_transformees_signal/README.md) · [Douze missions](series_transformees_signal/PARCOURS.md).
 
 ## Chimie · Atelier 11 · Liaisons & Synthèses — Chimie organique
 

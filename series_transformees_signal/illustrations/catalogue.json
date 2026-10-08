@@ -1,0 +1,242 @@
+[
+  {
+    "file": "couche_limite.svg",
+    "title": "Le pic qui échappe au maillage",
+    "labs": [
+      "couche_limite"
+    ],
+    "caption": "Paramètres : n=30 · delta=0.08. n entier ≥1 ; 0<δ≤1. Normes obtenues par étude de la dérivée, indépendamment des points du graphe."
+  },
+  {
+    "file": "concentration.svg",
+    "title": "La limite perd une unité d’aire",
+    "labs": [
+      "concentration"
+    ],
+    "caption": "Paramètres : n=35 · x0=0.2. Fonctions positives sur [0,1]. La concentration se produit au bord 0 ; la « masse limite » illustre une mesure de Dirac, au-delà du cours de première année."
+  },
+  {
+    "file": "tp99_original.svg",
+    "title": "Deux termes qui s’annulent",
+    "labs": [
+      "tp99_original"
+    ],
+    "caption": "Paramètres : n=8 · R=2 · N=60. n≥1. La série est prise à partir de n=1. La borne du reste utilise Σ_{n>N}n⁻⁴≤∫_N∞t⁻⁴dt=1/(3N³). Les très petites différences sont évaluées par un développement stable."
+  },
+  {
+    "file": "geometrie.svg",
+    "title": "Dériver une série sur un compact",
+    "labs": [
+      "geometrie"
+    ],
+    "caption": "Paramètres : N=15 · r=0.8. N est le degré du polynôme : N+1 termes. L’atelier travaille strictement à l’intérieur du disque de convergence."
+  },
+  {
+    "file": "arcsin_ex4.svg",
+    "title": "Une EDO fabrique les coefficients",
+    "labs": [
+      "arcsin_ex4"
+    ],
+    "caption": "Paramètres : N=16 · r=0.85. L’analyticité se prouve par la série obtenue, de rayon 1, puis l’EDO et son unicité. N désigne le nombre de termes impairs, et non le degré."
+  },
+  {
+    "file": "asymptotique_ex5.svg",
+    "title": "Une série entière à l’échelle e²x",
+    "labs": [
+      "asymptotique_ex5"
+    ],
+    "caption": "Paramètres : x=8 · N=120. x>0. Les rapports sont calculés en logarithmes, avec une troncature automatique au-delà de λ+16√(λ+1)+70 ; l’erreur de cette troncature est inférieure à une queue de Poisson. N sert à montrer les risques d’une somme partielle insuffisante."
+  },
+  {
+    "file": "binomiale_ex10.svg",
+    "title": "Au-delà du binôme polynomial",
+    "labs": [
+      "binomiale_ex10"
+    ],
+    "caption": "Paramètres : p=0 · N=24 · r=0.75. p entier de −3 à 3, α=p+1/2. Le cas p=0 relie explicitement l’expérience à la racine inverse. Le compact |u|≤r reste strictement dans le disque de convergence."
+  },
+  {
+    "file": "elliptique_pendule.svg",
+    "title": "La période du pendule devient elliptique",
+    "labs": [
+      "elliptique_pendule"
+    ],
+    "caption": "Paramètres : angle=90 · N=12 · length=1. Pendule idéal sans frottement, g=9,81 m·s⁻². Quadrature de Gauss à 160 points ; trajectoire obtenue par Runge–Kutta d’ordre 4 sur deux périodes. L’énergie et le facteur 2 entre I et K déterminent la normalisation."
+  },
+  {
+    "file": "integrale_sh_ex11.svg",
+    "title": "Additionner des aires positives",
+    "labs": [
+      "integrale_sh_ex11"
+    ],
+    "caption": "Paramètres : N=25 · T=8. En t=0, la fonction prolongée vaut 1 mais chaque somme partielle vaut 0 : l’égalité de série est sur t>0. Ce seul point ne modifie pas l’intégrale. La fenêtre [0,T] est uniquement une représentation ; les aires affichées sont sur [0,+∞[."
+  },
+  {
+    "file": "dominee_ex12.svg",
+    "title": "Une domination pour des signaux complexes",
+    "labs": [
+      "dominee_ex12"
+    ],
+    "caption": "Paramètres : n=12 · family=complex · omega=8. t et ω sont sans dimension. Le signal à saut vaut 1 avant 0,4 et −0,75 ensuite ; son intégrale est calculée en deux intervalles. Les valeurs Iₙ utilisent une quadrature de Gauss, tandis que I est calculée analytiquement."
+  },
+  {
+    "file": "rc_reponses.svg",
+    "title": "RC : du calcul de Laplace à la réponse temporelle",
+    "labs": [
+      "rc_reponses"
+    ],
+    "caption": "Paramètres : mode=ramp · tau=0.8 · amplitude=1 · a=0.7 · b=0.4 · y0=0. L est la transformée unilatérale ; l’entrée causale usuelle est transformée pour Re(p)>0. La transformée de la réponse impulsionnelle converge pour Re(p)>−1/τ ; son expression rationnelle se prolonge hors du pôle."
+  },
+  {
+    "file": "rc_bode.svg",
+    "title": "RC : gain, phase et déformation de trois harmoniques",
+    "labs": [
+      "rc_bode"
+    ],
+    "caption": "Paramètres : tau=0.2 · frequency=1. Le graphe temporel montre le régime permanent, après disparition du transitoire."
+  },
+  {
+    "file": "rlc_poles.svg",
+    "title": "RLC : pôles, amortissement et trois régimes",
+    "labs": [
+      "rlc_poles"
+    ],
+    "caption": "Paramètres : omega0=6 · zeta=0.3 · mode=step. ζ>0 garantit la stabilité du modèle linéaire. La réponse causale converge dans le demi-plan à droite du pôle le plus à droite."
+  },
+  {
+    "file": "dirichlet_abel.svg",
+    "title": "L’intégrale de Dirichlet par régularisation d’Abel",
+    "labs": [
+      "dirichlet_abel"
+    ],
+    "caption": "Paramètres : p=0.2 · cutoff=80. La variable t et p sont ici adimensionnés. Le modèle exige p>0 ; la valeur en p=0 est le prolongement exact par limite."
+  },
+  {
+    "file": "porte_sinc.svg",
+    "title": "Porte, sinus cardinal et phase d’une translation",
+    "labs": [
+      "porte_sinc"
+    ],
+    "caption": "Paramètres : width=1 · shift=0.4. Convention en Hz : sinc(x)=sin(πx)/(πx), conformément à numpy.sinc. La notation sin(x)/x correspond à sinc(x/π)."
+  },
+  {
+    "file": "gaussienne.svg",
+    "title": "Gaussienne : Fourier et incertitude temps–fréquence",
+    "labs": [
+      "gaussienne"
+    ],
+    "caption": "Paramètres : sigma=0.6 · amplitude=1. Les amplitudes sont positives et réelles dans ce TP ; A≠0 permet la normalisation énergétique."
+  },
+  {
+    "file": "convolution_portes.svg",
+    "title": "Convoluer : l’aire d’un recouvrement mobile",
+    "labs": [
+      "convolution_portes"
+    ],
+    "caption": "Paramètres : width1=1 · width2=1.8 · shift=0.5 · probe=0.8. Convolution bilatérale sur ℝ, puisque les portes peuvent se trouver à des temps négatifs."
+  },
+  {
+    "file": "gibbs_fourier.svg",
+    "title": "Synthèse de Fourier : Gibbs et moyennes de Fejér",
+    "labs": [
+      "gibbs_fourier"
+    ],
+    "caption": "Paramètres : wave=square · N=25 · period=2. Les métriques d’erreur sont des moyennes quadratiques sur une période, calculées avec Parseval ; elles ne sont pas des estimations visuelles sur la grille."
+  },
+  {
+    "file": "parseval_spectre.svg",
+    "title": "Parseval : énergie, harmoniques et sommes classiques",
+    "labs": [
+      "parseval_spectre"
+    ],
+    "caption": "Paramètres : wave=triangle · N=30. Il s’agit de puissance moyenne périodique, et non de l’énergie ∫ℝ |f|², qui diverge pour ces signaux non nuls."
+  },
+  {
+    "file": "poisson_noyau.svg",
+    "title": "Noyau de Poisson : convergence normale et lissage",
+    "labs": [
+      "poisson_noyau"
+    ],
+    "caption": "Paramètres : r=0.75 · N=25 · period=2. 0≤r<1 dans ce laboratoire ; T est en secondes et θ=2πt/T."
+  },
+  {
+    "file": "poisson_gaussienne.svg",
+    "title": "Poisson : une gaussienne, deux descriptions",
+    "labs": [
+      "poisson_gaussienne"
+    ],
+    "caption": "Paramètres : sigma=0.3 · T=1.5 · N=8. Identité de Poisson appliquée à une gaussienne de Schwartz : les échanges sont justifiés."
+  },
+  {
+    "file": "shannon.svg",
+    "title": "Shannon : reconstruire un paquet à bande limitée",
+    "labs": [
+      "shannon"
+    ],
+    "caption": "Paramètres : F=24 · B=3 · f0=5 · M=40. Signal continu appartenant à L¹ et L² ; support spectral inclus dans [−(f₀+B), f₀+B]."
+  },
+  {
+    "file": "aliasing.svg",
+    "title": "Repliement : deux fréquences, les mêmes mesures",
+    "labs": [
+      "aliasing"
+    ],
+    "caption": "Paramètres : F=24 · f=19 · phase=30. Sinusoïdes idéales, signal périodique d’énergie infinie : illustration de l’ambiguïté, distincte du paquet L¹∩L² du TP Shannon."
+  },
+  {
+    "file": "anti_repliement.svg",
+    "title": "Avant la mesure : le filtre antirepliement",
+    "labs": [
+      "anti_repliement"
+    ],
+    "caption": "Paramètres : F=50 · fc=12 · noise_f=72 · order=4 · amplitude=1. Filtre analogique idéal de Butterworth, régime permanent ; transitoire de mise en marche absent."
+  },
+  {
+    "file": "fenetres_fft.svg",
+    "title": "FFT : fuite spectrale et fenêtrage",
+    "labs": [
+      "fenetres_fft"
+    ],
+    "caption": "Paramètres : f=13.375 · window=hann · N=256 · padding=4. Fenêtres périodiques adaptées à la FFT ; aucun zéro supplémentaire n’est une nouvelle mesure."
+  },
+  {
+    "file": "resolution.svg",
+    "title": "Résolution : voir deux fréquences proches",
+    "labs": [
+      "resolution"
+    ],
+    "caption": "Paramètres : N=128 · delta=1 · padding=4. Signal sans bruit, amplitudes égales et phases initiales nulles."
+  },
+  {
+    "file": "spectrogramme.svg",
+    "title": "Spectrogramme : suivre un chirp",
+    "labs": [
+      "spectrogramme"
+    ],
+    "caption": "Paramètres : length=48 · f0=8 · f1=48. Chirp réel de trois secondes, échantillonné à 128 Hz, fréquences sous 64 Hz."
+  },
+  {
+    "file": "modulation.svg",
+    "title": "Modulation : traduire le spectre d’un message",
+    "labs": [
+      "modulation"
+    ],
+    "caption": "Paramètres : m=0.7 · fm=3 · fc=30 · offset=0 · phase=0. AM réelle, porteuse transmise, canal idéal ; fréquences normalisées pour voir les courbes."
+  },
+  {
+    "file": "correlation_retard.svg",
+    "title": "Corrélation : mesurer un temps de vol",
+    "labs": [
+      "correlation_retard"
+    ],
+    "caption": "Paramètres : delay=0.6 · noise=0.45 · speed=350 · seed=4. Deux signaux réels à énergie finie tronqués sur trois secondes, bruit gaussien reproductible."
+  },
+  {
+    "file": "debruitage.svg",
+    "title": "Débruiter : réduction du bruit et déformation",
+    "labs": [
+      "debruitage"
+    ],
+    "caption": "Paramètres : filter=mean · width=9 · noise=0.5 · f=5 · seed=3. Bruit blanc gaussien ; une réalisation finie fluctue autour du bilan théorique."
+  }
+]
