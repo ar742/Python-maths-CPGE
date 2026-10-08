@@ -256,5 +256,5 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Installer NumPy
         run: python -m pip install -r requirements.txt
-      - name: Tests des structures, mécanismes, spectres, synthèses et serveur
-        run: python -X utf8 -m unittest -v test_analyse test_reactivite test_entree test_pedagogie test_serveur
+      - name: Tests des réactions du recueil, stéréochimie, bilans et serveur
+        run: python -X utf8 -m unittest -v test_analyse test_reactivite test_entree test_pedagogie test_serveur test_recueil test_exos_recueil test_epoxydes test_reactions_cours test_atlas
