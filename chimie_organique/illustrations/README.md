@@ -1,96 +1,78 @@
 # Galerie : Liaisons & Synthèses
 
-Trente figures originales issues des mêmes données et calculs que les laboratoires. Les conditions, paramètres et limites figurent dans chaque TP.
+42 figures originales issues des mêmes données et calculs que les laboratoires. Les conditions, paramètres et limites figurent dans chaque TP.
 
-## Formule brute : insaturations et signatures isotopiques
+## Effets I/M et règles : justifier avant de nommer
 
-![Formule brute : insaturations et signatures isotopiques](formule.svg)
+![Effets I/M et règles : justifier avant de nommer](effets.svg)
 
-Probabilités conditionnelles aux isotopes légers de C, H, N, O ; M+1 (¹³C) et fragmentation non simulés.
+Même connectivité dans tous les contributeurs ; ⇄ est une relation de représentation.
 
-## Chiralité : orientation, R/S et excès énantiomérique
+## E1 : départ de Cl ou d’eau, puis choix du H en β
 
-![Chiralité : orientation, R/S et excès énantiomérique](stereo.svg)
+![E1 : départ de Cl ou d’eau, puis choix du H en β](e1.svg)
 
-Axes de vue fixes ; la rotation du solide conserve la configuration. Les quatre rangs sont donnés, pas calculés par un moteur CIP.
+Carbocation secondaire/tertiaire admissible ; la déprotonation β suit le départ d’eau.
 
-## Conformations : Newman et populations de Boltzmann
+## Énolate ambident : alkylation en C ou en O
 
-![Conformations : Newman et populations de Boltzmann](conformeres.svg)
+![Énolate ambident : alkylation en C ou en O](enolatealkyl.svg)
 
-Interpolation cosinus entre Eanti=0, Egauche(60°)=3,8, Eeclipsé(120°)=16 et Esyn(0°)=21 kJ/mol : profil pédagogique, pas un champ de force moléculaire.
+Un centre tertiaire bloque la SN2 ; le contre-ion alcalin de l’énolate est spectateur.
 
-## IR : fonctions chimiques et loi de Beer–Lambert
+## Alkylation d’une amine : former un sel quaternaire
 
-![IR : fonctions chimiques et loi de Beer–Lambert](ir.svg)
+![Alkylation d’une amine : former un sel quaternaire](aminealkyl.svg)
 
-Les positions, amplitudes et largeurs sont des paramètres pédagogiques typiques, pas un enregistrement expérimental.
+Les deux flèches appartiennent à une même substitution concertée ; la vue intermédiaire expose leur trajet, sans créer un intermédiaire de SN2.
 
-## RMN : intégrales, couplages et identification croisée
+## Anhydride : le carboxylate attaque, puis l’acyle se transfère
 
-![RMN : intégrales, couplages et identification croisée](rmn.svg)
+![Anhydride : le carboxylate attaque, puis l’acyle se transfère](anhydride.svg)
 
-Positions typiques, raies lorentziennes ; les paquets aromatiques représentent des zones, sans prétendre résoudre leur système de spins.
+Le carbone acyle reçoit le doublet ; C=O devient provisoirement C–O ; son rétablissement expulse le groupe partant.
 
-## CCM : séparation, suivi et limites de l’identification
+## Hydrolyser un dérivé d’acyle : acide ou base ?
 
-![CCM : séparation, suivi et limites de l’identification](ccm.svg)
+![Hydrolyser un dérivé d’acyle : acide ou base ?](hydrolyseacyle.svg)
 
-Modèle k′ = k′₀ exp(−4φ), Rf = 1/(1+k′). Les intensités indiquent des quantités relatives avec même réponse détecteur, hypothèse pédagogique.
+réactif sous catalyse acide / base, temps et chauffage à préciser
 
-## Extraction : pH, partage et extractions successives
+## Benzène et Cl₂ : lumière ou catalyseur ?
 
-![Extraction : pH, partage et extractions successives](extraction.svg)
+![Benzène et Cl₂ : lumière ou catalyseur ?](photochlore.svg)
 
-À chaque étape, on conserve le soluté aqueux et collecte une nouvelle phase organique. Les quantités ci-dessous sont rapportées à n₀ = 1 mol.
+FeCl₃ sans hν mène à une substitution ; l’irradiation permet une addition qui sature le cycle.
 
-## Esters : équilibre, hydrolyse et saponification
+## Préparer RMgX : le proton détruit avant l’addition
 
-![Esters : équilibre, hydrolyse et saponification](esterification.svg)
+![Préparer RMgX : le proton détruit avant l’addition](grignardprep.svg)
 
-Même squelette acyle ; en milieu basique le produit est le carboxylate, qui doit être acidifié si l’on veut isoler l’acide.
+RX + Mg → RMgX ; RMgX + H₂O → RH + MgXOH. L’éther doit être sec, le montage protégé de l’humidité.
 
-## Acylation : activation et bilan du piège à acide
+## Nitrobenzène : Lewis, réduction et ordre des substitutions
 
-![Acylation : activation et bilan du piège à acide](acylation.svg)
+![Nitrobenzène : Lewis, réduction et ordre des substitutions](nitrobenzene.svg)
 
-Les flèches déplacent un doublet du nucléophile puis la liaison π C=O ; élimination et déprotonation achèvent la substitution.
+Les atomes restent aux mêmes positions. Les charges N⁺/O⁻ et l’octet sont conservés pendant le déplacement des deux doublets.
 
-## Protection : rendre une stratégie compatible
+## Dinitrobenzènes : addition vectorielle des moments dipolaires
 
-![Protection : rendre une stratégie compatible](protection.svg)
+![Dinitrobenzènes : addition vectorielle des moments dipolaires](dipolesnitro.svg)
 
-L’acétal est stable au réducteur basique choisi ; la déprotection acide restaure ensuite la cétone.
+Convention physique : le moment pointe de la charge négative vers la positive, ici vers le cycle pour chaque contribution NO₂. Les deux vecteurs sont translatés à une origine commune. Leur somme est indépendante d’une rotation rigide ; les nombres ne sont pas des proportions de réaction.
 
-## Aldolisation : créer C–C puis conjuguer
+## E2 du recueil : des configurations R/S à l’alcène E/Z
 
-![Aldolisation : créer C–C puis conjuguer](aldol.svg)
+![E2 du recueil : des configurations R/S à l’alcène E/Z](e2stereo.svg)
 
-Ph = phényle ; la forme mésomère C de l’énolate porte le doublet qui forme C–C. Les groupes CO sont des carbonyles abrégés.
+Point avant C₃ ; cercle arrière C₄. Et = CH₂CH₃ et Me = CH₃. Le produit dessiné appartient à la seule voie C₃=C₄, quand la conformation affichée est anti.
 
-## Michael et Wittig : deux constructions C–C
+## Époxydes : transférer O puis ouvrir le cycle
 
-![Michael et Wittig : deux constructions C–C](michaelwittig.svg)
+![Époxydes : transférer O puis ouvrir le cycle](epoxydes.svg)
 
-Un nucléophile stabilisé ou organocuprate favorise souvent 1,4 ; le carbonyle est restauré après protonation.
-
-## Diels–Alder : géométrie, orbitales et sélection
-
-![Diels–Alder : géométrie, orbitales et sélection](dielsalder.svg)
-
-Le produit conserve cis/trans du diènophile. Les coins indiquent cette relation ; le ratio tout endo/tout exo n’est calculé que pour le diène cyclique + diènophile cis.
-
-## Rétrosynthèse : cibles, ordre et rendement global
-
-![Rétrosynthèse : cibles, ordre et rendement global](retrosynthese.svg)
-
-Liaison O(phénol)–C(acyle), groupe COOH conservé Encart : structure de la cible visée.
-
-## Polymères : conversion, stœchiométrie et longueur
-
-![Polymères : conversion, stœchiométrie et longueur](polymeres.svg)
-
-AA+BB bifonctionnels : DPₙ compte les entités AA et BB incorporées. Une répétition structurale du nylon-6,6 contient une unité de chaque, soit environ DPₙ/2 répétitions à grande chaîne.
+Le bilan avant/après montre l’incorporation d’un O et l’acide coproduct. La relation cis/trans des substituants est conservée ; un seul représentant est dessiné si deux énantiomères se forment.
 
 ## Flèches : où vont réellement les électrons ?
 
@@ -181,3 +163,93 @@ Les signes indiquent une phase d’orbitales ; changer globalement le signe d’
 ![Cinétique ou thermodynamique : deux sélectivités](cinetique.svg)
 
 ΔG‡ fixe les vitesses ; ΔG des produits fixe leur équilibre si une interconversion est possible.
+
+## Formule brute : insaturations et signatures isotopiques
+
+![Formule brute : insaturations et signatures isotopiques](formule.svg)
+
+Probabilités conditionnelles aux isotopes légers de C, H, N, O ; M+1 (¹³C) et fragmentation non simulés.
+
+## Chiralité : orientation, R/S et excès énantiomérique
+
+![Chiralité : orientation, R/S et excès énantiomérique](stereo.svg)
+
+Axes de vue fixes ; la rotation du solide conserve la configuration. Les quatre rangs sont donnés, pas calculés par un moteur CIP.
+
+## Conformations : Newman et populations de Boltzmann
+
+![Conformations : Newman et populations de Boltzmann](conformeres.svg)
+
+Interpolation cosinus entre Eanti=0, Egauche(60°)=3,8, Eeclipsé(120°)=16 et Esyn(0°)=21 kJ/mol : profil pédagogique, pas un champ de force moléculaire.
+
+## IR : fonctions chimiques et loi de Beer–Lambert
+
+![IR : fonctions chimiques et loi de Beer–Lambert](ir.svg)
+
+Les positions, amplitudes et largeurs sont des paramètres pédagogiques typiques, pas un enregistrement expérimental.
+
+## RMN : intégrales, couplages et identification croisée
+
+![RMN : intégrales, couplages et identification croisée](rmn.svg)
+
+Positions typiques, raies lorentziennes ; les paquets aromatiques représentent des zones, sans prétendre résoudre leur système de spins.
+
+## CCM : séparation, suivi et limites de l’identification
+
+![CCM : séparation, suivi et limites de l’identification](ccm.svg)
+
+Modèle k′ = k′₀ exp(−4φ), Rf = 1/(1+k′). Les intensités indiquent des quantités relatives avec même réponse détecteur, hypothèse pédagogique.
+
+## Extraction : pH, partage et extractions successives
+
+![Extraction : pH, partage et extractions successives](extraction.svg)
+
+À chaque étape, on conserve le soluté aqueux et collecte une nouvelle phase organique. Les quantités ci-dessous sont rapportées à n₀ = 1 mol.
+
+## Esters : équilibre, hydrolyse et saponification
+
+![Esters : équilibre, hydrolyse et saponification](esterification.svg)
+
+Même squelette acyle ; en milieu basique le produit est le carboxylate, qui doit être acidifié si l’on veut isoler l’acide.
+
+## Acylation : activation et bilan du piège à acide
+
+![Acylation : activation et bilan du piège à acide](acylation.svg)
+
+Les flèches déplacent un doublet du nucléophile puis la liaison π C=O ; élimination et déprotonation achèvent la substitution.
+
+## Protection : rendre une stratégie compatible
+
+![Protection : rendre une stratégie compatible](protection.svg)
+
+L’acétal est stable au réducteur basique choisi ; la déprotection acide restaure ensuite la cétone.
+
+## Aldolisation : créer C–C puis conjuguer
+
+![Aldolisation : créer C–C puis conjuguer](aldol.svg)
+
+Ph = phényle ; la forme mésomère C de l’énolate porte le doublet qui forme C–C. Les groupes CO sont des carbonyles abrégés.
+
+## Michael et Wittig : deux constructions C–C
+
+![Michael et Wittig : deux constructions C–C](michaelwittig.svg)
+
+Un nucléophile stabilisé ou organocuprate favorise souvent 1,4 ; le carbonyle est restauré après protonation.
+
+## Diels–Alder : géométrie, orbitales et sélection
+
+![Diels–Alder : géométrie, orbitales et sélection](dielsalder.svg)
+
+Le produit conserve cis/trans du diènophile. Les coins indiquent cette relation ; le ratio tout endo/tout exo n’est calculé que pour le diène cyclique + diènophile cis.
+
+## Rétrosynthèse : cibles, ordre et rendement global
+
+![Rétrosynthèse : cibles, ordre et rendement global](retrosynthese.svg)
+
+Liaison O(phénol)–C(acyle), groupe COOH conservé Encart : structure de la cible visée.
+
+## Polymères : conversion, stœchiométrie et longueur
+
+![Polymères : conversion, stœchiométrie et longueur](polymeres.svg)
+
+AA+BB bifonctionnels : DPₙ compte les entités AA et BB incorporées. Une répétition structurale du nylon-6,6 contient une unité de chaque, soit environ DPₙ/2 répétitions à grande chaîne.
