@@ -24,28 +24,28 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
 | 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
 | 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
-| 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Parcours](chimie_organique/PARCOURS.md) · [Cours](chimie_organique/COURS.md) |
+| 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
 
 ## Chimie · Atelier 11 · Liaisons & Synthèses — Chimie organique
 
-![SN2 : suivre les doublets et l’inversion de configuration](chimie_organique/apercu_mecanisme.png)
+![Réactiothèque : réactions, règles et caractérisation des produits](chimie_organique/apercu_reactions.png)
 
-**30 laboratoires, 42 leçons, 60 exercices corrigés et 30 figures originales**,
-à partir de la fiche **C4** du recueil de A. R. Les introductions expliquent
+**61 fiches réactions, 42 laboratoires, 54 leçons, 84 exercices corrigés et 42 figures originales**,
+centrés sur les pages **524–528 et 531–534** de la fiche **C4** du recueil de A. R. Les introductions expliquent
 les objectifs, les structures, les variables, les hypothèses et les techniques ;
 les repères **sup / spé / au-delà** accompagnent la progression, principalement
 **PCSI et PC–PC***. La [matrice du programme](chimie_organique/MATRICE_PROGRAMME.md)
 précise les domaines et les prolongements.
 
-- **Identifier :** formule brute, isotopes, stéréochimie, conformations, IR, RMN, CCM et extraction.
-- **Prévoir :** effets électroniques, acidité, SN1/SN2, E1/E2, additions aux alcènes et alcynes, radicaux, carbonyles, organomagnésiens, oxydoréduction et substitutions aromatiques.
-- **Construire :** acylation, estérification, protections, aldolisation/crotonisation, Michael, Wittig, Diels–Alder, rétrosynthèse et polymères.
-- **Justifier :** bilans, cinétique, sélectivité, orbitales, rendement cumulé et contrôle analytique, dans douze missions.
+- **Reconnaître :** types de réactions, substrats, réactifs, produits et liaisons modifiées ; chercher par famille ou rubrique du recueil.
+- **Prévoir :** effets I/M, Markovnikov, Zaitsev, SN1/SN2, E1/E2, additions, oxydoréduction et substitutions aromatiques.
+- **Construire :** énolates, quaternisation, anhydrides, esters/amides, organomagnésiens, aldol/crotonisation, Michael/Wittig et époxydes.
+- **Justifier :** l’exercice E2 en R/S et E/Z, Lewis et réduction du nitrobenzène, dipôles et ordre de synthèse aromatique ; diagnostics de caractérisation dans chaque fiche.
 
 **Python 3.10+ et NumPy.** Double-cliquer sur `Lancer_Chimie_Organique.cmd`.
 L’atelier fonctionne hors ligne après installation sur <http://127.0.0.1:8775>.
 Les spectres sont simulés ; les mécanismes illustrés suivent les déplacements de doublets.
-[Présentation](chimie_organique/README.md) · [Douze missions](chimie_organique/PARCOURS.md).
+[Présentation](chimie_organique/README.md) · [Parcours du recueil](chimie_organique/PARCOURS_REACTIONS.md).
 
 ## Physique · Atelier 10 · Lumière & Images — Optique
 
