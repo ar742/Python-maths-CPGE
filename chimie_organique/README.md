@@ -1,107 +1,93 @@
-# Liaisons & Synthèses — Chimie organique CPGE
+# Liaisons & Synthèses — Réactions de chimie organique CPGE
 
-Un atelier Python pour **identifier une structure, déplacer les électrons, choisir une transformation et construire une synthèse**. Il prolonge la fiche C4 du recueil de A. R. : types de réactions, autres exemples et exemples (suite), TP et exercices. Les textes, dessins moléculaires et figures sont originaux.
+**Reconnaître une réaction, prévoir son produit, expliquer son mécanisme et contrôler le résultat.** Cet atelier est centré sur les pages **524 à 528**, puis **531 à 534**, de la fiche C4 du recueil de A. R. : effets électroniques et règles, « Types de réactions », « Autres exemples », « Exemples (suite) », exercices et corrections. Les textes, dessins moléculaires et figures sont originaux.
 
-**30 laboratoires interactifs · 42 leçons · 60 exercices corrigés · 30 figures SVG · 12 missions.** Chaque expérience commence par son but, les objets et variables utilisés, les hypothèses, les techniques CPGE, trois manipulations guidées et les repères **sup / spé / au-delà**. Le cours et les corrigés restent consultables sans lancer Python.
+**61 fiches réactions · 42 laboratoires interactifs · 54 leçons · 84 exercices corrigés · 42 figures SVG.** L’accueil permet de chercher par réaction, substrat, produit ou règle, et de filtrer par famille et rubrique. Chaque fiche ouvre le laboratoire avec les paramètres de son exemple.
 
-![SN2 : suivre les doublets, l’inversion et la consommation des réactifs](apercu_mecanisme.png)
+![Réactiothèque : reconnaître la transformation et ouvrir son mécanisme](apercu_reactions.png)
 
-[Voir aussi une rétrosynthèse guidée de l’aspirine](apercu_synthese.png).
+[Réactions, cours et corrigés du recueil](REACTIONS_DU_RECUEIL.md) · [Parcours guidés](PARCOURS_REACTIONS.md) · [Premiers pas](LISEZ_MOI.md) · [Galerie des 42 figures](illustrations/README.md).
 
-La progression concerne principalement **PCSI et PC–PC***. La [matrice du programme](MATRICE_PROGRAMME.md) distingue le tronc commun, l’option PC, la deuxième année et les prolongements accompagnés. Les mécanismes plus avancés ne sont pas attribués indistinctement à toutes les filières.
+## Une fiche, une question chimique, une expérience
+
+Chaque fiche indique **substrat → réactifs et conditions → produit**, les liaisons créées ou rompues, les règles de régiochimie et de stéréochimie, les diagnostics structuraux ou spectroscopiques et une question corrigée. Le mécanisme peut ensuite être parcouru étape par étape. Modifier les réglages permet d’explorer les variantes annoncées du modèle.
+
+Les introductions précisent les buts, les molécules et variables utilisées, les hypothèses, les techniques CPGE, trois premières manipulations et les repères **sup / spé / au-delà**. La progression concerne principalement **PCSI et PC–PC*** ; la [matrice du programme](MATRICE_PROGRAMME.md) situe les banques de réactions et les prolongements accompagnés.
+
+## Les transformations au premier plan
+
+| Domaine | Exemples et questions travaillés |
+| --- | --- |
+| Effets et règles, p.524 | I/M, stabilité d’un intermédiaire, Markovnikov, anti-Markovnikov, Zaitsev ; domaine d’application |
+| Types, p.525 | Acido-basique, AE/AN, addition–élimination, SN1/SN2, E1/E2, oxydoréduction et SEA |
+| Autres exemples, p.526 | Alkylation d’énolate, quaternisation d’amine, esters, hydrolyse des dérivés d’acide, anhydrides, acétals, photochloration du benzène, préparation et emploi des magnésiens |
+| Exemples (suite), p.527–528 | Hydrogénation, hydroboration, Friedel–Crafts, aldolisation/crotonisation, amides, Michael, Wittig, époxydation et ouverture des époxydes |
+| Exercices, p.531 et 533 | 3-bromo-3,4-diméthylhexane : R/S, Newman anti, E2 et E/Z ; additions, oxydations, réductions et doubles additions aux alcynes |
+| Exercices, p.532 et 534 | Nitrobenzène : Lewis, réduction en aniline, nitration, dipôles et stratégie aromatique polysubstituée |
+
+## Trois expériences pour commencer
+
+1. **Élimination et géométrie** : choisir (3S,4S), (3R,4R), (3S,4R) ou (3R,4S), chercher la conformation anti et justifier E/Z pour le 3,4-diméthylhex-3-ène. Changer le carbone β fait apparaître d’autres produits possibles.
+2. **Nitrobenzène et ordre de synthèse** : conserver octets et charges dans Lewis, équilibrer la réduction, puis choisir un ordre compatible pour obtenir le noyau portant COCH₃, Cl, Br et NO₂.
+3. **Dérivés d’acide et époxydes** : comparer addition–élimination sur chlorure, ester, amide et anhydride, expliquer le piège à acide ; comparer le site d’ouverture d’un époxyde asymétrique en milieu basique et acide.
+
+![E2 : configuration du substrat, conformation anti et produit E/Z](illustrations/e2stereo.svg)
+
+![Dinitrobenzènes : somme vectorielle des moments dipolaires](illustrations/dipolesnitro.svg)
+
+## Les douze nouveaux laboratoires
+
+| Laboratoire | Expérience |
+| --- | --- |
+| `effets` | Effets I/M, stabilité et règles de sélectivité |
+| `e1` | Ionisation, carbocation et branchements d’élimination |
+| `enolatealkyl` | Énolate : ambident, électrophile et création C–C |
+| `aminealkyl` | Amine tertiaire : quaternisation et bilan de charge |
+| `anhydride` | Formation d’anhydride, alcoolyse, hydrolyse et amidation ; piège à acide |
+| `hydrolyseacyle` | Chlorure, ester et amide : mécanisme et bilan acide/base |
+| `photochlore` | Benzène + chlore : addition photochimique et substitution aromatique |
+| `grignardprep` | Préparer RMgX, compter Mg et comprendre l’anhydrie |
+| `e2stereo` | L’exercice du 3-bromo-3,4-diméthylhexane en Newman et E/Z |
+| `nitrobenzene` | Lewis, réduction en aniline et ordre de synthèse |
+| `dipolesnitro` | Isomères ortho/méta/para : molécule et somme vectorielle |
+| `epoxydes` | Époxydation stéréospécifique, argent/éthylène, ouverture acide ou basique |
+
+Les trente laboratoires antérieurs restent disponibles : SN1/SN2, E2 cyclique, alcènes, alcynes, radicaux, carbonyles, magnésiens, oxydoréduction, SEA, estérification, acylation, protection, aldol, Michael/Wittig, Diels–Alder, rétrosynthèse et outils de structure ou d’analyse. IR, RMN, CCM et extraction sont réunis avec les outils complémentaires sur l’accueil. [Cours complémentaire et 60 exercices](COURS.md) · [Douze missions complémentaires](PARCOURS.md).
 
 ## Lancer l’atelier
 
-Sous Windows, double-cliquer sur **`Lancer_Chimie_Organique.cmd`**, à la racine du dépôt ou dans ce dossier. Il utilise Python disponible et installe NumPy si nécessaire. Après installation, les cours, modèles et figures fonctionnent hors ligne. Ouvrir <http://127.0.0.1:8775>.
+Sous Windows, double-cliquer sur **`Lancer_Chimie_Organique.cmd`**, à la racine du dépôt ou dans ce dossier. Ouvrir <http://127.0.0.1:8775>. Après installation initiale de NumPy, l’atelier fonctionne hors ligne.
 
-Sur Windows, Linux ou macOS avec **Python 3.10+** :
+Sur Windows, Linux ou macOS avec **Python 3.10+**, depuis ce dossier :
 
 ```sh
 python -m pip install -r requirements.txt
 python -X utf8 chimie_organique.py
 ```
 
-Depuis la racine du dépôt, utiliser `python -X utf8 chimie_organique/chimie_organique.py`. Un autre port se choisit avec `--port 8780` ; `--no-browser` laisse ouvrir le navigateur manuellement.
+Depuis la racine, utiliser `python -X utf8 chimie_organique/chimie_organique.py`. `--port 8780` choisit un autre port ; `--no-browser` permet d’ouvrir la page manuellement.
 
-[Premiers pas](LISEZ_MOI.md) · [Cours, introductions et corrigés](COURS.md) · [Douze missions](PARCOURS.md) · [Galerie](illustrations/README.md).
+## Conventions et calculs
 
-## Trois entrées pour commencer
+Les flèches courbes représentent le transfert d’un doublet ; les demi-pointes celui d’un électron. Charges, intermédiaires, sous-produits et réactifs nécessaires sont indiqués dans les étapes. Coins, hachures et Newman explicitent la géométrie. `Ph`, `Me`, `Et` désignent phényle, méthyle, éthyle ; les groupes `R` sont définis dans leur TP.
 
-1. **RMN et IR** : identifier l’acétate d’éthyle, puis distinguer benzaldéhyde, anisole et acétophénone. Relier positions, intégrales, couplages et fonctions chimiques ; vérifier plusieurs indices.
-2. **SN2 puis E2** : déplacer les doublets étape par étape, relier cinétique à concentrations, comparer inversion, carbocation et géométrie anti. Faire varier le substrat avant d’appliquer une règle.
-3. **Rétrosynthèse** : partir de l’aspirine, du paracétamol ou de la chalcone ; choisir l’ordre des fonctions, tenir compte des incompatibilités et calculer le rendement cumulé.
+Bilans de matière et charges, avancements, équilibres et relations stéréochimiques sont calculés. Les règles sont reliées aux substrats et conditions ; les pourcentages cinétiques reposent sur les hypothèses indiquées. Profils énergétiques illustratifs et spectres simulés ne sont pas des mesures. La formation sur argent montre le bilan global pour l’éthylène et explique la catalyse de surface. Les expériences sont numériques.
 
-Les préréglages posent des questions différentes. Les commandes changent les structures, mécanismes, bilans ou courbes ; les explications nomment les variables et indiquent le domaine du modèle. Les résultats et données se téléchargent en JSON depuis le laboratoire.
-
-## Les trente expériences
-
-| Laboratoire | Expérience |
-| --- | --- |
-| `formule` | Formule brute : insaturations et signatures isotopiques |
-| `stereo` | Chiralité : orientation, R/S et excès énantiomérique |
-| `conformeres` | Conformations : Newman et populations de Boltzmann |
-| `ir` | IR : fonctions chimiques et loi de Beer–Lambert |
-| `rmn` | RMN : intégrales, couplages et identification croisée |
-| `ccm` | CCM : séparation, suivi et limites de l’identification |
-| `extraction` | Extraction : pH, partage et extractions successives |
-| `esterification` | Esters : équilibre, hydrolyse et saponification |
-| `acylation` | Acylation : activation et bilan du piège à acide |
-| `protection` | Protection : rendre une stratégie compatible |
-| `aldol` | Aldolisation : créer C–C puis conjuguer |
-| `michaelwittig` | Michael et Wittig : deux constructions C–C |
-| `dielsalder` | Diels–Alder : géométrie, orbitales et sélection |
-| `retrosynthese` | Rétrosynthèse : cibles, ordre et rendement global |
-| `polymeres` | Polymères : conversion, stœchiométrie et longueur |
-| `electrons` | Flèches : où vont réellement les électrons ? |
-| `acidebase` | Acidité, basicité et avancement : choisir avant d’attaquer |
-| `sn2` | SN2 : cinétique bimoléculaire et inversion de Walden |
-| `sn1` | SN1 : intermédiaire, solvolyse et mémoire stéréochimique |
-| `competition` | SN1 / SN2 / E1 / E2 : une compétition explicite |
-| `elimination` | E2 : anti-périplanarité et verrou cyclohexanique |
-| `alcene` | Alcènes : régiochimie, stéréochimie et réarrangements |
-| `alcyne` | Alcynes : deux additions, réduction et tautomérie |
-| `radical` | Radicaux : chaîne, effet peroxyde et sélectivité |
-| `carbonyle` | Carbonyles : addition, substitution acyle et énolates |
-| `grignard` | Organomagnésiens : former C–C et survivre aux protons |
-| `oxydoreduction` | Oxydoréduction : choisir une fonction et un réactif |
-| `aromatique` | SEA : orientation, activation et ordre de synthèse |
-| `orbitales` | Orbitales : CLOA, Hückel et Diels–Alder |
-| `cinetique` | Cinétique ou thermodynamique : deux sélectivités |
-
-## Des vues adaptées aux objets étudiés
-
-Les mécanismes montrent les charges, doublets transférés, liaisons qui se créent ou se rompent, intermédiaires et sous-produits. Les flèches courbes partent d’un doublet ou d’une liaison ; les flèches à demi-pointe représentent un électron. Les triangles pleins et liaisons hachurées situent les substituants par rapport au plan.
-
-D’autres laboratoires utilisent des spectres et leurs intégrales, des projections de Newman et chaises, une plaque CCM, une ampoule de séparation, des orbitales de signes opposés, des profils énergétiques et des graphes de synthèse. Les trente figures scientifiques peuvent être ouvertes seules.
-
-![RMN : signal et intégrale confrontés à la structure](illustrations/rmn.svg)
-
-![Diels–Alder : structures et compétition endo/exo](illustrations/dielsalder.svg)
-
-## Ce que calculent les modèles
-
-- **Bilans et équilibres** : conservation de matière, avancement, loi d’action de masse, partage entre phases, Henderson–Hasselbalch dans son domaine et rendement cumulé.
-- **Structure et analyse** : indice d’insaturation, enveloppes isotopiques Cl/Br, orientation CIP, distributions de Boltzmann, Beer–Lambert et multiplets de premier ordre.
-- **Réactivité** : bibliothèque explicite de transformations et mécanismes. Les profils énergétiques, constantes comparatives et distributions de produits sont des modèles pédagogiques, dont les paramètres et hypothèses sont indiqués.
-- **Construction** : compatibilité des fonctions, protection/déprotection, rétrosynthèse de cibles définies, conservation du squelette lors de Diels–Alder et relation de Carothers avec déséquilibre stœchiométrique.
-
-Les spectres sont **simulés**, avec positions typiques ; les zones aromatiques ne prétendent pas résoudre des systèmes de spins complexes. Les critères SN/E, Zaitsev, Markovnikov, orientation aromatique et endo sont reliés au mécanisme et aux conditions. Un pourcentage issu d’un modèle de barrières ne remplace pas une mesure expérimentale. L’application ne fournit pas de protocole expérimental de manipulation : les TP sont des expériences numériques.
-
-Les formules semi-développées emploient `Ph` pour phényle, `Me` pour méthyle, `Et` pour éthyle et `R` pour un groupe défini dans le TP. Les hydrogènes implicites et contre-ions pertinents sont explicités dans les étapes. Les concentrations sont en mol·L⁻¹, les températures en K, les énergies molaires en kJ·mol⁻¹ ; δ est en ppm et J en Hz.
+La caractérisation figure dans chaque fiche : fonctions, formule, connectivité, stéréochimie, IR, RMN ou suivi chromatographique selon le cas. Plusieurs indices doivent être confrontés ; un signal isolé n’établit pas une structure.
 
 ## Vérifier et approfondir
 
 ```sh
-python -X utf8 -m unittest -v test_analyse test_reactivite test_entree test_pedagogie test_serveur
+python -X utf8 -m unittest discover -v
 ```
 
-Les tests confrontent les calculs à des bilans, distributions, relations stéréochimiques et solutions indépendantes ; ils vérifient aussi les préréglages, domaines des commandes, graphes moléculaires, ressources pédagogiques et serveur. L’intégration continue lance ces vérifications sur **Windows et Linux, Python 3.10 et 3.12**.
+Les tests confrontent les résultats à des bilans atomiques et électriques, aux produits attendus, aux configurations calculées indépendamment et aux cas ouverts depuis les fiches. Ils vérifient les cours, guides, paramètres, exports et ressources du serveur. L’intégration continue les lance sur **Windows et Linux, Python 3.10 et 3.12**.
 
-NumPy suffit pour l’application. Matplotlib est un complément pour recréer les illustrations :
+Matplotlib permet de recréer les figures :
 
 ```sh
 python -m pip install -r requirements-illustrations.txt
 python -X utf8 chimie_organique.py --export-illustrations
 ```
 
-Les sources primaires et programmes officiels figurent dans [COURS.md](COURS.md) et [MATRICE_PROGRAMME.md](MATRICE_PROGRAMME.md). Le PDF source reste dans les fichiers de son auteur ; il n’est pas redistribué ici.
+Sources et programmes : [réactions du recueil](REACTIONS_DU_RECUEIL.md), [cours complémentaire](COURS.md), [matrice](MATRICE_PROGRAMME.md). Le PDF reste dans les fichiers de son auteur et n’est pas redistribué. L’[errata](ERRATA.md) se limite à une formule de Lewis vérifiée dans son contexte, conformément à la demande de l’auteur.

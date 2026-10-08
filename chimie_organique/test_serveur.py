@@ -30,10 +30,19 @@ class ServeurTests(unittest.TestCase):
         for lesson in data['lessons']: self.assertIn(lesson['lab'],ids)
         for exercise in data['exercises']: self.assertIn(exercise['lab'],ids)
     def test_actifs_locaux_et_politique_de_contenu(self):
-        for path in ['/','/app.js','/visuals.js','/style.css','/favicon.svg']:
+        for path in ['/','/app.js','/visuals.js','/recueil_visuals.js','/style.css','/reactions.css','/favicon.svg']:
             status,body,headers=self.get(path);self.assertEqual(status,200);self.assertTrue(body)
             self.assertIn("default-src 'self'",headers['Content-Security-Policy'])
         self.assertIn('Liaisons & Synthèses',self.get('/')[1].decode('utf-8'))
+    def test_atlas_recu_des_pages_demandees_et_cas_authentifie(self):
+        data=self.bootstrap()
+        self.assertEqual({r['page'] for r in data['reactions']},{524,525,526,527,528,531,532,533,534})
+        reaction=next(r for r in data['reactions'] if r['lab']=='e2stereo' and r['params'].get('configuration')=='SS')
+        status,result,_=self.post({'lab':reaction['lab'],'params':reaction['params']},
+            {'X-CPGE-Token':data['token'],'Origin':self.base})
+        self.assertEqual(status,200)
+        self.assertEqual(result['scene']['configuration'],'SS')
+        self.assertEqual(result['scene']['product_configuration'],'E')
     def test_fichiers_internes_non_servis(self):
         for path in ['/cours.py','/modeles_analyse.py','/../AGENTS.md','/.git/config','/README.md']:
             with self.subTest(path=path),self.assertRaises(HTTPError) as raised: self.get(path)

@@ -66,7 +66,7 @@ LABS = [
     lab('alcyne', 'Alcynes : deux additions, réduction et tautomérie', 'Ajouter et transformer',
         'Le choix des réactifs distingue alcène E, alcène Z, alcane et dérivé carbonylé ; suivre l’énol sans le confondre avec le produit isolé.', [
         q('substrate','Alcyne',[('propyne','Propyne terminal'),('butyne','But-2-yne interne')],'butyne'),
-        q('reagent','Conditions',[('lindlar','H₂ / Lindlar'),('dissolving','Na / NH₃ liquide'),('hydrogen','H₂ en excès / métal'),('mercury','H₂O / H⁺ / Hg²⁺'),('borane','Hydroboration sélective puis oxydation'),('hbr1','Un équivalent HBr'),('hbr2','Deux équivalents HBr'),('br1','Un équivalent Br₂'),('br2','Deux équivalents Br₂')],'lindlar'),
+        q('reagent','Conditions',[('lindlar','H₂ / Lindlar'),('dissolving','Na / NH₃ liquide'),('hydrogen','H₂ en excès / métal'),('mercury','H₂O / H⁺ / Hg²⁺'),('borane','Hydroboration sélective puis oxydation'),('hbr1','Un équivalent HBr'),('hbr2','Deux équivalents HBr'),('hcl1','Un équivalent HCl'),('hcl2','Deux équivalents HCl'),('br1','Un équivalent Br₂'),('br2','Deux équivalents Br₂')],'lindlar'),
         s('stage','Alcyne, intermédiaire, produit',0,2,1,2,integer=True)], [
         p('Alcène Z',substrate='butyne',reagent='lindlar'),p('Alcène E',substrate='butyne',reagent='dissolving'),
         p('Alcyne terminal → cétone',substrate='propyne',reagent='mercury',stage=2),p('Alcyne terminal → aldéhyde',substrate='propyne',reagent='borane',stage=2),
@@ -108,7 +108,7 @@ LABS = [
     lab('aromatique', 'SEA : orientation, activation et ordre de synthèse', 'Comprendre la réactivité',
         'Séparer orientation et vitesse : les halogènes désactivent tout en orientant ortho/para ; une forte désactivation interdit les Friedel–Crafts usuelles.', [
         q('substituent','Groupe déjà présent',[('h','H : benzène'),('methyl','CH₃'),('oh','OH'),('methoxy','OCH₃'),('chloro','Cl'),('nitro','NO₂'),('acyl','COCH₃')],'chloro'),
-        q('reaction','SEA envisagée',[('nitration','Nitration'),('bromination','Bromation avec FeBr₃'),('alkylation','Friedel–Crafts : alkylation'),('acylation','Friedel–Crafts : acylation')],'nitration'),
+        q('reaction','SEA envisagée',[('nitration','Nitration'),('bromination','Bromation avec FeBr₃'),('chlorination','Chloration avec FeCl₃'),('sulfonation','Sulfonation : SO₃ / H₂SO₄'),('alkylation','Friedel–Crafts : alkylation'),('acylation','Friedel–Crafts : acylation')],'nitration'),
         s('temperature','Température, modèle de barrières',250,450,5,298,'K'),
         s('go','Barrière par site ortho choisie',40,120,1,75,'kJ·mol⁻¹'),s('gm','Barrière par site méta choisie',40,120,1,90,'kJ·mol⁻¹'),
         s('gp','Barrière par site para choisie',40,120,1,72,'kJ·mol⁻¹'),s('stage','Électrophile, complexe σ, produit',0,2,1,0,integer=True)], [

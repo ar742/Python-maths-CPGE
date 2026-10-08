@@ -380,25 +380,31 @@ def alcyne(p):
         product=carbonyl(name,'H' if aldehyde else 'CH₃','CH₂CH₃' if aldehyde or not terminal else 'CH₃')
         intermediate=chain('Énol avant tautomérie',['CH₃','CH','CH(OH)'] if aldehyde else ['CH₃','C(OH)','CH₂'] if terminal else ['CH₃','C(OH)','CH','CH₃'],[1,2] if terminal else [1,2,1])
         stereo='Énol → carbonyle : tautomérie, pas mésomérie'
-    elif rx.startswith('hbr'):
-        twice=rx=='hbr2';equiv=2 if twice else 1;name=('2,2-dibromopropane' if terminal else '2,2-dibromobutane') if twice else ('2-bromoprop-1-ène' if terminal else '2-bromobut-2-ène (E/Z)')
+    elif rx.startswith(('hbr','hcl')):
+        twice=rx in ('hbr2','hcl2');equiv=2 if twice else 1;name=('2,2-dibromopropane' if terminal else '2,2-dibromobutane') if twice else ('2-bromoprop-1-ène' if terminal else '2-bromobut-2-ène (E/Z)')
         product=chain(name,['CH₃','CBr₂' if twice else 'CBr','CH₃' if twice else 'CH₂'] if terminal else ['CH₃','CBr₂' if twice else 'CBr','CH₂' if twice else 'CH','CH₃'],[1,1] if twice and terminal else [1,2] if terminal else [1,1,1] if twice else [1,2,1])
+        if rx.startswith('hcl'):
+            name=name.replace('bromo','chloro')
+            product['name']=name
+            for a in product['atoms']:a['label']=a['label'].replace('Br','Cl')
         stereo='Geminal après deux additions ; Markovnikov dans le cas terminal'
     else:
         twice=rx=='br2';equiv=2 if twice else 1;name='1,1,2,2-tétrabromopropane' if terminal and twice else '2,2,3,3-tétrabromobutane' if twice else 'Dibromoalcène : addition anti favorisée'
         product=chain(name,['CH₃','CBr₂','CHBr₂'] if terminal and twice else ['CH₃','CBr₂','CBr₂','CH₃'] if twice else ['CH₃','CBr','CHBr'] if terminal else ['CH₃','CBr','CBr','CH₃'],[1,1] if terminal and twice else [1,1,1] if twice else [1,2] if terminal else [1,2,1])
         stereo='Anti favorisée à la première addition ; l’alcyne n’a pas de configuration E/Z'
     note='Un borane encombré est requis pour limiter à une hydroboration de l’alcyne ; BH₃ seul n’est pas une garantie de sélectivité.' if rx=='borane' else 'Le produit carbonylé est isolé après tautomérie.' if rx=='mercury' else 'Choix des conditions et quantité stœchiométrique explicités.'
-    if rx in ('hbr2','br2'):
+    if rx in ('hbr2','hcl2','br2'):
         intermediate=chain('Première addition : alcène halogéné',
-            ['CH₃','CBr','CH₂' if rx=='hbr2' else 'CHBr'] if terminal else ['CH₃','CBr','CH' if rx=='hbr2' else 'CBr','CH₃'],
+            ['CH₃','CBr','CH₂' if rx in ('hbr2','hcl2') else 'CHBr'] if terminal else ['CH₃','CBr','CH' if rx in ('hbr2','hcl2') else 'CBr','CH₃'],
             [1,2] if terminal else [1,2,1])
+        if rx=='hcl2':
+            for a in intermediate['atoms']:a['label']=a['label'].replace('Br','Cl')
     elif rx=='hydrogen':
         intermediate=alkene_graph('propene' if terminal else 'butene_Z');intermediate['name']='Alcène intermédiaire avant seconde hydrogénation'
-    frames=[initial,intermediate,product] if rx in ('mercury','borane','hydrogen','hbr2','br2') else [initial,product]
+    frames=[initial,intermediate,product] if rx in ('mercury','borane','hydrogen','hbr2','hcl2','br2') else [initial,product]
     stage=min(int(p['stage']),len(frames)-1)
     x,y=energy_profile([0,5,-30],[55,40]) if rx in ('mercury','borane') else energy_profile([0,-30],[60])
-    return result([m('Produit du cas',name),m('Stéréochimie / règle',stereo),m('Équivalents au bilan',equiv),m('Fonction isolée','carbonyle' if rx in ('mercury','borane') else 'alcène' if rx in ('lindlar','dissolving','hbr1','br1') else 'saturée'),m('Étape réelle',stage)],
+    return result([m('Produit du cas',name),m('Stéréochimie / règle',stereo),m('Équivalents au bilan',equiv),m('Fonction isolée','carbonyle' if rx in ('mercury','borane') else 'alcène' if rx in ('lindlar','dissolving','hbr1','hcl1','br1') else 'saturée'),m('Étape réelle',stage)],
         [ch('Profil illustratif : distinguer énol et carbonyle','Coordonnée réactionnelle','G modèle / kJ·mol⁻¹',se('Profil déclaré',x,y))],ms('Changer de réactif change la cible',note,frames,stage),
         [stereo,note,'Une hydrogénation complète consomme deux H₂ par C≡C. Lindlar et métal dissous s’arrêtent à des alcènes de géométries différentes.',
          'Propyne hydraté avec Hg²⁺ → propanone ; hydroboration sélective/oxydation → propanal.'],
@@ -617,15 +623,18 @@ def aromatique(p):
     qualified=fc and sub in ('oh','methoxy')
     weights=fractions_from_barriers([p['go'],p['gm'],p['gp']],p['temperature'],[2,2,1]) if allowed else np.zeros(3)
     group={'h':None,'methyl':'CH₃','oh':'OH','methoxy':'OCH₃','chloro':'Cl','nitro':'NO₂','acyl':'COCH₃'}[sub]
-    e={'nitration':'NO₂','bromination':'Br','alkylation':'R','acylation':'COR'}[rx]
+    e={'nitration':'NO₂','bromination':'Br','chlorination':'Cl','sulfonation':'SO₃H','alkylation':'R','acylation':'COR'}[rx]
+    e_element={'nitration':'N','bromination':'Br','chlorination':'Cl','sulfonation':'S','alkylation':'C','acylation':'C'}[rx]
     site=2 if directors[sub]=='méta' else 1
+    # Représentation de l'électrophile activé : Br/Cl liés au catalyseur ;
+    # HSO3+ est un modèle limite en milieu acide, pas un ion libre universel.
     donating_bond=2 if site==2 else 0
     charge_site=3 if site==2 else 0
-    initial=benzene('Aromatique substitué',{} if group is None else {0:group});initial['atoms'].append(atom('e','N' if rx=='nitration' else 'Br' if rx=='bromination' else 'C',2.5,1,label=e,charge=1))
+    initial=benzene('Aromatique substitué',{} if group is None else {0:group});initial['atoms'].append(atom('e',e_element,2.5,1,label=e,charge=1))
     a=initial['atoms'][donating_bond];b=initial['atoms'][(donating_bond+1)%6]
     # π donation from a bond midpoint, not from a bare carbon.
     initial['arrows']=[arrow(((a['x']+b['x'])/2,(a['y']+b['y'])/2),(2.5,1),(1.3,1.8),label='doublet π → E⁺')]
-    sigma=benzene('Complexe σ (contributeur)',{} if group is None else {0:group});sigma['atoms'].append(atom('e','N' if rx=='nitration' else 'Br' if rx=='bromination' else 'C',1.8*math.cos(site*math.pi/3),1.8*math.sin(site*math.pi/3),label=e));sigma['bonds'].append(bond(site,'e'))
+    sigma=benzene('Complexe σ (contributeur)',{} if group is None else {0:group});sigma['atoms'].append(atom('e',e_element,1.8*math.cos(site*math.pi/3),1.8*math.sin(site*math.pi/3),label=e));sigma['bonds'].append(bond(site,'e'))
     sigma['bonds'][donating_bond]['order']=1;sigma['atoms'][charge_site]['charge']=1
     final=benzene('Produit ortho (un exemple)' if directors[sub]!='méta' else 'Produit méta (un exemple)',{**({} if group is None else {0:group}),site:e})
     frames=[initial,sigma,final] if allowed else [initial];stage=min(int(p['stage']),len(frames)-1)
@@ -637,7 +646,7 @@ def aromatique(p):
         [ch('Cinq sites : multiplicité et barrières déclarées','T / K','Fraction du modèle',*[se(label,temps,pop[:,j] if allowed else np.zeros(len(temps))) for j,label in enumerate(['Ortho (2 sites)','Méta (2 sites)','Para (1 site)'])]),
          ch('Addition puis restauration de l’aromaticité','Coordonnée réactionnelle','G modèle / kJ·mol⁻¹',se('Profil déclaré',x,y))],
         ms('SEA : le cycle est nucléophile',description,frames,stage),
-        [description,'Halogène : −I désactive, donation mésomère oriente ortho/para. NO₂ : forte désactivation et orientation méta.',
+        [description,('Sulfonation réversible : SO₃ / H₂SO₄ ; le schéma suit HSO₃⁺ en milieu très acide. Le choix du milieu peut aussi conduire à une voie avec SO₃ neutre.' if rx=='sulfonation' else 'L’électrophile du schéma représente une espèce activée par le milieu ou le catalyseur ; les halogènes ne sont pas ajoutés comme ions libres stables.'),'Halogène : −I désactive, donation mésomère oriente ortho/para. NO₂ : forte désactivation et orientation méta.',
          'Fractions calculées : pᵢ ∝ nᵢ exp(−ΔG‡ᵢ/RT), avec n = (2,2,1). Barrières réglables choisies, sans estimation à partir d’un moment dipolaire.',
          'Ordre de synthèse : une Friedel–Crafts doit usuellement précéder une nitration qui désactive le cycle ; l’alkylation peut réarranger et polyalkyler.',
          'Phénol et anisole : leur réaction avec un acide de Lewis et les possibilités de réaction sur O imposent de préciser les conditions avant une Friedel–Crafts.'],

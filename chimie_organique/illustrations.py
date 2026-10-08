@@ -119,6 +119,29 @@ def draw_scene(ax, data):
             child=ax.inset_axes([.075,.25,.33,.31]);child.set_facecolor(PAPER)
             child.plot(x[mask],y[mask],color=COLORS[1],lw=1.2);child.invert_xaxis()
             child.set_title('Détail : '+label,fontsize=8,color=COLORS[1]);child.set_xlabel('δ / ppm',fontsize=8);child.set_yticks([]);child.tick_params(labelsize=7)
+    elif kind=='dipoles':
+        ax.axis('off')
+        child=ax.inset_axes([0,.12,.45,.78]);graph(child,data['molecule'])
+        child.set_title('Positions des NO₂',fontsize=9,color=INK)
+        vector=ax.inset_axes([.55,.12,.45,.78]);vector.set_aspect('equal')
+        scale=max(1,data.get('mu0',1),data.get('magnitude',1))
+        for item in data.get('vectors',[]):
+            start=item['start'];end=item['end']
+            if math.dist(start,end)<1e-10:continue
+            color=COLORS[2] if item['role']=='resultant' else COLORS[0]
+            if item['role']=='component':vector.plot([start[0],end[0]],[start[1],end[1]],ls='--',color=MUTED,lw=1)
+            else:vector.annotate('',xy=end,xytext=start,arrowprops=dict(arrowstyle='->',color=color,lw=2))
+        vector.axhline(0,color='#d2dacb',lw=.5);vector.axvline(0,color='#d2dacb',lw=.5)
+        vector.set_xlim(-scale*1.1,scale*1.1);vector.set_ylim(-scale*1.1,scale*1.1)
+        vector.set_title('Somme vectorielle / D',fontsize=9,color=INK);vector.tick_params(labelsize=7)
+        ax.text(.02,0,f"{data['isomer']} : |μ| = {data['magnitude']:.3g} D ; angle {data['angle_deg']:g}°",transform=ax.transAxes,fontsize=9,color=INK)
+    elif kind=='newman' and data.get('variant')=='e2':
+        ax.axis('off');child=ax.inset_axes([0,.1,.52,.82])
+        draw_scene(child,dict(data,variant='plain',cip_projection=True,title='Regard C3 → C4'))
+        if data.get('product'):
+            product=ax.inset_axes([.59,.15,.4,.68]);graph(product,data['product'])
+            product.set_title('Produit '+data['product_configuration'],fontsize=9,color=INK)
+        else:ax.text(.62,.5,'Pas de conformation anti',transform=ax.transAxes,fontsize=10,color=COLORS[1])
     elif kind=='bars':
         values=data.get('values',[]);labels=data.get('labels',[])
         ax.barh(np.arange(len(values)),values,color=[COLORS[i%len(COLORS)] for i in range(len(values))])
@@ -127,7 +150,12 @@ def draw_scene(ax, data):
         draw_scene(ax,dict(data,kind='molecules'))
     elif kind=='newman':
         ax.add_patch(Circle((0,0),.45,fill=False,color=COLORS[0],lw=2));angle=math.radians(data.get('angle',0))
-        for i,a in enumerate([-math.pi/2,math.pi/6,5*math.pi/6]):
+        # Le repère CIP est construit avec y vers le haut ; le canvas utilise y vers le bas.
+        # Inverser les deux angles conserve la configuration, contrairement à une réflexion.
+        angles=[-math.pi/2,math.pi/6,5*math.pi/6]
+        if data.get('cip_projection'):
+            angles=[-a for a in angles];angle=-angle
+        for i,a in enumerate(angles):
             aa=a+angle
             ax.plot([.45*math.cos(aa),math.cos(aa)],[.45*math.sin(aa),math.sin(aa)],color=COLORS[1],lw=2)
             ax.text(1.18*math.cos(aa),1.18*math.sin(aa),data.get('back',['H']*3)[i],ha='center',va='center',color=COLORS[1],fontsize=11)
@@ -234,7 +262,7 @@ def export(destination, previews=None):
         plt.close(fig)
         metadata.append(dict(file=file,title=lab['title'],caption=result['scene']['description'],labs=[lab['id']]))
     (destination/'catalogue.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
-    lines=['# Galerie : Liaisons & Synthèses','', 'Trente figures originales issues des mêmes données et calculs que les laboratoires. Les conditions, paramètres et limites figurent dans chaque TP.','']
+    lines=['# Galerie : Liaisons & Synthèses','', f'{len(metadata)} figures originales issues des mêmes données et calculs que les laboratoires. Les conditions, paramètres et limites figurent dans chaque TP.','']
     for item in metadata: lines.extend(['## '+item['title'],'','!['+item['title']+']('+item['file']+')','',item['caption'],''])
     (destination/'README.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
     return f'{len(metadata)} figures SVG créées dans {destination}'

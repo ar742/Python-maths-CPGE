@@ -8,6 +8,27 @@ Les repères officiels consultés sont l’[arrêté PCSI de 2021](https://www.e
 
 Le tableau ci-dessous est une correspondance pédagogique originale. Les pages du recueil indiquent le point de départ, sans reproduire ses images. « Complément » signifie une expérience ajoutée pour entraîner une technique.
 
+## Réactions demandées : pages 524–528 et 531–534
+
+L’accueil propose **61 fiches** ouvrant les cas correspondants dans les modèles. Le [cours du recueil](REACTIONS_DU_RECUEIL.md) et les [parcours](PARCOURS_REACTIONS.md) organisent les transformations, leurs règles et la caractérisation du produit.
+
+| Laboratoire | Point de départ dans le recueil | Ancrage et progression | Leçons |
+|---|---|---|---|
+| `effets` | Effets I/M et règles ; p.524 | PCSI : polarisation et stabilité ; orientation accompagnée | Cours du recueil |
+| `e1` | Élimination ; p.525 | PCSI : étapes, vitesse et produits | Cours du recueil |
+| `enolatealkyl` | Énolate et alkylation ; p.526 | PC : ambident, SN2 et création C–C | Cours du recueil |
+| `aminealkyl` | Amine tertiaire ; p.526 | Réactiothèque accompagnée : quaternisation et charge | Cours du recueil |
+| `anhydride` | Dérivés d’acide ; p.526,528 | PC : addition–élimination, activation, piège à acide | Cours du recueil |
+| `hydrolyseacyle` | Hydrolyse ester/amide ; p.526 | PC : bilan acide/base et état final | Cours du recueil |
+| `photochlore` | Benzène + Cl₂ ; p.526 | Réactiothèque accompagnée : addition photochimique/SEA | Cours du recueil |
+| `grignardprep` | Formation de RMgX ; p.526 | PCSI : anhydrie, matière et réactivité | Cours du recueil |
+| `e2stereo` | 3-bromo-3,4-diméthylhexane ; p.531,533 | PCSI→PC : CIP, Newman anti, E/Z et régiochimie | Cours du recueil |
+| `nitrobenzene` | Lewis, réduction et synthèse ; p.532,534 | PCSI Lewis ; réactiothèque et stratégie accompagnées | Cours du recueil |
+| `dipolesnitro` | Isomères et moments ; p.532,534 | PCSI : géométrie et somme vectorielle ; approximation fournie | Cours du recueil |
+| `epoxydes` | Époxydation et ouvertures ; p.526,528 | PC : stéréospécificité, SN2 et régiochimie ; argent accompagné | Cours du recueil |
+
+## Laboratoires de consolidation et outils complémentaires
+
 | Laboratoire | Point de départ dans le recueil | Ancrage et progression | Leçons |
 |---|---|---|---|
 | `electrons` | Définitions, effets, types ; p.522,524,525 | PCSI : Lewis et flèches ; conjugaison | 1–4 |
@@ -43,4 +64,4 @@ Le tableau ci-dessous est une correspondance pédagogique originale. Les pages d
 
 Les exemples emblématiques relient ces techniques : **aspirine** (O-acylation, ester, isolement), **paracétamol** (N-acylation et chimiosélectivité), **chalcone** (énolate, aldol croisé, E1cb), **alcool C−C** (magnésien, anhydrie, traitement), **nitroacétophénone** (ordre des étapes), **adduit bicyclique** (Diels–Alder et géométrie), **polyamide** (motif et stœchiométrie).
 
-Les 30 introductions détaillent ce qui est mesuré ou simulé, les grandeurs et unités, les hypothèses, les techniques à mobiliser et une progression **prédire → expérimenter → justifier**. Pour les problèmes, les orbitales, pKa, banques et paramètres nécessaires sont donnés ; les extensions ne sont pas supposées connues sans introduction.
+Les 42 introductions détaillent ce qui est mesuré ou simulé, les grandeurs et unités, les hypothèses, les techniques à mobiliser et une progression **prédire → expérimenter → justifier**. Pour les problèmes, les orbitales, pKa, banques et paramètres nécessaires sont donnés ; les extensions ne sont pas supposées connues sans introduction.

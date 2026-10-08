@@ -1,4 +1,4 @@
-"""Lancer : python chimie_organique.py ; modèles physiques NumPy et figures animées."""
+"""Lancer : python chimie_organique.py ; réactions organiques, calculs et figures animées."""
 from __future__ import annotations
 
 import argparse
@@ -13,8 +13,8 @@ from http.client import HTTPConnection
 import webbrowser
 
 from modeles import calculate
-from cours import LESSONS, EXERCISES, SOURCES
-from reperes import LAB_GUIDES
+from pedagogie import LESSONS, EXERCISES, SOURCES, LAB_GUIDES
+from reactions_recueil import REACTIONS
 from catalogue import LABS
 
 ROOT = Path(__file__).resolve().parent
@@ -73,13 +73,16 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/bootstrap":
             self.send({"application": "chimie_organique", "token": self.server.api_token,
                        "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES,
-                       "lab_guides": LAB_GUIDES, "labs": LABS, "figures": figure_metadata()})
+                       "lab_guides": LAB_GUIDES, "labs": LABS, "figures": figure_metadata(),
+                       "reactions": REACTIONS})
             return
         files = {"/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),
                  "/style.css": ("style.css", "text/css; charset=utf-8"),
+                 "/reactions.css": ("reactions.css", "text/css; charset=utf-8"),
                  "/app.js": ("app.js", "text/javascript; charset=utf-8"),
                  "/visuals.js": ("visuals.js", "text/javascript; charset=utf-8"),
+                 "/recueil_visuals.js": ("recueil_visuals.js", "text/javascript; charset=utf-8"),
                  "/favicon.svg": ("favicon.svg", "image/svg+xml")}
         if path.startswith("/illustrations/"):
             filename = path.removeprefix("/illustrations/")

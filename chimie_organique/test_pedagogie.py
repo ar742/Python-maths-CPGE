@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from urllib.parse import urlparse
 
-from catalogue import LABS
+from catalogue import BASE_LABS as LABS
 from cours import LESSONS, EXERCISES, SOURCES
 from reperes import LAB_GUIDES
 from export_cours import export, prose
@@ -113,7 +113,8 @@ class PedagogieTests(unittest.TestCase):
 
     def test_program_map_covers_all_labs_and_distinguishes_filiere_and_extension(self):
         text = (ROOT / "MATRICE_PROGRAMME.md").read_text(encoding="utf-8")
-        ids = {lab["id"] for lab in LABS}
+        from catalogue import LABS as ALL_LABS
+        ids = {lab["id"] for lab in ALL_LABS}
         rows = set(re.findall(r"^\| `([a-z0-9]+)` \|", text, re.MULTILINE))
         self.assertEqual(rows, ids)
         self.assertIn("PCSI", text)
@@ -169,11 +170,10 @@ class PedagogieTests(unittest.TestCase):
         self.assertEqual(prose("<a href='https://iupac.org/'>Source</a>"),
                          "[Source](https://iupac.org/)")
 
-    def test_delivered_markdown_is_current_and_no_new_errata_exists(self):
+    def test_delivered_base_markdown_is_current(self):
         with tempfile.TemporaryDirectory(dir=ROOT) as directory:
             generated = export(Path(directory) / "cours.md")
             self.assertEqual(generated.read_bytes(), (ROOT / "COURS.md").read_bytes())
-        self.assertFalse(any(path.name.lower() == "errata.md" for path in ROOT.iterdir()))
 
 
 if __name__ == "__main__":

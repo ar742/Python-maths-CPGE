@@ -8,8 +8,15 @@ from catalogue import LAB_BY_ID
 from catalogue_reactivite import LABS as REACTIVITE
 from modeles_reactivite import calculate as reactivite
 from modeles_analyse import calculate as analyse
+from modeles_recueil import calculate as recueil
+from modeles_exos_recueil import calculate as exos_recueil
+from catalogue_recueil import LABS as RECUEIL
+from catalogue_exos_recueil import LABS as EXOS_RECUEIL
+from modeles_epoxydes import calculate as epoxydes
 
 REACTIVITE_IDS = {lab['id'] for lab in REACTIVITE}
+RECUEIL_IDS = {lab['id'] for lab in RECUEIL}
+EXOS_RECUEIL_IDS = {lab['id'] for lab in EXOS_RECUEIL}
 
 def calculate(data):
     if not isinstance(data,dict): raise ValueError('Les paramètres attendent un objet.')
@@ -40,7 +47,8 @@ def calculate(data):
             if control.get('integer') and not value.is_integer():
                 raise ValueError('Un entier est attendu : '+control['label'])
         params[control['key']] = value
-    result=(reactivite if lab_id in REACTIVITE_IDS else analyse)(lab_id,params)
+    model=epoxydes if lab_id=='epoxydes' else recueil if lab_id in RECUEIL_IDS else exos_recueil if lab_id in EXOS_RECUEIL_IDS else reactivite if lab_id in REACTIVITE_IDS else analyse
+    result=model(lab_id,params)
     if not isinstance(result,dict): raise TypeError('Résultat scientifique invalide.')
     result=clean(result)
     result.update(lab=lab_id,params=params)

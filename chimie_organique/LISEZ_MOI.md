@@ -1,21 +1,22 @@
-# Premiers pas — Liaisons & Synthèses
+# Premiers pas — Réactions de chimie organique
 
-1. Installer Python 3.10 ou plus récent, puis double-cliquer sur `Lancer_Chimie_Organique.cmd` à la racine du dépôt. L’installation initiale de NumPy demande une connexion ; les expériences fonctionnent ensuite hors ligne.
-2. Ouvrir <http://127.0.0.1:8775> si la page ne s’ouvre pas automatiquement.
-3. Commencer par **RMN**, **SN2** ou **Rétrosynthèse**, selon votre objectif. Lire l’introduction : but, variables et hypothèses précèdent les réglages.
-4. Faire une prédiction, choisir un préréglage, modifier un paramètre et justifier la différence. La commande d’étape parcourt un mécanisme ; un tableau ou un profil énergétique apporte une autre preuve.
-5. Ouvrir la leçon associée, chercher l’exercice avant de déplier son corrigé, puis poursuivre une [mission](PARCOURS.md).
+1. Installer Python 3.10 ou plus récent, puis double-cliquer sur `Lancer_Chimie_Organique.cmd`. L’installation initiale de NumPy demande une connexion ; les expériences fonctionnent ensuite hors ligne.
+2. Ouvrir <http://127.0.0.1:8775>. L’accueil **Réactions du recueil** contient 61 fiches centrées sur les pages 524–528 et 531–534.
+3. Filtrer par type ou rubrique, ou chercher « énolate », « Zaitsev », « aniline », « époxyde », un substrat ou un produit. Avant d’ouvrir le TP, prévoir les liaisons modifiées et le produit.
+4. Cliquer **Prévoir le produit et explorer**. Lire le dossier réaction et son diagnostic, puis le but du TP, les variables et hypothèses. Les réglages correspondent à la fiche choisie ; une modification explore une variante.
+5. Parcourir les étapes du mécanisme. Justifier départ et arrivée des électrons, charges, sous-produits, régiochimie et stéréochimie. Confronter votre prédiction au résultat avant de déplier la correction.
+6. Suivre un [parcours du recueil](PARCOURS_REACTIONS.md), ouvrir la leçon associée et chercher les exercices avant leurs corrigés. Les repères **sup / spé / au-delà** et la [matrice du programme](MATRICE_PROGRAMME.md) situent les techniques.
 
-**Structure → réactivité → synthèse → contrôle** : les quatre questions reviennent dans les trente laboratoires. Les repères Sup, Spé et Au-delà situent les techniques ; la [matrice du programme](MATRICE_PROGRAMME.md) précise la filière.
+Trois bons départs : **E2 et configurations R/S → E/Z**, **nitrobenzène et stratégie aromatique**, **énolate et alkylation C/O**. Les outils complémentaires IR/RMN, structures, CCM et extraction restent accessibles sur l’accueil.
 
-[Présentation complète](README.md) · [Cours et 60 exercices corrigés](COURS.md) · [Trente illustrations](illustrations/README.md).
+[Présentation](README.md) · [Réactions, cours et corrections](REACTIONS_DU_RECUEIL.md) · [Cours complémentaire](COURS.md) · [42 illustrations](illustrations/README.md).
 
 ## Si le démarrage échoue
 
-Le lanceur affiche le problème rencontré. Vérifier que Python est installé et que l’installation initiale de NumPy a abouti. Un port déjà utilisé se contourne avec :
+Le lanceur affiche le problème rencontré. Vérifier Python et l’installation de NumPy. Un port déjà utilisé se contourne avec :
 
 ```sh
 python -X utf8 chimie_organique.py --port 8780
 ```
 
-Dans ce cas, ouvrir <http://127.0.0.1:8780>. Le navigateur affiche les cours et calculs de votre propre ordinateur ; fermer la fenêtre de lancement termine le serveur.
+Ouvrir alors <http://127.0.0.1:8780>. Fermer la fenêtre de lancement termine le serveur.
