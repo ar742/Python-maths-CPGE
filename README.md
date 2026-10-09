@@ -5,10 +5,10 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Quatorze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Quinze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques) et **Mécanique & Mouvements**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements** et **Fonctions & Équations** (huitième volet de mathématiques). Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
@@ -28,6 +28,17 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md) |
 | 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md) |
 | 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
+| 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md) |
+
+## Mathématiques · Atelier 15 · Fonctions & Équations
+
+**28 laboratoires interactifs, 56 leçons, 84 exercices corrigés et 28 figures scientifiques.** La priorité est donnée aux applications des trois théorèmes de la page 63 : continuité, dérivation et dérivations successives sous l’intégrale. Dix laboratoires développent les équations différentielles : Euler/RK4, facteur intégrant, problèmes de Cauchy, intervalle maximal, variation des constantes, singularités, systèmes et conditions aux bords.
+
+Équations fonctionnelles, gamma, bêta, zêta, mémoire fractionnaire, Faà di Bruno et polynômes d’Hermite complètent le parcours. Chaque TP explicite son but, ses variables, ses hypothèses et les techniques de sup/spé à réinvestir, avec les prolongements accompagnés.
+
+![Aperçu de Fonctions & Équations](analyse_fonctions/apercu.png)
+
+[Ouvrir la présentation de l’atelier](analyse_fonctions/README.md). Sous Windows : **`Lancer_Analyse_Fonctions.cmd`**. Serveur local : **http://127.0.0.1:8780**. Hors ligne après installation.
 
 ## Physique · Atelier 14 · Mécanique & Mouvements
 
