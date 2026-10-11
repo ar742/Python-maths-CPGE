@@ -124,13 +124,13 @@ def continuite_gauss(p):
         [chart('Le paramètre varie, le majorant reste le même','a','F(a)',series('Sur ℝ : √π exp(−a²/4)',parameters,np.sqrt(np.pi)*np.exp(-parameters**2/4)),series('Calcul tronqué',parameters,numerical)),
          chart('Contrôler |f(a,t)|≤exp(−t²)','t','Intégrande',series('f(a,t)',t,kernel),series('Majorant positif',t,env),series('Opposé du majorant',t,-env))],
         curves_scene('Une même enveloppe pour tous les paramètres',t,[('f(a,t)',kernel),('φ(t)=exp(−t²)',env),('−φ(t)',-env)],description='Le paramètre a change les oscillations, tandis que les deux courbes ±exp(−t²) les encadrent pour tous les a réels. La fenêtre affichée est [−L,L], avec des queues contrôlées séparément.'),
-        ['Domaine du paramètre : a∈ℝ ; domaine d’intégration : J=ℝ. Pour tout t, a↦e⁻ᵗ²cos(at) est continue.',
+        ['a est le paramètre réel et t la variable intégrée. Poser f(a,t)=e⁻ᵗ²cos(at) et F(a)=∫ℝf(a,t)dt. Pour chaque t, f est continue en a.',
          'La majoration |f(a,t)|≤φ(t)=e⁻ᵗ² est uniforme en a. De plus ∫ℝφ=√π<∞. Le premier théorème de la page 63 donne F continue sur ℝ.',
          'La valeur F(a)=√πe⁻ᵃ²/⁴ se retrouve aussi par dérivation sous le signe intégral et intégration par parties : F′(a)=−aF(a)/2, F(0)=√π.',
-         'Les deux queues ont une somme absolue au plus e⁻ᴸ²/L. Le calcul par trapèzes possède en outre une borne basée sur sup|∂²f/∂t²| ; la dernière mesure les additionne.'],
+         'L est la coupure numérique. Les deux parties omises ont une somme absolue au plus e⁻ᴸ²/L. La dernière mesure ajoute la borne d’erreur des trapèzes sur [−L,L], à l’arrondi près.'],
         ['La continuité est démontrée par la domination, indépendamment de la formule explicite et des graphiques.',
          'La borne des queues est valable pour L>0. La borne de quadrature concerne la valeur de a sélectionnée.',
-         'Cette intégrale est la partie réelle de la transformée de Fourier de la gaussienne, avec la convention utilisant e⁻ⁱᵃᵗ.'])
+         'La formule est aussi la transformée de Fourier de la gaussienne, pour la convention e⁻ⁱᵃᵗ ; i désigne le nombre complexe vérifiant i²=−1.'])
 
 
 def concentration_envelope(t):
@@ -147,12 +147,12 @@ def continuite_defaut(p):
         [chart('Le pic se déplace vers 0 et devient plus haut','t>0','Densité',series('Largeur a',t,density(a)),series('Largeur a/2',t,density(a/2)),series('Largeur 2a',t,density(2*a)),series('Majorant local pour a/2≤α≤2a',t,local)),
          chart('La masse cumulée est exactement 1−exp(−T/a)','T','∫₀ᵀ fₐ(t)dt',series('Largeur a',cumulative,-np.expm1(-cumulative/a)),series('Largeur a/2',cumulative,-np.expm1(-cumulative/(a/2))),series('Masse totale',cumulative,cumulative*0+1)),
          chart('L’enveloppe de toute la famille n’est pas intégrable près de 0','t>0','Enveloppe supérieure des densités',series('Borne supérieure pour 0<α≤1',t,all_envelope),y_scale='log')],
-        curves_scene('Une masse constante dans une fenêtre qui rétrécit',t,[('fₐ',density(a)),('fₐ/₂',density(a/2)),('Majorant local autour de a>0',local)],description='Quand la largeur diminue, le pic devient plus haut et son aire reste égale à 1. Le majorant dessiné couvre un voisinage du a positif sélectionné ; il ne couvre pas uniformément la limite a=0.',note='La valeur au point t=0 est fixée à 0 ; une valeur en un seul point ne modifie pas l’intégrale.'),
-        ['Définir fₐ(t)=e⁻ᵗ/ᵃ/a pour a>0,t>0 ; fixer fₐ(0)=0 et f₀(t)=0. Pour chaque t fixé, fₐ(t)→0 quand a→0⁺.',
+        curves_scene('Une masse constante dans une fenêtre qui rétrécit',t,[('fₐ',density(a)),('fₐ/₂',density(a/2)),('Majorant local autour de a>0',local)],description='Quand la largeur diminue, le pic devient plus haut et son aire reste égale à 1. Le majorant dessiné couvre un voisinage du a positif sélectionné ; il ne couvre pas uniformément la limite a=0.',note='L’intégrale porte sur t>0 ; le point 0 est une borne de l’intégrale impropre.'),
+        ['t>0 est la variable intégrée. Pour a>0, poser fₐ(t)=e⁻ᵗ/ᵃ/a ; au paramètre a=0, poser f₀(t)=0. Pour chaque t>0 fixé, fₐ(t)→0 quand a→0⁺.',
          'Le changement de variable t=au donne ∫₀∞fₐ(t)dt=∫₀∞e⁻ᵘdu=1. Ainsi lim F(a)=1≠F(0)=0.',
          'Pour 0<t≤1, le maximum sur 0<a≤1 est atteint en a=t et vaut 1/(et). Tout majorant commun devrait dominer cette fonction, dont l’intégrale diverge près de 0.',
-         'Autour d’un a strictement positif, a/2≤α≤2a donne fα(t)≤(2/a)e⁻ᵗ/⁽²ᵃ⁾, qui est intégrable. La continuité locale sur ]0,+∞[ ne résout pas le passage à a=0.'],
-        ['Le point t=0 est défini séparément pour avoir une convergence ponctuelle partout ; cette modification ne change aucune intégrale.',
+         'Pour a>0 fixé, noter α un paramètre variant dans [a/2,2a]. Alors fα(t)≤(2/a)e⁻ᵗ/⁽²ᵃ⁾ ; ce majorant a pour intégrale 4. Il ne couvre pas la limite α=0.'],
+        ['Le domaine de la variable intégrée est ]0,+∞[. Toutes les fonctions y sont continues ; aucune valeur n’est requise en t=0.',
          'Le théorème de continuité ne s’applique pas au voisinage de 0, faute de majorant intégrable commun.',
          'Les intégrales et les masses affichées sont analytiques. Une grille uniforme en t peut manquer le pic ; le changement de variable t=au évite ce défaut.'])
 
@@ -178,7 +178,7 @@ def leibniz_frullani(p):
          chart('Leibniz : dominer la dérivée, et pas seulement f','t','Valeur absolue',series('|∂f/∂a|=e⁻ᵃᵗ',t,-derivative),series('φ(t)=e⁻⁽ᵃ/²⁾ᵗ',t,envelope))],
         curves_scene('Intégrande compensée et dérivée paramétrique',t,[('f(a,b,t)',kernel),('∂f/∂a',derivative),('Majorant de |∂f/∂a|',envelope)],description='La différence d’exponentielles enlève la singularité apparente en t=0. Dériver en a donne une exponentielle négative ; exp(−at/2) domine sa valeur absolue sur un voisinage du paramètre choisi.'),
         ['Domaine : (a,b)∈]0,+∞[² ; dérivation en a à b fixé. En 0, le quotient a pour limite b−a ; le prolonger par cette valeur.',
-         'Pour a voisin du point sélectionné, choisir α≥a/2. Alors |∂f/∂α|=e⁻ᵅᵗ≤e⁻⁽ᵃ/²⁾ᵗ, dont l’intégrale vaut 2/a.',
+         'a est le point sélectionné ; α est un paramètre variant dans [a/2,3a/2]. La fonction φ(t)=e⁻⁽ᵃ/²⁾ᵗ domine |∂f/∂α| ; son intégrale vaut 2/a.',
          'Le théorème de Leibniz donne ∂F/∂a=−∫₀∞e⁻ᵃᵗdt=−1/a. Donc F(a,b)=−ln a+C(b).',
          'F(b,b)=0 impose C(b)=ln b. Par le théorème des accroissements finis, |f(a,b,t)|≤|b−a|e⁻ᵐⁱⁿ⁽ᵃ,ᵇ⁾ᵗ, d’où la borne de queue affichée.'],
         ['Le majorant est local en a ; il n’est pas uniforme lorsque a approche 0.',
@@ -245,18 +245,19 @@ def derivees_gamma(p):
     moments=[gamma_log_moment(a,k,U,T) for k in range(3)]
     psi=moments[1]/moments[0]; variance=moments[2]/moments[0]-psi*psi; psi_ref,var_ref=digamma_trigamma(a)
     params=np.linspace(.6,5,61); values=[gamma_log_moment(aa,n,U,T) for aa in params]
-    return result([metric('Γ(a) : valeur de référence',math.gamma(a)),metric('Γ⁽ⁿ⁾(a) tronquée',value),metric('Borne des queues de Γ⁽ⁿ⁾',gamma_moment_tail_bound(a,n,U,T)),metric('Écart entre deux quadratures (indicateur)',abs(value-coarser)),metric('Moyenne de ln t : Γ′/Γ',psi),metric('Variance de ln t calculée',variance),metric('Variance de référence : (ln Γ)″',var_ref)],
-        [chart('Dériver plusieurs fois sous l’intégrale','a>0','Valeur',series('Γ(a)',params,[math.gamma(aa) for aa in params]),series('Γ⁽ⁿ⁾(a), ordre n choisi',params,values)),
+    return result([metric('Γ(a) : valeur de référence',math.gamma(a)),metric('Γ⁽ⁿ⁾(a) tronquée',value),metric('Borne des queues de Γ⁽ⁿ⁾',gamma_moment_tail_bound(a,n,U,T)),metric('Écart entre deux quadratures (indicateur)',abs(value-coarser)),metric('Moyenne de ln t sur [ε,T]',psi),metric('Moyenne entière de référence : Γ′/Γ',psi_ref),metric('Variance de ln t sur [ε,T]',variance),metric('Variance entière de référence : (ln Γ)″',var_ref)],
+        [chart('Dériver plusieurs fois sous l’intégrale','a>0','Valeur',series('Γ(a) entière',params,[math.gamma(aa) for aa in params]),series('Γ⁽ⁿ⁾(a) tronquée sur [ε,T]',params,values)),
          chart('Le changement t=eᵘ rend les deux queues visibles','u=ln t','Intégrande après changement de variable',series('uⁿ exp(au−eᵘ)',u,kernel),series('Majorant commun, ordres 0 à n',u,envelope),series('Opposé du majorant',u,-envelope)),
          chart('Convexité de ln Γ : une variance strictement positive','a','(ln Γ)″(a)',series('Variance de référence',params,[digamma_trigamma(aa)[1] for aa in params]))],
         curves_scene('Dérivée d’ordre n et domination locale en coordonnées u',u,[('Intégrande de Γ⁽ⁿ⁾',kernel),('Majorant commun',envelope)],'u=ln t','Intégrande transformée',description='Le changement t=eᵘ transforme aussi dt. La courbe de l’intégrande est uⁿexp(au−eᵘ) ; le majorant contrôle tous les ordres jusqu’à n sur le voisinage [a/2,a+1].'),
-        ['Domaine : a>0. Sur le voisinage α∈[a/2,a+1], les dérivées partielles valent tᵅ⁻¹(ln t)ᵏe⁻ᵗ, pour 0≤k≤n.',
+        ['a>0 est le paramètre, t>0 la variable intégrée et n l’ordre choisi. Pour un paramètre voisin α et un entier k de 0 à n, la dérivée d’ordre k de tᵅ⁻¹e⁻ᵗ en α vaut tᵅ⁻¹(ln t)ᵏe⁻ᵗ.',
          'Pour 0<t≤1, les dominer par t⁽ᵃ/²⁾⁻¹(1+|ln t|ⁿ)e⁻ᵗ ; pour t≥1, par tᵃ(1+(ln t)ⁿ)e⁻ᵗ. Ces deux fonctions sont intégrables.',
          'Le troisième théorème de la page 63 donne Γ∈Cⁿ sur ]0,+∞[ et Γ⁽ᵏ⁾(a)=∫₀∞tᵃ⁻¹(ln t)ᵏe⁻ᵗdt. Comme n est arbitraire, Γ est C∞.',
-         'Normaliser la densité par Γ(a). Alors Γ′/Γ=E(ln t) et (ln Γ)″=E((ln t)²)−E(ln t)²=Var(ln t)>0. La convexité résulte aussi de Cauchy–Schwarz.',
+         'Pour α∈[a/2,a+1], ces majorants ne dépendent pas de α. Le troisième théorème autorise donc les dérivations sur l’intégrale entière, pas seulement sur [ε,T].',
+         'La densité tᵃ⁻¹e⁻ᵗ/Γ(a) définit une moyenne de ln t égale à Γ′/Γ. Sa variance vaut (ln Γ)″>0 : ln Γ est strictement convexe.',
          'Les bornes des queues utilisent s=−ln t en bas, puis une majoration exponentielle à partir de T en haut. L’écart de deux quadratures est un indicateur numérique, pas une borne rigoureuse.'],
         ['L’ordre n est entier. Les bornes de queues portent sur la dérivée sélectionnée, indépendamment de l’erreur de quadrature.',
-         'Les moyennes et variances numériques sont calculées avec la densité tronquée et renormalisée ; la variance de référence utilise une méthode indépendante.',
+         'ε=10⁻ᑫ est la coupure basse et T la coupure haute. Les moyennes et variances sur [ε,T] utilisent la densité tronquée renormalisée ; les références entières sont indépendantes.',
          'Le majorant dessiné est transformé avec dt=eᵘdu. Omettre ce facteur changerait l’intégrale et la domination.'])
 
 
@@ -271,14 +272,14 @@ def derivees_laplace(p):
          chart('Le maximum se trouve en n/a','t','Valeur positive',series('tⁿe⁻ᵃᵗ',t,density),series('Majorant (1+tⁿ)e⁻⁽ᵃ/²⁾ᵗ',t,envelope),xMarker=n/a,xMarkerLabel='Maximum n/a'),
          chart('La masse cumulée révèle une troncature trop courte','T','Fraction de masse',series('∫₀ᵀ tⁿe⁻ᵃᵗ / masse totale',t,cumulative/total),series('Masse totale',t,t*0+1))],
         curves_scene('Dominer tous les ordres jusqu’à n',t,[('tⁿe⁻ᵃᵗ',density),('Majorant local commun',envelope)],'t','Valeur positive',description='La densité est positive, mais la dérivée F⁽ⁿ⁾ porte le signe (−1)ⁿ. Son pic est à n/a ; le majorant local commun permet de dériver aux ordres 0 à n.'),
-        ['Domaine : a>0. La k-ième dérivée de e⁻ᵃᵗ par rapport à a est (−t)ᵏe⁻ᵃᵗ.',
-         'Pour α∈[a/2,3a/2] et 0≤k≤n, tᵏ≤1+tⁿ. Le majorant (1+tⁿ)e⁻⁽ᵃ/²⁾ᵗ est donc intégrable et commun à tous les ordres.',
+        ['a>0 est le paramètre, t≥0 la variable intégrée et n l’ordre choisi. Pour un entier k de 0 à n, la dérivée d’ordre k de e⁻ᵃᵗ en a vaut (−t)ᵏe⁻ᵃᵗ.',
+         'Noter α un paramètre variant dans [a/2,3a/2]. Pour 0≤k≤n, tᵏ≤1+tⁿ. Le majorant (1+tⁿ)e⁻⁽ᵃ/²⁾ᵗ est intégrable et indépendant de α.',
          'Le théorème de dérivation d’ordre n donne F⁽ⁿ⁾(a)=∫₀∞(−t)ⁿe⁻ᵃᵗdt. Comme F(a)=1/a, on obtient (−1)ⁿn!/aⁿ⁺¹.',
          'Ainsi (−1)ⁿF⁽ⁿ⁾(a)>0 pour chaque n : F est complètement monotone. Le changement de variable u=at retrouve le facteur a⁻ⁿ⁻¹.',
          'L’intégration par parties répétée fournit une expression exacte de la queue après L. Le maximum de tⁿe⁻ᵃᵗ est en t=n/a, qui peut sortir de la fenêtre.'],
         ['Le signe affiché dépend de la parité de n. La densité utilisée pour les masses est toujours positive.',
          'Le majorant est local en a. Aucun majorant commun intégrable ne couvre tous les a>0 lorsque a approche 0.',
-         'La masse après L est analytique. La valeur tronquée est calculée par quadrature ; la masse cumulée est obtenue par la formule de la queue.'])
+         'n! est la factorielle de n. L est la coupure numérique : la masse après L est analytique, tandis que l’intégrale jusqu’à L est calculée par quadrature.'])
 
 
 COMPUTE={name:globals()[name] for name in ['cauchy_additive','cauchy_multiplicative','dalembert','identification_symetrie','continuite_gauss','continuite_defaut','leibniz_frullani','leibniz_arctan','derivees_gamma','derivees_laplace']}

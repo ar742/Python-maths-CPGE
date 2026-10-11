@@ -1,0 +1,242 @@
+[
+  {
+    "file": "01_fourier_barre.svg",
+    "title": "Fourier : une barre relie deux thermostats",
+    "labs": [
+      "fourier_barre"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "02_paroi_composite.svg",
+    "title": "Un mur : conduction et convection en série",
+    "labs": [
+      "paroi_composite"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "03_isolation_radiale.svg",
+    "title": "Rayon critique : ajouter un isolant peut accroître la perte",
+    "labs": [
+      "isolation_radiale"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "04_igloo.svg",
+    "title": "Igloo : bilan d’une personne et géométrie hémisphérique",
+    "labs": [
+      "igloo"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "05_diffusion_1d.svg",
+    "title": "Diffusion 1D : calcul stable et modes de Fourier",
+    "labs": [
+      "diffusion_1d"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "06_demi_espace.svg",
+    "title": "Choc thermique : une profondeur en √(χt)",
+    "labs": [
+      "demi_espace"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "07_onde_thermique.svg",
+    "title": "Onde thermique : filtrer le jour et les saisons",
+    "labs": [
+      "onde_thermique"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "08_refroidissement_biot.svg",
+    "title": "Biot : quand peut-on supposer une température uniforme ?",
+    "labs": [
+      "refroidissement_biot"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "09_diffusion_2d.svg",
+    "title": "Une tache de chaleur : énergie conservée, pic qui s’étale",
+    "labs": [
+      "diffusion_2d"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "10_marche_aleatoire.svg",
+    "title": "Marche aléatoire : de la loi binomiale à Fick",
+    "labs": [
+      "marche_aleatoire"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "11_brownien_langevin.svg",
+    "title": "Langevin : du mouvement inertiel à Stokes–Einstein",
+    "labs": [
+      "brownien_langevin"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "12_absorption_neutrons.svg",
+    "title": "Neutrons : diffusion, absorption et bilan de source",
+    "labs": [
+      "absorption_neutrons"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "13_diffusion_electrolyte.svg",
+    "title": "Électrolyte : diffusion commune et potentiel de jonction",
+    "labs": [
+      "diffusion_electrolyte"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "14_entropie_diffusion.svg",
+    "title": "Diffuser sans perdre d’énergie : l’entropie augmente",
+    "labs": [
+      "entropie_diffusion"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "15_travail_chemins.svg",
+    "title": "Même état final, travaux différents : suivre trois chemins",
+    "labs": [
+      "travail_chemins"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "16_travaux_generalises.svg",
+    "title": "Surface, fil, condensateur, bobine : une force conjuguée",
+    "labs": [
+      "travaux_generalises"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "17_potentiel_helmholtz.svg",
+    "title": "Helmholtz : une cloison interne cherche le minimum de F",
+    "labs": [
+      "potentiel_helmholtz"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "18_potentiel_gibbs.svg",
+    "title": "Gibbs : l’équilibre d’une réaction A ⇌ B minimise G",
+    "labs": [
+      "potentiel_gibbs"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "19_calorimetrie_entropie.svg",
+    "title": "Calorimètre : température finale, chaleur latente et entropie",
+    "labs": [
+      "calorimetrie_entropie"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "20_detentes_joule.svg",
+    "title": "Joule : U constante ou H constante, deux détentes différentes",
+    "labs": [
+      "detentes_joule"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "21_carnot_ditherme.svg",
+    "title": "Carnot : moteur, réfrigérateur et pompe à chaleur",
+    "labs": [
+      "carnot_ditherme"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "22_cycles_moteurs.svg",
+    "title": "Otto, Diesel, Brayton, Stirling : comparer des cycles calculés",
+    "labs": [
+      "cycles_moteurs"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "23_compresseur_etages.svg",
+    "title": "Compresseur : répartir les rapports de pression pour minimiser le travail",
+    "labs": [
+      "compresseur_etages"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "24_exergie_corps.svg",
+    "title": "Corps fini : une différence de température vaut-elle du travail ?",
+    "labs": [
+      "exergie_corps"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "25_cube_leslie.svg",
+    "title": "Cube de Leslie : comparer des surfaces à même température",
+    "labs": [
+      "cube_leslie"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "26_seebeck.svg",
+    "title": "Thermocouple : calibrer et compenser la jonction froide",
+    "labs": [
+      "seebeck"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "27_peltier.svg",
+    "title": "Module Peltier : refroidir demande un bilan complet",
+    "labs": [
+      "peltier"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "28_thermoacoustique.svg",
+    "title": "Onde sonore : coupler compression et diffusion thermique",
+    "labs": [
+      "thermoacoustique"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "29_piezo_resonateur.svg",
+    "title": "Quartz : réciprocité, résonance et antirésonance",
+    "labs": [
+      "piezo_resonateur"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  },
+  {
+    "file": "30_brouillard.svg",
+    "title": "Détente d’une vapeur saturante : décider du début de condensation",
+    "labs": [
+      "brouillard"
+    ],
+    "caption": "Paramètres initiaux du laboratoire. Températures, flux, bilans ou réponses calculés en Python ; domaines et hypothèses détaillés dans le TP."
+  }
+]

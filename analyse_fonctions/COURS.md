@@ -6,7 +6,7 @@ Recueil de A. R., Fonctions et fiches M5–M6. Chaque cours est relié à un lab
 
 Spé · Laboratoire `continuite_gauss`
 
-Pour une intégrale à paramètre F(a)=∫J f(a,t)dt, il faut distinguer le paramètre a et la variable intégrée t. Une continuité en a pour chaque t ne suffit pas lorsque J est non borné ou que l’intégrande présente une singularité. Le théorème de la page 63 demande un majorant intégrable indépendant du paramètre sur le domaine considéré.
+a désigne le paramètre, t la variable intégrée et J l’intervalle d’intégration. Pour une fonction f de ces deux variables, poser F(a)=∫J f(a,t)dt. La continuité en a pour chaque t ne suffit pas, à elle seule, à prouver celle de F. Le théorème de la page 63 demande un majorant intégrable indépendant du paramètre.
 
 f(a,t)=e⁻ᵗ²cos(at), a∈ℝ, t∈ℝ ; |f(a,t)|≤e⁻ᵗ².
 
@@ -14,7 +14,9 @@ Pour chaque t, a↦f(a,t) est continue. Pour chaque a, t↦f(a,t) est continue e
 
 La preuve s’écrit avant le calcul explicite. Une intégrande oscillante peut avoir une petite intégrale par compensation ; cela ne fournit pas une domination de sa valeur absolue. La courbe de φ encadre les lobes positifs et négatifs de f et explique pourquoi le théorème s’applique.
 
-Dans une autre application, le majorant peut dépendre d’un voisinage compact de a et rester indépendant du paramètre courant dans ce voisinage. Cette domination locale suffit à démontrer la continuité en chaque point intérieur du domaine.
+Sur un segment [−L,L], avec L>0 fixé, la continuité conjointe de f en ses deux variables donne localement un majorant constant. Elle prouve la continuité de l’intégrale tronquée F_(L)(a)=∫_(−L)^(L)f(a,t)dt. Pour l’intégrale sur ℝ, cette seule justification ne suffit pas : le majorant doit être intégrable sur tout ℝ.
+
+Un majorant peut être choisi séparément autour de chaque valeur de a. Il doit alors être indépendant du paramètre qui varie dans ce voisinage. Cette domination locale prouve la continuité en chaque point intérieur.
 
 ## 02. Gauss, Fourier et une équation différentielle pour calculer F
 
@@ -24,7 +26,7 @@ La continuité ne donne pas encore la valeur de l’intégrale. Pour dériver F,
 
 F′(a)=−aF(a)/2 ; F(0)=√π ; F(a)=√πe⁻ᵃ²/⁴.
 
-Cette méthode est emblématique : un théorème de dérivation sous l’intégrale fabrique une équation différentielle en paramètre ; une valeur connue fixe la solution. La partie imaginaire de ∫ℝe⁻ᵗ²e⁻ⁱᵃᵗdt est nulle par imparité. La formule est donc aussi une transformée de Fourier de la gaussienne.
+Cette méthode donne une équation différentielle en paramètre ; une valeur connue fixe sa solution. En notant i le nombre complexe tel que i²=−1, la partie imaginaire de ∫ℝe⁻ᵗ²e⁻ⁱᵃᵗdt est nulle par imparité. La formule est donc aussi une transformée de Fourier de la gaussienne.
 
 Numériquement, on remplace ℝ par [−L,L]. Pour L>0, chaque queue est dominée par e⁻ᴸ²/(2L), car t/L≥1 sur [L,+∞[. Les deux queues donnent e⁻ᴸ²/L. Le laboratoire ajoute une borne de l’erreur des trapèzes sur la partie finie, calculée avec un majorant de la dérivée seconde en t. Une valeur petite de F ne garantit pas une petite erreur relative : l’erreur absolue est plus pertinente dans les régimes de forte compensation.
 
@@ -32,13 +34,13 @@ Numériquement, on remplace ℝ par [−L,L]. Pour L>0, chaque queue est dominé
 
 Spé · Laboratoire `continuite_defaut`
 
-Pour a>0 et t>0, poser fₐ(t)=e⁻ᵗ/ᵃ/a. Pour a=0, poser f₀(t)=0 ; au point t=0, fixer aussi fₐ(0)=0. Changer la valeur d’une intégrande en un seul point ne change pas son intégrale.
+a≥0 est le paramètre et t>0 la variable intégrée. Pour a>0, poser fₐ(t)=e⁻ᵗ/ᵃ/a ; pour a=0, poser f₀(t)=0. L’intervalle d’intégration est ]0,+∞[ : aucune valeur n’est requise au bord t=0.
 
-À chaque t>0 fixé, la décroissance exponentielle domine le facteur 1/a : fₐ(t)→0 quand a→0⁺. Le même résultat est vrai en t=0 avec la définition choisie. On a donc une convergence ponctuelle vers f₀ sur tout le domaine.
+À chaque t>0 fixé, la décroissance exponentielle domine le facteur 1/a : fₐ(t)→0 quand a→0⁺. Il y a donc convergence ponctuelle vers f₀ sur tout l’intervalle d’intégration.
 
 t=au ⇒ ∫₀∞fₐ(t)dt=∫₀∞e⁻ᵘdu=1 ; ∫₀∞f₀(t)dt=0.
 
-L’intégrale n’est pas continue au paramètre 0. Les hypothèses de continuité ponctuelle ne suffisent pas : la masse reste égale à 1 mais se concentre dans une fenêtre de largeur comparable à a. Pour ε>0 fixé, la masse dans [0,ε] vaut 1−e⁻ᵋ/ᵃ et tend vers 1.
+Noter F(a)=∫₀∞fₐ(t)dt. Alors F n’est pas continue au paramètre 0. La masse reste égale à 1 mais se concentre près de 0. Pour une largeur ε>0 fixée, la masse dans [0,ε] vaut 1−e⁻ᵋ/ᵃ et tend vers 1.
 
 Le majorant manquant peut être identifié explicitement. Pour 0<t≤1, la borne supérieure de fₐ(t) sur 0<a≤1 est atteinte en a=t et vaut 1/(et). Tout majorant commun aurait une intégrale divergente près de 0. Le premier théorème de la page 63 ne peut donc pas être utilisé dans un voisinage comprenant a=0.
 
@@ -46,13 +48,13 @@ Le majorant manquant peut être identifié explicitement. Pour 0<t≤1, la borne
 
 Spé · Prolongement · Laboratoire `continuite_defaut`
 
-La difficulté se situe au bord a=0. Autour d’un a strictement positif, on peut choisir α∈[a/2,2a]. Comme 1/α≤2/a et e⁻ᵗ/ᵅ≤e⁻ᵗ/⁽²ᵃ⁾, un majorant local simple existe.
+La difficulté se situe au bord a=0. Fixer a>0, puis noter α un paramètre voisin dans [a/2,2a]. Comme 1/α≤2/a et e⁻ᵗ/ᵅ≤e⁻ᵗ/⁽²ᵃ⁾, un majorant local simple existe.
 
 fα(t)≤(2/a)e⁻ᵗ/⁽²ᵃ⁾ ; ∫₀∞(2/a)e⁻ᵗ/⁽²ᵃ⁾dt=4.
 
 Le théorème prouve la continuité de l’intégrale sur ]0,+∞[, où elle vaut effectivement 1. Il ne fournit aucun prolongement continu à 0. La différence entre domination locale à un point intérieur et domination jusqu’à une extrémité du domaine est une technique récurrente en analyse.
 
-Une grille numérique uniforme sur [0,L] risque de manquer le pic dès que son pas devient grand devant a. En revanche, le changement de variable t=au transforme l’intégrande et le facteur dt en e⁻ᵘdu : la largeur du pic est normalisée. Les masses affichées dans le laboratoire utilisent les formules exactes, et non une somme qui pourrait donner une fausse disparition de la masse.
+L>0 est la borne du dessin. Une grille uniforme sur [0,L] risque de manquer le pic lorsque son pas est trop grand. Poser u=t/a transforme l’intégrale en ∫e⁻ᵘdu et garde une largeur fixe. Les masses affichées utilisent les formules exactes.
 
 La famille illustre également la différence entre convergence ponctuelle et convergence en norme intégrale : ∫|fₐ−f₀|=1. Dire que chaque valeur converge ne signifie pas que la totalité de l’aire sous les courbes converge.
 
@@ -60,13 +62,13 @@ La famille illustre également la différence entre convergence ponctuelle et co
 
 Spé · Laboratoire `leibniz_frullani`
 
-Étudier F(a,b)=∫₀∞(e⁻ᵃᵗ−e⁻ᵇᵗ)/t dt pour a,b>0. Il serait incorrect de séparer les deux termes : chacun comporte une divergence en 0. C’est leur différence qui est intégrable.
+a,b>0 sont deux paramètres et t la variable intégrée. Poser f(a,b,t)=(e⁻ᵃᵗ−e⁻ᵇᵗ)/t, puis F(a,b)=∫₀∞f(a,b,t)dt. Les deux exponentielles divisées séparément par t donnent des intégrales divergentes en 0. Leur différence est intégrable.
 
 e⁻ᵃᵗ−e⁻ᵇᵗ=(b−a)t+O(t²) ; f(a,b,0)=b−a par prolongement.
 
 À l’infini, le théorème des accroissements finis appliqué à c↦e⁻ᶜᵗ donne |f(a,b,t)|≤|b−a|e⁻ᵐⁱⁿ⁽ᵃ,ᵇ⁾ᵗ, ce qui prouve l’intégrabilité. Le signe de F est celui de b−a.
 
-Fixer b et dériver en a : ∂f/∂a=−e⁻ᵃᵗ. Pour un point a>0 fixé, travailler sur le voisinage α∈[a/2,3a/2]. Le majorant e⁻⁽ᵃ/²⁾ᵗ est continu et intégrable. Le deuxième théorème de la page 63 donne ∂F/∂a=−1/a.
+Fixer b et dériver en a, à t fixé : ∂f/∂a=−e⁻ᵃᵗ. Fixer un point a>0 et noter α un paramètre voisin dans [a/2,3a/2]. Le majorant e⁻⁽ᵃ/²⁾ᵗ est continu et intégrable sur [0,+∞[. Le deuxième théorème de la page 63 donne ∂F/∂a=−1/a.
 
 La domination doit être indépendante de α à l’intérieur du voisinage choisi. La notation « a fixé » désigne le centre du voisinage, pas le paramètre courant de l’intégrande. Cette distinction évite un majorant dépendant de la variable qu’il était censé contrôler uniformément.
 
@@ -80,7 +82,7 @@ F(b,b)=0 ⇒ C(b)=ln b ⇒ F(a,b)=ln(b/a).
 
 On retrouve les lois logarithmiques : F(a,c)=F(a,b)+F(b,c), et le changement t=u/a montre que F ne dépend que du rapport b/a. Le résultat donne de nombreuses intégrales impropres dont une primitive directe serait peu commode.
 
-La troncature à L laisse une queue. La majoration de l’intégrande donne |F−∫₀ᴸf|≤|b−a|e⁻ᵐᴸ/m, avec m=min(a,b). Cette borne est volontairement simple et peut être large. Pour la dérivée, la queue a une valeur exacte e⁻ᵃᴸ/a en valeur absolue.
+L>0 est la coupure du calcul et m=min(a,b). La partie omise après L est majorée par |F−∫₀ᴸf|≤|b−a|e⁻ᵐᴸ/m. Pour la dérivée, cette partie vaut e⁻ᵃᴸ/a en valeur absolue. Ces bornes contrôlent la troncature, pas la quadrature sur [0,L].
 
 En calcul numérique, soustraire e⁻ᵃᵗ et e⁻ᵇᵗ pour t très petit perd des chiffres significatifs. La réécriture avec expm1, qui calcule précisément eᵘ−1 près de 0, respecte la compensation. Le quotient est prolongé par b−a en 0. Cette précaution illustre la différence entre une expression mathématiquement correcte et une évaluation numérique stable.
 
@@ -88,7 +90,7 @@ En calcul numérique, soustraire e⁻ᵃᵗ et e⁻ᵇᵗ pour t très petit per
 
 Spé · Laboratoire `leibniz_arctan`
 
-Pour a>0, définir F(a)=∫₀∞e⁻ᵃᵗsin(t)/t dt. En 0, sin(t)/t→1 ; à l’infini, la présence de e⁻ᵃᵗ assure l’intégrabilité absolue. La difficulté du facteur 1/t suggère de dériver par rapport à a.
+a>0 est le paramètre et t≥0 la variable intégrée. Poser f(a,t)=e⁻ᵃᵗsin(t)/t, prolongée par 1 en 0, puis F(a)=∫₀∞f(a,t)dt. L’exponentielle assure l’intégrabilité absolue à l’infini. Noter α un paramètre voisin de a. Dériver en ce paramètre enlève le facteur 1/t.
 
 ∂f/∂a=−e⁻ᵃᵗsin t ; |∂f/∂α|≤e⁻⁽ᵃ/²⁾ᵗ pour α≥a/2.
 
@@ -116,41 +118,41 @@ Pour a>0 et L>0, la queue absolue est au plus e⁻ᵃᴸ/(aL). L’enveloppe de 
 
 Spé · Laboratoire `derivees_gamma`
 
-Pour a>0, Γ(a)=∫₀∞tᵃ⁻¹e⁻ᵗdt. La singularité éventuelle en 0 est intégrable car a−1>−1 ; à l’infini, l’exponentielle domine les puissances. Dériver n fois par rapport à a fait apparaître (ln t)ⁿ.
+a>0 est le paramètre, t>0 la variable intégrée et n un entier positif. Poser f(a,t)=tᵃ⁻¹e⁻ᵗ et Γ(a)=∫₀∞f(a,t)dt. La singularité éventuelle en 0 est intégrable car a−1>−1. À l’infini, l’exponentielle domine les puissances. Pour un entier k entre 0 et n, dériver k fois en a donne :
 
 ∂ᵏ[tᵃ⁻¹e⁻ᵗ]/∂aᵏ=tᵃ⁻¹(ln t)ᵏe⁻ᵗ.
 
-Fixer un voisinage [m,M] de a, avec 0<m<a<M, et un entier n. Pour 0<t≤1, tᵅ⁻¹≤tᵐ⁻¹ ; pour t≥1, tᵅ⁻¹≤tᴹ⁻¹. Pour 0≤k≤n, |ln t|ᵏ≤1+|ln t|ⁿ.
+m et M sont deux bornes positives telles que m<a<M. Noter α un paramètre variant dans [m,M]. Pour 0<t≤1, tᵅ⁻¹≤tᵐ⁻¹ ; pour t≥1, tᵅ⁻¹≤tᴹ⁻¹. Pour 0≤k≤n, |ln t|ᵏ≤1+|ln t|ⁿ. Définir le majorant φ par :
 
 φ(t)=tᵐ⁻¹(1+|ln t|ⁿ)e⁻ᵗ si t≤1 ; φ(t)=tᴹ⁻¹(1+(ln t)ⁿ)e⁻ᵗ si t≥1.
 
-Près de 0, le changement s=−ln t transforme la majoration en une puissance de s multipliée par e⁻ᵐˢ ; à l’infini, l’exponentielle assure à nouveau l’intégrabilité. Le troisième théorème de la page 63 donne Γ∈Cⁿ et Γ⁽ᵏ⁾=∫∂ᵏf. Comme n est arbitraire, Γ est C∞ sur ]0,+∞[. Chaque compact du domaine possède ses majorants ; il n’est pas nécessaire d’en chercher un valable jusqu’à a=0.
+Près de 0, poser s=−ln t : les puissances de s multipliées par e⁻ᵐˢ sont intégrables. À l’infini, l’exponentielle garantit encore l’intégrabilité. Le troisième théorème donne Γ⁽ᵏ⁾(a)=∫₀∞tᵃ⁻¹(ln t)ᵏe⁻ᵗdt, où Γ⁽ᵏ⁾ désigne la dérivée d’ordre k. Ces dérivées sont continues jusqu’à l’ordre n : Γ est de classe Cⁿ. Comme n est arbitraire, Γ est de classe C∞ sur ]0,+∞[.
 
 ## 10. Log-convexité : une inégalité intégrale devient une variance
 
 Spé · Prolongement · Laboratoire `derivees_gamma`
 
-La fonction pₐ(t)=tᵃ⁻¹e⁻ᵗ/Γ(a) est positive et d’intégrale 1. On peut lire les dérivées de Γ comme des moments du logarithme : E(ln t)=Γ′/Γ et E((ln t)²)=Γ″/Γ.
+Pour a>0 et t>0, la fonction pₐ(t)=tᵃ⁻¹e⁻ᵗ/Γ(a) est une densité positive d’intégrale 1. Pour une fonction h, noter Eₐ(h)=∫₀∞h(t)pₐ(t)dt sa moyenne. Sa variance est Varₐ(h)=Eₐ(h²)−Eₐ(h)². Avec h(t)=ln t, on obtient Eₐ(ln t)=Γ′/Γ et Eₐ((ln t)²)=Γ″/Γ.
 
-(ln Γ)″=Γ″/Γ−(Γ′/Γ)²=Var(ln t)>0.
+(ln Γ)″=Γ″/Γ−(Γ′/Γ)²=Varₐ(ln t)>0.
 
 La variance est strictement positive car ln t n’est pas constante pour cette densité positive sur ]0,+∞[. Cette interprétation probabiliste donne la convexité stricte de ln Γ. Sans probabilités, Cauchy–Schwarz appliqué à √pₐ et (ln t)√pₐ fournit exactement la même inégalité.
 
-En particulier, pour 0≤θ≤1, Γ((1−θ)a+θb)≤Γ(a)¹⁻ᶿΓ(b)ᶿ. La récurrence Γ(a+1)=aΓ(a), obtenue par intégration par parties, relie les dérivées aux factorielles mais ne suffit pas à elle seule à caractériser une interpolation continue du factorial.
+Pour deux paramètres a,b>0 et un poids θ entre 0 et 1, la convexité donne Γ((1−θ)a+θb)≤Γ(a)¹⁻ᶿΓ(b)ᶿ. La récurrence Γ(a+1)=aΓ(a), obtenue par intégration par parties, relie Γ aux factorielles.
 
-Le laboratoire intègre en u=ln t : Γ⁽ⁿ⁾(a)=∫ℝuⁿexp(au−eᵘ)du. Il conserve le facteur dt=eᵘdu. Les coupures u=−q ln 10 et t=T donnent des queues explicites. L’écart entre deux quadratures indique une sensibilité numérique ; les bornes affichées contrôlent les queues, pas automatiquement l’erreur de quadrature.
+Pour un ordre n entier, poser u=ln t : Γ⁽ⁿ⁾(a)=∫ℝuⁿexp(au−eᵘ)du. q fixe la coupure basse ε=10⁻ᑫ et T la coupure haute. Le calcul utilise [ε,T], avec dt=eᵘdu. Les moyennes et variances affichées sur [ε,T] concernent la densité tronquée renormalisée ; elles approchent les références entières. Les bornes contrôlent les queues. L’écart entre deux quadratures reste un indicateur, pas une borne rigoureuse.
 
 ## 11. Dériver à tout ordre une transformée de Laplace
 
 Spé · Laboratoire `derivees_laplace`
 
-Pour a>0, F(a)=∫₀∞e⁻ᵃᵗdt=1/a. Dériver formellement sous l’intégrale produit (−t)ᵏe⁻ᵃᵗ. Le troisième théorème de la page 63 transforme ce calcul formel en démonstration lorsqu’on fournit les majorants requis.
+a>0 est le paramètre et t≥0 la variable intégrée. Poser F(a)=∫₀∞e⁻ᵃᵗdt=1/a. n est un ordre entier positif ; k désigne un entier entre 0 et n. Dériver k fois en a produit (−t)ᵏe⁻ᵃᵗ. Le troisième théorème de la page 63 justifie ce calcul avec des majorants intégrables.
 
-Fixer a>0, un ordre n et un voisinage α∈[a/2,3a/2]. Pour t≥0 et 0≤k≤n, tᵏ≤1+tⁿ. Ainsi les dérivées partielles sont toutes dominées par une même fonction intégrable.
+Fixer a>0 et noter α un paramètre voisin dans [a/2,3a/2]. Pour t≥0 et 0≤k≤n, tᵏ≤1+tⁿ. Toutes les dérivées partielles sont donc dominées par une même fonction intégrable, indépendante de α.
 
 |(−t)ᵏe⁻ᵅᵗ|≤(1+tⁿ)e⁻⁽ᵃ/²⁾ᵗ.
 
-Le théorème donne F⁽ᵏ⁾(a)=∫₀∞(−t)ᵏe⁻ᵃᵗdt. En dérivant 1/a, on en déduit l’identité valable à chaque ordre entier.
+F⁽ᵏ⁾ désigne la dérivée d’ordre k et n! la factorielle de n. Le théorème donne F⁽ᵏ⁾(a)=∫₀∞(−t)ᵏe⁻ᵃᵗdt. En dérivant 1/a, on obtient :
 
 ∫₀∞tⁿe⁻ᵃᵗdt=n!/aⁿ⁺¹.
 
@@ -160,13 +162,15 @@ On peut aussi la prouver par n intégrations par parties, ou avec u=at et Γ(n+1
 
 Spé · Prolongement · Laboratoire `derivees_laplace`
 
-Une fonction F est complètement monotone sur ]0,+∞[ si elle est C∞ et si (−1)ⁿF⁽ⁿ⁾≥0 pour tout entier n≥0. Ici, la représentation intégrale donne un résultat encore strict : l’intégrande tⁿe⁻ᵃᵗ est positive pour t>0.
+Être de classe C∞ signifie avoir des dérivées continues à tous les ordres. Une telle fonction F est complètement monotone sur ]0,+∞[ si (−1)ⁿF⁽ⁿ⁾≥0 pour chaque ordre entier n≥0. Ici, F(a)=1/a et l’intégrande tⁿe⁻ᵃᵗ est positive pour t>0.
 
 (−1)ⁿF⁽ⁿ⁾(a)=n!/aⁿ⁺¹>0.
 
-F décroît, F″ est positive, F‴ est négative, et ainsi de suite. Le même raisonnement fonctionne pour ∫e⁻ᵃᵗw(t)dt avec w≥0, sous des hypothèses de domination adaptées. Une propriété de signe d’une densité se transmet donc aux dérivées de sa transformée.
+F décroît, F″ est positive, F‴ est négative, et ainsi de suite. En choisissant une fonction positive w, le même raisonnement s’applique à ∫₀∞e⁻ᵃᵗw(t)dt sous des hypothèses de domination adaptées.
 
 Pour l’intégration numérique, la densité tⁿe⁻ᵃᵗ atteint son maximum en n/a. Une grande valeur de n, ou un petit a, déplace la partie importante de l’aire vers la droite. Une coupure fixe peut alors perdre une proportion majeure de la masse.
+
+Pour une coupure L>0, noter Rₙ(L) la masse omise après L. Dans la somme suivante, j est l’indice entier de 0 à n :
 
 Rₙ(L)=∫L∞tⁿe⁻ᵃᵗdt=e⁻ᵃᴸ∑ⱼ₌₀ⁿ[n!/(n−j)!] Lⁿ⁻ʲ/aʲ⁺¹.
 

@@ -68,6 +68,14 @@ class FunctionalEquations(unittest.TestCase):
 
 
 class ContinuityTheorem(unittest.TestCase):
+    def test_finite_gaussian_integral_is_not_the_integral_on_the_real_line(self):
+        L=2; m=metrics(calculate('continuite_gauss',a=0,L=L))
+        finite_exact=math.sqrt(math.pi)*math.erf(L)
+        quadrature_bound=m['Borne totale : queues + trapèzes']-m['Borne des deux queues']
+        self.assertLessEqual(abs(m['Intégrale calculée sur [−L,L]']-finite_exact),quadrature_bound+2e-14)
+        self.assertGreater(m['Valeur sur ℝ']-finite_exact,.008)
+        self.assertLessEqual(m['Valeur sur ℝ']-finite_exact,m['Borne des deux queues'])
+
     def test_gaussian_fourier_value_and_certified_error(self):
         for a in [0,2,-4,6]:
             for L in [2,4,6]:
@@ -111,6 +119,27 @@ class ContinuityTheorem(unittest.TestCase):
 
 
 class LeibnizTheorem(unittest.TestCase):
+    def test_frullani_finite_cutoff_derivative_has_its_own_boundary_term(self):
+        a,b,L,h=.25,1,4,2e-5
+        plus=metrics(calculate('leibniz_frullani',a=a+h,b=b,L=L))['F(a,b) calculé jusqu’à L']
+        minus=metrics(calculate('leibniz_frullani',a=a-h,b=b,L=L))['F(a,b) calculé jusqu’à L']
+        finite_derivative=-(1-math.exp(-a*L))/a
+        self.assertAlmostEqual((plus-minus)/(2*h),finite_derivative,delta=2e-8)
+        m=metrics(calculate('leibniz_frullani',a=a,b=b,L=L))
+        self.assertAlmostEqual(m['∂F/∂a sur [0,L]'],finite_derivative,places=14)
+        self.assertGreater(abs(finite_derivative-m['∂F/∂a sur [0,∞[']),1)
+
+    def test_arctangent_finite_cutoff_derivative_has_its_own_boundary_term(self):
+        a,L,h=.2,6,2e-5
+        # Une primitive de exp(−at) sin t donne ce terme de bord exact en L.
+        finite_derivative=-(1-math.exp(-a*L)*(a*math.sin(L)+math.cos(L)))/(1+a*a)
+        plus=metrics(calculate('leibniz_arctan',a=a+h,L=L))['F(a) calculé jusqu’à L']
+        minus=metrics(calculate('leibniz_arctan',a=a-h,L=L))['F(a) calculé jusqu’à L']
+        self.assertAlmostEqual((plus-minus)/(2*h),finite_derivative,delta=2e-8)
+        m=metrics(calculate('leibniz_arctan',a=a,L=L))
+        self.assertAlmostEqual(m['F′(a) calculé jusqu’à L'],finite_derivative,places=12)
+        self.assertGreater(abs(finite_derivative-m['F′(a) exact']),.2)
+
     def test_frullani_value_asymmetry_and_diagonal(self):
         for a,b in [(1,2),(2,1),(.25,.5),(4,4)]:
             m=metrics(calculate('leibniz_frullani',a=a,b=b,L=32))
@@ -151,6 +180,30 @@ class LeibnizTheorem(unittest.TestCase):
 
 
 class HigherDerivativeTheorem(unittest.TestCase):
+    def test_gamma_derivatives_at_one_against_independent_constants(self):
+        # Valeurs exactes issues de Γ′(1)=−γ et des séries des polygamma.
+        euler_gamma=.5772156649015329; zeta_three=1.2020569031595943
+        exact=[-euler_gamma,euler_gamma**2+math.pi**2/6,
+               -euler_gamma**3-euler_gamma*math.pi**2/2-2*zeta_three]
+        for n,expected in enumerate(exact,1):
+            with self.subTest(n=n):
+                self.assertAlmostEqual(gamma_log_moment(1,n,40,60),expected,delta=2e-10)
+
+    def test_gamma_truncated_moments_and_entire_references_are_distinguished(self):
+        out=calculate('derivees_gamma',a=1,n=2,q=3,T=12); m=metrics(out)
+        # Quadrature trapézoïdale indépendante de celle de Gauss du laboratoire.
+        u=np.linspace(-3*math.log(10),math.log(12),200001)
+        weight=np.exp(u-np.exp(u)); norm=float(integrate(weight,u))
+        mean=float(integrate(u*weight,u))/norm
+        variance=float(integrate(u*u*weight,u))/norm-mean*mean
+        self.assertAlmostEqual(m['Moyenne de ln t sur [ε,T]'],mean,delta=1e-8)
+        self.assertAlmostEqual(m['Variance de ln t sur [ε,T]'],variance,delta=1e-8)
+        self.assertAlmostEqual(m['Moyenne entière de référence : Γ′/Γ'],-.5772156649015329,places=12)
+        self.assertAlmostEqual(m['Variance entière de référence : (ln Γ)″'],math.pi**2/6,places=12)
+        self.assertGreater(abs(mean-m['Moyenne entière de référence : Γ′/Γ']),.007)
+        self.assertGreater(abs(variance-m['Variance entière de référence : (ln Γ)″']),.05)
+        self.assertIn('tronquée sur [ε,T]',out['charts'][0]['series'][1]['label'])
+
     def test_gamma_zero_moment_against_standard_gamma(self):
         for a in [.6,1,2,2.3,5]:
             U=8*math.log(10); T=50; val=gamma_log_moment(a,0,U,T)

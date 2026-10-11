@@ -5,10 +5,10 @@ cours, illustrations, manipulations et exercices corrigés.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Quinze ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Seize ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements** et **Fonctions & Équations** (huitième volet de mathématiques). Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques) et **Chaleur & Transferts — Thermodynamique**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
@@ -29,6 +29,19 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md) |
 | 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
 | 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md) |
+| 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) |
+
+## Physique · Atelier 16 · Chaleur & Transferts
+
+**30 laboratoires interactifs, 60 leçons, 90 exercices corrigés et 30 figures scientifiques**, à partir des fiches **P22–P24, pages 450–470**. Les variables et les unités sont définies avant les formules ; chaque TP indique son but, ses hypothèses et trois manipulations, avec repères sup / spé / au-delà.
+
+![Thermodynamique : diffusion, potentiels, machines et effets couplés](thermodynamique/apercu.png)
+
+- **Priorité P23 :** 14 laboratoires sur Fourier, résistances, isolation, igloo, diffusion, ondes thermiques, Biot, marche au hasard, Langevin, électrolytes, neutrons et entropie.
+- **Potentiels, travaux et machines :** Helmholtz, Gibbs, calorimétrie, Carnot, cycles, détentes, compression et exergie.
+- **P24 et pages 468–470 :** Leslie, Seebeck, Peltier, thermoacoustique, quartz et début de formation du brouillard.
+
+[Présentation](thermodynamique/README.md) · [15 séances](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) · [Exercices corrigés](thermodynamique/EXERCICES.md). Sous Windows : **`Lancer_Thermodynamique.cmd`**. Serveur local : **http://127.0.0.1:8782** ; hors ligne après installation.
 
 ## Mathématiques · Atelier 15 · Fonctions & Équations
 

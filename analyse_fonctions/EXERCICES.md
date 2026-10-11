@@ -54,11 +54,11 @@ La dérivée logarithmique est (t−a)/a². Pour t≤1, le maximum est en a=t et
 
 Spé · Laboratoire `continuite_defaut`
 
-Prouver fₐ(t)→0 ponctuellement, mais que fₐ ne tend pas vers 0 en norme L¹. Quelle égalité illégitime serait produite par un passage automatique sous l’intégrale ?
+La norme L¹ d’une fonction g est ∫₀∞|g(t)|dt. Prouver que fₐ(t)→0 pour chaque t>0, mais pas en norme L¹. Quelle égalité illégitime serait produite par un passage automatique sous l’intégrale ?
 
 **Correction guidée**
 
-Pour t>0, poser u=t/a : fₐ(t)=ue⁻ᵘ/t→0. Au point 0, la valeur est fixée à 0. Pourtant ∫|fₐ|=1. Le passage illégitime donnerait **lim∫fₐ=∫lim fₐ=0**, alors que le membre de gauche vaut 1.
+Pour t>0 fixé, poser u=t/a : fₐ(t)=ue⁻ᵘ/t→0. Pourtant ∫₀∞|fₐ|=1. Le passage illégitime donnerait **lim∫fₐ=∫lim fₐ=0**, alors que le membre de gauche vaut 1.
 
 ## 07. Un logarithme sans primitive
 
