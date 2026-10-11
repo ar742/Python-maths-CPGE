@@ -11,10 +11,10 @@ Les notations et, en physique, les unités sont expliquées avant les calculs.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Seize ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Dix-sept ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques) et **Chaleur & Transferts — Thermodynamique**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques), **Chaleur & Transferts — Thermodynamique** et **Électricité & Technologies — PTSI / PSI / PT**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
@@ -36,6 +36,19 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
 | 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md) |
 | 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) |
+| 17 · Électricité & Technologies — PTSI / PSI / PT | `Lancer_Electricite.cmd` | [Guide](electricite_technologies/LISEZ_MOI.md) · [Parcours](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) |
+
+## Physique & SI · Atelier 17 · Électricité & Technologies
+
+**36 laboratoires interactifs, 72 leçons, 108 exercices corrigés et 36 figures scientifiques**, à partir des fiches **P15–P19, pages 386–433**. Conçu particulièrement pour **PTSI, PSI et PT**, avec variables, unités et buts définis avant les manipulations, et distinction entre physique, SI et prolongements accompagnés.
+
+![Électricité et technologies : commande, circuits et électronique](electricite_technologies/apercu.png)
+
+- **Priorité P17 :** moteur X et asservissement, passage temps–p, fonctions de z, rétroaction, filtres RIF/RII, discrétisations et isolation sismique.
+- **Circuits et technologies :** Wheatstone, transmission, redresseurs, doubleur, diode–RC, mesures, triphasé, transformateur, hacheur et spectre de l’onduleur.
+- **P18–P19 :** ALI réels, oscillateurs, filtre à trois ALI et sélection d’harmoniques, analyse fréquentielle et modulation AM.
+
+[Présentation](electricite_technologies/README.md) · [Programme et recueil](electricite_technologies/MATRICE_PROGRAMME.md) · [18 séances](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) · [Exercices corrigés](electricite_technologies/EXERCICES.md). Sous Windows : **`Lancer_Electricite.cmd`**. Serveur local : **http://127.0.0.1:8783** ; hors ligne après installation.
 
 ## Physique · Atelier 16 · Chaleur & Transferts
 
