@@ -212,7 +212,7 @@ d(½mv²+½Li²)/dt=−Ri²≤0
 
 *Sup → Spé* — laboratoire `induction`.
 
-**Cadre tombant.** Mesurer y vers le bas à partir de l’entrée de son bord inférieur. Le champ B est uniforme seulement sous la frontière. Pour une largeur a et une hauteur b, choisir Φ=Ba clamp(y,0,b). Négliger l’inductance du cadre et prendre R constant.
+**Cadre tombant.** Mesurer y vers le bas à partir de l’entrée de son bord inférieur. Le champ B est uniforme seulement sous la frontière. Pour une largeur a et une hauteur b, définir la fonction de saturation clamp(y,0,b) comme 0 pour y<0, y pour 0≤y≤b et b pour y>b, puis choisir Φ=Ba clamp(y,0,b). Négliger l’inductance du cadre et prendre R constant.
 
 0<y<b : e=−Ba ẏ ; m ÿ=mg−(B²a²/R)ẏ  
 y≥b : Φ=Bab constant ; e=i=0 ; ÿ=g
@@ -544,18 +544,18 @@ k±=(ω/c)√(a±g), branches passives
 
 **Exemple.** Si n−−n+=2×10⁻⁵, λvide=633 nm et L=1 cm, θF=πL(n−−n+)/λ≈0,993 rad, soit 56,9°. La linéarisation en g/a exige |g|≪|a| et des pertes suffisamment faibles pour parler d’une rotation pure.
 
-**Technique.** Diagonaliser une matrice hermitienne 2×2 puis recombiner les modes relie algèbre linéaire et polarisation. L’extension anisotrope demande eigenmodes et flux ; divD=0 n’est pas un raccourci universel vers divE=0.
+**Technique.** Diagonaliser une matrice hermitienne 2×2 puis recombiner les modes relie algèbre linéaire et polarisation. L’extension anisotrope demande modes propres et flux ; divD=0 n’est pas un raccourci universel vers divE=0.
 
 ## 33. Kerr optique : construire une solution en sech
 
 *Au-delà, outils Spé* — laboratoire `kerr`.
 
-**Modèle réduit.** Une enveloppe transverse monochromatique u(x) vérifie u″−a u+b u³=0, avec a>0 en m⁻² et b>0 en m⁻² par unité de u². Elle résulte d’un équilibre entre diffraction et réponse optique focalisante ; a et b doivent être déduits ou prescrits avant d’utiliser la solution.
+**Modèle réduit.** x est une position transverse en m ; u(x) est l’amplitude réelle du champ et x₀ le centre du profil. La fonction sech est définie par sech(s)=1/cosh(s). Une enveloppe transverse monochromatique u(x) vérifie u″−a u+b u³=0, avec a>0 en m⁻² et b>0 en m⁻² par unité de u². Elle résulte d’un équilibre entre diffraction et réponse optique focalisante ; a et b doivent être déduits ou prescrits avant d’utiliser la solution.
 
 ½u′²−½a u²+¼b u⁴=C  
 u(x)=√(2a/b) sech[√a(x−x₀)] pour C=0
 
-**Démonstration.** Multiplier l’ODE par u′ et intégrer fournit l’intégrale première. Une solution localisée avec u,u′→0 à l’infini impose C=0. Au maximum u′=0, d’où u₀²=2a/b ; séparer les variables ou dériver sech vérifie la solution exacte de cette ODE.
+**Démonstration.** Multiplier l’équation différentielle par u′ et intégrer fournit l’intégrale première. Une solution localisée avec u,u′→0 à l’infini impose C=0. Au maximum u′=0, d’où u₀²=2a/b ; séparer les variables ou dériver sech vérifie la solution exacte de cette équation différentielle.
 
 **Relation amplitude-largeur.** La largeur caractéristique w=1/√a et u₀=√(2a/b) vérifient u₀w=√(2/b). La largeur à mi-hauteur d’intensité u² vaut 2 arcosh√2/√a≈1,763/√a. Une amplitude double exige une largeur moitié à b fixé.
 
@@ -577,7 +577,7 @@ E³=E₀³[3cos(ωt)+cos(3ωt)]/4 ; Pω,nonlin=(3/4)ε₀χ⁽³⁾E₀³
 
 **Ordre de grandeur.** Avec n₂=3×10⁻²⁰ m²·W⁻¹, I=10¹² W·m⁻², L=1 mm et λ=800 nm, Δn=3×10⁻⁸ et Δφ≈2,36×10⁻⁴ rad. Une petite variation d’indice peut accumuler une phase mesurable ; elle n’implique pas automatiquement une soliton stable.
 
-**Contrôle scientifique.** Vérifier |Δn|≪n₀, échelles de variation lentes, pertes, dispersion et harmonique générée. Une loi scalaire n(I) pour une polarisation ne démontre pas à elle seule une biréfringence : il faut comparer au moins deux eigenmodes.
+**Contrôle scientifique.** Vérifier |Δn|≪n₀, échelles de variation lentes, pertes, dispersion et harmonique générée. Une loi scalaire n(I) pour une polarisation ne démontre pas à elle seule une biréfringence : il faut comparer au moins deux modes propres.
 
 ## 35. Induction MHD : étirement et diffusion du champ
 
@@ -626,8 +626,9 @@ Passer de deux charges exactes à un dipôle approché et décider à quelle dis
 
 **Objets et unités**
 
-- q en nC, séparation a en m, moment p=qa en C·m
-- Angle en degrés ; distance d’observation r/a sans unité ; E en V·m⁻¹, V en V
+- q est la valeur positive des charges ±q, en nC ; a leur séparation en m. Le moment dipolaire p va de −q vers +q et vaut q a.
+- r est la distance au centre ; le rapport r/a mesure l’éloignement. L’angle règle la direction du dipôle.
+- E est le champ électrique en V·m⁻¹ et V le potentiel en V ; une équipotentielle est une courbe où V est constant.
 
 **Hypothèses de l’expérience**
 
@@ -649,7 +650,7 @@ Passer de deux charges exactes à un dipôle approché et décider à quelle dis
 **Niveaux et approfondissements**
 
 - Sup : Superposition de Coulomb, dimensions et symétrie ; l’entrée ne demande pas de théorie multipolaire complète.
-- Spé : Taylor multivariable, gradient, énergie et forces ; choisir une grandeur pour quantifier l’approximation.
+- Spé : MP/PC : électrostatique, gradient, développement limité et énergie dipolaire.
 - Au-delà : Moments multipolaires et sensibilité d’une approximation près d’un zéro.
 
 Leçons de référence : 4, 5.
@@ -662,8 +663,9 @@ Choisir une surface adaptée à la symétrie puis confronter champ, potentiel, c
 
 **Objets et unités**
 
-- Sphère : Q en nC, R en m, E en V·m⁻¹
-- Coaxial : a en cm, rapport b/a, longueur en m, U=Vinterne−Vexterne en V ; C en F, W en J
+- Sphère : Q est la charge totale en nC, R son rayon en m et r la distance au centre. E est le champ électrique en V·m⁻¹ et V le potentiel en V.
+- Coaxial : a est le rayon du conducteur interne en cm, b celui du conducteur externe et ℓ la longueur en m. La tension est V_interne−V_externe.
+- C est la capacité en F ; W l’énergie électrostatique en J. ε₀ est la permittivité du vide.
 
 **Hypothèses de l’expérience**
 
@@ -685,7 +687,7 @@ Choisir une surface adaptée à la symétrie puis confronter champ, potentiel, c
 **Niveaux et approfondissements**
 
 - Sup : Intégration, géométrie et unités ; Gauss est introduit ici comme outil si la filière ne l’a pas encore étudié.
-- Spé : Symétries de champs, potentiel, capacité et bilans électrostatiques selon la filière.
+- Spé : MP/PC : loi de Gauss, symétries, potentiel et capacité ; choisir une surface adaptée.
 - Au-delà : Unicité de Poisson et variations d’énergie avec une source de tension.
 
 Leçons de référence : 2, 3, 6.
@@ -698,8 +700,9 @@ Relier la géométrie d’un courant au champ magnétique, reconnaître une limi
 
 **Objets et unités**
 
-- I orienté en A ; rayon R et longueur en m ; nombre N de spires
-- B en T ou μT selon l’affichage ; moment magnétique IπR² en A·m²
+- I est le courant orienté en A, R le rayon de spire en m et ℓ la longueur du fil ou solénoïde en m. N est le nombre de spires.
+- B est le champ magnétique en T ; z est la position sur l’axe. μ₀ est la perméabilité du vide en H·m⁻¹.
+- Le moment magnétique m=NIπR² est en A·m² ; sa direction suit la règle de la main droite.
 
 **Hypothèses de l’expérience**
 
@@ -721,7 +724,7 @@ Relier la géométrie d’un courant au champ magnétique, reconnaître une limi
 **Niveaux et approfondissements**
 
 - Sup : Produit vectoriel, intégration et compensation par symétrie.
-- Spé : Magnétostatique, distinction Biot–Savart/Ampère et limites de bobines.
+- Spé : MP/PC : magnétostatique et symétries ; les formules de géométrie finie sont établies ou fournies.
 - Au-delà : Champs retardés et termes radiatifs absents du calcul stationnaire.
 
 Leçons de référence : 7, 16.
@@ -734,8 +737,9 @@ Fabriquer une région presque uniforme par annulation d’une dérivée. Le rég
 
 **Objets et unités**
 
-- Rayon R en m, écartement d/R sans unité, I en A, N par bobine
-- B en T ; uniformité relative sans unité, évaluée dans une région annoncée
+- R est le rayon commun en m ; d est l’écartement des centres, réglé par d/R. I est le courant en A et N le nombre de spires de chaque bobine.
+- z est la position sur l’axe ; B(z) le champ axial en T. B′ et B″ désignent ses dérivées par rapport à z.
+- L’uniformité relative mesure la variation de B par rapport à B(0), dans la région annoncée.
 
 **Hypothèses de l’expérience**
 
@@ -757,7 +761,7 @@ Fabriquer une région presque uniforme par annulation d’une dérivée. Le rég
 **Niveaux et approfondissements**
 
 - Sup : Somme de fonctions, parité et dérivation ; estimation dimensionnelle de B.
-- Spé : Développement limité contrôlé et symétries du champ ; liaison mesure/modèle.
+- Spé : MP/PC : superposition, symétrie et développement limité ; calibration expérimentale du champ.
 - Au-delà : Développement hors axe par divB=curlB=0 et optimisation d’une région volumique.
 
 Leçons de référence : 8, 11.
@@ -770,8 +774,9 @@ Comprendre une conductivité comme réponse avec mémoire. L’échelon et le r�
 
 **Objets et unités**
 
-- n obtenu à partir de log₁₀(n/m⁻³), τ en fs, masse effective en me
-- f en THz, Ecrête en V·m⁻¹ ; σ en S·m⁻¹, j en A·m⁻² ; q=±e
+- n est la densité de porteurs en m⁻³ ; le curseur règle log₁₀ de sa valeur numérique dans cette unité. q=±e est leur charge, e étant la charge élémentaire.
+- τ est le temps de relaxation en fs ; m* est la masse effective en multiples de la masse électronique mₑ. f est la fréquence en THz et ω=2πf.
+- E est l’amplitude crête ou l’échelon du champ en V·m⁻¹ ; v la vitesse moyenne, j la densité de courant en A·m⁻² et σ la conductivité en S·m⁻¹.
 
 **Hypothèses de l’expérience**
 
@@ -793,7 +798,7 @@ Comprendre une conductivité comme réponse avec mémoire. L’échelon et le r�
 **Niveaux et approfondissements**
 
 - Sup : Résolution d’un échelon et loi d’Ohm obtenue à partir d’un modèle mécanique.
-- Spé : Phasors, énergie et réponse linéaire ; contrôle des amplitudes crête et efficace.
+- Spé : MP/PC : loi d’Ohm, réponse linéaire et énergie. Drude est un modèle mécanique fourni pour expliquer la conductivité.
 - Au-delà : Causalité, pôles complexes, permittivité de Drude et statistiques des porteurs.
 
 Leçons de référence : 9, 10.
@@ -806,8 +811,9 @@ Déterminer le signe des porteurs à partir d’une tension transverse dont les 
 
 **Objets et unités**
 
-- I vers +x en A ; Bz vers +z en T ; largeur w suivant y et épaisseur t suivant z en mm
-- UH=V(y=−w/2)−V(y=+w/2) en V ; q=±e et n en m⁻³
+- I est le courant vers +x en A ; Bz le champ vers +z en T ; w la largeur suivant y et t l’épaisseur suivant z, en mm.
+- q=±e est la charge des porteurs et n leur densité en m⁻³ ; le curseur règle log₁₀ de la valeur numérique de n.
+- U_H=V(y=−w/2)−V(y=+w/2) est la tension de Hall en V ; E_H est le champ transverse.
 
 **Hypothèses de l’expérience**
 
@@ -829,7 +835,7 @@ Déterminer le signe des porteurs à partir d’une tension transverse dont les 
 **Niveaux et approfondissements**
 
 - Sup : Lorentz, vitesse moyenne et définition du potentiel ; aucune mémorisation d’un signe sans axes.
-- Spé : Conductivité tensorielle, symétries de mesure et extraction de paramètres selon la filière.
+- Spé : Réinvestissement de Lorentz et du potentiel MP/PC ; modèle de Hall à un porteur fourni comme application de mesure.
 - Au-delà : Transport multibande, pondération par mobilités et Hall quantique, hors du modèle présenté.
 
 Leçons de référence : 11, 8.
@@ -842,8 +848,9 @@ Fermer le bilan électromécanique et distinguer un rail toujours actif d’un c
 
 **Objets et unités**
 
-- B en T, largeur active et hauteur du cadre en m, R en Ω
-- Rail : L en mH, masse en g, v en m·s⁻¹ ; cadre : distance vers le bas et temps en s
+- Bz est le champ uniforme en T ; ℓ la longueur active du barreau ou largeur du cadre en m ; la hauteur du cadre est en m.
+- R est la résistance totale en Ω, L l’inductance du rail en mH et m la masse mobile réglée en g. v est la vitesse en m·s⁻¹ et i le courant en A.
+- Φ est le flux magnétique en Wb, la fém une tension en V ; t est le temps en s et W l’énergie mécanique et magnétique en J.
 
 **Hypothèses de l’expérience**
 
@@ -853,7 +860,7 @@ Fermer le bilan électromécanique et distinguer un rail toujours actif d’un c
 **Techniques à mobiliser**
 
 - Flux orienté et fém d’un contour mobile
-- Système d’ODE et critère d’amortissement
+- Système d’équations différentielles et critère d’amortissement
 - Somme des bilans mécanique et électrique
 
 **Prédire → expérimenter → justifier**
@@ -865,7 +872,7 @@ Fermer le bilan électromécanique et distinguer un rail toujours actif d’un c
 **Niveaux et approfondissements**
 
 - Sup : Lenz, énergie et résolution d’une équation linéaire après introduction guidée du flux.
-- Spé : Induction, couplages, transitoires et traitement par morceaux.
+- Spé : Acquis de Sup, puis bilans de Spé MP/PC/PSI : induction, conversion et transitoires.
 - Au-delà : Inductances mutuelles, géométries continues et freinage magnétique distribué.
 
 Leçons de référence : 12, 13.
@@ -878,8 +885,9 @@ Lire un transducteur comme deux systèmes couplés par le même coefficient. À 
 
 **Objets et unités**
 
-- R en Ω, L en mH, masse en g, raideur k en N·m⁻¹, b en N·s·m⁻¹
-- κ en N·A⁻¹=V·s·m⁻¹, f en Hz, tension crête en V ; x,v,i et puissances SI
+- x est le déplacement de membrane en m, v sa vitesse en m·s⁻¹ et i le courant en A. m est sa masse réglée en g, k la raideur en N·m⁻¹ et b l’amortissement en N·s·m⁻¹.
+- R est la résistance électrique en Ω et L l’inductance en mH ; f est la fréquence en Hz et u la tension en V, d’amplitude crête réglable.
+- κ est le coefficient réciproque en N·A⁻¹=V·s·m⁻¹ : il produit la force κi et la tension induite κv.
 
 **Hypothèses de l’expérience**
 
@@ -901,7 +909,7 @@ Lire un transducteur comme deux systèmes couplés par le même coefficient. À 
 **Niveaux et approfondissements**
 
 - Sup : Équations d’oscillateur, circuit RL et bilans séparés.
-- Spé : Couplage réciproque, phasors et conversion électromécanique selon la filière.
+- Spé : Oscillateur forcé, circuit et conversion selon la filière ; couplage électromécanique accompagné.
 - Au-delà : Charge acoustique, rayonnement d’un piston et modèles distribués de membrane.
 
 Leçons de référence : 14.
@@ -914,8 +922,9 @@ Reconstruire H depuis le courant primaire et B depuis la tension du secondaire o
 
 **Objets et unités**
 
-- Hc en A·m⁻¹, Hmax/Hc, Bs en T, μr réversible
-- f en Hz, longueur du tore en m, section en cm², N₁,N₂ ; e₂ en V et pertes en J·m⁻³ par cycle
+- H est le champ magnétique en A·m⁻¹ et B l’induction en T ; Hc est l’échelle coercitive, Hmax l’amplitude et Bs la contribution saturée. μr est la perméabilité relative réversible.
+- ℓ est la longueur moyenne du tore en m, S sa section réglée en cm² ; N₁,N₂ sont les nombres de spires primaire et secondaire. i₁ est le courant primaire en A, e₂ la fém secondaire en V.
+- f est la fréquence en Hz ; l’aire orientée du cycle H–B donne une perte d’énergie volumique en J·m⁻³ par cycle.
 
 **Hypothèses de l’expérience**
 
@@ -937,7 +946,7 @@ Reconstruire H depuis le courant primaire et B depuis la tension du secondaire o
 **Niveaux et approfondissements**
 
 - Sup : Intégration d’une tension et lecture d’une aire ; orientation du bobinage explicitée.
-- Spé : Milieux magnétiques, transformateurs et bilans selon la filière.
+- Spé : PSI : milieux magnétiques et transformateur. Pour MP/PC, réinvestissement d’Ampère, Faraday et des bilans dans un prolongement.
 - Au-delà : Preisach, pertes dynamiques et identification d’une distribution de domaines.
 
 Leçons de référence : 15, 21.
@@ -950,8 +959,9 @@ Comprendre pourquoi deux angles donnant le même couple n’ont pas la même sta
 
 **Objets et unités**
 
-- Moment m en A·m², B en T, fréquence du champ tournant en Hz
-- Retard δ=θchamp−θrotor en degrés, J en kg·m² et charge normalisée Tcharge/(mB)
+- ℳ est le moment magnétique du dipôle rotor en A·m² ; B l’amplitude du champ tournant en T et f sa fréquence en Hz. Le modèle possède une seule paire de pôles.
+- δ est le retard du rotor en degrés ; T_charge le couple résistant en N·m et T_max le couple maximal. Leur rapport est sans dimension.
+- J est le moment d’inertie en kg·m². Le potentiel incliné permet d’identifier les positions d’équilibre et leur stabilité.
 
 **Hypothèses de l’expérience**
 
@@ -973,7 +983,7 @@ Comprendre pourquoi deux angles donnant le même couple n’ont pas la même sta
 **Niveaux et approfondissements**
 
 - Sup : Produit vectoriel, trigonométrie et minimum d’énergie.
-- Spé : Stabilité, verrouillage et machines tournantes, particulièrement dans les parcours où elles sont au programme.
+- Spé : PSI : machine synchrone. Les outils de stabilité et de couple sont accessibles aux autres filières dans ce modèle fourni.
 - Au-delà : Dynamique de capture, alimentation variable et modèle multipolaire périodique en pθ.
 
 Leçons de référence : 19.
@@ -986,8 +996,9 @@ Lire le glissement comme la cause du courant rotorique, puis suivre séparément
 
 **Objets et unités**
 
-- Tension simple efficace en V, f en Hz, p paires de pôles, s=(Ωs−Ωr)/Ωs
-- R₁,R₂ en Ω ; L₁,L₂,Lm en mH ; puissances signées en W et couple en N·m
+- p est le nombre de paires de pôles et f la fréquence électrique en Hz ; Ωs est la vitesse synchrone et Ωr celle du rotor en rad·s⁻¹. Le glissement s=(Ωs−Ωr)/Ωs est sans dimension.
+- La tension est efficace par phase en V. R₁,R₂ sont les résistances en Ω, L₁,L₂ les inductances de fuite en mH et Lm l’inductance de magnétisation en mH. Les paramètres du rotor sont ramenés au stator.
+- Les courants sont efficaces en A ; les puissances sont en W et le couple en N·m. La puissance d’entrefer est celle reçue électromagnétiquement par le rotor.
 
 **Hypothèses de l’expérience**
 
@@ -996,7 +1007,7 @@ Lire le glissement comme la cause du courant rotorique, puis suivre séparément
 
 **Techniques à mobiliser**
 
-- Phasors et associations d’impédances
+- Amplitudes complexes et associations d’impédances
 - Bilan Pg=Pm+PJrotor
 - Lecture de trois régimes par les signes
 
@@ -1009,7 +1020,7 @@ Lire le glissement comme la cause du courant rotorique, puis suivre séparément
 **Niveaux et approfondissements**
 
 - Sup : Lenz, vitesse relative et bilan de puissance ; le circuit triphasé est une entrée guidée.
-- Spé : Phasors, induction et bilans de Spé ; le circuit triphasé asynchrone est ici un prolongement accompagné, à distinguer du programme explicite des machines synchrones en PSI.
+- Spé : Amplitudes complexes, induction et bilans de Spé ; le circuit triphasé asynchrone est un prolongement accompagné.
 - Au-delà : Modèles à paramètres variables, saturation et commande vectorielle.
 
 Leçons de référence : 20.
@@ -1022,8 +1033,9 @@ Distinguer pénétration harmonique et diffusion d’un échelon continu. La mê
 
 **Objets et unités**
 
-- Fréquence f donnée par log₁₀(f/Hz), σ en MS·m⁻¹, μr constant
-- Bsurf en mT, temps depuis l’échelon en ms ; δ et √ηmt en m
+- σ est la conductivité en MS·m⁻¹ et μr la perméabilité relative ; μ=μ₀μr, avec μ₀ la perméabilité du vide. f est la fréquence en Hz, réglée par son logarithme décimal.
+- B₀ est le champ de surface en mT ; x mesure la profondeur dans le métal. Pour l’échelon, t est le temps réglé en ms.
+- δ est la profondeur de peau harmonique en m ; le coefficient de diffusion magnétique est 1/(μσ), en m²·s⁻¹.
 
 **Hypothèses de l’expérience**
 
@@ -1045,7 +1057,7 @@ Distinguer pénétration harmonique et diffusion d’un échelon continu. La mê
 **Niveaux et approfondissements**
 
 - Sup : Racine carrée, unités et interprétation d’un profil décroissant ; diffusion introduite progressivement.
-- Spé : Propagation dissipative, phasors et séparation entre régime établi et transitoire.
+- Spé : MP/PC : propagation dans un conducteur, diffusion, énergie et comparaison des échelles.
 - Au-delà : Conductivité dispersive, plaque finie et couplage London/composante normale.
 
 Leçons de référence : 23, 31.
@@ -1058,8 +1070,9 @@ Voir si une onde transporte une puissance moyenne ou échange localement énergi
 
 **Objets et unités**
 
-- f en GHz, amplitude électrique crête de chaque onde en V·m⁻¹
-- Ellipticité signée, temps t/T ; B en T, énergie en J·m⁻³ et S en W·m⁻²
+- E est le champ électrique en V·m⁻¹ et B le champ magnétique en T ; E₀ est l’amplitude d’une onde. f est la fréquence en GHz, T=1/f la période et t/T le temps réduit.
+- Le rapport des composantes en quadrature règle la polarisation ; une valeur de module 1 donne une polarisation circulaire.
+- Π est le vecteur de Poynting en W·m⁻² ; u est la densité d’énergie en J·m⁻³. Une moyenne temporelle est prise sur une période.
 
 **Hypothèses de l’expérience**
 
@@ -1081,7 +1094,7 @@ Voir si une onde transporte une puissance moyenne ou échange localement énergi
 **Niveaux et approfondissements**
 
 - Sup : Superposition, phases et bilans ; les équations locales sont accompagnées.
-- Spé : Maxwell, ondes électromagnétiques et énergie selon la filière.
+- Spé : MP/PC : Maxwell, ondes planes, polarisation et bilan de Poynting.
 - Au-delà : Paquets, milieux dispersifs et différence entre vitesse de phase et vitesse de transport.
 
 Leçons de référence : 1, 21, 22.
@@ -1094,8 +1107,9 @@ Utiliser des conditions aux limites pour prédire amplitudes et flux. Brewster e
 
 **Objets et unités**
 
-- n₁,n₂ réels sans unité ; incidence en degrés ; TE/TM
-- λvide en nm ; r,t complexes, R,T flux normaux relatifs ; longueur évanescente en m
+- n₁,n₂ sont les indices réels des milieux incident et transmis. θ est l’angle d’incidence à la normale, en degrés ; λ est la longueur d’onde dans le vide, en nm.
+- TE signifie que E est perpendiculaire au plan d’incidence ; TM qu’il appartient à ce plan. r,t sont les coefficients complexes de champ électrique.
+- R,T sont les rapports de flux d’énergie normaux réfléchi et transmis. Un champ évanescent peut exister sans flux normal transmis.
 
 **Hypothèses de l’expérience**
 
@@ -1117,7 +1131,7 @@ Utiliser des conditions aux limites pour prédire amplitudes et flux. Brewster e
 **Niveaux et approfondissements**
 
 - Sup : Réfraction et phases ; nombres complexes introduits sur un exemple concret.
-- Spé : Conditions aux limites et polarisation selon la filière ; contrôler les flux plutôt que les seules amplitudes.
+- Spé : MP/PC : réflexion et transmission ; les coefficients obliques TE/TM et Brewster complètent les cas du programme suivi.
 - Au-delà : Milieux absorbants, films minces et couplage par réflexion totale frustrée.
 
 Leçons de référence : 21, 24.
@@ -1130,8 +1144,9 @@ Comprendre qu’une paroi sélectionne un nombre d’onde transverse et une fré
 
 **Objets et unités**
 
-- Largeur a en mm, f en GHz, Ecrête en V·m⁻¹
-- Distance z/a et phase t/T ; β en rad·m⁻¹, fc en Hz, vitesses en m·s⁻¹
+- a est la largeur du guide en mm ; f la fréquence en GHz et E₀ l’amplitude électrique en V·m⁻¹. z est la position axiale et z/a la distance réduite.
+- Le mode TE₁₀ a un champ électrique axial nul et une seule variation suivant la largeur. f_c est sa fréquence de coupure en Hz.
+- k_z est le nombre d’onde axial en m⁻¹ ; v_φ est la vitesse de phase et v_g la vitesse de groupe. t/T est le temps réduit sur une période.
 
 **Hypothèses de l’expérience**
 
@@ -1153,7 +1168,7 @@ Comprendre qu’une paroi sélectionne un nombre d’onde transverse et une fré
 **Niveaux et approfondissements**
 
 - Sup : Sinusoïdes, conditions aux extrémités et racine réelle/imaginaire sur un exemple accompagné.
-- Spé : Modes et séparation des variables, selon la filière ou en prolongement guidé.
+- Spé : Équation d’onde et conditions aux limites de Spé ; le mode TE₁₀ complet est un prolongement guidé.
 - Au-delà : Familles TE/TM complètes, topologie TEM et guides dissipatifs.
 
 Leçons de référence : 25.
@@ -1166,8 +1181,9 @@ Déduire un diagramme angulaire d’une intégrale de phases. Taille d’ouvertu
 
 **Objets et unités**
 
-- Largeur a/λ, λ en mm, pointage en degrés
-- Intensité angulaire normalisée sinc² ; phases en radians, sans puissance absolue imposée
+- a est la largeur de l’ouverture et λ la longueur d’onde réglée en mm ; a/λ est sans dimension.
+- θ est la direction d’observation et θ₀ la direction de pointage, en degrés. Le diagramme représente une intensité normalisée.
+- sinc(u)=sin(u)/u, avec sinc(0)=1, décrit la somme des amplitudes issues d’une ouverture uniforme.
 
 **Hypothèses de l’expérience**
 
@@ -1189,7 +1205,7 @@ Déduire un diagramme angulaire d’une intégrale de phases. Taille d’ouvertu
 **Niveaux et approfondissements**
 
 - Sup : Interférences et trigonométrie ; l’intégrale introduit la diffraction.
-- Spé : Fraunhofer, phasors et formulation de Fourier selon la filière.
+- Spé : MP/PC : ondes, superposition et diffraction. Diagramme d’antenne et pointage sont des applications accompagnées.
 - Au-delà : Directivité tridimensionnelle, facteur de réseau et réciprocité d’une antenne.
 
 Leçons de référence : 29, 28.
@@ -1202,8 +1218,9 @@ Relier une réponse électronique passive à une coupure et à l’absorption. L
 
 **Objets et unités**
 
-- ω/ωp et ν/ωp ; densité en 10¹⁸ m⁻³ ; Ecrête en V·m⁻¹
-- Distance en cm, temps t/T ; εr,k complexes, fp en Hz, pertes en W·m⁻³
+- n est la densité électronique réglée en 10¹⁸ m⁻³ ; ωp est la pulsation plasma en rad·s⁻¹. ω est la pulsation de l’onde et ν la fréquence de collision en s⁻¹.
+- Les curseurs règlent ω/ωp et ν/ωp. E₀ est l’amplitude de champ à z=0 en V·m⁻¹ ; z est réglé en cm et t/T est le temps réduit.
+- k est le nombre d’onde complexe en m⁻¹ ; sa partie imaginaire règle l’atténuation. Π est le flux de Poynting en W·m⁻².
 
 **Hypothèses de l’expérience**
 
@@ -1225,8 +1242,8 @@ Relier une réponse électronique passive à une coupure et à l’absorption. L
 **Niveaux et approfondissements**
 
 - Sup : Force de rappel collective et équation harmonique ; comparaison à une coupure d’oscillateur.
-- Spé : Propagation dans un milieu conducteur, dispersion et énergie selon la filière.
-- Au-delà : Plasmas chauds, magnétisés ou stratifiés ; eigenmodes et amortissements cinétiques.
+- Spé : MP/PC : propagation dispersive et milieu conducteur ; le modèle froid collisionnel est fourni et contrôlé énergétiquement.
+- Au-delà : Plasmas chauds, magnétisés ou stratifiés ; modes propres et amortissements cinétiques.
 
 Leçons de référence : 10, 26.
 
@@ -1238,8 +1255,9 @@ Associer dispersion et absorption d’un oscillateur lié, puis relier la polari
 
 **Objets et unités**
 
-- ω/ω₀, force d’oscillateur χ₀, γ/ω₀ et ε∞
-- Eextérieur en V·m⁻¹, rayon en mm ; P en C·m⁻², εr complexe et charges liées SI
+- ω₀ est la pulsation propre d’un électron lié, γ son amortissement et χ₀ la force de réponse sans dimension. Les curseurs règlent ω/ω₀ et γ/ω₀.
+- ε∞ est la permittivité relative de fond ; E₀ le champ imposé en V·m⁻¹ et R le rayon de sphère réglé en mm.
+- P est la polarisation, moment dipolaire par volume en C·m⁻² ; χ est la susceptibilité complexe et εr la permittivité relative.
 
 **Hypothèses de l’expérience**
 
@@ -1261,7 +1279,7 @@ Associer dispersion et absorption d’un oscillateur lié, puis relier la polari
 **Niveaux et approfondissements**
 
 - Sup : Oscillateur, dérivées et intégration ; polarisation introduite comme densité de dipôles.
-- Spé : Milieux linéaires, énergie et propagation selon la filière.
+- Spé : Ondes et réponses linéaires MP/PC ; polarisation macroscopique, champ local et sphère diélectrique selon la filière ou en prolongement.
 - Au-delà : Champs locaux, Clausius–Mossotti et orientation dipolaire thermique, à traiter sur papier.
 
 Leçons de référence : 18, 27.
@@ -1274,8 +1292,9 @@ Comparer trois mécanismes : orientation classique, deux niveaux quantiques et m
 
 **Objets et unités**
 
-- T en K, μ₀Hextérieur en T, densité en 10²⁷ m⁻³
-- Moment en μB, rayon orbital en pm, facteur démagnétisant N ; M,H en A·m⁻¹
+- T est la température en K ; μ₀H_ext est le champ appliqué en T. n est la densité de moments ou d’électrons liés, réglée en 10²⁷ m⁻³.
+- μ est la norme du moment en multiples du magnéton de Bohr μB, en J·T⁻¹. Le rayon orbital quadratique effectif est réglé en pm.
+- M est l’aimantation en A·m⁻¹ et N le facteur démagnétisant sans dimension ; H_int=H_ext−NM définit le champ interne de l’ellipsoïde.
 
 **Hypothèses de l’expérience**
 
@@ -1297,7 +1316,7 @@ Comparer trois mécanismes : orientation classique, deux niveaux quantiques et m
 **Niveaux et approfondissements**
 
 - Sup : Moments, énergie −μ·B, agitation thermique et limites d’une fonction.
-- Spé : Statistique à deux niveaux et bilans matière, selon la filière ou par un prolongement guidé.
+- Spé : MP §7 : Boltzmann et système à deux niveaux ; PSI : milieux magnétiques. Langevin et champ démagnétisant prolongent ce socle.
 - Au-delà : Weiss, énergie libre et stabilité collective ; modèle de domaines distinct de la réponse calculée.
 
 Leçons de référence : 16, 17, 18.
@@ -1310,8 +1329,9 @@ Voir l’écrantage depuis les deux faces d’une plaque et comprendre ce que Lo
 
 **Objets et unités**
 
-- Demi-épaisseur a et λL en nm, Bextérieur en mT
-- Bz(x) en T, jy=−Bz′/μ₀ en A·m⁻² ; choix d’histoire pour la comparaison idéale
+- a est la demi-épaisseur de la plaque et λL la longueur de pénétration de London, en nm. x est la position entre les faces x=±a.
+- B₀ est le champ extérieur réglé en mT ; B(x) est le profil intérieur en T. j est la densité de courant en A·m⁻².
+- L’histoire indique si le conducteur parfait contenait un champ initial. L’état Meissner impose un autre état d’équilibre.
 
 **Hypothèses de l’expérience**
 
@@ -1333,7 +1353,7 @@ Voir l’écrantage depuis les deux faces d’une plaque et comprendre ce que Lo
 **Niveaux et approfondissements**
 
 - Sup : Exponentielle, hyperboliques et conditions aux limites, avec physique introduite.
-- Spé : Maxwell et résolution d’ODE ; le phénomène supraconducteur est un prolongement.
+- Spé : Outils MP/PC : Maxwell et équations différentielles ; supraconductivité et équations de London sont un prolongement.
 - Au-delà : Phase du condensat, jauge, fluxoïde, type II et vortex, hors de la plaque London simple.
 
 Leçons de référence : 31, 23.
@@ -1346,8 +1366,9 @@ Expliquer une rotation par deux phases propres et tester sa non-réciprocité. U
 
 **Objets et unités**
 
-- Verdet V en rad·T⁻¹·m⁻¹, B longitudinal en T, longueur en cm, λ en nm
-- Angles initial/analyseur en degrés ; θ=VBL en radians et modes e±=(ex±i ey)/√2
+- V est la constante de Verdet en rad·T⁻¹·m⁻¹ ; B le champ longitudinal en T, ℓ la longueur réglée en cm et λ la longueur d’onde en nm.
+- θ=VBℓ est la rotation en rad ; les angles de polarisation initiale et d’analyseur sont réglés en degrés.
+- e₊,e₋ sont les vecteurs des deux polarisations circulaires ; k₊,k₋ leurs nombres d’onde. Les axes transverses restent ceux du laboratoire au retour.
 
 **Hypothèses de l’expérience**
 
@@ -1369,7 +1390,7 @@ Expliquer une rotation par deux phases propres et tester sa non-réciprocité. U
 **Niveaux et approfondissements**
 
 - Sup : Trigonométrie, phase et loi de Malus ; diagonalisation introduite par un exemple.
-- Spé : Polarisation et matrices complexes selon la filière ou par un complément guidé.
+- Spé : PC : polarisation ; techniques d’algèbre linéaire et de phases en MP/PC. Le modèle circulaire de Faraday est un prolongement guidé.
 - Au-delà : Gyrotropie tensorielle, dichroïsme circulaire et relations de réciprocité.
 
 Leçons de référence : 32, 22.
@@ -1382,8 +1403,9 @@ Construire et vérifier un profil localisé auto-guidé, puis le comparer à la 
 
 **Objets et unités**
 
-- λvide en μm, n₀, n₂ en 10⁻²⁰ m²·W⁻¹, I₀ en GW·cm⁻² (1 GW·cm⁻²=10¹³ W·m⁻²)
-- Distance normalisée z/(n₀k₀y₀²), champ en V·m⁻¹, largeur en m ; I₀=n₀ε₀cE₀²/2
+- λ est la longueur d’onde dans le vide en µm, n₀ l’indice linéaire et n₂ le coefficient Kerr réglé en 10⁻²⁰ m²·W⁻¹. I₀ est l’intensité de référence au sommet en GW·cm⁻² ; 1 GW·cm⁻²=10¹³ W·m⁻².
+- x est la position transverse, u son amplitude réelle de champ en V·m⁻¹ ; sech(s)=1/cosh(s). k₀=2π/λ est le nombre d’onde dans le vide et y₀ l’échelle de largeur.
+- z est la distance de propagation et z/(n₀k₀y₀²) la distance réduite. I_ref=n₀ε₀cE²/2 définit l’intensité de référence ; ε₀ est la permittivité du vide et c la célérité de la lumière.
 
 **Hypothèses de l’expérience**
 
@@ -1392,8 +1414,8 @@ Construire et vérifier un profil localisé auto-guidé, puis le comparer à la 
 
 **Techniques à mobiliser**
 
-- Intégrale première d’une ODE non linéaire
-- Solution sech et relation amplitude-largeur
+- Intégrale première d’une équation différentielle non linéaire
+- Solution en inverse de cosinus hyperbolique et relation amplitude-largeur
 - Adimensionnement et test d’une approximation
 
 **Prédire → expérimenter → justifier**
@@ -1405,7 +1427,7 @@ Construire et vérifier un profil localisé auto-guidé, puis le comparer à la 
 **Niveaux et approfondissements**
 
 - Sup : Fonctions hyperboliques, énergie d’un oscillateur fictif et changements d’échelle.
-- Spé : ODE, phasors et diffusion/diffraction comme techniques ; la non-linéarité est un prolongement.
+- Spé : Techniques Spé : équation différentielle, intégrale première et diffraction. Kerr et profil localisé sont des prolongements.
 - Au-delà : Enveloppes non linéaires, stabilité et solitons ; différencier les trois effets nommés Kerr.
 
 Leçons de référence : 33, 34.
@@ -1418,8 +1440,9 @@ Passer d’un diagramme dipolaire transverse à une puissance intégrée, puis d
 
 **Objets et unités**
 
-- Fréquence incidente et propre en THz, γ/ω₀ ; p₀ en 10⁻²⁹ C·m
-- Eincident crête en V·m⁻¹ ; intensité en W·m⁻², puissance en W, section efficace en m²
+- f est la fréquence incidente et f₀ la fréquence propre en THz ; γ est l’amortissement en s⁻¹ et ω₀=2πf₀.
+- p₀ est l’amplitude du moment dipolaire réglée en 10⁻²⁹ C·m ; E₀ est l’amplitude électrique incidente en V·m⁻¹.
+- I est l’intensité incidente en W·m⁻², P la puissance diffusée en W et σ=P/I la section efficace en m². r est la distance à la source ; k=2π/λ est le nombre d’onde.
 
 **Hypothèses de l’expérience**
 
@@ -1441,7 +1464,7 @@ Passer d’un diagramme dipolaire transverse à une puissance intégrée, puis d
 **Niveaux et approfondissements**
 
 - Sup : Puissance, trigonométrie et ordre de grandeur ; angle solide introduit progressivement.
-- Spé : Ondes, Poynting et développement dipolaire selon la filière.
+- Spé : MP/PC : Poynting et rayonnement dipolaire. Diffusion résonante et réaction radiative demandent les modèles fournis.
 - Au-delà : Réaction radiative, extinction, diffusion multiple et corrections quantiques.
 
 Leçons de référence : 28, 30.
@@ -1454,8 +1477,9 @@ Déduire un seuil d’amplification à partir des valeurs propres d’un modèle
 
 **Objets et unités**
 
-- α et U en mm·s⁻¹, diffusivité magnétique en m²·s⁻¹, longueur d’onde L en km
-- k=2π/L, temps en années, B₀ en mT ; γ en s⁻¹ et croissance affichée aussi en logarithme
+- α est un coefficient d’induction prescrit et U une vitesse caractéristique, en mm·s⁻¹ ; ηm est la diffusivité magnétique en m²·s⁻¹.
+- L est la longueur d’onde en km et k=2π/L le nombre d’onde ; B₀ est l’amplitude initiale en mT et t le temps réglé en années.
+- Le signe d’hélicité distingue deux modes propres du rotationnel ; γ est leur taux de croissance en s⁻¹. Rm=UL/ηm est le nombre de Reynolds magnétique.
 
 **Hypothèses de l’expérience**
 
@@ -1465,7 +1489,7 @@ Déduire un seuil d’amplification à partir des valeurs propres d’un modèle
 **Techniques à mobiliser**
 
 - Élimination E/j dans l’induction MHD
-- Eigenmode du rotationnel et taux de croissance
+- Mode propre du rotationnel et taux de croissance
 - Échelles temporelles, seuil et contre-exemple
 
 **Prédire → expérimenter → justifier**
@@ -1477,7 +1501,7 @@ Déduire un seuil d’amplification à partir des valeurs propres d’un modèle
 **Niveaux et approfondissements**
 
 - Sup : Exponentielle, unités et bilan croissance/décroissance sur un modèle accompagné.
-- Spé : Calcul vectoriel, diffusion et valeurs propres comme techniques ; MHD/dynamo sont des prolongements.
+- Spé : Calcul vectoriel, diffusion et valeurs propres de Spé ; MHD et dynamo α² restent des prolongements.
 - Au-delà : Fermeture turbulente, conditions globales, anti-dynamos et rétroaction du champ sur le fluide.
 
 Leçons de référence : 35, 36.
@@ -1586,7 +1610,7 @@ Leçons de référence : 35, 36.
 
 *Spé* — laboratoire `induction`.
 
-**Énoncé.** Un barreau de masse m se déplace sur des rails, avec Ldi/dt+Ri=−c v et mdv/dt=c i, c=Bℓ. Déduire l’ODE sur v, le critère d’oscillation et le bilan d’énergie. Prendre m=0,01 kg,L=0,1 H,R=0,1 Ω,B=1 T,ℓ=0,5 m.
+**Énoncé.** Un barreau de masse m se déplace sur des rails, avec Ldi/dt+Ri=−c v et mdv/dt=c i, c=Bℓ. Déduire l’équation différentielle sur v, le critère d’oscillation et le bilan d’énergie. Prendre m=0,01 kg,L=0,1 H,R=0,1 Ω,B=1 T,ℓ=0,5 m.
 
 **Corrigé.** i=m v̇/c, puis Lm v̈+Rm v̇+c²v=0. Le régime est sous-amorti si R²<4Lc²/m. Ici R²=0,01 Ω² contre 4Lc²/m=10 Ω². Le taux d’amortissement vaut R/(2L)=0,5 s⁻¹ et ωd=√[c²/(mL)−R²/(4L²)]≈15,80 rad·s⁻¹. L’énergie W=½mv²+½Li² vérifie Ẇ=−Ri²≤0 : un retour de vitesse reste possible par restitution de l’énergie inductive. Il ne contredit pas Lenz. Dans la limite L→0, l’équation se réduit à v̇=−c²v/(mR), sans oscillation.
 
@@ -1880,7 +1904,7 @@ Leçons de référence : 35, 36.
 - [MIT — propriétés magnétiques des matériaux](https://ocw.mit.edu/courses/3-23-electrical-optical-and-magnetic-properties-of-materials-fall-2007/resources/lec16/) : réponse de la matière et variables B/H.
 - [MIT — T. Orlando, équations de London](https://www.ocw.mit.edu/courses/6-763-applied-superconductivity-fall-2005/resources/lecture5/) et [MIT Junior Lab — superconductivité](https://ocw.mit.edu/courses/8-13-14-experimental-physics-i-ii-junior-lab-fall-2016-spring-2017/pages/experiments/superconductivity/) : écrantage et différence entre conductivité parfaite et Meissner.
 - [MIT — F. Kärtner, Ultrafast Optics](https://ocw.mit.edu/courses/6-977-ultrafast-optics-spring-2005/f806ff596f9bffb74003360e2c05c086_MIT6_977S05_textbook.pdf) : Kerr optique, enveloppes non linéaires et solutions sech ; ces extensions sont accompagnées.
-- [Phys. Rev. A — nonreciprocal media, 2024](https://doi.org/10.1103/PhysRevA.109.043533) : cadre de non-réciprocité ; la rotation de Faraday est ici déduite des eigenmodes circulaires et de bases explicites.
+- [Phys. Rev. A — nonreciprocal media, 2024](https://doi.org/10.1103/PhysRevA.109.043533) : cadre de non-réciprocité ; la rotation de Faraday est ici déduite des modes propres circulaires et de bases explicites.
 - [P. Charbonneau — Dynamo Models of the Solar Cycle](https://doi.org/10.12942/lrsp-2005-2) : fermeture de champ moyen et effet α ; le modèle α² local présenté n’est pas une simulation géophysique.
 - [USGS — introduction au géomagnétisme](https://www.usgs.gov/programs/geomagnetism/introduction-geomagnetism) et [BGS — mécanisme de géodynamo](https://geomag.bgs.ac.uk/education/reversals.html) : noyau externe conducteur, flottabilité, convection, rotation et diffusion. [BGS — MEME](https://geomag.bgs.ac.uk/research/modelling/MEME.html) : observations et modèles du champ terrestre, à distinguer d’une simulation auto-cohérente du noyau.
 - [NIST — charge élémentaire](https://physics.nist.gov/cuu/Constants/Value/e.html) : e=1,602176634×10⁻¹⁹ C, valeur exacte du SI ; μ₀≈4π×10⁻⁷ H·m⁻¹ est utilisé comme approximation numérique.

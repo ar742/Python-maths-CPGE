@@ -8,17 +8,17 @@ def exercise(title,level,lab,question,answer):
 
 LESSONS = [
 lesson('Du champ de pentes à la solution exacte du TP', 'Sup', 'euler_rk4', '''
-<p>Une EDO y′=f(x,y) ne donne pas directement les valeurs de y : elle indique la <strong>pente</strong> d’une courbe lorsqu’elle passe par (x,y). La condition y(0)=y₀ choisit une trajectoire. Le champ de petites directions du laboratoire représente (1,f(x,y)), ramené à une longueur lisible ; cette normalisation ne change pas la pente.</p>
+<p>Une équation différentielle ordinaire (EDO) cherche une fonction y de la variable x ; f prescrit sa dérivée. Une EDO y′=f(x,y) ne donne pas directement les valeurs de y : elle indique la <strong>pente</strong> d’une courbe lorsqu’elle passe par (x,y). La condition y(0)=y₀ choisit une trajectoire. Le champ de petites directions du laboratoire représente (1,f(x,y)), ramené à une longueur lisible ; cette normalisation ne change pas la pente.</p>
 <p>Dans le TP p. 69, f(x,y)=cos(x)(y+1). Poser z=y+1 transforme l’équation en z′=cos(x)z. Multiplier par e<sup>−sin x</sup> donne (ze<sup>−sin x</sup>)′=0. Par conséquent <strong>y(x)=(y₀+1)e<sup>sin x</sup>−1</strong>, sur ℝ. Cette démonstration inclut le cas y₀=−1 sans diviser par y+1.</p>
 <p>Pour y₀=0, y′ a le signe de cos x ; les maxima sont atteints en π/2+2kπ, avec valeur e−1, et les minima en 3π/2+2kπ, avec valeur e<sup>−1</sup>−1. Une formule exacte fournit ici un étalon pour l’expérience numérique.</p>
 <p><strong>Technique attendue :</strong> changement de fonction, équation linéaire du premier ordre, condition initiale puis tableau de variations. Le dessin aide à interpréter ; la vérification par dérivation démontre.</p>'''),
 lesson('Euler, RK4 et les deux erreurs à distinguer', 'Sup → Spé', 'euler_rk4', '''
-<p>Sur xⱼ=jh, Euler explicite pose yⱼ₊₁=yⱼ+h f(xⱼ,yⱼ). Son erreur sur <em>un</em> pas, en partant d’une valeur exacte, est O(h²) ; les erreurs propagées sur un intervalle fixé donnent généralement une erreur globale O(h). Ces deux ordres répondent à deux questions différentes.</p>
+<p>h est le pas, xⱼ le nœud d’indice j et yⱼ l’approximation de y(xⱼ). Sur xⱼ=jh, Euler explicite pose yⱼ₊₁=yⱼ+h f(xⱼ,yⱼ). Son erreur sur <em>un</em> pas, en partant d’une valeur exacte, est O(h²) ; les erreurs propagées sur un intervalle fixé donnent généralement une erreur globale O(h). Ces deux ordres répondent à deux questions différentes.</p>
 <p>RK4 calcule k₁=f(x,y), k₂=f(x+h/2,y+hk₁/2), k₃=f(x+h/2,y+hk₂/2), k₄=f(x+h,y+hk₃), puis y<sub>suiv</sub>=y+h(k₁+2k₂+2k₃+k₄)/6. Pour une fonction suffisamment régulière et un intervalle fixé, son erreur globale est O(h⁴).</p>
 <p>Le laboratoire mesure E(h)=maxⱼ|yⱼ−y(xⱼ)| et l’ordre p≈log₂[E(h)/E(h/2)]. Une droite de pente p apparaît dans des coordonnées logarithmiques lorsque le maillage est assez fin. Un pas grossier, un intervalle trop long ou les arrondis peuvent masquer ce comportement.</p>
 <p><strong>Application :</strong> choisir une précision avant de résoudre un problème sans solution exacte. Il faut alors comparer des maillages successifs, surveiller un bilan ou une quantité conservée et ne pas confondre le lissage du graphique avec la précision.</p>'''),
 lesson('Le facteur intégrant : le signe se retrouve par dérivation', 'Sup', 'facteur_integrant', '''
-<p>On étudie y′+a(x)y=c(x), avec a,c continues sur un intervalle I. Prendre une primitive A de a, puis calculer <strong>(eᴬy)′=eᴬ(y′+ay)=eᴬc</strong>. L’intégration entre x₀ et x donne y(x)=e<sup>−A(x)</sup>[e<sup>A(x₀)</sup>y₀+∫<sub>x₀</sub><sup>x</sup>e<sup>A(s)</sup>c(s)ds]. Le facteur devant la parenthèse est e<sup>−A</sup>.</p>
+<p>x est la variable, y la fonction cherchée et a,c des coefficients continus sur un intervalle I. On étudie y′+a(x)y=c(x). Prendre une primitive A de a, puis calculer <strong>(eᴬy)′=eᴬ(y′+ay)=eᴬc</strong>. L’intégration entre x₀ et x donne y(x)=e<sup>−A(x)</sup>[e<sup>A(x₀)</sup>y₀+∫<sub>x₀</sub><sup>x</sup>e<sup>A(s)</sup>c(s)ds]. Le facteur devant la parenthèse est e<sup>−A</sup>.</p>
 <p>Dans l’atelier a(x)=a+bx et c(x)=Fcos(ωx), donc A(x)=ax+bx²/2 et x₀=0. On peut aussi écrire l’intégrale avec le noyau e<sup>−(A(x)−A(s))</sup>. Pour 0≤s≤x et a,b≥0 ce noyau est au plus 1 ; cette forme évite de produire séparément des exponentielles très grandes.</p>
 <p>Les constantes d’intégration ne sont pas une décoration : le premier terme y₀e<sup>−A(x)</sup> impose la donnée initiale. La vérification consiste à dériver la formule et à l’évaluer en 0.</p>
 <p><strong>Applications CPGE :</strong> circuit RC soumis à une tension variable, bilan thermique avec coefficient d’échange variable ou relaxation chimique linéarisée. Chaque application demande de préciser les unités et le domaine de validité.</p>'''),
@@ -82,13 +82,13 @@ lesson('Une EDO homogène et un raccordement à vérifier', 'Spé', 'riccati', '
 <p>À x=0, l’équation impose y(0)+|y(0)|=0, donc y(0)≤0. La famille obtenue a y(0)&lt;0 et y′(0)=0. Une condition imposée au point singulier doit être vérifiée directement.</p>
 <p>L’équation est dite homogène après division et substitution y/x ; elle n’a pas la forme quadratique caractéristique d’une équation de Riccati. Le laboratoire présente séparément les deux méthodes.</p>'''),
 lesson('Riccati : une non-linéarité quadratique se linéarise', 'Spé → Au-delà', 'riccati', '''
-<p>Une équation de Riccati a la forme z′=a(t)z²+b(t)z+c(t). Dans l’exemple z′=z²−1, poser <strong>z=−u′/u</strong> sur un intervalle où u≠0. Alors z′=z²−u″/u, et l’équation linéaire u″=u convient.</p>
+<p>t est la variable, z(t) l’inconnue et a,b,c des coefficients donnés. Une équation de Riccati a la forme z′=a(t)z²+b(t)z+c(t). Dans l’exemple z′=z²−1, poser <strong>z=−u′/u</strong> sur un intervalle où u≠0. Alors z′=z²−u″/u, et l’équation linéaire u″=u convient.</p>
 <p>Pour imposer z(0)=z₀, choisir u(0)=1 et u′(0)=−z₀. On obtient u=cosh t−z₀sinh t et z=(z₀cosh t−sinh t)/(cosh t−z₀sinh t). Le changement n’est valable que tant que le dénominateur reste non nul.</p>
 <p>Les équilibres z=−1 et z=1 sont visibles dans z′=(z−1)(z+1). −1 est attractif, 1 est répulsif. Si z₀&gt;1, u s’annule en t*=argth(1/z₀) et z explose à droite. L’EDO linéaire u″=u reste régulière : c’est le quotient qui devient singulier.</p>
 <p><strong>Technique de prolongement :</strong> reconnaître une structure, calculer la dérivée du changement et surveiller son domaine. Linéariser un problème n’autorise pas à oublier les divisions introduites.</p>'''),
 lesson('Trois bilans deviennent une équation matricielle', 'Spé', 'lineaire_systeme', '''
-<p>Yᵢ(t) est la quantité présente dans le réservoir i. Les échanges symétriques de taux kᵢⱼ donnent Y₁′=k₁₂(Y₂−Y₁)+k₁₃(Y₃−Y₁)−δY₁, et deux équations analogues. Sous forme matricielle : <strong>Y′=AY</strong>.</p>
-<p>La matrice A est symétrique ; les termes hors diagonale sont les taux positifs, et la diagonale est l’opposé de la somme des taux sortants, moins δ. Sommer les trois bilans annule tous les échanges : S′=−δS. Pour S(0)=1, S=e<sup>−δt</sup>.</p>
+<p>t est le temps, Yᵢ(t) la quantité du réservoir i, δ le taux de perte commun et S=Y₁+Y₂+Y₃ le total. Les échanges symétriques de taux kᵢⱼ donnent Y₁′=k₁₂(Y₂−Y₁)+k₁₃(Y₃−Y₁)−δY₁, et deux équations analogues. Sous forme matricielle : <strong>Y′=AY</strong>.</p>
+<p>A est la matrice des trois bilans. Elle est symétrique ; les termes hors diagonale sont les taux positifs, et la diagonale est l’opposé de la somme des taux sortants, moins δ. Sommer les trois bilans annule tous les échanges : S′=−δS. Pour S(0)=1, S=e<sup>−δt</sup>.</p>
 <p>Diagonaliser A=QDQᵀ transforme le système en Z′=DZ, avec Z=QᵀY. Chaque coordonnée propre satisfait Zⱼ′=λⱼZⱼ, donc Zⱼ=Zⱼ(0)e<sup>λⱼt</sup>. Revenir à Y donne l’exponentielle matricielle e<sup>tA</sup>=Q diag(e<sup>λⱼt</sup>)Qᵀ.</p>
 <p>Ce système à trois dimensions relie réellement algèbre linéaire et analyse. Les valeurs propres ne sont pas seulement calculées : elles donnent les temps de relaxation et les grandeurs conservées.</p>'''),
 lesson('Mode conservé et deux modes de relaxation', 'Spé → Au-delà', 'lineaire_systeme', '''
@@ -97,7 +97,7 @@ lesson('Mode conservé et deux modes de relaxation', 'Spé → Au-delà', 'linea
 <p>Avec perte uniforme δ, tous les modes sont multipliés par e<sup>−δt</sup>. Les proportions P=Y/S satisfont le système sans perte ; elles tendent toujours vers 1/3. Il faut distinguer une quantité qui tend vers 0 d’une proportion qui tend vers 1/3.</p>
 <p>Le portrait de phase se situe dans le triangle P₁≥0, P₂≥0, P₁+P₂≤1, puisque P₃=1−P₁−P₂. La représentation plane respecte la conservation au lieu d’oublier le troisième réservoir.</p>'''),
 lesson('Deux conditions aux bords : une autre question que Cauchy', 'Spé', 'green_bords', '''
-<p>Le problème de Cauchy y(0)=α, y′(0)=β fixe deux données au même point et admet une solution unique lorsque les coefficients sont continus. Les conditions y(0)=y(π)=0 imposent deux valeurs en deux points ; l’argument de Cauchy ne s’y applique pas automatiquement.</p>
+<p>x est la variable, y(x) la fonction cherchée et α,β deux données réelles. Le problème de Cauchy y(0)=α, y′(0)=β fixe deux données au même point et admet une solution unique lorsque les coefficients sont continus. Les conditions y(0)=y(π)=0 imposent deux valeurs en deux points ; l’argument de Cauchy ne s’y applique pas automatiquement.</p>
 <p>Considérer y″+λy=f sur [0,π]. Pour λ&gt;0, une solution homogène s’annulant en 0 est Csin(√λx). Elle s’annule aussi en π pour tout C lorsque λ=n². Ces valeurs créent un noyau non nul pour le problème aux bords.</p>
 <p>Pour f=a sin x+b sin(2x), hors λ=1,4, la particulière a sin x/(λ−1)+b sin(2x)/(λ−4) satisfait les bords. Si λ n’est aucun carré entier positif, elle est unique. Si λ=9, par exemple, on peut encore ajouter Csin(3x).</p>
 <p>La méthode de tir démarre y(0)=0,y′(0)=1. Pour l’homogène, sa valeur finale sin(π√λ)/√λ détecte les valeurs résonantes ; à λ=0 la limite vaut π. Un zéro signifie que la pente initiale ne peut pas être déterminée par la seule valeur finale.</p>'''),
@@ -145,71 +145,71 @@ def guide(purpose,objects,hypotheses,techniques,sup,spe,beyond,first_steps,expec
     return dict(purpose=purpose,objects=objects,hypotheses=hypotheses,techniques=techniques,levels=dict(sup=sup,spe=spe,beyond=beyond),first_steps=first_steps,expected=expected)
 
 GUIDES = {
-'euler_rk4':guide('Résoudre le TP p. 69 et mesurer la précision de deux méthodes plutôt que juger seulement l’allure des courbes.',
- ['x est l’abscisse en radians ; y est la fonction recherchée, sans dimension.', 'N est le nombre de pas ; h=T/N est leur longueur.', 'E est l’erreur maximale aux nœuds par rapport à la formule exacte.'],
+'euler_rk4':guide('Résoudre l’équation du TP p. 69, puis mesurer comment l’erreur d’Euler et de Runge–Kutta diminue quand on affine le pas.',
+ ['x : abscisse sans dimension (argument du cosinus en radians) ; y(x) : fonction recherchée ; y₀=y(0) : donnée initiale.', 'L’équation est y′=f(x,y), avec f(x,y)=cos(x)(y+1). Sa solution exacte est y(x)=(1+y₀)e^{sin x}−1.', 'T : abscisse finale ; N : nombre de pas ; h=T/N : longueur du pas.', 'E : erreur maximale aux points calculés par rapport à la solution exacte ; RK4 : méthode de Runge–Kutta à quatre étapes.'],
  ['Même condition initiale et même intervalle pour les trois courbes.', 'L’équation est linéaire, régulière et globalement résoluble ; les erreurs viennent ici des méthodes numériques.'],
  ['Résoudre une EDO linéaire et vérifier une formule par dérivation.', 'Comparer des maillages, utiliser un graphique logarithmique et estimer un ordre.'],
- 'Retrouver y=e^{sin x}−1 et ses extrema.', 'Comparer Euler à RK4, distinguer erreur locale et globale.', 'Contrôle d’erreur et choix d’une méthode sur des EDO sans solution exacte.',
+ 'Retrouver la solution ; pour y₀=0, étudier y=e^{sin x}−1 et ses extrema.', 'Comparer Euler à RK4, distinguer erreur locale et globale.', 'Contrôle d’erreur et choix d’une méthode sur des EDO sans solution exacte.',
  ['Choisir le TP et suivre les pentes sur la solution exacte.', 'Choisir le pas grossier puis augmenter N.', 'Lire les ordres mesurés ; vérifier pourquoi diviser le pas par 2 ne produit pas le même gain pour Euler et RK4.'],
  'Justifier l’ordre observé, annoncer la référence utilisée et séparer précision et présentation du graphique.'),
 'facteur_integrant':guide('Transformer une équation différentielle linéaire en intégrale définie, puis interpréter la mémoire et la sensibilité.',
- ['a+bx est le coefficient de y ; Fcos(ωx) est le second membre.', 'A=ax+bx²/2 est une primitive ; eᴬ est le facteur intégrant.', 'Les deux préparations ont un écart initial exactement égal à 1.'],
+ ['x : variable ; y(x) : inconnue ; y₀ : valeur en 0. Tous les paramètres sont sans dimension.', 'L’équation est y′+(a+bx)y=Fcos(ωx) : a,b règlent le coefficient de y ; F et ω règlent l’amplitude et la pulsation du second membre.', 'A(x)=ax+bx²/2 : primitive du coefficient ; eᴬ : facteur intégrant ; les deux préparations ont un écart initial de 1.'],
  ['Coefficients continus ; a,b≥0 pour une relaxation à droite.', 'Quadrature de Gauss et RK4 calculent indépendamment le même problème.'],
  ['Dérivation d’un produit et primitive.', 'Variation des constantes, différence de deux solutions et noyau intégral.'],
  'Construire le facteur intégrant en vérifiant son signe.', 'Interpréter le noyau et démontrer la décroissance de l’écart.', 'Mémoire d’un système linéaire à coefficient variable.',
  ['Choisir la relaxation constante et retrouver l’exponentielle.', 'Choisir le coefficient variable et examiner le noyau par l’écart initial.', 'Mettre a=b=F=0 puis expliquer pourquoi les deux solutions restent constantes et distinctes.'],
  'Reconstruire la formule intégrale avec la bonne constante et relier sa dérivée à l’EDO.'),
-'cauchy_lipschitz':guide('Distinguer une hypothèse d’un théorème, sa conclusion et une preuve effective de non-unicité.',
- ['τ est un instant de départ choisi ; toutes les courbes non linéaires ont y(0)=0.', 'ε est un petit écart initial dans le problème linéaire.', 'Le quotient 2/√ε teste la possibilité d’une constante de Lipschitz près de 0.'],
+'cauchy_lipschitz':guide('Trouver plusieurs solutions pour une même donnée initiale et voir quelle hypothèse garantit l’unicité dans un autre problème.',
+ ['t : temps réduit ; y(t) : inconnue ; τ : instant de départ d’une solution en attente de y′=2√|y|, avec y(0)=0.', 'λ : coefficient de l’autre équation, y′=λy ; ε : écart initial entre ses deux solutions.', 'Une constante de Lipschitz bornerait le quotient des écarts du second membre par ceux des arguments ; 2/√ε devient non borné près de 0.'],
  ['Les branches en attente sont exactes et C¹.', 'Cauchy–Lipschitz est un prolongement ; le cours CPGE fournit le cas linéaire.'],
  ['Vérification par morceaux et raccordement des dérivées.', 'Différence de solutions et analyse d’une hypothèse suffisante.'],
  'Vérifier directement chaque solution et chaque donnée initiale.', 'Séparer unicité et stabilité ; expliquer le contre-exemple.', 'Existence locale, conditions de Lipschitz et limites d’une simulation.',
  ['Changer τ : noter que la donnée initiale ne change jamais.', 'Lire le quotient pour de petits ε.', 'Passer λ de −1 à 1 : expliquer pourquoi une divergence de deux préparations ne réfute pas l’unicité.'],
  'Savoir expliquer pourquoi un calcul partant de zéro peut sélectionner une solution sans démontrer son unicité.'),
-'explosion_logistique':guide('Donner un sens au domaine maximal d’une solution, puis étudier qualitativement un modèle avec saturation.',
- ['t*=1/(ay₀) est le temps d’explosion à droite.', 'Le curseur fraction arrête le tracé strictement avant t*.', 'K est un niveau d’équilibre, r le taux de relaxation logistique.'],
+'explosion_logistique':guide('Calculer jusqu’à quel instant une solution existe, puis comparer une croissance qui explose à une croissance qui se stabilise.',
+ ['t : temps réduit ; y₀>0 : valeur initiale commune ; a>0 : coefficient de y′=ay².', 't*=1/(ay₀) : temps d’explosion ; le curseur donne la fraction de ce temps observée, strictement inférieure à 1.', 'r>0 : taux logistique ; K>0 : niveau d’équilibre du modèle y′=ry(1−y/K).'],
  ['Données et paramètres positifs ; aucun pôle n’est traversé.', 'Les deux équations ont le même point initial mais des seconds membres différents.'],
  ['Séparation des variables, limites et intervalle de définition.', 'Équilibres, tableau de signes et linéarisation.'],
  'Résoudre les deux équations et lire leurs tableaux de variations.', 'Relier saturation et stabilité ; distinguer solution locale et globale.', 'Solution maximale, explosion et contrôle a priori.',
  ['Comparer les deux modèles au réglage initial.', 'Approcher la fraction 0,95 et suivre la droite 1/y.', 'Partir au-dessus de K ; prévoir le sens d’évolution logistique avant le calcul.'],
  'Nommer un intervalle maximal et justifier la saturation par le second membre, sans confondre les deux notions.'),
 'oscillateur_resonance':guide('Relier l’équation d’ordre 2, ses deux données initiales et les applications physiques de la résonance.',
- ['ω₀ est la pulsation propre ; ω/ω₀ le rapport de pulsations.', 'ζ est l’amortissement réduit ; Fcos(ωt) le forçage.', 'y′ est la vitesse ; E=[(y′)²+ω₀²y²]/2 est l’énergie réduite.'],
+ ['t : temps ; y : position ; y′ : vitesse ; y₀,y′₀ : les deux données initiales. Le modèle utilise une masse unité et des unités réduites.', 'ω₀ : pulsation propre ; ω : pulsation imposée ; ζ : amortissement réduit ; F : amplitude du forçage Fcos(ωt).', 'E=[(y′)²+ω₀²y²]/2 : énergie réduite ; W : travail du forçage ; D : énergie dissipée. La durée est réglée en périodes propres.'],
  ['Équation linéaire à coefficients constants, masse unité.', 'À ζ=0, les maxima de la réponse sont mesurés sur un temps fini.', 'Le champ de phase forcé est figé à t=0 ; la trajectoire reste temporelle.'],
  ['Équation caractéristique, données de Cauchy et réponse complexe.', 'Résonance, puissances et bilan énergétique.'],
  'Identifier les trois régimes libres et ajuster les constantes.', 'Calculer l’amplitude et sa résonance, vérifier le travail.', 'Réponse impulsionnelle et interprétation spectrale.',
  ['Choisir le cas critique puis le cas apériodique libre.', 'Comparer la résonance amortie à la résonance sans amortissement.', 'Doubler la durée sans amortissement : expliquer la croissance du maximum et contrôler E−E₀=W−D.'],
  'Énoncer quand une amplitude stationnaire a un sens et quand le temps d’observation fait partie du résultat.'),
-'variation_constantes':guide('Résoudre l’exercice 1 p. 71 et interpréter chaque étape de la variation des constantes.',
- ['g(x)=eˣ/cosh²x, multiplié par le curseur amplitude.', 'W=e^{5x} est le Wronskien de e^{2x} et e^{3x}.', 'a(x),b(x) sont les coefficients de la particulière de données initiales nulles.'],
+'variation_constantes':guide('Résoudre l’exercice 1 p. 71 : construire une solution particulière, puis ajuster les deux données initiales.',
+ ['x : variable ; y₀=y(0),v₀=y′(0) : données initiales ; le curseur amplitude multiplie g(x)=eˣ/cosh²x.', 'e²ˣ,e³ˣ : modes homogènes ; W=e⁵ˣ : leur Wronskien (déterminant des fonctions et de leurs dérivées).', 'a(x),b(x) : coefficients variables de la particulière à données initiales nulles ; tous les paramètres sont sans dimension.'],
  ['Coefficient dominant non nul et fonctions continues sur ℝ.', 'Deux modes homogènes croissants rendent les erreurs initiales sensibles.'],
  ['Équation caractéristique, Wronskien et système de Cramer.', 'Intégrales à borne variable et ajustement de deux données.'],
- 'Identifier la base homogène et les deux conditions initiales.', 'Construire a′,b′ puis le noyau integral.', 'Convolution, réponse impulsionnelle et transformée de Laplace.',
+ 'Identifier la base homogène et les deux conditions initiales.', 'Construire a′,b′ puis le noyau intégral.', 'Convolution, réponse impulsionnelle et transformée de Laplace.',
  ['Calculer la particulière à données nulles et comparer ses deux coefficients.', 'Ajouter la solution homogène de donnée y₀=1,v₀=2.', 'Supprimer le second membre : vérifier le mode e^{3x} puis examiner l’écart Gauss/RK4.'],
  'Retrouver le signe des coefficients et expliquer pourquoi une particulière doit encore être ajustée au problème initial.'),
-'euler_cauchy':guide('Résoudre l’exercice 2 p. 71 sans oublier le domaine, puis utiliser les séries entières pour comprendre et calculer.',
- ['C₁x et C₂/x sont les deux modes homogènes hors de 0.', 'Le réglage régulier impose C₂=0.', 'La série est toujours comparée sur [0,1−écart], même si le tracé principal est à droite de 1.'],
+'euler_cauchy':guide('Résoudre l’exercice 2 p. 71 sur les bons intervalles, puis comparer la formule exacte à sa série entière près de zéro.',
+ ['x : variable ; y(x) : inconnue ; ±1 : pôles du second membre ; 0 : zéro du coefficient de y″.', 'C₁,C₂ : constantes des modes C₁x,C₂/x ; la branche régulière impose C₂=0.', 'N : nombre de termes de la série particulière ; l’écart réglé éloigne des abscisses singulières. La série est comparée sur [0,1−écart].'],
  ['Les points ±1 ne sont jamais inclus ; la branche en 0 est traitée séparément.', 'La formule logarithmique est calculée par sa série près de 0 pour limiter la perte de précision.'],
  ['Essai xᵐ, transformation x=eᵗ et formes normales.', 'Identification de coefficients, rayon de convergence et prolongement.'],
  'Repérer les points où une formule ou une division demande une précaution.', 'Construire la série, les modes et le prolongement analytique.', 'Points singuliers réguliers et méthode de Frobenius.',
  ['Choisir le prolongement régulier et vérifier le comportement x²/3 près de 0.', 'Activer le mode 1/x sur un intervalle évitant 0.', 'Approcher x=1 puis augmenter le nombre de termes ; comparer convergence de la série et singularité du problème.'],
  'Donner la solution avec son intervalle et distinguer un faux 0/0 d’un véritable mode singulier.'),
 'riccati':guide('Comparer deux substitutions classiques en surveillant leurs domaines de validité.',
- ['c>0 paramètre la famille globale de l’exercice 3.', 'Le premier changement est z=y/x, réalisé seulement hors de 0.', 'La Riccati indépendante z′=z²−1 utilise z=−u′/u.'],
+ ['x : variable de l’exercice 3 ; y(x) : inconnue ; c>0 : constante de la famille y=cx²−1/(4c). Le changement z=y/x exclut 0.', 'Dans l’expérience Riccati distincte, t est la variable et z₀=z(0) la donnée de z′=z²−1.', 'u(t) : fonction auxiliaire ; z=−u′/u exige u≠0. La durée demandée est arrêtée avant un pôle.'],
  ['La racine √(x²+y²) garde le signe de |x| dans les transformations.', 'Le calcul Riccati s’arrête avant un zéro de u.'],
  ['Substitution homogène, fonctions hyperboliques et raccordement.', 'Dérivation d’un quotient et linéarisation exacte d’une Riccati.'],
  'Vérifier directement la famille et sa valeur en 0.', 'Retrouver les changements et les signes dans la racine.', 'EDO de Riccati, pôles et réduction à une équation linéaire.',
  ['Changer c et observer le raccordement en 0.', 'Choisir z₀=−1 puis z₀=1 : vérifier les équilibres de Riccati.', 'Choisir z₀=1,5 ; rapprocher le pôle de Riccati du zéro de u.'],
  'Nommer correctement l’équation et expliciter les points où le changement de fonction cesse d’être valable.'),
 'lineaire_systeme':guide('Passer de bilans concrets à un système de dimension 3 et utiliser ses modes pour expliquer l’évolution.',
- ['Yᵢ est une quantité ; Pᵢ=Yᵢ/S une proportion.', 'Les kᵢⱼ sont des taux symétriques positifs ; δ est une perte commune.', 'Le triangle de phase utilise P₁,P₂ et P₃=1−P₁−P₂.'],
+ ['t : temps réduit ; Yᵢ : quantité du réservoir i ; S=Y₁+Y₂+Y₃ : total ; Pᵢ=Yᵢ/S : proportion.', 'kᵢⱼ : taux d’échange symétriques positifs ; δ : taux de perte commun ; A : matrice des trois bilans Y′=AY.', 'Une quantité totale de 1 est placée dans le réservoir choisi. Le triangle des proportions utilise P₁,P₂ et P₃=1−P₁−P₂.'],
  ['Volumes identiques et coefficients constants.', 'La perte uniforme réduit le total sans modifier la dynamique des proportions.'],
  ['Mise en équations, matrice symétrique et diagonalisation.', 'Exponentielle matricielle, bilan global et formes quadratiques.'],
  'Écrire les trois bilans et vérifier la quantité totale.', 'Calculer les modes et interpréter le taux lent.', 'Réseaux de diffusion et générateurs conservant la positivité.',
  ['Choisir des échanges symétriques et retrouver les deux modes de taux 3k.', 'Ralentir un échange et comparer les temps propres.', 'Introduire une perte : comparer les quantités et les proportions au temps final.'],
  'Associer chaque valeur propre à un bilan ou à une relaxation et conserver le sens du troisième réservoir.'),
-'green_bords':guide('Étudier concrètement l’existence et l’unicité sous deux conditions aux bords ; favoriser les applications des théorèmes.',
- ['λ est le paramètre spectral ; les valeurs n² sont résonantes.', 'Le second membre est a sin x+b sin(2x).', 'L’amplitude libre n’est utilisée que si le problème est résonant et compatible.'],
+'green_bords':guide('Imposer la valeur d’une solution en deux points et déterminer quand il existe une solution unique, aucune ou une infinité.',
+ ['x∈[0,π] : variable ; y(x) : inconnue, avec y(0)=y(π)=0 ; a,b : amplitudes du second membre a sin x+b sin(2x).', 'λ : coefficient de y dans y″+λy=f ; f : second membre. Pour un entier n≥1, λ=n² est une valeur résonante.', 'C : amplitude libre du mode sin(nx), utilisée seulement à la résonance compatible.'],
  ['Bords homogènes en 0 et π.', 'Une candidate incompatible n’est pas annoncée comme une solution : son résidu reste affiché.'],
  ['Solutions homogènes, méthode de tir et orthogonalité des sinus.', 'Intégration par parties et condition de compatibilité.'],
  'Résoudre l’homogène et comparer données au même point / deux points.', 'Établir la condition intégrale et classer unique / aucune / infinité.', 'Alternative de Fredholm, fonctions de Green et problèmes spectraux.',

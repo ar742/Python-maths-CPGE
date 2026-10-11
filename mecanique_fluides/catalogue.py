@@ -23,7 +23,7 @@ def lab(id_, title, category, intro, controls, presets):
 
 LABS = [
     lab("cinematique", "Suivre une particule, lire un champ", "Fondations",
-        "Séparer transport, déformation et rotation dans un champ plan incompressible. Une ligne de courant n’est une trajectoire que si le champ est stationnaire.", [
+        'Suivre un point de fluide et un petit carré pour distinguer déplacement, étirement et rotation. Le taux d’étirement a et la vitesse angulaire Ω sont en s⁻¹ ; U est une vitesse uniforme en m·s⁻¹. Comparer la trajectoire aux lignes de courant du champ permanent.', [
             slider("a", "Taux d’étirement a", -1, 1, .05, .35, "s⁻¹"),
             slider("omega", "Rotation Ω", -1, 1, .05, .55, "rad·s⁻¹"),
             slider("U", "Translation uniforme U", -1, 1, .05, .3, "m·s⁻¹"),
@@ -33,7 +33,7 @@ LABS = [
                 preset("Étirement incompressible", a=.6, omega=0, U=0),
                 preset("Transport et tourbillon", a=.35, omega=.55, U=.3)]),
     lab("newtonien", "La viscosité mesure une déformation", "Fondations",
-        "Construire D=(∇v+∇vᵀ)/2 et τ=2ηD : une rotation rigide ne produit aucune dissipation visqueuse.", [
+        'Comparer un cisaillement et une rotation rigide : lequel déforme un élément de fluide et dissipe de l’énergie ? La viscosité dynamique η est réglée en mPa·s, la masse volumique ρ en kg·m⁻³. Le gradient de vitesse permet ensuite de calculer les contraintes.', [
             slider("eta", "Viscosité dynamique η", .1, 2000, .1, 100, "mPa·s"),
             slider("rho", "Masse volumique ρ", 1, 2000, .1, 1000, "kg·m⁻³"),
             slider("shear", "Taux de cisaillement γ̇", -20, 20, .2, 5, "s⁻¹"),
@@ -43,7 +43,7 @@ LABS = [
                 preset("Cisaillement simple", shear=10, a=0, omega=0),
                 preset("Extension plane", shear=0, a=2, omega=0)]),
     lab("couette", "Couette–Poiseuille entre deux parois", "Écoulements",
-        "Superposer entraînement par les parois et gradient de pression ; prévoir débit nul, reflux et bilan de puissance.", [
+        'Construire la vitesse entre deux plaques et reconnaître la contribution de chaque moteur de l’écoulement. L’écartement h est réglé en mm, les vitesses des plaques en m·s⁻¹ ; G mesure la diminution de pression par mètre. Relier le profil au débit et au bilan de puissance.', [
             slider("h", "Écartement h", .2, 20, .1, 4, "mm"),
             slider("U0", "Vitesse de la paroi basse", -1, 1, .02, .3, "m·s⁻¹"),
             slider("U1", "Vitesse de la paroi haute", -1, 1, .02, 0, "m·s⁻¹"),
@@ -54,7 +54,7 @@ LABS = [
                 preset("Débit nul mais mouvement", h=10, eta=100, U0=.1, U1=0, G=-600),
                 preset("Reflux près de la paroi", h=10, eta=100, U0=.1, U1=0, G=-1000)]),
     lab("poiseuille", "Poiseuille : le rayon à la puissance quatre", "Écoulements",
-        "Intégrer un profil parabolique en coordonnées cylindriques, comparer débit, dissipation et résistance hydraulique.", [
+        'Comprendre pourquoi le rayon d’un tube influence fortement son débit. Le rayon R est réglé en mm, la longueur L en m et la chute de pression Δp en Pa. Retrouver le profil parabolique, puis vérifier le régime avec le nombre de Reynolds.', [
             slider("R", "Rayon intérieur R", .2, 10, .1, 1, "mm"),
             slider("L", "Longueur L", .05, 5, .05, 1, "m"),
             slider("dp", "Chute de pression Δp=pentrée−psortie", 1, 20000, 1, 1000, "Pa"),
@@ -64,7 +64,7 @@ LABS = [
                 preset("Rayon doublé", R=2, eta=10, dp=1000, L=1),
                 preset("Microcanal visqueux", R=.2, eta=100, dp=20000, L=.2)]),
     lab("diffusion", "Démarrage d’une paroi et diffusion visqueuse", "Écoulements",
-        "Distinguer le premier problème de Stokes en demi-espace de l’approche du profil de Couette entre deux parois.", [
+        'Observer la propagation du mouvement d’une paroi dans un fluide initialement au repos. La vitesse imposée U est en m·s⁻¹, la viscosité cinématique ν en mm²·s⁻¹ et le temps en s. Comparer un demi-espace à une couche finie.', [
             select("geometry", "Domaine", [("halfspace", "Demi-espace : Stokes"), ("finite", "Deux parois : Couette transitoire")], "halfspace"),
             slider("U", "Vitesse imposée à la paroi", .05, 1, .05, .5, "m·s⁻¹"),
             slider("nu", "Viscosité cinématique ν", .5, 200, .5, 10, "mm²·s⁻¹"),
@@ -74,7 +74,7 @@ LABS = [
                 preset("Couette en formation", geometry="finite", nu=10, h=10, time=.5),
                 preset("Couette presque établi", geometry="finite", nu=10, h=10, time=10)]),
     lab("blasius", "Blasius : une couche limite qui s’épaissit", "Écoulements",
-        "Passer d’une EDP à un profil universel par similitude puis intégrer l’équation de Blasius par Runge–Kutta.", [
+        'Mesurer comment une couche limite s’épaissit et comment le frottement diminue le long d’une plaque. U∞ est la vitesse extérieure en m·s⁻¹, x la distance au bord d’attaque en m et ν la viscosité cinématique en mm²·s⁻¹. Comparer les profils après un changement d’échelle.', [
             slider("U", "Vitesse extérieure U∞", .2, 30, .2, 5, "m·s⁻¹"),
             slider("nu", "Viscosité cinématique ν", 1, 100, 1, 15, "mm²·s⁻¹"),
             slider("x", "Distance au bord d’attaque x", .01, 2, .01, .3, "m"),
@@ -83,7 +83,7 @@ LABS = [
                 preset("Même fluide, plus loin", U=5, nu=15, x=1, rho=1.2),
                 preset("Transition à discuter", U=30, nu=15, x=2, rho=1.2)]),
     lab("bernoulli", "Bernoulli généralisé : pertes et pompe", "Écoulements",
-        "Établir un bilan de charge avec vitesse moyenne, correction cinétique, frottement, singularités et rendement de pompe.", [
+        'Calculer la différence de pression nécessaire pour transporter un débit donné. Q est réglé en L·s⁻¹, les diamètres en cm et la différence d’altitude en m. Séparer variations d’énergie mécanique, pertes et apport de la pompe.', [
             slider("Q", "Débit-volume Q", .01, 10, .01, .5, "L·s⁻¹"),
             slider("D1", "Diamètre à l’entrée D₁", 1, 15, .1, 5, "cm"),
             slider("D2", "Diamètre de la conduite D₂", 1, 15, .1, 3, "cm"),
@@ -100,7 +100,7 @@ LABS = [
                 preset("Venturi sans pertes", Q=2, D1=5, D2=2, L=0, dz=0, K=0, pump=0),
                 preset("Huile laminaire", Q=.1, D1=3, D2=3, eta=100, roughness=0, dz=0, alpha="2")]),
     lab("sphere", "Une sphère entre Stokes et inertie", "Écoulements",
-        "Comparer traînée et sédimentation ; tester la validité de Stokes avant d’utiliser le temps de relaxation.", [
+        'Relier la force de traînée à la vitesse d’une petite sphère, puis estimer sa vitesse de chute limite. Le rayon est réglé en mm, la vitesse en m·s⁻¹ et la viscosité en mPa·s. Vérifier ensuite si l’approximation de Stokes est adaptée.', [
             slider("R", "Rayon de la sphère", .005, 5, .005, .05, "mm"),
             slider("U", "Vitesse relative imposée", .001, 1, .001, .01, "m·s⁻¹"),
             slider("eta", "Viscosité dynamique η", .01, 2000, .01, 100, "mPa·s"),
@@ -110,7 +110,7 @@ LABS = [
                 preset("Bille dans l’eau", R=.5, U=.1, eta=1, rho=1000, rho_s=2500),
                 preset("Limite de la corrélation", R=5, U=1, eta=1, rho=1000, rho_s=2500)]),
     lab("vortex", "Rankine : circulation et dépression", "Écoulements",
-        "Raccorder un cœur en rotation solide à un tourbillon potentiel et intégrer le gradient de pression radial.", [
+        'Construire un tourbillon à cœur régulier et relier sa vitesse à sa pression. R est le rayon du cœur en m, Ω sa vitesse angulaire en rad·s⁻¹ et ρ la masse volumique. Distinguer rotation locale et circulation autour du cœur.', [
             slider("R", "Rayon du cœur R", .1, 10, .1, 2, "m"),
             slider("omega", "Vitesse angulaire du cœur Ω", -10, 10, .1, 3, "rad·s⁻¹"),
             slider("rho", "Masse volumique ρ", 1, 1500, .1, 1.2, "kg·m⁻³")], [
@@ -118,7 +118,7 @@ LABS = [
                 preset("Sens inversé", R=2, omega=-3, rho=1.2),
                 preset("Vortex dans l’eau", R=.5, omega=2, rho=1000)]),
     lab("magnus", "Magnus : la portance vient de la circulation", "Écoulements",
-        "Ajouter une circulation prescrite au potentiel d’un cylindre puis intégrer la pression pour retrouver Kutta–Joukowski.", [
+        'Prévoir le sens de la portance d’un cylindre à partir de ses vitesses et pressions. R est le rayon en m, U∞ la vitesse du courant vers +x et Γ la circulation en m²·s⁻¹. Une circulation positive est orientée dans le sens trigonométrique.', [
             slider("R", "Rayon du cylindre", .05, 1, .01, .2, "m"),
             slider("U", "Vitesse uniforme U∞ vers +x", .2, 30, .2, 5, "m·s⁻¹"),
             slider("Gamma", "Circulation Γ, positive antihoraire", -30, 30, .2, 4, "m²·s⁻¹"),
@@ -127,7 +127,7 @@ LABS = [
                 preset("Portance vers le bas", Gamma=4),
                 preset("Portance vers le haut", Gamma=-4)]),
     lab("houle", "Houle, rides et orbites des particules", "Ondes",
-        "Relier Laplace, conditions aux limites et dispersion ; distinguer déplacement des particules et transport du paquet.", [
+        'Comparer les crêtes d’une vague au mouvement des particules d’eau. La longueur d’onde λ, la profondeur h et l’amplitude a sont en m ; γ est la tension superficielle en N·m⁻¹. La relation de dispersion fixe la fréquence et les vitesses de propagation.', [
             slider("wavelength", "Longueur d’onde λ", .005, 20, .005, 1, "m"),
             slider("h", "Profondeur h", .01, 10, .01, 1, "m"),
             slider("amplitude", "Amplitude de surface a", .0001, .2, .0001, .02, "m"),
@@ -137,7 +137,7 @@ LABS = [
                 preset("Eau peu profonde", wavelength=5, h=.05, amplitude=.002, sigma=0),
                 preset("Ride capillaire", wavelength=.01, h=.1, amplitude=.0001)]),
     lab("acoustique", "Pression, vitesse et interface acoustique", "Ondes",
-        "Construire l’impédance et distinguer les coefficients d’amplitude de pression, de vitesse et d’énergie.", [
+        'Prévoir la réflexion d’un son et contrôler la conservation de son énergie. Chaque milieu possède une masse volumique ρ en kg·m⁻³ et une célérité c en m·s⁻¹. La fréquence est en Hz et l’amplitude de surpression incidente en Pa.', [
             slider("rho1", "Masse volumique du milieu 1", 1, 1500, .1, 1.2, "kg·m⁻³"),
             slider("c1", "Célérité du milieu 1", 200, 1800, 10, 340, "m·s⁻¹"),
             slider("rho2", "Masse volumique du milieu 2", 1, 1500, .1, 1000, "kg·m⁻³"),
@@ -148,7 +148,7 @@ LABS = [
                 preset("Milieux identiques", rho1=1.2, c1=340, rho2=1.2, c2=340),
                 preset("Eau → air", rho1=1000, c1=1500, rho2=1.2, c2=340)]),
     lab("conduit", "Un conduit sélectionne les modes", "Ondes",
-        "La séparation des variables produit une fréquence de coupure ; sous la coupure, l’amplitude décroît sans propagation axiale.", [
+        'Chercher les fréquences qui permettent à un mode sonore de se propager dans un conduit. a et b sont les dimensions de la section en m ; m et n comptent les variations transversales. Comparer la fréquence en Hz à la fréquence de coupure.', [
             slider("width", "Largeur du conduit a", .05, 2, .01, .3, "m"),
             slider("height", "Hauteur du conduit b", .05, 2, .01, .2, "m"),
             slider("m", "Indice transverse m", 0, 4, 1, 1, ""),
@@ -159,7 +159,7 @@ LABS = [
                 preset("Mode (1,0) propagatif", m=1, n=0, frequency=800),
                 preset("Mode (1,0) évanescent", m=1, n=0, frequency=300)]),
     lab("diffraction", "Diffraction : une fente devient une antenne", "Ondes",
-        "Comparer a et λ puis lire la loi sinc² sans transformer abusivement λ/a en un angle lorsque le premier zéro n’existe pas.", [
+        'Mesurer l’élargissement d’un faisceau sonore après une fente. La largeur a est réglée en cm, la fréquence f en Hz et la célérité c en m·s⁻¹. Relier les directions des minima au rapport entre longueur d’onde et largeur.', [
             slider("frequency", "Fréquence f", 500, 60000, 100, 25000, "Hz"),
             slider("a", "Largeur de fente a", .1, 10, .1, 1, "cm"),
             slider("c", "Célérité c", 200, 1600, 10, 340, "m·s⁻¹")], [
@@ -167,7 +167,7 @@ LABS = [
                 preset("Premier zéro visible", frequency=25000, a=4, c=340),
                 preset("Fente très large", frequency=50000, a=10, c=340)]),
     lab("thermo", "Pourquoi le son est-il adiabatique ?", "Passerelles",
-        "Relier compressibilité, équation d’état, capacité thermique et diffusion de chaleur : isotherme et isentropique donnent des célérités différentes.", [
+        'Relier la température d’un gaz à la célérité du son et aux échanges thermiques. T est en K, la masse molaire M en g·mol⁻¹ et la pression p₀ en kPa. Comparer les compressions isotherme et isentropique avant d’étudier la diffusion thermique.', [
             slider("T", "Température absolue T", 200, 600, 1, 290, "K"),
             slider("M", "Masse molaire M", 2, 100, .1, 29, "g·mol⁻¹"),
             slider("gamma", "Rapport γ=Cp/Cv", 1.05, 1.67, .01, 1.4, ""),
@@ -178,7 +178,7 @@ LABS = [
                 preset("Hélium", T=290, M=4, gamma=1.67),
                 preset("Air chauffé", T=500, M=29, gamma=1.4)]),
     lab("mhd", "Hartmann et Alfvén : le fluide rencontre B", "Passerelles",
-        "Comparer freinage de Lorentz, dissipation Joule et tension magnétique ; les modèles quasi statique et MHD idéale ont des hypothèses différentes.", [
+        'Observer comment un champ magnétique agit sur un fluide conducteur. B₀ est en T, σ la conductivité électrique en S·m⁻¹ et η la viscosité en mPa·s. Choisir le freinage d’un écoulement de Hartmann ou la propagation d’une onde d’Alfvén.', [
             select("mode", "Expérience MHD", [("hartmann", "Hartmann : canal et freinage"), ("alfven", "Alfvén : onde transverse idéale")], "hartmann"),
             slider("B", "Champ magnétique B₀", 0, 2, .01, .2, "T"),
             slider("sigma", "Conductivité électrique σ", 1000, 5000000, 1000, 1000000, "S·m⁻¹"),
@@ -192,7 +192,7 @@ LABS = [
                 preset("Canal magnétique", mode="hartmann", B=.2),
                 preset("Onde Alfvén idéale", mode="alfven", B=.2, rho=1000, wavelength=10)]),
     lab("navier", "Taylor–Green : un bilan exact de Navier–Stokes", "Passerelles",
-        "Explorer une solution périodique plane : le terme non linéaire est équilibré par la pression et la viscosité amortit l’énergie.", [
+        'Vérifier une solution exacte de Navier–Stokes et son bilan d’énergie. U₀ est l’amplitude initiale en m·s⁻¹, L la période en m et ν la viscosité cinématique en m²·s⁻¹. Observer l’amortissement d’un réseau de tourbillons bidimensionnels.', [
             slider("U", "Amplitude initiale U₀", .1, 5, .1, 1, "m·s⁻¹"),
             slider("L", "Période spatiale L", .2, 10, .1, 2, "m"),
             slider("nu", "Viscosité cinématique ν", 0, .1, .001, .01, "m²·s⁻¹"),
@@ -202,7 +202,7 @@ LABS = [
                 preset("Navier–Stokes : amortissement", nu=.01),
                 preset("Dissipation rapide", nu=.1, time=5)]),
     lab("hydrostatique", "Pression, profondeur et atmosphère", "Fondations",
-        "Intégrer dp/dz=−ρg, avec ρ constante dans un liquide puis ρ(p,T) dans une atmosphère idéale isotherme.", [
+        'Calculer une pression avec la profondeur ou l’altitude et choisir le bon modèle de masse volumique. Le liquide a une masse volumique ρ en kg·m⁻³ ; l’atmosphère est un gaz à température T en K. La pression de référence p₀ est réglée en kPa.', [
             select("mode", "Milieu au repos", [("liquid", "Liquide incompressible"), ("gas", "Atmosphère idéale isotherme")], "liquid"),
             slider("height", "Profondeur liquide / altitude gaz", 0, 10000, 10, 100, "m"),
             slider("rho", "Masse volumique du liquide", 500, 1500, 10, 1000, "kg·m⁻³"),

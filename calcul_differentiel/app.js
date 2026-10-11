@@ -1,32 +1,47 @@
-'use strict';
+"use strict";
+
+function renderGuide(id){
+ const guide=guides[id],box=$('lab-guide');box.replaceChildren();if(!guide)return;
+ const add=(tag,text,parent=box)=>{const e=document.createElement(tag);e.textContent=text;parent.append(e);return e;};
+ add('h3','Pour commencer');add('p',guide.purpose);
+ add('h4','Objets et notations');const objects=add('ul','');guide.objects.forEach(v=>add('li',v,objects));
+ const detail=add('details','');add('summary','Hypothèses, manipulations et repères CPGE',detail);
+ const section=(title,items)=>{add('h4',title,detail);const list=add('ul','',detail);items.forEach(v=>add('li',v,list));};
+ section('Hypothèses',guide.hypotheses);section('Techniques à mobiliser',guide.techniques);
+ add('h4','Trois premières manipulations',detail);const steps=add('ol','',detail);guide.first_steps.forEach(v=>add('li',v,steps));
+ add('h4','Repères sup, spé et prolongements',detail);
+ for(const [key,label] of [['sup','Sup'],['spe','Spé'],['beyond','Au-delà']])add('p',label+' : '+guide.levels[key],detail);
+ add('p','À retenir : '+guide.expected,detail);
+}
 const $=id=>document.getElementById(id);
 const palette={green:'#23745c',gold:'#c79432',rose:'#b66375',mint:'#8dc9ac',ink:'#17363d'};
 const labs={
- jacobiennes:{title:'Une jacobienne transforme les directions',source:'TP · COORDONNÉES · PRIORITÉ',intro:'Voir le changement de coordonnées, son orientation et l’approximation affine locale.',lesson:1,
+ jacobiennes:{title:'Une jacobienne transforme les directions',source:'TP · COORDONNÉES · PRIORITÉ',intro:'Comparer un petit déplacement réel à son image par la jacobienne, puis repérer les coordonnées singulières.',lesson:1,
  controls:[['mode','Coordonnées',[['spherique','Sphériques (ρ, θ, φ)'],['cylindrique','Cylindriques (ρ, θ, z)'],['polaire','Polaires (ρ, θ)']],'spherique'],['r','Rayon ρ',0,3,.05,2],['theta','Azimut θ (degrés)',-180,180,1,35],['phi','Colatitude φ (degrés)',0,180,1,65],['z','Altitude z (cylindrique)',-2,2,.05,.5],['h','Taille de la face paramétrique',.01,.4,.01,.2]],
  presets:[['Pôle : carte singulière',{phi:0}],['Carte régulière',{r:2,phi:65}],['Polaire',{mode:'polaire'}]]},
- elliptique:{title:'L’intégrale change avec la mesure',source:'TP · INTÉGRALE ELLIPTIQUE · PRIORITÉ',intro:'Transformer un quart de disque, retrouver le facteur de mesure et corriger le calcul du recueil.',lesson:2,
+ elliptique:{title:'L’intégrale change avec la mesure',source:'TP · INTÉGRALE ELLIPTIQUE · PRIORITÉ',intro:'Transformer un quart de disque en quart d’ellipse, puis calculer l’intégrale avec le bon facteur d’aire.',lesson:2,
  controls:[['a','Demi-axe a',.2,5,.1,3],['b','Demi-axe b',.2,5,.1,2],['alpha','Coefficient α de x³',0,5,.1,3],['beta','Coefficient β de y²',0,5,.1,1],['order','Nœuds par variable',2,64,1,12]],
  presets:[['TP du recueil',{a:3,b:2,alpha:3,beta:1}],['Ellipticité marquée',{a:4,b:.5}],['Disque unité',{a:1,b:1}]]},
- taylor:{title:'La fonction, sa tangente et sa courbure',source:'DIFFÉRENTIELLE · TAYLOR · EXERCICE 1',intro:'Comparer les restes et apprendre à classer un point critique avec les bonnes hypothèses.',lesson:4,
+ taylor:{title:'La fonction, sa tangente et sa courbure',source:'DIFFÉRENTIELLE · TAYLOR · EXERCICE 1',intro:'Comparer fonction, tangente et approximation quadratique ; chercher si un point critique est un minimum, un maximum ou une selle.',lesson:4,
  controls:[['mode','Fonction',[['lisse','sin x cos y + 0,2(x²+y²)'],['cubique','Polynôme de l’exercice 1'],['pathologie','Dérivées directionnelles sans continuité']],'lisse'],['x','Point de base : x',-3,3,.01,.5],['y','Point de base : y',-3,3,.01,.3],['angle','Direction (degrés)',-180,180,1,40],['h','Étendue de la coupe',.05,1.5,.05,.8]],
  presets:[['Selle (−2,−2)',{mode:'cubique',x:-2,y:-2}],['Selle (2/3,−2/3)',{mode:'cubique',x:2/3,y:-2/3}],['Origine dégénérée',{mode:'cubique',x:0,y:0}],['Chemin courbe',{mode:'pathologie'}]]},
  matrices:{title:'Différencier le déterminant et l’inverse',source:'TP · APPLICATIONS MATRICIELLES · PRIORITÉ',intro:'Suivre une droite A+tH et comprendre le rôle de l’inversibilité et de l’ordre des facteurs.',lesson:5,
  controls:[['a','A₁₁',-3,3,.05,1],['b','A₁₂',-3,3,.05,.6],['c','A₂₁',-3,3,.05,-.2],['d','A₂₂',-3,3,.05,1.5]],
  presets:[['À l’identité',{a:1,b:0,c:0,d:1}],['Matrice singulière',{a:1,b:0,c:0,d:0}],['Presque singulière',{a:1,b:0,c:0,d:.05}]]},
- optimisation:{title:'Du gradient aux valeurs propres',source:'TP · QUADRATIQUES · RAYLEIGH · NEWTON',intro:'Relier la géométrie des niveaux, la vitesse de descente et la précision du quotient de Rayleigh.',lesson:7,
+ optimisation:{title:'Du gradient aux valeurs propres',source:'TP · QUADRATIQUES · RAYLEIGH · NEWTON',intro:'Choisir un pas de descente à partir des valeurs propres, puis comparer cette méthode à Newton et au quotient de Rayleigh.',lesson:7,
  controls:[['mode','Expérience',[['quadratique','Descente et Newton'],['rayleigh','Quotient de Rayleigh']],'quadratique'],['lambda1','Première valeur propre',.2,5,.1,1],['lambda2','Seconde valeur propre',.2,10,.1,4],['rotation','Rotation des axes (degrés)',-90,90,1,30],['angle','Direction pour Rayleigh (degrés)',-180,180,1,65],['x','Départ x (descente)',-3,3,.1,-1.5],['y','Départ y (descente)',-3,3,.1,2],['factor','Facteur du pas αλmax',.1,2.5,.05,.8],['steps','Itérations',0,50,1,25]],
  presets:[['Descente stable',{mode:'quadratique',factor:.8}],['Pas trop grand',{mode:'quadratique',factor:2.3}],['Rayleigh',{mode:'rayleigh'}]]},
- lie:{title:'Le tangent engendre une transformation',source:'TXT · ALGÈBRES DE LIE · PRIORITÉ',intro:'Passer de la contrainte du groupe à son espace tangent, puis observer rotations et commutateurs.',lesson:8,
+ lie:{title:'Le tangent engendre une transformation',source:'TXT · ALGÈBRES DE LIE · PRIORITÉ',intro:'Différencier les contraintes d’une transformation matricielle, puis observer son exponentielle. Un prolongement guidé vers les algèbres de Lie.',lesson:8,
  controls:[['group','Groupe de matrices',[['SO','SO : rotations'],['SL','SL : déterminant 1'],['GL','GL : matrices inversibles']],'SO'],['n','Dimension',2,3,1,3],['a','Paramètre diagonal',-2,2,.1,.8],['b','Paramètre de cisaillement',-2,2,.1,1],['c','Second paramètre',-2,2,.1,.6],['t','Temps t',-2,2,.05,1]],
  presets:[['Rotations 3D',{group:'SO',n:3}],['SO(2) : crochet nul',{group:'SO',n:2}],['Volume conservé',{group:'SL',n:3}],['Volume variable',{group:'GL',n:3}]]},
- gaussienne:{title:'Une intégrale révèle moyenne et covariance',source:'TXT · GAUSSIENNE ÉTENDUE · PRIORITÉ',intro:'Décentrer et tourner une gaussienne, calculer son intégrale et interpréter ses dérivées.',lesson:10,
+ gaussienne:{title:'Une intégrale révèle moyenne et covariance',source:'TXT · GAUSSIENNE ÉTENDUE · PRIORITÉ',intro:'Compléter le carré, calculer l’intégrale et lire le centre et l’étalement. Un prolongement vers les gaussiennes à plusieurs variables.',lesson:10,
  controls:[['n','Dimension n',2,8,1,3],['lambda1','Précision du premier axe',.2,5,.1,.7],['lambda2','Précision du second axe',.2,5,.1,2],['gamma','Précision des axes suivants',.2,5,.1,1],['rotation','Rotation des axes (degrés)',-90,90,1,35],['b1','Terme linéaire B₁',-3,3,.1,1],['b2','Terme linéaire B₂',-3,3,.1,-.5],['order','Nœuds de quadrature / variable',4,80,1,32]],
  presets:[['Centrée',{b1:0,b2:0}],['Exemple calculable',{n:2,lambda1:2,lambda2:3,rotation:0,b1:2,b2:-3}],['Forte anisotropie',{lambda1:.2,lambda2:5,rotation:45,order:80}]]},
  green_fubini:{title:'Intégrer : orientation et hypothèses',source:'EXERCICES 2 & 7 · GREEN · FUBINI',intro:'Vérifier une circulation par deux méthodes, puis voir pourquoi on ne peut pas toujours permuter les intégrales.',lesson:12,
  controls:[['mode','Expérience',[['green','Green : frontière et domaine'],['fubini','Fubini : singularité et coupures']],'green'],['orientation','Sens (Green)',[['1','Orientation positive'],['-1','Orientation négative']],'1'],['logx','log₁₀ εx (Fubini)',-6,0,.1,-2],['logy','log₁₀ εy (Fubini)',-6,0,.1,-2]],
  presets:[['Green positif',{mode:'green',orientation:'1'}],['Coupure symétrique',{mode:'fubini',logx:-4,logy:-4}],['Coupures inégales',{mode:'fubini',logx:-2,logy:-5}]]}
 };
+let guides={};
 let current='jacobiennes',token,lessons=[],exercises=[],latest,serial=0,timer,lessonIndex=1;
 const state = Object.fromEntries(Object.entries(labs).map(([id,l])=>[id,Object.fromEntries(l.controls.map(c=>[c[0],Array.isArray(c[2])?c[3]:c[5]]))]));
 const fmt = v => v===null?'—':typeof v==='boolean'?(v?'Oui':'Non'):typeof v==='string'?v:Number.isInteger(v)?String(v):Math.abs(v)<.0001&&v!==0?v.toExponential(3):Number(v.toPrecision(6)).toLocaleString('fr-FR',{maximumFractionDigits:6});
@@ -52,7 +67,7 @@ function showLab(id,params={}){
  current=id;Object.assign(state[id],params);constrain();
  $('course').hidden=true;$('laboratory').hidden=false;
  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.lab===id));
- const lab=labs[id];$('lab-title').textContent=lab.title;$('lab-source').textContent=lab.source;$('lab-intro').textContent=lab.intro;
+ const lab=labs[id];$('lab-title').textContent=lab.title;$('lab-source').textContent=lab.source;$('lab-intro').textContent=lab.intro;renderGuide(id);
  $('presets').replaceChildren();
  for(const [name,p] of lab.presets){const b=elem('button',name);b.onclick=()=>showLab(id,p);$('presets').append(b);}
  renderControls();syncTheory();update();
@@ -122,7 +137,7 @@ function prepareCourse(sources){
 }
 $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export/'+latest.export_id;a.download=`differentiel-${latest.lab}.json`;document.body.append(a);a.click();a.remove();};
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>document.querySelectorAll('canvas').forEach(c=>draw(c,c._data)),100);});
-(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
+(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();guides=bootstrap.guides;token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
  const names={jacobiennes:'Jacobiennes',elliptique:'Intégrale elliptique',taylor:'Différentielle & Taylor',matrices:'Matrices',optimisation:'Rayleigh & Newton',lie:'Algèbres de Lie',gaussienne:'Gaussienne étendue',green_fubini:'Green & Fubini',course:'Cours & exercices'};
  for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);showLab('jacobiennes');
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();

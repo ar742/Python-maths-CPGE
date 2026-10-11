@@ -61,7 +61,7 @@ LAB_GUIDES = {
         ["Équation différentielle du premier ordre", "Réponse complexe avec exp(−iωt)", "Bilan de puissance et convolution causale"],
         ["Prévoir le signe de v et de j pour des électrons puis des porteurs positifs ; calculer ωτ pour le réglage choisi.", "Comparer faible fréquence et réponse inertielle ; changer le signe des porteurs puis doubler τ à densité fixée.", "Retrouver σ=σ₀/(1−iωτ), identifier la partie dissipative et expliquer pourquoi j ne change pas de sens stationnaire lorsque q change de signe."],
         "Résolution d’un échelon et loi d’Ohm obtenue à partir d’un modèle mécanique.",
-        "Phasors, énergie et réponse linéaire ; contrôle des amplitudes crête et efficace.",
+        "Amplitudes complexes, énergie et réponse linéaire ; contrôle des amplitudes crête et efficace.",
         "Causalité, pôles complexes, permittivité de Drude et statistiques des porteurs.", [9,10],
         "Un courant avec phase et une dissipation positive, accompagnés du domaine de validité du modèle."),
     "hall": guide(
@@ -78,7 +78,7 @@ LAB_GUIDES = {
         "Fermer le bilan électromécanique et distinguer un rail toujours actif d’un cadre dont le flux cesse de varier après immersion. Lenz est confronté aux équations et à la chaleur dissipée.",
         ["B en T, largeur active et hauteur du cadre en m, R en Ω", "Rail : L en mH, masse en g, v en m·s⁻¹ ; cadre : distance vers le bas et temps en s"],
         ["Rail : v vers +x, B vers +z, i vers +y ; Li̇+Ri=−Bℓv, mv̇=Bℓi", "Cadre : inductance négligée, champ uniforme après une frontière nette ; immersion complète ⇒ flux constant"],
-        ["Flux orienté et fém d’un contour mobile", "Système d’ODE et critère d’amortissement", "Somme des bilans mécanique et électrique"],
+        ["Flux orienté et fém d’un contour mobile", "Système d’équations différentielles et critère d’amortissement", "Somme des bilans mécanique et électrique"],
         ["Prédire le signe du courant initial du rail et la dérivée de W=mv²/2+Li²/2 avant tout calcul.", "Comparer rail résistif et préréglage inductif oscillant ; choisir ensuite le cadre et repérer l’instant de pleine immersion.", "Démontrer Ẇ=−Ri² pour le rail et Φ constant pour le cadre immergé ; expliquer pourquoi une vitesse limite d’entrée n’est pas une limite globale."],
         "Lenz, énergie et résolution d’une équation linéaire après introduction guidée du flux.",
         "Induction, couplages, transitoires et traitement par morceaux.",
@@ -91,7 +91,7 @@ LAB_GUIDES = {
         ["Oscillateur harmonique forcé", "Impédance réfléchie par un couplage", "Moyenne harmonique et conservation de l’énergie"],
         ["Calculer f₀=√(k/m)/(2π) et prévoir la valeur de κ²/b ajoutée à l’impédance à cette fréquence.", "Placer f près de f₀ puis au-dessus ; doubler κ et comparer vitesse, courant et bilan de puissance.", "Retrouver Zmot=κ²/[b−i(mω−k/ω)] et montrer que ses pertes sont positives ; distinguer résonance mécanique et maxima d’une réponse chargée."],
         "Équations d’oscillateur, circuit RL et bilans séparés.",
-        "Couplage réciproque, phasors et conversion électromécanique selon la filière.",
+        "Couplage réciproque, amplitudes complexes et conversion électromécanique selon la filière.",
         "Charge acoustique, rayonnement d’un piston et modèles distribués de membrane.", [14],
         "Une explication du pic d’impédance et un bilan ui=pertes+variation d’énergie, avec unités de κ vérifiées."),
     "hysteresis": guide(
@@ -118,10 +118,10 @@ LAB_GUIDES = {
         "Lire le glissement comme la cause du courant rotorique, puis suivre séparément chaleur du rotor, conversion mécanique et flux d’entrefer dans un circuit équivalent triphasé.",
         ["Tension simple efficace en V, f en Hz, p paires de pôles, s=(Ωs−Ωr)/Ωs", "R₁,R₂ en Ω ; L₁,L₂,Lm en mH ; puissances signées en W et couple en N·m"],
         ["Triphasé équilibré, paramètres ramenés au stator", "Modèle linéaire établi ; s=0 traité par la limite d’une admittance, pertes mécaniques non calculées"],
-        ["Phasors et associations d’impédances", "Bilan Pg=Pm+PJrotor", "Lecture de trois régimes par les signes"],
+        ["Amplitudes complexes et associations d’impédances", "Bilan Pg=Pm+PJrotor", "Lecture de trois régimes par les signes"],
         ["Prévoir ce qui arrive au courant rotorique à s=0 et aux signes des puissances pour s<0.", "Comparer faible glissement, rotor arrêté et génératrice ; modifier R₂ et relever le déplacement du maximum de couple.", "Vérifier PJrotor=sPg≥0 et Pm=(1−s)Pg ; sur papier, montrer que la phase initiale d’une spire ne change pas son couple moyen."],
         "Lenz, vitesse relative et bilan de puissance ; le circuit triphasé est une entrée guidée.",
-        "Phasors, induction et bilans de Spé ; le circuit triphasé asynchrone est ici un prolongement accompagné, à distinguer du programme explicite des machines synchrones en PSI.",
+        "Amplitudes complexes, induction et bilans de Spé ; le circuit triphasé asynchrone est ici un prolongement accompagné, à distinguer du programme explicite des machines synchrones en PSI.",
         "Modèles à paramètres variables, saturation et commande vectorielle.", [20],
         "Un partage de puissance cohérent pour moteur et génératrice, et une explication du couple nul au synchronisme."),
     "peau": guide(
@@ -131,7 +131,7 @@ LAB_GUIDES = {
         ["Diffusion et choix de la racine complexe", "Test d’échelle en f⁻¹ᐟ² ou t¹ᐟ²", "Dissipation locale et conditions à l’infini"],
         ["Prévoir le rapport des profondeurs pour f multipliée par 100, puis pour le temps d’échelon multiplié par quatre.", "Comparer cuivre à 1 et 100 kHz en harmonique ; passer en échelon et augmenter le temps.", "Déduire ∂tB=(μσ)⁻¹∂xxB de Maxwell et Ohm ; expliquer pourquoi ω→0 ne produit pas un état Meissner."],
         "Racine carrée, unités et interprétation d’un profil décroissant ; diffusion introduite progressivement.",
-        "Propagation dissipative, phasors et séparation entre régime établi et transitoire.",
+        "Propagation dissipative, amplitudes complexes et séparation entre régime établi et transitoire.",
         "Conductivité dispersive, plaque finie et couplage London/composante normale.", [23,31],
         "Deux lois de pénétration différenciées et une vérification du signe diffusif positif."),
     "maxwell": guide(
@@ -171,7 +171,7 @@ LAB_GUIDES = {
         ["Intégrale exponentielle complexe", "Différence de trajet et transformée de Fourier", "Domaine angulaire exact versus petit angle"],
         ["Prévoir les premiers zéros pour a/λ=4 et démontrer leur absence à a/λ=0,5.", "Comparer les deux ouvertures, puis utiliser le pointage à 30° ; noter l’asymétrie en angle mais la symétrie en variable de phase.", "Intégrer exp[−ikx(sinθ−sinθ₀)] et expliquer pourquoi θ≈λ/a n’est permis que pour une ouverture grande devant λ ; traiter le réseau de l’exercice 32 sur papier."],
         "Interférences et trigonométrie ; l’intégrale introduit la diffraction.",
-        "Fraunhofer, phasors et formulation de Fourier selon la filière.",
+        "Fraunhofer, amplitudes complexes et formulation de Fourier selon la filière.",
         "Directivité tridimensionnelle, facteur de réseau et réciprocité d’une antenne.", [29,28],
         "Un diagramme relié à la géométrie et une limite de petit angle explicitement vérifiée."),
     "plasma": guide(
@@ -182,7 +182,7 @@ LAB_GUIDES = {
         ["Sans collisions, prévoir propagation pour ω/ωp=1,5 et évanescence pour 0,5 ; calculer fp à la densité choisie.", "Comparer ces régimes puis ajouter des collisions près de ω=ωp ; suivre décroissance et pertes.", "Retrouver εr=1−ωp²/[ω(ω+iν)] et le choix Imk≥0 ; sur papier, distinguer le mode longitudinal de l’exercice 34."],
         "Force de rappel collective et équation harmonique ; comparaison à une coupure d’oscillateur.",
         "Propagation dans un milieu conducteur, dispersion et énergie selon la filière.",
-        "Plasmas chauds, magnétisés ou stratifiés ; eigenmodes et amortissements cinétiques.", [10,26],
+        "Plasmas chauds, magnétisés ou stratifiés ; modes propres et amortissements cinétiques.", [10,26],
         "Une coupure et une absorption séparées, avec passivité vérifiée et limites de l’ionosphère déclarées."),
     "dielectrique": guide(
         "Associer dispersion et absorption d’un oscillateur lié, puis relier la polarisation d’une sphère à ses charges de surface. Les champs extérieur, intérieur et local sont distingués.",
@@ -211,7 +211,7 @@ LAB_GUIDES = {
         ["Équation différentielle à deux conditions aux limites", "Rotationnel et signe du courant", "Ordre des limites et histoire initiale"],
         ["Calculer B(0)/B₀=1/cosh(a/λL) pour a/λL=1 et 5 et prévoir le sens des courants aux deux faces.", "Comparer plaque épaisse et deux faces proches ; changer l’histoire du conducteur parfait sans changer London.", "Démontrer ΔB=B/λL² et expliquer pourquoi E=0 impose seulement Ḃ=0 ; comparer à la diffusion normale du laboratoire peau."],
         "Exponentielle, hyperboliques et conditions aux limites, avec physique introduite.",
-        "Maxwell et résolution d’ODE ; le phénomène supraconducteur est un prolongement.",
+        "Maxwell et résolution d’équations différentielles ; le phénomène supraconducteur est un prolongement.",
         "Phase du condensat, jauge, fluxoïde, type II et vortex, hors de la plaque London simple.", [31,23],
         "Un profil satisfaisant les deux faces et une distinction explicite entre London, peau et conducteur parfait."),
     "faraday": guide(
@@ -228,10 +228,10 @@ LAB_GUIDES = {
         "Construire et vérifier un profil localisé auto-guidé, puis le comparer à la diffraction libre. Le laboratoire traite le Kerr optique dépendant de l’intensité, avec ses unités et sa réduction monochromatique.",
         ["λvide en μm, n₀, n₂ en 10⁻²⁰ m²·W⁻¹, I₀ en GW·cm⁻² (1 GW·cm⁻²=10¹³ W·m⁻²)", "Distance normalisée z/(n₀k₀y₀²), champ en V·m⁻¹, largeur en m ; I₀=n₀ε₀cE₀²/2"],
         ["Non-linéarité focalisante, enveloppe lente et modèle monochromatique ; Iref=n₀ε₀cE²/2, flux exact Sz=[k/(n₀k₀)]Iref", "Gaussienne libre de même puissance physique intégrée, avec un profil et un pic différents ; pas de Kerr DC ou magnéto-optique"],
-        ["Intégrale première d’une ODE non linéaire", "Solution sech et relation amplitude-largeur", "Adimensionnement et test d’une approximation"],
+        ["Intégrale première d’une équation différentielle non linéaire", "Solution en inverse de cosinus hyperbolique et relation amplitude-largeur", "Adimensionnement et test d’une approximation"],
         ["À n₂ fixé, prévoir l’effet de I₀ multipliée par quatre sur le champ crête et la largeur du profil localisé.", "Comparer les préréglages d’intensité puis augmenter la distance normalisée ; observer le profil auto-guidé et la référence de diffraction libre.", "Vérifier la sech par dérivation et son intégrale première ; sur papier décomposer E³ en ω et 3ω et expliciter la normalisation de l’intensité."],
         "Fonctions hyperboliques, énergie d’un oscillateur fictif et changements d’échelle.",
-        "ODE, phasors et diffusion/diffraction comme techniques ; la non-linéarité est un prolongement.",
+        "Équations différentielles, amplitudes complexes et diffusion/diffraction comme techniques ; la non-linéarité est un prolongement.",
         "Enveloppes non linéaires, stabilité et solitons ; différencier les trois effets nommés Kerr.", [33,34],
         "Une amplitude et une largeur liées par calcul, et une portée de modèle annoncée sans identifier tout Kerr à une sech."),
     "rayonnement": guide(
@@ -248,10 +248,209 @@ LAB_GUIDES = {
         "Déduire un seuil d’amplification à partir des valeurs propres d’un modèle α² local. L’hélicité et la diffusion sont confrontées à Rm pour montrer pourquoi un nombre élevé ne suffit pas à entretenir un champ.",
         ["α et U en mm·s⁻¹, diffusivité magnétique en m²·s⁻¹, longueur d’onde L en km", "k=2π/L, temps en années, B₀ en mT ; γ en s⁻¹ et croissance affichée aussi en logarithme"],
         ["Fermeture α² constante prescrite ; deux modes hélicoïdaux de divergence nulle", "Aucune simulation du noyau, convection ou rétroaction ; amplification non saturée du modèle linéaire"],
-        ["Élimination E/j dans l’induction MHD", "Eigenmode du rotationnel et taux de croissance", "Échelles temporelles, seuil et contre-exemple"],
+        ["Élimination E/j dans l’induction MHD", "Mode propre du rotationnel et taux de croissance", "Échelles temporelles, seuil et contre-exemple"],
         ["Calculer k=2π/L et prévoir le signe de γ=±αk−ηmk² pour les deux hélicités.", "Comparer bon mode, mauvaise hélicité et α=0 ; choisir grand Rm sans croissance et modifier U sans changer α.", "Retrouver le seuil |α|>ηmk et montrer que U intervient dans Rm mais pas automatiquement dans α ; expliquer ce qu’il manquerait pour une dynamo terrestre saturée."],
         "Exponentielle, unités et bilan croissance/décroissance sur un modèle accompagné.",
         "Calcul vectoriel, diffusion et valeurs propres comme techniques ; MHD/dynamo sont des prolongements.",
         "Fermeture turbulente, conditions globales, anti-dynamos et rétroaction du champ sur le fluide.", [35,36],
         "Un seuil spectral démontré et une interprétation explicitement limitée d’un modèle local prescrit."),
 }
+
+
+# Notations propres aux prolongements ; les définitions précèdent les formules.
+LAB_GUIDES["kerr"]["objects"].insert(0, "x est la position transverse, u son amplitude de champ ; sech(s)=1/cosh(s). k₀=2π/λ est le nombre d’onde dans le vide et y₀ l’échelle de largeur du profil.")
+LAB_GUIDES["dynamo"]["objects"].insert(0, "α est un coefficient d’induction prescrit et ηm la diffusivité magnétique. L est la longueur d’onde ; le signe de l’hélicité distingue deux modes propres du rotationnel.")
+
+LAB_LEVELS = {'dipoles': 'MP/PC : électrostatique, gradient, développement limité et énergie dipolaire.',
+ 'gauss': 'MP/PC : loi de Gauss, symétries, potentiel et capacité ; choisir une surface adaptée.',
+ 'biotsavart': 'MP/PC : magnétostatique et symétries ; les formules de géométrie finie sont établies ou '
+               'fournies.',
+ 'helmholtz': 'MP/PC : superposition, symétrie et développement limité ; calibration expérimentale du '
+              'champ.',
+ 'drude': 'MP/PC : loi d’Ohm, réponse linéaire et énergie. Drude est un modèle mécanique fourni pour '
+          'expliquer la conductivité.',
+ 'hall': 'Réinvestissement de Lorentz et du potentiel MP/PC ; modèle de Hall à un porteur fourni comme '
+         'application de mesure.',
+ 'induction': 'Acquis de Sup, puis bilans de Spé MP/PC/PSI : induction, conversion et transitoires.',
+ 'hautparleur': 'Oscillateur forcé, circuit et conversion selon la filière ; couplage électromécanique '
+                'accompagné.',
+ 'hysteresis': 'PSI : milieux magnétiques et transformateur. Pour MP/PC, réinvestissement d’Ampère, '
+               'Faraday et des bilans dans un prolongement.',
+ 'synchrone': 'PSI : machine synchrone. Les outils de stabilité et de couple sont accessibles aux '
+              'autres filières dans ce modèle fourni.',
+ 'asynchrone': 'Amplitudes complexes, induction et bilans de Spé ; le circuit triphasé asynchrone est '
+               'un prolongement accompagné.',
+ 'peau': 'MP/PC : propagation dans un conducteur, diffusion, énergie et comparaison des échelles.',
+ 'maxwell': 'MP/PC : Maxwell, ondes planes, polarisation et bilan de Poynting.',
+ 'interfaces': 'MP/PC : réflexion et transmission ; les coefficients obliques TE/TM et Brewster '
+               'complètent les cas du programme suivi.',
+ 'guide': 'Équation d’onde et conditions aux limites de Spé ; le mode TE₁₀ complet est un prolongement '
+          'guidé.',
+ 'antenne': 'MP/PC : ondes, superposition et diffraction. Diagramme d’antenne et pointage sont des '
+            'applications accompagnées.',
+ 'plasma': 'MP/PC : propagation dispersive et milieu conducteur ; le modèle froid collisionnel est '
+           'fourni et contrôlé énergétiquement.',
+ 'dielectrique': 'Ondes et réponses linéaires MP/PC ; polarisation macroscopique, champ local et sphère '
+                 'diélectrique selon la filière ou en prolongement.',
+ 'aimantation': 'MP §7 : Boltzmann et système à deux niveaux ; PSI : milieux magnétiques. Langevin et '
+                'champ démagnétisant prolongent ce socle.',
+ 'meissner': 'Outils MP/PC : Maxwell et équations différentielles ; supraconductivité et équations de '
+             'London sont un prolongement.',
+ 'faraday': 'PC : polarisation ; techniques d’algèbre linéaire et de phases en MP/PC. Le modèle '
+            'circulaire de Faraday est un prolongement guidé.',
+ 'kerr': 'Techniques Spé : équation différentielle, intégrale première et diffraction. Kerr et profil '
+         'localisé sont des prolongements.',
+ 'rayonnement': 'MP/PC : Poynting et rayonnement dipolaire. Diffusion résonante et réaction radiative '
+                'demandent les modèles fournis.',
+ 'dynamo': 'Calcul vectoriel, diffusion et valeurs propres de Spé ; MHD et dynamo α² restent des '
+           'prolongements.'}
+for _lab, _level in LAB_LEVELS.items():
+    LAB_GUIDES[_lab]["levels"]["spe"] = _level
+
+LAB_OBJECTS = {'dipoles': ['q est la valeur positive des charges ±q, en nC ; a leur séparation en m. Le moment dipolaire '
+             'p va de −q vers +q et vaut q a.',
+             'r est la distance au centre ; le rapport r/a mesure l’éloignement. L’angle règle la '
+             'direction du dipôle.',
+             'E est le champ électrique en V·m⁻¹ et V le potentiel en V ; une équipotentielle est une '
+             'courbe où V est constant.'],
+ 'gauss': ['Sphère : Q est la charge totale en nC, R son rayon en m et r la distance au centre. E est le '
+           'champ électrique en V·m⁻¹ et V le potentiel en V.',
+           'Coaxial : a est le rayon du conducteur interne en cm, b celui du conducteur externe et ℓ la '
+           'longueur en m. La tension est V_interne−V_externe.',
+           'C est la capacité en F ; W l’énergie électrostatique en J. ε₀ est la permittivité du vide.'],
+ 'biotsavart': ['I est le courant orienté en A, R le rayon de spire en m et ℓ la longueur du fil ou '
+                'solénoïde en m. N est le nombre de spires.',
+                'B est le champ magnétique en T ; z est la position sur l’axe. μ₀ est la perméabilité du '
+                'vide en H·m⁻¹.',
+                'Le moment magnétique m=NIπR² est en A·m² ; sa direction suit la règle de la main droite.'],
+ 'helmholtz': ['R est le rayon commun en m ; d est l’écartement des centres, réglé par d/R. I est le '
+               'courant en A et N le nombre de spires de chaque bobine.',
+               'z est la position sur l’axe ; B(z) le champ axial en T. B′ et B″ désignent ses dérivées '
+               'par rapport à z.',
+               'L’uniformité relative mesure la variation de B par rapport à B(0), dans la région '
+               'annoncée.'],
+ 'drude': ['n est la densité de porteurs en m⁻³ ; le curseur règle log₁₀ de sa valeur numérique dans cette '
+           'unité. q=±e est leur charge, e étant la charge élémentaire.',
+           'τ est le temps de relaxation en fs ; m* est la masse effective en multiples de la masse '
+           'électronique mₑ. f est la fréquence en THz et ω=2πf.',
+           'E est l’amplitude crête ou l’échelon du champ en V·m⁻¹ ; v la vitesse moyenne, j la densité de '
+           'courant en A·m⁻² et σ la conductivité en S·m⁻¹.'],
+ 'hall': ['I est le courant vers +x en A ; Bz le champ vers +z en T ; w la largeur suivant y et t '
+          'l’épaisseur suivant z, en mm.',
+          'q=±e est la charge des porteurs et n leur densité en m⁻³ ; le curseur règle log₁₀ de la valeur '
+          'numérique de n.',
+          'U_H=V(y=−w/2)−V(y=+w/2) est la tension de Hall en V ; E_H est le champ transverse.'],
+ 'induction': ['Bz est le champ uniforme en T ; ℓ la longueur active du barreau ou largeur du cadre en m ; '
+               'la hauteur du cadre est en m.',
+               'R est la résistance totale en Ω, L l’inductance du rail en mH et m la masse mobile réglée '
+               'en g. v est la vitesse en m·s⁻¹ et i le courant en A.',
+               'Φ est le flux magnétique en Wb, la fém une tension en V ; t est le temps en s et W '
+               'l’énergie mécanique et magnétique en J.'],
+ 'hautparleur': ['x est le déplacement de membrane en m, v sa vitesse en m·s⁻¹ et i le courant en A. m est '
+                 'sa masse réglée en g, k la raideur en N·m⁻¹ et b l’amortissement en N·s·m⁻¹.',
+                 'R est la résistance électrique en Ω et L l’inductance en mH ; f est la fréquence en Hz '
+                 'et u la tension en V, d’amplitude crête réglable.',
+                 'κ est le coefficient réciproque en N·A⁻¹=V·s·m⁻¹ : il produit la force κi et la tension '
+                 'induite κv.'],
+ 'hysteresis': ['H est le champ magnétique en A·m⁻¹ et B l’induction en T ; Hc est l’échelle coercitive, '
+                'Hmax l’amplitude et Bs la contribution saturée. μr est la perméabilité relative '
+                'réversible.',
+                'ℓ est la longueur moyenne du tore en m, S sa section réglée en cm² ; N₁,N₂ sont les '
+                'nombres de spires primaire et secondaire. i₁ est le courant primaire en A, e₂ la fém '
+                'secondaire en V.',
+                'f est la fréquence en Hz ; l’aire orientée du cycle H–B donne une perte d’énergie '
+                'volumique en J·m⁻³ par cycle.'],
+ 'synchrone': ['ℳ est le moment magnétique du dipôle rotor en A·m² ; B l’amplitude du champ tournant en T '
+               'et f sa fréquence en Hz. Le modèle possède une seule paire de pôles.',
+               'δ est le retard du rotor en degrés ; T_charge le couple résistant en N·m et T_max le '
+               'couple maximal. Leur rapport est sans dimension.',
+               'J est le moment d’inertie en kg·m². Le potentiel incliné permet d’identifier les positions '
+               'd’équilibre et leur stabilité.'],
+ 'asynchrone': ['p est le nombre de paires de pôles et f la fréquence électrique en Hz ; Ωs est la vitesse '
+                'synchrone et Ωr celle du rotor en rad·s⁻¹. Le glissement s=(Ωs−Ωr)/Ωs est sans dimension.',
+                'La tension est efficace par phase en V. R₁,R₂ sont les résistances en Ω, L₁,L₂ les '
+                'inductances de fuite en mH et Lm l’inductance de magnétisation en mH. Les paramètres du '
+                'rotor sont ramenés au stator.',
+                'Les courants sont efficaces en A ; les puissances sont en W et le couple en N·m. La '
+                'puissance d’entrefer est celle reçue électromagnétiquement par le rotor.'],
+ 'peau': ['σ est la conductivité en MS·m⁻¹ et μr la perméabilité relative ; μ=μ₀μr, avec μ₀ la '
+          'perméabilité du vide. f est la fréquence en Hz, réglée par son logarithme décimal.',
+          'B₀ est le champ de surface en mT ; x mesure la profondeur dans le métal. Pour l’échelon, t est '
+          'le temps réglé en ms.',
+          'δ est la profondeur de peau harmonique en m ; le coefficient de diffusion magnétique est '
+          '1/(μσ), en m²·s⁻¹.'],
+ 'maxwell': ['E est le champ électrique en V·m⁻¹ et B le champ magnétique en T ; E₀ est l’amplitude d’une '
+             'onde. f est la fréquence en GHz, T=1/f la période et t/T le temps réduit.',
+             'Le rapport des composantes en quadrature règle la polarisation ; une valeur de module 1 '
+             'donne une polarisation circulaire.',
+             'Π est le vecteur de Poynting en W·m⁻² ; u est la densité d’énergie en J·m⁻³. Une moyenne '
+             'temporelle est prise sur une période.'],
+ 'interfaces': ['n₁,n₂ sont les indices réels des milieux incident et transmis. θ est l’angle d’incidence '
+                'à la normale, en degrés ; λ est la longueur d’onde dans le vide, en nm.',
+                'TE signifie que E est perpendiculaire au plan d’incidence ; TM qu’il appartient à ce '
+                'plan. r,t sont les coefficients complexes de champ électrique.',
+                'R,T sont les rapports de flux d’énergie normaux réfléchi et transmis. Un champ évanescent '
+                'peut exister sans flux normal transmis.'],
+ 'guide': ['a est la largeur du guide en mm ; f la fréquence en GHz et E₀ l’amplitude électrique en V·m⁻¹. '
+           'z est la position axiale et z/a la distance réduite.',
+           'Le mode TE₁₀ a un champ électrique axial nul et une seule variation suivant la largeur. f_c '
+           'est sa fréquence de coupure en Hz.',
+           'k_z est le nombre d’onde axial en m⁻¹ ; v_φ est la vitesse de phase et v_g la vitesse de '
+           'groupe. t/T est le temps réduit sur une période.'],
+ 'antenne': ['a est la largeur de l’ouverture et λ la longueur d’onde réglée en mm ; a/λ est sans '
+             'dimension.',
+             'θ est la direction d’observation et θ₀ la direction de pointage, en degrés. Le diagramme '
+             'représente une intensité normalisée.',
+             'sinc(u)=sin(u)/u, avec sinc(0)=1, décrit la somme des amplitudes issues d’une ouverture '
+             'uniforme.'],
+ 'plasma': ['n est la densité électronique réglée en 10¹⁸ m⁻³ ; ωp est la pulsation plasma en rad·s⁻¹. ω '
+            'est la pulsation de l’onde et ν la fréquence de collision en s⁻¹.',
+            'Les curseurs règlent ω/ωp et ν/ωp. E₀ est l’amplitude de champ à z=0 en V·m⁻¹ ; z est réglé '
+            'en cm et t/T est le temps réduit.',
+            'k est le nombre d’onde complexe en m⁻¹ ; sa partie imaginaire règle l’atténuation. Π est le '
+            'flux de Poynting en W·m⁻².'],
+ 'dielectrique': ['ω₀ est la pulsation propre d’un électron lié, γ son amortissement et χ₀ la force de '
+                  'réponse sans dimension. Les curseurs règlent ω/ω₀ et γ/ω₀.',
+                  'ε∞ est la permittivité relative de fond ; E₀ le champ imposé en V·m⁻¹ et R le rayon de '
+                  'sphère réglé en mm.',
+                  'P est la polarisation, moment dipolaire par volume en C·m⁻² ; χ est la susceptibilité '
+                  'complexe et εr la permittivité relative.'],
+ 'aimantation': ['T est la température en K ; μ₀H_ext est le champ appliqué en T. n est la densité de '
+                 'moments ou d’électrons liés, réglée en 10²⁷ m⁻³.',
+                 'μ est la norme du moment en multiples du magnéton de Bohr μB, en J·T⁻¹. Le rayon orbital '
+                 'quadratique effectif est réglé en pm.',
+                 'M est l’aimantation en A·m⁻¹ et N le facteur démagnétisant sans dimension ; '
+                 'H_int=H_ext−NM définit le champ interne de l’ellipsoïde.'],
+ 'meissner': ['a est la demi-épaisseur de la plaque et λL la longueur de pénétration de London, en nm. x '
+              'est la position entre les faces x=±a.',
+              'B₀ est le champ extérieur réglé en mT ; B(x) est le profil intérieur en T. j est la densité '
+              'de courant en A·m⁻².',
+              'L’histoire indique si le conducteur parfait contenait un champ initial. L’état Meissner '
+              'impose un autre état d’équilibre.'],
+ 'faraday': ['V est la constante de Verdet en rad·T⁻¹·m⁻¹ ; B le champ longitudinal en T, ℓ la longueur '
+             'réglée en cm et λ la longueur d’onde en nm.',
+             'θ=VBℓ est la rotation en rad ; les angles de polarisation initiale et d’analyseur sont '
+             'réglés en degrés.',
+             'e₊,e₋ sont les vecteurs des deux polarisations circulaires ; k₊,k₋ leurs nombres d’onde. Les '
+             'axes transverses restent ceux du laboratoire au retour.'],
+ 'kerr': ['λ est la longueur d’onde dans le vide en µm, n₀ l’indice linéaire et n₂ le coefficient Kerr '
+          'réglé en 10⁻²⁰ m²·W⁻¹. I₀ est l’intensité de référence au sommet en GW·cm⁻² ; 1 GW·cm⁻²=10¹³ '
+          'W·m⁻².',
+          'x est la position transverse, u son amplitude réelle de champ en V·m⁻¹ ; sech(s)=1/cosh(s). '
+          'k₀=2π/λ est le nombre d’onde dans le vide et y₀ l’échelle de largeur.',
+          'z est la distance de propagation et z/(n₀k₀y₀²) la distance réduite. I_ref=n₀ε₀cE²/2 définit '
+          'l’intensité de référence ; ε₀ est la permittivité du vide et c la célérité de la lumière.'],
+ 'rayonnement': ['f est la fréquence incidente et f₀ la fréquence propre en THz ; γ est l’amortissement en '
+                 's⁻¹ et ω₀=2πf₀.',
+                 'p₀ est l’amplitude du moment dipolaire réglée en 10⁻²⁹ C·m ; E₀ est l’amplitude '
+                 'électrique incidente en V·m⁻¹.',
+                 'I est l’intensité incidente en W·m⁻², P la puissance diffusée en W et σ=P/I la section '
+                 'efficace en m². r est la distance à la source ; k=2π/λ est le nombre d’onde.'],
+ 'dynamo': ['α est un coefficient d’induction prescrit et U une vitesse caractéristique, en mm·s⁻¹ ; ηm '
+            'est la diffusivité magnétique en m²·s⁻¹.',
+            'L est la longueur d’onde en km et k=2π/L le nombre d’onde ; B₀ est l’amplitude initiale en mT '
+            'et t le temps réglé en années.',
+            'Le signe d’hélicité distingue deux modes propres du rotationnel ; γ est leur taux de '
+            'croissance en s⁻¹. Rm=UL/ηm est le nombre de Reynolds magnétique.']}
+for _lab, _objects in LAB_OBJECTS.items():
+    LAB_GUIDES[_lab]["objects"] = _objects

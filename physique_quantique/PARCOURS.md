@@ -93,3 +93,80 @@ Durée indicative : sept séances de 1 h 30 à 2 h, avec un court travail prépa
 Choisir un laboratoire et préparer cinq minutes d’explication : hypothèses du modèle, grandeur affichée et unité, prédiction calculée, test réalisé, puis limite de validité. Tirer ensuite une question parmi : « pourquoi T n’est-il pas |t|² ? », « une corrélation parfaite prouve-t-elle l’intrication ? », « où intervient la phase ? », « pourquoi l’énergie fondamentale n’est-elle pas nulle ? », « quand le changement de référentiel est-il exact ? ».
 
 Une bonne réponse ne récite pas seulement une formule : elle sait la justifier, annoncer son domaine d’application et reconnaître ce que le graphe seul ne prouve pas.
+
+<!-- reperes-laboratoires -->
+## Préparer chaque expérience
+
+Les repères Sup et Spé indiquent les techniques utilisées. Les indications MP/PC et les prolongements précisent la place de chaque sujet.
+
+### boite
+
+Expliquer la quantification par les conditions aux limites, puis observer le battement de deux modes.
+
+**Spé et filières.** MP §6 et PC §6.5 : puits infini et superposition ; le cube prolonge le problème unidimensionnel.
+
+**Prolongements.** Normalisation périodique et comptage tridimensionnel des états : prolongements accompagnés.
+
+### heisenberg
+
+Distinguer un écart type d’une largeur de diffraction et utiliser Heisenberg pour estimer une énergie minimale.
+
+**Spé et filières.** MP §6 et PC §6.5 : confinement et Heisenberg ; PC introduit le paquet d’ondes, MP le traite ici en prolongement.
+
+**Prolongements.** Covariance, phase quadratique et estimation variationnelle de l’atome : approfondissements.
+
+### diffusion
+
+Raccorder les fonctions d’onde, puis expliquer réflexion et transmission avec les courants de probabilité.
+
+**Spé et filières.** MP §6.3 et PC §6.5 : potentiels constants par morceaux et effet tunnel.
+
+**Prolongements.** Paquets incidents, barrières multiples et temps de traversée : au-delà du modèle stationnaire.
+
+### oscillateur
+
+Relier le spectre à ses états propres et comparer le mouvement moyen d’un état cohérent au mouvement classique.
+
+**Spé et filières.** Outils Spé : équations différentielles, Hermite et opérateurs ; résolution quantique comme prolongement de MP/PC.
+
+**Prolongements.** États cohérents et construction complète par opérateurs : approfondissements guidés.
+
+### intrication
+
+Comparer corrélations quantiques et classiques sans confondre probabilités conjointes et probabilités marginales.
+
+**Spé et filières.** Outils Spé : matrices, produits tensoriels et valeurs propres ; ce sujet est un prolongement de MP/PC.
+
+**Prolongements.** Tests de Bell, états mixtes et critères de séparabilité : au-delà du socle CPGE cité.
+
+### josephson
+
+Prévoir la fréquence d’une jonction sous tension et la modulation du courant critique d’une boucle à deux jonctions.
+
+**Spé et filières.** Outils Spé : interférences, dérivation et optimisation ; Josephson/SQUID sont des prolongements de MP/PC.
+
+**Prolongements.** Supraconductivité macroscopique, polarisation et dissipation d’un SQUID réel.
+
+### rabi
+
+Choisir une impulsion qui réalise une transition et expliquer la baisse de sa probabilité hors résonance.
+
+**Spé et filières.** Outils Spé : repère tournant et matrices ; les rotations quantiques sont un prolongement de MP/PC.
+
+**Prolongements.** RMN avec relaxation, distributions de fréquences et impulsions façonnées.
+
+### bloch
+
+Représenter un état, une transformation et une mesure avec des vecteurs, puis relier géométrie et probabilités.
+
+**Spé et filières.** Outils Spé : matrices hermitiennes et rotations ; le qubit est un prolongement du socle MP/PC.
+
+**Prolongements.** Canaux quantiques, décohérence et systèmes à plusieurs qubits.
+
+### circuits
+
+Suivre les amplitudes d’un circuit à deux qubits et expliquer pourquoi une itération de Grover retrouve la cible.
+
+**Spé et filières.** Outils Spé : algèbre linéaire et produits tensoriels ; circuits quantiques hors du socle MP/PC.
+
+**Prolongements.** Complexité en nombre de requêtes, construction d’un oracle et processeurs quantiques.

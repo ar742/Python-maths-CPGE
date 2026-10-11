@@ -8,6 +8,9 @@ Les résultats théoriques et les observations simulées sont distingués. Les a
 
 *Fondations · maths sup*
 
+X compte les boules rouges tirées ; k est une valeur possible de ce nombre. R et B sont les effectifs rouge et bleu ; d est le nombre de tirages. C(a,b) est le coefficient binomial, nombre de parties de taille b parmi a objets. E désigne l’espérance, V la variance et B(n,p) la loi binomiale.
+
+
 Une probabilité dépend d’un modèle : univers, événements et règle de tirage. L’équiprobabilité doit être justifiée. Pour une urne contenant R rouges et B bleues, un échantillon de d boules sans remise est une partie uniforme de taille d, et non une suite de d essais indépendants.
 
 
@@ -22,6 +25,9 @@ La convention C(a,b)=0 hors de 0≤b≤a donne immédiatement le support. La nor
 ## 02 · Indicatrices et dépendance
 
 *Fondations · maths sup*
+
+R et B sont les effectifs de l’urne, d le nombre de tirages et X le nombre de rouges obtenues. Iⱼ est l’indicatrice du j-ième tirage rouge. Cov désigne la covariance ; les formules sans remise ci-dessous supposent N=R+B>1.
+
 
 Écrivons X=I₁+⋯+I_d, où I_j vaut 1 si le j-ième tirage est rouge. La linéarité de l’espérance ne demande aucune indépendance. Avec N=R+B et p=R/N, E(X)=dp.
 
@@ -39,6 +45,9 @@ L’indépendance implique une covariance nulle lorsque les moments existent. La
 
 *Maths sup → maths spé*
 
+n et m sont des nombres d’essais ; p est une probabilité de succès. G_X est la fonction génératrice de X ; t est sa variable. E est l’espérance et V la variance. Dans le cas géométrique, p>0.
+
+
 Pour X à valeurs dans ℕ, G_X(t)=E(t^X). Sur une loi finie, les dérivations se font terme à terme ; sur une loi infinie, les justifications de convergence sont nécessaires. Pour X,Y indépendantes, G_{X+Y}=G_X G_Y.
 
 
@@ -54,6 +63,9 @@ La loi géométrique utilisée ici est sur {1,2,…} : G(t)=pt/(1−(1−p)t), E
 ## 04 · Marche aléatoire et loi binomiale
 
 *TP du recueil · maths sup*
+
+Sₙ est la position après n déplacements depuis 0 ; K compte les déplacements +1. p est leur probabilité ; s est une position possible. C(a,b) désigne le coefficient binomial.
+
 
 À chaque étape, un déplacement vaut +1 avec probabilité p et −1 sinon, indépendamment des précédents. Si K compte les +1 parmi n étapes, K suit B(n,p) et Sₙ=2K−n.
 
@@ -71,6 +83,9 @@ La dernière formule vaut si |s|≤n et s a la parité de n ; sinon la probabili
 
 *Maths sup / spé · selon filière*
 
+ε>0 est la tolérance d’écart ; K est le nombre de succès parmi n essais indépendants de probabilité p. Pour une moyenne, m désigne l’espérance commune et σ² la variance commune.
+
+
 Pour Y≥0 et a>0, Y≥a·1_{Y≥a} implique P(Y≥a)≤E(Y)/a : c’est Markov. On l’applique à Y=(X−E(X))² pour obtenir Bienaymé–Tchebychev.
 
 
@@ -85,7 +100,10 @@ La trajectoire d’une fréquence peut remonter et s’éloigner provisoirement 
 
 ## 06 · Approximer et mesurer l’incertitude
 
-*Approfondissement · maths spé / ITC*
+*SPÉ · PROLONGEMENT PROBABILISTE ET STATISTIQUE*
+
+K suit la loi binomiale B(n,p) ; σ=√(np(1−p)) est son écart type. Φ est la fonction de répartition de N(0,1), la loi normale centrée réduite. Les lois à densité, la convergence en loi et les intervalles statistiques présentés ici prolongent le programme MPSI/MP.
+
 
 Pour 0<p<1 fixé, la variable (K−np)/√(np(1−p)) converge en loi vers N(0,1). Le laboratoire compare les masses binomiales à l’approximation Φ((k+1/2−np)/σ)−Φ((k−1/2−np)/σ) : correction de continuité.
 
@@ -98,6 +116,11 @@ Un intervalle de Wilson au niveau nominal 95 % est fourni pour la fréquence fin
 ## 07 · Exercice 6 : la moyenne conservée
 
 *Priorité · maths spé*
+
+La notation d’espérance conditionnelle est hors programme MP ; les calculs qui suivent utilisent seulement les deux issues d’une Bernoulli et les probabilités totales.
+
+Xₙ est l’état après n étapes, c l’état initial et λ l’intensité de la mise à jour. Bₙ₊₁ est l’indicatrice du prochain succès. m₂(n)=E(Xₙ²) est le second moment ; E(·|Xₙ=x) indique l’espérance lorsque l’état courant vaut x.
+
 
 On part de X₀=c∈(0,1). Conditionnellement à Xₙ=x, Bₙ₊₁ suit Bernoulli(x), et Xₙ₊₁=(1−λ)Xₙ+λBₙ₊₁, avec 0<λ<1. Par récurrence, 0≤Xₙ≤1.
 
@@ -117,7 +140,10 @@ La variance augmente alors que la moyenne reste fixe : la population se sépare 
 
 ## 08 · Exercice 6 : prouver la polarisation
 
-*Priorité · preuve complète*
+*PRIORITÉ · PROLONGEMENT · PREUVE COMPLÈTE*
+
+On reprend le processus de l’exercice 6 : X₀=c et paramètre λ. Dₙ mesure sa dispersion par E[Xₙ(1−Xₙ)] ; ε fixe la zone centrale. f est une fonction test continue et L sa corde entre 0 et 1. Les modes de convergence sont ici des prolongements hors programme MPSI/MP.
+
 
 La quantité décisive est Dₙ=E[Xₙ(1−Xₙ)]=c(1−c)(1−λ²)ⁿ. Elle tend vers 0. Pour 0<ε<1/2, x(1−x)≥ε(1−ε) sur [ε,1−ε], donc :
 
@@ -138,7 +164,10 @@ C’est la convergence en loi vers Bernoulli(c). Cela ne signifie pas Xₙ→c e
 
 ## 09 · Exercice 7 : maximum et minimum
 
-*Priorité · maths sup / spé*
+*PRIORITÉ · PROLONGEMENT À DENSITÉ*
+
+n est la taille de l’échantillon ; θ>0 est sa borne. Mₙ=max(U₁,…,Uₙ) et mₙ=min(U₁,…,Uₙ). F_M(x)=P(Mₙ≤x) est la fonction de répartition et f_M sa densité. Les variables uniformes à densité sont un prolongement du programme.
+
 
 Soient U₁,…,Uₙ indépendantes uniformes sur [0,θ], avec θ>0. Le bon événement est {Mₙ≤x}=⋂{U_j≤x}. Pour 0≤x≤θ, l’indépendance donne F_M(x)=(x/θ)ⁿ.
 
@@ -154,7 +183,10 @@ Sur une même suite infinie de variables uniformes, les maxima sont croissants e
 
 ## 10 · Exercice 7 : vitesse et estimation
 
-*Priorité · approfondissement*
+*PRIORITÉ · PROLONGEMENT À DENSITÉ ET STATISTIQUE*
+
+Mₙ et mₙ sont le maximum et le minimum de l’échantillon uniforme sur [0,θ]. α∈(0,1) fixe le risque de l’intervalle ; U_(k) est la k-ième observation rangée par ordre croissant. Le symbole ⇒ signifie convergence en loi ; Exp(1) est la loi exponentielle de paramètre 1. La loi Beta citée décrit une variable entre 0 et 1.
+
 
 La concentration du maximum ne raconte pas toute l’histoire. Pour Zₙ=n(1−Mₙ/θ) et 0≤z≤n, P(Zₙ>z)=(1−z/n)ⁿ. Pour z≥0 fixé, cette quantité tend vers e^{−z} : Zₙ converge en loi vers Exp(1).
 
@@ -171,6 +203,9 @@ La k-ième valeur ordonnée U_(k)/θ suit Beta(k,n+1−k). Sa répartition vaut 
 ## 11 · Exercice 8 : arcsinus et matrice chemin
 
 *Priorité · transversal maths spé*
+
+ρ_arc est la densité limite ; F_arc sa fonction de répartition. Tₙ est la matrice du chemin à n sommets. Tr est la trace, et C(a,b) le coefficient binomial. La limite à densité est un prolongement ; sommes de Riemann et diagonalisation sont les outils du programme.
+
 
 La variable Uₙ est uniforme discrète sur {1,…,n}, et Xₙ=2cos(πUₙ/(n+1)). Pour f continue, E[f(Xₙ)]=(1/n)Σ_{k=1}^n f(2cos(kπ/(n+1))) converge par sommes de Riemann vers ∫₀¹f(2cos(πt))dt.
 
@@ -190,6 +225,9 @@ Les moments limites impairs sont nuls et les moments pairs d’ordre 2r valent C
 ## 12 · Exercice 8 : Wigner et Catalan
 
 *Transversal · théorème admis*
+
+λⱼ(Aₙ) sont les valeurs propres de Aₙ ; δ_a est la masse de probabilité 1 au point a. μₙ est la loi obtenue en choisissant uniformément une de ces valeurs propres ; μ_sc est la loi du demi-cercle, de densité ρ_sc. Le théorème de Wigner et cette convergence de lois sont admis en prolongement.
+
 
 Le modèle de ce laboratoire est Aₙ=Wₙ/√n, avec entrées du triangle supérieur indépendantes, identiquement distribuées selon une loi fixe centrée de variance 1, et symétrie W_ji=W_ij. Les trois lois proposées, normale, signes ±1 et uniforme sur [−√3,√3], ont tous leurs moments finis.
 
@@ -222,7 +260,7 @@ Une urne contient n rouges et n bleues. On tire n boules sans remise. Détermine
 
 ### 02 · Pourquoi la variance diminue
 
-Calculer la covariance de deux indicatrices rouges. Que devient la variance lorsque toutes les boules sont tirées ?
+On reprend une urne de R rouges et B bleues, N=R+B>1, avec d tirages sans remise et p=R/N. Calculer la covariance de deux indicatrices rouges. Que devient la variance lorsque toutes les boules sont tirées ?
 
 **Correction.** E(I_i I_j)=R(R−1)/(N(N−1)), donc Cov=−p(1−p)/(N−1). En développant la variance de la somme, V(X)=dp(1−p)(N−d)/(N−1). Pour d=N, X=R presque sûrement et la variance est nulle.
 
@@ -258,31 +296,31 @@ Combien de Bernoulli indépendantes suffisent, par Tchebychev, pour garantir P(|
 
 ### 08 · Deux moments — ex. 6
 
-Montrer que la moyenne est constante et obtenir une expression fermée du second moment.
+On reprend X₀=c et Xₙ₊₁=(1−λ)Xₙ+λBₙ₊₁, où Bₙ₊₁ vaut 1 avec probabilité Xₙ. Montrer que la moyenne est constante et obtenir une expression fermée du second moment.
 
 **Correction.** En conditionnant par Xₙ=x, E(Xₙ₊₁|x)=x et E(Xₙ₊₁²|x)=(1−λ²)x²+λ²x. Donc m₁=c et m₂−c est multiplié par 1−λ² à chaque étape. Comme m₂(0)=c², m₂(n)=c−c(1−c)(1−λ²)ⁿ.
 
 ### 09 · Tous les moments — ex. 6
 
-Donner une preuve quantitative de E(Xₙᵏ)→c pour chaque entier k≥1.
+On reprend le processus de l’exercice précédent, avec X₀=c et paramètre λ∈(0,1). Donner une preuve quantitative de E(Xₙᵏ)→c pour chaque entier k≥1.
 
 **Correction.** Pour k≥2, 0≤x−xᵏ=x(1−x)Σ_{j=0}^{k−2}xʲ≤(k−1)x(1−x) sur [0,1]. Ainsi 0≤c−E(Xₙᵏ)≤(k−1)c(1−c)(1−λ²)ⁿ→0. Le cas k=1 est déjà exact. Il est inutile de résoudre une récurrence différente pour chaque k.
 
 ### 10 · Quelle convergence ? — ex. 6
 
-Xₙ converge-t-elle vers c ? Justifier la loi limite et distinguer les modes de convergence.
+On reprend le processus de polarisation, de moyenne c. Xₙ converge-t-elle vers c ? Justifier la loi limite et distinguer les modes de convergence.
 
 **Correction.** La masse de [ε,1−ε] tend vers zéro, tandis que la moyenne reste c. Pour f continue, soustraire la corde (1−x)f(0)+xf(1) et utiliser la continuité aux extrémités : E[f(Xₙ)]→(1−c)f(0)+cf(1). C’est Bernoulli(c), pas la constante c. Par exemple V(Xₙ)→c(1−c)>0 ; comme les variables sont bornées, une convergence en probabilité vers c entraînerait une variance tendant vers zéro.
 
 ### 11 · Maximum uniforme — ex. 7
 
-Déterminer la répartition, la densité, l’espérance et la variance de Mₙ sur [0,1].
+Mₙ est le maximum de n observations indépendantes uniformes sur [0,1]. Déterminer la répartition, la densité, l’espérance et la variance de Mₙ sur [0,1].
 
 **Correction.** Pour 0≤x≤1, P(Mₙ≤x)=xⁿ par indépendance. La densité est nx^{n−1}. Intégration : E(Mₙ)=n/(n+1), E(Mₙ²)=n/(n+2), donc V(Mₙ)=n/[(n+1)²(n+2)]. Hors [0,1], la répartition vaut 0 ou 1.
 
 ### 12 · Vitesse du maximum — ex. 7
 
-Trouver la loi limite de n(1−Mₙ). Que vaut celle de n·mₙ ?
+Mₙ et mₙ sont le maximum et le minimum de n observations indépendantes uniformes sur [0,1]. Trouver la loi limite de n(1−Mₙ). Que vaut celle de n·mₙ ?
 
 **Correction.** Pour z≥0 fixé et n≥z, P(n(1−Mₙ)>z)=(1−z/n)ⁿ→e^{−z}. On obtient Exp(1). De même P(nmₙ>z)=(1−z/n)ⁿ. Les deux variables ont la même loi marginale, mais ne sont pas indépendantes pour un même échantillon.
 
@@ -294,19 +332,19 @@ Sur [0,θ], corriger le biais du maximum et construire un intervalle de niveau e
 
 ### 14 · Du cosinus à arcsinus — ex. 8
 
-Retrouver la loi limite par une somme de Riemann. Calculer ses moments d’ordre 2 et 4.
+Uₙ est uniforme sur {1,…,n} et Xₙ=2cos(πUₙ/(n+1)). Retrouver la loi limite par une somme de Riemann. Calculer ses moments d’ordre 2 et 4.
 
 **Correction.** E[f(Xₙ)]=(1/n)Σf(2cos(kπ/(n+1)))→∫₀¹f(2cos(πt))dt. Le changement de variable donne ρ_arc=1/(π√(4−x²)). Pour les moments pairs, la moyenne de cos^{2r} sur [0,π] vaut C(2r,r)/4ʳ ; la multiplication par 2^{2r} donne C(2r,r). Ainsi m₂=2 et m₄=6.
 
 ### 15 · Spectre et trace — ex. 8
 
-Construire les vecteurs propres de Tₙ et retrouver le second moment sans diagonaliser.
+Tₙ est la matrice n×n avec des 1 juste au-dessus et au-dessous de la diagonale, et des 0 ailleurs. Construire les vecteurs propres de Tₙ et retrouver le second moment sans diagonaliser.
 
 **Correction.** v_j=sin(jkπ/(n+1)) satisfait v₀=v_{n+1}=0. L’identité d’addition donne λ_k=2cos(kπ/(n+1)). Il y a n valeurs distinctes. Tₙ représente un chemin avec n−1 arêtes ; chaque arête contribue deux fois à Tr(Tₙ²), d’où 2(n−1)/n→2 pour le second moment spectral.
 
 ### 16 · Arcsinus ou demi-cercle ? — ex. 8
 
-Comparer les deux seconds moments. Pourquoi la convergence des traces en moyenne ne suffit-elle pas à prouver une convergence en probabilité ?
+On compare Tₙ, matrice du chemin, et Aₙ=Wₙ/√n, avec Wₙ symétrique à entrées indépendantes centrées de variance 1 dans le triangle supérieur. Comparer les deux seconds moments. Pourquoi la convergence des traces en moyenne ne suffit-elle pas à prouver une convergence en probabilité ?
 
 **Correction.** Pour Tₙ, le second moment tend vers 2 (arcsinus). Pour Aₙ=Wₙ/√n avec variance d’entrée 1, E[Tr(Aₙ²)/n]=1 dans notre modèle, et la limite demi-cercle a m₂=1, m₄=2. Il faut contrôler les fluctuations autour des moyennes. Aₙ=Z Iₙ, avec Z de loi demi-cercle, a les bons moments spectraux moyens mais une mesure δ_Z aléatoire persistante : les seules moyennes ne concluent pas.
 

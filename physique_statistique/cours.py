@@ -1,8 +1,81 @@
 """Physique statistique CPGE : TP du recueil, preuves originales et extensions guidées."""
 
 
+from html import escape
+
+NOTATIONS_COURS = {1: 'E est l’énergie en J, V le volume en m³ et N le nombre de particules. Ω compte les microétats '
+    'accessibles et pᵢ leur probabilité. kB est la constante de Boltzmann, S l’entropie en J·K⁻¹, T la '
+    'température en K, P la pression et μ le potentiel chimique en J par particule.',
+ 2: 'Eᵢ est l’énergie d’un microétat ; T est la température du thermostat et kB la constante de Boltzmann. '
+    'β=1/(kBT) est en J⁻¹. Z est la somme des poids de Boltzmann ; gⱼ compte les microétats d’un niveau et '
+    'Pⱼ leur probabilité totale.',
+ 3: 'Z est la fonction de partition et β=1/(kBT), avec T en K. U est l’énergie moyenne, Var(E) sa variance, '
+    'C_V la capacité thermique à volume fixé et S l’entropie. F est l’énergie libre ; P est la pression, V '
+    'le volume et N le nombre de particules.',
+ 4: 'β=1/(kBT). H est l’énergie du système ; y est une variable classique et a>0 le coefficient du terme '
+    'ay². Pour l’oscillateur quantique, ν est la fréquence en Hz, h la constante de Planck et n≥0 le nombre '
+    'de quanta.',
+ 5: 'L est le côté de la boîte, m la masse et ℏ la constante de Planck réduite. E_L est l’échelle d’énergie '
+    'de confinement ; Z₁ concerne une seule particule. n est la densité volumique, λ_th la longueur d’onde '
+    'thermique et g_s le nombre d’états internes.',
+ 6: 'm est la masse d’une molécule, T la température, kB la constante de Boltzmann et n la densité '
+    'volumique. v est le module de la vitesse. v_mp est la vitesse la plus probable ; v_rms=√⟨v²⟩ est la '
+    'vitesse quadratique moyenne.',
+ 7: 'S est la surface du petit orifice, V le volume de l’enceinte et N(t) son nombre de molécules. Φ_N est '
+    'le nombre traversant une unité d’aire par seconde ; τ est le temps caractéristique de fuite. m est la '
+    'masse moléculaire et T la température maintenue.',
+ 8: 'Les indices 1 et 2 désignent les deux enceintes. Nᵢ,Vᵢ,Tᵢ et Pᵢ sont leur nombre de particules, volume, '
+    'température et pression. kᵢ est un taux de fuite en s⁻¹ ; m est la masse commune des molécules et kB la '
+    'constante de Boltzmann.',
+ 9: 'T est la température, β=1/(kBT) et μ le potentiel chimique par particule. Ξ est la partition lorsque le '
+    'nombre N de particules peut varier ; J est le grand potentiel. ε est l’énergie d’un état ; n_F,n_B et '
+    'n_MB sont ses occupations moyennes, sans dimension.',
+ 10: 'n=N/V est la densité de fermions, m leur masse et ℏ la constante de Planck réduite. k_F est le rayon '
+     'de la sphère occupée en nombres d’onde ; E_F l’énergie de Fermi et T_F=E_F/kB la température '
+     'correspondante. G(E) compte les états sous l’énergie E.',
+ 11: 'n=N/V est la densité de bosons, m leur masse et λ_th=h/√(2πmkBT) leur longueur thermique. '
+     'z=exp(μ/(kBT)) est la fugacité. N₀ compte les particules au fondamental ; N_exc celles dans les états '
+     'excités. ζ est la fonction zêta et T_c la température critique du modèle idéal.',
+ 12: 'T est en K, ν la fréquence en Hz, λ=c/ν la longueur d’onde et c la célérité de la lumière. h et kB '
+     'sont les constantes de Planck et Boltzmann. u_ν est une énergie par volume et fréquence ; B_ν et B_λ '
+     'sont les luminances spectrales par fréquence et longueur d’onde.',
+ 13: 'B_ν et B_λ sont les luminances spectrales du corps noir, T sa température, h et kB les constantes de '
+     'Planck et Boltzmann. λ₁ et λ₂ fixent la bande d’intégration. r est la fraction de puissance rayonnée '
+     'dans cette bande et σ la constante de Stefan–Boltzmann.',
+ 14: 'μ est la norme du moment magnétique en J·T⁻¹, B le champ en T et T la température. N compte les spins '
+     '; kB est la constante de Boltzmann. m̄ est le moment moyen par spin, χ_par_spin sa dérivée par rapport '
+     'à B et C_B la capacité à champ fixé ; sech x=1/cosh x.',
+ 15: 'sᵢ=±1 est le spin du site i et J>0 l’énergie de couplage. N est le nombre de sites ; 2q compte les '
+     'parois de domaines. β=1/(kBT), K=βJ et Z_N est la partition finie. a est l’espacement des sites et ξ '
+     'la longueur de corrélation ; sech x=1/cosh x.',
+ 16: 'sᵢ=±1 est le spin du site i, J>0 le couplage et N=L² le nombre de sites d’un carré. θ=kBT/J est la '
+     'température réduite ; m=(1/N)Σsᵢ est l’aimantation par site. m_sp est l’aimantation spontanée du '
+     'système infini et T_c sa température critique.'}
+
+NOTATIONS_EXERCICES = {1: 'ε est une énergie et T la température ; kB est la constante de Boltzmann. ',
+ 3: 'β=1/(kBT), où T est la température ; Δ est l’écart d’énergie et C la capacité thermique. ',
+ 6: 'Z est la partition, U l’énergie moyenne, C la capacité thermique, h la constante de Planck et ν la '
+    'fréquence. ',
+ 7: 'L est le côté du volume de normalisation ; k est le vecteur d’onde et G(E) le nombre d’états d’énergie '
+    'au plus E. ',
+ 8: 'E_L=π²ℏ²/(2mL²), n=N/V, λ_th=h/√(2πmkBT) ; N_max borne la somme numérique des modes. ',
+ 9: 'v_mp est la vitesse la plus probable et v_rms=√⟨v²⟩ la vitesse quadratique moyenne. ',
+ 10: 'm est la masse moléculaire, n la densité volumique et v_z la vitesse normale à la paroi. ',
+ 15: 'ε est l’énergie d’un état, μ le potentiel chimique, T la température ; BE,FD,MB désignent '
+     'Bose–Einstein,Fermi–Dirac,Maxwell–Boltzmann. ',
+ 16: 'E_F est l’énergie de Fermi et T_F=E_F/kB sa température ; la masse est celle de l’électron. ',
+ 17: 'U est l’énergie interne, N le nombre de fermions, P la pression et V le volume. ',
+ 18: 'n=N/V est la densité, λ_th=h/√(2πmkBT) et ζ la fonction zêta. ',
+ 19: 'N₀ compte les bosons au fondamental et T_c la température critique. ',
+ 20: 'ν est la fréquence, λ=c/ν la longueur d’onde ; B_ν et B_λ sont les luminances spectrales '
+     'correspondantes. ',
+ 22: 'μ est le moment magnétique, B le champ, T la température et m̄ le moment moyen. ',
+ 23: 'N est le nombre de spins, J>0 le couplage et Z la partition. ',
+ 24: 'm est l’aimantation par site, ⟨·⟩ la moyenne et m_sp l’aimantation spontanée du réseau infini. '}
+
+
 def lesson(title, level, lab, *paragraphs):
-    return dict(title=title, level=level, lab=lab, html="".join(paragraphs))
+    return dict(title=title, level=level, lab=lab, html="<p><b>Notations.</b> "+escape(NOTATIONS_COURS[int(title.split(" · ",1)[0])])+"</p>"+"".join(paragraphs))
 
 
 LESSONS = [
@@ -35,7 +108,7 @@ LESSONS = [
         "<div class='formula'>Comptage continu 3D, dégénérescence interne g_s :<br>G(E)=g_s V(2m/ℏ²)³ᐟ²E³ᐟ²/(6π²).<br>D(E)=dG/dE=g_s V(2m/ℏ²)³ᐟ²√E/(4π²).<br>λ_th=h/√(2πmkBT) ; Z₁≈g_s V/λ_th³.</div>",
         "<p>G compte les états jusqu’à E ; D est une densité d’états, d’unité énergie⁻¹. En conditions périodiques, un état occupe (2π/L)³ dans l’espace des vecteurs d’onde. Le volume d’une sphère de rayon √(2mE)/ℏ donne G. Les parois ont le même terme dominant à grand volume, avec des corrections de bord.</p>",
         "<div class='formula'>Gaz classique identique, dilué : Z_N≈(V/λ_th³)ᴺ/N! pour g_s=1.<br>U=3NkBT/2 ; C_V=3NkB/2 ; PV=NkBT.</div>",
-        "<p>Deux critères sont distincts : kBT≫E_L rend le spectre quasi continu ; nλ_th³/g_s≪1 rend les effets d’échange négligeables. Un gaz parfait peut être quantique : « sans interaction » ne veut pas dire « classique ». La distance moyenne très supérieure à λ_th correspond justement au régime classique, contrairement au libellé du recueil. La somme d’une particule du laboratoire ne constitue pas un calcul exact de N bosons ou fermions. Dans cette boîte, la dilatation isotrope donne P=2U/(3V) ; PV=kBT est sa limite classique par particule.</p>"),
+        "<p>Deux critères sont distincts : kBT≫E_L rend le spectre quasi continu ; nλ_th³/g_s≪1 rend les effets d’échange négligeables. Un gaz parfait peut être quantique : « sans interaction » ne veut pas dire « classique ». La distance moyenne très supérieure à λ_th correspond justement au régime classique. La somme d’une particule du laboratoire ne constitue pas un calcul exact de N bosons ou fermions. Dans cette boîte, la dilatation isotrope donne P=2U/(3V) ; PV=kBT est sa limite classique par particule.</p>"),
     lesson("6 · Maxwell : vitesses et pression cinétique", "SUP → SPÉ · TP PRIORITAIRE", "maxwell",
         "<p>Un gaz classique dilué à l’équilibre a des composantes de vitesse gaussiennes indépendantes. Le passage du vecteur vitesse à son module introduit le jacobien sphérique 4πv² ; la vitesse la plus probable du module n’est donc pas la moyenne d’une composante.</p>",
         "<div class='formula'>f(v⃗)=(m/(2πkBT))³ᐟ²exp(−mv²/(2kBT)).<br>f_v(v)=4πv²f(v⃗), v≥0 ; ∫f_v(v)dv=1.<br>v_mp=√(2kBT/m) ; ⟨v⟩=√(8kBT/(πm)) ; v_rms=√(3kBT/m).</div>",
@@ -82,7 +155,7 @@ LESSONS = [
         "<p>Un maximum spectral dépend de la variable choisie. Maximiser B_ν conduit à 3(1−exp(−y))=y, avec y=hν/(kBT), différent de la racine 5 du spectre par longueur d’onde. Le maximum de B_ν ne se convertit donc pas en λ_max de B_λ par λ=c/ν. Les spectres en nombre de photons ont encore un autre facteur d’énergie.</p>",
         "<div class='formula'>Fraction énergétique visible :<br>r(T;λ₁,λ₂)=π∫_{λ₁}^{λ₂}B_λ(T)dλ/(σT⁴).<br>À 2500 K : r(390–780 nm)≈5,896 % ; r(390–760 nm)≈5,187 %.</div>",
         "<p>Le TP prend une émission de corps noir et une bande rectangulaire de visible : ce r est une fraction de puissance rayonnée. Il n’est ni le rendement électrique complet d’une lampe ni une efficacité lumineuse pondérée par la sensibilité de l’œil. La puissance perdue par conduction et convection, ainsi que l’émissivité réelle, nécessitent d’autres données.</p>",
-        "<p>L’énoncé du recueil donne 390–780 nm, puis le corrigé emploie 390–760 nm. Il faut choisir la bande avant d’intégrer. La valeur annoncée d’environ 7 % est seulement un ordre de grandeur ; les deux valeurs ci-dessus distinguent exactement les bornes. Une quadrature convergée du spectre ou une intégration en fréquence avec son jacobien donnent le même résultat.</p>"),
+        "<p>Le laboratoire utilise la bande 390–780 nm. Une autre borne haute, par exemple 760 nm, change la fraction obtenue : il faut préciser la bande avant d’intégrer. Une quadrature convergée du spectre ou une intégration en fréquence avec son jacobien donnent le même résultat.</p>"),
     lesson("14 · Paramagnétisme et fluctuations d’un spin", "SPÉ · DEUX NIVEAUX ET APPLICATION", "spins",
         "<p>On considère des moments indépendants ±μ dans un champ B, sans interactions responsables de ferromagnétisme. Leurs énergies sont −μB et +μB. Le laboratoire propose μ en multiples du magnéton de Bohr ; ce moment électronique n’est pas celui du proton employé dans l’exemple RMN du volet PQ.</p>",
         "<div class='formula'>x=μB/(kBT) ; z=2cosh x.<br>Moment moyen : m̄=μtanh x ; U/N=−μB tanh x.<br>χ_par_spin=(∂B m̄)_T=μ²sech²x/(kBT).<br>C_B/(NkB)=x²sech²x ; S/(NkB)=ln(2cosh x)−x tanh x.</div>",
@@ -93,7 +166,7 @@ LESSONS = [
         "<div class='formula'>E_q=−JN+4Jq ; g_q=2C(N,2q), 0≤q≤⌊N/2⌋.<br>Z_N=(2cosh βJ)ᴺ+(2sinh βJ)ᴺ.<br>U_N=−NJ[(cosh K)ᴺ⁻¹sinh K+(sinh K)ᴺ⁻¹cosh K]/[(cosh K)ᴺ+(sinh K)ᴺ], K=βJ.</div>",
         "<p><b>Comptage.</b> Choisir les 2q liaisons où le signe change, puis le premier spin : cela construit exactement deux configurations. La somme des g_q vaut 2ᴺ. Le fondamental est doublement dégénéré et vaut −JN. Sommer les puissances binomiales paires de exp(−2βJ), après décalage par E₀, donne Z_N. Le laboratoire calcule cette partition finie exactement par les niveaux.</p>",
         "<div class='formula'>Limite N→∞, T&gt;0 : U/N=−Jtanh K ; C/(NkB)=K²sech²K.<br>Approximation de Stirling : q/N≈1/[2(1+exp(2K))].<br>⟨sᵢsᵢ₊ᵣ⟩=(tanh K)^r ; ξ/a=−1/ln(tanh K).</div>",
-        "<p>Le facteur 2 dans exp(2βJ) est le coût d’une paroi ; la formule du recueil l’omet dans la relation de Stirling. Cette relation est une approximation pour populations macroscopiques, tandis que Z_N est exact à N fini. À champ nul, la symétrie globale s→−s impose ⟨m⟩=0 à taille finie. En chaîne infinie à température positive, les corrélations décroissent et il n’existe pas d’aimantation spontanée. La croissance de ξ à basse température et un pic de capacité ne sont pas une transition à T&gt;0.</p>"),
+        "<p>Le facteur 2 dans exp(2βJ) traduit le coût d’une paroi de domaine. Cette relation est une approximation pour populations macroscopiques, tandis que Z_N est exact à N fini. À champ nul, la symétrie globale s→−s impose ⟨m⟩=0 à taille finie. En chaîne infinie à température positive, les corrélations décroissent et il n’existe pas d’aimantation spontanée. La croissance de ξ à basse température et un pic de capacité ne sont pas une transition à T&gt;0.</p>"),
     lesson("16 · Ising 2D : Onsager, Yang et taille finie", "SPÉ · EXTENSION GUIDÉE", "ising",
         "<p>Sur le réseau carré, chaque spin interagit avec ses quatre voisins, chaque liaison étant comptée une fois. Pour des bords périodiques, H=−JΣ_{liaisons}sᵢsⱼ possède deux liaisons par site, donc E₀/N=−2J. On reste à champ externe nul. Le résultat critique est celui d’Onsager ; la formule de l’aimantation spontanée a été démontrée par Yang.</p>",
         "<div class='formula'>θ=kBT/J ; θ_c=2/ln(1+√2)≈2,269185.<br>m_sp(θ)=[1−sinh⁻⁴(2/θ)]¹ᐟ⁸ si θ&lt;θ_c ; m_sp=0 sinon.<br>Définition : m_sp=lim_{h→0⁺}lim_{N→∞}⟨m⟩_{T,h}.</div>",
@@ -106,6 +179,7 @@ LESSONS = [
 
 
 def exercise(title, question, answer, lab, params=None, level="SUP / SPÉ"):
+    question = NOTATIONS_EXERCICES.get(int(title.split(" · ",1)[0]), "") + question
     return dict(title=title, question=question, answer=answer, lab=lab, params=params or {}, level=level)
 
 
@@ -151,7 +225,7 @@ EXERCISES = [
     exercise("20 · Le maximum dépend de la variable", "Écrire le changement de variable de B_ν à B_λ. Pourquoi le maximum de l’un ne correspond-il pas à celui de l’autre ?",
         "B_λdλ=B_ν|dν|, donc B_λ=B_ν(c/λ²). Le jacobien dépend de λ : il déplace le maximum. B_λ donne la racine 5(1−e^{-x})=x, alors que B_ν donne 3(1−e^{-y})=y. La loi λ_maxT≈2,898×10⁻³ m K concerne le spectre énergétique par unité de longueur d’onde.", "planck", dict(temperature=5800), "SUP → SPÉ"),
     exercise("21 · La lampe à 2500 K", "Estimer la fraction énergétique visible d’un corps noir à 2500 K dans la bande 390–780 nm. Comparer à 390–760 nm et préciser ce que mesure ce ratio.",
-        "Calculer r=π∫B_λdλ/(σT⁴) sur la bande choisie. Une quadrature convergée donne environ 5,896 % pour 390–780 nm et 5,187 % pour 390–760 nm. L’énoncé et le corrigé du recueil ne choisissent pas les mêmes bornes ; la valeur d’environ 7 % est un ordre de grandeur. Ce ratio porte sur la puissance rayonnée, sans pondération de la vision ni autres pertes électriques ou thermiques.", "planck", dict(temperature=2500), "SUP · EXO 1"),
+        "Calculer r=π∫B_λdλ/(σT⁴) sur la bande choisie. Une quadrature convergée donne environ 5,896 % pour 390–780 nm et 5,187 % pour 390–760 nm. La comparaison mesure la sensibilité du résultat au choix de la bande visible. Ce ratio porte sur la puissance rayonnée, sans pondération de la vision ni autres pertes électriques ou thermiques.", "planck", dict(temperature=2500), "SUP · EXO 1"),
     exercise("22 · Curie et saturation", "Pour un spin indépendant, montrer que la loi de Curie est une limite de m̄=μtanh(μB/(kBT)). Une droite extrapolée au-delà de μ décrit-elle le modèle ?",
         "À |x|≪1, tanh x=x+O(x³), donc m̄≈μ²B/(kBT) et χ≈μ²/(kBT). À fort champ ou basse température, tanh x sature ; la moyenne reste entre −μ et +μ. L’extrapolation linéaire au-delà n’est pas valide. Sans interaction entre spins, il n’y a pas de transition ferromagnétique dans ce modèle.", "spins", level="SPÉ"),
     exercise("23 · Une chaîne de quatre spins", "Pour Ising périodique N=4 à champ nul, compter les états par nombre de parois et écrire Z. Retrouver le facteur2 dans l’exponentielle de Stirling.",

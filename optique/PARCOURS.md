@@ -1,5 +1,7 @@
 # Dix missions pour construire un raisonnement d’optique
 
+**Repère de programme.** L’optique géométrique et la démarche de mesure fournissent les entrées de première année. Les interférences et les ondes se réinvestissent en seconde année suivant la filière ; Michelson et l’étude expérimentale de la polarisation sont notamment des repères PC. Jones, les faisceaux gaussiens, le banc 4f, les cavités laser et la conversion non linéaire sont des prolongements accompagnés, avec définitions et données fournies.
+
 Chaque mission associe une prédiction écrite, des réglages et un résultat vérifiable. Les durées sont indicatives : 30–50 min pour une première exploration, 1–2 h avec démonstrations et compte rendu. Les valeurs numériques des exercices constituent des contrôles indépendants des réglages par défaut.
 
 **Repères de niveau.** Sup : géométrie de Gauss, trigonométrie, mesure, dérivation et bilans. Spé : réinvestissement d’ondes, d’interférences, de diffraction et d’outils numériques selon la filière. Au-delà : modèles accompagnés, dont Jones/Poincaré, ABCD de résonateur, filtrage cohérent et conversion non linéaire ; ils ne constituent pas un programme obligatoire commun. Chaque TP précise sa porte d’entrée et son approfondissement. Les sources de programmes sont dans [COURS.md](COURS.md).

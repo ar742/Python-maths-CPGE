@@ -35,6 +35,8 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(data['application'],'fluides-ondes')
         self.assertEqual(len(data['labs']),18)
         self.assertEqual(set(data['lab_guides']),{l['id'] for l in data['labs']})
+        for guide in data['lab_guides'].values():
+            self.assertTrue(guide['objects']);self.assertTrue(guide['assumptions'])
         self.assertGreaterEqual(len(data['lessons']),28)
         self.assertGreaterEqual(len(data['exercises']),40)
 

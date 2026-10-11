@@ -187,7 +187,7 @@ sin ic=n₂/n₁ ; θ<arccos(n₂/n₁)
 n₀ sin θentrée, max=NA=√(n₁²−n₂²)  
 V=(2πa/λ₀)NA ; monomode LP₀₁ si V<2,405 pour une fibre idéale faiblement guidante
 
-**Dérivation.** La réflexion totale demande n₁ sin i>n₂, soit n₁ cosθ>n₂. En combinant avec n₀ sinθentrée=n₁ sinθ on obtient le cône d’acceptance. Le rayon axial et les rayons très inclinés ne passent pas le même temps dans une fibre multimode.
+**Dérivation.** La réflexion totale demande n₁ sin i>n₂, soit n₁ cosθ>n₂. En combinant avec n₀ sinθentrée=n₁ sinθ on obtient le cône d’acceptation. Le rayon axial et les rayons très inclinés ne passent pas le même temps dans une fibre multimode.
 
 **Exemple.** n₁=1,48, n₂=1,46 donnent NA≈0,2425 et θentrée, max≈14,03° dans l’air. Avec a=4 μm, λ₀=1,55 μm, V≈3,93 : le critère monomode n’est pas satisfait. Le seuil sur le rayon est a<2,405λ₀/(2πNA)≈2,45 μm.
 
@@ -207,7 +207,7 @@ t≈(1/c)∫n(r)√(1+r′²) dz
 
 **Comparaison.** Dans une fibre à saut d’indice uniforme de longueur L, tθ≈n₁L/(c cosθ). Pour L=1 km, n₁=1,48 et θ=10°, l’excès par rapport à l’axe est environ 76,2 ns. Il suffit à élargir une impulsion courte même si aucun rayon ne fuit.
 
-**Limites.** Le modèle de rayons ne décrit pas la dispersion chromatique, la dispersion de polarisation ni les pertes. Les résultats sur les trajectoires et l’acceptance sont complémentaires de la propagation d’un paquet d’ondes dans l’atelier Champs et Matière.
+**Limites.** Le modèle de rayons ne décrit pas la dispersion chromatique, la dispersion de polarisation ni les pertes. Les résultats sur les trajectoires et l’acceptation sont complémentaires de la propagation d’un paquet d’ondes dans l’atelier Champs et Matière.
 
 ## 14. Mirage : un invariant et une trajectoire parabolique
 
@@ -469,7 +469,7 @@ It/Iincident=1/[1+F sin²(φ/2)] ; F=4R/(1−R)²
 
 *Spé → Au-delà accompagné* — laboratoire `fabryperot`.
 
-**Mesures.** L’intervalle spectral libre sépare deux résonances consécutives en fréquence. La finesse ℱ est ce même intervalle divisé par la largeur FWHM d’un pic. Les expressions simples supposent un indice constant sur la fenêtre ; en milieu dispersif l’indice de groupe remplace l’indice de phase pour l’intervalle.
+**Mesures.** L’intervalle spectral libre sépare deux résonances consécutives en fréquence. La finesse ℱ est ce même intervalle divisé par la largeur à mi-hauteur (FWHM) d’un pic. Les expressions simples supposent un indice constant sur la fenêtre ; en milieu dispersif l’indice de groupe remplace l’indice de phase pour l’intervalle.
 
 FSR=c/(2ne cosθ) ; ℱ=π/[2arcsin(1/√F)] si F≥1  
 R proche de 1 : ℱ≈π√R/(1−R) ; ΔνFWHM=FSR/ℱ  
@@ -533,13 +533,13 @@ gseuil=α−ln(Rmiroir1 Rmiroir2)/(2L)
 
 *Spé → Au-delà accompagné* — laboratoire `gaussien`.
 
-**Notations.** w(z) est le rayon où l’intensité vaut 1/e² de sa valeur axiale, non un diamètre. w₀ est le waist au plan z=0. Le milieu est homogène d’indice n ; λ₀ est dans le vide. Le faisceau fondamental paraxial TEM₀₀ ne représente pas tout faisceau laser réel.
+**Notations.** w(z) est le rayon où l’intensité vaut 1/e² de sa valeur axiale, non un diamètre. w₀ est le rayon minimal, appelé rayon au col (waist), au plan z=0. Le milieu est homogène d’indice n ; λ₀ est dans le vide. Le faisceau fondamental paraxial TEM₀₀ ne représente pas tout faisceau laser réel.
 
 zR=πn w₀²/λ₀ ; w(z)=w₀√[1+(z/zR)²]  
 I(r, z)=2P/[πw(z)²] exp[−2r²/w(z)²] ; θdiv≈λ₀/(πn w₀)  
 Rfront=z[1+(zR/z)²] ; ψGouy=arctan(z/zR)
 
-**Intégrale.** La puissance est 2π∫₀∞I r dr=P à tout z. Le maximum diminue quand le faisceau s’élargit ; la puissance ne diminue pas dans ce modèle sans pertes. Au waist Rfront est infini, donc le front est localement plan malgré une divergence future finie.
+**Intégrale.** La puissance est 2π∫₀∞I r dr=P à tout z. Le maximum diminue quand le faisceau s’élargit ; la puissance ne diminue pas dans ce modèle sans pertes. Au col du faisceau Rfront est infini, donc le front est localement plan malgré une divergence future finie.
 
 **Exemple.** w₀=50 μm, λ₀=633 nm, n=1 donnent zR≈12,41 mm et θdiv≈4,03 mrad. À z=zR, w=w₀√2 et Iaxe est divisée par deux. Avec P=2 mW, Iaxe(0)≈5,09×10⁵ W·m⁻².
 
@@ -549,7 +549,7 @@ Rfront=z[1+(zR/z)²] ; ψGouy=arctan(z/zR)
 
 *Spé → Au-delà accompagné* — laboratoire `airy`.
 
-**Pupille idéale.** Un disque circulaire uniformément éclairé de diamètre D produit une fonction de Bessel J₁. Les exemples astronomiques du laboratoire sont des pupilles circulaires idéales ; ils ne reproduisent pas la PSF réelle des miroirs segmentés, des branches de support ou d’une atmosphère turbulente.
+**Pupille idéale.** Un disque circulaire uniformément éclairé de diamètre D produit une fonction de Bessel J₁. Les exemples astronomiques du laboratoire sont des pupilles circulaires idéales ; ils ne reproduisent pas la réponse réelle à une source ponctuelle des miroirs segmentés, des branches de support ou d’une atmosphère turbulente.
 
 u=πD sinθ/λ₀ ; I/I(0)=[2J₁(u)/u]²  
 Premier zéro : u≈3,831706 ⇒ sinθ₁≈1,21967 λ₀/D  
@@ -581,12 +581,12 @@ Manley–Rowe dégénéré : Nω+2N2ω constant ; Iω+I2ω constant
 
 ### Laboratoire `snell`
 
-Comprendre le changement de direction à une interface et reconnaître le seuil où un rayon transmis propagatif cesse d’exister. Les courbes de Fresnel relient ensuite ce tracé au bilan de puissance.
+Suivre un rayon qui rencontre une interface entre deux milieux. La loi de Snell–Descartes permet de prévoir réfraction et réflexion totale ; les coefficients de Fresnel distinguent amplitude du champ et énergie transportée.
 
 **Objets et unités**
 
-- n₁, n₂ sans unité ; incidence en degrés depuis la normale
-- r en degrés ; R et T sont des fractions de puissance, distinctes des amplitudes de champ
+- n₁ et n₂ sont les indices des milieux, sans unité ; i est l’angle d’incidence et r l’angle de réfraction, mesurés à la normale en degrés dans les contrôles.
+- Les coefficients de réflexion et transmission du champ sont des rapports d’amplitudes. R et T sont les fractions de puissance ; les polarisations s et p sont perpendiculaire et parallèle au plan d’incidence.
 
 **Hypothèses de l’expérience**
 
@@ -617,12 +617,12 @@ Leçons de référence : 1, 2.
 
 ### Laboratoire `lentille`
 
-Suivre le passage entre image réelle, virtuelle et image à l’infini. Les constructions font attribuer un sens physique aux signes de la conjugaison plutôt qu’appliquer une formule à des distances toutes positives.
+Construire l’image d’un objet avec une lentille mince, puis déplacer l’objet à travers le foyer. Les rayons et les distances orientées permettent de distinguer image réelle, image virtuelle et image à l’infini.
 
 **Objets et unités**
 
-- Focale affichée en mm : son signe est fourni par le choix convergente/divergente
-- Distance objet positive s en mm, p=−s ; hauteur et ouverture en mm ; p′ et γ sont algébriques
+- f′ est la distance focale image, en mm, positive pour une lentille convergente. p et p′ sont les distances orientées depuis le centre optique vers objet et image ; un objet réel a p négatif.
+- La distance objet s est positive et vaut −p. La hauteur et l’ouverture sont en mm ; γ est le grandissement transversal, rapport algébrique des hauteurs image et objet.
 
 **Hypothèses de l’expérience**
 
@@ -653,12 +653,12 @@ Leçons de référence : 3, 4.
 
 ### Laboratoire `bessel`
 
-Reconstituer un TP de détermination de focale : deux mises au point d’un même objet sur un écran fixe. Explorer aussi le seuil de Silbermann et distinguer incertitude propagée et facilité réelle de réglage.
+Mesurer une focale à partir des deux positions de mise au point d’une lentille. Étudier le cas limite puis les incertitudes apprend à choisir une configuration exploitable sur un banc optique.
 
 **Objets et unités**
 
-- D, f′, position et écart d en mm ; la commande de position est s/D sans unité
-- σD, σd sont des incertitudes standards en mm ; u(f′) en mm et d/u(d) sans unité
+- D est la distance entre objet et écran, f′ la focale et d l’écart entre les deux positions de lentille donnant une image nette, en mm. La commande de position donne le rapport sans unité s/D.
+- σ_D et σ_d sont les incertitudes standards de D et d, en mm ; u(f′) est l’incertitude standard sur la focale. Le rapport d/u(d) compare séparation et incertitude.
 
 **Hypothèses de l’expérience**
 
@@ -689,12 +689,12 @@ Leçons de référence : 5, 6.
 
 ### Laboratoire `telescope`
 
-Construire une lunette afocale pour un objet astronomique décrit par sa direction. Comparer grossissement, pupille de sortie et diffraction afin de comprendre ce qu’un changement d’oculaire améliore réellement.
+Former une image agrandie d’un objet lointain avec une lunette de Kepler. Comparer grossissement et résolution explique le rôle distinct de l’oculaire, du diamètre de l’objectif et du réglage afocal.
 
 **Objets et unités**
 
-- fo, fe, Dobjectif et défaut de séparation en mm ; angle de l’astre en minutes d’arc
-- λ₀ en nm ; grossissement sans unité ; repère angulaire de Rayleigh en secondes d’arc
+- f_o et f_e sont les focales de l’objectif et de l’oculaire ; D est le diamètre de l’objectif, en mm. Le défaut de séparation est l’écart à la distance afocale prévue.
+- L’angle de l’astre est réglé en minutes d’arc ; λ₀ est la longueur d’onde dans le vide en nm. Le grossissement est un rapport d’angles, et la limite de Rayleigh est affichée en secondes d’arc.
 
 **Hypothèses de l’expérience**
 
@@ -717,7 +717,7 @@ Construire une lunette afocale pour un objet astronomique décrit par sa directi
 
 - Sup : Lunette, grossissement, image à l’infini et réglages de TP.
 - Spé : Diffraction et échantillonnage au foyer ; calcul du défaut d’afocalité.
-- Au-delà : Télescopes réfléchissants, seeing, optique adaptative et PSF instrumentale.
+- Au-delà : Télescopes réfléchissants, turbulence atmosphérique, optique adaptative et réponse instrumentale à une source ponctuelle.
 
 Leçons de référence : 7, 8, 35.
 
@@ -725,12 +725,12 @@ Leçons de référence : 7, 8, 35.
 
 ### Laboratoire `microscope`
 
-Régler une image intermédiaire pour regarder sans accommodation et suivre l’amplification d’un détail micrométrique. L’ouverture numérique donne un second critère : agrandir davantage ne crée pas des détails transmis.
+Construire l’image intermédiaire d’un microscope puis l’observer avec l’oculaire. Le grossissement et l’ouverture numérique permettent de comprendre pourquoi une image plus grande ne révèle pas toujours plus de détails.
 
 **Objets et unités**
 
-- fo, fe, intervalle Δ et hauteur objet en mm ; déplacement de l’objet en μm
-- NA sans unité, λ₀ en nm, résolution objet en μm ; G sans unité et puissance en m⁻¹
+- f_o et f_e sont les focales de l’objectif et de l’oculaire, Δ l’intervalle optique, en mm. La hauteur objet est en mm et son déplacement en μm.
+- NA est l’ouverture numérique, produit de l’indice par le sinus de l’angle du cône accepté ; elle est sans unité. λ₀ est en nm, la résolution objet en μm et G le grossissement commercial.
 
 **Hypothèses de l’expérience**
 
@@ -761,12 +761,12 @@ Leçons de référence : 9, 10.
 
 ### Laboratoire `oeil`
 
-Utiliser la rétine comme écran fixe pour comprendre accommodation et correction. Un même bilan de conjugaison explique une myopie, une hypermétropie et l’effet du diamètre pupillaire sur deux sortes de flou.
+Former une image sur une rétine fixe avec un modèle réduit de l’œil. Faire varier l’accommodation, la correction et la pupille permet de distinguer défaut de mise au point, flou géométrique et diffraction.
 
 **Objets et unités**
 
-- Distance objet en m ; rétine et pupille en mm
-- Excès au repos, correction collée et accommodation en dioptries δ=m⁻¹ ; tache rétinienne en μm
+- La distance objet est en m ; distance à la rétine et diamètre pupillaire sont en mm. La rétine reste fixe dans le modèle réduit.
+- La vergence, la correction et l’accommodation sont en dioptries (m⁻¹). La tache rétinienne est une largeur en μm ; le flou géométrique et la largeur de diffraction sont distingués.
 
 **Hypothèses de l’expérience**
 
@@ -797,12 +797,12 @@ Leçons de référence : 11, 3, 35.
 
 ### Laboratoire `fibre`
 
-Passer de la réflexion totale au cône d’acceptance d’une fibre, puis mesurer le retard d’un rayon incliné. Le nombre V ouvre un lien avec les modes sans présenter un dessin de rayons comme leur solution ondulatoire.
+Déterminer quels rayons entrent dans une fibre et restent guidés par réflexion totale. Comparer leurs temps de parcours explique la dispersion modale ; un repère ondulatoire introduit ensuite la notion de fibre monomode.
 
 **Objets et unités**
 
-- Indices cœur/gaine sans unité ; angle d’entrée dans l’air en degrés à l’axe
-- Rayon en μm, longueur en m, λ₀ en nm ; temps axial/incliné en μs, étalement en ns ; NA et V sans unité
+- n₁ est l’indice du cœur, n₂ celui de la gaine. L’angle d’entrée est mesuré à l’axe en degrés ; a est le rayon du cœur en μm, L la longueur de fibre en m et λ₀ la longueur d’onde dans le vide en nm.
+- NA est l’ouverture numérique sans unité, qui fixe le cône d’acceptation. V est la fréquence normalisée de la fibre, sans unité, utilisée pour le repère monomode ; les temps sont en μs et leur étalement en ns.
 
 **Hypothèses de l’expérience**
 
@@ -819,7 +819,7 @@ Passer de la réflexion totale au cône d’acceptance d’une fibre, puis mesur
 
 1. Pour n₁=1,48, n₂=1,46, calculer NA et l’angle d’entrée limite avant de tracer le rayon.
 2. Comparer entrée de 8° et de 25° ; doubler la longueur puis sélectionner le repère monomode.
-3. Démontrer n₀sinθmax=√(n₁²−n₂²) et Δt=n₁L(1/cosθ−1)/c ; distinguer acceptance et seuil V<2,405.
+3. Démontrer n₀sinθmax=√(n₁²−n₂²) et Δt=n₁L(1/cosθ−1)/c ; distinguer acceptation et seuil V<2,405.
 
 **Niveaux et approfondissements**
 
@@ -833,12 +833,12 @@ Leçons de référence : 12, 13.
 
 ### Laboratoire `mirage`
 
-Retrouver la parabole du profil d’indice du recueil à partir d’un invariant, puis lire le point bas et la position apparente d’un rayon. La comparaison analytique/numérique donne un contrôle de résolution d’équation.
+Un rayon se courbe lorsque l’indice du milieu varie avec l’altitude. Une quantité conservée et la comparaison avec une trajectoire analytique permettent de relier réfraction, équation différentielle et contrôle de l’erreur numérique.
 
 **Objets et unités**
 
-- n₀ sans unité ; échelle a, altitude z₀ et distance x en m
-- Angle initial en degrés à l’horizontale ; invariant ncosθ et écart numérique sans unité ou dans l’unité affichée
+- n₀ est un indice sans unité ; a est l’échelle de variation du profil, z₀ l’altitude initiale et x la distance horizontale, en m.
+- θ est l’angle à l’horizontale, en degrés dans le contrôle. Le produit de l’indice local par cos θ est la quantité conservée ; l’écart des trajectoires est exprimé dans l’unité indiquée sur le graphique.
 
 **Hypothèses de l’expérience**
 
@@ -869,12 +869,12 @@ Leçons de référence : 14, 18.
 
 ### Laboratoire `arcenciel`
 
-Faire apparaître une caustique par stationnarité de la déviation, puis relier la dispersion à l’ordre des couleurs. Le rayon dans la goutte et le graphe D(i) donnent deux lectures complémentaires d’un même phénomène.
+Suivre des rayons dans une goutte d’eau et chercher la direction où ils se regroupent. Les lois de réfraction, une dérivée et la dispersion de l’indice expliquent les angles et l’ordre des couleurs des deux arcs.
 
 **Objets et unités**
 
-- Incidence en degrés ; une ou deux réflexions internes
-- λ₀ en nm ; Cauchy n=a+b/λ² avec b en μm² ; déviation et rayon antisolaire en degrés
+- i est l’incidence à la normale, en degrés ; le nombre de réflexions internes vaut un ou deux. Le rayon antisolaire est l’angle à la direction opposée au Soleil.
+- λ₀ est en nm. Dans la loi de Cauchy de l’indice, a est sans unité, b en μm² et la longueur d’onde utilisée dans la formule en μm ; déviation et rayon antisolaire sont en degrés.
 
 **Hypothèses de l’expérience**
 
@@ -905,12 +905,12 @@ Leçons de référence : 15, 2.
 
 ### Laboratoire `prisme`
 
-Reconstituer la recherche du minimum au goniomètre, convertir une déviation en indice et confronter plusieurs couleurs à Cauchy. Le cas sans émergence apprend à vérifier les domaines trigonométriques.
+Chercher la position où la déviation d’une raie lumineuse est minimale. La géométrie du prisme permet de déduire son indice, puis de comparer plusieurs couleurs et d’interpréter une mesure au goniomètre.
 
 **Objets et unités**
 
-- A, i, D en degrés ; λ₀ en nm
-- n=a+b/λ², a sans unité et b en μm² ; indice déduit au minimum sans unité
+- A est l’angle au sommet du prisme, i l’incidence et D la déviation, en degrés. λ₀ est la longueur d’onde dans le vide, réglée en nm.
+- Dans la loi de Cauchy, a est sans unité et b en μm², avec la longueur d’onde de la formule en μm. L’indice déduit de la déviation minimale est sans unité.
 
 **Hypothèses de l’expérience**
 
@@ -941,12 +941,12 @@ Leçons de référence : 16.
 
 ### Laboratoire `aberrations`
 
-Comparer un miroir sphérique et un paraboloïde pour un faisceau axial. Le tracé exact rend visible l’aberration sphérique, son atténuation paraxiale et le stigmatisme axial de la parabole sans les confondre avec la diffraction.
+Comparer la réflexion d’un faisceau axial sur une sphère et sur un paraboloïde. Faire varier l’ouverture montre le domaine de validité de l’approximation de Gauss et l’origine d’une aberration sphérique.
 
 **Objets et unités**
 
-- R en mm ; demi-ouverture/R et position d’écran −x/R sans unité
-- Sommet x=0, centre sphérique x=−R ; interceptions et positions focales en mm
+- R est le rayon de courbure du miroir sphérique, en mm ; demi-ouverture/R et position de l’écran −x/R sont sans unité.
+- L’axe x passe par le sommet x=0 ; le centre de la sphère est x=−R. Les points où les rayons coupent l’axe ou l’écran sont repérés en mm.
 
 **Hypothèses de l’expérience**
 
@@ -977,12 +977,12 @@ Leçons de référence : 17, 35.
 
 ### Laboratoire `fermat`
 
-Faire naître Snell d’une optimisation du temps de trajet. La position de traversée volontairement imparfaite permet de comparer un segment plus court à un chemin plus rapide, avec une preuve de convexité.
+Choisir le point où un rayon traverse une interface pour minimiser son temps de parcours. Dériver le chemin optique permet de retrouver Snell–Descartes et de distinguer longueur géométrique et durée.
 
 **Objets et unités**
 
-- Séparation X, altitude h₁ et profondeur h₂ en cm ; point de passage x/X sans unité
-- n₁, n₂ sans unité ; chemin optique converti en longueur et durée L/c
+- X est la séparation horizontale des extrémités ; h₁ et h₂ sont leurs distances à l’interface, en cm. x est l’abscisse du point de passage ; le contrôle donne x/X.
+- n₁ et n₂ sont les indices, sans unité. Le chemin optique est la somme des longueurs parcourues pondérées par l’indice ; c est la vitesse de la lumière dans le vide et permet de calculer la durée.
 
 **Hypothèses de l’expérience**
 
@@ -1013,12 +1013,12 @@ Leçons de référence : 18, 14.
 
 ### Laboratoire `young`
 
-Identifier séparément franges d’interférence et enveloppe de diffraction. Le laboratoire montre aussi qu’un minimum non noir peut venir d’un déséquilibre, et qu’une somme d’intensités sans corrélation garde de la lumière.
+Une même source éclaire deux fentes et produit des franges sous une enveloppe de diffraction. Modifier leur largeur, leur séparation et leur cohérence permet de distinguer interfrange, contraste et largeur de l’enveloppe.
 
 **Objets et unités**
 
-- λ en nm ; séparation a et largeur b en mm ; D en m
-- I₂/I₁ sans unité ; phase additionnelle en degrés ; x et interfrange en mm
+- λ est la longueur d’onde en nm ; a la séparation et b la largeur des fentes, en mm ; D la distance à l’écran, en m.
+- I₁ et I₂ sont les éclairements des voies ; leur rapport est sans unité. La phase additionnelle est en degrés ; x est la position sur l’écran et l’interfrange une distance, en mm.
 
 **Hypothèses de l’expérience**
 
@@ -1049,12 +1049,12 @@ Leçons de référence : 19, 20, 27.
 
 ### Laboratoire `reseau`
 
-Résoudre un doublet grâce à la largeur des maxima d’un ensemble de fentes. Augmenter N affine les pics ; changer l’ordre m augmente la dispersion, sous réserve que cet ordre existe et soit transmis par l’enveloppe.
+Additionner les ondes issues de plusieurs fentes pour séparer deux raies proches. Le nombre de fentes et l’ordre d’observation relient la largeur des maxima au pouvoir de résolution du réseau.
 
 **Objets et unités**
 
-- λ centrale et écart du doublet en nm ; pas d en μm ; N entier et fraction ouverte b/d
-- Incidence en degrés ; ordre m entier ; λ/Δλ et mN sans unité
+- λ est la longueur d’onde centrale et Δλ la séparation du doublet, en nm ; d est le pas du réseau en μm, N le nombre de fentes et b/d leur fraction ouverte.
+- L’incidence est en degrés et m est l’ordre d’interférence, entier. Le pouvoir de résolution R=λ/Δλ est sans unité ; il est comparé au repère mN.
 
 **Hypothèses de l’expérience**
 
@@ -1085,12 +1085,12 @@ Leçons de référence : 21, 22.
 
 ### Laboratoire `diffraction`
 
-Reconstruire la forme d’une figure depuis une pupille, puis découvrir le compromis d’apodisation. Les premiers zéros et le bilan de transmission obligent à distinguer demi-largeur, largeur totale et normalisation au pic.
+Observer dans un plan focal la lumière transmise par une ouverture. Comparer une transmission uniforme et une transmission adoucie explique le compromis entre largeur du maximum central et intensité des maxima secondaires.
 
 **Objets et unités**
 
-- Largeur a et hauteur b de pupille en mm ; λ en nm ; focale en mm
-- Coordonnées focales en mm ; transmittance cosinus d’amplitude ; intensité relative au pic et énergie transmise
+- a et b sont largeur et hauteur de l’ouverture, en mm ; f′ est la focale en mm et λ la longueur d’onde en nm. Les coordonnées du plan focal sont en mm.
+- La transmittance est le rapport des amplitudes du champ après et avant l’ouverture. L’intensité est normalisée au maximum ; la fraction de puissance transmise décrit un bilan distinct.
 
 **Hypothèses de l’expérience**
 
@@ -1121,12 +1121,12 @@ Leçons de référence : 22, 23.
 
 ### Laboratoire `polarisation`
 
-Transformer puis analyser un état du champ électrique. L’ellipse, les composantes et la sphère de Poincaré permettent de relier un calcul Jones à une mesure au polariseur, y compris un état circulaire sans extinction directe.
+Faire traverser une lame à retard puis un analyseur à une onde polarisée. Les composantes du champ, l’ellipse et la transmission permettent de relier déphasage, état de polarisation et mesure d’intensité.
 
 **Objets et unités**
 
-- Angles d’entrée, de lame et d’analyseur en degrés ; retardance δ en degrés
-- Jones normalisé, transmission sans unité ; Stokes S₁/S₀, S₂/S₀, S₃/S₀ sur la sphère
+- Les orientations de l’entrée, de la lame et de l’analyseur sont en degrés ; δ est le retard de phase entre les axes propres de la lame, en degrés.
+- Le vecteur de Jones contient les deux amplitudes complexes du champ. S₀ est l’intensité et S₁,S₂,S₃ les paramètres de Stokes définis dans le cours ; leurs rapports à S₀ décrivent la sphère de Poincaré.
 
 **Hypothèses de l’expérience**
 
@@ -1157,12 +1157,12 @@ Leçons de référence : 24, 25.
 
 ### Laboratoire `michelson`
 
-Passer du montage à sa différence de marche et à son plan d’observation. Les anneaux d’inclinaison et les franges de coin donnent deux méthodes de mesure distinctes, avec le facteur deux d’un aller-retour.
+Déplacer ou incliner un miroir d’un interféromètre de Michelson. Le calcul de la différence de marche explique le facteur deux de la translation, les anneaux et les franges d’un coin d’air.
 
 **Objets et unités**
 
-- λ en nm ; écart miroir e en μm ; angle α du coin en mrad
-- Focale et coordonnées d’observation en mm ; champ en degrés ; phase additionnelle en degrés
+- λ est la longueur d’onde en nm ; e l’écart entre les positions équivalentes des miroirs, en μm ; α l’angle du coin d’air, en mrad.
+- La focale et les coordonnées d’observation sont en mm ; le champ angulaire et la phase additionnelle sont en degrés. La différence de marche est la différence des deux chemins optiques.
 
 **Hypothèses de l’expérience**
 
@@ -1193,12 +1193,12 @@ Leçons de référence : 26, 27, 28.
 
 ### Laboratoire `coherence`
 
-Expliquer une perte de visibilité à partir du spectre ou de la taille de source. Le doublet montre des retours de contraste, contrairement à l’enveloppe gaussienne : une première annulation ne résume pas la cohérence.
+Des franges perdent leur contraste lorsque la source possède plusieurs fréquences ou une grande étendue. Sommer les contributions permet de distinguer cohérence temporelle, cohérence spatiale et battements d’un doublet.
 
 **Objets et unités**
 
-- λ et écart de doublet en nm ; largeur FWHM Δν en GHz ; différence de marche en mm
-- Largeur source s et séparation a en mm ; Ds en m ; visibilité et γ normalisés
+- λ et la séparation du doublet sont en nm ; Δν est la largeur spectrale à mi-hauteur en GHz ; la différence de marche est en mm.
+- s est la largeur de la source, a la séparation des trajets, en mm ; D_s est la distance source en m. La visibilité mesure le contraste des franges ; γ est le degré complexe de cohérence, normalisé.
 
 **Hypothèses de l’expérience**
 
@@ -1229,12 +1229,12 @@ Leçons de référence : 27, 28, 19.
 
 ### Laboratoire `fabryperot`
 
-Voir comment de nombreux trajets résonnent et apprendre à lire une finesse spectrale. Les pics étroits demandent de vérifier également répétition d’ordre, angle interne et différence entre coefficient d’Airy et finesse.
+Une cavité transmet fortement certaines fréquences après de multiples réflexions. Sommer les amplitudes permet de calculer ses résonances et de distinguer leur espacement, leur largeur et la finesse.
 
 **Objets et unités**
 
-- Épaisseur e en mm, indice n et réflectivité R sans unité ; λ₀ en nm
-- Angle interne en degrés ; désaccord/ISL sans unité ; ISL et largeur affichées en GHz ; finesse sans unité
+- e est l’épaisseur de la cavité en mm, n son indice et R la réflectivité de puissance d’un miroir, sans unité ; λ₀ est en nm et l’angle interne en degrés.
+- L’intervalle spectral libre (ISL) est l’écart entre résonances voisines ; ISL et largeur de résonance sont en GHz. La finesse est leur rapport, sans unité ; le désaccord est rapporté à l’ISL.
 
 **Hypothèses de l’expérience**
 
@@ -1265,12 +1265,12 @@ Leçons de référence : 29, 30.
 
 ### Laboratoire `fourier`
 
-Construire un véritable filtrage du champ d’un objet. Une image de phase et les bilans de Parseval font distinguer amplitude, phase, intensité, contraste et énergie, au-delà d’un simple effet de flou sur une photographie.
+Utiliser deux lentilles et un masque pour modifier les fréquences spatiales d’une image. Suivre le champ puis son intensité explique un filtrage optique et permet de contrôler le bilan de puissance.
 
 **Objets et unités**
 
-- Fréquence de coupure en mm⁻¹ ; pas objet en μm ; λ₀ en nm ; focale en mm
-- Objet complexe E ; image |E|² ; spectre affiché logarithmiquement ; puissance relative sans unité
+- E est le champ complexe de l’objet et |E|² son intensité. Le pas objet est en μm, λ₀ en nm et la focale en mm.
+- La fréquence de coupure du masque est en mm⁻¹ : une fréquence spatiale mesure des oscillations par unité de longueur. Le spectre est affiché en échelle logarithmique ; la puissance relative est sans unité.
 
 **Hypothèses de l’expérience**
 
@@ -1301,12 +1301,12 @@ Leçons de référence : 31, 32, 22.
 
 ### Laboratoire `laser`
 
-Séparer la stabilité du trajet paraxial et l’apparition d’une oscillation entretenue. Le gain saturé fournit ensuite une puissance limitée et met le rôle du coupleur en relation avec la perte de cavité.
+Tester si une cavité confine un faisceau, puis si son gain compense les pertes. Séparer ces deux conditions permet de comprendre la stabilité géométrique, le seuil laser et la saturation de la puissance.
 
 **Objets et unités**
 
-- L en mm ; courbures 1/R en m⁻¹ ; réflectivités de puissance sans unité
-- Gain g₀ et perte α en m⁻¹ d’intensité ; Ps et puissance en W ; λ₀ en nm
+- L est la longueur de cavité en mm ; les inverses des rayons de courbure sont en m⁻¹ et les réflectivités des miroirs sont des fractions de puissance.
+- g₀ et α sont le gain non saturé et la perte d’intensité par unité de longueur, en m⁻¹. P_s est la puissance de saturation et P la puissance, en W ; λ₀ est en nm.
 
 **Hypothèses de l’expérience**
 
@@ -1329,7 +1329,7 @@ Séparer la stabilité du trajet paraxial et l’apparition d’une oscillation 
 
 - Sup : Exponentielle, logarithme et bilan d’amplification introduits progressivement.
 - Spé : ABCD, résonance et émission stimulée ; entrée guidée hors programme commun.
-- Au-delà : Modes propres, rate equations, compétition modale et oscillations de relaxation.
+- Au-delà : Modes propres, équations d’évolution des populations, compétition modale et oscillations de relaxation.
 
 Leçons de référence : 33, 4, 30.
 
@@ -1337,12 +1337,12 @@ Leçons de référence : 33, 4, 30.
 
 ### Laboratoire `gaussien`
 
-Relier un petit waist à une grande divergence et contrôler que l’élargissement ne perd pas de puissance. La courbure et la phase de Gouy révèlent ce que le simple dessin de rayons ne contient pas.
+Un faisceau plus étroit à son col diverge davantage ensuite. Calculer son profil, sa puissance et sa phase permet de relier largeur transverse, diffraction et déphasage de Gouy dans un modèle paraxial.
 
 **Objets et unités**
 
-- Rayon w₀ à 1/e² en μm, λ₀ en nm, indice n sans unité et P en mW
-- Plan z/zR sans unité ; w, zR et courbure dans les unités affichées ; I en W·m⁻² et Gouy affiché en degrés
+- w₀ est le rayon du col (waist), où l’intensité vaut 1/e² de la valeur axiale, en μm. λ₀ est la longueur d’onde dans le vide en nm, n l’indice et P la puissance en mW.
+- z_R est la longueur de Rayleigh, w(z) le rayon du faisceau et R_front le rayon de courbure de son front d’onde. Le contrôle donne z/z_R ; l’intensité est en W·m⁻² et la phase de Gouy en degrés.
 
 **Hypothèses de l’expérience**
 
@@ -1353,13 +1353,13 @@ Relier un petit waist à une grande divergence et contrôler que l’élargissem
 
 - Intégrale radiale de puissance
 - Lois d’échelle w₀, zR, divergence
-- Phase complexe et limite au waist
+- Phase complexe et limite au col du faisceau
 
 **Prédire → expérimenter → justifier**
 
 1. Pour w₀=50 μm, λ₀=633 nm, n=1, prévoir zR et le changement d’intensité axiale à z=zR.
-2. Comparer waist, zR, puis petit et grand waist ; doubler P en conservant la géométrie.
-3. Intégrer I(r, z) et vérifier P constant ; expliquer Rfront infini au waist, la phase de Gouy et la divergence accrue quand w₀ diminue.
+2. Comparer plan du col, plan zR, puis petit et grand rayon au col ; doubler P en conservant la géométrie.
+3. Intégrer I(r, z) et vérifier P constant ; expliquer Rfront infini au col du faisceau, la phase de Gouy et la divergence accrue quand w₀ diminue.
 
 **Niveaux et approfondissements**
 
@@ -1373,12 +1373,12 @@ Leçons de référence : 34, 33.
 
 ### Laboratoire `airy`
 
-Tester la discernabilité de deux objets astronomiques ponctuels et comprendre une pupille annulaire. La somme de PSF de deux étoiles indépendantes rend visibles résolution et contraste sans inventer une phase commune.
+Chercher si un instrument sépare deux étoiles indépendantes. Comparer les taches d’une pupille pleine et d’une pupille annulaire relie diffraction, diamètre d’ouverture et contraste entre deux sources.
 
 **Objets et unités**
 
-- D en mm, λ₀ en nm, séparation divisée par 1,22λ₀/D sans unité
-- Rapport des flux et obstruction ε sans unité ; angle en secondes d’arc ; profils et taches d’intensité
+- D est le diamètre de la pupille en mm et λ₀ la longueur d’onde dans le vide en nm. La séparation est réglée en multiples de l’angle de Rayleigh 1,22λ₀/D.
+- Le rapport des flux des deux étoiles et le rapport d’obstruction ε sont sans unité. Les angles sont en secondes d’arc ; chaque étoile produit une tache de diffraction, appelée réponse à une source ponctuelle.
 
 **Hypothèses de l’expérience**
 
@@ -1401,7 +1401,7 @@ Tester la discernabilité de deux objets astronomiques ponctuels et comprendre u
 
 - Sup : Dimensions et conversion d’angles ; distinction collecte/grossissement.
 - Spé : Diffraction circulaire et séparation de deux points, avec Bessel introduite si nécessaire.
-- Au-delà : PSF réelle, estimation sous-Rayleigh, contraste de compagnon et déconvolution.
+- Au-delà : réponse réelle à une source ponctuelle, estimation sous-Rayleigh, contraste de compagnon et déconvolution.
 
 Leçons de référence : 35, 8.
 
@@ -1409,12 +1409,12 @@ Leçons de référence : 35, 8.
 
 ### Laboratoire `nonlineaire`
 
-Suivre la conversion du fondamental vers sa seconde harmonique et voir pourquoi la pompe constante finit par échouer. L’accord de phase relie une intégrale de champ, une loi sinc² et un bilan énergétique/photonique.
+Convertir une partie de la lumière incidente en lumière de fréquence double dans un cristal. Comparer pompe supposée constante et ondes couplées permet de suivre l’énergie et de comprendre l’accord de phase.
 
 **Objets et unités**
 
-- λω en nm, Iω en GW·cm⁻², d=χeff/2 en pm·V⁻¹, L en mm
-- Indices effectifs sans unité ; Δk en mm⁻¹ réglé par orientation ; rendement et fractions d’énergie sans unité
+- ω est la pulsation de la pompe ; λ_ω sa longueur d’onde en nm et I_ω son intensité en GW·cm⁻². L est la longueur du cristal en mm et d le coefficient non linéaire effectif en pm·V⁻¹.
+- Les indices effectifs sont sans unité ; Δk est le désaccord des vecteurs d’onde en mm⁻¹, réglé par l’orientation du cristal. Le rendement et les fractions d’énergie mesurent la conversion sans unité.
 
 **Hypothèses de l’expérience**
 
@@ -1436,7 +1436,7 @@ Suivre la conversion du fondamental vers sa seconde harmonique et voir pourquoi 
 **Niveaux et approfondissements**
 
 - Sup : Carré d’un sinus, énergie d’un photon et intégrale de phase, après introduction guidée.
-- Spé : Réinvestissement de Maxwell et des ODE, mais la génération χ² n’est pas un acquis commun obligatoire.
+- Spé : Réinvestissement de Maxwell et des équations différentielles, mais la génération χ² n’est pas un acquis commun obligatoire.
 - Au-delà : Accord birefringent, Manley–Rowe, déplétion, paramétrique et cristaux non linéaires.
 
 Leçons de référence : 36, 34.
@@ -1547,7 +1547,7 @@ Leçons de référence : 36, 34.
 
 **Énoncé.** Une fibre idéale a n₁=1,48, n₂=1,46 et un rayon de cœur a=4 μm. Calculer NA, l’angle d’entrée maximal dans l’air et V à 1550 nm. Quelle limite sur a donnerait V<2,405 ?
 
-**Corrigé.** NA=√(1,48²−1,46²)≈0,24249. L’angle d’entrée maximal est arcsin(NA)≈14,03°. V=2πaNA/λ₀≈3,932>2,405 : ce repère de fibre faiblement guidante ne garantit pas un régime monomode. Résoudre V<2,405 donne a<2,405λ₀/(2πNA)≈2,447 μm. La condition d’acceptance est géométrique ; le seuil 2,405 résulte de l’équation d’onde et de ses conditions aux limites cylindriques. Un rayon accepté dans une fibre très petite ne constitue pas à lui seul un calcul de mode.
+**Corrigé.** NA=√(1,48²−1,46²)≈0,24249. L’angle d’entrée maximal est arcsin(NA)≈14,03°. V=2πaNA/λ₀≈3,932>2,405 : ce repère de fibre faiblement guidante ne garantit pas un régime monomode. Résoudre V<2,405 donne a<2,405λ₀/(2πNA)≈2,447 μm. La condition d’acceptation est géométrique ; le seuil 2,405 résulte de l’équation d’onde et de ses conditions aux limites cylindriques. Un rayon accepté dans une fibre très petite ne constitue pas à lui seul un calcul de mode.
 
 ### 14. Le guidage ne supprime pas la dispersion temporelle
 
@@ -1785,7 +1785,7 @@ Leçons de référence : 36, 34.
 
 *Spé → Au-delà* — laboratoire `gaussien`.
 
-**Énoncé.** Un TEM₀₀ dans l’air a w₀=50 μm, λ₀=633 nm, P=2 mW. Calculer zR, la divergence, l’intensité axiale au waist et à zR. Quelles grandeurs restent constantes lorsque le faisceau s’élargit ?
+**Énoncé.** Un TEM₀₀ dans l’air a w₀=50 μm, λ₀=633 nm, P=2 mW. Calculer zR, la divergence, l’intensité axiale au col du faisceau et à zR. Quelles grandeurs restent constantes lorsque le faisceau s’élargit ?
 
 **Corrigé.** zR=πw₀²/λ₀≈12,4076 mm ; θdiv≈λ₀/(πw₀)≈4,030 mrad. Iaxe(0)=2P/(πw₀²)≈5,093×10⁵ W·m⁻². À z=zR, w=√2w₀ et Iaxe est divisée par deux, environ 2,546×10⁵ W·m⁻². La puissance totale reste P car 2π∫I(r, z)rdr=P à chaque z. La divergence concerne le rayon à 1/e² et non le diamètre complet ; un angle d’ouverture total donnerait environ 2θdiv. La courbure du front d’onde et la phase de Gouy évoluent également, sans perte d’énergie dans ce milieu idéal.
 

@@ -1,8 +1,91 @@
 """Parcours original de physique quantique CPGE ; TP du recueil et extensions guidées."""
 
 
+from html import escape
+
+NOTATIONS_COURS = {1: 'r est la position en m et t le temps en s. ψ et φ sont des fonctions d’onde ; l’étoile * désigne la '
+    'conjugaison complexe. |n⟩ est un état de base et cₙ son amplitude complexe ; Re et Im désignent les '
+    'parties réelle et imaginaire.',
+ 2: 'i²=−1 ; ℏ=h/(2π) est la constante de Planck réduite. m est la masse, V l’énergie potentielle, H '
+    'l’opérateur énergie et Δ le laplacien spatial. φₙ et Eₙ sont un état propre et son énergie ; j est le '
+    'courant de probabilité.',
+ 3: 'L est le côté du cube en m et m la masse de la particule. Les entiers nₓ,nᵧ,n_z identifient les modes ; '
+    'ℏ est la constante de Planck réduite. E₀ désigne ici l’échelle d’énergie de confinement, appelée E_L '
+    'dans les commandes.',
+ 4: 'L est la période spatiale ou le côté de la boîte selon les conditions choisies ; k est le vecteur '
+    'd’onde en m⁻¹. Deux modes d’énergies E₁,E₂ sont superposés avec poids w et phase initiale δ. La '
+    'pulsation de battement est |E₂−E₁|/ℏ.',
+ 5: 'x̂ et p̂ sont les opérateurs position et impulsion ; ⟨A⟩ désigne la moyenne d’une observable A. ΔA est '
+    'son écart type ; [A,B]=AB−BA est un commutateur. σ est la largeur initiale de la gaussienne, p₀ son '
+    'impulsion moyenne et m la masse.',
+ 6: 'a est la largeur de fente, λ la longueur d’onde et θ l’angle de diffraction. Pour les estimations '
+    'd’énergie, m est la masse, r une taille de localisation, e la charge élémentaire et ε₀ la permittivité '
+    'du vide. Pour l’oscillateur, ω est sa pulsation.',
+ 7: 'E est l’énergie incidente, V₀ la hauteur de marche et m la masse constante. Les nombres d’onde sont k₁ '
+    'à gauche et k₂ à droite ; κ est un taux de décroissance en m⁻¹. r et t sont des amplitudes complexes, R '
+    'et T des rapports de courants.',
+ 8: 'E est l’énergie incidente, V₀ la hauteur de barrière et a sa largeur. m est la masse, κ le taux de '
+    'décroissance pour E<V₀ et q le nombre d’onde dans la barrière pour E>V₀. T est le rapport du courant '
+    'transmis au courant incident ; sech u=1/cosh u.',
+ 9: 'm est la masse et ω la pulsation de l’oscillateur ; ℓ=√(ℏ/(mω)) fixe son échelle de longueur. X=x/ℓ et '
+    'P=p/√(mℏω) sont sans dimension. a et a† sont les opérateurs d’abaissement et d’élévation ; n est le '
+    'nombre entier d’excitations.',
+ 10: 'a est l’opérateur d’abaissement et α un nombre complexe définissant l’état cohérent. n compte les '
+     'excitations ; m,ω et ℓ=√(ℏ/(mω)) sont la masse, la pulsation et la longueur de l’oscillateur. H est '
+     'l’opérateur énergie ; Re α et Im α sont les composantes de α.',
+ 11: '|0⟩ et |1⟩ forment la base d’un qubit ; ⊗ désigne le produit tensoriel. Les coefficients de l’état à '
+     'deux qubits forment une matrice C. ρ est un opérateur densité et Tr_B la trace sur le second système, '
+     'qui fournit l’état réduit du premier.',
+ 12: 'X et Z sont les matrices de Pauli ; M(a) est l’observable d’un analyseur d’angle a. E(a,b) est la '
+     'moyenne du produit des deux résultats ±1 ; S combine quatre corrélations. v est le poids de l’état de '
+     'Bell dans le mélange de Werner et I₄ la matrice identité 4×4.',
+ 13: 'δ est la différence de phase de la jonction, I_c son courant critique et V sa tension. e est la charge '
+     'élémentaire ; les paires portent la charge 2e. K désigne l’énergie du couplage lorsqu’elle intervient '
+     'dans le modèle à deux amplitudes.',
+ 14: 'I₁ et I₂ sont les courants critiques des deux jonctions. Φ est le flux dans la boucle et Φ₀=h/(2e) le '
+     'quantum de flux, en Wb. δ est la phase moyenne et I_c(Φ) le courant maximal à flux fixé.',
+ 15: 'X,Y,Z sont les matrices de Pauli et I l’identité 2×2. γ est le rapport gyromagnétique en rad·s⁻¹·T⁻¹, '
+     'B₀ le champ statique et B₁ l’amplitude du champ circulaire. ω₀ est la pulsation de Larmor, ω celle du '
+     'champ appliqué ; Δ est leur désaccord selon la convention annoncée.',
+ 16: 'Ω est la pulsation de couplage et Δ le désaccord ; t est le temps. X et Z sont les matrices de Pauli, '
+     'I l’identité et H_rot l’opérateur énergie dans le repère tournant. U(t) fait évoluer l’état ; P₁ est '
+     'la probabilité de mesurer |1⟩.',
+ 17: 'θ est la colatitude et φ l’azimut ; n est le vecteur unitaire correspondant. r∈[0,1] est la longueur '
+     'du vecteur de Bloch, ρ l’opérateur densité et σ=(X,Y,Z) les matrices de Pauli. m est un axe unitaire '
+     'de mesure ; Tr est la trace.',
+ 18: 'H désigne ici la porte de Hadamard, et CNOT une porte à contrôle et cible. Les quatre états de base '
+     'sont ordonnés |00⟩,|01⟩,|10⟩,|11⟩. Pour Grover, |m⟩ est l’état marqué, |s⟩ la superposition uniforme, '
+     'O_m l’oracle et D la réflexion autour de |s⟩.'}
+
+NOTATIONS_EXERCICES = {1: 'L est le côté en m ; m est la masse et ℏ la constante de Planck réduite. ',
+ 2: 'E₀=π²ℏ²/(2mL²) est l’échelle d’énergie ; m est la masse et L le côté. ',
+ 4: 'Les triplets sont les indices des deux modes ; E₀=π²ℏ²/(2mL²). ',
+ 5: 'σ est une longueur, p₀ l’impulsion moyenne et ℏ la constante de Planck réduite. ',
+ 6: 'θ est l’angle à la normale et λ la longueur d’onde. ',
+ 7: 'm est la masse, ω la pulsation et u=(Δx)² la variance de position. ',
+ 8: 'm est la masse de l’électron, e la charge élémentaire et ε₀ la permittivité du vide. ',
+ 9: 'E est l’énergie incidente ; r,t sont les amplitudes réfléchie et transmise, R,T les rapports de '
+    'courants. ',
+ 10: 'E est l’énergie incidente, V₀ la hauteur de marche et ψ la fonction d’onde. ',
+ 11: 'E est l’énergie incidente, a la largeur et κ=√(2m(V₀−E))/ℏ le taux de décroissance. ',
+ 13: 'ψ₀ est le fondamental ; a† élève d’un niveau, E₁ est l’énergie du premier excité et Δx,Δp sont les '
+     'écarts types. ',
+ 14: 'α définit l’état cohérent, ω la pulsation, m la masse et ℓ=√(ℏ/(mω)) la longueur de l’oscillateur. ',
+ 15: 'Φ⁺=(|00⟩+|11⟩)/√2 ; X,Z sont les matrices de Pauli. ',
+ 16: 'S=E(a,b)+E(a,b′)+E(a′,b)−E(a′,b′), où E est la corrélation de résultats ±1 ; v est le poids de Bell. ',
+ 17: 'V est la tension et δ₀ la phase initiale ; le quantum de charge est 2e. ',
+ 18: 'I₁,I₂ sont les courants critiques des jonctions ; Φ₀=h/(2e) est le quantum de flux. ',
+ 19: 'I est l’identité 2×2, ω₀ une pulsation et H₀ l’opérateur énergie. ',
+ 20: 'Ω est le couplage et Δ le désaccord dans le repère tournant. ',
+ 21: 'γ/(2π)≈42,577 MHz·T⁻¹ pour le proton ; f_L est sa fréquence de Larmor et t_π la durée d’une impulsion '
+     'π. ',
+ 22: 'X,Y,Z sont les matrices de Pauli et i²=−1. ',
+ 23: 'H est la porte de Hadamard ; CNOT inverse le second qubit si le premier vaut 1. ',
+ 24: 'N est le nombre d’états de base ; l’oracle inverse le signe de l’amplitude de l’état marqué. '}
+
+
 def lesson(title, level, lab, *paragraphs):
-    return dict(title=title, level=level, lab=lab, html="".join(paragraphs))
+    return dict(title=title, level=level, lab=lab, html="<p><b>Notations.</b> "+escape(NOTATIONS_COURS[int(title.split(" · ",1)[0])])+"</p>"+"".join(paragraphs))
 
 
 LESSONS = [
@@ -13,7 +96,7 @@ LESSONS = [
         "<p><b>Compétence de Sup.</b> Vérifier dimensions et normalisation avant de calculer. En dimension 1, ψ a l’unité m⁻¹ᐟ² ; en dimension 3, m⁻³ᐟ². L’amplitude cₙ est sans dimension. Dans le laboratoire, les axes et unités réduites sont déclarés ; une densité n’est pas une probabilité sans son élément de volume.</p>"),
     lesson("2 · Schrödinger, conservation et courant", "SUP → SPÉ · FONDATIONS", "diffusion",
         "<div class='formula'>iℏ ∂ₜψ=Hψ ; H=−ℏ²Δ/(2m)+V(r).<br>État propre : Hφₙ=Eₙφₙ ; ψₙ(r,t)=φₙ(r)e⁻ⁱᴱⁿᵗᐟℏ.<br>Si H ne dépend pas du temps : |ψ(t)⟩=Σₙcₙe⁻ⁱᴱⁿᵗᐟℏ|n⟩.</div>",
-        "<p>Un état propre possède une densité spatiale stationnaire, bien que sa phase évolue. Une superposition de deux énergies distinctes peut avoir une densité variable. Pour un Hamiltonien auto-adjoint, U(t)=exp(−itH/ℏ) est unitaire : la norme et la probabilité totale sont conservées. Sur une onde plane eⁱᵏˣ, le Laplacien donne −k² ; l’énergie libre vaut donc +ℏ²k²/(2m), et non l’expression négative imprimée dans le TP.</p>",
+        "<p>Un état propre possède une densité spatiale stationnaire, bien que sa phase évolue. Une superposition de deux énergies distinctes peut avoir une densité variable. Pour un Hamiltonien auto-adjoint, U(t)=exp(−itH/ℏ) est unitaire : la norme et la probabilité totale sont conservées. Sur une onde plane eⁱᵏˣ, le Laplacien donne −k² ; l’énergie libre vaut donc +ℏ²k²/(2m).</p>",
         "<div class='formula'>ρ(r,t)=|ψ|² ; j=(ℏ/m)Im(ψ*∇ψ).<br>∂ₜρ+div j=0 ; en 1D, Aeⁱᵏˣ porte j=ℏk|A|²/m.</div>",
         "<p><b>Preuve.</b> Multiplier Schrödinger par ψ*, son conjugué par ψ, puis soustraire. Le potentiel réel s’élimine ; écrire le terme en dérivées comme une divergence donne l’équation de continuité. Le courant réfléchi est négatif : la probabilité de réflexion emploie sa valeur absolue.</p>",
         "<p><b>Deux objets différents.</b> La densité spatiale ρ(r)=|ψ(r)|² est un nombre dépendant de r. L’opérateur densité ρ̂=|ψ⟩⟨ψ|, ou une moyenne de tels projecteurs, est une matrice ou un opérateur de trace 1. Son évolution est iℏρ̂̇=[H,ρ̂]. La conservation spatiale ne comporte pas le facteur iℏ devant ∂ₜ|ψ|².</p>"),
@@ -34,7 +117,7 @@ LESSONS = [
         "<div class='formula'>0≤‖(X+iλP)ψ‖²=(Δx)²+λ²(Δp)²−λℏ, λ réel.<br>[x̂,p̂]=iℏI ⇒ ΔxΔp≥ℏ/2.</div>",
         "<p>Le trinôme est positif pour tout λ : son discriminant est ≤0. Cela donne la borne. Plus généralement, Cauchy–Schwarz conduit à ΔAΔB≥|⟨[A,B]⟩|/2 pour des observables convenablement définies. Le temps est ici un paramètre : on ne peut pas déduire « de même » une inégalité universelle ΔEΔt à partir d’un opérateur temps canonique. Les relations de durée d’évolution, par exemple Mandelstam–Tamm, demandent un sens précis de la durée.</p>",
         "<div class='formula'>ψ(x)=(2πσ²)⁻¹ᐟ⁴ exp[−x²/(4σ²)+ip₀x/ℏ] : Δx=σ, Δp=ℏ/(2σ).<br>Évolution libre : ⟨x⟩=p₀t/m ; Δx(t)=σ√[1+(ℏt/(2mσ²))²].</div>",
-        "<p>La gaussienne sans phase quadratique sature la borne à t=0 ; elle s’étale ensuite alors que sa distribution d’impulsion reste inchangée. Une phase quadratique, dite chirp, crée une covariance position–impulsion et peut faire commencer le paquet par une contraction. La borne renforcée est (Δx)²(Δp)²≥ℏ²/4+Cov(x,p)², où Cov=⟨XP+PX⟩/2. La valeur ℏ/2 du produit n’est donc pas préservée par toute évolution libre.</p>"),
+        "<p>La gaussienne sans phase quadratique sature la borne à t=0 ; elle s’étale ensuite alors que sa distribution d’impulsion reste inchangée. Une phase quadratique, crée une covariance position–impulsion et peut faire commencer le paquet par une contraction. La borne renforcée est (Δx)²(Δp)²≥ℏ²/4+Cov(x,p)², où Cov=⟨XP+PX⟩/2. La valeur ℏ/2 du produit n’est donc pas préservée par toute évolution libre.</p>"),
     lesson("6 · Ce qu’Heisenberg permet de retrouver", "SUP → SPÉ · TP CLASSIQUES", "heisenberg",
         "<p><b>Fente et diffraction.</b> Localiser transversalement une onde sur une largeur a produit une dispersion de vecteur d’onde de l’ordre 1/a. On retrouve l’échelle angulaire λ/a. Pour une fente rectangulaire idéale, Fraunhofer donne I(θ)∝[sin u/u]², u=πa sinθ/λ, avec la limite 1 en u=0 ; le premier zéro est sinθ=λ/a. Le moteur emploie sinc(v)=sin(πv)/(πv), donc le même profil s’écrit sinc²(a sinθ/λ). Mais le second moment de la distribution d’impulsion de ce profil idéal diverge : Δp n’est pas un nombre fini que l’on pourrait identifier à ℏ/a. Utiliser les premiers zéros pour la fente, les écarts types pour une gaussienne.</p>",
         "<p><b>Young et information de chemin.</b> Deux fentes séparées de d donnent l’interfrange i≈λD/d. Si l’environnement reçoit des états |d₁⟩ et |d₂⟩ selon la fente, le terme d’interférence est multiplié par ⟨d₂|d₁⟩. À poids égaux, la visibilité vaut |⟨d₂|d₁⟩| : états identiques, interférence entière ; états orthogonaux, information de chemin complète et terme croisé nul. Une explication par transfert d’impulsion peut être utile dans un modèle expérimental, mais ne remplace pas ce calcul général.</p>",
@@ -121,6 +204,7 @@ LESSONS = [
 
 
 def exercise(title, question, answer, lab, params=None, level="SUP / SPÉ"):
+    question = NOTATIONS_EXERCICES.get(int(title.split(" · ",1)[0]), "") + question
     return dict(title=title, question=question, answer=answer,
                 lab=lab, params=params or {}, level=level)
 

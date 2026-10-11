@@ -109,3 +109,200 @@ Laboratoires : `kerr`, `dynamo`. Leçons 33–36 ; exercices 43–44 et 47–48.
 ## Évaluation commune
 
 Une production réussie annonce axes, bornes et variables ; justifie la méthode par symétrie ou limites ; conserve les unités dans les conversions ; ferme un bilan ou vérifie un invariant ; termine par une limite concrète. Une courbe seule ne remplace ni une hypothèse ni une démonstration. Les corrigés de [COURS.md](COURS.md) permettent une reprise autonome et les introductions donnent trois premiers gestes réalisables avec les commandes de chaque expérience.
+
+<!-- reperes-laboratoires -->
+## Repères pour choisir une expérience
+
+Le cours exporté reprend les variables et hypothèses de chaque guide. Les indications de filière ci-dessous distinguent les techniques du programme et les prolongements.
+
+### dipoles
+
+Passer de deux charges exactes à un dipôle approché et décider à quelle distance le modèle est assez précis. Les équipotentielles et les lignes de champ rendent visibles la direction de E et les zéros de V.
+
+**Spé et filières.** MP/PC : électrostatique, gradient, développement limité et énergie dipolaire.
+
+**Prolongements.** Moments multipolaires et sensibilité d’une approximation près d’un zéro.
+
+### gauss
+
+Choisir une surface adaptée à la symétrie puis confronter champ, potentiel, capacité et énergie. La sphère volumique et le coaxial donnent deux exemples où un théorème intégral permet un calcul local.
+
+**Spé et filières.** MP/PC : loi de Gauss, symétries, potentiel et capacité ; choisir une surface adaptée.
+
+**Prolongements.** Unicité de Poisson et variations d’énergie avec une source de tension.
+
+### biotsavart
+
+Relier la géométrie d’un courant au champ magnétique, reconnaître une limite de fil long ou de solénoïde long et contrôler l’approximation dipolaire d’une spire.
+
+**Spé et filières.** MP/PC : magnétostatique et symétries ; les formules de géométrie finie sont établies ou fournies.
+
+**Prolongements.** Champs retardés et termes radiatifs absents du calcul stationnaire.
+
+### helmholtz
+
+Fabriquer une région presque uniforme par annulation d’une dérivée. Le réglage géométrique d/R=1 devient une conséquence du calcul et permet une calibration de champ utilisable avec Hall.
+
+**Spé et filières.** MP/PC : superposition, symétrie et développement limité ; calibration expérimentale du champ.
+
+**Prolongements.** Développement hors axe par divB=curlB=0 et optimisation d’une région volumique.
+
+### drude
+
+Comprendre une conductivité comme réponse avec mémoire. L’échelon et le régime harmonique font distinguer vitesse des porteurs, courant, énergie stockée et chaleur.
+
+**Spé et filières.** MP/PC : loi d’Ohm, réponse linéaire et énergie. Drude est un modèle mécanique fourni pour expliquer la conductivité.
+
+**Prolongements.** Causalité, pôles complexes, permittivité de Drude et statistiques des porteurs.
+
+### hall
+
+Déterminer le signe des porteurs à partir d’une tension transverse dont les bornes sont explicitement définies. Le laboratoire prolonge la force de Lorentz et les mesures de champ calibrées par Helmholtz.
+
+**Spé et filières.** Réinvestissement de Lorentz et du potentiel MP/PC ; modèle de Hall à un porteur fourni comme application de mesure.
+
+**Prolongements.** Transport multibande, pondération par mobilités et Hall quantique, hors du modèle présenté.
+
+### induction
+
+Fermer le bilan électromécanique et distinguer un rail toujours actif d’un cadre dont le flux cesse de varier après immersion. Lenz est confronté aux équations et à la chaleur dissipée.
+
+**Spé et filières.** Acquis de Sup, puis bilans de Spé MP/PC/PSI : induction, conversion et transitoires.
+
+**Prolongements.** Inductances mutuelles, géométries continues et freinage magnétique distribué.
+
+### hautparleur
+
+Lire un transducteur comme deux systèmes couplés par le même coefficient. À la résonance, vitesse élevée et courant faible deviennent compatibles grâce à la contre-fém.
+
+**Spé et filières.** Oscillateur forcé, circuit et conversion selon la filière ; couplage électromécanique accompagné.
+
+**Prolongements.** Charge acoustique, rayonnement d’un piston et modèles distribués de membrane.
+
+### hysteresis
+
+Reconstruire H depuis le courant primaire et B depuis la tension du secondaire ouvert. L’aire du cycle distingue dissipation et énergie stockée dans une réponse à mémoire.
+
+**Spé et filières.** PSI : milieux magnétiques et transformateur. Pour MP/PC, réinvestissement d’Ampère, Faraday et des bilans dans un prolongement.
+
+**Prolongements.** Preisach, pertes dynamiques et identification d’une distribution de domaines.
+
+### synchrone
+
+Comprendre pourquoi deux angles donnant le même couple n’ont pas la même stabilité. Le modèle de dipôle à une paire de pôles rend visibles retard, potentiel incliné et seuil statique de verrouillage.
+
+**Spé et filières.** PSI : machine synchrone. Les outils de stabilité et de couple sont accessibles aux autres filières dans ce modèle fourni.
+
+**Prolongements.** Dynamique de capture, alimentation variable et modèle multipolaire périodique en pθ.
+
+### asynchrone
+
+Lire le glissement comme la cause du courant rotorique, puis suivre séparément chaleur du rotor, conversion mécanique et flux d’entrefer dans un circuit équivalent triphasé.
+
+**Spé et filières.** Amplitudes complexes, induction et bilans de Spé ; le circuit triphasé asynchrone est un prolongement accompagné.
+
+**Prolongements.** Modèles à paramètres variables, saturation et commande vectorielle.
+
+### peau
+
+Distinguer pénétration harmonique et diffusion d’un échelon continu. La même équation de diffusion explique une profondeur δ à fréquence fixée et une profondeur croissant en √t.
+
+**Spé et filières.** MP/PC : propagation dans un conducteur, diffusion, énergie et comparaison des échelles.
+
+**Prolongements.** Conductivité dispersive, plaque finie et couplage London/composante normale.
+
+### maxwell
+
+Voir si une onde transporte une puissance moyenne ou échange localement énergie électrique et magnétique. Comparer les champs instantanés au flux de Poynting plutôt que confondre amplitude et énergie.
+
+**Spé et filières.** MP/PC : Maxwell, ondes planes, polarisation et bilan de Poynting.
+
+**Prolongements.** Paquets, milieux dispersifs et différence entre vitesse de phase et vitesse de transport.
+
+### interfaces
+
+Utiliser des conditions aux limites pour prédire amplitudes et flux. Brewster et réflexion totale donnent deux phénomènes différents qu’une courbe de réflexion seule ne doit pas confondre.
+
+**Spé et filières.** MP/PC : réflexion et transmission ; les coefficients obliques TE/TM et Brewster complètent les cas du programme suivi.
+
+**Prolongements.** Milieux absorbants, films minces et couplage par réflexion totale frustrée.
+
+### guide
+
+Comprendre qu’une paroi sélectionne un nombre d’onde transverse et une fréquence de coupure. Le TE₁₀ relie séparation des variables, valeurs propres et vitesse de transport.
+
+**Spé et filières.** Équation d’onde et conditions aux limites de Spé ; le mode TE₁₀ complet est un prolongement guidé.
+
+**Prolongements.** Familles TE/TM complètes, topologie TEM et guides dissipatifs.
+
+### antenne
+
+Déduire un diagramme angulaire d’une intégrale de phases. Taille d’ouverture et pointage font apparaître diffraction, absence possible de zéro et approximation des petits angles.
+
+**Spé et filières.** MP/PC : ondes, superposition et diffraction. Diagramme d’antenne et pointage sont des applications accompagnées.
+
+**Prolongements.** Directivité tridimensionnelle, facteur de réseau et réciprocité d’une antenne.
+
+### plasma
+
+Relier une réponse électronique passive à une coupure et à l’absorption. Le choix de la racine de k est confronté au flux de Poynting et à la chaleur, pas seulement au tracé d’une amplitude.
+
+**Spé et filières.** MP/PC : propagation dispersive et milieu conducteur ; le modèle froid collisionnel est fourni et contrôlé énergétiquement.
+
+**Prolongements.** Plasmas chauds, magnétisés ou stratifiés ; modes propres et amortissements cinétiques.
+
+### dielectrique
+
+Associer dispersion et absorption d’un oscillateur lié, puis relier la polarisation d’une sphère à ses charges de surface. Les champs extérieur, intérieur et local sont distingués.
+
+**Spé et filières.** Ondes et réponses linéaires MP/PC ; polarisation macroscopique, champ local et sphère diélectrique selon la filière ou en prolongement.
+
+**Prolongements.** Champs locaux, Clausius–Mossotti et orientation dipolaire thermique, à traiter sur papier.
+
+### aimantation
+
+Comparer trois mécanismes : orientation classique, deux niveaux quantiques et moment orbital induit. Le champ démagnétisant d’un ellipsoïde oblige à distinguer champ extérieur et champ interne.
+
+**Spé et filières.** MP §7 : Boltzmann et système à deux niveaux ; PSI : milieux magnétiques. Langevin et champ démagnétisant prolongent ce socle.
+
+**Prolongements.** Weiss, énergie libre et stabilité collective ; modèle de domaines distinct de la réponse calculée.
+
+### meissner
+
+Voir l’écrantage depuis les deux faces d’une plaque et comprendre ce que London ajoute à la conductivité parfaite. Le test d’histoire initiale distingue conservation du champ et sélection d’un état d’équilibre.
+
+**Spé et filières.** Outils MP/PC : Maxwell et équations différentielles ; supraconductivité et équations de London sont un prolongement.
+
+**Prolongements.** Phase du condensat, jauge, fluxoïde, type II et vortex, hors de la plaque London simple.
+
+### faraday
+
+Expliquer une rotation par deux phases propres et tester sa non-réciprocité. Une base circulaire déclarée et des axes de laboratoire fixes permettent un signe reproductible à l’aller-retour.
+
+**Spé et filières.** PC : polarisation ; techniques d’algèbre linéaire et de phases en MP/PC. Le modèle circulaire de Faraday est un prolongement guidé.
+
+**Prolongements.** Gyrotropie tensorielle, dichroïsme circulaire et relations de réciprocité.
+
+### kerr
+
+Construire et vérifier un profil localisé auto-guidé, puis le comparer à la diffraction libre. Le laboratoire traite le Kerr optique dépendant de l’intensité, avec ses unités et sa réduction monochromatique.
+
+**Spé et filières.** Techniques Spé : équation différentielle, intégrale première et diffraction. Kerr et profil localisé sont des prolongements.
+
+**Prolongements.** Enveloppes non linéaires, stabilité et solitons ; différencier les trois effets nommés Kerr.
+
+### rayonnement
+
+Passer d’un diagramme dipolaire transverse à une puissance intégrée, puis d’une polarisation induite à une section de diffusion. Rayleigh, résonance et Thomson révèlent trois régimes d’un même modèle.
+
+**Spé et filières.** MP/PC : Poynting et rayonnement dipolaire. Diffusion résonante et réaction radiative demandent les modèles fournis.
+
+**Prolongements.** Réaction radiative, extinction, diffusion multiple et corrections quantiques.
+
+### dynamo
+
+Déduire un seuil d’amplification à partir des valeurs propres d’un modèle α² local. L’hélicité et la diffusion sont confrontées à Rm pour montrer pourquoi un nombre élevé ne suffit pas à entretenir un champ.
+
+**Spé et filières.** Calcul vectoriel, diffusion et valeurs propres de Spé ; MHD et dynamo α² restent des prolongements.
+
+**Prolongements.** Fermeture turbulente, conditions globales, anti-dynamos et rétroaction du champ sur le fluide.

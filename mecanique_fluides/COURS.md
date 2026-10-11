@@ -596,6 +596,21 @@ B→0 : u→G(h²−y²)/(2η), Poiseuille plan.
 
 Distinguer un champ de vitesse mesuré en des points fixes, la trajectoire d'une particule et une ligne de courant instantanée. Suivre aussi un élément matériel pour relier sa forme à la conservation de la masse.
 
+
+**Objets et unités.**
+
+
+- La position r et la vitesse v sont en m et m·s⁻¹ ; le temps t est en s.
+- a règle l’étirement, Ω la rotation et U la translation. L est la demi-largeur de la fenêtre en m.
+- Une ligne de courant est tangente au champ à un instant ; une trajectoire suit le même point au cours du temps.
+
+
+**Hypothèses.**
+
+
+- Champ plan permanent, incompressible ; coefficients uniformes.
+- Le carré représente un petit élément matériel transporté par ce champ.
+
 Leçons de référence : 1, 2, 3.
 
 **Techniques à mobiliser**
@@ -613,7 +628,7 @@ Leçons de référence : 1, 2, 3.
 **Entrées et approfondissements**
 
 - Sup : Mobiliser dérivation, intégration et bilans de débit ; définir chaque courbe avant de la lire.
-- Spé : Réutiliser les équations différentielles et les champs de vecteurs pour distinguer descriptions spatiale et matérielle.
+- Spé : PC §4.3 : champ eulérien, lignes de courant numériques et dérivée particulaire. Le suivi détaillé d’un élément matériel est un prolongement.
 - Approfondissement : La description lagrangienne et l'étude locale du gradient sont des extensions selon la filière ; elles sont explicitées dans les leçons.
 
 **Résultat attendu.** Expliquer sur un exemple pourquoi une vitesse locale indépendante du temps peut produire une accélération, et pourquoi une ligne de courant n'est pas toujours une trajectoire.
@@ -621,6 +636,21 @@ Leçons de référence : 1, 2, 3.
 ### newtonien
 
 Relier la déformation d'un petit élément de fluide à la contrainte visqueuse et à la puissance dissipée. Comparer un cisaillement et une rotation rigide qui peuvent avoir des vitesses comparables.
+
+
+**Objets et unités.**
+
+
+- η est une viscosité dynamique : 1 mPa·s = 10⁻³ Pa·s ; ρ est une masse volumique.
+- Les taux de cisaillement γ̇, d’extension a et de rotation Ω sont en s⁻¹.
+- D est la partie symétrique du gradient de vitesse ; τ est la contrainte visqueuse en Pa. Le produit D:D désigne la somme des carrés de ses coefficients.
+
+
+**Hypothèses.**
+
+
+- Fluide newtonien incompressible, de viscosité uniforme.
+- On compare des mouvements plans prescrits, pas un écoulement calculé avec des parois.
 
 Leçons de référence : 3, 4, 5.
 
@@ -639,7 +669,7 @@ Leçons de référence : 3, 4, 5.
 **Entrées et approfondissements**
 
 - Sup : Distinguer force, force par aire, viscosité dynamique et gradient de vitesse à partir de leurs unités.
-- Spé : Mobiliser matrices symétriques et antisymétriques, produit scalaire et loi constitutive.
+- Spé : PC §4.3 et parcours PSI : cisaillement newtonien et bilans. La décomposition tensorielle générale est un prolongement accompagné.
 - Approfondissement : Le calcul tensoriel local est une extension accompagnée selon la filière ; les fluides non newtoniens exigent une autre loi.
 
 **Résultat attendu.** Déterminer une traction avec sa normale et reconnaître une rotation rigide sans dissipation visqueuse de cisaillement.
@@ -647,6 +677,21 @@ Leçons de référence : 3, 4, 5.
 ### couette
 
 Construire le profil entre une plaque mobile et une plaque fixe, puis relier le travail de la plaque à la dissipation dans le fluide. Comprendre la superposition du cisaillement et d'un entraînement par pression.
+
+
+**Objets et unités.**
+
+
+- h est la distance entre les plaques ; y va de la plaque basse à la plaque haute.
+- U₀ et U₁ sont les vitesses des plaques ; G=−∂p/∂x est en Pa·m⁻¹ et η en mPa·s.
+- u(y) est la vitesse longitudinale. Le débit affiché est un débit par unité de largeur, en m²·s⁻¹.
+
+
+**Hypothèses.**
+
+
+- Fluide newtonien incompressible ; écoulement permanent, parallèle et développé.
+- Adhérence aux deux plaques ; effets d’entrée et de bord négligés.
 
 Leçons de référence : 4, 8, 11.
 
@@ -665,7 +710,7 @@ Leçons de référence : 4, 8, 11.
 **Entrées et approfondissements**
 
 - Sup : Faire travailler fonctions affines, intégrales et bilan de puissance dans une géométrie simple.
-- Spé : Justifier la réduction de l'équation de mouvement et analyser un profil Couette–Poiseuille.
+- Spé : Outils PC/PSI : viscosité, adhérence, équations différentielles et puissances. La dérivation locale depuis Navier–Stokes est fournie comme prolongement.
 - Approfondissement : La résolution exacte d'un écoulement permanent ne prouve pas sa stabilité envers toutes les perturbations ; l'échauffement demande un bilan thermique.
 
 **Résultat attendu.** Retrouver la force à fournir, son signe et la puissance par unité d'aire sans confondre une composante de contrainte et la traction sur une face.
@@ -673,6 +718,21 @@ Leçons de référence : 4, 8, 11.
 ### poiseuille
 
 Expliquer la sensibilité du débit au rayon d'un tube et les associations de résistances hydrauliques. Distinguer pression imposée, débit imposé, vitesse centrale et vitesse moyenne.
+
+
+**Objets et unités.**
+
+
+- R et L définissent un tube circulaire ; r est la distance à l’axe.
+- Δp est la pression d’entrée moins celle de sortie ; η est en mPa·s et ρ en kg·m⁻³.
+- Q est le débit volumique en m³·s⁻¹ ; la vitesse moyenne sert à calculer le nombre de Reynolds avec le diamètre 2R.
+
+
+**Hypothèses.**
+
+
+- Fluide newtonien incompressible, régime laminaire permanent et développé.
+- Adhérence à la paroi ; la validité laminaire doit être contrôlée après chaque réglage.
 
 Leçons de référence : 7, 9, 10.
 
@@ -691,7 +751,7 @@ Leçons de référence : 7, 9, 10.
 **Entrées et approfondissements**
 
 - Sup : Calculer un débit par intégration et réutiliser les associations de résistances.
-- Spé : Contrôler les hypothèses de profil développé, les pertes de charge et les conventions Darcy/Fanning.
+- Spé : Outils PC/PSI : bilans, viscosité et nombres de Reynolds. La résolution radiale exacte et les réseaux prolongent ces techniques.
 - Approfondissement : Les pertes turbulentes ou d'entrée demandent d'autres lois ; le seuil de transition n'est pas universel.
 
 **Résultat attendu.** Justifier la loi en R⁴, vérifier Re avec le diamètre annoncé et dire quelles conclusions dépendent du régime laminaire développé.
@@ -699,6 +759,21 @@ Leçons de référence : 7, 9, 10.
 ### diffusion
 
 Voir comment le mouvement d'une paroi pénètre dans un fluide initialement immobile. Comparer la diffusion dans un demi-espace et l'approche d'un profil de Couette dans une couche finie.
+
+
+**Objets et unités.**
+
+
+- y mesure la distance à la paroi ; h est réglé en mm.
+- ν mesure la diffusion de quantité de mouvement : 1 mm²·s⁻¹ = 10⁻⁶ m²·s⁻¹.
+- u(y,t) est la vitesse parallèle ; erfc est la fonction d’erreur complémentaire. Dans le canal, les deux parois sont séparées par h.
+
+
+**Hypothèses.**
+
+
+- Fluide newtonien, incompressible, viscosité uniforme ; aucun gradient de pression.
+- Une plaque démarre idéalement à t=0 ; dans le canal, la seconde plaque reste fixe.
 
 Leçons de référence : 5, 8, 11.
 
@@ -717,7 +792,7 @@ Leçons de référence : 5, 8, 11.
 **Entrées et approfondissements**
 
 - Sup : Utiliser analyse dimensionnelle, fonctions et ordres de grandeur pour reconnaître une loi en √t.
-- Spé : Réutiliser équation de diffusion, séparation des variables et séries de Fourier selon la progression.
+- Spé : MP/PC : équation de diffusion et temps caractéristique ; application visqueuse guidée. La résolution de Navier–Stokes reste un prolongement selon la filière.
 - Approfondissement : Le démarrage idéal instantané crée une incompatibilité au coin y=t=0 ; une couche visqueuse se décrit malgré cette limite du protocole.
 
 **Résultat attendu.** Définir une profondeur de diffusion avec sa convention, convertir ν en SI et estimer le temps d'établissement d'une couche finie.
@@ -725,6 +800,21 @@ Leçons de référence : 5, 8, 11.
 ### blasius
 
 Relier l'épaisseur d'une couche limite laminaire sur une plaque au frottement local. Voir pourquoi une viscosité faible reste décisive près d'une paroi adhérente.
+
+
+**Objets et unités.**
+
+
+- x suit la plaque et y lui est perpendiculaire ; U∞ est la vitesse loin de la plaque.
+- ν est la viscosité cinématique convertie en m²·s⁻¹ ; ρ est la masse volumique en kg·m⁻³. Reₓ=U∞x/ν est sans dimension.
+- δ₉₉ est la distance où la vitesse atteint 99 % de U∞ ; C_f,x est le coefficient de frottement local.
+
+
+**Hypothèses.**
+
+
+- Écoulement plan permanent, laminaire et incompressible ; plaque plane avec adhérence.
+- Vitesse extérieure constante et gradient de pression nul ; approximation de couche limite.
 
 Leçons de référence : 7, 11, 12.
 
@@ -737,13 +827,13 @@ Leçons de référence : 7, 11, 12.
 **Prédire → expérimenter → justifier**
 
 1. Prédire l'effet de doubler la distance au bord d'attaque sur l'épaisseur et la contrainte pariétale, à U et ν fixés.
-2. Comparer les profils réduits, l'épaisseur à 99 % et le frottement ; repérer l'effondrement des profils en variable ξ.
+2. Comparer les profils réduits, l'épaisseur à 99 % et le frottement ; repérer la superposition des profils en variable ξ.
 3. Retrouver δ99≈4,91√(νx/U) et C_f,x≈0,664/√Re_x, puis intégrer pour expliquer le facteur deux du coefficient moyen.
 
 **Entrées et approfondissements**
 
 - Sup : Pratiquer analyse dimensionnelle, racines et contrôle des unités sur les profils.
-- Spé : Mobiliser dérivation, équation différentielle non linéaire et changement de variables dans une extension guidée.
+- Spé : Techniques Spé : changement de variables, équation différentielle et frottement. La théorie de Blasius est un prolongement spécialisé.
 - Approfondissement : Blasius suppose plaque plane, gradient de pression extérieur nul et couche laminaire ; transition et décollement demandent un autre modèle.
 
 **Résultat attendu.** Reconnaître la convention de normalisation f'''+ff''/2=0 et distinguer C_f local, moyen et facteur de frottement d'une conduite.
@@ -751,6 +841,21 @@ Leçons de référence : 7, 11, 12.
 ### bernoulli
 
 Interpréter l'échange entre pression, vitesse et altitude dans un écoulement idéal. Employer Venturi, Pitot et vidange tout en gardant les conditions de validité du bilan.
+
+
+**Objets et unités.**
+
+
+- Q est le débit volumique : 1 L·s⁻¹ = 10⁻³ m³·s⁻¹ ; D₁ et D₂ sont les diamètres.
+- ρ est en kg·m⁻³, η en mPa·s, ε la rugosité en mm, L la longueur en m et z₂−z₁ la dénivellation.
+- ΣK est le coefficient des pertes singulières ; α corrige l’énergie cinétique. Le rendement de pompe est un rapport sans dimension entre 0 et 1.
+
+
+**Hypothèses.**
+
+
+- Bilan permanent d’un liquide incompressible ; vitesse moyenne dans chaque section.
+- Les pertes dépendent des corrélations indiquées ; le bilan idéal s’obtient en les annulant.
 
 Leçons de référence : 14, 15, 19.
 
@@ -769,7 +874,7 @@ Leçons de référence : 14, 15, 19.
 **Entrées et approfondissements**
 
 - Sup : Combiner bilans, énergie, débit et intégration élémentaire.
-- Spé : Contrôler permanent, incompressible, idéal et ligne de courant ; intégrer une équation de niveau variable.
+- Spé : PC §4.3 : Bernoulli permanent incompressible. Pompes et pertes prolongent les bilans énergétiques des systèmes ouverts MP/PC/PSI.
 - Approfondissement : Bernoulli instationnaire avec ∂ₜφ est une extension selon la filière ; pompes et pertes visqueuses modifient le bilan de charge.
 
 **Résultat attendu.** Énoncer les hypothèses avant de comparer deux pressions et expliquer pourquoi une vitesse maximale affichée n'est pas une pression indépendante.
@@ -777,6 +882,21 @@ Leçons de référence : 14, 15, 19.
 ### sphere
 
 Relier la traînée d'une sphère à sa vitesse dans le régime de Stokes et tester une mesure de viscosité par chute lente. Distinguer les contributions de pression et de frottement.
+
+
+**Objets et unités.**
+
+
+- R est le rayon ; U est la vitesse relative entre la sphère et le fluide.
+- ρ et ρ_s sont les masses volumiques du fluide et du solide ; η est la viscosité dynamique.
+- La traînée est une force en N. Le nombre de Reynolds est calculé avec le diamètre 2R.
+
+
+**Hypothèses.**
+
+
+- Sphère rigide isolée dans un fluide newtonien incompressible loin des parois.
+- La loi de Stokes suppose un nombre de Reynolds petit devant 1 ; le transitoire est une estimation quasi stationnaire.
 
 Leçons de référence : 7, 13, 19.
 
@@ -795,7 +915,7 @@ Leçons de référence : 7, 13, 19.
 **Entrées et approfondissements**
 
 - Sup : Appliquer un bilan de forces et interpréter un régime terminal.
-- Spé : Distinguer inertie du solide, inertie du fluide, approximation de Stokes et contribution de pression.
+- Spé : PC §4.3 : nombre de Reynolds et choix d’une traînée linéaire ou quadratique. La démonstration complète du champ de Stokes est un prolongement.
 - Approfondissement : La masse ajoutée, la mémoire hydrodynamique et les parois peuvent corriger une relaxation naïve ; le temps calculé avec la seule traînée stationnaire reste une estimation de modèle.
 
 **Résultat attendu.** Construire une mesure de viscosité cohérente et expliquer les parts 1/3 pression et 2/3 frottement dans la traînée de Stokes.
@@ -803,6 +923,21 @@ Leçons de référence : 7, 13, 19.
 ### vortex
 
 Comparer vortex ponctuel et vortex de Rankine, avec un cœur régulier et une circulation extérieure. Distinguer vorticité locale, circulation et existence d'un potentiel global.
+
+
+**Objets et unités.**
+
+
+- r est la distance à l’axe et v_θ la vitesse tangentielle en m·s⁻¹.
+- Le cœur de rayon R tourne à Ω ; Γ est la circulation en m²·s⁻¹, égale à 2πΩR².
+- La pression est comparée à sa valeur loin du cœur ; la vorticité est le rotationnel de la vitesse, en s⁻¹.
+
+
+**Hypothèses.**
+
+
+- Vortex de Rankine plan, permanent et incompressible.
+- Modèle prescrit sans viscosité ; vitesse et pression sont raccordées au bord du cœur.
 
 Leçons de référence : 3, 16, 17.
 
@@ -821,7 +956,7 @@ Leçons de référence : 3, 16, 17.
 **Entrées et approfondissements**
 
 - Sup : Mobiliser mouvement circulaire, intégrales et sens d'une circulation.
-- Spé : Réutiliser champs de vecteurs, raccordements et bilans radiaux de quantité de mouvement.
+- Spé : PC §4.3 : rotationnel et potentiel des vitesses ; calculs de Rankine et topologie du domaine comme prolongements.
 - Approfondissement : Potentiel multivalué et rôle de la topologie sont explicités comme extensions ; le vortex ponctuel est singulier sur l'axe.
 
 **Résultat attendu.** Calculer une pression continue dans Rankine et séparer le domaine local irrotationnel d'un domaine où existe un potentiel global monovalué.
@@ -829,6 +964,21 @@ Leçons de référence : 3, 16, 17.
 ### magnus
 
 Expliquer une portance par la dissymétrie de pression autour d'un cylindre avec circulation imposée. Lire son signe et la distinguer d'une condition d'adhérence sur un cylindre réellement tournant.
+
+
+**Objets et unités.**
+
+
+- ρ est la masse volumique en kg·m⁻³ ; la force affichée est une force par longueur du cylindre, en N·m⁻¹.
+- Γ est une circulation imposée, pas une vitesse de rotation de paroi.
+- La normale extérieure au cylindre fixe le signe de l’intégrale de pression.
+
+
+**Hypothèses.**
+
+
+- Fluide idéal incompressible, écoulement plan permanent autour d’un cylindre.
+- Le modèle impose l’imperméabilité, mais ne décrit ni l’adhérence visqueuse ni la sélection réelle de Γ.
 
 Leçons de référence : 14, 16, 18.
 
@@ -847,7 +997,7 @@ Leçons de référence : 14, 16, 18.
 **Entrées et approfondissements**
 
 - Sup : Faire travailler le lien vitesse–pression et les symétries d'une force résultante.
-- Spé : Mobiliser fonctions trigonométriques, intégrales de pression et superposition de potentiels.
+- Spé : PC §4.3 : vitesse, pression et Bernoulli. Doublet, fonction de courant et sélection de la circulation sont des prolongements.
 - Approfondissement : La sélection de la circulation, la couche limite et le décollement sont des questions visqueuses ; le modèle idéal ne prédit pas une traînée réelle complète.
 
 **Résultat attendu.** Annoncer une convention de Γ, retrouver la force par unité de longueur et distinguer la portance idéale d'une simulation complète de cylindre tournant.
@@ -855,6 +1005,21 @@ Leçons de référence : 14, 16, 18.
 ### houle
 
 Relier la profondeur, la longueur d'onde et la fréquence d'une onde de surface, puis comparer déplacements des particules, crêtes et paquets. Explorer la transition gravitaire–capillaire.
+
+
+**Objets et unités.**
+
+
+- ρ est la masse volumique en kg·m⁻³ ; k=2π/λ est le nombre d’onde en m⁻¹ et ω la pulsation en rad·s⁻¹.
+- La vitesse de phase suit les crêtes ; la vitesse de groupe suit l’enveloppe d’un paquet étroit.
+- Les trajectoires dessinées sont les orbites de premier ordre autour de la position au repos.
+
+
+**Hypothèses.**
+
+
+- Fluide idéal incompressible et fond horizontal ; surface libre de faible amplitude.
+- Les critères ka≪1 et a/h≪1 doivent être contrôlés ; les corrections non linéaires ne sont pas simulées.
 
 Leçons de référence : 20, 21, 22.
 
@@ -873,7 +1038,7 @@ Leçons de référence : 20, 21, 22.
 **Entrées et approfondissements**
 
 - Sup : Distinguer vitesse du signal, célérité des crêtes et vitesse des particules ; contrôler les petites amplitudes.
-- Spé : Mobiliser équations d'onde, fonctions hyperboliques, dérivation de dispersion et conditions aux limites.
+- Spé : Techniques Spé : conditions aux limites, dispersion, vitesse de phase et de groupe. La houle gravitaire-capillaire est un prolongement accompagné.
 - Approfondissement : La dérive de Stokes et les asymptotiques d'un impact sont des prolongements ; une orbite fermée de premier ordre ne prouve pas l'absence de tout transport moyen.
 
 **Résultat attendu.** Interpréter une orbite sans la confondre avec une crête et reconnaître les régimes où c_g=c_φ, c_φ/2 ou 3c_φ/2.
@@ -881,6 +1046,21 @@ Leçons de référence : 20, 21, 22.
 ### acoustique
 
 Relier pression, vitesse particulaire, densité et intensité d'une onde acoustique, puis suivre sa réflexion et sa transmission à une interface. Contrôler l'énergie même si l'amplitude de pression transmise dépasse l'incidente.
+
+
+**Objets et unités.**
+
+
+- L’impédance Z=ρc est en Pa·s·m⁻¹ ; elle relie surpression et vitesse particulaire.
+- R et T sont des rapports d’intensités ; les coefficients de pression sont des rapports d’amplitudes.
+- La pression réglée est une amplitude crête ; l’intensité moyenne est en W·m⁻².
+
+
+**Hypothèses.**
+
+
+- Ondes planes de faible amplitude ; deux fluides homogènes, sans pertes.
+- Incidence normale sur une interface plane ; pression et vitesse normale sont continues.
 
 Leçons de référence : 23, 24, 27.
 
@@ -899,7 +1079,7 @@ Leçons de référence : 23, 24, 27.
 **Entrées et approfondissements**
 
 - Sup : Consolider ondes progressives, intensité, décibels et unités.
-- Spé : Réutiliser linéarisation, impédance, conditions d'interface et bilan de puissance.
+- Spé : PC §6.1.2 et §6.3 : linéarisation, onde sonore, impédance et interface ; bilans et amplitudes complexes à réinvestir.
 - Approfondissement : L'atténuation visqueuse et les pertes thermiques demandent une convention complexe et un modèle supplémentaire ; le bruit reste analysable par Fourier.
 
 **Résultat attendu.** Retrouver les coefficients de pression et de vitesse avec leurs signes, calculer une intensité et préciser les hypothèses de cohérence avant d'ajouter des niveaux.
@@ -907,6 +1087,21 @@ Leçons de référence : 23, 24, 27.
 ### conduit
 
 Comprendre pourquoi une coupure acoustique concerne un mode transverse particulier. Comparer un mode propagatif, un mode évanescent et le mode plan sans coupure d'un conduit rigide.
+
+
+**Objets et unités.**
+
+
+- c est la célérité en m·s⁻¹ ; les indices m,n sont des entiers positifs ou nuls.
+- Le nombre d’onde axial k_z détermine la phase suivant l’axe ; sous la coupure, il devient imaginaire.
+- Une onde évanescente décroît spatialement ; elle ne possède pas le même transport qu’un mode propagatif.
+
+
+**Hypothèses.**
+
+
+- Conduit rectangulaire, parois rigides, fluide homogène ; pertes négligées.
+- Un seul mode transverse est choisi ; la vitesse normale s’annule aux parois.
 
 Leçons de référence : 23, 24, 25.
 
@@ -925,7 +1120,7 @@ Leçons de référence : 23, 24, 25.
 **Entrées et approfondissements**
 
 - Sup : Lire longueurs d'onde, dimensions et modes simples avec des fonctions cosinus.
-- Spé : Mobiliser équation de Helmholtz, conditions aux limites et dispersion guidée.
+- Spé : PC : acoustique et conditions aux limites. Modes transverses et fréquence de coupure prolongent l’étude des ondes planes.
 - Approfondissement : Les pertes de paroi et la propagation multimodale réelle ne sont pas incluses dans le conduit rigide idéal ; c_φ>c n'est pas la vitesse du transport d'énergie.
 
 **Résultat attendu.** Associer une coupure à ses indices (m,n), distinguer c_g de c_φ et convertir une décroissance exponentielle en longueur caractéristique.
@@ -933,6 +1128,21 @@ Leçons de référence : 23, 24, 25.
 ### diffraction
 
 Relier l'ouverture d'une fente au diagramme de diffraction et distinguer une structure physique d'un alias de mesure. Tester la limite des approximations d'angle et la non-unicité d'une image stroboscopique fixe.
+
+
+**Objets et unités.**
+
+
+- λ=c/f est la longueur d’onde ; θ est l’angle par rapport à la normale à la fente.
+- Le diagramme représente une intensité relative, normalisée au maximum central.
+- La fonction sinc est définie par sinc(x)=sin(x)/x, avec sinc(0)=1.
+
+
+**Hypothèses.**
+
+
+- Fente uniformément excitée ; modèle scalaire et observation en champ lointain.
+- L’approximation des petits angles n’est utilisée que lorsqu’elle est annoncée.
 
 Leçons de référence : 22, 25, 26.
 
@@ -951,7 +1161,7 @@ Leçons de référence : 22, 25, 26.
 **Entrées et approfondissements**
 
 - Sup : Travailler interférences, fonctions trigonométriques et contrôle d'une approximation.
-- Spé : Réutiliser Fourier, largeur d'un diagramme, échantillonnage et repliement spectral.
+- Spé : Techniques MP/PC : superposition d’ondes et différence de phase. Le modèle acoustique de fente réinvestit la diffraction optique.
 - Approfondissement : Le champ lointain, l'ouverture uniforme et la réponse du capteur sont des hypothèses ; une phase stationnaire décrit une asymptotique, pas une amplitude universelle.
 
 **Résultat attendu.** Ne pas transformer λ/a>1 en un angle de premier minimum, proposer une largeur définie et donner plusieurs fréquences compatibles avec un protocole ambigu.
@@ -959,6 +1169,21 @@ Leçons de référence : 22, 25, 26.
 ### thermo
 
 Distinguer compressibilité isotherme et isentropique pour prévoir une célérité. Comparer une longueur de diffusion thermique à l'échelle d'onde et à la taille d'un conduit.
+
+
+**Objets et unités.**
+
+
+- γ=Cp/Cv est le rapport des capacités thermiques ; M est convertie en kg·mol⁻¹.
+- La diffusivité thermique D_th est réglée en mm²·s⁻¹ ; la fréquence f est en Hz.
+- χ_T et χ_s sont les compressibilités isotherme et isentropique, en Pa⁻¹.
+
+
+**Hypothèses.**
+
+
+- Gaz parfait autour d’un équilibre uniforme ; petites perturbations.
+- Les échelles de diffusion comparent les régimes thermiques ; elles ne remplacent pas un calcul complet des pertes acoustiques.
 
 Leçons de référence : 4, 23, 27.
 
@@ -977,7 +1202,7 @@ Leçons de référence : 4, 23, 27.
 **Entrées et approfondissements**
 
 - Sup : Combiner gaz parfait, unités et analyse dimensionnelle pour lire un ordre de grandeur.
-- Spé : Mobiliser dérivées thermodynamiques, petites perturbations et diffusion thermique.
+- Spé : MP/PC : gaz parfait, isentropique, compressibilité et diffusion thermique ; lien explicite avec la propagation acoustique PC.
 - Approfondissement : Un modèle thermoacoustique avec conditions thermiques aux murs est nécessaire pour calculer précisément dispersion et atténuation dans un petit conduit.
 
 **Résultat attendu.** Annoncer la transformation thermodynamique et distinguer une faible diffusion sur l'échelle d'onde d'un effet de paroi important dans un microconduit.
@@ -985,6 +1210,21 @@ Leçons de référence : 4, 23, 27.
 ### mhd
 
 Comparer le freinage de Hartmann dans un liquide conducteur et une onde d'Alfvén dans un régime idéal. Comprendre le rôle du circuit électrique, du champ imposé et de l'énergie magnétique.
+
+
+**Objets et unités.**
+
+
+- ρ est la masse volumique en kg·m⁻³. Le courant j est en A·m⁻² ; la force j×B est une force par volume.
+- Pour Hartmann, h est la demi-hauteur du canal en mm et G le gradient moteur en Pa·m⁻¹.
+- Pour Alfvén, λ et le déplacement sont en m ; μ₀ est la perméabilité du vide.
+
+
+**Hypothèses.**
+
+
+- Milieu conducteur homogène, modèle non relativiste ; conditions électriques de Hartmann déclarées dans le cours.
+- L’onde d’Alfvén est une perturbation linéaire autour d’un champ uniforme ; le modèle ne simule pas une dynamo.
 
 Leçons de référence : 5, 6, 28.
 
@@ -1003,7 +1243,7 @@ Leçons de référence : 5, 6, 28.
 **Entrées et approfondissements**
 
 - Sup : Entrer par produits vectoriels, unités et bilan de forces ; le cadre MHD est une extension guidée.
-- Spé : Réutiliser conduction, force de Lorentz, équation différentielle et ondes couplées.
+- Spé : Outils MP/PC/PSI : Lorentz, Ohm, induction et bilans. Hartmann et Alfvén sont des prolongements interdisciplinaires.
 - Approfondissement : Champ imposé à faible Rm et onde idéale d'induction sont deux régimes distincts ; changer la fermeture du circuit change le courant et le freinage.
 
 **Résultat attendu.** Lire Ha et Rm avec leurs longueurs déclarées, justifier le signe du freinage et expliquer le partage d'énergie d'une onde d'Alfvén.
@@ -1011,6 +1251,21 @@ Leçons de référence : 5, 6, 28.
 ### navier
 
 Relier une solution exacte bidimensionnelle de Taylor–Green à ses champs de pression, vorticité et énergie. Situer ce contrôle dans les équations de mouvement et dans la question mathématique tridimensionnelle.
+
+
+**Objets et unités.**
+
+
+- t est le temps en s et ρ la masse volumique en kg·m⁻³ ; k=2π/L est le nombre d’onde.
+- La vitesse, la pression et l’énergie sont calculées pour la solution de Taylor–Green.
+- La dissipation est une puissance en W ; elle mesure la diminution d’énergie cinétique.
+
+
+**Hypothèses.**
+
+
+- Fluide incompressible newtonien ; domaine plan périodique, sans force extérieure.
+- Cette famille exacte régulière ne résout pas le problème général tridimensionnel de Navier–Stokes.
 
 Leçons de référence : 5, 6, 7.
 
@@ -1029,7 +1284,7 @@ Leçons de référence : 5, 6, 7.
 **Entrées et approfondissements**
 
 - Sup : Pratiquer unités, exponentielle et bilans dans une solution explicitement donnée.
-- Spé : Mobiliser équations locales, intégrations par parties et vorticité dans une extension guidée selon la filière.
+- Spé : Outils Spé : champs, équation différentielle et bilan dissipatif. Navier–Stokes et Taylor–Green sont ici des prolongements, notamment en PSI.
 - Approfondissement : Le programme PSI cité exclut Euler et Navier–Stokes ; l'atelier accompagne leur étude et distingue une preuve globale d'un calcul particulier. Le repère Clay est daté du 6 octobre 2026.
 
 **Résultat attendu.** Contrôler un bilan analytique, annoncer dimension et frontières, puis expliquer sans extrapolation le lien et la différence avec le problème 3D de Fefferman.
@@ -1037,6 +1292,21 @@ Leçons de référence : 5, 6, 7.
 ### hydrostatique
 
 Construire les forces de pression, la poussée et les sauts capillaires à partir de la géométrie. Distinguer une colonne liquide incompressible d'une atmosphère soumise à une hypothèse thermodynamique.
+
+
+**Objets et unités.**
+
+
+- Dans le liquide, la profondeur est positive vers le bas ; dans l’atmosphère, l’altitude est positive vers le haut.
+- p₀ est une pression absolue ; une différence de pression possède la même unité, Pa.
+- La poussée d’Archimède dépend du volume de fluide déplacé ; g est l’accélération de pesanteur.
+
+
+**Hypothèses.**
+
+
+- Fluide au repos dans une pesanteur uniforme.
+- Liquide incompressible ou atmosphère idéale isotherme, selon le mode choisi.
 
 Leçons de référence : 15, 19, 20.
 
@@ -1055,7 +1325,7 @@ Leçons de référence : 15, 19, 20.
 **Entrées et approfondissements**
 
 - Sup : Appliquer statique, pression, poussée, gaz parfait et équilibre de forces.
-- Spé : Mobiliser intégrales sur une surface, Gauss et stratifications isotherme ou isentropique.
+- Spé : Acquis de Sup : équilibre, pression, poussée d’Archimède et gaz parfait ; réinvestissement dans les bilans de Spé.
 - Approfondissement : Le volume immergé ne suffit pas à décider une stabilité de roulis ; température réelle, mouillage et courbures imposent des informations supplémentaires.
 
 **Résultat attendu.** Calculer une force avec sa référence de pression, compter les interfaces et distinguer équilibre de translation et stabilité de rotation.

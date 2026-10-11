@@ -14,6 +14,7 @@ import webbrowser
 
 from modeles import calculate
 from cours import LESSONS, EXERCISES, SOURCES
+from reperes import LAB_GUIDES
 
 ROOT = Path(__file__).resolve().parent
 
@@ -59,7 +60,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/bootstrap":
             self.send({"application": "physique-statistique", "token": self.server.api_token,
-                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES})
+                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES, "lab_guides": LAB_GUIDES})
             return
         files = {"/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),

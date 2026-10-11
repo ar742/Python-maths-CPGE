@@ -3,7 +3,7 @@ from commun import slider as s, select as q, preset as p, lab
 
 LABS = [
     lab('effets', 'Effets I/M et règles : justifier avant de nommer', 'Règles et déplacements d’électrons',
-        'Distinguer polarisation σ, délocalisation π et règles conditionnelles de Markovnikov/Zaïtsev, avec structures, charges et flèches explicites.', [
+        'Expliquer une orientation de réaction à partir de la structure plutôt que réciter une règle. Repérer polarisation, conjugaison et géométrie permet de préciser les conditions d’application de Markovnikov et de Zaïtsev.', [
         q('system','Objet à comparer',[('inductive','Effet inductif dans une chaîne'),('mesomeric','Mésomérie d’un arène substitué'),('markovnikov','Addition HBr / hydroboration du but-1-ène'),('zaitsev','Déshydratation du pentan-2-ol')],'mesomeric'),
         q('group','Groupe pour l’étude I/M',[('alkyl','CH₃'),('methoxy','OCH₃'),('chloro','Cl'),('nitro','NO₂')],'methoxy'),
         q('conditions','Conditions des règles',[('ordinary','Acide / sans peroxydes'),('alternative','BH₃ puis oxydation / base encombrée')],'ordinary'),
@@ -16,7 +16,7 @@ LABS = [
         p('Hydroboration : alcool primaire',system='markovnikov',conditions='alternative',stage=2),
         p('Zaïtsev a des conditions',system='zaitsev',conditions='ordinary',stage=2)]),
     lab('e1', 'E1 : départ de Cl ou d’eau, puis choix du H en β', 'Éliminations',
-        'Comparer l’halogénure exact de l’exercice et des alcools activés par protonation. Distinguer départ du groupe partant, carbocation et perte de Hβ, sans imposer une composition universelle.', [
+        'Construire une élimination en deux étapes : départ du groupe partant, puis perte d’un proton voisin. Comparer halogénure et alcool activé permet de relier carbocation, vitesse de transformation et répartition des produits.', [
         q('substrate','Substrat et groupe partant',[('source','2-chloro-3-méthylbutane : exercice p. 531/533'),('secondary','Pentan-2-ol : secondaire'),('tertiary','2-méthylbutan-2-ol : tertiaire'),('primary','Pentan-1-ol : E1 classique non retenue')],'source'),
         s('k_ion','Constante apparente d’ionisation choisie',.001,.2,.001,.02,'s⁻¹'),
         s('time','Temps observé',1,500,1,150,'s'),
@@ -28,7 +28,7 @@ LABS = [
         p('Primaire : ne pas inventer un carbocation',substrate='primary'),
         p('Même mécanisme, branchement différent',branch_z=55,stage=3)]),
     lab('enolatealkyl', 'Énolate ambident : alkylation en C ou en O', 'Construire une liaison C–C',
-        'Suivre le doublet d’un énolate, reconnaître ses contributeurs et contrôler l’attaque SN2 sur RX ; les conditions décident de C/O, le dessin seul ne prédit pas leur proportion.', [
+        'Un énolate possède deux sites susceptibles d’attaquer un électrophile. Suivre les doublets et comparer les liaisons créées permet de distinguer alkylation sur le carbone et sur l’oxygène, selon les conditions fournies.', [
         q('donor','Énolate préparé',[('acetone','Énolate de la propanone'),('malonate','Énolate du malonate de diéthyle')],'malonate'),
         q('electrophile','Halogénure',[('methyl','Bromométhane'),('ethyl','Bromoéthane primaire'),('tertbutyl','Bromure de tert-butyle : SN2 bloquée')],'ethyl'),
         q('site','Voie sélectionnée, sans prédiction de sélectivité',[('C','Alkylation du carbone α'),('O','Alkylation de l’oxygène')],'C'),
@@ -40,7 +40,7 @@ LABS = [
         p('Tertiaire : élimination concurrente à discuter',electrophile='tertbutyl'),
         p('RX limitant',equivalents=.4)]),
     lab('aminealkyl', 'Alkylation d’une amine : former un sel quaternaire', 'Substitutions nucléophiles',
-        'Le doublet de l’amine tertiaire crée une quatrième liaison N–C : l’azote devient positif et Br⁻ demeure comme contre-ion. Aucun proton N–H n’est disponible pour neutraliser ce produit.', [
+        'Ajouter un groupe carboné à une amine tertiaire avec son doublet libre. Compter les liaisons et les charges explique la formation d’un ammonium quaternaire et le rôle du contre-ion.', [
         q('amine','Amine tertiaire',[('trimethyl','Triméthylamine'),('triethyl','Triéthylamine')],'trimethyl'),
         q('electrophile','Halogénure SN2',[('methyl','Bromométhane'),('benzyl','Bromure de benzyle')],'benzyl'),
         s('equivalents','RX par équivalent d’amine',0,3,.1,1,'équiv.'),
@@ -50,7 +50,7 @@ LABS = [
         p('Excès de RX : l’azote est déjà quaternaire',equivalents=2.5),
         p('Moins d’un équivalent : borne stœchiométrique',equivalents=.5)]),
     lab('anhydride', 'Anhydride : le carboxylate attaque, puis l’acyle se transfère', 'Addition–élimination sur l’acyle',
-        'Construire l’anhydride à partir d’un chlorure d’acyle et d’un carboxylate, puis comparer hydrolyse, alcoolyse et amidation avec bilan de matière et piège à acide explicites.', [
+        'Former un anhydride puis transférer un groupe acyle à un nucléophile. Suivre les deux fragments et les équivalents de base permet de prévoir la fonction obtenue et de vérifier le bilan du piège à acide.', [
         q('variant','Transformation',[('formation','Chlorure d’acyle + carboxylate'),('chloridealcohol','Chlorure d’acyle + éthanol'),('hydrolysis','Hydrolyse de l’anhydride'),('alcoholysis','Alcoolyse de l’anhydride par l’éthanol'),('amidation','Amidation de l’anhydride par l’éthylamine')],'formation'),
         q('acyl','Famille de l’acyle',[('acetyl','Éthanoyle : CH₃CO'),('benzoyl','Benzoyle : PhCO')],'benzoyl'),
         q('acidtrap','Piège à acide, pour l’amidation',[('secondamine','Deuxième équivalent d’éthylamine'),('external','Triéthylamine externe, un équivalent fourni')],'secondamine'),
@@ -63,7 +63,7 @@ LABS = [
         p('Amide : réserver la seconde amine',variant='amidation',equivalents=2,stage=2),
         p('Amide : base externe',variant='amidation',acidtrap='external',equivalents=1,stage=2)]),
     lab('hydrolyseacyle', 'Hydrolyser un dérivé d’acyle : acide ou base ?', 'Addition–élimination sur l’acyle',
-        'Les mêmes électrons conduisent à des espèces finales différentes selon le milieu. Comparer chlorure, ester et amide sans leur attribuer une vitesse commune.', [
+        'Hydrolyser un chlorure d’acyle, un ester ou un amide, en milieu acide ou basique. Les flèches et le bilan acido-basique permettent de déterminer les fonctions et les charges présentes à la fin du traitement.', [
         q('derivative','Dérivé éthanoyle',[('chloride','Chlorure d’éthanoyle'),('ester','Éthanoate d’éthyle'),('amide','Éthanamide')],'ester'),
         q('medium','Milieu',[('acid','Hydrolyse acide'),('base','Hydrolyse basique')],'base'),
         s('equivalents','Eau / HO⁻ fourni, borne de bilan',0,2,.1,1,'équiv.'),
@@ -74,7 +74,7 @@ LABS = [
         p('Amide acide : ammonium',derivative='amide',medium='acid',stage=3),
         p('Chlorure : deux HO⁻ jusqu’au carboxylate',derivative='chloride',medium='base',equivalents=2,stage=3)]),
     lab('photochlore', 'Benzène et Cl₂ : lumière ou catalyseur ?', 'Aromatique : addition ou substitution',
-        'Le même réactif peut remplacer un H en SEA ou détruire l’aromaticité par photoaddition. Trois Cl₂ sont requis pour C₆H₆Cl₆ ; ce bilan ne sélectionne pas un unique stéréoisomère.', [
+        'Comparer l’action du dichlore sur le benzène sous lumière ou avec un catalyseur de Lewis. Les conditions, les liaisons et le bilan des atomes distinguent substitution aromatique et photoaddition.', [
         q('mode','Conditions',[('addition','Photoaddition : hν'),('sea','Substitution : FeCl₃, sans hν')],'addition'),
         s('chlorine','Cl₂ par équivalent de benzène',0,4,.1,3,'équiv.'),
         q('light','Irradiation dans le cas photoaddition',[('on','Lumière présente'),('off','Sans lumière')],'on'),
@@ -84,7 +84,7 @@ LABS = [
         p('Sans lumière : photoaddition arrêtée',mode='addition',light='off'),
         p('FeCl₃ : chlorobenzène + HCl',mode='sea',chlorine=1,stage=2)]),
     lab('grignardprep', 'Préparer RMgX : le proton détruit avant l’addition', 'Organomagnésiens',
-        'Insertion de Mg dans RX en éther anhydre, puis consommation prioritaire de RMgX par l’eau parasite ; distinguer ce défaut de préparation de l’hydrolyse finale volontaire d’un alcoolate.', [
+        'Préparer un organomagnésien puis mesurer ce qu’il reste en présence de traces d’eau. Le bilan des quantités explique pourquoi l’anhydrie est nécessaire et distingue destruction du réactif et hydrolyse finale de l’alcoolate.', [
         q('group','Halogénure organique',[('ethyl','Éthyle : CH₃CH₂X'),('phenyl','Phényle : C₆H₅X')],'phenyl'),
         q('halide','Halogène',[('Br','Brome'),('Cl','Chlore')],'Br'),
         s('magnesium','Mg par équivalent de RX',0,2,.05,1,'équiv.'),

@@ -90,6 +90,29 @@ LESSONS=[
 ]
 
 
+NOTATIONS = {
+ 0: "La fonction f va de U dans F. h est un accroissement tel que a+h reste dans U ; Df(a) est l’application linéaire cherchée. ∇f est le gradient d’une fonction scalaire ; Jᵢⱼ est le coefficient de ligne i, colonne j de sa jacobienne.",
+ 1: "ρ est le rayon, θ l’azimut et φ la colatitude depuis l’axe vertical ; z est l’altitude en cylindrique. Les angles des formules sont en radians. J est la matrice des dérivées de F, avec les variables dans l’ordre indiqué.",
+ 2: "a et b sont les demi-axes positifs ; α et β sont deux coefficients réels. Ω est le domaine d’intégration. r et θ sont le rayon réduit et l’angle du quart de disque ; J est la jacobienne de la substitution.",
+ 3: "f et g sont deux applications différentiables composables ; a est le point de départ. Jf et Jg représentent leurs différentielles dans les bases choisies. γ est une courbe du niveau f=c, avec γ(0)=a ; ker désigne le noyau d’une application linéaire.",
+ 4: "f est une fonction réelle de plusieurs variables, de classe C² près du point a. h est l’accroissement ; ∇f(a) est le gradient et Hf(a) la matrice des dérivées secondes. hᵀ est la transposée de h ; I est l’identité.",
+ 5: "A et H sont deux matrices carrées de même taille ; H est la direction de variation dans A+tH. GLₙ est l’ensemble des matrices inversibles, Tr la trace et cofᵢⱼ(A) le cofacteur de ligne i, colonne j. inv(A) désigne A⁻¹ ; I est l’identité.",
+ 6: "A est une matrice réelle n×n ; x et B sont des vecteurs colonnes de ℝⁿ. La transposée est notée ᵀ. S est la partie symétrique de A ; Hf est la Hessienne de f.",
+ 7: "A est une matrice réelle symétrique ; λmin et λmax sont ses valeurs propres extrêmes. R est le quotient de Rayleigh. Pour la descente, A est définie positive, B est le terme linéaire, α le pas et x* le minimum ; Hf est la Hessienne.",
+ 8: "GLₙ regroupe les matrices inversibles, SLₙ celles de déterminant 1 et SOₙ les matrices orthogonales de déterminant 1. Mₙ(ℝ) est l’espace des matrices réelles n×n ; I est l’identité. X=γ′(0) est la vitesse d’une courbe passant par I.",
+ 9: "X et Y sont des matrices carrées de même taille ; t et s sont des paramètres réels. E(t)=exp(tX), I est l’identité et Tr la trace. Le crochet [X,Y] est le défaut de commutation XY−YX ; ω décrit la vitesse angulaire dans la formule de Rodrigues.",
+ 11: "On reprend l’intégrale I(A,B) précédente, avec A symétrique définie positive, μ=A⁻¹B et Σ=A⁻¹. H est une variation symétrique de A. X désigne le vecteur aléatoire de la densité normalisée ; Φ est la fonction de répartition de la loi normale centrée réduite.",
+ 12: "Ω est le domaine plan et ∂Ω son contour ; P et Q sont les deux composantes d’un champ de classe C¹. x et y sont les coordonnées. Le symbole ∮ indique une intégration le long du contour fermé orienté.",
+ 13: "εx et εy sont deux coupures positives. I(εx,εy) est l’intégrale de f sur [εx,1]×[εy,1] ; q désigne la limite éventuelle de leur rapport εx/εy. En coordonnées polaires, r est la distance à l’origine et θ l’angle en radians."
+}
+for index, text in NOTATIONS.items():
+    LESSONS[index]['html'] = '<p>'+text+'</p>'+LESSONS[index]['html']
+LESSONS[2]['level'] = 'SPÉ · PROLONGEMENT · TP PRIORITAIRE'
+LESSONS[10]['level'] = 'SPÉ · PROLONGEMENT · GAUSSIENNE DU TXT'
+LESSONS[12]['level'] = 'SPÉ · PROLONGEMENT · GREEN'
+LESSONS[13]['level'] = 'SPÉ · PROLONGEMENT · FUBINI'
+
+
 def exercise(title,question,answer,lab,params=None,level="SUP / SPÉ"):
     return dict(title=title,question=question,answer=answer,lab=lab,params=params or {},level=level)
 
@@ -114,6 +137,24 @@ EXERCISES=[
  exercise("17 · Vérifier Green par deux calculs","Calculer ∮y(y+x)dx sur la frontière positive comprise entre y=x² et y=x.","La parabole va de 0 à 1 et la droite de 1 à 0 : ∫₀¹(x⁴+x³−2x²)dx=−13/60. Green donne −∬(2y+x)dxdy, avec x de 0 à 1 et y de x² à x : même valeur. Inverser le sens donne +13/60.","green_fubini"),
  exercise("18 · Le chemin de coupure","Pour le contre-exemple de Fubini, faire εx=εyᵖ. Quelles limites pour p<1, p=1, p>1 ?","Le rapport εx/εy=εy^{p−1} tend vers +∞, 1 ou 0. La limite −π/4+arctan q vaut donc +π/4, 0 ou −π/4. Les valeurs dépendent de la coupure : l’intégrabilité absolue manque, comme le montre le facteur dr/r en polaire.","green_fubini",dict(mode="fubini"))
 ]
+
+QUESTION_REPERES = {
+    1: 'En sphérique, ρ est le rayon, θ l’azimut et φ la colatitude ; les angles sont en radians. ',
+    2: 'J est la jacobienne de la transformation sphérique, avec les variables (ρ,θ,φ). ',
+    4: 'a,b>0 sont les demi-axes ; x=ar cosθ et y=br sinθ, avec 0≤r≤1 et 0≤θ≤π/2. ',
+    8: 'A est une matrice inversible et H une matrice de même taille ; on étudie A+tH. ',
+    9: 'x et B sont des vecteurs colonnes réels ; A est une matrice carrée de même dimension. ',
+    10: 'On applique xₖ₊₁=xₖ−α(Axₖ−B), avec A symétrique définie positive, B fixé et pas α>0. ',
+    11: 'R(x)=xᵀAx/(xᵀx) est le quotient de Rayleigh. ',
+    12: 'SLₙ est le groupe des matrices réelles n×n de déterminant 1 ; I est l’identité. ',
+    13: 'soₙ est l’espace des matrices réelles antisymétriques n×n, muni du crochet [X,Y]=XY−YX. ',
+    14: 'I(A,B)=∫ℝⁿexp(−xᵀAx/2+Bᵀx)dx est l’intégrale gaussienne étendue. ',
+    15: 'A est symétrique définie positive, B un vecteur et H une variation symétrique de A ; I(A,B) est l’intégrale gaussienne de l’exercice précédent. ',
+    17: 'On intègre f(x,y)=(x²−y²)/(x²+y²)² sur [εx,1]×[εy,1], puis on fait tendre εy vers 0. '
+}
+for index, text in QUESTION_REPERES.items():
+    EXERCISES[index]['question'] = text+EXERCISES[index]['question']
+
 
 SOURCES=[
  "Recueil de A. R., extrait MemoCPGEScientifAR2027-CalcDiff.pdf, pages imprimées 73–79 : différentiabilité, TP de jacobiennes et d’intégrales, TP matriciels, Taylor, Green et Fubini. Le PDF personnel n’est pas inclus dans ce dépôt.",

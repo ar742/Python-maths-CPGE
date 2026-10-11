@@ -1,5 +1,7 @@
 # Douze missions — de l’électron au produit isolé
 
+**Repère de programme.** Lire « Sup » comme entrée PCSI, avec approfondissements de l’option PC lorsque le guide le précise, et « Spé » comme consolidation PC. Les lecteurs des autres filières disposent des structures, conditions et banques nécessaires. Les voies radicalaires, la chimie aromatique et les outils numériques supplémentaires sont accompagnés : ils ne constituent pas un programme organique commun à MPSI/MP.
+
 Ces missions relient plusieurs laboratoires et les techniques des leçons. Commencer par une prévision sur papier, enregistrer quelques résultats puis expliquer une différence entre prévision et observation. Une courbe simulée n’est ni une mesure réelle ni un rendement automatiquement prédit. PCSI fournit le socle ; les réactions et outils supplémentaires sont donnés dans une banque lorsque leur connaissance n’est pas supposée.
 
 Pour chaque mission, le livrable attendu tient en une ou deux pages : dessins et charges lisibles, hypothèses, calcul avec unités, données relevées et conclusion reliée à la cible. Les 60 exercices du cours offrent des exemples entièrement corrigés.

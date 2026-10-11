@@ -54,6 +54,10 @@ def export(path=None):
         parts.extend([
             "### " + lab,
             guide["purpose"],
+            "\n**Objets et unités.**\n",
+            "\n".join("- "+item for item in guide["objects"]),
+            "\n**Hypothèses.**\n",
+            "\n".join("- "+item for item in guide["assumptions"]),
             "Leçons de référence : " + ", ".join(map(str, guide["lesson_numbers"])) + ".",
             "**Techniques à mobiliser**",
             bulleted(guide["techniques"]),
@@ -77,6 +81,14 @@ def export(path=None):
         ])
     parts.extend(["## Sources et conventions", bulleted([prose(source) for source in SOURCES])])
     path.write_text("\n\n".join(parts) + "\n", encoding="utf-8", newline="\n")
+    if path.resolve().parent == Path(__file__).resolve().parent:
+        parcours = Path(__file__).with_name('PARCOURS.md')
+        marker = '<!-- reperes-laboratoires -->'
+        original = parcours.read_text(encoding='utf-8').split(marker, 1)[0].rstrip()
+        overview = [marker, '## Repères pour choisir une expérience', '', 'Le cours exporté reprend les variables et hypothèses de chaque guide. Les indications de filière ci-dessous distinguent les techniques du programme et les prolongements.', '']
+        for lab, guide in LAB_GUIDES.items():
+            overview.extend(['### '+lab, '', guide['purpose'], '', '**Spé et filières.** '+guide['levels']['spe'], '', '**Prolongements.** '+guide['levels']['beyond'], ''])
+        parcours.write_text(original+'\n\n'+'\n'.join(overview), encoding='utf-8', newline='\n')
     return path
 
 

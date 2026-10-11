@@ -69,6 +69,29 @@ LESSONS = [
 <p>Une approximation polynomiale sur un compact exige enfin un contrôle des queues spectrales. On ne peut pas supposer que toutes les valeurs propres appartiennent à [−2,2] pour une dimension finie.</p>"""),
 ]
 
+NOTATIONS = {
+ 0: "X compte les boules rouges tirées ; k est une valeur possible de ce nombre. R et B sont les effectifs rouge et bleu ; d est le nombre de tirages. C(a,b) est le coefficient binomial, nombre de parties de taille b parmi a objets. E désigne l’espérance, V la variance et B(n,p) la loi binomiale.",
+ 1: "R et B sont les effectifs de l’urne, d le nombre de tirages et X le nombre de rouges obtenues. Iⱼ est l’indicatrice du j-ième tirage rouge. Cov désigne la covariance ; les formules sans remise ci-dessous supposent N=R+B>1.",
+ 2: "n et m sont des nombres d’essais ; p est une probabilité de succès. G_X est la fonction génératrice de X ; t est sa variable. E est l’espérance et V la variance. Dans le cas géométrique, p>0.",
+ 3: "Sₙ est la position après n déplacements depuis 0 ; K compte les déplacements +1. p est leur probabilité ; s est une position possible. C(a,b) désigne le coefficient binomial.",
+ 4: "ε>0 est la tolérance d’écart ; K est le nombre de succès parmi n essais indépendants de probabilité p. Pour une moyenne, m désigne l’espérance commune et σ² la variance commune.",
+ 5: "K suit la loi binomiale B(n,p) ; σ=√(np(1−p)) est son écart type. Φ est la fonction de répartition de N(0,1), la loi normale centrée réduite. Les lois à densité, la convergence en loi et les intervalles statistiques présentés ici prolongent le programme MPSI/MP.",
+ 6: "Xₙ est l’état après n étapes, c l’état initial et λ l’intensité de la mise à jour. Bₙ₊₁ est l’indicatrice du prochain succès. m₂(n)=E(Xₙ²) est le second moment ; E(·|Xₙ=x) indique l’espérance lorsque l’état courant vaut x.",
+ 7: "On reprend le processus de l’exercice 6 : X₀=c et paramètre λ. Dₙ mesure sa dispersion par E[Xₙ(1−Xₙ)] ; ε fixe la zone centrale. f est une fonction test continue et L sa corde entre 0 et 1. Les modes de convergence sont ici des prolongements hors programme MPSI/MP.",
+ 8: "n est la taille de l’échantillon ; θ>0 est sa borne. Mₙ=max(U₁,…,Uₙ) et mₙ=min(U₁,…,Uₙ). F_M(x)=P(Mₙ≤x) est la fonction de répartition et f_M sa densité. Les variables uniformes à densité sont un prolongement du programme.",
+ 9: "Mₙ et mₙ sont le maximum et le minimum de l’échantillon uniforme sur [0,θ]. α∈(0,1) fixe le risque de l’intervalle ; U_(k) est la k-ième observation rangée par ordre croissant. Le symbole ⇒ signifie convergence en loi ; Exp(1) est la loi exponentielle de paramètre 1. La loi Beta citée décrit une variable entre 0 et 1.",
+ 10: "ρ_arc est la densité limite ; F_arc sa fonction de répartition. Tₙ est la matrice du chemin à n sommets. Tr est la trace, et C(a,b) le coefficient binomial. La limite à densité est un prolongement ; sommes de Riemann et diagonalisation sont les outils du programme.",
+ 11: "λⱼ(Aₙ) sont les valeurs propres de Aₙ ; δ_a est la masse de probabilité 1 au point a. μₙ est la loi obtenue en choisissant uniformément une de ces valeurs propres ; μ_sc est la loi du demi-cercle, de densité ρ_sc. Le théorème de Wigner et cette convergence de lois sont admis en prolongement."
+}
+for index, text in NOTATIONS.items():
+    LESSONS[index]['html'] = '<p>'+text+'</p>'+LESSONS[index]['html']
+LESSONS[5]['level'] = 'SPÉ · PROLONGEMENT PROBABILISTE ET STATISTIQUE'
+LESSONS[6]['html'] = '<p>La notation d’espérance conditionnelle est hors programme MP ; les calculs qui suivent utilisent seulement les deux issues d’une Bernoulli et les probabilités totales.</p>'+LESSONS[6]['html']
+LESSONS[7]['level'] = 'PRIORITÉ · PROLONGEMENT · PREUVE COMPLÈTE'
+LESSONS[8]['level'] = 'PRIORITÉ · PROLONGEMENT À DENSITÉ'
+LESSONS[9]['level'] = 'PRIORITÉ · PROLONGEMENT À DENSITÉ ET STATISTIQUE'
+
+
 EXERCISES = [
     dict(title="01 · Urne équilibrée — ex. 4", lab="urne", level="Sup", params=dict(red=10, blue=10, draws=10), question="Une urne contient n rouges et n bleues. On tire n boules sans remise. Déterminer la loi et l’espérance du nombre de rouges.", answer="Le support est {0,…,n}. P(X=k)=C(n,k)C(n,n−k)/C(2n,n). Le dénominateur compte toutes les parties de taille n. Vandermonde donne la normalisation. En écrivant X comme somme de n indicatrices d’espérance 1/2, E(X)=n/2 sans hypothèse d’indépendance."),
     dict(title="02 · Pourquoi la variance diminue", lab="urne", level="Sup", params=dict(red=10, blue=10, draws=20), question="Calculer la covariance de deux indicatrices rouges. Que devient la variance lorsque toutes les boules sont tirées ?", answer="E(I_i I_j)=R(R−1)/(N(N−1)), donc Cov=−p(1−p)/(N−1). En développant la variance de la somme, V(X)=dp(1−p)(N−d)/(N−1). Pour d=N, X=R presque sûrement et la variance est nulle."),
@@ -92,6 +115,21 @@ EXERCISES = [
 for exercise in EXERCISES:
     if "lambda_" in exercise["params"]:
         exercise["params"]["lambda"] = exercise["params"].pop("lambda_")
+
+QUESTION_REPERES = {
+    1: 'On reprend une urne de R rouges et B bleues, N=R+B>1, avec d tirages sans remise et p=R/N. ',
+    7: 'On reprend X₀=c et Xₙ₊₁=(1−λ)Xₙ+λBₙ₊₁, où Bₙ₊₁ vaut 1 avec probabilité Xₙ. ',
+    8: 'On reprend le processus de l’exercice précédent, avec X₀=c et paramètre λ∈(0,1). ',
+    9: 'On reprend le processus de polarisation, de moyenne c. ',
+    10: 'Mₙ est le maximum de n observations indépendantes uniformes sur [0,1]. ',
+    11: 'Mₙ et mₙ sont le maximum et le minimum de n observations indépendantes uniformes sur [0,1]. ',
+    13: 'Uₙ est uniforme sur {1,…,n} et Xₙ=2cos(πUₙ/(n+1)). ',
+    14: 'Tₙ est la matrice n×n avec des 1 juste au-dessus et au-dessous de la diagonale, et des 0 ailleurs. ',
+    15: 'On compare Tₙ, matrice du chemin, et Aₙ=Wₙ/√n, avec Wₙ symétrique à entrées indépendantes centrées de variance 1 dans le triangle supérieur. '
+}
+for index, text in QUESTION_REPERES.items():
+    EXERCISES[index]['question'] = text+EXERCISES[index]['question']
+
 
 SOURCES = [
     "A. R., MemoCPGEScientifAR2027-Proba.pdf, fiche M12 : TP p. 114 ; propriétés p. 118 ; exercices 4 à 8 p. 119 et corrections p. 121–122 (pagination imprimée). Le PDF original reste un document local et n’est pas publié dans ce dépôt.",

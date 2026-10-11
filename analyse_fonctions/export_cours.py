@@ -26,6 +26,8 @@ def export():
         text+=f'## Séance {j//2+1:02d} — {LABS[j]["category"]}\n\n'
         for l in LABS[j:j+2]:
             g=LAB_GUIDES[l['id']];text+='### '+l['title']+'\n\n'+g['purpose']+'\n\n'
+            text+='**Objets et paramètres**\n\n'+'\n'.join('- '+item for item in g['objects'])+'\n\n'
+            text+='**Repères** — Sup : '+g['levels']['sup']+' Spé : '+g['levels']['spe']+' Au-delà : '+g['levels']['beyond']+'\n\n'
             text+='\n'.join(f'{k+1}. {a}' for k,a in enumerate(g['first_steps']))+'\n\n**À justifier :** '+g['expected']+'\n\n'
     (root/'PARCOURS.md').write_text(text.rstrip()+'\n',encoding='utf8')
 if __name__=='__main__':export();print('Cours, exercices et parcours exportés.')

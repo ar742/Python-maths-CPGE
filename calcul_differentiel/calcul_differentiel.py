@@ -13,6 +13,7 @@ from urllib.request import urlopen
 import webbrowser
 
 from mathematiques import calculate
+from reperes import LAB_GUIDES
 from cours import LESSONS, EXERCISES, SOURCES
 
 ROOT = Path(__file__).resolve().parent
@@ -59,7 +60,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/bootstrap":
             self.send({"application": "calcul-differentiel", "token": self.server.api_token,
-                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES})
+                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES, "guides": LAB_GUIDES})
             return
         files = {"/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),

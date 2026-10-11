@@ -18,6 +18,7 @@ from urllib.request import urlopen
 import webbrowser
 
 import cube
+from reperes import LAB_GUIDES
 from cours import EXERCISES, LESSONS, PRESETS, SOURCES
 
 ROOT = Path(__file__).resolve().parent
@@ -146,7 +147,7 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path == "/api/bootstrap":
             self.send({"token": self.server.api_token, "lessons": LESSONS, "exercises": EXERCISES,
-                       "presets": PRESETS, "sources": SOURCES, "identity": cube.info(cube.IDENTITY),
+                       "presets": PRESETS, "sources": SOURCES, "guides": LAB_GUIDES, "identity": cube.info(cube.IDENTITY),
                        "geometry": cube.GEOMETRY, "faces": cube.FACES, "colors": cube.COLORS,
                        "corners": cube.CORNER_NAMES, "edges": cube.EDGE_NAMES,
                        "group_size": str(cube.GROUP_SIZE),

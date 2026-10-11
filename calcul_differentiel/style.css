@@ -10,3 +10,8 @@
 @media(max-width:1100px){.plots{grid-template-columns:1fr}canvas{height:280px}.figure .legend{min-height:0}.hero-note{display:none}}@media(min-width:1500px){canvas{height:320px}}@media(max-width:740px){.plots{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.hero h1{font-size:32px}.hero h1 em{display:block}header .repo{font-size:11px}.brand{font-size:15px}article{padding:22px}.control-note{margin-bottom:0}}
 
 .metric b{overflow-wrap:anywhere;font-size:23px}.plots .figure:last-child:nth-child(odd){grid-column:1/-1}.formula{overflow-x:auto}.metric small{display:block}#theory-text p{max-width:1050px}
+
+.lab-guide{margin:0 0 1.5rem;padding:1rem 1.2rem;background:#f3f7ef;border-left:3px solid #6b967a;border-radius:8px;line-height:1.6}
+.lab-guide h3{margin:0 0 .5rem}.lab-guide h4{margin:.8rem 0 .3rem;font-size:.95rem}
+.lab-guide p{margin:.45rem 0}.lab-guide ul,.lab-guide ol{margin:.4rem 0;padding-left:1.4rem}
+.lab-guide details{margin-top:.8rem}.lab-guide summary{cursor:pointer;font-weight:600}

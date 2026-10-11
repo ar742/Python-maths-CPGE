@@ -135,6 +135,22 @@ LESSONS = [
     plan ne les sépare strictement : les paramètres SVM de marge dure ne sont pas définis.</p>"""}
 ]
 
+NOTATIONS = [
+    "A et B sont deux ensembles non vides ; a et b sont leurs points. ‖·‖ est la norme choisie. inf désigne la borne inférieure : la distance n’est pas nécessairement atteinte. Dans le TP, Vect(1,t) est l’espace des fonctions affines sur l’intervalle étudié.",
+    "L>0 fixe l’intervalle ; t est sa variable, en radians pour cos t. a et b sont les coefficients de la droite. (a₀,b₀) est le couple optimal, I(a,b) l’intégrale du carré de l’erreur et Imin sa valeur minimale.",
+    "κ règle le poids w ; p(t)=Σcᵢtⁱ est le polynôme à ajuster, de coefficients cᵢ. G est sa matrice de Gram, avec indices i,j à partir de 0. Pour la descente affine, θₖ=(aₖ,bₖ), α est le pas, I₂ l’identité et λmax(H) la plus grande valeur propre de la Hessienne H.",
+    "s est la droite sécante ; M=max(cos t−s(t)) sur [0,L] est son plus grand écart. ℓ∞ est la meilleure droite pour la norme uniforme, c’est-à-dire le plus grand écart absolu. Pour les polynômes, cₖ sont les coefficients et Δt l’espacement de la grille.",
+    "M et N sont des matrices réelles n×n. Mᵀ est la transposée ; tr est la trace. Sₙ et Aₙ sont les espaces des matrices symétriques et antisymétriques ; ‖·‖F est la norme de Frobenius, racine de la somme des carrés des coefficients. θ est l’angle de la rotation, en radians dans les formules.",
+    "n est la dimension ; Sₙ est l’espace des matrices symétriques par transposition. A est antisymétrique ; M* est l’adjoint, transposée conjuguée. La norme de Frobenius sur ℂ utilise les modules des coefficients. L’expression inf ∅=+∞ est une convention dans la droite réelle étendue.",
+    "a,b,c>0 sont les demi-axes ; x,y,z sont les coordonnées du point de la surface. u,v,w sont leurs carrés réduits. αᵢ>0 sont les exposants du produit pondéré ; aᵢ sont les demi-axes correspondants. AM-GM désigne l’inégalité entre moyennes arithmétique et géométrique.",
+    "c est le centre, p le point étudié et aᵢ>0 les demi-axes. R est une rotation, B=R diag(aᵢ) transforme la sphère unité en surface ellipsoïdale. u est un vecteur unitaire. μ et λ sont les multiplicateurs ; I est l’identité et ≥0 pour une matrice signifie positive semi-définie.",
+    "cᵢ sont les centres et Bᵢ des matrices inversibles donnant axes et orientations ; Eᵢ sont les solides. hᵢ(n) est leur plus grande projection sur la direction unitaire n. P_E est la projection sur le solide E et d sa distance minimale à l’autre solide. U et L seront les bornes supérieure et inférieure de cette distance.",
+    "n est une direction unitaire ; h₁ est la fonction support du premier solide et g(n)>0 leur écart projeté. m positionne le plan séparateur. w est sa normale après normalisation et b sa constante. Dans y(w·x+b)≥1, y est l’étiquette de classe ±1, pas une coordonnée du point x. SVM désigne la séparation à marge maximale."
+]
+for lesson, text in zip(LESSONS, NOTATIONS):
+    lesson['texte'] = '<p>'+text+'</p>'+lesson['texte']
+
+
 EXERCISES = [
     ("TP — retrouver la droite L²", "Écrire les deux équations d'orthogonalité sur [0,π/2] et trouver a,b.",
      "Intégrer cos et t cos par parties : Lb+L²a/2=sin L ; L²b/2+L³a/3=L sin L+cos L−1. Le déterminant L⁴/12 est positif. On obtient a≈−0,66444, b≈1,15847. Imin≈0,006189 est le carré de la distance, dont la valeur est ≈0,07867.", "approximation"),
@@ -165,6 +181,22 @@ EXERCISES = [
     ("SVM géométrique", "À partir d'une séparation g(n)>0, construire w,b vérifiant les contraintes de marge dure sur les deux ellipsoïdes.",
      "Prendre m au milieu des deux niveaux de support, w=2n/g(n), b=−2m/g(n). Sur E₁, w·x+b≤−1 ; sur E₂, w·x+b≥1. La marge géométrique vaut g(n)/2. Elle est maximale lorsque g(n)=d, ce que contrôle l'écart primal-dual.", "paire")
 ]
+
+QUESTION_REPERES = {
+    0: 'La droite cherchée est at+b et L=π/2. ',
+    1: 'Le TP minimise I(a,b)=∫₀ᴸ(cos t−at−b)²dt. ',
+    2: 'On minimise l’intégrale du carré de l’erreur sur [0,π/2], à poids 1. ',
+    5: 'Rθ est la rotation de ℝ³ fixant le premier axe ; S₃ est l’espace des matrices symétriques, muni de la norme de Frobenius. ',
+    7: 'J=[[0,1],[−1,0]] ; φ est réel, z⁻¹ est l’inverse de z et M* l’adjoint d’une matrice. ',
+    9: 'a,b,c>0 sont les demi-axes. ',
+    10: 'p est le point étudié et c le centre de l’ellipsoïde. ',
+    12: 'Les couples admissibles sont x∈E₁, y∈E₂, et n est un vecteur unitaire. ',
+    13: 'n est une direction unitaire ; g(n) est l’écart entre les deux solides projetés sur cette direction. La contrainte de marge est y(w·x+b)≥1, avec étiquette y=±1. '
+}
+for index, text in QUESTION_REPERES.items():
+    title,question,answer,lab = EXERCISES[index]
+    EXERCISES[index] = (title,text+question,answer,lab)
+
 
 SOURCES = [
     {"titre": "Sources du parcours", "url": "", "texte": "Extrait du recueil de fiches de A. R. : TP p. 158, SVM p. 159, exercices 4 et 6 p. 162 ; fichier distMatrices.txt fourni. Adaptations, démonstrations et figures nouvelles."},

@@ -8,3 +8,8 @@
 .plots{display:grid;grid-template-columns:1fr 1fr;gap:14px}.figure h3{padding:17px 17px 0;font-size:13px;margin:0}canvas{height:275px}.legend{gap:8px 13px;font-size:10px;line-height:1.4;min-height:40px}
 .legend i.mint{background:var(--mint)}input[type=number]{width:100%;padding:5px;background:white;border:1px solid var(--line);border-radius:5px;color:var(--ink)}label.control{display:block;font-size:12px;font-weight:600}.control select,.control input[type=number]{margin-top:4px}.theory button{margin-top:10px}.badge{margin-bottom:10px}.details summary{font-size:12px}.details table{font-size:11px}button:disabled{cursor:wait;opacity:.5}select:disabled{opacity:.55}#lab-intro{max-width:850px}
 @media(max-width:1100px){.plots{grid-template-columns:1fr}canvas{height:280px}.figure .legend{min-height:0}.hero-note{display:none}}@media(min-width:1500px){canvas{height:320px}}@media(max-width:740px){.plots{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.hero h1{font-size:32px}.hero h1 em{display:block}header .repo{font-size:11px}.brand{font-size:15px}article{padding:22px}.control-note{margin-bottom:0}}
+
+.lab-guide{margin:0 0 1.5rem;padding:1rem 1.2rem;background:#f3f7ef;border-left:3px solid #6b967a;border-radius:8px;line-height:1.6}
+.lab-guide h3{margin:0 0 .5rem}.lab-guide h4{margin:.8rem 0 .3rem;font-size:.95rem}
+.lab-guide p{margin:.45rem 0}.lab-guide ul,.lab-guide ol{margin:.4rem 0;padding-left:1.4rem}
+.lab-guide details{margin-top:.8rem}.lab-guide summary{cursor:pointer;font-weight:600}

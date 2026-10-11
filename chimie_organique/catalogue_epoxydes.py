@@ -4,7 +4,7 @@ from commun import lab, select, slider, preset
 
 LABS = [lab('epoxydes', 'Époxydes : transférer O puis ouvrir le cycle',
     'Transformations du recueil · 524–528',
-    'Comparer époxydation par peracide et procédé à l’argent sur l’éthylène ; suivre une ouverture anti et distinguer les sites d’attaque en milieu basique ou acide.',
+    'Former un époxyde puis ouvrir son cycle avec un nucléophile. Suivre l’origine de l’oxygène et la face d’attaque permet de comparer les conditions acides et basiques et de justifier la stéréochimie du produit.',
     [select('substrate', 'Alcène de référence et époxyde correspondant', [
         ('ethylene', 'Éthylène : oxyde d’éthylène'),
         ('propene', 'Propène : oxyde de propylène'),

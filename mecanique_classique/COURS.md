@@ -6,13 +6,13 @@ Recueil de A. R., P1–P3. Chaque cours est relié à un laboratoire ; les appro
 
 Sup → Spé · Laboratoire `orbite_kepler`
 
-Choisir le système : une planète de masse m, assez petite pour que l’étoile de masse M soit immobile. Le référentiel lié à l’étoile est supposé galiléen. La force est **F=−GMm r/r³**, où r désigne le vecteur étoile–planète et r sa norme. L’origine de l’énergie potentielle est prise à l’infini.
+Choisir le système : une planète de masse m, assez petite pour que l’étoile de masse M soit immobile. Le référentiel lié à l’étoile est supposé galiléen. G est la constante de gravitation ; r désigne le vecteur étoile–planète et r sa norme, distingués par le contexte. La force est **F=−GMm r/r³**. L’origine de l’énergie potentielle est prise à l’infini.
 
-Le moment de cette force par rapport à l’étoile est nul. Le théorème du moment cinétique donne L=m r×v constant. Le mouvement reste dans le plan perpendiculaire à L, et h=L/m=r²θ̇ est constant. La vitesse aréolaire, c’est-à-dire l’aire balayée par unité de temps, vaut h/2.
+v est la vitesse et L le moment cinétique de la planète. Le moment de cette force par rapport à l’étoile est nul. Le théorème du moment cinétique donne L=m r×v constant. Le mouvement reste dans le plan perpendiculaire à L, et h=L/m=r²θ̇ est constant. La vitesse aréolaire, c’est-à-dire l’aire balayée par unité de temps, vaut h/2.
 
 ε=v²/2−GM/r ; h=r²θ̇ ; dA/dt=h/2.
 
-Pour obtenir la trajectoire, poser u=1/r. L’équation de Binet donne u″+u=GM/h², les dérivées étant prises par rapport à θ. La solution est une conique, r=p/(1+e cosθ), avec p=h²/(GM). Le choix de θ=0 au péricentre fixe l’orientation de la conique.
+ε est l’énergie mécanique par unité de masse ; θ est l’angle polaire. Pour obtenir la trajectoire, poser u=1/r. L’équation de Binet donne u″+u=GM/h², les dérivées étant prises par rapport à θ. La solution est une conique, r=p/(1+e cosθ), avec p=h²/(GM). Le choix de θ=0 au péricentre fixe l’orientation de la conique. Pour l’ellipse, a,b sont ses demi-axes ; rp,ra ses distances extrêmes ; T sa période.
 
 Pour une ellipse : p=a(1−e²), rp=a(1−e), ra=a(1+e), ε=−GM/(2a).
 
@@ -52,7 +52,7 @@ Le demi-grand axe a concerne l’orbite relative, donc a=a₁+a₂. Les deux ét
 
 Spé · Laboratoire `deux_corps`
 
-Dans un référentiel galiléen quelconque, écrire vi=VG+vi*. La condition ∑mivi*=0 annule le terme croisé dans ∑mi vi²/2. On sépare ainsi le mouvement d’ensemble et le mouvement autour du centre de masse.
+vi désigne la vitesse de la masse i, VG celle du centre de masse et vi* la vitesse relative à ce centre. Dans un référentiel galiléen quelconque, écrire vi=VG+vi*. La condition ∑mivi*=0 annule le terme croisé dans ∑mi vi²/2. On sépare ainsi le mouvement d’ensemble et le mouvement autour du centre de masse.
 
 Ec=½M VG²+½μr vrelative².
 
@@ -66,7 +66,7 @@ Pour le moment cinétique en un point fixe O, Lᵒ=OG×M VG+L*. Ce résultat se 
 
 Spé · Laboratoire `potentiel_effectif`
 
-Une force centrale entraîne la conservation h=r²θ̇. Dans l’énergie spécifique, la vitesse en coordonnées polaires vérifie v²=ṙ²+r²θ̇². En remplaçant θ̇ par h/r², on obtient une énergie qui ne dépend plus que de r et de ṙ.
+r est la distance au centre, θ l’angle polaire et h le moment cinétique par unité de masse. Une force centrale entraîne la conservation h=r²θ̇. Dans l’énergie spécifique, la vitesse en coordonnées polaires vérifie v²=ṙ²+r²θ̇². En remplaçant θ̇ par h/r², on obtient une énergie qui ne dépend plus que de r et de ṙ.
 
 ε=½ṙ²+Ueff(r) ; Ueff(r)=h²/(2r²)−GM/r.
 
@@ -96,7 +96,7 @@ Le graphique aide à lire les racines, mais la condition d’échappement se dé
 
 Spé · Laboratoire `transfert_hohmann`
 
-Un transfert de Hohmann relie deux orbites circulaires concentriques, coplanaires et de même sens. Le véhicule quitte la première orbite par une impulsion tangentielle, parcourt une demi-ellipse puis reçoit une deuxième impulsion tangentielle. Les deux cercles sont tangents à l’ellipse.
+Un transfert de Hohmann relie deux orbites circulaires concentriques, coplanaires et de même sens. Le véhicule quitte la première orbite par une impulsion tangentielle, parcourt une demi-ellipse puis reçoit une deuxième impulsion tangentielle. Les deux cercles sont tangents à l’ellipse. r₁,r₂ sont leurs rayons ; a,e le demi-grand axe et l’excentricité du transfert ; G,M la constante de gravitation et la masse centrale ; vt la vitesse de transfert.
 
 a=(r₁+r₂)/2 ; e=|r₂−r₁|/(r₁+r₂) ; vt(r)=√[GM(2/r−1/a)].
 
@@ -286,7 +286,7 @@ La transformée de Fourier discrète écrit u_(j)(0)=∑Q_(q)e^(2iπqj/N). Chaqu
 
 Spé · Laboratoire `molecule_co2`
 
-Les déplacements longitudinaux des trois atomes forment X=(x₁,x₂,x₃)ᵀ. Les oxygènes ont la masse m_(O), le carbone m_(C). L’énergie cinétique est T=½ẊᵀMẊ, M=diag(m_(O),m_(C),m_(O)) ; le potentiel est V=½XᵀKX, avec K=k[[1,−1,0],[−1,2,−1],[0,−1,1]]. Les deux ressorts représentent les liaisons chimiques autour de leur longueur d’équilibre.
+Les déplacements longitudinaux des trois atomes forment X=(x₁,x₂,x₃)ᵀ. k est la raideur de chaque liaison ; T,V désignent les énergies cinétique et potentielle. Les oxygènes ont la masse m_(O), le carbone m_(C). L’énergie cinétique est T=½ẊᵀMẊ, M=diag(m_(O),m_(C),m_(O)) ; le potentiel est V=½XᵀKX, avec K=k[[1,−1,0],[−1,2,−1],[0,−1,1]]. Les deux ressorts représentent les liaisons chimiques autour de leur longueur d’équilibre.
 
 Équations et valeurs propres
 
@@ -406,7 +406,7 @@ Avec a(θ)=−(g/L)sin θ : θ_(n+1)=θ_(n)+hθ̇_(n)+½h²a(θ_(n)), puis θ̇_
 
 Sup → Spé · Laboratoire `pendule_anharmonique`
 
-V=mgL(1−cos θ) donne V=mgL(θ²/2−θ⁴/24+O(θ⁶)). Le moment généralisé −∂V/∂θ est −mgL(θ−θ³/6+O(θ⁵)). Le mouvement tronqué vérifie donc **θ̈+ω₀²(θ−θ³/6)=0**. Le terme cubique réduit le rappel par rapport au modèle linéaire : on parle d’un oscillateur assouplissant.
+m est la masse, L la longueur, g la pesanteur, θ l’angle en radians et ω₀=√(g/L) la pulsation propre. L’énergie potentielle V=mgL(1−cos θ) donne V=mgL(θ²/2−θ⁴/24+O(θ⁶)). Le moment généralisé −∂V/∂θ est −mgL(θ−θ³/6+O(θ⁵)). Le mouvement tronqué vérifie donc **θ̈+ω₀²(θ−θ³/6)=0**. Le terme cubique réduit le rappel par rapport au modèle linéaire : on parle d’un oscillateur assouplissant.
 
 Pourquoi la correction change aussi la période
 
@@ -524,7 +524,7 @@ V_(exact)=k(√(L₀²+x²)−L₀)² partage le même premier terme, mais poss�
 
 Sup → Spé · Laboratoire `duffing_force`
 
-Le cours linéaire étudie m ẍ+λẋ+kx=F₀cos(ωt). Avec ω₀=√(k/m), ζ=λ/(2mω₀), r=ω/ω₀, x=x_(réf)u et τ=ω₀t, on obtient u″+2ζu′+u=f cos(rτ), où f=F₀/(mω₀²x_(réf)).
+m est la masse, λ le frottement visqueux, k la raideur, F₀ l’amplitude de force et ω sa pulsation. Le cours linéaire étudie m ẍ+λẋ+kx=F₀cos(ωt). Avec ω₀=√(k/m), ζ=λ/(2mω₀), r=ω/ω₀, x=x_(réf)u et τ=ω₀t, on obtient u″+2ζu′+u=f cos(rτ), où f=F₀/(mω₀²x_(réf)).
 
 Ajouter une force cubique
 
@@ -564,7 +564,7 @@ Le point mesuré sur la courbe de réponse est la fondamentale du mouvement int�
 
 Spé · prolongement MPSI/MP · Laboratoire `inertie_huygens`
 
-Pour un solide, l’inertie dépend de la direction de rotation. On mesure rᵢ=GMᵢ et on représente les positions par des colonnes. Une même formule doit donner tous les moments autour des axes passant par G.
+mᵢ désigne la masse du point Mᵢ, G le centre de masse, u une direction unitaire et Id la matrice identité. Pour un solide, l’inertie dépend de la direction de rotation. On mesure rᵢ=GMᵢ et on représente les positions par des colonnes. Ω désigne la vitesse angulaire ; E_c,rotation l’énergie cinétique de rotation. Une même formule doit donner tous les moments autour des axes passant par G.
 
 I_G=Σmᵢ[(rᵢ·rᵢ)Id−rᵢrᵢᵀ] ; I(u)=uᵀI_Gu, |u|=1 ; E_c,rotation=½ΩᵀI_GΩ.
 
@@ -580,7 +580,7 @@ Une tige mince a une inertie nulle suivant sa propre direction dans le modèle i
 
 Spé · prolongement MPSI/MP · Laboratoire `inertie_huygens`
 
-O est un point quelconque et d=OG. Le théorème de Huygens relie les inerties autour de deux axes parallèles, l’un passant par G, l’autre par O. Sa version matricielle conserve les produits d’inertie.
+O est un point quelconque et d=OG. Le théorème de Huygens relie les inerties autour de deux axes parallèles, l’un passant par G, l’autre par O. Sa version matricielle conserve les produits d’inertie. M est la masse totale ; I_G,I_O sont les matrices d’inertie aux points G,O ; u est la direction unitaire de l’axe ; Id est la matrice identité.
 
 I_O=I_G+M[(d·d)Id−ddᵀ] ; I_O(u)=I_G(u)+M|d×u|².
 
@@ -596,7 +596,7 @@ Pour une barre homogène de longueur 2L, I_G=ML²/3 autour d’un axe transverse
 
 Spé · prolongement MPSI/MP · Laboratoire `konig`
 
-Le référentiel barycentrique a son origine en G et ses axes restent parallèles à ceux du laboratoire. Il peut être accéléré : le théorème de König est d’abord une identité cinématique.
+Le référentiel barycentrique a son origine en G et ses axes restent parallèles à ceux du laboratoire. Il peut être accéléré : le théorème de König est d’abord une identité cinématique. M est la masse totale, v_G sa vitesse ; vᵢ/G la vitesse relative et E_c,G l’énergie cinétique dans ce référentiel.
 
 E_c=½M|v_G|²+E_c,G ; vᵢ=v_G+vᵢ/G ; Σmᵢvᵢ/G=0.
 
@@ -612,7 +612,7 @@ Pour une roue roulant sans glissement, v_G=Rω. Avec I_G=kmR², E_c=½m(1+k)v_G�
 
 Spé · prolongement MPSI/MP · Laboratoire `konig`
 
-Un solide peut tourner autour de son centre de masse tout en se déplaçant par rapport à O. Ces deux mouvements contribuent au moment cinétique en O, qui est un vecteur.
+Un solide peut tourner autour de son centre de masse tout en se déplaçant par rapport à O. Ces deux mouvements contribuent au moment cinétique L_O en O. M est la masse totale, v_G la vitesse de G, L_G le moment propre, I_G la matrice d’inertie et Ω la vitesse angulaire.
 
 L_O=OG×Mv_G+L_G ; L_G=I_GΩ pour un solide rigide.
 
@@ -628,7 +628,7 @@ Une patineuse en mouvement possède un moment orbital par rapport au bord de la 
 
 Sup → Spé · Laboratoire `barre_bascule`
 
-Une barre homogène de longueur 2L est fixée à une extrémité. L’angle θ=0 correspond à la verticale ascendante, équilibre instable. Le pivot ne se déplace pas et sa réaction ne travaille pas.
+Une barre homogène de longueur 2L est fixée à une extrémité. L’angle θ=0 correspond à la verticale ascendante, équilibre instable. Le pivot O ne se déplace pas et sa réaction ne travaille pas. M est la masse, g la pesanteur, I_O le moment d’inertie et E l’énergie mécanique.
 
 I_O=4ML²/3 ; E=½I_Oθ̇²+MgLcosθ ; θ̈=(3g/(4L))sinθ.
 
@@ -660,7 +660,7 @@ Le temps diverge logarithmiquement quand θ₁ tend vers 0. Cela traduit l’éq
 
 Spé · prolongement MPSI/MP · Laboratoire `barre_rotule`
 
-La rotule fixe O et autorise une orientation spatiale. On choisit θ comme angle avec la verticale ascendante et φ comme azimut. Cette convention est annoncée pour éviter de mélanger colatitude et élévation.
+La rotule fixe O et autorise une orientation spatiale. On choisit θ comme angle avec la verticale ascendante et φ comme azimut. n est la direction unitaire de la barre ; 2L sa longueur, M sa masse, g la pesanteur et I⊥ son moment d’inertie transversal. La colatitude θ est l’angle avec la verticale ; l’azimut φ repère la direction horizontale.
 
 n=(sinθcosφ,sinθsinφ,cosθ) ; OG=Ln ; v_G=Lṅ ; E_c=½I⊥|ṅ|², I⊥=4ML²/3.
 
@@ -692,7 +692,7 @@ Pour L=0,7 m et θ=120°, la rotation conique demande φ̇≈4,585 rad/s. Le lab
 
 Spé · Laboratoire `cylindre_bord`
 
-Le cylindre plein est en contact avec une arête fixe. Pendant l’adhérence, il pivote autour de cette arête et le point matériel en contact a une vitesse nulle.
+Le cylindre plein est en contact avec une arête fixe. Pendant l’adhérence, il pivote autour de l’arête I. m est sa masse, R son rayon, θ son angle de basculement ; I_I son moment d’inertie ; T,N les réactions tangentielle et normale. Le point matériel en contact est immobile.
 
 I_I=3mR²/2 ; θ̇²=(4g/(3R))(1−cosθ) ; T=(mg/3)sinθ ; N=(mg/3)(7cosθ−4).
 
@@ -724,7 +724,7 @@ Un algorithme de simulation doit arrêter ce régime au seuil détecté. Prolong
 
 Spé · MP · Laboratoire `coulomb_horizontal`
 
-La force de frottement tangentielle est déterminée par le régime du contact. Le coefficient statique donne une borne, pas la valeur obligatoire de la réaction.
+La force de frottement tangentielle est déterminée par le régime du contact. N est la réaction normale, T la réaction tangentielle, fₛ,f_d les coefficients statique et dynamique, et v_contact la vitesse relative au contact. Le coefficient statique donne une borne à la force tangentielle.
 
 Adhérence : |T|≤fₛN ; glissement : T⃗=−f_dN v⃗_contact/|v⃗_contact|.
 
@@ -756,7 +756,7 @@ Pour m=3 kg, fₛ=0,45 et f_d=0,315, une force F=−6 N freine puis maintient la
 
 Spé · MP / prolongement roulement · Laboratoire `plan_incline`
 
-Les deux solides gagnent la même énergie gravitationnelle par unité de masse. Mais la répartition entre translation et rotation dépend du nombre sans dimension k=I_G/(mR²).
+Les deux solides gagnent la même énergie gravitationnelle par unité de masse. m est la masse, R le rayon, I_G le moment d’inertie, α l’angle de pente, g la pesanteur, T la réaction tangentielle et fₛ le coefficient statique. La répartition entre translation et rotation dépend du nombre sans dimension k=I_G/(mR²).
 
 a=g sinα/(1+k) ; T=kmg sinα/(1+k) ; adhérence : [k/(1+k)]tanα≤fₛ.
 
@@ -788,7 +788,7 @@ Une caisse peut rester immobile sur un plan où une boule roule. Les conditions 
 
 Spé · prolongement MPSI/MP · Laboratoire `gyroscope`
 
-Une toupie tourne rapidement autour de son axe n. Son moment cinétique est alors principalement porté par cet axe. Le couple du poids est perpendiculaire à n : il dévie le moment cinétique plutôt qu’il ne le réduit.
+n désigne l’axe unitaire, m la masse, ℓ=OG la distance pivot–centre de masse, I₃ l’inertie axiale, ω₃ la rotation propre, Ω_p la précession et e_z la verticale unitaire. Une toupie tourne rapidement autour de son axe n. Son moment cinétique est alors principalement porté par cet axe. Le couple du poids est perpendiculaire à n : il dévie le moment cinétique plutôt qu’il ne le réduit.
 
 L≈I₃ω₃n ; M_O=−mgℓn×e_z ; Ω_p≈mgℓ/(I₃ω₃).
 

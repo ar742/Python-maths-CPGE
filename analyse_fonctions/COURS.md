@@ -180,7 +180,7 @@ Cette formule exacte provient d’intégrations par parties répétées et perme
 
 Sup · Laboratoire `euler_rk4`
 
-Une EDO y′=f(x,y) ne donne pas directement les valeurs de y : elle indique la **pente** d’une courbe lorsqu’elle passe par (x,y). La condition y(0)=y₀ choisit une trajectoire. Le champ de petites directions du laboratoire représente (1,f(x,y)), ramené à une longueur lisible ; cette normalisation ne change pas la pente.
+Une équation différentielle ordinaire (EDO) cherche une fonction y de la variable x ; f prescrit sa dérivée. Une EDO y′=f(x,y) ne donne pas directement les valeurs de y : elle indique la **pente** d’une courbe lorsqu’elle passe par (x,y). La condition y(0)=y₀ choisit une trajectoire. Le champ de petites directions du laboratoire représente (1,f(x,y)), ramené à une longueur lisible ; cette normalisation ne change pas la pente.
 
 Dans le TP p. 69, f(x,y)=cos(x)(y+1). Poser z=y+1 transforme l’équation en z′=cos(x)z. Multiplier par e^(−sin x) donne (ze^(−sin x))′=0. Par conséquent **y(x)=(y₀+1)e^(sin x)−1**, sur ℝ. Cette démonstration inclut le cas y₀=−1 sans diviser par y+1.
 
@@ -192,7 +192,7 @@ Pour y₀=0, y′ a le signe de cos x ; les maxima sont atteints en π/2+2kπ, a
 
 Sup → Spé · Laboratoire `euler_rk4`
 
-Sur xⱼ=jh, Euler explicite pose yⱼ₊₁=yⱼ+h f(xⱼ,yⱼ). Son erreur sur *un* pas, en partant d’une valeur exacte, est O(h²) ; les erreurs propagées sur un intervalle fixé donnent généralement une erreur globale O(h). Ces deux ordres répondent à deux questions différentes.
+h est le pas, xⱼ le nœud d’indice j et yⱼ l’approximation de y(xⱼ). Sur xⱼ=jh, Euler explicite pose yⱼ₊₁=yⱼ+h f(xⱼ,yⱼ). Son erreur sur *un* pas, en partant d’une valeur exacte, est O(h²) ; les erreurs propagées sur un intervalle fixé donnent généralement une erreur globale O(h). Ces deux ordres répondent à deux questions différentes.
 
 RK4 calcule k₁=f(x,y), k₂=f(x+h/2,y+hk₁/2), k₃=f(x+h/2,y+hk₂/2), k₄=f(x+h,y+hk₃), puis y_(suiv)=y+h(k₁+2k₂+2k₃+k₄)/6. Pour une fonction suffisamment régulière et un intervalle fixé, son erreur globale est O(h⁴).
 
@@ -204,7 +204,7 @@ Le laboratoire mesure E(h)=maxⱼ|yⱼ−y(xⱼ)| et l’ordre p≈log₂[E(h)/E
 
 Sup · Laboratoire `facteur_integrant`
 
-On étudie y′+a(x)y=c(x), avec a,c continues sur un intervalle I. Prendre une primitive A de a, puis calculer **(eᴬy)′=eᴬ(y′+ay)=eᴬc**. L’intégration entre x₀ et x donne y(x)=e^(−A(x))[e^(A(x₀))y₀+∫_(x₀)^(x)e^(A(s))c(s)ds]. Le facteur devant la parenthèse est e^(−A).
+x est la variable, y la fonction cherchée et a,c des coefficients continus sur un intervalle I. On étudie y′+a(x)y=c(x). Prendre une primitive A de a, puis calculer **(eᴬy)′=eᴬ(y′+ay)=eᴬc**. L’intégration entre x₀ et x donne y(x)=e^(−A(x))[e^(A(x₀))y₀+∫_(x₀)^(x)e^(A(s))c(s)ds]. Le facteur devant la parenthèse est e^(−A).
 
 Dans l’atelier a(x)=a+bx et c(x)=Fcos(ωx), donc A(x)=ax+bx²/2 et x₀=0. On peut aussi écrire l’intégrale avec le noyau e^(−(A(x)−A(s))). Pour 0≤s≤x et a,b≥0 ce noyau est au plus 1 ; cette forme évite de produire séparément des exponentielles très grandes.
 
@@ -358,7 +358,7 @@ L’équation est dite homogène après division et substitution y/x ; elle n’
 
 Spé → Au-delà · Laboratoire `riccati`
 
-Une équation de Riccati a la forme z′=a(t)z²+b(t)z+c(t). Dans l’exemple z′=z²−1, poser **z=−u′/u** sur un intervalle où u≠0. Alors z′=z²−u″/u, et l’équation linéaire u″=u convient.
+t est la variable, z(t) l’inconnue et a,b,c des coefficients donnés. Une équation de Riccati a la forme z′=a(t)z²+b(t)z+c(t). Dans l’exemple z′=z²−1, poser **z=−u′/u** sur un intervalle où u≠0. Alors z′=z²−u″/u, et l’équation linéaire u″=u convient.
 
 Pour imposer z(0)=z₀, choisir u(0)=1 et u′(0)=−z₀. On obtient u=cosh t−z₀sinh t et z=(z₀cosh t−sinh t)/(cosh t−z₀sinh t). Le changement n’est valable que tant que le dénominateur reste non nul.
 
@@ -370,9 +370,9 @@ Les équilibres z=−1 et z=1 sont visibles dans z′=(z−1)(z+1). −1 est att
 
 Spé · Laboratoire `lineaire_systeme`
 
-Yᵢ(t) est la quantité présente dans le réservoir i. Les échanges symétriques de taux kᵢⱼ donnent Y₁′=k₁₂(Y₂−Y₁)+k₁₃(Y₃−Y₁)−δY₁, et deux équations analogues. Sous forme matricielle : **Y′=AY**.
+t est le temps, Yᵢ(t) la quantité du réservoir i, δ le taux de perte commun et S=Y₁+Y₂+Y₃ le total. Les échanges symétriques de taux kᵢⱼ donnent Y₁′=k₁₂(Y₂−Y₁)+k₁₃(Y₃−Y₁)−δY₁, et deux équations analogues. Sous forme matricielle : **Y′=AY**.
 
-La matrice A est symétrique ; les termes hors diagonale sont les taux positifs, et la diagonale est l’opposé de la somme des taux sortants, moins δ. Sommer les trois bilans annule tous les échanges : S′=−δS. Pour S(0)=1, S=e^(−δt).
+A est la matrice des trois bilans. Elle est symétrique ; les termes hors diagonale sont les taux positifs, et la diagonale est l’opposé de la somme des taux sortants, moins δ. Sommer les trois bilans annule tous les échanges : S′=−δS. Pour S(0)=1, S=e^(−δt).
 
 Diagonaliser A=QDQᵀ transforme le système en Z′=DZ, avec Z=QᵀY. Chaque coordonnée propre satisfait Zⱼ′=λⱼZⱼ, donc Zⱼ=Zⱼ(0)e^(λⱼt). Revenir à Y donne l’exponentielle matricielle e^(tA)=Q diag(e^(λⱼt))Qᵀ.
 
@@ -394,7 +394,7 @@ Le portrait de phase se situe dans le triangle P₁≥0, P₂≥0, P₁+P₂≤1
 
 Spé · Laboratoire `green_bords`
 
-Le problème de Cauchy y(0)=α, y′(0)=β fixe deux données au même point et admet une solution unique lorsque les coefficients sont continus. Les conditions y(0)=y(π)=0 imposent deux valeurs en deux points ; l’argument de Cauchy ne s’y applique pas automatiquement.
+x est la variable, y(x) la fonction cherchée et α,β deux données réelles. Le problème de Cauchy y(0)=α, y′(0)=β fixe deux données au même point et admet une solution unique lorsque les coefficients sont continus. Les conditions y(0)=y(π)=0 imposent deux valeurs en deux points ; l’argument de Cauchy ne s’y applique pas automatiquement.
 
 Considérer y″+λy=f sur [0,π]. Pour λ>0, une solution homogène s’annulant en 0 est Csin(√λx). Elle s’annule aussi en π pour tout C lorsque λ=n². Ces valeurs créent un noyau non nul pour le problème aux bords.
 

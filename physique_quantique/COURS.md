@@ -8,6 +8,8 @@ Les résultats théoriques et les observations numériques sont distingués. Les
 
 *SUP · FONDATIONS*
 
+**Notations.** r est la position en m et t le temps en s. ψ et φ sont des fonctions d’onde ; l’étoile * désigne la conjugaison complexe. |n⟩ est un état de base et cₙ son amplitude complexe ; Re et Im désignent les parties réelle et imaginaire.
+
 Une fonction d’onde ψ décrit un état, pas une trajectoire. En représentation spatiale, |ψ(r,t)|² est une densité de probabilité : intégrer sur un domaine donne la probabilité d’y détecter la particule. La normalisation vaut ∫|ψ|²dV=1. Une onde plane sur tout l’espace n’est pas normalisable ; on emploie un paquet d’ondes ou une normalisation dans un volume spécifié.
 
 ⟨φ|ψ⟩=∫φ*(r)ψ(r)dV ; |ψ⟩=Σₙcₙ|n⟩ ; cₙ=⟨n|ψ⟩.
@@ -21,11 +23,13 @@ Base orthonormée : Σₙ|cₙ|²=1 ; probabilité du résultat n : |cₙ|².
 
 *SUP → SPÉ · FONDATIONS*
 
+**Notations.** i²=−1 ; ℏ=h/(2π) est la constante de Planck réduite. m est la masse, V l’énergie potentielle, H l’opérateur énergie et Δ le laplacien spatial. φₙ et Eₙ sont un état propre et son énergie ; j est le courant de probabilité.
+
 iℏ ∂ₜψ=Hψ ; H=−ℏ²Δ/(2m)+V(r).
 État propre : Hφₙ=Eₙφₙ ; ψₙ(r,t)=φₙ(r)e⁻ⁱᴱⁿᵗᐟℏ.
 Si H ne dépend pas du temps : |ψ(t)⟩=Σₙcₙe⁻ⁱᴱⁿᵗᐟℏ|n⟩.
 
-Un état propre possède une densité spatiale stationnaire, bien que sa phase évolue. Une superposition de deux énergies distinctes peut avoir une densité variable. Pour un Hamiltonien auto-adjoint, U(t)=exp(−itH/ℏ) est unitaire : la norme et la probabilité totale sont conservées. Sur une onde plane eⁱᵏˣ, le Laplacien donne −k² ; l’énergie libre vaut donc +ℏ²k²/(2m), et non l’expression négative imprimée dans le TP.
+Un état propre possède une densité spatiale stationnaire, bien que sa phase évolue. Une superposition de deux énergies distinctes peut avoir une densité variable. Pour un Hamiltonien auto-adjoint, U(t)=exp(−itH/ℏ) est unitaire : la norme et la probabilité totale sont conservées. Sur une onde plane eⁱᵏˣ, le Laplacien donne −k² ; l’énergie libre vaut donc +ℏ²k²/(2m).
 
 ρ(r,t)=|ψ|² ; j=(ℏ/m)Im(ψ*∇ψ).
 ∂ₜρ+div j=0 ; en 1D, Aeⁱᵏˣ porte j=ℏk|A|²/m.
@@ -37,6 +41,8 @@ Un état propre possède une densité spatiale stationnaire, bien que sa phase �
 ## 3 · Une particule dans une boîte cubique
 
 *SUP → SPÉ · TP PRIORITAIRE*
+
+**Notations.** L est le côté du cube en m et m la masse de la particule. Les entiers nₓ,nᵧ,n_z identifient les modes ; ℏ est la constante de Planck réduite. E₀ désigne ici l’échelle d’énergie de confinement, appelée E_L dans les commandes.
 
 La particule est libre à l’intérieur du cube 0<x,y,z<L, entouré de parois de potentiel infini. La condition est ψ=0 sur les faces. Elle ne demande pas l’égalité des dérivées aux faces opposées : ajouter cette condition exclurait notamment les modes impairs et le fondamental.
 
@@ -52,6 +58,8 @@ Une coupe de |ψ|² à z fixé renseigne sur la distribution spatiale ; une marg
 ## 4 · Conditions périodiques et battements
 
 *SPÉ · TP ET APPROFONDISSEMENT*
+
+**Notations.** L est la période spatiale ou le côté de la boîte selon les conditions choisies ; k est le vecteur d’onde en m⁻¹. Deux modes d’énergies E₁,E₂ sont superposés avec poids w et phase initiale δ. La pulsation de battement est |E₂−E₁|/ℏ.
 
 Une boîte avec parois et une normalisation périodique décrivent deux problèmes distincts. Avec conditions périodiques, ψ(x+L,y,z)=ψ(x,y,z), et de même pour y,z : les faces opposées sont identifiées. Les modes sont des ondes planes ; il n’y a pas de paroi matérielle infinie.
 
@@ -69,6 +77,8 @@ Le temps affiché est τ=E₀t/ℏ, avec l’E₀ adapté à la condition de bor
 
 *SUP → SPÉ · TP PRIORITAIRE*
 
+**Notations.** x̂ et p̂ sont les opérateurs position et impulsion ; ⟨A⟩ désigne la moyenne d’une observable A. ΔA est son écart type ; [A,B]=AB−BA est un commutateur. σ est la largeur initiale de la gaussienne, p₀ son impulsion moyenne et m la masse.
+
 Δx et Δp sont les écarts types des résultats de mesures sur des systèmes préparés dans un même état. L’inégalité ne décrit pas à elle seule un défaut instrumental. Poser X=x̂−⟨x̂⟩ et P=p̂−⟨p̂⟩ ; on considère des états pour lesquels les moments et les produits utilisés existent.
 
 0≤‖(X+iλP)ψ‖²=(Δx)²+λ²(Δp)²−λℏ, λ réel.
@@ -79,11 +89,13 @@ Le trinôme est positif pour tout λ : son discriminant est ≤0. Cela donne la 
 ψ(x)=(2πσ²)⁻¹ᐟ⁴ exp[−x²/(4σ²)+ip₀x/ℏ] : Δx=σ, Δp=ℏ/(2σ).
 Évolution libre : ⟨x⟩=p₀t/m ; Δx(t)=σ√[1+(ℏt/(2mσ²))²].
 
-La gaussienne sans phase quadratique sature la borne à t=0 ; elle s’étale ensuite alors que sa distribution d’impulsion reste inchangée. Une phase quadratique, dite chirp, crée une covariance position–impulsion et peut faire commencer le paquet par une contraction. La borne renforcée est (Δx)²(Δp)²≥ℏ²/4+Cov(x,p)², où Cov=⟨XP+PX⟩/2. La valeur ℏ/2 du produit n’est donc pas préservée par toute évolution libre.
+La gaussienne sans phase quadratique sature la borne à t=0 ; elle s’étale ensuite alors que sa distribution d’impulsion reste inchangée. Une phase quadratique, crée une covariance position–impulsion et peut faire commencer le paquet par une contraction. La borne renforcée est (Δx)²(Δp)²≥ℏ²/4+Cov(x,p)², où Cov=⟨XP+PX⟩/2. La valeur ℏ/2 du produit n’est donc pas préservée par toute évolution libre.
 
 ## 6 · Ce qu’Heisenberg permet de retrouver
 
 *SUP → SPÉ · TP CLASSIQUES*
+
+**Notations.** a est la largeur de fente, λ la longueur d’onde et θ l’angle de diffraction. Pour les estimations d’énergie, m est la masse, r une taille de localisation, e la charge élémentaire et ε₀ la permittivité du vide. Pour l’oscillateur, ω est sa pulsation.
 
 **Fente et diffraction.** Localiser transversalement une onde sur une largeur a produit une dispersion de vecteur d’onde de l’ordre 1/a. On retrouve l’échelle angulaire λ/a. Pour une fente rectangulaire idéale, Fraunhofer donne I(θ)∝[sin u/u]², u=πa sinθ/λ, avec la limite 1 en u=0 ; le premier zéro est sinθ=λ/a. Le moteur emploie sinc(v)=sin(πv)/(πv), donc le même profil s’écrit sinc²(a sinθ/λ). Mais le second moment de la distribution d’impulsion de ce profil idéal diverge : Δp n’est pas un nombre fini que l’on pourrait identifier à ℏ/a. Utiliser les premiers zéros pour la fente, les écarts types pour une gaussienne.
 
@@ -103,6 +115,8 @@ Le choix p∼ℏ/r est une estimation d’échelle, pas une preuve exacte tirée
 
 *SUP → SPÉ · EXERCICE 1*
 
+**Notations.** E est l’énergie incidente, V₀ la hauteur de marche et m la masse constante. Les nombres d’onde sont k₁ à gauche et k₂ à droite ; κ est un taux de décroissance en m⁻¹. r et t sont des amplitudes complexes, R et T des rapports de courants.
+
 Soit V=0 à gauche et V=V₀ à droite ; une onde arrive de gauche. Pour une discontinuité finie de V, avec masse constante, ψ et ψ′ sont continues. Intégrer Schrödinger autour de la marche donne ψ′(x₀+ε)−ψ′(x₀−ε)=(2m/ℏ²)∫_{x₀−ε}^{x₀+ε}(V−E)ψdx : le signe est positif. L’intégrale tend vers 0 pour un potentiel borné, donc ψ′ ne subit pas de saut. Une barrière infinie ou un potentiel delta exigent un autre traitement.
 
 E>V₀ : ψ_g=eⁱᵏ¹ˣ+r e⁻ⁱᵏ¹ˣ ; ψ_d=t eⁱᵏ²ˣ.
@@ -119,6 +133,8 @@ Si 0<E<V₀, la solution bornée à droite est t e⁻ᵏˣ, avec κ=√(2m(V₀�
 ## 8 · Barrière finie et effet tunnel
 
 *SPÉ · EXERCICE 2 PRIORITAIRE*
+
+**Notations.** E est l’énergie incidente, V₀ la hauteur de barrière et a sa largeur. m est la masse, κ le taux de décroissance pour E<V₀ et q le nombre d’onde dans la barrière pour E>V₀. T est le rapport du courant transmis au courant incident ; sech u=1/cosh u.
 
 Le potentiel vaut V₀ sur 0<x<a et 0 ailleurs. Raccorder ψ et ψ′ en x=0 et x=a donne quatre équations pour l’onde réfléchie, les deux composantes dans la barrière et l’onde transmise. Pour E<V₀, garder les deux exponentielles dans la région finie : éliminer celle qui croît serait incorrect sur un intervalle borné.
 
@@ -139,6 +155,8 @@ Les régions extérieure gauche et droite ont ici le même potentiel et la même
 
 *SPÉ · CLASSIQUE ET EXTENSION GUIDÉE*
 
+**Notations.** m est la masse et ω la pulsation de l’oscillateur ; ℓ=√(ℏ/(mω)) fixe son échelle de longueur. X=x/ℓ et P=p/√(mℏω) sont sans dimension. a et a† sont les opérateurs d’abaissement et d’élévation ; n est le nombre entier d’excitations.
+
 L’oscillateur décrit le voisinage d’un minimum stable de potentiel : V(x)≈V(0)+mω²x²/2. Il relie la résolution d’une équation différentielle, les polynômes d’Hermite et une méthode algébrique. Les variables réduites sont X=x/ℓ et P=p/√(mℏω), avec ℓ=√(ℏ/(mω)) : [X,P]=i.
 
 a=(X+iP)/√2 ; a†=(X−iP)/√2 ; [a,a†]=I.
@@ -157,6 +175,8 @@ Le produit ΔxΔp=(n+1/2)ℏ sature Heisenberg seulement pour n=0. Chaque ψₙ 
 
 *SPÉ · EXTENSION EMBLÉMATIQUE*
 
+**Notations.** a est l’opérateur d’abaissement et α un nombre complexe définissant l’état cohérent. n compte les excitations ; m,ω et ℓ=√(ℏ/(mω)) sont la masse, la pulsation et la longueur de l’oscillateur. H est l’opérateur énergie ; Re α et Im α sont les composantes de α.
+
 a|α⟩=α|α⟩ ; |α⟩=exp(−|α|²/2) Σₙαⁿ|n⟩/√n!.
 α(t)=α(0)exp(−iωt) ; ⟨x⟩=√2ℓ Re α(t) ; ⟨p⟩=√(2mℏω) Im α(t).
 Δx=ℓ/√2 ; Δp=√(mℏω/2) ; ⟨H⟩=ℏω(|α|²+1/2).
@@ -170,6 +190,8 @@ Un état cohérent avec α≠0 n’est pas un état propre d’énergie. Sa mesu
 ## 11 · Deux systèmes : corrélation et intrication
 
 *SPÉ · TP PRIORITAIRE*
+
+**Notations.** |0⟩ et |1⟩ forment la base d’un qubit ; ⊗ désigne le produit tensoriel. Les coefficients de l’état à deux qubits forment une matrice C. ρ est un opérateur densité et Tr_B la trace sur le second système, qui fournit l’état réduit du premier.
 
 L’espace d’un système composé est un produit tensoriel. Deux qubits ont une base |00⟩, |01⟩, |10⟩, |11⟩. Un état pur est séparable s’il s’écrit |u⟩⊗|v⟩ ; sinon il est intriqué. Une opération locale sur A s’écrit U_A⊗I_B. Les coefficients d’un état pur peuvent être rangés dans une matrice C de taille 2×2.
 
@@ -191,6 +213,8 @@ Le laboratoire utilise un état de polarisation corrélé Φ⁺. Il le distingue
 
 *SPÉ · TP ET EXTENSION GUIDÉE*
 
+**Notations.** X et Z sont les matrices de Pauli ; M(a) est l’observable d’un analyseur d’angle a. E(a,b) est la moyenne du produit des deux résultats ±1 ; S combine quatre corrélations. v est le poids de l’état de Bell dans le mélange de Werner et I₄ la matrice identité 4×4.
+
 Pour des analyseurs de polarisation rectiligne, l’angle physique a correspond à l’observable M(a)=cos(2a)Z+sin(2a)X. Le facteur 2 vient de la représentation des états de polarisation sur la sphère de Bloch. Les résultats des deux analyseurs sont codés ±1.
 
 Φ⁺ : E(a,b)=cos[2(a−b)].
@@ -210,6 +234,8 @@ Le mélange classique du laboratoire est ρ_classique,v=vρ_classique+(1−v)I�
 
 *SPÉ · EXERCICE 3 ET EXTENSION*
 
+**Notations.** δ est la différence de phase de la jonction, I_c son courant critique et V sa tension. e est la charge élémentaire ; les paires portent la charge 2e. K désigne l’énergie du couplage lorsqu’elle intervient dans le modèle à deux amplitudes.
+
 Une jonction Josephson relie deux supraconducteurs par un couplage faible. Une phase macroscopique décrit chaque condensat ; leur différence gauge-invariante δ contrôle le supercourant. Une paire de Cooper a une charge de valeur absolue q=2e. Le modèle du laboratoire conserve uniquement les relations Josephson, sans dissipation, capacité ni fluctuations thermiques.
 
 I=I_c sinδ ; δ̇=2eV/ℏ.
@@ -224,6 +250,8 @@ V constant : δ(t)=δ₀+(2eV/ℏ)t ; f_J=2e|V|/h.
 ## 14 · SQUID : une interférence de phases
 
 *SPÉ · APPLICATION EMBLÉMATIQUE*
+
+**Notations.** I₁ et I₂ sont les courants critiques des deux jonctions. Φ est le flux dans la boucle et Φ₀=h/(2e) le quantum de flux, en Wb. δ est la phase moyenne et I_c(Φ) le courant maximal à flux fixé.
 
 Un SQUID continu contient deux jonctions en parallèle dans une boucle. On suppose l’inductance de boucle suffisamment faible pour négliger le flux créé par le courant, et deux relations sinusoïdales de courant. La différence des phases de jonction est fixée, modulo 2π, par le flux appliqué Φ.
 
@@ -242,6 +270,8 @@ La période est Φ₀. Deux jonctions identiques annulent le courant critique au
 
 *SPÉ · EXERCICE 4 PRIORITAIRE*
 
+**Notations.** X,Y,Z sont les matrices de Pauli et I l’identité 2×2. γ est le rapport gyromagnétique en rad·s⁻¹·T⁻¹, B₀ le champ statique et B₁ l’amplitude du champ circulaire. ω₀ est la pulsation de Larmor, ω celle du champ appliqué ; Δ est leur désaccord selon la convention annoncée.
+
 Un spin 1/2 possède deux niveaux. Les matrices de Pauli sont X=[[0,1],[1,0]], Y=[[0,−i],[i,0]], Z=diag(1,−1), et S=(ℏ/2)σ dans une base de spin donnée. Le couplage magnétique réel est H_Z=−γ S·B. Pour le proton, la fréquence de Larmor en valeur absolue est ω_L=|γ|B₀, avec |γ|/(2π)≈42,58 MHz/T.
 
 Une identité ℏω₀I ne décrit aucune séparation Zeeman : elle ajoute la même énergie aux deux états et seulement une phase globale. Pour étudier un système à deux niveaux, choisir explicitement une base avec des énergies ±ℏω₀/2. Pour une RMN réelle, le signe de γ, l’ordre des états et l’hélicité du champ déterminent les signes des phases ; les probabilités de transition ci-dessous ne dépendent pas de ce choix cohérent.
@@ -258,6 +288,8 @@ Le changement de référentiel est ici exact pour le champ circulaire idéal cho
 
 *SPÉ · EXERCICE 4 ET MÉTHODE*
 
+**Notations.** Ω est la pulsation de couplage et Δ le désaccord ; t est le temps. X et Z sont les matrices de Pauli, I l’identité et H_rot l’opérateur énergie dans le repère tournant. U(t) fait évoluer l’état ; P₁ est la probabilité de mesurer |1⟩.
+
 H_rot=(ℏ/2)(ΔZ+ΩX), Ω_R=√(Δ²+Ω²).
 U(t)=cos(Ω_Rt/2)I−i sin(Ω_Rt/2)(ΔZ+ΩX)/Ω_R.
 Partant de |0⟩ : P₁(t)=Ω²/(Ω²+Δ²) sin²(Ω_Rt/2).
@@ -273,6 +305,8 @@ L’impulsion décrite est rectangulaire, sans relaxation T₁/T₂ ni distribut
 ## 17 · Un qubit sur et dans la sphère de Bloch
 
 *SPÉ · INFORMATIQUE QUANTIQUE GUIDÉE*
+
+**Notations.** θ est la colatitude et φ l’azimut ; n est le vecteur unitaire correspondant. r∈[0,1] est la longueur du vecteur de Bloch, ρ l’opérateur densité et σ=(X,Y,Z) les matrices de Pauli. m est un axe unitaire de mesure ; Tr est la trace.
 
 |ψ⟩=cos(θ/2)|0⟩+eⁱᵠsin(θ/2)|1⟩, à une phase globale près.
 n=(sinθcosφ,sinθsinφ,cosθ).
@@ -293,6 +327,8 @@ Les portes ne sont pas interchangeables : X puis H diffère de H puis X. L’ana
 
 *SPÉ · EXTENSION INFORMATIQUE QUANTIQUE*
 
+**Notations.** H désigne ici la porte de Hadamard, et CNOT une porte à contrôle et cible. Les quatre états de base sont ordonnés |00⟩,|01⟩,|10⟩,|11⟩. Pour Grover, |m⟩ est l’état marqué, |s⟩ la superposition uniforme, O_m l’oracle et D la réflexion autour de |s⟩.
+
 Un circuit compose des transformations unitaires et finit par une mesure. La base est ordonnée |00⟩, |01⟩, |10⟩, |11⟩ ; le premier qubit est celui de gauche. La porte CNOT a pour contrôle le premier qubit et inverse le second seulement si le contrôle vaut 1.
 
 |00⟩ → (H⊗I)|00⟩=(|00⟩+|10⟩)/√2
@@ -308,17 +344,271 @@ L’oracle inverse seulement le signe de l’amplitude marquée. Le diffuseur re
 
 Ajouter des itérations peut diminuer le succès : pour k=0,1,2,3,4, les probabilités sont 1/4,1,1/4,1/4,1. Le gain asymptotique de Grover concerne le nombre de requêtes à un oracle accessible de façon cohérente, de l’ordre √N au lieu de N pour une recherche non structurée classique. Il ne dispense ni de construire l’oracle ni de lire le résultat par mesure. Le laboratoire est un simulateur exact de deux qubits, pas un calcul sur un processeur quantique.
 
+## Préparer les laboratoires
+
+### boite
+
+Expliquer la quantification par les conditions aux limites, puis observer le battement de deux modes.
+
+**Objets et unités.**
+
+- L est le côté du cube en nm et mₑ la masse de l’électron ; x/L est une position réduite. ℏ=h/(2π), où h est la constante de Planck.
+- nₓ,nᵧ,n_z identifient les modes ; les parois imposent des indices entiers strictement positifs. E_L est l’échelle d’énergie du mode unidimensionnel.
+- w est le poids du second mode et δ sa phase initiale en degrés ; τ=tE_L/ℏ est le temps réduit. La densité |ψ|² se déduit de la fonction d’onde ψ.
+
+**Hypothèses.**
+
+- Une particule sans spin, libre dans le cube ; chaque choix de bord fixe ses modes et son échelle E_L.
+- Le second mode remplace nₓ par nₓ+1. La carte intègre z : elle représente une probabilité marginale en x,y.
+
+**Techniques.** Séparer les variables et appliquer les conditions aux limites.; Normaliser une fonction d’onde et additionner des amplitudes.; Identifier une dégénérescence et calculer une fréquence de battement.
+
+**Première expérience.**
+
+1. Choisir le fondamental, puis doubler L : prévoir le rapport des énergies.
+2. Choisir nₓ=2, nᵧ=n_z=1 et retrouver les modes de même énergie.
+3. Passer à w=1/2 et modifier le temps : comparer densité locale et énergie moyenne.
+
+**Sup.** ondes, probabilités et unités ; préparation au confinement.
+**Spé et filières.** MP §6 et PC §6.5 : puits infini et superposition ; le cube prolonge le problème unidimensionnel.
+**Prolongements.** Normalisation périodique et comptage tridimensionnel des états : prolongements accompagnés.
+**Résultat attendu.** Une énergie de confinement justifiée et une densité variable sans variation de l’énergie moyenne.
+
+### heisenberg
+
+Distinguer un écart type d’une largeur de diffraction et utiliser Heisenberg pour estimer une énergie minimale.
+
+**Objets et unités.**
+
+- σ est l’écart type initial de position, p₀ l’impulsion moyenne et c le coefficient de phase quadratique. Δx et Δp sont les écarts types de position et d’impulsion.
+- m est la masse et ℏ la constante de Planck réduite ; les unités sont choisies pour ℏ=m=1. t est le temps et ω la pulsation dans ces unités.
+- Pour la fente, a est sa largeur en µm et λ la longueur d’onde en nm ; la largeur a diffère d’un écart type.
+
+**Hypothèses.**
+
+- Évolution libre d’un paquet gaussien normalisé.
+- Fente rectangulaire idéale en champ lointain ; ses bords abrupts rendent le second moment d’impulsion divergent.
+
+**Techniques.** Calculer des moments et des écarts types.; Lire une transformée de Fourier et contrôler une approximation angulaire.; Minimiser une borne d’énergie en respectant son statut.
+
+**Première expérience.**
+
+1. Prendre c=0,t=0 et comparer ΔxΔp à ℏ/2.
+2. Augmenter t, puis essayer c<0 : observer étalement ou contraction initiale.
+3. Choisir la fente et réduire a ; comparer le premier zéro au produit d’écarts types du paquet.
+
+**Sup.** diffraction, dimensions et ordres de grandeur quantiques.
+**Spé et filières.** MP §6 et PC §6.5 : confinement et Heisenberg ; PC introduit le paquet d’ondes, MP le traite ici en prolongement.
+**Prolongements.** Covariance, phase quadratique et estimation variationnelle de l’atome : approfondissements.
+**Résultat attendu.** Une largeur de diffraction distinguée d’un écart type et une estimation d’énergie accompagnée de ses hypothèses.
+
+### diffusion
+
+Raccorder les fonctions d’onde, puis expliquer réflexion et transmission avec les courants de probabilité.
+
+**Objets et unités.**
+
+- E est l’énergie incidente, V₀ la hauteur du potentiel et a la largeur de barrière ; x est la position. m est la masse et ℏ la constante de Planck réduite ; les unités donnent ℏ=m=1.
+- ψ est la fonction d’onde et ψ′ sa dérivée spatiale ; les raccordements portent sur ces deux fonctions.
+- R et T sont les rapports de courants réfléchi et transmis à l’incident, sans dimension ; une amplitude de ψ ne suffit pas à donner T.
+
+**Hypothèses.**
+
+- Potentiel réel constant par morceaux, masse identique dans toutes les régions.
+- Onde incidente depuis la gauche ; états stationnaires ; pas d’absorption.
+
+**Techniques.** Résoudre une équation différentielle du second ordre.; Appliquer deux raccordements à chaque interface.; Vérifier la conservation R+T=1 et des cas limites.
+
+**Première expérience.**
+
+1. Comparer E<V₀ sur la marche et sur la barrière : prévoir T dans chaque cas.
+2. Sur la barrière, augmenter a et suivre la diminution de T.
+3. Choisir E>V₀ et rechercher une résonance de transmission, puis vérifier R+T.
+
+**Sup.** raccordement d’ondes et conservation d’un flux.
+**Spé et filières.** MP §6.3 et PC §6.5 : potentiels constants par morceaux et effet tunnel.
+**Prolongements.** Paquets incidents, barrières multiples et temps de traversée : au-delà du modèle stationnaire.
+**Résultat attendu.** Des coefficients définis par les courants et une explication de T=0 sur une marche malgré une densité à droite.
+
+### oscillateur
+
+Relier le spectre à ses états propres et comparer le mouvement moyen d’un état cohérent au mouvement classique.
+
+**Objets et unités.**
+
+- m est la masse, ω la pulsation et ℏ la constante de Planck réduite. ℓ=√(ℏ/(mω)) est une longueur ; X=x/ℓ est la position réduite et ωt le temps réduit.
+- n≥0 compte les excitations ; α est l’amplitude complexe d’un état cohérent, réglée par son module et sa phase. L’énergie est mesurée en ℏω.
+- ψ est la fonction d’onde, |ψ|² sa densité de probabilité ; Δx et Δp sont les écarts types de position et d’impulsion.
+
+**Hypothèses.**
+
+- Potentiel harmonique idéal ; état propre ou état cohérent normalisé.
+- Aucun amortissement ni anharmonicité ; une densité spatiale n’est pas une trajectoire.
+
+**Techniques.** Étudier parité et zéros des polynômes d’Hermite.; Calculer des moments et des commutateurs.; Comparer une équation sur les moyennes à l’équation classique.
+
+**Première expérience.**
+
+1. Comparer n=0,1,3 : compter les nœuds et prévoir les énergies.
+2. Choisir un état cohérent et suivre un cycle en temps réduit.
+3. Faire varier |α| : comparer déplacement moyen, largeur et énergie.
+
+**Sup.** oscillateur classique, gaussienne et énergie minimale.
+**Spé et filières.** Outils Spé : équations différentielles, Hermite et opérateurs ; résolution quantique comme prolongement de MP/PC.
+**Prolongements.** États cohérents et construction complète par opérateurs : approfondissements guidés.
+**Résultat attendu.** Une distinction entre état propre d’énergie et paquet oscillant, avec le rôle de l’énergie de point zéro.
+
+### intrication
+
+Comparer corrélations quantiques et classiques sans confondre probabilités conjointes et probabilités marginales.
+
+**Objets et unités.**
+
+- a,a′ règlent les orientations de l’analyseur A ; b,b′ celles de B, en degrés. Les résultats de chaque mesure sont ±1.
+- v∈[0,1] est le poids de Bell dans le mélange avec le bruit blanc ; l’autre préparation est un mélange de polarisations horizontales et verticales.
+- E(a,b) est la moyenne du produit des résultats ; S est la combinaison CHSH de quatre corrélations. Les probabilités marginales concernent un seul analyseur.
+
+**Hypothèses.**
+
+- Analyseurs de polarisation linéaire idéaux ; état de Bell Φ⁺ ou mélange HH/VV.
+- La borne S≤2 concerne des modèles locaux à résultats prédéterminés ; le bruit est explicitement modélisé.
+
+**Techniques.** Calculer des probabilités et leurs sommes marginales.; Changer de base de mesure.; Distinguer intrication et violation d’une inégalité avec des réglages donnés.
+
+**Première expérience.**
+
+1. Avec les angles optimaux et v=1, comparer S à 2.
+2. Passer au mélange classique sans changer les angles.
+3. Réduire v et comparer les deux seuils : intrication et violation CHSH.
+
+**Sup.** probabilités conjointes, conditionnelles et corrélations.
+**Spé et filières.** Outils Spé : matrices, produits tensoriels et valeurs propres ; ce sujet est un prolongement de MP/PC.
+**Prolongements.** Tests de Bell, états mixtes et critères de séparabilité : au-delà du socle CPGE cité.
+**Résultat attendu.** Une corrélation expliquée dans plusieurs bases et des probabilités locales indépendantes du réglage distant.
+
+### josephson
+
+Prévoir la fréquence d’une jonction sous tension et la modulation du courant critique d’une boucle à deux jonctions.
+
+**Objets et unités.**
+
+- I₁,I₂ sont les courants critiques en µA ; V est la tension en µV et δ la différence de phase en degrés.
+- Φ est le flux dans la boucle et Φ₀=h/(2e) son quantum, en Wb ; h est la constante de Planck et e la charge élémentaire. Le curseur règle Φ/Φ₀.
+- I_c(Φ) est le courant maximal du SQUID à flux fixé ; f_J est la fréquence du courant alternatif d’une jonction sous tension.
+
+**Hypothèses.**
+
+- Relations Josephson sinusoïdales ; deux jonctions idéales pour le SQUID.
+- Inductance de boucle négligée ; la tension de sortie d’un appareil réel n’est pas modélisée.
+
+**Techniques.** Résoudre une équation de phase.; Maximiser A sinδ+B cosδ.; Utiliser périodicité et symétrie pour prévoir des extrema.
+
+**Première expérience.**
+
+1. Choisir une jonction et comparer V=0 à V=1 µV.
+2. Dans le SQUID symétrique, comparer flux 0 et 1/2.
+3. Rendre I₁ et I₂ différents et prévoir le minimum résiduel.
+
+**Sup.** sinusoïdes, phase, flux et unités.
+**Spé et filières.** Outils Spé : interférences, dérivation et optimisation ; Josephson/SQUID sont des prolongements de MP/PC.
+**Prolongements.** Supraconductivité macroscopique, polarisation et dissipation d’un SQUID réel.
+**Résultat attendu.** Une modulation de période Φ₀ et un minimum lié à l’asymétrie des jonctions.
+
+### rabi
+
+Choisir une impulsion qui réalise une transition et expliquer la baisse de sa probabilité hors résonance.
+
+**Objets et unités.**
+
+- Ω est le couplage, Δ le désaccord et t le temps en unités réduites ; Ω_R=√(Ω²+Δ²) est la pulsation de Rabi.
+- B₀ est le champ statique en T, B₁ l’amplitude circulaire en µT ; γ est le rapport gyromagnétique du proton. Ces réglages donnent des repères physiques séparés des curseurs réduits.
+- P₁ est la probabilité du niveau |1⟩ et r le vecteur de Bloch ; l’état initial est |0⟩. Une impulsion π inverse les populations à résonance.
+
+**Hypothèses.**
+
+- Deux niveaux idéaux, état initial |0⟩ et champ circulaire dans le repère tournant.
+- Pas de relaxation ; les curseurs réduits ne sont pas déduits automatiquement des champs RMN.
+
+**Techniques.** Exponentier une matrice à l’aide des matrices de Pauli.; Lire amplitude, fréquence et phase d’une oscillation.; Relier durée d’impulsion et rotation.
+
+**Première expérience.**
+
+1. Choisir Δ=0 et l’impulsion π : prévoir P₁.
+2. Choisir l’impulsion π/2 puis comparer populations et phase de l’état.
+3. Augmenter |Δ| : suivre la baisse de l’amplitude maximale.
+
+**Sup.** résonance, oscillations et ordres de grandeur de fréquences.
+**Spé et filières.** Outils Spé : repère tournant et matrices ; les rotations quantiques sont un prolongement de MP/PC.
+**Prolongements.** RMN avec relaxation, distributions de fréquences et impulsions façonnées.
+**Résultat attendu.** Une durée de commande reliée au couplage, et un désaccord qui empêche une inversion complète.
+
+### bloch
+
+Représenter un état, une transformation et une mesure avec des vecteurs, puis relier géométrie et probabilités.
+
+**Objets et unités.**
+
+- θ est la colatitude et φ l’azimut, en degrés ; r∈[0,1] est la longueur du vecteur de Bloch. La pureté de l’état est (1+r²)/2.
+- ρ est la matrice densité ; X,Y,Z sont les matrices de Pauli. Les portes Rx,Ry,Rz sont des rotations d’angle α en degrés.
+- L’axe de mesure est défini par sa colatitude et son azimut ; les probabilités concernent les deux résultats ±1.
+
+**Hypothèses.**
+
+- Un seul qubit ; portes unitaires idéales et mesure projective.
+- Un état pur est sur la sphère ; un état mélangé est à l’intérieur.
+
+**Techniques.** Passer entre coordonnées sphériques et cartésiennes.; Appliquer une matrice unitaire.; Calculer une probabilité avec un produit scalaire.
+
+**Première expérience.**
+
+1. Comparer |0⟩ et |+⟩ avec une mesure suivant Z.
+2. Appliquer Hadamard à |0⟩ puis tourner l’axe de mesure.
+3. Prendre r=0 : vérifier que toutes les mesures donnent 1/2.
+
+**Sup.** géométrie dans l’espace et probabilités.
+**Spé et filières.** Outils Spé : matrices hermitiennes et rotations ; le qubit est un prolongement du socle MP/PC.
+**Prolongements.** Canaux quantiques, décohérence et systèmes à plusieurs qubits.
+**Résultat attendu.** Une probabilité calculée à partir de l’état et de l’axe, avec une pureté conservée par les portes.
+
+### circuits
+
+Suivre les amplitudes d’un circuit à deux qubits et expliquer pourquoi une itération de Grover retrouve la cible.
+
+**Objets et unités.**
+
+- Les quatre états de base sont |00⟩,|01⟩,|10⟩,|11⟩ ; le premier qubit est celui de gauche. Une amplitude complexe au carré en module donne une probabilité.
+- H est la porte de Hadamard ; CNOT inverse la cible si le contrôle vaut 1. Une paire de Bell est une superposition intriquée de deux états.
+- m=0,1,2,3 est l’indice de la cible marquée ; k est le nombre d’itérations de Grover. L’oracle inverse le signe de l’amplitude ciblée.
+
+**Hypothèses.**
+
+- Simulation exacte de deux qubits ; portes, oracle et mesure idéaux.
+- Un élément marqué ; aucun bruit et aucune mesure intermédiaire.
+
+**Techniques.** Multiplier des matrices dans l’ordre du circuit.; Conserver la somme des probabilités.; Interpréter une réflexion des amplitudes autour de leur moyenne.
+
+**Première expérience.**
+
+1. Préparer Bell et identifier les deux issues de mesure possibles.
+2. Choisir Grover avec k=0 puis k=1 : comparer la probabilité de la cible.
+3. Ajouter une seconde itération et expliquer pourquoi le succès diminue.
+
+**Sup.** vecteurs, probabilités et composition d’opérations.
+**Spé et filières.** Outils Spé : algèbre linéaire et produits tensoriels ; circuits quantiques hors du socle MP/PC.
+**Prolongements.** Complexité en nombre de requêtes, construction d’un oracle et processeurs quantiques.
+**Résultat attendu.** Des amplitudes suivies jusqu’à la mesure, sans assimiler une itération supplémentaire à un progrès garanti.
+
 ## Exercices corrigés
 
 ### 1 · Normaliser le cube
 
-Normaliser sin(πx/L)sin(πy/L)sin(πz/L) dans le cube. Donner son énergie et ses unités.
+L est le côté en m ; m est la masse et ℏ la constante de Planck réduite. Normaliser sin(πx/L)sin(πy/L)sin(πz/L) dans le cube. Donner son énergie et ses unités.
 
 **Correction.** Chaque intégrale de sin² vaut L/2. Le facteur de normalisation est donc √(8/L³). La fonction d’onde a l’unité m⁻³ᐟ². Le fondamental a E=3π²ℏ²/(2mL²). Pour un électron avec L=1 nm, E≈1,13 eV. Doubler L donne E/4.
 
 ### 2 · Dégénérescence : ce qu’on compte
 
-Donner la dégénérescence spatiale des niveaux 6E₀ et 9E₀ aux parois. Que devient celle-ci si les trois longueurs sont différentes ?
+E₀=π²ℏ²/(2mL²) est l’échelle d’énergie ; m est la masse et L le côté. Donner la dégénérescence spatiale des niveaux 6E₀ et 9E₀ aux parois. Que devient celle-ci si les trois longueurs sont différentes ?
 
 **Correction.** 6=4+1+1 : trois permutations de (2,1,1), donc g=3. 9=4+4+1 : trois permutations de (2,2,1), donc g=3. On ne compte pas le spin. Pour des côtés Lx,Ly,Lz, E=π²ℏ²(nx²/Lx²+ny²/Ly²+nz²/Lz²)/(2m). Des longueurs différentes lèvent en général les dégénérescences de permutation ; des coïncidences accidentelles restent possibles.
 
@@ -330,49 +620,49 @@ Pourquoi ne pas imposer ψ′(0)=ψ′(L) dans le puits infini ? Comparer le fon
 
 ### 4 · Une densité qui bat, une énergie constante
 
-Dans la boîte aux parois, superposer à poids égaux (1,1,1) et (2,1,1). Donner l’énergie moyenne et la période de la densité.
+Les triplets sont les indices des deux modes ; E₀=π²ℏ²/(2mL²). Dans la boîte aux parois, superposer à poids égaux (1,1,1) et (2,1,1). Donner l’énergie moyenne et la période de la densité.
 
 **Correction.** Les énergies valent 3E₀ et 6E₀. L’énergie moyenne est 9E₀/2, indépendante du temps. Le terme croisé oscille à 3E₀/ℏ : T=2πℏ/(3E₀), soit 2π/3 en temps réduit τ. Le terme croisé s’annule après intégration sur tout le cube, ce qui conserve la normalisation.
 
 ### 5 · Une gaussienne minimale
 
-Pour ψ=(2πσ²)⁻¹ᐟ⁴exp[−x²/(4σ²)+ip₀x/ℏ], calculer les deux écarts types et leur produit.
+σ est une longueur, p₀ l’impulsion moyenne et ℏ la constante de Planck réduite. Pour ψ=(2πσ²)⁻¹ᐟ⁴exp[−x²/(4σ²)+ip₀x/ℏ], calculer les deux écarts types et leur produit.
 
 **Correction.** |ψ|² est une gaussienne de variance σ². La transformée de Fourier est une gaussienne centrée en p₀, de variance ℏ²/(4σ²). Donc Δx=σ, Δp=ℏ/(2σ), et ΔxΔp=ℏ/2. p₀ déplace la moyenne sans changer les dispersions. Une phase quadratique non nulle ajoute une covariance et augmente généralement ce produit.
 
 ### 6 · La largeur d’une fente est-elle un écart type ?
 
-Une fente rectangulaire de largeur a produit [sin u/u]², avec u=πa sinθ/λ et la limite 1 en u=0. Donner l’échelle du premier zéro et expliquer pourquoi Δp≈ℏ/a n’est pas ici un calcul exact d’écart type.
+θ est l’angle à la normale et λ la longueur d’onde. Une fente rectangulaire de largeur a produit [sin u/u]², avec u=πa sinθ/λ et la limite 1 en u=0. Donner l’échelle du premier zéro et expliquer pourquoi Δp≈ℏ/a n’est pas ici un calcul exact d’écart type.
 
 **Correction.** Le premier zéro vérifie |sinθ|=λ/a. Aux petits angles θ≈λ/a, si ce rapport est petit. La densité d’impulsion du profil rectangulaire possède une enveloppe en 1/p² : l’intégrale de p²|ψ̃(p)|² diverge. Δp est donc infini pour cette fente idéale. La largeur du lobe central est un indicateur différent ; une ouverture gaussienne permet un calcul d’écarts types finis.
 
 ### 7 · Heisenberg donne exactement le fondamental harmonique
 
-Minimiser ℏ²/(8mu)+mω²u/2, u>0. Quand la borne sur l’énergie est-elle atteinte ?
+m est la masse, ω la pulsation et u=(Δx)² la variance de position. Minimiser ℏ²/(8mu)+mω²u/2, u>0. Quand la borne sur l’énergie est-elle atteinte ?
 
 **Correction.** La dérivée vaut −ℏ²/(8mu²)+mω²/2. Elle s’annule en u=ℏ/(2mω), et la valeur est ℏω/2. Pour atteindre la borne, les moyennes x et p doivent être nulles et l’inégalité d’Heisenberg saturée avec la largeur optimale. La gaussienne du fondamental satisfait ces conditions ; ici la borne est exacte.
 
 ### 8 · Hydrogène : ordre de grandeur et preuve
 
-Minimiser E(r)=ℏ²/(2mr²)−C/r, avec C=e²/(4πε₀). Peut-on appeler r* la moyenne radiale exacte du fondamental ?
+m est la masse de l’électron, e la charge élémentaire et ε₀ la permittivité du vide. Minimiser E(r)=ℏ²/(2mr²)−C/r, avec C=e²/(4πε₀). Peut-on appeler r* la moyenne radiale exacte du fondamental ?
 
 **Correction.** E′=−ℏ²/(mr³)+C/r² donne r*=ℏ²/(mC)=a₀ et E*=−mC²/(2ℏ²). La relation p∼ℏ/r est une estimation : elle ne transforme pas cette minimisation en preuve issue de Heisenberg. Dans le fondamental coulombien exact, ψ∝e^{-r/a₀} et ⟨r⟩=3a₀/2. Le paramètre a₀ est l’échelle de décroissance, non cette moyenne. Une preuve variationnelle explicite avec ψ_a distingue correctement les deux démarches.
 
 ### 9 · La transmission n’est pas |t|²
 
-Une marche vérifie V₀=3E/4. Calculer r, t, R et T pour une onde incidente d’amplitude 1.
+E est l’énergie incidente ; r,t sont les amplitudes réfléchie et transmise, R,T les rapports de courants. Une marche vérifie V₀=3E/4. Calculer r, t, R et T pour une onde incidente d’amplitude 1.
 
 **Correction.** k₂=k₁/2. Les raccordements donnent r=1/3 et t=4/3. R=1/9. Le courant transmis donne T=(k₂/k₁)|t|²=(1/2)(16/9)=8/9. R+T=1 ; |t|²=16/9 n’est pas une probabilité de transmission.
 
 ### 10 · Évanescent ne veut pas dire transmis
 
-Pourquoi une marche semi-infinie avec E<V₀ peut-elle avoir |ψ|² non nul à droite tout en ayant T=0 ?
+E est l’énergie incidente, V₀ la hauteur de marche et ψ la fonction d’onde. Pourquoi une marche semi-infinie avec E<V₀ peut-elle avoir |ψ|² non nul à droite tout en ayant T=0 ?
 
 **Correction.** La solution bornée à droite est Ce^{-κx}. Sa dérivée est −κ fois elle-même, donc ψ*ψ′ est réel et j=(ℏ/m)Im(ψ*ψ′)=0. Il existe une pénétration de la densité, mais aucun flux net vers +∞. La conservation du courant impose R=1. Une barrière finie est différente, car les deux exponentielles sont présentes et un courant transmis peut exister après elle.
 
 ### 11 · Tunnel : un cas simplifié
 
-Pour une barrière V₀=2E, simplifier T et déterminer son comportement lorsque κa est grand.
+E est l’énergie incidente, a la largeur et κ=√(2m(V₀−E))/ℏ le taux de décroissance. Pour une barrière V₀=2E, simplifier T et déterminer son comportement lorsque κa est grand.
 
 **Correction.** V₀²/[4E(V₀−E)]=1, donc T=1/(1+sinh²κa)=sech²κa. Pour κa≫1, coshκa≈e^{κa}/2 et T≈4e^{-2κa}. La formule exponentielle est asymptotique : à a=0 elle donnerait 4, alors que la formule exacte donne 1.
 
@@ -384,73 +674,73 @@ Dans les unités ℏ=m=1, avec V₀=1 et a=π/2, trouver la première énergie E
 
 ### 13 · Construire le premier état excité
 
-À partir de ψ₀, utiliser a† pour obtenir ψ₁ et donner E₁, la parité et ΔxΔp.
+ψ₀ est le fondamental ; a† élève d’un niveau, E₁ est l’énergie du premier excité et Δx,Δp sont les écarts types. À partir de ψ₀, utiliser a† pour obtenir ψ₁ et donner E₁, la parité et ΔxΔp.
 
 **Correction.** Avec u=x/ℓ, a†=(u−∂u)/√2. Sur e^{-u²/2}, a† donne √2u fois le même profil : ψ₁=√2(x/ℓ)ψ₀. Son énergie est 3ℏω/2 et sa parité impaire. Δx=ℓ√(3/2), Δp=√(mℏω)√(3/2), donc ΔxΔp=3ℏ/2, supérieur à la borne minimale.
 
 ### 14 · Un état qui suit le mouvement classique
 
-Pour un état cohérent α(0)=2 réel, donner ⟨x(t)⟩, ⟨p(t)⟩, l’énergie et la variance du nombre d’excitations.
+α définit l’état cohérent, ω la pulsation, m la masse et ℓ=√(ℏ/(mω)) la longueur de l’oscillateur. Pour un état cohérent α(0)=2 réel, donner ⟨x(t)⟩, ⟨p(t)⟩, l’énergie et la variance du nombre d’excitations.
 
 **Correction.** α(t)=2e^{-iωt}. Donc ⟨x⟩=2√2ℓcosωt et ⟨p⟩=−2√(2mℏω)sinωt. L’énergie moyenne vaut (4+1/2)ℏω. La distribution de n est de Poisson de moyenne 4 et de variance 4. Les dispersions x et p restent celles du fondamental. Ce n’est pas un état stationnaire d’énergie.
 
 ### 15 · Même corrélation, états différents
 
-Comparer Φ⁺ et ρ_classique=(|00><00|+|11><11|)/2 après mesure en Z, puis en X sur les deux qubits.
+Φ⁺=(|00⟩+|11⟩)/√2 ; X,Z sont les matrices de Pauli. Comparer Φ⁺ et ρ_classique=(|00><00|+|11><11|)/2 après mesure en Z, puis en X sur les deux qubits.
 
 **Correction.** En Z, les deux états donnent 00 ou 11 à probabilités 1/2. En X, Φ⁺=(|++>+|-->)/√2 : mêmes résultats à probabilités 1/2 et corrélation +1. Pour ρ_classique, chaque composante 00 ou 11 donne quatre couples X équiprobables ; la corrélation est 0. Une seule base de mesure ne suffit donc pas à distinguer cette intrication d’une corrélation classique.
 
 ### 16 · Le calcul de CHSH
 
-Pour Φ⁺, prendre a=0°, a′=45°, b=22,5°, b′=−22,5°. Calculer S. Que devient S pour v=0,6 dans la famille de Werner ?
+S=E(a,b)+E(a,b′)+E(a′,b)−E(a′,b′), où E est la corrélation de résultats ±1 ; v est le poids de Bell. Pour Φ⁺, prendre a=0°, a′=45°, b=22,5°, b′=−22,5°. Calculer S. Que devient S pour v=0,6 dans la famille de Werner ?
 
 **Correction.** Les trois premiers termes E valent √2/2 et le quatrième −√2/2. Donc S=2√2. Pour Werner, chaque corrélation est multipliée par v : à v=0,6, S=1,2√2≈1,697<2. Pourtant cette famille est intriquée pour v>1/3. Absence de violation de CHSH ne signifie pas absence d’intrication.
 
 ### 17 · Une fréquence Josephson
 
-Une jonction idéale est maintenue à 2 µV. Calculer la fréquence du courant et expliquer ce qui se passe si V=0 mais δ₀=π/6.
+V est la tension et δ₀ la phase initiale ; le quantum de charge est 2e. Une jonction idéale est maintenue à 2 µV. Calculer la fréquence du courant et expliquer ce qui se passe si V=0 mais δ₀=π/6.
 
 **Correction.** f_J=2e|V|/h≈967,2 MHz. Le courant vaut I_csin(δ₀+2eVt/ℏ). À V=0, la phase est constante et I=I_c/2, un supercourant continu. I_c ne devient pas I_cδ₀ : c’est le courant qui se linéarise en I_cδ₀ pour une petite phase.
 
 ### 18 · Pourquoi les deux jonctions doivent-elles se ressembler ?
 
-Un SQUID idéal possède I₁=12 µA et I₂=8 µA. Donner les maxima et minima du courant critique, ainsi que leur flux.
+I₁,I₂ sont les courants critiques des jonctions ; Φ₀=h/(2e) est le quantum de flux. Un SQUID idéal possède I₁=12 µA et I₂=8 µA. Donner les maxima et minima du courant critique, ainsi que leur flux.
 
 **Correction.** I_eff=√[I₁²+I₂²+2I₁I₂cos(2πΦ/Φ₀)]. Aux entiers Φ/Φ₀, le maximum vaut I₁+I₂=20 µA. Aux demi-entiers, le minimum vaut |I₁−I₂|=4 µA. Il ne s’annule pas. Une boucle d’inductance négligeable et des relations sinusoïdales sont les hypothèses de cette formule.
 
 ### 19 · Pourquoi ℏω₀I ne décrit pas la RMN
 
-Montrer qu’un Hamiltonien H₀=ℏω₀I ne produit aucun écart entre les deux niveaux. Quel Hamiltonien utiliser pour une séparation ℏω₀ ?
+I est l’identité 2×2, ω₀ une pulsation et H₀ l’opérateur énergie. Montrer qu’un Hamiltonien H₀=ℏω₀I ne produit aucun écart entre les deux niveaux. Quel Hamiltonien utiliser pour une séparation ℏω₀ ?
 
 **Correction.** L’évolution est U=e^{-iω₀t}I : chaque amplitude reçoit la même phase globale. Les deux valeurs propres sont égales, donc il n’existe aucune pulsation de transition ω₀. Dans une base où l’ordre des niveaux est explicite, prendre H₀=(ℏω₀/2)Z, de valeurs propres ±ℏω₀/2. En RMN physique, H_Z=−γS·B fixe l’ordre par le signe de γ et la base.
 
 ### 20 · Impulsions π et π/2
 
-À résonance, avec Ω=1 en unités réduites, donner l’état après t=π/2 puis t=π, en partant de |0>. Que change un désaccord Δ=Ω ?
+Ω est le couplage et Δ le désaccord dans le repère tournant. À résonance, avec Ω=1 en unités réduites, donner l’état après t=π/2 puis t=π, en partant de |0>. Que change un désaccord Δ=Ω ?
 
 **Correction.** U=cos(t/2)I−isin(t/2)X. À π/2 : (|0>−i|1>)/√2 ; à π : −i|1>, équivalent à |1> à phase globale près. Si Δ=Ω, la probabilité maximale est 1/2 et la pulsation √2Ω : aucune durée n’inverse totalement la population dans ce modèle constant.
 
 ### 21 · Deux amplitudes de champ, deux durées
 
-Pour un proton, B₀=1 T et B₁=10 µT circulaire, estimer f_L et t_π. Comparer à un champ linéaire de même amplitude crête.
+γ/(2π)≈42,577 MHz·T⁻¹ pour le proton ; f_L est sa fréquence de Larmor et t_π la durée d’une impulsion π. Pour un proton, B₀=1 T et B₁=10 µT circulaire, estimer f_L et t_π. Comparer à un champ linéaire de même amplitude crête.
 
 **Correction.** f_L≈42,58 MHz. Ω=|γ|B₁≈2π×425,8 rad/s, donc t_π=π/Ω≈1,17 ms. Un champ linéaire de même amplitude crête contient une composante co-rotative de 5 µT : dans l’approximation tournante, Ω est divisé par 2 et t_π≈2,35 ms. Toujours préciser si B₁ est l’amplitude circulaire ou l’amplitude crête linéaire.
 
 ### 22 · La phase qu’une mesure Z ne voit pas
 
-Comparer |+>=(|0>+|1>)/√2 et |+i>=(|0>+i|1>)/√2 en mesures Z, X et Y.
+X,Y,Z sont les matrices de Pauli et i²=−1. Comparer |+>=(|0>+|1>)/√2 et |+i>=(|0>+i|1>)/√2 en mesures Z, X et Y.
 
 **Correction.** Les deux donnent P_Z(0)=P_Z(1)=1/2. Le vecteur de Bloch de |+> est (1,0,0) : X donne +1 sûrement et Y donne ±1 équiprobables. Celui de |+i> est (0,1,0) : Y donne +1 sûrement et X donne ±1 équiprobables. Une phase relative est observable après choix d’une base adaptée ; une phase globale ne l’est pas.
 
 ### 23 · Préparer Bell avec deux portes
 
-Appliquer H sur le premier qubit de |00>, puis CNOT. Pourquoi mesurer entre les deux opérations change-t-il l’état préparé ?
+H est la porte de Hadamard ; CNOT inverse le second qubit si le premier vaut 1. Appliquer H sur le premier qubit de |00>, puis CNOT. Pourquoi mesurer entre les deux opérations change-t-il l’état préparé ?
 
 **Correction.** H⊗I produit (|00>+|10>)/√2, puis CNOT produit (|00>+|11>)/√2. Une mesure Z du premier qubit entre les portes, dont on oublie le résultat, prépare un mélange de 00 et 10. CNOT le transforme en mélange de 00 et 11 : mêmes probabilités Z que Bell, mais cohérences nulles et corrélation XX nulle.
 
 ### 24 · Grover : une itération suffit, deux nuisent
 
-Pour N=4 et un état marqué, calculer les amplitudes après une itération de Grover, puis la probabilité de succès après deux itérations.
+N est le nombre d’états de base ; l’oracle inverse le signe de l’amplitude de l’état marqué. Pour N=4 et un état marqué, calculer les amplitudes après une itération de Grover, puis la probabilité de succès après deux itérations.
 
 **Correction.** Au départ toutes les amplitudes valent 1/2. L’oracle rend l’amplitude marquée −1/2 ; la moyenne devient 1/4. Le diffuseur a→2×1/4−a donne 1 pour l’état marqué et 0 pour les trois autres. Après deux itérations, P=sin²(5π/6)=1/4 : continuer fait dépasser la cible. Le gain concerne les appels cohérents à l’oracle, qui est ici explicitement simulé.
 

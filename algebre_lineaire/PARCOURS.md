@@ -1,5 +1,7 @@
 # Algèbre et algèbre linéaire : dix missions de CPGE
 
+**Repère de programme.** Le socle de sup est le calcul sur les espaces vectoriels, les systèmes et les matrices. La réduction et les polynômes annulateurs se réinvestissent en spé selon la filière ; le polynôme minimal est notamment un outil du programme MP. Jordan, Frobenius, Dunford, Lie et le pfaffien sont étudiés ici comme prolongements accompagnés. Les objets et les hypothèses sont définis dans chaque guide avant les manipulations.
+
 Le parcours part des TP du recueil personnel, puis construit des liens entre arithmétique, géométrie, réduction, représentations et applications. Chaque séance peut durer 1 h 30 à 2 h ; les prolongements se choisissent selon la filière et le temps disponible. Les leçons SUP constituent l'entrée dans l'atelier ; les critères de réduction demandent les acquis de SPÉ. Frobenius, Jordan détaillé, Lie, représentations, formes alternées, pfaffien et théorie spectrale des graphes sont des extensions guidées ; leur étude ne constitue pas une déclaration de programme commune à toutes les CPGE.
 
 Les **17 laboratoires** manipulent des objets de tailles variées : matrices denses 4×4, réductions 6×6, polynômes à sept coefficients, oscillateurs en dimension 4 ou 6, chaînes de Markov à six états, Laplaciens 8×8. Les petits contre-exemples sont conservés pour les distinctions qu'ils démontrent. Chaque leçon possède sa liste d'objets et variables ; les coefficients d'un polynôme, des probabilités, des impulsions et des températures ne sont pas interchangeables.

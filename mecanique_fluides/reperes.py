@@ -49,7 +49,7 @@ LAB_GUIDES = {
     "blasius": {
         "purpose": "Relier l'épaisseur d'une couche limite laminaire sur une plaque au frottement local. Voir pourquoi une viscosité faible reste décisive près d'une paroi adhérente.",
         "techniques": ["Équilibrer transport suivant x et diffusion suivant y.", "Employer la variable ξ=y√(U/(νx)).", "Distinguer coefficient local et coefficient moyen par intégration."],
-        "first_steps": ["Prédire l'effet de doubler la distance au bord d'attaque sur l'épaisseur et la contrainte pariétale, à U et ν fixés.", "Comparer les profils réduits, l'épaisseur à 99 % et le frottement ; repérer l'effondrement des profils en variable ξ.", "Retrouver δ99≈4,91√(νx/U) et C_f,x≈0,664/√Re_x, puis intégrer pour expliquer le facteur deux du coefficient moyen."],
+        "first_steps": ["Prédire l'effet de doubler la distance au bord d'attaque sur l'épaisseur et la contrainte pariétale, à U et ν fixés.", "Comparer les profils réduits, l'épaisseur à 99 % et le frottement ; repérer la superposition des profils en variable ξ.", "Retrouver δ99≈4,91√(νx/U) et C_f,x≈0,664/√Re_x, puis intégrer pour expliquer le facteur deux du coefficient moyen."],
         "levels": {"sup": "Pratiquer analyse dimensionnelle, racines et contrôle des unités sur les profils.", "spe": "Mobiliser dérivation, équation différentielle non linéaire et changement de variables dans une extension guidée.", "beyond": "Blasius suppose plaque plane, gradient de pression extérieur nul et couche laminaire ; transition et décollement demandent un autre modèle."},
         "lesson_numbers": [7, 11, 12],
         "expected": "Reconnaître la convention de normalisation f'''+ff''/2=0 et distinguer C_f local, moyen et facteur de frottement d'une conduite.",
@@ -151,3 +151,207 @@ LAB_GUIDES = {
         "expected": "Calculer une force avec sa référence de pression, compter les interfaces et distinguer équilibre de translation et stabilité de rotation.",
     },
 }
+
+
+# Grandeurs réglables et cadre de chaque expérience.
+LAB_OBJECTS = {'cinematique': {'objects': ['La position r et la vitesse v sont en m et m·s⁻¹ ; le temps t est en s.',
+                             'a règle l’étirement, Ω la rotation et U la translation. L est la '
+                             'demi-largeur de la fenêtre en m.',
+                             'Une ligne de courant est tangente au champ à un instant ; une trajectoire '
+                             'suit le même point au cours du temps.'],
+                 'assumptions': ['Champ plan permanent, incompressible ; coefficients uniformes.',
+                                 'Le carré représente un petit élément matériel transporté par ce '
+                                 'champ.']},
+ 'newtonien': {'objects': ['η est une viscosité dynamique : 1 mPa·s = 10⁻³ Pa·s ; ρ est une masse '
+                           'volumique.',
+                           'Les taux de cisaillement γ̇, d’extension a et de rotation Ω sont en s⁻¹.',
+                           'D est la partie symétrique du gradient de vitesse ; τ est la contrainte '
+                           'visqueuse en Pa. Le produit D:D désigne la somme des carrés de ses '
+                           'coefficients.'],
+               'assumptions': ['Fluide newtonien incompressible, de viscosité uniforme.',
+                               'On compare des mouvements plans prescrits, pas un écoulement calculé '
+                               'avec des parois.']},
+ 'couette': {'objects': ['h est la distance entre les plaques ; y va de la plaque basse à la plaque '
+                         'haute.',
+                         'U₀ et U₁ sont les vitesses des plaques ; G=−∂p/∂x est en Pa·m⁻¹ et η en '
+                         'mPa·s.',
+                         'u(y) est la vitesse longitudinale. Le débit affiché est un débit par unité de '
+                         'largeur, en m²·s⁻¹.'],
+             'assumptions': ['Fluide newtonien incompressible ; écoulement permanent, parallèle et '
+                             'développé.',
+                             'Adhérence aux deux plaques ; effets d’entrée et de bord négligés.']},
+ 'poiseuille': {'objects': ['R et L définissent un tube circulaire ; r est la distance à l’axe.',
+                            'Δp est la pression d’entrée moins celle de sortie ; η est en mPa·s et ρ en '
+                            'kg·m⁻³.',
+                            'Q est le débit volumique en m³·s⁻¹ ; la vitesse moyenne sert à calculer le '
+                            'nombre de Reynolds avec le diamètre 2R.'],
+                'assumptions': ['Fluide newtonien incompressible, régime laminaire permanent et '
+                                'développé.',
+                                'Adhérence à la paroi ; la validité laminaire doit être contrôlée après '
+                                'chaque réglage.']},
+ 'diffusion': {'objects': ['y mesure la distance à la paroi ; h est réglé en mm.',
+                           'ν mesure la diffusion de quantité de mouvement : 1 mm²·s⁻¹ = 10⁻⁶ m²·s⁻¹.',
+                           'u(y,t) est la vitesse parallèle ; erfc est la fonction d’erreur '
+                           'complémentaire. Dans le canal, les deux parois sont séparées par h.'],
+               'assumptions': ['Fluide newtonien, incompressible, viscosité uniforme ; aucun gradient '
+                               'de pression.',
+                               'Une plaque démarre idéalement à t=0 ; dans le canal, la seconde plaque '
+                               'reste fixe.']},
+ 'blasius': {'objects': ['x suit la plaque et y lui est perpendiculaire ; U∞ est la vitesse loin de la '
+                         'plaque.',
+                         'ν est la viscosité cinématique convertie en m²·s⁻¹ ; ρ est la masse volumique en kg·m⁻³. Reₓ=U∞x/ν est sans dimension.',
+                         'δ₉₉ est la distance où la vitesse atteint 99 % de U∞ ; C_f,x est le '
+                         'coefficient de frottement local.'],
+             'assumptions': ['Écoulement plan permanent, laminaire et incompressible ; plaque plane '
+                             'avec adhérence.',
+                             'Vitesse extérieure constante et gradient de pression nul ; approximation '
+                             'de couche limite.']},
+ 'bernoulli': {'objects': ['Q est le débit volumique : 1 L·s⁻¹ = 10⁻³ m³·s⁻¹ ; D₁ et D₂ sont les '
+                           'diamètres.',
+                           'ρ est en kg·m⁻³, η en mPa·s, ε la rugosité en mm, L la longueur en m et '
+                           'z₂−z₁ la dénivellation.',
+                           'ΣK est le coefficient des pertes singulières ; α corrige l’énergie '
+                           'cinétique. Le rendement de pompe est un rapport sans dimension entre 0 et '
+                           '1.'],
+               'assumptions': ['Bilan permanent d’un liquide incompressible ; vitesse moyenne dans '
+                               'chaque section.',
+                               'Les pertes dépendent des corrélations indiquées ; le bilan idéal '
+                               's’obtient en les annulant.']},
+ 'sphere': {'objects': ['R est le rayon ; U est la vitesse relative entre la sphère et le fluide.',
+                        'ρ et ρ_s sont les masses volumiques du fluide et du solide ; η est la '
+                        'viscosité dynamique.',
+                        'La traînée est une force en N. Le nombre de Reynolds est calculé avec le '
+                        'diamètre 2R.'],
+            'assumptions': ['Sphère rigide isolée dans un fluide newtonien incompressible loin des '
+                            'parois.',
+                            'La loi de Stokes suppose un nombre de Reynolds petit devant 1 ; le '
+                            'transitoire est une estimation quasi stationnaire.']},
+ 'vortex': {'objects': ['r est la distance à l’axe et v_θ la vitesse tangentielle en m·s⁻¹.',
+                        'Le cœur de rayon R tourne à Ω ; Γ est la circulation en m²·s⁻¹, égale à 2πΩR².',
+                        'La pression est comparée à sa valeur loin du cœur ; la vorticité est le '
+                        'rotationnel de la vitesse, en s⁻¹.'],
+            'assumptions': ['Vortex de Rankine plan, permanent et incompressible.',
+                            'Modèle prescrit sans viscosité ; vitesse et pression sont raccordées au '
+                            'bord du cœur.']},
+ 'magnus': {'objects': ['ρ est la masse volumique en kg·m⁻³ ; la force affichée est une force par longueur du '
+                        'cylindre, en N·m⁻¹.',
+                        'Γ est une circulation imposée, pas une vitesse de rotation de paroi.',
+                        'La normale extérieure au cylindre fixe le signe de l’intégrale de pression.'],
+            'assumptions': ['Fluide idéal incompressible, écoulement plan permanent autour d’un '
+                            'cylindre.',
+                            'Le modèle impose l’imperméabilité, mais ne décrit ni l’adhérence visqueuse '
+                            'ni la sélection réelle de Γ.']},
+ 'houle': {'objects': ['ρ est la masse volumique en kg·m⁻³ ; k=2π/λ est le nombre d’onde en m⁻¹ et ω la pulsation '
+                       'en rad·s⁻¹.',
+                       'La vitesse de phase suit les crêtes ; la vitesse de groupe suit l’enveloppe '
+                       'd’un paquet étroit.',
+                       'Les trajectoires dessinées sont les orbites de premier ordre autour de la '
+                       'position au repos.'],
+           'assumptions': ['Fluide idéal incompressible et fond horizontal ; surface libre de faible '
+                           'amplitude.',
+                           'Les critères ka≪1 et a/h≪1 doivent être contrôlés ; les corrections non '
+                           'linéaires ne sont pas simulées.']},
+ 'acoustique': {'objects': ['L’impédance Z=ρc est en Pa·s·m⁻¹ ; elle relie surpression et vitesse '
+                            'particulaire.',
+                            'R et T sont des rapports d’intensités ; les coefficients de pression sont '
+                            'des rapports d’amplitudes.',
+                            'La pression réglée est une amplitude crête ; l’intensité moyenne est en '
+                            'W·m⁻².'],
+                'assumptions': ['Ondes planes de faible amplitude ; deux fluides homogènes, sans '
+                                'pertes.',
+                                'Incidence normale sur une interface plane ; pression et vitesse '
+                                'normale sont continues.']},
+ 'conduit': {'objects': ['c est la célérité en m·s⁻¹ ; les indices m,n sont des entiers positifs ou '
+                         'nuls.',
+                         'Le nombre d’onde axial k_z détermine la phase suivant l’axe ; sous la '
+                         'coupure, il devient imaginaire.',
+                         'Une onde évanescente décroît spatialement ; elle ne possède pas le même '
+                         'transport qu’un mode propagatif.'],
+             'assumptions': ['Conduit rectangulaire, parois rigides, fluide homogène ; pertes '
+                             'négligées.',
+                             'Un seul mode transverse est choisi ; la vitesse normale s’annule aux '
+                             'parois.']},
+ 'diffraction': {'objects': ['λ=c/f est la longueur d’onde ; θ est l’angle par rapport à la normale à '
+                             'la fente.',
+                             'Le diagramme représente une intensité relative, normalisée au maximum '
+                             'central.',
+                             'La fonction sinc est définie par sinc(x)=sin(x)/x, avec sinc(0)=1.'],
+                 'assumptions': ['Fente uniformément excitée ; modèle scalaire et observation en champ '
+                                 'lointain.',
+                                 'L’approximation des petits angles n’est utilisée que lorsqu’elle est '
+                                 'annoncée.']},
+ 'thermo': {'objects': ['γ=Cp/Cv est le rapport des capacités thermiques ; M est convertie en kg·mol⁻¹.',
+                        'La diffusivité thermique D_th est réglée en mm²·s⁻¹ ; la fréquence f est en '
+                        'Hz.',
+                        'χ_T et χ_s sont les compressibilités isotherme et isentropique, en Pa⁻¹.'],
+            'assumptions': ['Gaz parfait autour d’un équilibre uniforme ; petites perturbations.',
+                            'Les échelles de diffusion comparent les régimes thermiques ; elles ne '
+                            'remplacent pas un calcul complet des pertes acoustiques.']},
+ 'mhd': {'objects': ['ρ est la masse volumique en kg·m⁻³. Le courant j est en A·m⁻² ; la force j×B est une force par '
+                     'volume.',
+                     'Pour Hartmann, h est la demi-hauteur du canal en mm et G le gradient moteur en '
+                     'Pa·m⁻¹.',
+                     'Pour Alfvén, λ et le déplacement sont en m ; μ₀ est la perméabilité du vide.'],
+         'assumptions': ['Milieu conducteur homogène, modèle non relativiste ; conditions électriques '
+                         'de Hartmann déclarées dans le cours.',
+                         'L’onde d’Alfvén est une perturbation linéaire autour d’un champ uniforme ; le '
+                         'modèle ne simule pas une dynamo.']},
+ 'navier': {'objects': ['t est le temps en s et ρ la masse volumique en kg·m⁻³ ; k=2π/L est le nombre d’onde.',
+                        'La vitesse, la pression et l’énergie sont calculées pour la solution de '
+                        'Taylor–Green.',
+                        'La dissipation est une puissance en W ; elle mesure la diminution d’énergie '
+                        'cinétique.'],
+            'assumptions': ['Fluide incompressible newtonien ; domaine plan périodique, sans force '
+                            'extérieure.',
+                            'Cette famille exacte régulière ne résout pas le problème général '
+                            'tridimensionnel de Navier–Stokes.']},
+ 'hydrostatique': {'objects': ['Dans le liquide, la profondeur est positive vers le bas ; dans '
+                               'l’atmosphère, l’altitude est positive vers le haut.',
+                               'p₀ est une pression absolue ; une différence de pression possède la '
+                               'même unité, Pa.',
+                               'La poussée d’Archimède dépend du volume de fluide déplacé ; g est '
+                               'l’accélération de pesanteur.'],
+                   'assumptions': ['Fluide au repos dans une pesanteur uniforme.',
+                                   'Liquide incompressible ou atmosphère idéale isotherme, selon le '
+                                   'mode choisi.']}}
+for _lab, _definitions in LAB_OBJECTS.items():
+    LAB_GUIDES[_lab].update(_definitions)
+
+LAB_LEVELS = {'cinematique': 'PC §4.3 : champ eulérien, lignes de courant numériques et dérivée particulaire. Le '
+                'suivi détaillé d’un élément matériel est un prolongement.',
+ 'newtonien': 'PC §4.3 et parcours PSI : cisaillement newtonien et bilans. La décomposition tensorielle '
+              'générale est un prolongement accompagné.',
+ 'couette': 'Outils PC/PSI : viscosité, adhérence, équations différentielles et puissances. La '
+            'dérivation locale depuis Navier–Stokes est fournie comme prolongement.',
+ 'poiseuille': 'Outils PC/PSI : bilans, viscosité et nombres de Reynolds. La résolution radiale exacte '
+               'et les réseaux prolongent ces techniques.',
+ 'diffusion': 'MP/PC : équation de diffusion et temps caractéristique ; application visqueuse guidée. '
+              'La résolution de Navier–Stokes reste un prolongement selon la filière.',
+ 'blasius': 'Techniques Spé : changement de variables, équation différentielle et frottement. La '
+            'théorie de Blasius est un prolongement spécialisé.',
+ 'bernoulli': 'PC §4.3 : Bernoulli permanent incompressible. Pompes et pertes prolongent les bilans '
+              'énergétiques des systèmes ouverts MP/PC/PSI.',
+ 'sphere': 'PC §4.3 : nombre de Reynolds et choix d’une traînée linéaire ou quadratique. La '
+           'démonstration complète du champ de Stokes est un prolongement.',
+ 'vortex': 'PC §4.3 : rotationnel et potentiel des vitesses ; calculs de Rankine et topologie du '
+           'domaine comme prolongements.',
+ 'magnus': 'PC §4.3 : vitesse, pression et Bernoulli. Doublet, fonction de courant et sélection de la '
+           'circulation sont des prolongements.',
+ 'houle': 'Techniques Spé : conditions aux limites, dispersion, vitesse de phase et de groupe. La houle '
+          'gravitaire-capillaire est un prolongement accompagné.',
+ 'acoustique': 'PC §6.1.2 et §6.3 : linéarisation, onde sonore, impédance et interface ; bilans et '
+               'amplitudes complexes à réinvestir.',
+ 'conduit': 'PC : acoustique et conditions aux limites. Modes transverses et fréquence de coupure '
+            'prolongent l’étude des ondes planes.',
+ 'diffraction': 'Techniques MP/PC : superposition d’ondes et différence de phase. Le modèle acoustique '
+                'de fente réinvestit la diffraction optique.',
+ 'thermo': 'MP/PC : gaz parfait, isentropique, compressibilité et diffusion thermique ; lien explicite '
+           'avec la propagation acoustique PC.',
+ 'mhd': 'Outils MP/PC/PSI : Lorentz, Ohm, induction et bilans. Hartmann et Alfvén sont des '
+        'prolongements interdisciplinaires.',
+ 'navier': 'Outils Spé : champs, équation différentielle et bilan dissipatif. Navier–Stokes et '
+           'Taylor–Green sont ici des prolongements, notamment en PSI.',
+ 'hydrostatique': 'Acquis de Sup : équilibre, pression, poussée d’Archimède et gaz parfait ; '
+                  'réinvestissement dans les bilans de Spé.'}
+for _lab, _level in LAB_LEVELS.items():
+    LAB_GUIDES[_lab]["levels"]["spe"] = _level

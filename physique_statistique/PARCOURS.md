@@ -79,3 +79,72 @@ Les expressions « Sup », « Spé » et « extension » décrivent une progress
 Préparer cinq minutes sur un laboratoire : hypothèses, unités, prédiction, contrôle numérique et limite de validité. Question complémentaire au choix : « Pourquoi une pression subsiste à T=0 ? », « Pourquoi le faisceau effusif est-il plus énergétique ? », « Quel signe impose le deuxième principe ? », « Que mesure une occupation ? », « Pourquoi un maximum change-t-il avec la variable ? », « Quand une simulation finie permet-elle d’approcher un résultat infini ? ».
 
 Une bonne réponse relie la formule à une observable, sait en donner une justification et évite de conclure au-delà du modèle annoncé.
+
+<!-- reperes-laboratoires -->
+## Préparer chaque expérience
+
+Les repères Sup et Spé indiquent les techniques utilisées. Les indications MP/PC et les prolongements précisent la place de chaque sujet.
+
+### maxwell
+
+Passer des vitesses moléculaires à la pression, puis comparer une fuite et un échange entre deux enceintes.
+
+**Spé et filières.** MP §7 : lien microscopique–macroscopique ; distributions et effusion comme approfondissements guidés.
+
+**Prolongements.** Transpiration thermique et fuite sans thermostat : prolongements du modèle de gaz dilué.
+
+### canonique
+
+Utiliser les poids de Boltzmann pour relier populations, énergie moyenne et capacité thermique.
+
+**Spé et filières.** MP §7.1–7.2 : Boltzmann, niveaux discrets, fluctuations et système à deux niveaux.
+
+**Prolongements.** Dégénérescence et comparaison des ensembles statistiques : approfondissements ; pas un socle commun à toutes les filières.
+
+### gaz
+
+Distinguer effet du confinement, troncature numérique des modes et limite classique du gaz.
+
+**Spé et filières.** MP §7.2–7.3 : particule confinée à température donnée et limite classique ; le cube prolonge la boîte 1D.
+
+**Prolongements.** Densité d’états et longueur d’onde thermique ; statistiques de particules identiques traitées séparément.
+
+### oscillateur
+
+Expliquer le gel des excitations et retrouver l’équipartition à température élevée.
+
+**Spé et filières.** MP §7.3 : équipartition et capacités thermiques ; la somme quantique approfondit ces techniques.
+
+**Prolongements.** Modèle d’Einstein et rotation ortho/para : prolongements guidés.
+
+### spins
+
+Relier les deux niveaux magnétiques à la saturation, à la loi de Curie et au maximum de capacité thermique.
+
+**Spé et filières.** MP §7.2 : application du système à deux niveaux ; aimantation comme prolongement.
+
+**Prolongements.** Interactions et transition ferromagnétique demandent un autre modèle, notamment Ising.
+
+### planck
+
+Lire un spectre par longueur d’onde et calculer la fraction de rayonnement dans une bande précisée.
+
+**Spé et filières.** Outils Spé : intégrales et changement de variable ; modèle statistique complet comme prolongement.
+
+**Prolongements.** Comptage des modes photoniques et photométrie pondérée par l’œil.
+
+### occupations
+
+Reconnaître le domaine où les statistiques quantiques s’approchent de Maxwell–Boltzmann et comparer Fermi et Bose.
+
+**Spé et filières.** Outils Spé : intégrales et contraintes ; Fermi/Bose sont des prolongements du socle statistique MP cité.
+
+**Prolongements.** Grand canonique, condensation et développement de Sommerfeld : approfondissements guidés.
+
+### ising
+
+Comparer comptage exact, simulation et limite infinie pour préciser ce que signifie un ordre magnétique.
+
+**Spé et filières.** Outils Spé : combinatoire et Boltzmann ; Ising constitue un prolongement du programme MP.
+
+**Prolongements.** Transition d’Onsager, limite thermodynamique et simulation Monte-Carlo corrélée.

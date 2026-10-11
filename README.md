@@ -3,6 +3,12 @@
 Des mathématiques, de la physique et de la chimie de **maths sup et maths spé** à expérimenter avec Python :
 cours, illustrations, manipulations et exercices corrigés.
 
+Pour aborder une expérience, commencer par son **but**, les **objets et paramètres**
+et ses **hypothèses**, puis suivre les premières manipulations proposées.
+Prévoir le résultat, observer et justifier avec le cours : les repères **sup / spé /
+au-delà** distinguent les techniques du programme des prolongements accompagnés.
+Les notations et, en physique, les unités sont expliquées avant les calculs.
+
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
 Seize ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
@@ -14,7 +20,7 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
-| 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Parcours](PREMIER-PARCOURS.md) |
+| 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Premier parcours](PREMIER-PARCOURS.md) · [TP guidés](rubik_groupes/PARCOURS.md) · [Cours](rubik_groupes/COURS.md) |
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
 | 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md) |
 | 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md) |

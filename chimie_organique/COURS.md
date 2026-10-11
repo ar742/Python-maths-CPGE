@@ -108,7 +108,7 @@ I⁻, Br⁻, Cl⁻, sulfonates : groupes partants usuels ; HO⁻ : mauvais dépa
 
 *Sup — PCSI* — laboratoire `stereo`.
 
-**Objets.** Un centre tétraédrique portant quatre groupes différents est stéréogène. Pour CIP, classer les atomes directement liés par numéro atomique, puis comparer les listes d’atomes du premier rang différent dans l’ordre décroissant. Une liaison multiple se traite avec des atomes dupliqués dans cette règle.
+**Objets.** Un centre tétraédrique portant quatre groupes différents est stéréogène. Les règles de Cahn–Ingold–Prelog (CIP) classent les substituants : comparer les atomes directement liés par numéro atomique, puis les listes d’atomes du premier rang différent dans l’ordre décroissant. Une liaison multiple se traite avec des atomes dupliqués dans cette règle.
 
 Acide lactique CH₃−CH(OH)−CO₂H : OH > CO₂H > CH₃ > H  
 Priorité 4 à l’arrière : 1→2→3 horaire = R, antihoraire = S  
@@ -204,7 +204,7 @@ C=O souvent 1650–1800 cm⁻¹ ; OH lié : bande large souvent 3200–3600 cm�
 
 *Sup — PCSI option PC* — laboratoire `rmn`.
 
-**Grandeurs.** Le déplacement chimique δ=(ν−νréf)/ν₀×10⁶ est en ppm ; J est une constante de couplage en Hz. Les intégrales de massifs, acquises quantitativement, sont proportionnelles au nombre de noyaux. Des protons chimiquement et magnétiquement équivalents ne se dédoublent pas entre eux dans le modèle usuel.
+**Grandeurs.** La résonance magnétique nucléaire (RMN) compare la fréquence ν du noyau étudié à celle νréf d’une référence ; ν₀ est la fréquence du spectromètre. Ces trois fréquences doivent être exprimées dans la même unité. Le déplacement chimique δ=(ν−νréf)/ν₀×10⁶ est en ppm ; J est une constante de couplage en Hz. Les intégrales de massifs, acquises quantitativement, sont proportionnelles au nombre de noyaux. Des protons chimiquement et magnétiquement équivalents ne se dédoublent pas entre eux dans le modèle usuel.
 
 Δν en Hz = Δδ en ppm × ν₀ en MHz  
 Premier ordre : Δν/J ≫ 1  
@@ -236,7 +236,7 @@ Etransition=hc/λ ; λ=300 nm ⇒ E≈4,13 eV
 
 *Sup — TP PCSI* — laboratoire `ccm`.
 
-**Montage.** Sur silice en phase normale, la phase stationnaire est polaire. Rf est le rapport distance centre de tache/distance front depuis la même ligne de dépôt. Il dépend de la plaque, de l’éluant, de la charge déposée et des conditions. Une valeur n’est pas une constante d’identité absolue.
+**Montage.** La chromatographie sur couche mince (CCM) suit la migration des espèces avec un éluant sur une phase stationnaire. Sur silice en phase normale, cette phase est polaire. Rf est le rapport distance centre de tache/distance front depuis la même ligne de dépôt. Il dépend de la plaque, de l’éluant, de la charge déposée et des conditions. Une valeur n’est pas une constante d’identité absolue.
 
 Rf = dsubstance/dfront ; 0≤Rf≤1  
 Rf≈1/(1+k′) dans un modèle de rétention simplifié  
@@ -600,7 +600,7 @@ Friedel–Crafts généralement indisponible sur noyaux fortement désactivés, 
 
 *PC ; prolongement algébrique guidé* — laboratoire `orbitales`.
 
-**Objets.** Une orbitale moléculaire ψ est une combinaison d’orbitales atomiques φA,φB normalisées. S=∫φA*φB dτ est sans dimension. Pour deux orbitales réelles similaires, les combinaisons symétrique et antisymétrique ont des normalisations différentes lorsque S n’est pas nul.
+**Objets.** CLOA signifie combinaison linéaire d’orbitales atomiques. Une orbitale moléculaire ψ est construite ici avec deux orbitales atomiques φA,φB normalisées ; dτ est un élément de volume et l’étoile indique le conjugué complexe. Le recouvrement S=∫φA*φB dτ est sans dimension. Pour deux orbitales réelles similaires, les combinaisons symétrique et antisymétrique ont des normalisations différentes lorsque S n’est pas nul.
 
 ψ+ = (φA+φB)/√\[2(1+S)\]  
 ψ− = (φA−φB)/√\[2(1−S)\]  
@@ -702,7 +702,7 @@ Alcène CH₂=CHR ⇒ motif vinylique \[−CH₂−CH(R)−\] par voie de chaîn
 
 ### Laboratoire `electrons`
 
-Apprendre à lire une transformation par les électrons : identifier donneur et accepteur, construire une flèche licite et contrôler les charges. Les quatre familles font distinguer transfert de proton, substitution, homolyse et formes mésomères avant de mémoriser des noms de réaction.
+Construire une transformation à partir du déplacement des électrons. Repérer donneur et accepteur, dessiner les flèches puis compter charges et atomes permet de distinguer réaction, homolyse et formes mésomères.
 
 ![Illustration scientifique du laboratoire electrons](illustrations/electrons.svg)
 
@@ -740,12 +740,13 @@ Leçons de référence : 1, 2, 3, 4.
 
 ### Laboratoire `acidebase`
 
-Relier un écart de pKa à un bilan de transformation et à la disponibilité d’une forme réactive. L’expérience force à distinguer la conversion de deux stocks finis, la composition d’un tampon et le rôle cinétique d’un nucléophile.
+Prévoir un transfert de proton avec des acidités mesurées dans le même solvant. Un bilan de matière permet de calculer l’avancement et de distinguer composition à l’équilibre, basicité et disponibilité d’un nucléophile.
 
 ![Illustration scientifique du laboratoire acidebase](illustrations/acidebase.svg)
 
 **Objets et unités**
 
+- HA est l’acide, B la base et BH⁺ son acide conjugué. Le pKₐ caractérise un couple acide/base ; K est la constante d’équilibre et b le rapport des quantités initiales de base et d’acide.
 - pKa d’un acide HA et de BH⁺, sans unité et dans le même solvant ; ratio initial base/acide b sans unité
 - K sans unité ; avancement normalisé par le stock d’acide et fraction des espèces conjuguées
 
@@ -778,7 +779,7 @@ Leçons de référence : 5, 6.
 
 ### Laboratoire `sn2`
 
-Vérifier la cinétique d’une réaction A+B→P tout en suivant l’inversion d’une attaque arrière. L’expérience relie le schéma moléculaire à des concentrations finies : le nom bimoléculaire ne dispense pas de choisir l’intégration adaptée aux stocks.
+Suivre une substitution où nucléophile et substrat participent à une seule étape. La cinétique et la géométrie expliquent l’inversion de Walden et permettent de reconnaître les substrats incompatibles avec ce mécanisme.
 
 ![Illustration scientifique du laboratoire sn2](illustrations/sn2.svg)
 
@@ -816,7 +817,7 @@ Leçons de référence : 17, 7, 19.
 
 ### Laboratoire `sn1`
 
-Distinguer disparition du substrat, accumulation d’un intermédiaire et formation du produit dans une ionisation suivie d’un piégeage. La stéréochimie fait discuter le cas limite racémique et les effets d’un environnement qui différencie les faces.
+Suivre une substitution passant par un carbocation, puis par sa capture. Les concentrations et la géométrie permettent de distinguer vitesse d’ionisation, vitesse de capture et répartition stéréochimique des produits.
 
 ![Illustration scientifique du laboratoire sn1](illustrations/sn1.svg)
 
@@ -854,12 +855,13 @@ Leçons de référence : 18, 22.
 
 ### Laboratoire `competition`
 
-Décider entre substitution et élimination à partir de chemins compatibles, puis séparer conversion et sélectivité. L’expérience compare un embranchement commun après ionisation et les attaques bimoléculaires, sans compter deux fois le même départ lent.
+Un même substrat peut subir substitution ou élimination par plusieurs voies. Croiser structure, conditions et constantes fournies permet de distinguer conversion totale et sélectivité, sans attribuer une proportion universelle aux mécanismes.
 
 ![Illustration scientifique du laboratoire competition](illustrations/competition.svg)
 
 **Objets et unités**
 
+- SN1 et SN2 sont les substitutions nucléophiles uni- et bimoléculaires ; E1 et E2 les éliminations correspondantes. Le taux apparent inclut la concentration du partenaire lorsqu’il est maintenu en excès.
 - Constantes et concentrations déclarées dans la simulation ; taux apparents des chemins en s⁻¹
 - Stocks de réactifs et fractions de produits ; conversion et sélectivité affichées séparément
 
@@ -892,12 +894,13 @@ Leçons de référence : 19, 17, 18, 20.
 
 ### Laboratoire `elimination`
 
-Construire les alcènes à partir des Hβ réellement disponibles et de leur géométrie. Le cas cyclohexanique montre pourquoi le produit de stabilité maximale peut être absent lorsque le H anti-périplanaire est empêché.
+Chercher un proton et un groupe partant dans la géométrie nécessaire à une élimination concertée. Une projection de Newman puis les chaises du cyclohexane expliquent pourquoi la conformation peut décider du produit avant la règle de Zaïtsev.
 
 ![Illustration scientifique du laboratoire elimination](illustrations/elimination.svg)
 
 **Objets et unités**
 
+- Le carbone α porte le groupe partant et un carbone β lui est voisin ; Hβ désigne un hydrogène porté par ce voisin. Anti-périplanaire signifie que Hβ et le groupe partant sont opposés dans un même plan.
 - Angle dièdre et conformation ; disponibilité des Hβ, classe du substrat et nature de la base
 - Rapports de voies ou niveaux paramétrés ; configurations E/Z attribuées seulement si elles existent
 
@@ -930,7 +933,7 @@ Leçons de référence : 20, 21, 10.
 
 ### Laboratoire `alcene`
 
-Comparer trois dimensions d’une transformation d’alcène : orientation, stéréochimie et rôle des conditions. Les voies ioniques, bromonium et hydroboration donnent des produits différents sans que la seule règle de Markovnikov suffise à les construire.
+Faire réagir un même alcène avec plusieurs familles de réactifs. Suivre les étapes et les faces d’attaque permet de comparer orientation, stéréochimie, réarrangement et fonctions obtenues après traitement.
 
 ![Illustration scientifique du laboratoire alcene](illustrations/alcene.svg)
 
@@ -968,7 +971,7 @@ Leçons de référence : 23, 8.
 
 ### Laboratoire `alcyne`
 
-Apprendre à arrêter une transformation au bon degré d’insaturation et à suivre un énol jusqu’au carbonyle final. Les comparaisons Lindlar/métal dissous/réduction totale font comprendre le rôle du catalyseur et du bilan d’hydrogène.
+Choisir les conditions qui transforment un alcyne en alcène, alcane ou carbonyle. Compter les équivalents et suivre l’énol intermédiaire permet de justifier la fonction et la géométrie du produit isolé.
 
 ![Illustration scientifique du laboratoire alcyne](illustrations/alcyne.svg)
 
@@ -1006,7 +1009,7 @@ Leçons de référence : 25, 11.
 
 ### Laboratoire `radical`
 
-Construire une chaîne qui régénère un radical, puis relier initiation, propagation et terminaison à une loi cinétique. HBr radicalaire sert à expliquer une orientation différente sans introduire un carbocation caché.
+Construire une réaction en chaîne avec des électrons célibataires. Distinguer amorçage, propagation et terminaison puis compter les hydrogènes disponibles permet de relier mécanisme, vitesse et sélectivité.
 
 ![Illustration scientifique du laboratoire radical](illustrations/radical.svg)
 
@@ -1044,7 +1047,7 @@ Leçons de référence : 24, 2.
 
 ### Laboratoire `carbonyle`
 
-Identifier ce qui arrive après une attaque du carbonyle : alcoolate d’addition, départ d’un groupe, protection, énolate ou construction de C=C. La banque de familles aide à choisir le bon mécanisme pour la fonction plutôt qu’à traiter tous les C=O de la même façon.
+Identifier le site attaqué et les liaisons transformées dans plusieurs réactions de carbonyles. Le groupe partant, le nucléophile et les conditions permettent de distinguer addition, substitution acyle et construction d’une liaison carbone–carbone.
 
 ![Illustration scientifique du laboratoire carbonyle](illustrations/carbonyle.svg)
 
@@ -1082,7 +1085,7 @@ Leçons de référence : 26, 31, 33, 34, 35.
 
 ### Laboratoire `grignard`
 
-Créer un squelette C−C tout en comptant les consommations concurrentes. Le laboratoire met au premier plan l’anhydrie, les H labiles, les équivalents d’ester et le traitement aqueux final ; les quantités calculées sont des bornes stœchiométriques.
+Créer une liaison carbone–carbone avec un organomagnésien. Compter les fonctions protiques et les équivalents requis permet de prévoir le stock utile, les additions successives et la classe d’alcool obtenue après hydrolyse.
 
 ![Illustration scientifique du laboratoire grignard](illustrations/grignard.svg)
 
@@ -1120,7 +1123,7 @@ Leçons de référence : 27, 28, 5.
 
 ### Laboratoire `oxydoreduction`
 
-Relier le niveau d’oxydation d’un carbone aux fonctions transformées et choisir une chimiosélectivité. Les alcools, carbonyles et groupe nitro illustrent une même comptabilité électronique avec des mécanismes et réactifs différents.
+Choisir un réactif qui transforme une fonction sans modifier les autres. Le nombre d’oxydation du carbone et les signatures spectroscopiques permettent de vérifier le bilan et la chimiosélectivité de la réaction.
 
 ![Illustration scientifique du laboratoire oxydoreduction](illustrations/oxydoreduction.svg)
 
@@ -1158,12 +1161,13 @@ Leçons de référence : 29, 12, 13.
 
 ### Laboratoire `aromatique`
 
-Lire séparément l’activation d’un noyau et l’orientation de sa substitution. Les chemins ortho/méta/para puis les routes ordonnées montrent comment choisir les étapes sans déduire leur vitesse de simples moments dipolaires.
+Construire une cible aromatique en choisissant l’ordre des substitutions. Séparer orientation, activation et compatibilité des conditions permet de justifier une stratégie à partir d’une banque de réactions fournie.
 
 ![Illustration scientifique du laboratoire aromatique](illustrations/aromatique.svg)
 
 **Objets et unités**
 
+- SEA signifie substitution électrophile aromatique. Ortho, méta et para indiquent la position relative au substituant déjà présent ; activation et orientation sont deux critères distincts.
 - Substituant, caractère inductif/mésomère et positions du noyau ; nombre de sites équivalents
 - Barrières déclarées en kJ·mol⁻¹ et température en K ; fractions de voies issues du modèle cinétique
 
@@ -1196,12 +1200,13 @@ Leçons de référence : 36, 4, 22.
 
 ### Laboratoire `orbitales`
 
-Faire le lien entre l’algèbre linéaire et la réactivité : normaliser une CLOA, remplir les niveaux puis lire phases et coefficients d’une HO/BV. Le modèle de Hückel donne des calculs contrôlables plutôt qu’une règle visuelle sans hypothèses.
+Construire des orbitales moléculaires à partir d’orbitales atomiques et d’un modèle fourni. Normalisation, coefficients et occupation permettent d’identifier les orbitales frontières et d’interpréter une réaction de Diels–Alder.
 
 ![Illustration scientifique du laboratoire orbitales](illustrations/orbitales.svg)
 
 **Objets et unités**
 
+- CLOA signifie combinaison linéaire d’orbitales atomiques. HO est l’orbitale occupée la plus haute en énergie, BV l’orbitale vacante la plus basse ; α et β sont les paramètres énergétiques du modèle de Hückel.
 - Recouvrement S sans unité, α et β en eV ; matrice d’adjacence et énergie des niveaux
 - Coefficients orbitaux signés, occupation électronique et densité de site ; écart HO/BV en eV
 
@@ -1234,7 +1239,7 @@ Leçons de référence : 37, 38, 39.
 
 ### Laboratoire `cinetique`
 
-Comprendre pourquoi le produit formé le plus vite peut ne pas être le plus stable. Les courbes séparent évolution irréversible, comparaison des barrières et comparaison thermodynamique, afin de choisir une expérience qui peut distinguer les deux contrôles.
+Deux produits peuvent être favorisés par des critères différents. Comparer barrières d’activation et énergies des produits explique l’influence du temps et de la température, puis distingue contrôle cinétique et contrôle thermodynamique.
 
 ![Illustration scientifique du laboratoire cinetique](illustrations/cinetique.svg)
 
@@ -1272,12 +1277,13 @@ Leçons de référence : 22, 19.
 
 ### Laboratoire `formule`
 
-Commencer une identification par un bilan d’atomes, de masse et d’insaturation. Les signatures isotopiques de Cl/Br montrent qu’une formule fournit des contraintes solides sans déterminer à elle seule la connectivité.
+Chercher les structures compatibles avec une formule brute et un spectre de masse. Compter les insaturations puis comparer les isotopes permet de réduire les possibilités, sans prétendre identifier une molécule avec sa seule formule.
 
 ![Illustration scientifique du laboratoire formule](illustrations/formule.svg)
 
 **Objets et unités**
 
+- IHD désigne l’indice d’insaturation, nombre total de cycles et de liaisons π compatibles avec la formule. m/z est le rapport masse/charge d’un ion détecté, dont il faut annoncer la nature.
 - Nombres entiers d’atomes C,H,N,O et halogènes ; IHD sans unité
 - Masse moyenne molaire en g·mol⁻¹, masse monoisotopique et enveloppe isotopique ; m/z dépend du type d’ion
 
@@ -1310,12 +1316,13 @@ Leçons de référence : 11, 14.
 
 ### Laboratoire `stereo`
 
-Construire les priorités CIP d’un cas lisible puis relier composition d’énantiomères et polarimétrie. La manipulation vise à conserver une configuration sous rotation du dessin et à reconnaître les conditions d’une attribution fiable.
+Attribuer une configuration à un tétraèdre puis le comparer à son image dans un miroir. Les règles de priorité et la composition d’un mélange permettent de distinguer configuration, excès énantiomérique et rotation optique.
 
 ![Illustration scientifique du laboratoire stereo](illustrations/stereo.svg)
 
 **Objets et unités**
 
+- CIP désigne les règles de priorité utilisées pour attribuer R/S ; ee est l’excès énantiomérique, différence des fractions des deux énantiomères. Le signe de la rotation optique ne se déduit pas de R/S.
 - Acide lactique : substituants explicitement classés OH>CO₂H>CH₃>H ; configuration et miroir
 - Proportions R/S et ee ; rotation spécifique [α]R en °·mL·g⁻¹·dm⁻¹, tube ℓ en dm, concentration c en g/mL ; rotation observée α en degrés
 
@@ -1348,7 +1355,7 @@ Leçons de référence : 7, 8.
 
 ### Laboratoire `conformeres`
 
-Passer d’un dessin de Newman ou d’une chaise à des populations thermiques. Le butane et le méthylcyclohexane font expliciter minima, dégénérescence, stabilité et vitesse d’échange plutôt que confondre conformère le plus stable et produit nécessairement majoritaire.
+Comparer les conformations d’une molécule et leurs populations à l’équilibre. Les projections de Newman, les chaises et les énergies fournies permettent de distinguer différence de stabilité et barrière de rotation.
 
 ![Illustration scientifique du laboratoire conformeres](illustrations/conformeres.svg)
 
@@ -1386,12 +1393,13 @@ Leçons de référence : 9, 10, 20.
 
 ### Laboratoire `ir`
 
-Identifier des groupes caractéristiques tout en comprenant le lien vibration/absorption. Les courbes calculées servent à distinguer absorbance additive, transmittance non additive et signatures fonctionnelles, puis à formuler une caractérisation réfutable.
+Associer plusieurs bandes infrarouges à des fonctions compatibles avec une structure. Les positions, largeurs et absorbances simulées permettent d’entraîner une identification argumentée, puis de vérifier la loi de Beer–Lambert.
 
 ![Illustration scientifique du laboratoire ir](illustrations/ir.svg)
 
 **Objets et unités**
 
+- IR signifie spectroscopie infrarouge ; A est l’absorbance et T la transmittance, fraction de lumière transmise. Une bande est caractérisée par son nombre d’onde, son intensité et sa largeur.
 - Nombre d’onde en cm⁻¹, largeur et position des bandes simulées ; concentration et trajet selon l’échelle du modèle
 - Absorbance A sans unité et transmittance en % ; molécules choisies et hypothèses de bandes typiques
 
@@ -1424,12 +1432,13 @@ Leçons de référence : 12, 14, 29.
 
 ### Laboratoire `rmn`
 
-Résoudre des connectivités à partir de δ, J et intégrales, puis vérifier quand le premier ordre est fiable. Le groupe éthyle, les singulets et les environnements ¹³C forment des problèmes d’assemblage de fragments plutôt que de reconnaissance visuelle de pics.
+Identifier une structure en croisant déplacements chimiques, intégrales et couplages. Convertir les unités puis comparer les écarts de raies permet de vérifier le domaine du modèle de RMN du premier ordre.
 
 ![Illustration scientifique du laboratoire rmn](illustrations/rmn.svg)
 
 **Objets et unités**
 
+- RMN signifie résonance magnétique nucléaire. δ est le déplacement chimique par rapport à une référence ; J est la constante de couplage. L’intégrale d’un groupe de raies est proportionnelle au nombre de noyaux équivalents.
 - δ en ppm ; J en Hz ; fréquence du spectromètre en MHz ; intégrales associées à un nombre d’H
 - Environnements ¹³C découplés et dégénérescences ; paquets aromatiques explicitement approximatifs
 
@@ -1462,12 +1471,13 @@ Leçons de référence : 13, 14.
 
 ### Laboratoire `ccm`
 
-Choisir une séparation exploitable et un suivi de réaction. La plaque simulée relie force éluante, rétention et largeur des taches pour apprendre à décider quand une CCM informe réellement le TP.
+Choisir un éluant qui sépare les espèces d’un mélange sur une plaque de silice. Suivre les positions et les largeurs des taches permet d’interpréter une chromatographie et de distinguer suivi de réaction et identification certaine.
 
 ![Illustration scientifique du laboratoire ccm](illustrations/ccm.svg)
 
 **Objets et unités**
 
+- CCM signifie chromatographie sur couche mince. R_f est la distance parcourue par une tache divisée par celle du front de l’éluant, toutes deux mesurées depuis le dépôt.
 - Distance du dépôt, des taches et du front ; Rf sans unité ; proportions de l’éluant
 - Largeur et centres des taches ; réponse de rétention paramétrée pour la silice en phase normale
 
@@ -1500,12 +1510,13 @@ Leçons de référence : 15, 41.
 
 ### Laboratoire `extraction`
 
-Choisir le nombre de contacts et le pH pour isoler une espèce. Le bilan distingue partage de la forme neutre et distribution totale, puis compare un seul grand contact à plusieurs volumes de solvant neuf.
+Répartir une espèce entre eau et solvant organique, puis modifier son ionisation. Les bilans de matière permettent de choisir le pH et de comparer une extraction unique à plusieurs extractions de même volume total.
 
 ![Illustration scientifique du laboratoire extraction](illustrations/extraction.svg)
 
 **Objets et unités**
 
+- P est le coefficient de partage de l’espèce neutre entre les solvants ; D est le rapport de distribution incluant toutes ses formes. Le pH commande la fraction ionisée dans la phase aqueuse.
 - P de la forme neutre et D total sans unité ; pKa et pH d’un milieu maintenu
 - Volumes aqueux/organiques en mL ; nombre entier d’extractions et fractions récupérées
 
@@ -1538,7 +1549,7 @@ Leçons de référence : 16, 5, 41.
 
 ### Laboratoire `esterification`
 
-Retrouver les leviers d’un TP d’ester : excès de réactif, eau initiale et équilibre. Le passage à la saponification fait distinguer une transformation réversible catalysée et un bilan basique pratiquement complet dans le modèle choisi.
+Calculer la composition d’un mélange après estérification ou hydrolyse. Le bilan stœchiométrique et l’équilibre permettent de comparer excès de réactif, eau initiale et saponification en milieu basique.
 
 ![Illustration scientifique du laboratoire esterification](illustrations/esterification.svg)
 
@@ -1576,7 +1587,7 @@ Leçons de référence : 30, 5, 41.
 
 ### Laboratoire `acylation`
 
-Construire une amide en comptant à la fois l’attaque et le piégeage de l’acidité libérée. La comparaison chlorure/anhydride et amine/base rappelle qu’un équivalent peut avoir un rôle de neutralisation sans être incorporé à la cible.
+Former un amide en choisissant un dérivé d’acide adapté. Le mécanisme d’addition–élimination et le bilan de base permettent de vérifier le produit, le sous-produit et le rôle de l’activation.
 
 ![Illustration scientifique du laboratoire acylation](illustrations/acylation.svg)
 
@@ -1614,7 +1625,7 @@ Leçons de référence : 31, 32, 6.
 
 ### Laboratoire `protection`
 
-Évaluer une protection depuis les fonctions à préserver, les conditions à traverser et son coût global. Les séquences comparent un carbonyle masqué avant réduction, une déprotection trop précoce et un OH libre ou protégé avant l’étape organomagnésienne.
+Rendre une molécule à plusieurs fonctions compatible avec une étape de synthèse. Suivre les fonctions après chaque opération permet de choisir protection, réaction puis déprotection, et de calculer le rendement global.
 
 ![Illustration scientifique du laboratoire protection](illustrations/protection.svg)
 
@@ -1652,12 +1663,13 @@ Leçons de référence : 33, 27, 40.
 
 ### Laboratoire `aldol`
 
-Former une liaison C−C en choisissant quel partenaire fournit l’énolate. La chalcone donne un cas emblématique où l’absence d’Hα du benzaldéhyde simplifie une réaction croisée ; l’aldol et le produit crotonisé restent clairement distincts.
+Construire une liaison carbone–carbone entre un énolate et un carbonyle. Identifier donneur et accepteur permet de prévoir l’aldol obtenu, puis de distinguer aldolisation, crotonisation et risque de mélange réactionnel.
 
 ![Illustration scientifique du laboratoire aldol](illustrations/aldol.svg)
 
 **Objets et unités**
 
+- Le carbone α est voisin du carbonyle ; sa déprotonation peut former un énolate. Le donneur fournit le carbone nucléophile et l’accepteur le carbone du carbonyle attaqué.
 - Carbonyles donneur/accepteur et présence d’Hα ; mode de préparation de l’énolate et étape observée
 - β-hydroxycarbonyle, liaison C−C nouvelle, eau de crotonisation et carbonyle α,β-insaturé
 
@@ -1690,12 +1702,13 @@ Leçons de référence : 34, 4.
 
 ### Laboratoire `michaelwittig`
 
-Comparer deux façons de construire C−C : ajouter à une énone en 1,2/1,4 ou remplacer l’oxygène d’un carbonyle par le C d’un ylure. Les produits servent à choisir une disconnexion plutôt qu’à mémoriser le même mot addition pour toutes les fonctions.
+Comparer deux façons de créer une liaison carbone–carbone. Repérer le carbone attaqué dans Michael et suivre le remplacement d’un carbonyle dans Wittig permet de justifier les fonctions conservées et les tendances stéréochimiques.
 
 ![Illustration scientifique du laboratoire michaelwittig](illustrations/michaelwittig.svg)
 
 **Objets et unités**
 
+- Une énone est un carbonyle conjugué à une double liaison carbone–carbone. Les nombres 1,2 et 1,4 désignent les sites d’addition dans ce système ; un ylure comporte deux charges opposées sur des atomes voisins.
 - Accepteur conjugué, type de nucléophile et carbone attaqué ; carbonyle ou alcène restant
 - Ylures CHCH₃ non stabilisé et CHCO₂Et stabilisé ; substituants de C=C et tendances E/Z qualitatives, sans ratio chiffré
 
@@ -1728,12 +1741,13 @@ Leçons de référence : 35, 26, 34.
 
 ### Laboratoire `dielsalder`
 
-Construire un cycle en conservant la géométrie des partenaires, puis séparer préférence endo cinétique et stabilité exo éventuelle. L’exemple bicyclique associe stéréospécificité, s-cis et interactions orbitalaires à un bilan de six centres.
+Assembler un diène et un diénophile en conservant leurs relations stéréochimiques. La conformation, les orbitales et les énergies fournies permettent de distinguer sélection cinétique et équilibre entre produits endo et exo.
 
 ![Illustration scientifique du laboratoire dielsalder](illustrations/dielsalder.svg)
 
 **Objets et unités**
 
+- Le diène possède deux doubles liaisons conjuguées et le diénophile la liaison π qui réagit avec lui. Les dispositions s-cis et s-trans concernent la liaison simple du diène ; endo et exo décrivent l’orientation relative des groupes du produit bicyclique.
 - Diène et diénophile, disposition s-cis/s-trans, géométrie cis/trans des substituants
 - Différence de barrières et de stabilités en kJ·mol⁻¹, température en K ; comparatifs endo/exo
 
@@ -1766,7 +1780,7 @@ Leçons de référence : 39, 38, 22.
 
 ### Laboratoire `retrosynthese`
 
-Choisir des coupures, reconstruire chaque route dans le sens direct et comparer une livraison de produit pur. Aspirine, paracétamol, chalcone et routes C−C/aromatiques font mobiliser compatibilités, ordre et indicateurs de matière.
+Remonter d’une cible vers des précurseurs accessibles, puis vérifier la synthèse dans le sens direct. Compatibilité des fonctions, ordre des étapes et rendements permettent de comparer une stratégie linéaire à une stratégie convergente.
 
 ![Illustration scientifique du laboratoire retrosynthese](illustrations/retrosynthese.svg)
 
@@ -1804,12 +1818,13 @@ Leçons de référence : 40, 41, 36, 33.
 
 ### Laboratoire `polymeres`
 
-Comprendre pourquoi une conversion de fonction très élevée et une stœchiométrie précise sont nécessaires aux longues chaînes. Le modèle par étapes transforme les bilans ester/amide en un degré moyen de polymérisation, puis le cours introduit les distributions de tailles.
+Relier l’avancement d’une polymérisation à la longueur moyenne des chaînes. Compter les fonctions et les molécules permet de distinguer croissance en chaîne et croissance par étapes, et de comprendre l’effet d’un déséquilibre stœchiométrique.
 
 ![Illustration scientifique du laboratoire polymeres](illustrations/polymeres.svg)
 
 **Objets et unités**
 
+- DP_n est le degré de polymérisation moyen en nombre, soit le nombre moyen d’unités par chaîne. p est la conversion des fonctions limitantes et r le rapport initial des fonctions, choisi inférieur ou égal à 1.
 - Conversion p des fonctions limitantes et rapport de fonctions r≤1, sans unité ; monomères bifonctionnels
 - DPn moyen, quantités de monomères/chaînes en mmol et nombre de chaînes actives imposé dans le modèle en chaîne ; distributions et dispersité dans le cours
 

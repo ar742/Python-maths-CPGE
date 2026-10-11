@@ -77,7 +77,7 @@ LESSONS = [
 <h3>Ce qui est conservé</h3>
 <p>(SCS⁻¹)ⁿ = SCⁿS⁻¹, par annulation successive des S⁻¹S. Les deux transformations ont donc le même ordre. La conjugaison renomme les positions d'une permutation ; elle conserve les longueurs de ses cycles sur les facettes.</p>
 <p>Dans l'exemple, S = F et C est le commutateur de la leçon précédente. Il affecte encore trois coins et aucune arête, mais les coins concernés sont différents. Comparez les noms des pièces et le diagramme des cycles.</p>
-<div class="insight">Conjuguer un algorithme connu permet de le réutiliser. C'est le principe « setup, algorithme, undo setup », particulièrement utile pour les résolutions par cycles de pièces.</div>
+<div class="insight">Conjuguer un algorithme connu permet de le réutiliser : préparer les pièces, exécuter la manœuvre, puis annuler la préparation. Ce procédé est particulièrement utile pour les résolutions par cycles de pièces.</div>
 """},
     {"id": "invariants", "title": "Les états possibles", "level": "Maths spé", "subtitle": "Pourquoi certaines configurations ne peuvent pas être résolues.",
      "formula": "Σ co ≡ 0 (mod 3) ; Σ eo ≡ 0 (mod 2) ; sgn(σc) = sgn(σe)", "demo": "F R U B L2 D", "demo_label": "Vérifier les trois invariants",
@@ -91,7 +91,7 @@ LESSONS = [
 <p>Pour un 3×3 standard avec les bonnes pièces, des coins non miroirs et des centres fixes, ces trois conditions sont également <strong>suffisantes</strong>. La preuve de suffisance demande de construire des manœuvres générant toutes les permutations et orientations autorisées ; elle ne découle pas du seul comptage.</p>
 <h3>Compter les configurations accessibles</h3>
 <div class="equation">|G| = 8! × 12! × 3⁷ × 2¹¹ / 2<br>= 43 252 003 274 489 856 000</div>
-<p>Le huitième twist et le douzième flip sont imposés par les sommes. Une fois la permutation des coins choisie, seule la moitié des permutations d'arêtes a la bonne parité. Parmi les 8! × 12! × 3⁸ × 2¹² assemblages avec les bonnes pièces, un sur douze est accessible.</p>
+<p>L’orientation du huitième coin et celle de la douzième arête sont imposées par les sommes. Une fois la permutation des coins choisie, seule la moitié des permutations d'arêtes a la bonne parité. Parmi les 8! × 12! × 3⁸ × 2¹² assemblages avec les bonnes pièces, un sur douze est accessible.</p>
 <div class="insight">Avoir neuf facettes de chaque couleur ne suffit pas à décrire un cube légal. L'import contrôle aussi les pièces, leur chiralité, les centres et les trois invariants.</div>
 """},
     {"id": "structure", "title": "Actions et stabilisateurs", "level": "Maths spé · approfondissement", "subtitle": "La structure algébrique d'une résolution progressive.",
@@ -137,6 +137,22 @@ LESSONS = [
 """},
 ]
 
+NOTATIONS = {
+    'groupe': 'U,R,F,D,L,B sont les tours des six faces. G est l’ensemble de leurs transformations ; ⟨…⟩ désigne le sous-groupe qu’ils engendrent. S₄₈ est le groupe des permutations des 48 facettes non centrales.',
+    'inverse': 'a₁,…,aₙ sont les mouvements d’un mot ; l’exposant −1 indique l’inverse. Les produits se lisent ici de gauche à droite : exécuter a₁, puis a₂, etc.',
+    'permutations': 'σ est une permutation ; ord(σ) est le plus petit entier positif k tel que σᵏ=e. e est l’identité et ppcm le plus petit commun multiple.',
+    'noncommutatif': 'R et U sont les tours droite et haut. RU signifie R puis U. Un groupe est abélien lorsque tous ses éléments commutent.',
+    'commutateurs': 'A et B sont deux transformations ; A⁻¹ et B⁻¹ les annulent. Leur commutateur [A,B] est défini selon la convention chronologique des produits.',
+    'conjugaison': 'C est la manœuvre à réutiliser ; S prépare les pièces et S⁻¹ annule cette préparation. SCS⁻¹ est le conjugué de C.',
+    'invariants': 'co et eo sont les orientations des coins modulo 3 et des arêtes modulo 2. σc et σe sont leurs permutations ; sgn est la signature. Σ additionne toutes les orientations de la famille concernée.',
+    'structure': 'P est l’ensemble des couples de permutations de coins et d’arêtes obtenus en oubliant leurs orientations. ker est le noyau de cette application ; ℤ/mℤ décrit les orientations modulo m. Cette structure est un approfondissement.',
+    'cayley': 'g est la configuration actuelle et e le cube résolu. La distance du graphe compte les mouvements : un quart de tour, son inverse ou un demi-tour valent chacun 1 (convention HTM).',
+    'phases': 'G est le groupe complet ; H est le sous-groupe engendré par les mouvements entre chevrons. R2 est un demi-tour de la face droite, et de même pour les autres faces ; e est le cube résolu.'
+}
+for lesson in LESSONS:
+    lesson['notations'] = NOTATIONS[lesson['id']]
+
+
 PRESETS = [
     {"name": "Quart de tour", "sequence": "R"},
     {"name": "RU : ordre 105", "sequence": "R U"},
@@ -159,17 +175,17 @@ EXERCISES = [
      "answer": "Non : les orientations et les arêtes sont oubliées. Pour RU, le cycle non trivial des positions de coins a longueur 5, mais l'action complète sur les coins a ordre 15 et la transformation entière ordre 105.", "demo": "R U"},
     {"level": "Spé", "title": "06 · Signature et commutateur", "question": "Pourquoi un commutateur ne peut-il pas échanger seulement deux arêtes et fixer toutes les autres pièces ?",
      "answer": "La signature de la projection sur les arêtes est un homomorphisme vers un groupe abélien. Elle vaut +1 sur tout commutateur. Une transposition d'arêtes a signature −1 : elle est impossible pour un commutateur.", "demo": "R U R' U'"},
-    {"level": "Spé", "title": "07 · Ordre d'un conjugué", "question": "Prouver ord(SCS⁻¹) = ord(C).",
+    {"level": "Spé", "title": "07 · Ordre d'un conjugué", "question": "S et C sont deux éléments du groupe du cube. Prouver ord(SCS⁻¹) = ord(C).",
      "answer": "Pour tout n, (SCS⁻¹)ⁿ = SCⁿS⁻¹. L'une des puissances vaut e si et seulement si l'autre vaut e. Les ensembles d'exposants qui annulent les deux éléments sont donc les mêmes.", "demo": "F R U R' D R U' R' D' F'"},
     {"level": "Spé", "title": "08 · Les trois impossibilités", "question": "Quel invariant interdit : un seul coin tourné ; une seule arête retournée ; deux arêtes échangées seules ?",
-     "answer": "Respectivement : la somme des twists modulo 3 ; la somme des flips modulo 2 ; l'égalité des signatures des coins et arêtes. Les couleurs seules ne suffisent pas à vérifier ces contraintes.", "demo": "F R U"},
+     "answer": "Respectivement : la somme des orientations des coins modulo 3 ; la somme des orientations des arêtes modulo 2 ; l'égalité des signatures des coins et arêtes. Les couleurs seules ne suffisent pas à vérifier ces contraintes.", "demo": "F R U"},
     {"level": "Spé", "title": "09 · Un assemblage sur douze", "question": "Retrouver le facteur 1/12 entre tous les assemblages des bonnes pièces et les états accessibles.",
-     "answer": "La somme des twists impose un facteur 1/3, celle des flips un facteur 1/2, et l'égalité des signatures un facteur 1/2. Les choix sont indépendants dans le modèle d'assemblage. Le facteur total est 1/(3×2×2) = 1/12.", "demo": "F R U B L2 D"},
+     "answer": "La somme des twists impose un facteur 1/3, celle des orientations des arêtes un facteur 1/2, et l'égalité des signatures un facteur 1/2. Les choix sont indépendants dans le modèle d'assemblage. Le facteur total est 1/(3×2×2) = 1/12.", "demo": "F R U B L2 D"},
     {"level": "Spé", "title": "10 · Stabiliser des pièces", "question": "Prouver que les transformations fixant toutes les facettes de quatre arêtes données forment un sous-groupe.",
      "answer": "L'identité fixe ces facettes. Le produit de deux transformations qui les fixent les fixe encore. L'inverse d'une bijection fixant un point fixe ce point. Le critère de sous-groupe est satisfait. Fixer les pièces seulement en position ne garantirait pas leur orientation.", "demo": "R U R' D R U' R' D'"},
     {"level": "Spé · algorithmique", "title": "11 · Une recherche infructueuse", "question": "La recherche jusqu'à 6 HTM ne trouve pas de solution. Peut-on conclure que le cube est impossible ?",
      "answer": "Non. L'échec prouve seulement qu'il n'existe pas de solution de longueur ≤ 6 si la recherche a été exhaustive dans cette borne. Une interruption par limite de temps ne prouve même pas cette absence. L'impossibilité physique se vérifie par les pièces et les invariants.", "demo": "R U F2 L D B R2"},
-    {"level": "Spé · approfondissement", "title": "12 · Les classes de H", "question": "À partir de |G| et |H|, calculer [G:H]. Pourquoi ne faut-il pas appeler automatiquement G/H un groupe quotient ?",
+    {"level": "Spé · approfondissement", "title": "12 · Les classes de H", "question": "G est le groupe du cube et H=⟨U,D,R2,L2,F2,B2⟩. À partir de |G| et |H| donnés dans la leçon, calculer [G:H], le nombre de classes de H dans G. Pourquoi ne faut-il pas appeler automatiquement G/H un groupe quotient ?",
      "answer": "[G:H] = 2 217 093 120 = 3⁷×2¹¹×495. Les classes forment toujours un ensemble, mais un groupe quotient exige un sous-groupe normal. H n'est pas normal : R2 appartient à H, alors que F R2 F' peut sortir de H (à vérifier dans le laboratoire).", "demo": "F R2 F'"},
 ]
 

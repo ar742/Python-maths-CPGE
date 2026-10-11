@@ -147,7 +147,7 @@ Ā=B̄=E, A ouvert ⇒ (A∩B)̄=E
 
 **Sup → Spé · TP : distance_ensemble**
 
-**Objets et but.** Pour A non vide dans un espace métrique, d(x,A)=inf_{a∈A}d(x,a). Il s’agit d’un infimum, et non automatiquement d’un minimum. La fonction x↦d(x,A) est définie partout et renseigne sur l’adhérence de A.
+**Objets et but.** Pour A non vide dans un espace métrique, d(x,A)=inf_{a∈A}d(x,a). Il s’agit d’une borne inférieure, et non automatiquement d’un minimum. La fonction x↦d(x,A) est définie partout et renseigne sur l’adhérence de A.
 
 ```text
 d(x,A)=inf_{a∈A}d(x,a)
@@ -155,7 +155,7 @@ d(x,A)=inf_{a∈A}d(x,a)
 d(x,A)=0 ⇔ x∈Ā
 ```
 
-**Démonstration.** Pour chaque a∈A, d(x,a)≤d(x,y)+d(y,a). Prendre l’infimum donne d(x,A)≤d(x,y)+d(y,A), puis échanger x et y. Si d(x,A)=0, pour tout ε>0 un a∈A vérifie d(x,a)<ε ; x est adhérent. Réciproquement l’adhérence fournit de tels points pour chaque ε. Pour un compact A, a↦d(x,a) est continue et atteint son minimum ; dans ℝᵈ un fermé non vide suffit également, en restreignant la recherche à une boule bornée.
+**Démonstration.** Pour chaque a∈A, d(x,a)≤d(x,y)+d(y,a). Prendre la borne inférieure donne d(x,A)≤d(x,y)+d(y,A), puis échanger x et y. Si d(x,A)=0, pour tout ε>0 un a∈A vérifie d(x,a)<ε ; x est adhérent. Réciproquement l’adhérence fournit de tels points pour chaque ε. Pour un compact A, a↦d(x,a) est continue et atteint son minimum ; dans ℝᵈ un fermé non vide suffit également, en restreignant la recherche à une boule bornée.
 
 **Lire l’expérience.** Pour un disque fermé D(c,r), d(x,D)=max(‖x−c‖₂−r,0). Pour une union de deux disques, prendre le minimum des deux distances. Sur la médiatrice de deux disques disjoints, les deux projections peuvent être distinctes : la distance est toujours continue, alors que le choix d’un point projeté peut sauter.
 
@@ -393,7 +393,7 @@ Recouvrement ouvert de K ⇒ ∃δ>0 : chaque B_K(x,δ) est incluse dans un memb
 
 **Justification.** Si aucune couverture finie par boules de rayon ε n’existe, choisir xₙ en dehors des boules centrées aux points précédents : les distances mutuelles sont ≥ε, donc aucune sous-suite ne converge. Pour le second fait, s’il échouait, choisir xₙ dont la boule de rayon 1/n n’est contenue dans aucun membre. Extraire xₙ→x ; un ouvert du recouvrement contenant x contient B_K(x,r). Pour n assez grand, B_K(xₙ,1/n)⊂B_K(x,r), contradiction. Une couverture finie par boules de rayon δ donne alors un sous-recouvrement fini.
 
-## 29. Un compact transforme les infimums en minimums
+## 29. Sur un compact, les bornes des valeurs sont atteintes
 
 **Sup → Spé · TP : valeurs_extremes**
 
@@ -403,9 +403,9 @@ Recouvrement ouvert de K ⇒ ∃δ>0 : chaque B_K(x,δ) est incluse dans un memb
 ∃x₋,x₊∈K, ∀x∈K, f(x₋)≤f(x)≤f(x₊)
 ```
 
-**Démonstration.** L’image continue d’un compact est compacte, donc f(K) est un fermé borné de ℝ. Son supremum M existe. Choisir yₙ∈f(K) avec M−1/n<yₙ≤M ; comme f(K) est fermé, M∈f(K). Il existe donc x₊ avec f(x₊)=M ; même argument pour le minimum. On peut aussi extraire une suite maximisante dans K puis utiliser la continuité.
+**Démonstration.** L’image continue d’un compact est compacte, donc f(K) est un fermé borné de ℝ. Sa borne supérieure M existe. Choisir yₙ∈f(K) avec M−1/n<yₙ≤M ; comme f(K) est fermé, M∈f(K). Il existe donc x₊ avec f(x₊)=M ; même argument pour le minimum. On peut aussi extraire une suite maximisante dans K puis utiliser la continuité.
 
-**Lire l’expérience.** Le labo maximise ℓθ(x,y)=x cosθ+y sinθ sur x²/a²+y²/b²≤1, a,b>0. Poser x=au,y=bv et appliquer Cauchy–Schwarz donne M=√(a²cos²θ+b²sin²θ), atteint en (a²cosθ/M,b²sinθ/M). Sur le domaine strict <1, M reste le supremum mais n’est pas atteint ; multiplier le point extremal par 1−1/N construit une suite maximisante.
+**Lire l’expérience.** Le labo maximise ℓθ(x,y)=x cosθ+y sinθ sur x²/a²+y²/b²≤1, a,b>0. Poser x=au,y=bv et appliquer Cauchy–Schwarz donne M=√(a²cos²θ+b²sin²θ), atteint en (a²cosθ/M,b²sinθ/M). Sur le domaine strict <1, M reste la borne supérieure mais n’est pas atteint ; multiplier le point extremal par 1−1/N construit une suite maximisante.
 
 ## 30. Coercivité et existence d’un minimiseur
 
@@ -488,7 +488,7 @@ u continue ⇔ u continue en 0 ⇔ ∃C≥0, ∀x∈E, ‖u(x)‖≤C‖x‖
 
 **Démonstration.** La continuité en zéro avec ε=1 donne δ>0 tel que ‖z‖<δ ⇒ ‖u(z)‖<1. Pour x≠0, appliquer ceci à z=δx/(2‖x‖) donne ‖u(x)‖≤(2/δ)‖x‖. Réciproquement la borne entraîne ‖u(x)−u(y)‖≤C‖x−y‖, donc u est lipschitzienne. Dans une base finie, u(x)=Σxᵢu(eᵢ), et l’inégalité triangulaire avec l’équivalence des normes fournit C.
 
-**Lire l’expérience.** Pour les matrices réelles denses de dimension 4 à 8 du labo, la norme euclidienne d’opérateur vaut la plus grande valeur singulière. Le laboratoire compare cette borne exacte aux gains de directions testées. Un nombre fini de directions ne donne pas à lui seul le supremum ; la décomposition en valeurs singulières le certifie.
+**Lire l’expérience.** Pour les matrices réelles denses de dimension 4 à 8 du labo, la norme euclidienne d’opérateur vaut la plus grande valeur singulière. Le laboratoire compare cette borne exacte aux gains de directions testées. Un nombre fini de directions ne donne pas à lui seul la borne supérieure ; la décomposition en valeurs singulières le certifie.
 
 ## 36. Une application linéaire non continue en dimension infinie
 
@@ -501,7 +501,7 @@ Pₙ(x)=xⁿ/n : ‖Pₙ‖∞=1/n→0, u(Pₙ)=1
 ‖u∘v‖op≤‖u‖op‖v‖op pour u,v continus
 ```
 
-**Justification.** Si u était continue, Pₙ→0 impliquerait u(Pₙ)→0, contradiction. Pour la composition, appliquer ‖u(v(x))‖≤‖u‖op‖v(x)‖≤‖u‖op‖v‖op‖x‖ et prendre le supremum sur la boule unité. La présence de polynômes de degrés arbitraires est précisément ce qui empêche de traiter le premier espace comme un espace de dimension fixe.
+**Justification.** Si u était continue, Pₙ→0 impliquerait u(Pₙ)→0, contradiction. Pour la composition, appliquer ‖u(v(x))‖≤‖u‖op‖v(x)‖≤‖u‖op‖v‖op‖x‖ et prendre la borne supérieure sur la boule unité. La présence de polynômes de degrés arbitraires est précisément ce qui empêche de traiter le premier espace comme un espace de dimension fixe.
 
 ## 37. En dimension infinie, le choix de norme change les convergences
 

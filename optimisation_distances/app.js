@@ -1,4 +1,18 @@
 "use strict";
+
+function renderGuide(id){
+ const guide=bootstrap.guides[id],box=$('#lab-guide');box.replaceChildren();if(!guide)return;
+ const add=(tag,text,parent=box)=>{const e=document.createElement(tag);e.textContent=text;parent.append(e);return e;};
+ add('h3','Pour commencer');add('p',guide.purpose);
+ add('h4','Objets et notations');const objects=add('ul','');guide.objects.forEach(v=>add('li',v,objects));
+ const detail=add('details','');add('summary','Hypothèses, manipulations et repères CPGE',detail);
+ const section=(title,items)=>{add('h4',title,detail);const list=add('ul','',detail);items.forEach(v=>add('li',v,list));};
+ section('Hypothèses',guide.hypotheses);section('Techniques à mobiliser',guide.techniques);
+ add('h4','Trois premières manipulations',detail);const steps=add('ol','',detail);guide.first_steps.forEach(v=>add('li',v,steps));
+ add('h4','Repères sup, spé et prolongements',detail);
+ for(const [key,label] of [['sup','Sup'],['spe','Spé'],['beyond','Au-delà']])add('p',label+' : '+guide.levels[key],detail);
+ add('p','À retenir : '+guide.expected,detail);
+}
 const $ = s => document.querySelector(s);
 const COLORS = {ink:'#17363d', green:'#23745c', mint:'#88c4a8', gold:'#c79432', rose:'#b66375', grey:'#627477', line:'#e2e6df'};
 const clone = x => JSON.parse(JSON.stringify(x));
@@ -12,11 +26,11 @@ const defaults = {
 };
 let states=clone(defaults), current='approximation', bootstrap, result, serial=0, timer, camera={yaw:.7,pitch:.42};
 const meta={
- approximation:['Sup → Spé','Approcher cosinus, choisir une norme','Le TP devient un laboratoire de projection : degré, poids, norme uniforme et descente de gradient.','Courbe, erreurs et descente'],
- matrices:['Sup → Spé','Projeter une matrice, optimiser une distance','L’exercice 4, puis la contrainte antisymétrique de déterminant 1 sur ℝ ou ℂ.','Décomposition orthogonale'],
- produit:['Sup → Spé','De la sphère à l’ellipsoïde','L’exercice 6 : huit maximiseurs, une boîte de volume maximal et des produits pondérés.','Ellipsoïde, points extrémaux et boîte'],
+ approximation:['Sup → Spé','Approcher cosinus, choisir une norme','Chercher la meilleure approximation de cosinus, puis comparer les effets du degré, du poids et du critère d’erreur.','Courbe, erreurs et descente'],
+ matrices:['Sup → Spé','Projeter une matrice, optimiser une distance','Projeter une matrice sur les symétriques, puis étudier la contrainte det A=1 pour une antisymétrique.','Décomposition orthogonale'],
+ produit:['Sup → Spé','De la sphère à l’ellipsoïde','Trouver le produit de coordonnées maximal, puis le volume de la plus grande boîte centrée et parallèle aux axes.','Ellipsoïde, points extrémaux et boîte'],
  point:['Spé','Les points les plus proches et les plus éloignés','Translation, axes différents, rotations : cherchez les extrema sur toute la surface.','Deux extrema globaux'],
- paire:['Spé · approfondissement','La distance entre deux ellipsoïdes','Deux solides orientés différemment ; bornes primal-dual et plan de séparation à marge maximale.','Points proches & plan de séparation']
+ paire:['Spé · approfondissement','La distance entre deux ellipsoïdes','Trouver deux points proches et une direction de séparation pour encadrer la distance entre les solides.','Points proches & plan de séparation']
 };
 function get(obj,path){return path.split('.').reduce((o,k)=>o[k],obj)}
 function set(obj,path,v){const p=path.split('.'), last=p.pop();p.reduce((o,k)=>o[k],obj)[last]=v}
@@ -93,7 +107,7 @@ function render(){
  }
  $('#metrics').innerHTML=metrics;$('#details').innerHTML=details;legend(entries);draw();
 }
-function selectLab(lab){clearTimeout(timer);serial++;current=lab;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.lab===lab));$('#cours').hidden=lab!=='cours';$('#laboratoire').hidden=lab==='cours';$('#error').hidden=true;if(lab==='cours')return;const m=meta[lab];$('#lab-level').textContent=m[0];$('#lab-title').textContent=m[1];$('#lab-description').textContent=m[2];$('#plot-title').textContent=m[3];$('#plot-hint').textContent=['produit','point','paire'].includes(lab)?'Glissez pour tourner la vue':'Calculs locaux en Python';const lesson=bootstrap.lessons[lab==='approximation'?1:bootstrap.lessons.findIndex(x=>x.lab===lab)];$('#theory-text').innerHTML=lesson.texte;buildControls();calculate()}
+function selectLab(lab){clearTimeout(timer);serial++;current=lab;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.lab===lab));$('#cours').hidden=lab!=='cours';$('#laboratoire').hidden=lab==='cours';$('#error').hidden=true;if(lab==='cours')return;const m=meta[lab];$('#lab-level').textContent=m[0];$('#lab-title').textContent=m[1];$('#lab-description').textContent=m[2];renderGuide(lab);$('#plot-title').textContent=m[3];$('#plot-hint').textContent=['produit','point','paire'].includes(lab)?'Glissez pour tourner la vue':'Calculs locaux en Python';const lesson=bootstrap.lessons[lab==='approximation'?1:bootstrap.lessons.findIndex(x=>x.lab===lab)];$('#theory-text').innerHTML=lesson.texte;buildControls();calculate()}
 function showLesson(i){const l=bootstrap.lessons[i];$('#lesson').innerHTML=`<span class="badge">${l.niveau}</span><h2>${l.titre}</h2>${l.texte}<button id="lesson-lab">Expérimenter dans le laboratoire</button>`;$('#lesson-lab').onclick=()=>selectLab(l.lab);document.querySelectorAll('#course-menu button').forEach((b,j)=>b.classList.toggle('active',j===i))}
 function buildCourse(){bootstrap.lessons.forEach((l,i)=>{const b=document.createElement('button');b.textContent=l.titre;b.onclick=()=>showLesson(i);$('#course-menu').append(b)});showLesson(0);$('#exercises').innerHTML=bootstrap.exercises.map(([title,question,answer,lab],i)=>`<section class="exercise"><h3>${i+1}. ${title}</h3><p>${question}</p><details><summary>Voir la correction</summary><p>${answer}</p></details><button class="secondary" data-experience="${lab}">Vérifier par l’expérience</button></section>`).join('');document.querySelectorAll('[data-experience]').forEach(b=>b.onclick=()=>selectLab(b.dataset.experience));$('#sources').innerHTML=bootstrap.sources.map(s=>`<p><b>${s.url?`<a href="${s.url}" target="_blank" rel="noopener">${s.titre} ↗</a>`:s.titre}</b><br>${s.texte}</p>`).join('')}
 // Illustrations Canvas : l'optimisation reste entièrement effectuée en Python.

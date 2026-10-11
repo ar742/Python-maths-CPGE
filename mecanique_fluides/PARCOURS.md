@@ -127,3 +127,152 @@ Dans Hartmann, `h` est une **demi-hauteur**, `B` est en T, `σ` en S·m⁻¹, `H
 ## Pour préparer un oral
 
 Choisir une mission et présenter en cinq minutes une question, un schéma, trois variables, une prévision, un calcul et une limite. Un second candidat peut ensuite changer une hypothèse — deuxième paroi, circulation inversée, tube plus large, mode transverse, circuit ouvert — et demander quel résultat doit être recalculé. Les [seize illustrations autonomes](illustrations/README.md) peuvent accompagner cette présentation ; leurs légendes conservent les conventions nécessaires au raisonnement.
+
+<!-- reperes-laboratoires -->
+## Repères pour choisir une expérience
+
+Le cours exporté reprend les variables et hypothèses de chaque guide. Les indications de filière ci-dessous distinguent les techniques du programme et les prolongements.
+
+### cinematique
+
+Distinguer un champ de vitesse mesuré en des points fixes, la trajectoire d'une particule et une ligne de courant instantanée. Suivre aussi un élément matériel pour relier sa forme à la conservation de la masse.
+
+**Spé et filières.** PC §4.3 : champ eulérien, lignes de courant numériques et dérivée particulaire. Le suivi détaillé d’un élément matériel est un prolongement.
+
+**Prolongements.** La description lagrangienne et l'étude locale du gradient sont des extensions selon la filière ; elles sont explicitées dans les leçons.
+
+### newtonien
+
+Relier la déformation d'un petit élément de fluide à la contrainte visqueuse et à la puissance dissipée. Comparer un cisaillement et une rotation rigide qui peuvent avoir des vitesses comparables.
+
+**Spé et filières.** PC §4.3 et parcours PSI : cisaillement newtonien et bilans. La décomposition tensorielle générale est un prolongement accompagné.
+
+**Prolongements.** Le calcul tensoriel local est une extension accompagnée selon la filière ; les fluides non newtoniens exigent une autre loi.
+
+### couette
+
+Construire le profil entre une plaque mobile et une plaque fixe, puis relier le travail de la plaque à la dissipation dans le fluide. Comprendre la superposition du cisaillement et d'un entraînement par pression.
+
+**Spé et filières.** Outils PC/PSI : viscosité, adhérence, équations différentielles et puissances. La dérivation locale depuis Navier–Stokes est fournie comme prolongement.
+
+**Prolongements.** La résolution exacte d'un écoulement permanent ne prouve pas sa stabilité envers toutes les perturbations ; l'échauffement demande un bilan thermique.
+
+### poiseuille
+
+Expliquer la sensibilité du débit au rayon d'un tube et les associations de résistances hydrauliques. Distinguer pression imposée, débit imposé, vitesse centrale et vitesse moyenne.
+
+**Spé et filières.** Outils PC/PSI : bilans, viscosité et nombres de Reynolds. La résolution radiale exacte et les réseaux prolongent ces techniques.
+
+**Prolongements.** Les pertes turbulentes ou d'entrée demandent d'autres lois ; le seuil de transition n'est pas universel.
+
+### diffusion
+
+Voir comment le mouvement d'une paroi pénètre dans un fluide initialement immobile. Comparer la diffusion dans un demi-espace et l'approche d'un profil de Couette dans une couche finie.
+
+**Spé et filières.** MP/PC : équation de diffusion et temps caractéristique ; application visqueuse guidée. La résolution de Navier–Stokes reste un prolongement selon la filière.
+
+**Prolongements.** Le démarrage idéal instantané crée une incompatibilité au coin y=t=0 ; une couche visqueuse se décrit malgré cette limite du protocole.
+
+### blasius
+
+Relier l'épaisseur d'une couche limite laminaire sur une plaque au frottement local. Voir pourquoi une viscosité faible reste décisive près d'une paroi adhérente.
+
+**Spé et filières.** Techniques Spé : changement de variables, équation différentielle et frottement. La théorie de Blasius est un prolongement spécialisé.
+
+**Prolongements.** Blasius suppose plaque plane, gradient de pression extérieur nul et couche laminaire ; transition et décollement demandent un autre modèle.
+
+### bernoulli
+
+Interpréter l'échange entre pression, vitesse et altitude dans un écoulement idéal. Employer Venturi, Pitot et vidange tout en gardant les conditions de validité du bilan.
+
+**Spé et filières.** PC §4.3 : Bernoulli permanent incompressible. Pompes et pertes prolongent les bilans énergétiques des systèmes ouverts MP/PC/PSI.
+
+**Prolongements.** Bernoulli instationnaire avec ∂ₜφ est une extension selon la filière ; pompes et pertes visqueuses modifient le bilan de charge.
+
+### sphere
+
+Relier la traînée d'une sphère à sa vitesse dans le régime de Stokes et tester une mesure de viscosité par chute lente. Distinguer les contributions de pression et de frottement.
+
+**Spé et filières.** PC §4.3 : nombre de Reynolds et choix d’une traînée linéaire ou quadratique. La démonstration complète du champ de Stokes est un prolongement.
+
+**Prolongements.** La masse ajoutée, la mémoire hydrodynamique et les parois peuvent corriger une relaxation naïve ; le temps calculé avec la seule traînée stationnaire reste une estimation de modèle.
+
+### vortex
+
+Comparer vortex ponctuel et vortex de Rankine, avec un cœur régulier et une circulation extérieure. Distinguer vorticité locale, circulation et existence d'un potentiel global.
+
+**Spé et filières.** PC §4.3 : rotationnel et potentiel des vitesses ; calculs de Rankine et topologie du domaine comme prolongements.
+
+**Prolongements.** Potentiel multivalué et rôle de la topologie sont explicités comme extensions ; le vortex ponctuel est singulier sur l'axe.
+
+### magnus
+
+Expliquer une portance par la dissymétrie de pression autour d'un cylindre avec circulation imposée. Lire son signe et la distinguer d'une condition d'adhérence sur un cylindre réellement tournant.
+
+**Spé et filières.** PC §4.3 : vitesse, pression et Bernoulli. Doublet, fonction de courant et sélection de la circulation sont des prolongements.
+
+**Prolongements.** La sélection de la circulation, la couche limite et le décollement sont des questions visqueuses ; le modèle idéal ne prédit pas une traînée réelle complète.
+
+### houle
+
+Relier la profondeur, la longueur d'onde et la fréquence d'une onde de surface, puis comparer déplacements des particules, crêtes et paquets. Explorer la transition gravitaire–capillaire.
+
+**Spé et filières.** Techniques Spé : conditions aux limites, dispersion, vitesse de phase et de groupe. La houle gravitaire-capillaire est un prolongement accompagné.
+
+**Prolongements.** La dérive de Stokes et les asymptotiques d'un impact sont des prolongements ; une orbite fermée de premier ordre ne prouve pas l'absence de tout transport moyen.
+
+### acoustique
+
+Relier pression, vitesse particulaire, densité et intensité d'une onde acoustique, puis suivre sa réflexion et sa transmission à une interface. Contrôler l'énergie même si l'amplitude de pression transmise dépasse l'incidente.
+
+**Spé et filières.** PC §6.1.2 et §6.3 : linéarisation, onde sonore, impédance et interface ; bilans et amplitudes complexes à réinvestir.
+
+**Prolongements.** L'atténuation visqueuse et les pertes thermiques demandent une convention complexe et un modèle supplémentaire ; le bruit reste analysable par Fourier.
+
+### conduit
+
+Comprendre pourquoi une coupure acoustique concerne un mode transverse particulier. Comparer un mode propagatif, un mode évanescent et le mode plan sans coupure d'un conduit rigide.
+
+**Spé et filières.** PC : acoustique et conditions aux limites. Modes transverses et fréquence de coupure prolongent l’étude des ondes planes.
+
+**Prolongements.** Les pertes de paroi et la propagation multimodale réelle ne sont pas incluses dans le conduit rigide idéal ; c_φ>c n'est pas la vitesse du transport d'énergie.
+
+### diffraction
+
+Relier l'ouverture d'une fente au diagramme de diffraction et distinguer une structure physique d'un alias de mesure. Tester la limite des approximations d'angle et la non-unicité d'une image stroboscopique fixe.
+
+**Spé et filières.** Techniques MP/PC : superposition d’ondes et différence de phase. Le modèle acoustique de fente réinvestit la diffraction optique.
+
+**Prolongements.** Le champ lointain, l'ouverture uniforme et la réponse du capteur sont des hypothèses ; une phase stationnaire décrit une asymptotique, pas une amplitude universelle.
+
+### thermo
+
+Distinguer compressibilité isotherme et isentropique pour prévoir une célérité. Comparer une longueur de diffusion thermique à l'échelle d'onde et à la taille d'un conduit.
+
+**Spé et filières.** MP/PC : gaz parfait, isentropique, compressibilité et diffusion thermique ; lien explicite avec la propagation acoustique PC.
+
+**Prolongements.** Un modèle thermoacoustique avec conditions thermiques aux murs est nécessaire pour calculer précisément dispersion et atténuation dans un petit conduit.
+
+### mhd
+
+Comparer le freinage de Hartmann dans un liquide conducteur et une onde d'Alfvén dans un régime idéal. Comprendre le rôle du circuit électrique, du champ imposé et de l'énergie magnétique.
+
+**Spé et filières.** Outils MP/PC/PSI : Lorentz, Ohm, induction et bilans. Hartmann et Alfvén sont des prolongements interdisciplinaires.
+
+**Prolongements.** Champ imposé à faible Rm et onde idéale d'induction sont deux régimes distincts ; changer la fermeture du circuit change le courant et le freinage.
+
+### navier
+
+Relier une solution exacte bidimensionnelle de Taylor–Green à ses champs de pression, vorticité et énergie. Situer ce contrôle dans les équations de mouvement et dans la question mathématique tridimensionnelle.
+
+**Spé et filières.** Outils Spé : champs, équation différentielle et bilan dissipatif. Navier–Stokes et Taylor–Green sont ici des prolongements, notamment en PSI.
+
+**Prolongements.** Le programme PSI cité exclut Euler et Navier–Stokes ; l'atelier accompagne leur étude et distingue une preuve globale d'un calcul particulier. Le repère Clay est daté du 6 octobre 2026.
+
+### hydrostatique
+
+Construire les forces de pression, la poussée et les sauts capillaires à partir de la géométrie. Distinguer une colonne liquide incompressible d'une atmosphère soumise à une hypothèse thermodynamique.
+
+**Spé et filières.** Acquis de Sup : équilibre, pression, poussée d’Archimède et gaz parfait ; réinvestissement dans les bilans de Spé.
+
+**Prolongements.** Le volume immergé ne suffit pas à décider une stabilité de roulis ; température réelle, mouillage et courbures imposent des informations supplémentaires.

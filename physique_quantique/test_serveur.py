@@ -30,6 +30,12 @@ class ServerTests(unittest.TestCase):
         with self.request("/api/bootstrap") as r:data=json.load(r)
         self.assertEqual(data["application"],"physique-quantique")
         self.assertEqual(len(data["lessons"]),18);self.assertEqual(len(data["exercises"]),24)
+        guides=data['lab_guides']
+        self.assertEqual(set(guides), {lesson['lab'] for lesson in data['lessons']})
+        for guide in guides.values():
+            self.assertTrue(guide['objects']);self.assertTrue(guide['assumptions'])
+            self.assertEqual(len(guide['first_steps']),3)
+            self.assertEqual(set(guide['levels']),{'sup','spe','beyond'})
 
     def test_static_assets(self):
         for path in ["/","/app.js","/style.css","/favicon.svg"]:

@@ -1,5 +1,7 @@
 # Douze missions : du passage à la limite à la chaîne de mesure
 
+**Repère de programme.** Les suites et séries de fonctions, la convergence uniforme, les séries entières et les échanges justifiés constituent des outils de mathématiques de spé, notamment en MP. Le régime sinusoïdal, le filtrage et l’acquisition de signaux réinvestissent la physique. Les séries de Fourier, les transformées intégrales et les méthodes avancées de signal sont introduites avec leurs conventions et leurs hypothèses ; leur présence dans cet atelier ne les rend pas toutes exigibles dans toutes les filières.
+
 Chaque mission suit trois étapes : prédire sans calcul numérique, expérimenter avec les paramètres, justifier en citant les hypothèses du théorème. Les indications sup/spé se lisent selon la filière ; les prolongements sont introduits dans les cours associés.
 
 ## 1. Un maximum qui se cache — sup vers spé

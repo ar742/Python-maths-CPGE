@@ -2372,10 +2372,11 @@ Alcène + RCO₃H → époxyde + RCO₂H
 
 ### Laboratoire `effets`
 
-Transformer quatre règles de la page 524 en arguments de mécanisme. L’expérience fait lire sites, conjugaison, orientation d’addition et géométrie d’élimination avant de nommer un produit.
+Expliquer une orientation de réaction à partir de la structure plutôt que réciter une règle. Repérer polarisation, conjugaison et géométrie permet de préciser les conditions d’application de Markovnikov et de Zaïtsev.
 
 **Objets et unités**
 
+- L’effet inductif I concerne la polarisation des liaisons σ ; l’effet mésomère M la délocalisation des électrons dans un système conjugué. Régiochimie désigne le site de liaison créé ; stéréochimie la disposition spatiale.
 - Charge formelle entière et charge partielle δ ; structures et contributeurs d’un même système
 - Connexions créées/rompues ; régiochimie et stéréochimie sans rendement chiffré
 
@@ -2408,10 +2409,11 @@ Leçons complémentaires : 1.
 
 ### Laboratoire `e1`
 
-Relier le schéma E1 de la page 525 à l’ionisation et aux Hβ, puis distinguer conversion et répartition des produits. La branche choisie du modèle sert à tester un bilan, pas à prédire une sélectivité universelle.
+Construire une élimination en deux étapes : départ du groupe partant, puis perte d’un proton voisin. Comparer halogénure et alcool activé permet de relier carbocation, vitesse de transformation et répartition des produits.
 
 **Objets et unités**
 
+- Cα porte le groupe partant et Cβ est un carbone voisin ; Hβ est un hydrogène de Cβ. k_ion est la constante apparente d’ionisation ; la fraction de branchement est une donnée du scénario, pas une loi générale.
 - kion apparent en s⁻¹, temps en s ; fraction transformée du stock initial
 - Cβ et Hβ ; C–Cl du cas source ou alcool/oxonium, carbocation et fraction de branchement imposée
 
@@ -2444,10 +2446,11 @@ Leçons complémentaires : 2.
 
 ### Laboratoire `enolatealkyl`
 
-Reprendre la C-alkylation de la page 526 avec un vrai choix de site C/O. L’expérience montre comment une même espèce ambidente peut conduire à deux fonctions et pourquoi l’électrophile primaire compte.
+Un énolate possède deux sites susceptibles d’attaquer un électrophile. Suivre les doublets et comparer les liaisons créées permet de distinguer alkylation sur le carbone et sur l’oxygène, selon les conditions fournies.
 
 **Objets et unités**
 
+- Ambident signifie que le même nucléophile peut réagir par deux sites, ici carbone ou oxygène. R est un groupe carboné et X le groupe partant de RX ; le carbone α est voisin du carbonyle de départ.
 - Carbone α du donneur, O de l’énolate et C porteur de X
 - Équivalents de nucléophile ; liaison C–C ou O–C et motif de produit
 
@@ -2480,10 +2483,11 @@ Leçons complémentaires : 3.
 
 ### Laboratoire `aminealkyl`
 
-Faire parler la dernière réaction de la page 526 : une alkylation d’amine tertiaire donne un ammonium quaternaire. La lecture de charge et du fragment benzyle transforme le bilan en mécanisme réellement vérifiable.
+Ajouter un groupe carboné à une amine tertiaire avec son doublet libre. Compter les liaisons et les charges explique la formation d’un ammonium quaternaire et le rôle du contre-ion.
 
 **Objets et unités**
 
+- R désigne un groupe carboné et X un halogène. Une amine tertiaire possède trois liaisons N–C et un doublet ; un ammonium quaternaire quatre liaisons N–C et une charge positive.
 - Doublet N, carbone porteur de X, quatre groupes autour de N au produit
 - Charge +1 du cation et contre-ion X⁻ ; équivalents en unités du stock d’amine
 
@@ -2516,10 +2520,11 @@ Leçons complémentaires : 4.
 
 ### Laboratoire `anhydride`
 
-Relier les pages 526 et 528 : former un anhydride puis transférer un de ses groupes acyle. Les scénarios montrent le destin distinct des deux moitiés et le rôle du piège à acide.
+Former un anhydride puis transférer un groupe acyle à un nucléophile. Suivre les deux fragments et les équivalents de base permet de prévoir la fonction obtenue et de vérifier le bilan du piège à acide.
 
 **Objets et unités**
 
+- Un groupe acyle contient un carbone carbonylé lié à un groupe carboné. Un anhydride relie deux groupes acyle par un oxygène ; les équivalents sont rapportés à la quantité du réactif de référence.
 - Deux carbones acyle, un O pont et groupe partant carboxylate
 - Équivalents de nucléophile et base ; fonctions ester, amide ou acide
 
@@ -2552,10 +2557,11 @@ Leçons complémentaires : 5.
 
 ### Laboratoire `photochlore`
 
-Comparer la photoaddition de la page 526 à la SEA de la page 525 sur le même benzène. Le contrôle des conditions et du bilan H/Cl fait reconnaître deux familles de produits sans confondre lumière et catalyse de Lewis.
+Comparer l’action du dichlore sur le benzène sous lumière ou avec un catalyseur de Lewis. Les conditions, les liaisons et le bilan des atomes distinguent substitution aromatique et photoaddition.
 
 **Objets et unités**
 
+- SEA signifie substitution électrophile aromatique ; la photoaddition est une réaction déclenchée par la lumière qui modifie ici les liaisons π du cycle. Un équivalent de Cl₂ est rapporté à une mole de benzène.
 - Quantité de Cl₂ en équivalents ; condition de lumière et mode choisi
 - H conservés/substitués ; nombre de π et motif aromatique ou saturé
 
@@ -2588,10 +2594,11 @@ Leçons complémentaires : 6.
 
 ### Laboratoire `grignardprep`
 
-Relier le montage de la page 526 à la réactivité du carbone organomagnésien. Une préparation sèche est une condition de construction C–C ; les contaminants protiques réduisent le stock utile avant l’addition recherchée.
+Préparer un organomagnésien puis mesurer ce qu’il reste en présence de traces d’eau. Le bilan des quantités explique pourquoi l’anhydrie est nécessaire et distingue destruction du réactif et hydrolyse finale de l’alcoolate.
 
 **Objets et unités**
 
+- RX est le dérivé halogéné de départ, Mg le magnésium et RMgX l’organomagnésien formé. RH est le produit de sa réaction avec un proton ; l’alcoolate est la forme déprotonée de l’alcool avant le traitement final.
 - Quantités RX/Mg/protons en équivalents et progression de formation choisie
 - Réactif RMgX disponible, produit RH de destruction et borne de capacité d’addition
 
@@ -2624,10 +2631,11 @@ Leçons complémentaires : 7.
 
 ### Laboratoire `hydrolyseacyle`
 
-Déployer le Z de l’hydrolyse générique de la page 526. Le laboratoire compare chlorure d’acyle, ester et amide, puis le milieu acide/base pour faire écrire les bonnes fonctions et charges finales.
+Hydrolyser un chlorure d’acyle, un ester ou un amide, en milieu acide ou basique. Les flèches et le bilan acido-basique permettent de déterminer les fonctions et les charges présentes à la fin du traitement.
 
 **Objets et unités**
 
+- Z désigne le groupe lié au carbone acyle dans le dérivé étudié. Une étape d’hydrolyse rompt une liaison par réaction avec l’eau ou l’ion hydroxyde ; la forme finale dépend du pH du traitement.
 - Groupe Z, carbone acyle et fragment libéré ; étapes 0 à 3
 - Équivalents du réactif de milieu ; carboxylique/carboxylate et amine/ammonium
 
@@ -2660,10 +2668,11 @@ Leçons complémentaires : 8.
 
 ### Laboratoire `nitrobenzene`
 
-Réunir les questions des pages 532 et 534 dans un fil organique : charges de Lewis, réduction du groupe nitro et ordre de construction d’un noyau substitué. L’expérience associe chaque règle à une structure réellement présente.
+Relier la structure de Lewis du groupe nitro à sa réduction et à une stratégie de substitution aromatique. Vérifier charges, demi-bilans et ordre des étapes permet de construire une cible sans appliquer les règles hors de leurs conditions.
 
 **Objets et unités**
 
+- Le groupe nitro est −NO₂ et l’aniline porte −NH₂. La réduction se suit avec des demi-bilans d’électrons ; un groupe directeur influe sur le site de la substitution suivante.
 - N⁺/O⁻ et octets ; états nitro/nitroso/hydroxylamine/aniline
 - H⁺, e⁻, H₂O dans les demi-bilans ; positions numérotées du cycle et groupes directeurs
 
@@ -2696,10 +2705,11 @@ Leçons complémentaires : 9.
 
 ### Laboratoire `dipolesnitro`
 
-Transformer la géométrie des pages 532/534 en un calcul vectoriel transparent. Les trois isomères ont des contributions de directions différentes ; l’expérience empêche de confondre propriété d’espèce pure et proportion de produits.
+Comparer les moments dipolaires des isomères ortho, méta et para avec un modèle vectoriel. Additionner deux contributions permet de distinguer la propriété d’une molécule de la composition d’un mélange de produits.
 
 **Objets et unités**
 
+- μ₀ est le moment dipolaire attribué à chaque groupe, en debyes ; le moment total est leur somme vectorielle. Les positions ortho, méta et para sont respectivement voisines, séparées par un carbone et opposées.
 - Deux vecteurs de norme μ₀ en Debye ; directions ortho/méta/para
 - Composantes, norme de la somme et rotation commune en degrés
 
@@ -2732,10 +2742,11 @@ Leçons complémentaires : 10.
 
 ### Laboratoire `e2stereo`
 
-Reconstruire l’exercice de 3-bromo-3,4-diméthylhexane des pages 531 et 533. SS/RR et SR/RS deviennent deux expériences distinctes qui prouvent la relation stéréospécifique entre configurations de départ et E/Z de la voie C3–C4.
+Construire une projection de Newman de l’halogénure étudié, puis placer proton et groupe partant en opposition. Les configurations initiales permettent de prévoir la géométrie de l’alcène et de distinguer choix du site et stéréospécificité.
 
 **Objets et unités**
 
+- R/S désigne la configuration d’un centre selon les priorités CIP ; E/Z celle d’une double liaison. La projection de Newman regarde suivant C₃–C₄ ; le carbone β est voisin du carbone portant Br.
 - Configurations (3R/S,4R/S), vue Newman C3–C4 et dièdre H–C–C–Br
 - Choix de Cβ ; substituants Et/CH₃ et priorité CIP sur l’alcène
 
@@ -2768,10 +2779,11 @@ Leçons complémentaires : 11.
 
 ### Laboratoire `epoxydes`
 
-Relier les époxydes des pages 526/528 à une vraie comparaison de voies. L’expérience forme un pont O avec conservation relative des groupes, puis l’ouvre sur un carbone différent selon acidité et nucléophile.
+Former un époxyde puis ouvrir son cycle avec un nucléophile. Suivre l’origine de l’oxygène et la face d’attaque permet de comparer les conditions acides et basiques et de justifier la stéréochimie du produit.
 
 **Objets et unités**
 
+- Un époxyde est un cycle à trois atomes dont un oxygène. L’attaque arrière se fait du côté opposé à la liaison rompue ; E/Z décrit la disposition initiale des groupes de l’alcène.
 - Alcène E/Z ou éthylène ; époxyde C–C–O et origine de chaque O
 - Méthoxyde ou méthanol, eau ou HO⁻ selon le milieu ; étapes et attaque arrière
 

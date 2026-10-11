@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 from cours import LESSONS, EXERCISES, SOURCES
+from reperes import LAB_GUIDES
 
 class Markdown(HTMLParser):
     def __init__(self):
@@ -32,6 +33,17 @@ def export(destination):
     destination=Path(destination)
     text='# Séries & Signaux · Cours et démonstrations\n\n60 leçons originales, avec variables, hypothèses, preuves et applications. [Laboratoires et lancement](README.md).\n\n'
     text+='\n\n'.join(f"## {l['title']}\n\n**{l['level']} · TP : {l['lab']}**\n\n{markdown(l['html'])}" for l in LESSONS)
+    text+='\n\n## Repères avant les 30 expériences\n\n'
+    for lab, guide in LAB_GUIDES.items():
+        text+=f"### Laboratoire {lab}\n\n{guide['purpose']}\n\n"
+        for title, field in [('Objets et unités','objects'),('Hypothèses','assumptions'),('Techniques','techniques')]:
+            text+='**'+title+'**\n\n'+'\n'.join('- '+item for item in guide[field])+'\n\n'
+        text+='**Prévoir, manipuler, justifier**\n\n'+'\n'.join(
+            str(i)+'. '+step for i,step in enumerate(guide['first_steps'],1))+'\n\n'
+        text+='**Niveaux et prolongements**\n\n'+'\n'.join(
+            '- '+label+' : '+guide['levels'][key]
+            for key,label in [('sup','Sup'),('spe','Spé'),('beyond','Au-delà')])+'\n\n'
+        text+='**Résultat attendu.** '+guide['expected']+'\n\n'
     text+='\n\n## Sources\n\n'+'\n\n'.join(markdown(s) for s in SOURCES)+'\n'
     (destination/'COURS.md').write_text(text,encoding='utf8')
     text='# Séries & Signaux · Exercices corrigés\n\n60 exercices originaux. Chercher la solution avant de lire la correction et réinvestir le laboratoire associé.\n\n'

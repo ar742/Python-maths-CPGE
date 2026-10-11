@@ -8,6 +8,8 @@ Les résultats théoriques et les observations numériques sont distingués. Les
 
 *SUP → SPÉ · FONDATIONS*
 
+**Notations.** E est l’énergie en J, V le volume en m³ et N le nombre de particules. Ω compte les microétats accessibles et pᵢ leur probabilité. kB est la constante de Boltzmann, S l’entropie en J·K⁻¹, T la température en K, P la pression et μ le potentiel chimique en J par particule.
+
 Un microétat précise les variables microscopiques nécessaires pour décrire le système ; un macroétat fixe des grandeurs comme E, V et N. Nous notons N le nombre de particules, n=N/V la densité volumique et n_mol une quantité en moles. En microcanonique, le système isolé à l’équilibre est décrit par des microétats accessibles équiprobables ; le choix d’une fenêtre d’énergie doit être spécifié.
 
 pᵢ=1/Ω ; S=kB lnΩ.
@@ -25,6 +27,8 @@ Chaque transfert conservé vérifie dE₂=−dE₁, et de même pour V et N. Si 
 
 *SUP → SPÉ · MÉTHODE*
 
+**Notations.** Eᵢ est l’énergie d’un microétat ; T est la température du thermostat et kB la constante de Boltzmann. β=1/(kBT) est en J⁻¹. Z est la somme des poids de Boltzmann ; gⱼ compte les microétats d’un niveau et Pⱼ leur probabilité totale.
+
 Un système fermé peut échanger de l’énergie avec un thermostat de température T. Pour un grand réservoir, développer son entropie autour de l’énergie totale donne S_R(E_total−Eᵢ)≈constante−Eᵢ/T. Le nombre de ses microétats est proportionnel à exp(S_R/kB), ce qui produit le poids de Boltzmann du système.
 
 β=1/(kBT) ; pᵢ=exp(−βEᵢ)/Z ; Z=Σ_microétats exp(−βEᵢ).
@@ -38,6 +42,8 @@ Le mode « trois » du laboratoire choisit les niveaux 0, ε, 2ε et les dégén
 ## 3 · Dériver une partition et comprendre Schottky
 
 *SPÉ · EXERCICE 2 PRIORITAIRE*
+
+**Notations.** Z est la fonction de partition et β=1/(kBT), avec T en K. U est l’énergie moyenne, Var(E) sa variance, C_V la capacité thermique à volume fixé et S l’entropie. F est l’énergie libre ; P est la pression, V le volume et N le nombre de particules.
 
 U=−∂β lnZ ; Var(E)=∂β²lnZ ; C_V=Var(E)/(kBT²)≥0.
 S=kB(lnZ+βU) ; F=−kBTlnZ ; P=−(∂V F)_{T,N}.
@@ -55,6 +61,8 @@ Le facteur 1/4 est indispensable. À basse température, l’excitation est gel�
 ## 4 · Équipartition et oscillateur quantique
 
 *SUP → SPÉ · EXERCICE 3*
+
+**Notations.** β=1/(kBT). H est l’énergie du système ; y est une variable classique et a>0 le coefficient du terme ay². Pour l’oscillateur quantique, ν est la fréquence en Hz, h la constante de Planck et n≥0 le nombre de quanta.
 
 Dans une intégrale classique, un terme indépendant ay² du Hamiltonien produit ∫exp(−βay²)dy∝β⁻¹ᐟ². Sa contribution à −∂βlnZ est donc kBT/2. Il faut compter les variables quadratiques indépendantes réellement autorisées : des contraintes peuvent supprimer des degrés de liberté.
 
@@ -76,6 +84,8 @@ La somme géométrique est exacte. À T→0, U→hν/2 mais C→0 : le point zé
 
 *SPÉ · LIEN AVEC LE VOLET PQ*
 
+**Notations.** L est le côté de la boîte, m la masse et ℏ la constante de Planck réduite. E_L est l’échelle d’énergie de confinement ; Z₁ concerne une seule particule. n est la densité volumique, λ_th la longueur d’onde thermique et g_s le nombre d’états internes.
+
 Le TP quantique fournit E=E_L(nₓ²+nᵧ²+n_z²), E_L=π²ℏ²/(2mL²), nⱼ≥1 pour des parois infinies. Le canonique d’une seule particule factorise : Z₁=[Σ_{n≥1}exp(−βE_Ln²)]³. La somme du laboratoire est tronquée dans chaque direction ; comparer N_max et 2N_max contrôle un écart mesuré, sans fournir à lui seul une borne sur la queue infinie.
 
 Comptage continu 3D, dégénérescence interne g_s :
@@ -88,11 +98,13 @@ G compte les états jusqu’à E ; D est une densité d’états, d’unité én
 Gaz classique identique, dilué : Z_N≈(V/λ_th³)ᴺ/N! pour g_s=1.
 U=3NkBT/2 ; C_V=3NkB/2 ; PV=NkBT.
 
-Deux critères sont distincts : kBT≫E_L rend le spectre quasi continu ; nλ_th³/g_s≪1 rend les effets d’échange négligeables. Un gaz parfait peut être quantique : « sans interaction » ne veut pas dire « classique ». La distance moyenne très supérieure à λ_th correspond justement au régime classique, contrairement au libellé du recueil. La somme d’une particule du laboratoire ne constitue pas un calcul exact de N bosons ou fermions. Dans cette boîte, la dilatation isotrope donne P=2U/(3V) ; PV=kBT est sa limite classique par particule.
+Deux critères sont distincts : kBT≫E_L rend le spectre quasi continu ; nλ_th³/g_s≪1 rend les effets d’échange négligeables. Un gaz parfait peut être quantique : « sans interaction » ne veut pas dire « classique ». La distance moyenne très supérieure à λ_th correspond justement au régime classique. La somme d’une particule du laboratoire ne constitue pas un calcul exact de N bosons ou fermions. Dans cette boîte, la dilatation isotrope donne P=2U/(3V) ; PV=kBT est sa limite classique par particule.
 
 ## 6 · Maxwell : vitesses et pression cinétique
 
 *SUP → SPÉ · TP PRIORITAIRE*
+
+**Notations.** m est la masse d’une molécule, T la température, kB la constante de Boltzmann et n la densité volumique. v est le module de la vitesse. v_mp est la vitesse la plus probable ; v_rms=√⟨v²⟩ est la vitesse quadratique moyenne.
 
 Un gaz classique dilué à l’équilibre a des composantes de vitesse gaussiennes indépendantes. Le passage du vecteur vitesse à son module introduit le jacobien sphérique 4πv² ; la vitesse la plus probable du module n’est donc pas la moyenne d’une composante.
 
@@ -112,6 +124,8 @@ Le premier facteur v_z compte les particules atteignant la paroi ; le second int
 
 *SUP → SPÉ · TP PRIORITAIRE*
 
+**Notations.** S est la surface du petit orifice, V le volume de l’enceinte et N(t) son nombre de molécules. Φ_N est le nombre traversant une unité d’aire par seconde ; τ est le temps caractéristique de fuite. m est la masse moléculaire et T la température maintenue.
+
 Choisir le mode « effusion » du laboratoire Maxwell. L’effusion traverse un orifice petit devant le libre parcours moyen ; les particules passent sans collisions dans le trou. Pour une grande ouverture, un écoulement hydrodynamique exige un autre modèle. L’extérieur est ici assimilé au vide et le gaz intérieur reste suffisamment bien mélangé.
 
 Flux de particules par unité de surface :
@@ -130,6 +144,8 @@ Les particules rapides atteignent plus souvent le trou : la sélection porte une
 
 *SPÉ · TP PRIORITAIRE*
 
+**Notations.** Les indices 1 et 2 désignent les deux enceintes. Nᵢ,Vᵢ,Tᵢ et Pᵢ sont leur nombre de particules, volume, température et pression. kᵢ est un taux de fuite en s⁻¹ ; m est la masse commune des molécules et kB la constante de Boltzmann.
+
 Choisir le mode « paroi » du laboratoire Maxwell. Deux enceintes communiquent par de petits orifices en régime d’effusion. Chaque compartiment est maintenu à sa propre température Tᵢ et reste décrit par Maxwell. La conservation Ṅ₁=−Ṅ₂ vaut à tout instant ; elle n’impose pas l’égalité des flux dans les deux sens. Celle-ci apparaît seulement dans l’état stationnaire des populations.
 
 kᵢ=(S/Vᵢ)√(kBTᵢ/(2πm)).
@@ -146,6 +162,8 @@ Si T₁≠T₂, les pressions stationnaires ne sont pas égales. Ce n’est pas 
 ## 9 · Occupations quantiques et réservoir de particules
 
 *SPÉ · TP FD/BE*
+
+**Notations.** T est la température, β=1/(kBT) et μ le potentiel chimique par particule. Ξ est la partition lorsque le nombre N de particules peut varier ; J est le grand potentiel. ε est l’énergie d’un état ; n_F,n_B et n_MB sont ses occupations moyennes, sans dimension.
 
 Grand canonique : Ξ=Σ exp[−β(E−μN)] ; J=−kBTlnΞ.
 ⟨N⟩=−(∂μJ)_{T,V} ; S=−(∂TJ)_{μ,V}.
@@ -167,6 +185,8 @@ Le mode « comparaison » compare les trois lois au même μ : c’est une expé
 
 *SPÉ · TP PRIORITAIRE*
 
+**Notations.** n=N/V est la densité de fermions, m leur masse et ℏ la constante de Planck réduite. k_F est le rayon de la sphère occupée en nombres d’onde ; E_F l’énergie de Fermi et T_F=E_F/kB la température correspondante. G(E) compte les états sous l’énergie E.
+
 Considérons un gaz homogène idéal de fermions non relativistes, dans un grand volume, avec dégénérescence de spin 2. À T=0, tous les états sous E_F sont occupés et ceux au-dessus vides : une sphère de rayon k_F est remplie dans l’espace k. Le niveau de Fermi reste non nul même à température nulle.
 
 n=2×[4πk_F³/3]/(2π)³=k_F³/(3π²).
@@ -185,6 +205,8 @@ L’intégrale de nombre détermine μ ; poser μ=E_F à toute température sera
 
 *SPÉ · TP PRIORITAIRE ET EXTENSION*
 
+**Notations.** n=N/V est la densité de bosons, m leur masse et λ_th=h/√(2πmkBT) leur longueur thermique. z=exp(μ/(kBT)) est la fugacité. N₀ compte les particules au fondamental ; N_exc celles dans les états excités. ζ est la fonction zêta et T_c la température critique du modèle idéal.
+
 On étudie des bosons sans interaction, homogènes en dimension 3, avec un seul état interne et une énergie fondamentale prise égale à 0. Au refroidissement, μ augmente vers 0 par valeurs négatives. Les états excités ont une capacité d’occupation totale qui devient insuffisante : le nombre restant s’accumule macroscopiquement dans le fondamental.
 
 N_exc/V=λ_th⁻³g₃ᐟ₂(z), z=exp(βμ)≤1.
@@ -201,6 +223,8 @@ Le condensat doit être compté séparément de l’intégrale continue des éta
 ## 12 · Planck, Wien et Stefan–Boltzmann
 
 *SUP → SPÉ · CORPS NOIR*
+
+**Notations.** T est en K, ν la fréquence en Hz, λ=c/ν la longueur d’onde et c la célérité de la lumière. h et kB sont les constantes de Planck et Boltzmann. u_ν est une énergie par volume et fréquence ; B_ν et B_λ sont les luminances spectrales par fréquence et longueur d’onde.
 
 Le corps noir est un modèle de rayonnement thermique dont la distribution est isotrope dans la cavité. Les photons ont deux polarisations et μ=0. Leur densité de modes par volume et fréquence est 8πν²/c³ ; multiplier par l’énergie hν et l’occupation de Bose donne la densité spectrale d’énergie.
 
@@ -221,6 +245,8 @@ Le facteur π vient de l’intégration angulaire de la luminance avec projectio
 
 *SUP → SPÉ · EXERCICE 1*
 
+**Notations.** B_ν et B_λ sont les luminances spectrales du corps noir, T sa température, h et kB les constantes de Planck et Boltzmann. λ₁ et λ₂ fixent la bande d’intégration. r est la fraction de puissance rayonnée dans cette bande et σ la constante de Stefan–Boltzmann.
+
 Un maximum spectral dépend de la variable choisie. Maximiser B_ν conduit à 3(1−exp(−y))=y, avec y=hν/(kBT), différent de la racine 5 du spectre par longueur d’onde. Le maximum de B_ν ne se convertit donc pas en λ_max de B_λ par λ=c/ν. Les spectres en nombre de photons ont encore un autre facteur d’énergie.
 
 Fraction énergétique visible :
@@ -229,11 +255,13 @@ r(T;λ₁,λ₂)=π∫_{λ₁}^{λ₂}B_λ(T)dλ/(σT⁴).
 
 Le TP prend une émission de corps noir et une bande rectangulaire de visible : ce r est une fraction de puissance rayonnée. Il n’est ni le rendement électrique complet d’une lampe ni une efficacité lumineuse pondérée par la sensibilité de l’œil. La puissance perdue par conduction et convection, ainsi que l’émissivité réelle, nécessitent d’autres données.
 
-L’énoncé du recueil donne 390–780 nm, puis le corrigé emploie 390–760 nm. Il faut choisir la bande avant d’intégrer. La valeur annoncée d’environ 7 % est seulement un ordre de grandeur ; les deux valeurs ci-dessus distinguent exactement les bornes. Une quadrature convergée du spectre ou une intégration en fréquence avec son jacobien donnent le même résultat.
+Le laboratoire utilise la bande 390–780 nm. Une autre borne haute, par exemple 760 nm, change la fraction obtenue : il faut préciser la bande avant d’intégrer. Une quadrature convergée du spectre ou une intégration en fréquence avec son jacobien donnent le même résultat.
 
 ## 14 · Paramagnétisme et fluctuations d’un spin
 
 *SPÉ · DEUX NIVEAUX ET APPLICATION*
+
+**Notations.** μ est la norme du moment magnétique en J·T⁻¹, B le champ en T et T la température. N compte les spins ; kB est la constante de Boltzmann. m̄ est le moment moyen par spin, χ_par_spin sa dérivée par rapport à B et C_B la capacité à champ fixé ; sech x=1/cosh x.
 
 On considère des moments indépendants ±μ dans un champ B, sans interactions responsables de ferromagnétisme. Leurs énergies sont −μB et +μB. Le laboratoire propose μ en multiples du magnéton de Bohr ; ce moment électronique n’est pas celui du proton employé dans l’exemple RMN du volet PQ.
 
@@ -250,6 +278,8 @@ Pour B non nul, T→0 donne la saturation et S→0. À B=0, les deux niveaux son
 
 *SPÉ · EXERCICE 5 PRIORITAIRE*
 
+**Notations.** sᵢ=±1 est le spin du site i et J>0 l’énergie de couplage. N est le nombre de sites ; 2q compte les parois de domaines. β=1/(kBT), K=βJ et Z_N est la partition finie. a est l’espacement des sites et ξ la longueur de corrélation ; sech x=1/cosh x.
+
 Une chaîne périodique de N spins sᵢ=±1 a H=−JΣᵢsᵢsᵢ₊₁, J>0 et s_{N+1}=s₁, sans champ externe. Une liaison entre spins opposés coûte 2J par rapport à une liaison alignée. En parcourant une boucle, le nombre de changements de signe doit être pair : notons-le 2q.
 
 E_q=−JN+4Jq ; g_q=2C(N,2q), 0≤q≤⌊N/2⌋.
@@ -262,11 +292,13 @@ Limite N→∞, T>0 : U/N=−Jtanh K ; C/(NkB)=K²sech²K.
 Approximation de Stirling : q/N≈1/[2(1+exp(2K))].
 ⟨sᵢsᵢ₊ᵣ⟩=(tanh K)^r ; ξ/a=−1/ln(tanh K).
 
-Le facteur 2 dans exp(2βJ) est le coût d’une paroi ; la formule du recueil l’omet dans la relation de Stirling. Cette relation est une approximation pour populations macroscopiques, tandis que Z_N est exact à N fini. À champ nul, la symétrie globale s→−s impose ⟨m⟩=0 à taille finie. En chaîne infinie à température positive, les corrélations décroissent et il n’existe pas d’aimantation spontanée. La croissance de ξ à basse température et un pic de capacité ne sont pas une transition à T>0.
+Le facteur 2 dans exp(2βJ) traduit le coût d’une paroi de domaine. Cette relation est une approximation pour populations macroscopiques, tandis que Z_N est exact à N fini. À champ nul, la symétrie globale s→−s impose ⟨m⟩=0 à taille finie. En chaîne infinie à température positive, les corrélations décroissent et il n’existe pas d’aimantation spontanée. La croissance de ξ à basse température et un pic de capacité ne sont pas une transition à T>0.
 
 ## 16 · Ising 2D : Onsager, Yang et taille finie
 
 *SPÉ · EXTENSION GUIDÉE*
+
+**Notations.** sᵢ=±1 est le spin du site i, J>0 le couplage et N=L² le nombre de sites d’un carré. θ=kBT/J est la température réduite ; m=(1/N)Σsᵢ est l’aimantation par site. m_sp est l’aimantation spontanée du système infini et T_c sa température critique.
 
 Sur le réseau carré, chaque spin interagit avec ses quatre voisins, chaque liaison étant comptée une fois. Pour des bords périodiques, H=−JΣ_{liaisons}sᵢsⱼ possède deux liaisons par site, donc E₀/N=−2J. On reste à champ externe nul. Le résultat critique est celui d’Onsager ; la formule de l’aimantation spontanée a été démontrée par Yang.
 
@@ -286,11 +318,237 @@ Le laboratoire confronte une simulation de taille finie à la référence exacte
 
 Comparer deux initialisations, plusieurs graines et plusieurs tailles apprend à juger une simulation. Le pic d’une courbe finie, sa stabilité apparente ou un faible bruit ne prouvent pas seuls une transition. La référence affichée est le modèle carré exact à champ nul, pas une approximation de champ moyen ; le comportement à champ non nul ou avec interactions différentes n’est pas couvert par cette formule.
 
+## Préparer les laboratoires
+
+### maxwell
+
+Passer des vitesses moléculaires à la pression, puis comparer une fuite et un échange entre deux enceintes.
+
+**Objets et unités.**
+
+- T₁,T₂ sont les températures en K ; M la masse molaire en g·mol⁻¹. N_A est la constante d’Avogadro ; m=M/N_A est la masse moléculaire après conversion de M en kg·mol⁻¹.
+- n est la densité de particules en m⁻³, réglée par son logarithme décimal ; V₁,V₂ sont les volumes en L et S l’aire du trou en mm².
+- N₁,N₂ comptent les particules ; τ est le temps caractéristique de fuite et t/τ le temps réduit. kB est la constante de Boltzmann.
+
+**Hypothèses.**
+
+- Gaz parfait classique, dilué, à vitesses isotropes ; chaque compartiment reste thermostaté.
+- Effusion : trou petit devant le libre parcours moyen ; extérieur vide pour la fuite, deux gaz pour la paroi.
+
+**Techniques.** Calculer moyenne et moment quadratique d’une distribution.; Écrire un flux avec la composante de vitesse normale.; Résoudre une équation linéaire de conservation.
+
+**Première expérience.**
+
+1. Comparer vitesse la plus probable, vitesse moyenne et vitesse quadratique moyenne à 300 K.
+2. Choisir la fuite et doubler S : prévoir le changement de τ.
+3. Choisir la paroi avec T₂=2T₁ et comparer les pressions stationnaires.
+
+**Sup.** gaz parfait, pression, unités et bilan de particules.
+**Spé et filières.** MP §7 : lien microscopique–macroscopique ; distributions et effusion comme approfondissements guidés.
+**Prolongements.** Transpiration thermique et fuite sans thermostat : prolongements du modèle de gaz dilué.
+**Résultat attendu.** Une pression expliquée par un flux de quantité de mouvement et des hypothèses distinctes pour fuite et paroi.
+
+### canonique
+
+Utiliser les poids de Boltzmann pour relier populations, énergie moyenne et capacité thermique.
+
+**Objets et unités.**
+
+- ε est l’écart de niveaux en meV et T la température en K ; kB est la constante de Boltzmann. β=1/(kBT) est l’inverse de l’énergie thermique.
+- N compte les sites indépendants ; U est l’énergie moyenne et C la capacité thermique, dérivée de U par rapport à T.
+- g compte les microétats du niveau ε dans le modèle à trois niveaux 0,ε,2ε. La probabilité d’un niveau additionne celles de ses microétats.
+
+**Hypothèses.**
+
+- Niveaux indépendants de T ; sites distinguables sans interaction.
+- Canonique : thermostat à T ; microcanonique : nombre d’excitations fixé et configurations équiprobables.
+
+**Techniques.** Normaliser les poids de Boltzmann.; Compter des configurations avec un coefficient binomial.; Relier une variance à une capacité thermique.
+
+**Première expérience.**
+
+1. Choisir deux niveaux et comparer kBT à ε avant de lire les populations.
+2. Augmenter T : observer le maximum intermédiaire de capacité.
+3. Choisir trois niveaux et augmenter g : comparer probabilité d’un niveau et d’un microétat.
+
+**Sup.** probabilités, dénombrement et température.
+**Spé et filières.** MP §7.1–7.2 : Boltzmann, niveaux discrets, fluctuations et système à deux niveaux.
+**Prolongements.** Dégénérescence et comparaison des ensembles statistiques : approfondissements ; pas un socle commun à toutes les filières.
+**Résultat attendu.** Des probabilités normalisées et un pic de capacité expliqué sans l’appeler transition de phase.
+
+### gaz
+
+Distinguer effet du confinement, troncature numérique des modes et limite classique du gaz.
+
+**Objets et unités.**
+
+- T est la température en K, L le côté de la boîte en nm et m la masse en multiples de la masse électronique mₑ. h est la constante de Planck et kB celle de Boltzmann.
+- Nmax est le nombre de modes unidimensionnels conservés ; n est la densité de particules en m⁻³. E_L est l’échelle d’énergie de confinement.
+- λ_th=h/√(2πmkBT) est la longueur d’onde thermique ; nλ_th³ compare cette longueur à l’espacement des particules. U est l’énergie moyenne par particule.
+
+**Hypothèses.**
+
+- Une particule dans un cube à parois infinies ; absence d’interactions.
+- La partition classique d’un gaz de nombreuses particules suppose le régime dilué ; la somme du cube n’est pas celle de N bosons ou fermions.
+
+**Techniques.** Factoriser une somme sur trois indices.; Comparer une somme discrète à une intégrale.; Contrôler une troncature et un paramètre sans dimension.
+
+**Première expérience.**
+
+1. Choisir confinement quantique et comparer l’énergie à celle du fondamental.
+2. Choisir limite classique et comparer U à 3kBT/2 par particule.
+3. Prendre la troncature courte puis augmenter Nmax : observer l’écart au calcul avec 2Nmax.
+
+**Sup.** gaz parfait, énergie cinétique et sommes finies.
+**Spé et filières.** MP §7.2–7.3 : particule confinée à température donnée et limite classique ; le cube prolonge la boîte 1D.
+**Prolongements.** Densité d’états et longueur d’onde thermique ; statistiques de particules identiques traitées séparément.
+**Résultat attendu.** Une comparaison quantique/classique accompagnée d’un contrôle du nombre de modes.
+
+### oscillateur
+
+Expliquer le gel des excitations et retrouver l’équipartition à température élevée.
+
+**Objets et unités.**
+
+- ν est la fréquence en THz et T la température en K ; h est la constante de Planck et kB celle de Boltzmann. n≥0 compte les quanta d’excitation.
+- U est l’énergie moyenne et C sa dérivée par rapport à T à fréquence fixée. hν est l’écart entre deux niveaux voisins.
+- r est le nombre de termes quadratiques supplémentaires d’un modèle classique ayant déjà trois termes cinétiques ; il ne compte pas les niveaux de l’oscillateur 1D.
+
+**Hypothèses.**
+
+- Oscillateur harmonique quantique indépendant ; fréquence constante.
+- Équipartition classique seulement pour des variables quadratiques indépendantes et thermiquement accessibles.
+
+**Techniques.** Sommer une série géométrique.; Dériver une énergie moyenne.; Compter les termes quadratiques et comparer deux limites.
+
+**Première expérience.**
+
+1. Choisir presque fondamental : distinguer énergie de point zéro et capacité thermique.
+2. Augmenter T jusqu’à kBT≫hν : retrouver l’équipartition de l’oscillateur 1D.
+3. Modifier r et compter sur papier les variables du modèle classique séparé.
+
+**Sup.** oscillateur, énergie et chaleur.
+**Spé et filières.** MP §7.3 : équipartition et capacités thermiques ; la somme quantique approfondit ces techniques.
+**Prolongements.** Modèle d’Einstein et rotation ortho/para : prolongements guidés.
+**Résultat attendu.** Une capacité qui tend vers zéro à froid, malgré une énergie fondamentale non nulle.
+
+### spins
+
+Relier les deux niveaux magnétiques à la saturation, à la loi de Curie et au maximum de capacité thermique.
+
+**Objets et unités.**
+
+- T est la température en K et B le champ en T ; μ est la norme du moment en multiples du magnéton de Bohr μB, en J·T⁻¹. kB est la constante de Boltzmann.
+- x=μB/(kBT) compare énergie magnétique et énergie thermique ; le moment moyen est donné en multiples de μ.
+- C_B est la capacité thermique à champ fixé ; la susceptibilité par spin est la dérivée du moment moyen par rapport à B.
+
+**Hypothèses.**
+
+- Deux niveaux, spins indépendants, champ homogène ; aucune interaction ferromagnétique.
+- La loi de Curie est une approximation pour |x|≪1.
+
+**Techniques.** Normaliser deux poids de Boltzmann.; Développer tanh près de zéro.; Relier une réponse à une fluctuation.
+
+**Première expérience.**
+
+1. Choisir Curie et comparer formule exacte et droite.
+2. Choisir saturation : observer les bornes ±μ.
+3. Mettre B=0, puis discuter séparément la limite T→0.
+
+**Sup.** dipôle magnétique et concurrence entre deux énergies.
+**Spé et filières.** MP §7.2 : application du système à deux niveaux ; aimantation comme prolongement.
+**Prolongements.** Interactions et transition ferromagnétique demandent un autre modèle, notamment Ising.
+**Résultat attendu.** Une approximation linéaire placée dans son domaine et un modèle indépendant distingué d’un aimant ferromagnétique.
+
+### planck
+
+Lire un spectre par longueur d’onde et calculer la fraction de rayonnement dans une bande précisée.
+
+**Objets et unités.**
+
+- T est la température en K et λ la longueur d’onde en µm ; h,kB,c sont la constante de Planck, celle de Boltzmann et la célérité de la lumière.
+- B_λ est la luminance spectrale en W·m⁻²·sr⁻¹·µm⁻¹ ; elle est rapportée à une unité de longueur d’onde, pas à une unité de fréquence.
+- σ est la constante de Stefan–Boltzmann ; σT⁴ est le flux total par aire. La bande visible retenue est [390,780] nm.
+
+**Hypothèses.**
+
+- Émission idéale de corps noir ; distribution spectrale par longueur d’onde.
+- Rayleigh–Jeans seulement lorsque hc/(λkBT)≪1.
+
+**Techniques.** Chercher un maximum par dérivation.; Changer de variable avec son jacobien.; Intégrer une densité spectrale pour obtenir une puissance.
+
+**Première expérience.**
+
+1. Choisir 300 K et situer le maximum par rapport au visible.
+2. Choisir 5800 K, puis doubler T : prévoir λmax et le flux total.
+3. Comparer Planck et Rayleigh–Jeans aux grandes et petites longueurs d’onde.
+
+**Sup.** spectre, longueurs d’onde et énergie rayonnée.
+**Spé et filières.** Outils Spé : intégrales et changement de variable ; modèle statistique complet comme prolongement.
+**Prolongements.** Comptage des modes photoniques et photométrie pondérée par l’œil.
+**Résultat attendu.** Un maximum associé à une variable spectrale précise et une fraction de puissance avec ses bornes.
+
+### occupations
+
+Reconnaître le domaine où les statistiques quantiques s’approchent de Maxwell–Boltzmann et comparer Fermi et Bose.
+
+**Objets et unités.**
+
+- T est la température en K et n la densité en m⁻³ ; ε est l’énergie d’un état et μ le potentiel chimique en J par particule. kB est la constante de Boltzmann.
+- En mode comparaison, ε/(kBT) et μ/(kBT) sont sans dimension. Les occupations moyennes sont des nombres de particules par état.
+- En mode Bose, la masse est en unités atomiques u ; en mode Fermi, ce sont des électrons. E_F est l’énergie de Fermi, T_F=E_F/kB sa température et T_c la température critique de Bose du modèle.
+
+**Hypothèses.**
+
+- Gaz idéaux homogènes 3D, sans interactions ; états internes précisés dans chaque mode.
+- Une occupation n’est pas une densité de probabilité normalisée sur toutes les énergies.
+
+**Techniques.** Sommer une série géométrique ou deux occupations possibles.; Intégrer avec une densité d’états.; Résoudre une contrainte de nombre et comparer des échelles thermiques.
+
+**Première expérience.**
+
+1. En comparaison, prendre μ/(kBT)=−6 : retrouver la limite diluée commune.
+2. Choisir Fermi et comparer T à TF.
+3. Choisir Bose de part et d’autre de Tc et compter séparément le condensat.
+
+**Sup.** probabilités, nombres d’occupation et unités.
+**Spé et filières.** Outils Spé : intégrales et contraintes ; Fermi/Bose sont des prolongements du socle statistique MP cité.
+**Prolongements.** Grand canonique, condensation et développement de Sommerfeld : approfondissements guidés.
+**Résultat attendu.** Une occupation par état distinguée du nombre total, avec μ déterminé lorsque la densité est imposée.
+
+### ising
+
+Comparer comptage exact, simulation et limite infinie pour préciser ce que signifie un ordre magnétique.
+
+**Objets et unités.**
+
+- sᵢ=±1 est le spin du site i ; J>0 l’énergie de couplage et kB la constante de Boltzmann. θ=kBT/J est la température réduite.
+- N est le nombre de sites de la chaîne ; 2q compte ses parois de domaines. Le carré a L sites par côté et N=L² sites au total.
+- m est l’aimantation par site ; un balayage Monte-Carlo tente en moyenne une mise à jour par site. La graine fixe les tirages ; la préparation sert à réduire l’influence de l’état initial.
+
+**Hypothèses.**
+
+- Couplage ferromagnétique entre voisins, champ nul et bords périodiques.
+- Onsager/Yang : référence du carré infini ; simulation : réseau fini, mesures corrélées.
+
+**Techniques.** Dénombrer avec des coefficients binomiaux.; Former une partition et ses dérivées.; Comparer des moyennes, des fluctuations et des tailles de système.
+
+**Première expérience.**
+
+1. Choisir la chaîne et retrouver pourquoi le nombre de parois est pair.
+2. Passer au carré près de θc et comparer deux états initiaux.
+3. Augmenter durée ou taille, puis distinguer ⟨m⟩, ⟨|m|⟩ et aimantation spontanée.
+
+**Sup.** dénombrement, probabilités et moyenne de variables ±1.
+**Spé et filières.** Outils Spé : combinatoire et Boltzmann ; Ising constitue un prolongement du programme MP.
+**Prolongements.** Transition d’Onsager, limite thermodynamique et simulation Monte-Carlo corrélée.
+**Résultat attendu.** Un résultat exact de chaîne séparé d’une mesure sur carré fini, sans confondre un pic fini avec une preuve de transition.
+
 ## Exercices corrigés
 
 ### 1 · Un niveau n’est pas un microétat
 
-Trois niveaux 0, ε, 2ε ont les dégénérescences 1,4,1. Donner leurs populations et l’entropie lorsque T devient très grand.
+ε est une énergie et T la température ; kB est la constante de Boltzmann. Trois niveaux 0, ε, 2ε ont les dégénérescences 1,4,1. Donner leurs populations et l’entropie lorsque T devient très grand.
 
 **Correction.** Les six microétats deviennent équiprobables. Les populations des niveaux sont donc 1/6,4/6,1/6. S=kBln6, et U=ε. Calculer −kBΣP_jlnP_j sans les dégénérescences sous-estime S. La formule par niveaux est −kBΣP_jln(P_j/g_j).
 
@@ -302,7 +560,7 @@ Pour les mêmes niveaux, calculer P_ε/P_0 et P_{2ε}/P_0. La population maximal
 
 ### 3 · Retrouver le facteur 1/4
 
-Pour N sites indépendants à deux niveaux 0, Δ, dériver U=NΔ/(1+exp(βΔ)). Donner C à βΔ=2.
+β=1/(kBT), où T est la température ; Δ est l’écart d’énergie et C la capacité thermique. Pour N sites indépendants à deux niveaux 0, Δ, dériver U=NΔ/(1+exp(βΔ)). Donner C à βΔ=2.
 
 **Correction.** C=NkB(βΔ)²exp(βΔ)/(1+exp(βΔ))²=NkB(βΔ)²/[4cosh²(βΔ/2)]. À βΔ=2, C/(NkB)=sech²1≈0,4200. Omettre le facteur 1/4 multiplie la capacité par quatre. Dans le laboratoire des spins, poser Δ=2μ|B|.
 
@@ -320,31 +578,31 @@ Comparer l’énergie classique d’un oscillateur strictement 1D et d’une par
 
 ### 6 · Une énergie de point zéro sans capacité
 
-Établir Z de l’oscillateur quantique et expliquer les limites U→hν/2 et C→0 lorsque T→0.
+Z est la partition, U l’énergie moyenne, C la capacité thermique, h la constante de Planck et ν la fréquence. Établir Z de l’oscillateur quantique et expliquer les limites U→hν/2 et C→0 lorsque T→0.
 
 **Correction.** Z=Σexp[−βhν(n+1/2)]=exp(−βhν/2)/(1−exp(−βhν)). Dériver donne U=hν/2+hν/(exp(βhν)−1). Le second terme disparaît à froid, tandis que le premier est constant en T ; sa dérivée est nulle. À chaud, C→kB. Une énergie stockée constante n’est pas une capacité thermique.
 
 ### 7 · Compter les états libres
 
-À partir d’un volume (2π/L)³ par état en k, établir G(E) pour une particule libre 3D avec un seul état interne.
+L est le côté du volume de normalisation ; k est le vecteur d’onde et G(E) le nombre d’états d’énergie au plus E. À partir d’un volume (2π/L)³ par état en k, établir G(E) pour une particule libre 3D avec un seul état interne.
 
 **Correction.** La sphère de rayon k contient V×(4πk³/3)/(2π)³ états. Avec k=√(2mE)/ℏ, G(E)=V(2m/ℏ²)^{3/2}E^{3/2}/(6π²), et D(E)=V(2m/ℏ²)^{3/2}√E/(4π²). Une dégénérescence de spin g_s multiplie ces deux expressions. G est un comptage ; D est une densité par énergie.
 
 ### 8 · Deux conditions pour la limite classique
 
-Pourquoi kBT≫E_L et nλ_th³≪1 ne sont-elles pas la même condition ? Que signale une comparaison N_max→2N_max ?
+E_L=π²ℏ²/(2mL²), n=N/V, λ_th=h/√(2πmkBT) ; N_max borne la somme numérique des modes. Pourquoi kBT≫E_L et nλ_th³≪1 ne sont-elles pas la même condition ? Que signale une comparaison N_max→2N_max ?
 
 **Correction.** La première rend quasi continu le spectre de la boîte. La seconde, pour un état interne, rend négligeables les effets d’échange quantique d’un gaz de nombreuses particules. On peut vérifier l’une sans l’autre. La comparaison de coupures mesure la masse ou l’énergie ajoutée entre les deux sommes ; elle ne borne pas à elle seule la queue au-delà de 2N_max.
 
 ### 9 · Trois vitesses à ne pas confondre
 
-Donner les rapports ⟨v⟩/v_mp et v_rms/v_mp. Si T est quadruplée, comment changent ces vitesses ?
+v_mp est la vitesse la plus probable et v_rms=√⟨v²⟩ la vitesse quadratique moyenne. Donner les rapports ⟨v⟩/v_mp et v_rms/v_mp. Si T est quadruplée, comment changent ces vitesses ?
 
 **Correction.** v_mp=√(2kBT/m), ⟨v⟩=√(8kBT/(πm)) et v_rms=√(3kBT/m). Les rapports valent 2/√π≈1,128 et √(3/2)≈1,225. Toutes les vitesses doublent si T est quadruplée ; elles sont inversement proportionnelles à √m. La moyenne d’une composante est néanmoins nulle à l’équilibre.
 
 ### 10 · Pourquoi la pression contient v_z²
 
-Pour des collisions élastiques sur une paroi normale à z, établir P=mn⟨v_z²⟩ et l’équation d’état idéale.
+m est la masse moléculaire, n la densité volumique et v_z la vitesse normale à la paroi. Pour des collisions élastiques sur une paroi normale à z, établir P=mn⟨v_z²⟩ et l’équation d’état idéale.
 
 **Correction.** Le nombre incident par surface et temps est pondéré par v_z, pour v_z>0. Chaque collision transfère 2mv_z. Ainsi P=2mn∫_{v_z>0}v_z²f(v)d³v. La symétrie ramène le demi-espace à la moitié de l’intégrale totale : P=mn⟨v_z²⟩. Maxwell donne ⟨v_z²⟩=kBT/m, donc P=nkBT et PV=NkBT.
 
@@ -374,37 +632,37 @@ Les flux de particules à travers la paroi poreuse sont égaux, mais T₁>T₂. 
 
 ### 15 · Fluctuations BE, FD et MB
 
-Pour ε−μ=kBT, calculer les trois occupations. Pourquoi ne faut-il pas les sommer directement sur l’axe des énergies ?
+ε est l’énergie d’un état, μ le potentiel chimique, T la température ; BE,FD,MB désignent Bose–Einstein,Fermi–Dirac,Maxwell–Boltzmann. Pour ε−μ=kBT, calculer les trois occupations. Pourquoi ne faut-il pas les sommer directement sur l’axe des énergies ?
 
 **Correction.** n_BE=1/(e−1)≈0,5820, n_FD=1/(e+1)≈0,2689 et n_MB=e^{-1}≈0,3679. Leurs variances par mode indépendant sont n(1+n), n(1−n) et environ n. Pour obtenir N, il faut compter les états : N=Σg_jn_j, ou ∫D(E)n(E)dE. Une occupation n’est pas une probabilité normalisée en énergie.
 
 ### 16 · Énergie de Fermi d’électrons libres
 
-Pour des électrons de spin 1/2 à densité 10²⁸ m⁻³, estimer E_F et T_F. Que devient E_F si la densité est multipliée par huit ?
+E_F est l’énergie de Fermi et T_F=E_F/kB sa température ; la masse est celle de l’électron. Pour des électrons de spin 1/2 à densité 10²⁸ m⁻³, estimer E_F et T_F. Que devient E_F si la densité est multipliée par huit ?
 
 **Correction.** Avec g_s=2, E_F=ℏ²(3π²n)^{2/3}/(2m_e)≈1,69 eV et T_F≈1,96×10⁴ K. E_F∝n^{2/3}, donc multiplier n par huit multiplie E_F par quatre. Le nombre de spin doit être compté une seule fois, dans la densité d’états ou dans l’intégrale, pas dans les deux.
 
 ### 17 · Un gaz idéal exerce une pression à T=0
 
-À T=0, établir U/N et P pour le gaz de fermions 3D. Pourquoi PV=NkBT ne s’applique-t-elle pas ?
+U est l’énergie interne, N le nombre de fermions, P la pression et V le volume. À T=0, établir U/N et P pour le gaz de fermions 3D. Pourquoi PV=NkBT ne s’applique-t-elle pas ?
 
 **Correction.** Avec D(E)=A√E, N=(2A/3)E_F^{3/2} et U=(2A/5)E_F^{5/2}. Donc U/N=3E_F/5. Une dispersion quadratique donne P=2U/(3V)=2nE_F/5. Le gaz est sans interaction mais dégénéré ; l’équation PV=NkBT exige la limite classique diluée, absente ici. La pression provient du remplissage imposé par Pauli.
 
 ### 18 · Le facteur ζ du T_c
 
-Pour un gaz de bosons uniforme 3D à un seul état interne, déduire T_c de nλ_th³=ζ(3/2). Que devient T_c si la densité double ?
+n=N/V est la densité, λ_th=h/√(2πmkBT) et ζ la fonction zêta. Pour un gaz de bosons uniforme 3D à un seul état interne, déduire T_c de nλ_th³=ζ(3/2). Que devient T_c si la densité double ?
 
 **Correction.** λ_th²=2πℏ²/(mkBT). Élever n/ζ à la puissance 2/3 donne T_c=(2πℏ²/(mkB))[n/ζ(3/2)]^{2/3}. Le facteur ζ est donc au dénominateur avec la puissance 2/3, pas 1. Doubler la densité multiplie T_c par 2^{2/3}≈1,5874, à masse et modèle fixés.
 
 ### 19 · Tous les bosons au fondamental ?
 
-Donner N₀/N à T=T_c et T=T_c/2. Pourquoi faut-il séparer N₀ de l’intégrale des états excités ?
+N₀ compte les bosons au fondamental et T_c la température critique. Donner N₀/N à T=T_c et T=T_c/2. Pourquoi faut-il séparer N₀ de l’intégrale des états excités ?
 
 **Correction.** Dans la limite uniforme 3D, N₀/N=1−(T/T_c)^{3/2} sous T_c : la fraction est 0 à T_c et environ 0,6464 à T_c/2. Le fondamental est un état discret qui peut porter une population macroscopique ; l’intégrale continue ne le comptabilise pas comme tel. Un gaz piégé ou fini demande un modèle de densité d’états adapté.
 
 ### 20 · Le maximum dépend de la variable
 
-Écrire le changement de variable de B_ν à B_λ. Pourquoi le maximum de l’un ne correspond-il pas à celui de l’autre ?
+ν est la fréquence, λ=c/ν la longueur d’onde ; B_ν et B_λ sont les luminances spectrales correspondantes. Écrire le changement de variable de B_ν à B_λ. Pourquoi le maximum de l’un ne correspond-il pas à celui de l’autre ?
 
 **Correction.** B_λdλ=B_ν|dν|, donc B_λ=B_ν(c/λ²). Le jacobien dépend de λ : il déplace le maximum. B_λ donne la racine 5(1−e^{-x})=x, alors que B_ν donne 3(1−e^{-y})=y. La loi λ_maxT≈2,898×10⁻³ m K concerne le spectre énergétique par unité de longueur d’onde.
 
@@ -412,23 +670,23 @@ Donner N₀/N à T=T_c et T=T_c/2. Pourquoi faut-il séparer N₀ de l’intégr
 
 Estimer la fraction énergétique visible d’un corps noir à 2500 K dans la bande 390–780 nm. Comparer à 390–760 nm et préciser ce que mesure ce ratio.
 
-**Correction.** Calculer r=π∫B_λdλ/(σT⁴) sur la bande choisie. Une quadrature convergée donne environ 5,896 % pour 390–780 nm et 5,187 % pour 390–760 nm. L’énoncé et le corrigé du recueil ne choisissent pas les mêmes bornes ; la valeur d’environ 7 % est un ordre de grandeur. Ce ratio porte sur la puissance rayonnée, sans pondération de la vision ni autres pertes électriques ou thermiques.
+**Correction.** Calculer r=π∫B_λdλ/(σT⁴) sur la bande choisie. Une quadrature convergée donne environ 5,896 % pour 390–780 nm et 5,187 % pour 390–760 nm. La comparaison mesure la sensibilité du résultat au choix de la bande visible. Ce ratio porte sur la puissance rayonnée, sans pondération de la vision ni autres pertes électriques ou thermiques.
 
 ### 22 · Curie et saturation
 
-Pour un spin indépendant, montrer que la loi de Curie est une limite de m̄=μtanh(μB/(kBT)). Une droite extrapolée au-delà de μ décrit-elle le modèle ?
+μ est le moment magnétique, B le champ, T la température et m̄ le moment moyen. Pour un spin indépendant, montrer que la loi de Curie est une limite de m̄=μtanh(μB/(kBT)). Une droite extrapolée au-delà de μ décrit-elle le modèle ?
 
 **Correction.** À |x|≪1, tanh x=x+O(x³), donc m̄≈μ²B/(kBT) et χ≈μ²/(kBT). À fort champ ou basse température, tanh x sature ; la moyenne reste entre −μ et +μ. L’extrapolation linéaire au-delà n’est pas valide. Sans interaction entre spins, il n’y a pas de transition ferromagnétique dans ce modèle.
 
 ### 23 · Une chaîne de quatre spins
 
-Pour Ising périodique N=4 à champ nul, compter les états par nombre de parois et écrire Z. Retrouver le facteur2 dans l’exponentielle de Stirling.
+N est le nombre de spins, J>0 le couplage et Z la partition. Pour Ising périodique N=4 à champ nul, compter les états par nombre de parois et écrire Z. Retrouver le facteur2 dans l’exponentielle de Stirling.
 
 **Correction.** Le nombre de parois est 0, 2 ou 4 : les dégénérescences sont 2, 12, 2 et les énergies −4J, 0, +4J. Donc Z=2exp(4βJ)+12+2exp(−4βJ), cohérent avec (2coshβJ)^4+(2sinhβJ)^4. Pour N grand, si 2q est le nombre de parois, leur coût individuel 2J donne q/N≈1/[2(1+exp(2βJ))]. Cette approximation n’est pas l’expression finie exacte.
 
 ### 24 · Une moyenne signée peut-elle être un ordre spontané ?
 
-À champ nul, comparer ⟨m⟩ d’un réseau Ising carré fini, ⟨|m|⟩ simulé et m_sp de Yang. Quel ordre de limites définit l’aimantation spontanée ?
+m est l’aimantation par site, ⟨·⟩ la moyenne et m_sp l’aimantation spontanée du réseau infini. À champ nul, comparer ⟨m⟩ d’un réseau Ising carré fini, ⟨|m|⟩ simulé et m_sp de Yang. Quel ordre de limites définit l’aimantation spontanée ?
 
 **Correction.** La moyenne d’ensemble signée finie est 0 par symétrie s→−s. ⟨|m|⟩ est positif et dépend de la taille ; il n’est pas directement m_sp. L’ordre spontané est lim_{h→0+}lim_{N→∞}⟨m⟩. La référence exacte à champ nul a θ_c=2/ln(1+√2)≈2,269185. Une simulation courte peut rester dans un secteur de signe ; des fluctuations corrélées, un pic et une moyenne non nulle ne démontrent pas seuls la limite thermodynamique.
 

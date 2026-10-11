@@ -9,8 +9,7 @@ attendus du programme dépendent de la filière, comme le précise l'interface.
 LAB_GUIDES = {
     "anneaux": {
         "purpose": (
-            "Décider si une même matrice possède un inverse lorsque l'on change l'ensemble de calcul. "
-            "L'expérience fait travailler une question essentielle : pourquoi « déterminant non nul » suffit-il dans un corps, mais pas dans un anneau ?"
+            'Une matrice inversible à coefficients rationnels peut perdre son inverse si l’on exige des coefficients entiers. Changer l’ensemble de calcul permet de comprendre le rôle du déterminant et de construire un inverse autorisé.'
         ),
         "techniques": [
             "Construire l'inverse avec l'adjugée et contrôler son ensemble de coefficients.",
@@ -29,11 +28,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [1, 2, 6],
         "expected": "Savoir annoncer l'ensemble de calcul et y justifier chaque inverse ou division utilisé.",
+
+        "objects": ['U est une matrice carrée de taille n ; Iₙ est l’identité et det U son déterminant. GLₙ désigne les matrices inversibles dans l’ensemble de calcul choisi.', 'ℚ est le corps des rationnels, ℤ l’anneau des entiers, ℤ/mℤ les classes modulo l’entier m. Une unité est un élément qui possède un inverse dans cet anneau ; 𝔽ₚ est le corps à p éléments, avec p premier.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "geometrie": {
         "purpose": (
-            "Faire agir deux transformations linéaires sur un cube, puis inverser leur ordre. "
-            "La figure aide à séparer trois notions que le calcul peut confondre : composition, conservation du volume et conservation de l'orientation."
+            'Appliquer deux transformations à un cube, puis inverser leur ordre. Les sommets et le volume permettent d’interpréter la composition des matrices, le signe du déterminant et la perte de dimension.'
         ),
         "techniques": [
             "Lire les images des vecteurs de base dans les colonnes d'une matrice.",
@@ -52,11 +53,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [3, 5],
         "expected": "Pouvoir expliquer une déformation à partir de sa matrice, sans déduire une identité exacte de sa seule apparence.",
+
+        "objects": ['A et B sont les matrices de deux applications linéaires dans la même base ; les sommets du cube sont des vecteurs colonnes.', 'Les facteurs d’échelle et de cisaillement sont sans unité. AB applique B puis A ; |det A| multiplie les volumes, et son signe indique si l’orientation est conservée.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "lie": {
         "purpose": (
-            "Observer comment un mouvement continu de matrices se décrit au voisinage de l'identité. "
-            "En composant deux petits mouvements dans des ordres opposés, on fait apparaître le commutateur XY−YX et son rôle de premier défaut de commutation."
+            'Deux petites rotations effectuées dans des ordres opposés donnent des résultats différents. Développer leurs matrices près de l’identité permet de retrouver le crochet de Lie et de relier un mouvement à sa dérivée.'
         ),
         "techniques": [
             "Développer une exponentielle matricielle au voisinage de zéro.",
@@ -75,11 +78,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [17, 18, 21],
         "expected": "Savoir justifier pourquoi l'ordre h² du commutateur de groupe révèle XY−YX et distinguer preuve exacte et contrôle numérique.",
+
+        "objects": ['X et Y sont les matrices génératrices choisies ; a et b règlent leurs coefficients, t le paramètre d’évolution et h un petit pas, sans unité physique dans ce modèle.', 'I est l’identité, exp(tX) le mouvement engendré par X ; le crochet [X,Y] est défini comme XY−YX. gl, sl, so et sp désignent les familles explicitées dans les leçons associées.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "gauss": {
         "purpose": (
-            "Décider si quatre équations déterminent une solution, plusieurs solutions ou aucune. "
-            "L'expérience apprend à produire un certificat de compatibilité et une description complète des solutions, plutôt qu'à obtenir seulement un vecteur affiché."
+            'Un système de quatre équations peut contenir une équation dépendante des autres. Le pivot de Gauss permet de décider s’il existe des solutions, de les décrire toutes et de justifier une incompatibilité.'
         ),
         "techniques": [
             "Échelonner simultanément A et le second membre dans [A|b].",
@@ -98,11 +103,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [4, 6],
         "expected": "Savoir conclure avec une justification du rang, de la compatibilité et du nombre de paramètres libres.",
+
+        "objects": ['A est la matrice des coefficients, x le vecteur des inconnues et b le second membre du système Ax=b. Les coefficients saisis sont traités comme des rationnels exacts.', 'Le rang est la dimension de l’image ; Ker A regroupe les solutions de Ax=0. Une solution particulière x₀ donne toutes les solutions sous la forme x₀+Ker A.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "spectre": {
         "purpose": (
-            "Comparer deux matrices denses 6×6 de même polynôme caractéristique mais aux chaînes différentes. "
-            "La question est de déterminer ce que les valeurs propres disent réellement, et quelles informations supplémentaires révèlent les noyaux de (A−λI)ᵏ."
+            'Deux matrices peuvent avoir les mêmes valeurs propres et des comportements différents. Comparer les espaces propres et les noyaux successifs permet de décider si une diagonalisation est possible, puis d’introduire les chaînes de Jordan.'
         ),
         "techniques": [
             "Distinguer multiplicité d'une racine et dimension de son espace propre.",
@@ -121,11 +128,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [8, 10, 13],
         "expected": "Savoir présenter deux matrices de même χ dont la structure diffère et désigner l'invariant qui permet de les distinguer.",
+
+        "objects": ['A est la matrice étudiée et K le corps choisi. λ est une valeur propre, I l’identité ; Ker(A−λI) est l’espace propre associé.', 'χ_A(X)=det(XI−A) est le polynôme caractéristique. La multiplicité algébrique vient de χ_A ; la multiplicité géométrique est la dimension de l’espace propre. k est le rang d’une puissance dans les noyaux successifs.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'Le corps choisi fait partie des hypothèses. Un polynôme peut ne pas s’y scinder ; les conclusions de réduction doivent annoncer ce corps.'],
     },
     "dunford": {
         "purpose": (
-            "Décomposer une dynamique linéaire en une partie semi-simple D et une partie nilpotente N qui commutent. "
-            "Les chaînes et le calcul polynomial rendent visible ce qui relève des valeurs propres, et ce qui conserve une mémoire transitoire le long des chaînes."
+            'Séparer, dans une matrice, la contribution des valeurs propres et celle des chaînes de vecteurs. La décomposition de Dunford fournit ensuite une méthode pour calculer les puissances et l’évolution d’un système linéaire.'
         ),
         "techniques": [
             "Certifier A=D+N, DN=ND et Nᵛ=0 par des égalités matricielles.",
@@ -144,11 +153,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [10, 12, 13],
         "expected": "Savoir vérifier une décomposition proposée, lire son indice de nilpotence et préciser le corps sur lequel D est diagonalisable.",
+
+        "objects": ['A est la matrice de départ ; D est sa partie semi-simple (diagonalisable sur un corps de décomposition) et N sa partie nilpotente. Nilpotente signifie qu’une puissance de N est nulle.', 'χ est le polynôme caractéristique et μ le polynôme minimal, annulateur unitaire de plus petit degré. Le corps annoncé détermine où les valeurs propres et les constructions existent.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'Le corps choisi fait partie des hypothèses. Un polynôme peut ne pas s’y scinder ; les conclusions de réduction doivent annoncer ce corps.'],
     },
     "cyclique": {
         "purpose": (
-            "Itérer un vecteur v par une matrice A et mesurer quelle partie de l'espace ces itérés explorent. "
-            "Une même matrice peut être entièrement décrite à partir d'un bon vecteur, mais presque invisible à partir d'un vecteur propre."
+            'Partir d’un vecteur et lui appliquer plusieurs fois la même matrice. Le rang des vecteurs obtenus révèle la partie de l’espace explorée et permet, dans le cas cyclique, d’écrire une récurrence et une matrice compagnon.'
         ),
         "techniques": [
             "Calculer le rang de (v,Av,…,Aⁿ⁻¹v).",
@@ -167,11 +178,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [10, 14, 16],
         "expected": "Savoir prouver qu'un vecteur est cyclique ou ne l'est pas et en déduire une récurrence exacte pour une observation de ses itérés.",
+
+        "objects": ['A est la matrice de l’endomorphisme et v le vecteur initial. La famille v,Av,A²v,… est la famille de Krylov : elle est obtenue par applications successives de A.', 'Un vecteur cyclique engendre tout l’espace par ces itérations. μ_A est le polynôme minimal de A et χ_A son polynôme caractéristique ; les termes affichés appartiennent à une suite récurrente.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "frobenius": {
         "purpose": (
-            "Décrire une matrice à l'aide de blocs compagnons sans devoir trouver toutes ses valeurs propres. "
-            "La comparaison de deux exemples 6×6 montre pourquoi le produit des facteurs invariants donne χ, alors que le dernier facteur donne une autre information, μ."
+            'Décrire une matrice par des blocs compagnons sans calculer ses valeurs propres. La comparaison des facteurs invariants montre quelles informations le polynôme caractéristique conserve et lesquelles il ne distingue pas.'
         ),
         "techniques": [
             "Lire la relation polynomiale dans la dernière colonne d'un compagnon.",
@@ -190,11 +203,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [10, 14, 15],
         "expected": "Savoir lire les invariants d'une décomposition donnée et expliquer pourquoi elle fonctionne même lorsque χ n'est pas scindé.",
+
+        "objects": ['χ_A est le polynôme caractéristique et μ_A le polynôme minimal de la matrice A. P est une matrice inversible de changement de base.', 'Les facteurs invariants sont des polynômes unitaires ordonnés par divisibilité. Chaque facteur définit un bloc compagnon ; leur produit donne χ_A et le dernier donne μ_A.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'Le corps choisi fait partie des hypothèses. Un polynôme peut ne pas s’y scinder ; les conclusions de réduction doivent annoncer ce corps.'],
     },
     "cayley": {
         "purpose": (
-            "Calculer une grande puissance de matrice avec un nombre borné de coefficients. "
-            "On reconstruit aussi χ à partir des traces et on cherche comment une division euclidienne remplace une longue succession de produits matriciels."
+            'Calculer une grande puissance sans multiplier indéfiniment des matrices. Les traces reconstruisent le polynôme caractéristique, puis Cayley–Hamilton et la division euclidienne réduisent le calcul à quelques coefficients.'
         ),
         "techniques": [
             "Évaluer un polynôme annulateur en une matrice.",
@@ -213,11 +228,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [10, 11, 16],
         "expected": "Savoir remplacer Aᵏ par un polynôme de petit degré en A et justifier cette réduction par une identité annulatrice.",
+
+        "objects": ['A est une matrice carrée de taille n ; tr(Aʲ) est la somme des coefficients diagonaux de sa puissance j. χ_A est le polynôme caractéristique.', 'k est l’exposant entier demandé. Le reste de la division de Xᵏ par un polynôme annulateur devient une combinaison de I,A,… ; I=A⁰ est la matrice identité.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "pfaffien": {
         "purpose": (
-            "Explorer pourquoi le déterminant d'une matrice antisymétrique de taille paire est un carré. "
-            "Les appariements montrent les produits et les signes du pfaffien ; les changements de coordonnées révèlent ce que ce carré oublie sur l'orientation."
+            'Le déterminant d’une matrice antisymétrique de taille paire est le carré d’un autre nombre, le pfaffien. Construire ses termes par appariements explique les signes et permet d’étudier un changement de coordonnées.'
         ),
         "techniques": [
             "Former des appariements et calculer le signe d'une permutation.",
@@ -236,11 +253,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [5, 19, 23],
         "expected": "Savoir calculer un terme signé du pfaffien et distinguer l'effet d'une congruence sur le pfaffien de son effet sur le déterminant.",
+
+        "objects": ['A est une matrice antisymétrique de taille paire 2m : Aᵀ=−A. Un appariement répartit les indices en m paires ; Pf(A) est la somme signée des produits correspondants.', 'P est la matrice du changement de coordonnées. La matrice transformée est PᵀAP ; a, b et les échelles sont des coefficients sans unité. Une échelle nulle peut rendre P singulière.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "projecteurs": {
         "purpose": (
-            "Décomposer un vecteur en composantes que l'on peut calculer séparément. "
-            "En confrontant projecteurs polynomiaux et projection oblique, on distingue une somme directe algébrique d'une projection qui minimise effectivement une distance."
+            'Décomposer un vecteur en composantes appartenant à des sous-espaces complémentaires. Construire les projecteurs avec des polynômes permet de vérifier cette décomposition, puis de distinguer projection oblique et projection orthogonale.'
         ),
         "techniques": [
             "Déduire E=Im P⊕Ker P de P²=P.",
@@ -259,11 +278,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [7, 9, 10],
         "expected": "Savoir certifier une décomposition par projecteurs et dire quelles hypothèses supplémentaires assurent une distance euclidienne minimale.",
+
+        "objects": ['v est le vecteur à décomposer ; P₁ et P₂ sont les projecteurs sur deux sous-espaces complémentaires. Un projecteur vérifie Pᵢ²=Pᵢ.', 'λ₁ et λ₂ sont les valeurs propres choisies, x,y,z les coordonnées de v. Une projection orthogonale utilise un produit scalaire ; une projection oblique suit une autre direction complémentaire.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "quadratiques": {
         "purpose": (
-            "Relier le signe d'une expression quadratique à des courbes de niveau et à un relief. "
-            "En changeant la base, on cherche les propriétés conservées par congruence et on comprend pourquoi cette opération diffère d'une similitude."
+            'Reconnaître une ellipse, une hyperbole ou une forme dégénérée dans les lignes de niveau. Un changement de base permet de lire la signature et de distinguer la transformation d’une forme quadratique de celle d’un endomorphisme.'
         ),
         "techniques": [
             "Compléter les carrés ou orthogonaliser pour écrire une somme de carrés signés.",
@@ -282,11 +303,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [5, 8, 20],
         "expected": "Savoir reconnaître une forme positive, indéfinie ou dégénérée et justifier ce diagnostic par une réduction exacte, au-delà de la figure.",
+
+        "objects": ['S est la matrice symétrique d’une forme quadratique et x un vecteur colonne ; q(x)=xᵀSx est sa valeur. Les coordonnées et niveaux sont sans unité dans ce modèle.', 'P est le changement de base ; PᵀSP est une congruence. La signature compte les directions positives et négatives ; elle ne se confond pas avec la liste des valeurs propres après congruence.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "jacobi": {
         "purpose": (
-            "Comprendre comment trois doubles commutateurs non nuls peuvent avoir une somme exactement nulle. "
-            "Le laboratoire conduit d'une compensation observable à une preuve par douze produits, puis montre pourquoi l'application ad_X:T↦[X,T] respecte les crochets."
+            'Trois doubles crochets, chacun non nul, peuvent avoir une somme nulle. Développer les produits matriciels permet de prouver l’identité de Jacobi et de comprendre son rôle dans l’action d’une algèbre de Lie sur elle-même.'
         ),
         "techniques": [
             "Développer des doubles commutateurs en respectant l'ordre des facteurs.",
@@ -305,11 +328,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [17, 18, 21],
         "expected": "Savoir prouver Jacobi par compensation des produits et en déduire la propriété de représentation de ad.",
+
+        "objects": ['X,Y,Z sont trois matrices génératrices dont a,b,c règlent les coefficients. Le crochet est [X,Y]=XY−YX.', 'Les trois contributions sont [X,[Y,Z]], [Y,[Z,X]] et [Z,[X,Y]]. L’opérateur ad_X envoie une matrice T sur [X,T] : il sert à introduire la représentation adjointe.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "representations": {
         "purpose": (
-            "Faire agir trois opérateurs différentiels sur des polynômes homogènes et traduire cette action en matrices de dimension m+1. "
-            "Le diagramme des poids relie dérivation, espaces propres et sous-espaces stables ; les mouvements distinguent noyau d'un opérateur et noyau d'une représentation."
+            'Faire agir trois opérateurs sur les polynômes homogènes d’un degré choisi. Calculer leur action sur les monômes relie dérivation, matrices et crochet de Lie, et explique pourquoi le degré détermine la dimension de la représentation.'
         ),
         "techniques": [
             "Dériver un monôme et écrire ses coordonnées dans la base xᵐ⁻ᵏyᵏ.",
@@ -328,11 +353,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [4, 18, 22],
         "expected": "Savoir reconstruire E, F et H depuis leurs actions sur les monômes et expliquer les informations différentes portées par leurs noyaux.",
+
+        "objects": ['m est le degré choisi et V_m l’espace des polynômes homogènes de degré m en x,y. Sa base est xᵐ,xᵐ⁻¹y,…,yᵐ ; sa dimension est m+1.', 'E=x∂/∂y, F=y∂/∂x et H=x∂/∂x−y∂/∂y sont les opérateurs représentés. Un poids est une valeur propre de H ; t paramètre leur exponentielle, sans unité physique.'],
+        "assumptions": ['Les calculs rationnels sont exacts lorsque les entrées sont admissibles ; courbes, exponentielles et vecteurs propres approchés restent des illustrations numériques.', 'La conclusion doit être justifiée par une identité, un rang ou un certificat ; l’apparence d’une figure ne prouve pas une propriété générale.'],
     },
     "symplectique": {
         "purpose": (
-            "Faire évoluer des oscillateurs couplés et comparer deux façons de calculer leurs trajectoires. "
-            "Le TP met à l'épreuve une idée tentante : conserver le volume suffirait-il à préserver les relations entre positions et impulsions, ou faut-il l'identité plus forte MᵀJM=J ?"
+            'Faire évoluer des oscillateurs couplés et comparer deux méthodes de calcul. Suivre l’énergie et la forme symplectique permet de distinguer conservation du volume, conservation des aires canoniques et précision de la trajectoire.'
         ),
         "techniques": [
             "Passer d'une énergie quadratique à l'équation u′=JKu.",
@@ -351,11 +378,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [17, 19, 23],
         "expected": "Savoir réfuter l'implication « déterminant 1 ⇒ symplectique » et expliquer les invariants effectivement préservés par le schéma de Cayley proposé.",
+
+        "objects": ['z=(q,p) réunit positions et impulsions des oscillateurs ; J est la matrice de la forme symplectique, K celle de l’énergie quadratique. Les variables sont réduites à des unités cohérentes sans dimension physique imposée.', 'ωᵢ règle la pulsation de chaque mode et κ le couplage relatif. h est le pas et le nombre de pas fixe la durée réduite. Une transformation M est symplectique si MᵀJM=J ; cette condition est plus forte que det M=1.'],
+        "assumptions": ['Oscillateurs linéaires, énergie quadratique et coefficients constants ; les variables du modèle sont réduites.', 'Cayley conserve ici des identités algébriques ; cette conservation n’annule pas l’erreur de phase de la trajectoire numérique.'],
     },
     "markov": {
         "purpose": (
-            "Suivre la redistribution d'une loi de probabilité entre six états et prédire sa limite. "
-            "On distingue la stationnarité, où chaque état reçoit autant qu'il émet, de l'équilibre détaillé, qui annule chacun des courants entre deux états."
+            'Faire évoluer des probabilités sur six états reliés entre eux. Modifier le pont entre deux groupes d’états permet d’étudier une loi stationnaire, sa possible non-unicité et les courants qui peuvent subsister à l’équilibre stationnaire.'
         ),
         "techniques": [
             "Traduire les probabilités conditionnelles en une matrice de transition par colonnes.",
@@ -374,11 +403,13 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [6, 8, 24],
         "expected": "Savoir calculer et vérifier une loi stationnaire, puis dire si elle est unique et si elle permet des courants persistants.",
+
+        "objects": ['p est un vecteur colonne de six probabilités, positives et de somme 1 ; P est la matrice de transition. La mise à jour est p suivant=Pp.', 'Le poids du pont, le biais et le mélange uniforme sont des paramètres sans unité. π est une loi stationnaire si Pπ=π ; un courant compare les flux probabilistes entre deux états.'],
+        "assumptions": ['Chaîne finie à temps discret ; matrice stochastique pour des probabilités colonnes et paramètres constants.', 'La suppression du pont ou du mélange peut créer plusieurs classes fermées ; une loi stationnaire n’est alors pas nécessairement unique.'],
     },
     "reseaux": {
         "purpose": (
-            "Relier un pont fragile entre deux groupes de sommets au ralentissement d'une diffusion. "
-            "Le Laplacien transforme une question de réseau en calcul de noyau, de forme quadratique, de valeur propre et de déterminant : chaque outil raconte une propriété différente."
+            'Deux groupes de sommets échangent un signal à travers un pont pondéré. Le Laplacien du graphe relie la connectivité, la vitesse de diffusion et un déterminant qui compte les arbres couvrants.'
         ),
         "techniques": [
             "Construire L=BWBᵀ et reconnaître les fonctions constantes dans son noyau.",
@@ -397,5 +428,8 @@ LAB_GUIDES = {
         },
         "lesson_numbers": [8, 20, 25],
         "expected": "Savoir expliquer l'effet d'une coupure ou d'un pont faible en reliant figure, dimension du noyau, énergie et mode propre lent.",
+
+        "objects": ['Les sommets portent les valeurs d’un signal u ; les arêtes ont des poids positifs ou nuls. L est le Laplacien du graphe ; le temps t est réduit, sans unité physique imposée.', 'λ₂ est la deuxième valeur propre de L et un vecteur de Fiedler un vecteur propre associé. τ est la somme des poids des arbres couvrants ; avec des poids non entiers, il ne s’agit pas d’un simple nombre d’arbres.'],
+        "assumptions": ['Graphe non orienté à poids positifs ou nuls ; le Laplacien est symétrique. Le temps de diffusion est réduit.', 'Un pont de poids nul coupe les groupes ; les valeurs propres et les tracés approchés complètent les identités exactes du modèle.'],
     },
 }

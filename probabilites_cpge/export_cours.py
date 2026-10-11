@@ -29,5 +29,36 @@ def export(path=None):
     return path
 
 
+from reperes import LAB_GUIDES
+
+LAB_TITLES = {'polarisation': 'La moyenne conservée et la polarisation', 'extremes': 'Maximum, minimum et rang', 'arcsinus': 'Cosinus et loi arcsinus', 'wigner': 'Matrices aléatoires et demi-cercle', 'urne': 'Urnes et dépendance', 'fluctuations': 'Marche, fréquences et fluctuations'}
+
+
+def export_parcours(path=None):
+    """Conserver le parcours initial et actualiser uniquement ses guides."""
+    path = Path(path) if path else Path(__file__).with_name('PARCOURS.md')
+    marker = '<!-- REPERES_EXPERIENCES -->'
+    base = path.read_text(encoding='utf-8').split(marker)[0].rstrip() if path.exists() else '# Parcours : prévoir, expérimenter, démontrer'
+    parts = [base, marker, '## Guides des expériences',
+             'Les repères distinguent les outils de sup, ceux de spé et les prolongements. '
+             'Ils s’appuient sur les programmes de mathématiques [MPSI](https://prepas.org/ups.php?document=69) '
+             'et [MP](https://prepas.org/ups.php?document=85).']
+    for ident, guide in LAB_GUIDES.items():
+        parts.extend(['### '+LAB_TITLES[ident], guide['purpose'], '**Objets et notations**'])
+        parts.extend('- '+value for value in guide['objects'])
+        parts.append('**Hypothèses**')
+        parts.extend('- '+value for value in guide['hypotheses'])
+        parts.append('**Techniques à mobiliser**')
+        parts.extend('- '+value for value in guide['techniques'])
+        parts.append('**Trois premières manipulations**')
+        parts.extend(str(i)+'. '+value for i,value in enumerate(guide['first_steps'],1))
+        parts.append('**Repères CPGE**')
+        parts.extend('**'+label+' :** '+guide['levels'][key] for key,label in [('sup','Sup'),('spe','Spé'),('beyond','Au-delà')])
+        parts.append('**À retenir :** '+guide['expected'])
+    path.write_text('\n\n'.join(parts)+'\n', encoding='utf-8', newline='\n')
+    return path
+
+
 if __name__ == '__main__':
     print(export())
+    print(export_parcours())

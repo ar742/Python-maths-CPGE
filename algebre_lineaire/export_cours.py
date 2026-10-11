@@ -3,6 +3,7 @@ from pathlib import Path
 import html
 import re
 from cours import LESSONS, EXERCISES, SOURCES
+from reperes import LAB_GUIDES
 
 
 def prose(value):
@@ -53,6 +54,19 @@ def export(path=None):
                       prose(lesson['html'])+'\n',
                       worked_block(lesson.get('worked_example')),
                       list_block('Questions avant le corrigé', lesson.get('questions'))])
+    parts.append('## Repères avant les 17 expériences\n')
+    for lab, guide in LAB_GUIDES.items():
+        parts.extend(['### Laboratoire '+lab+'\n', guide['purpose']+'\n',
+                      list_block('Objets et notations', guide['objects']),
+                      list_block('Hypothèses du modèle', guide['assumptions']),
+                      list_block('Techniques à réinvestir', guide['techniques']),
+                      '**Prévoir, manipuler, justifier**\n\n'+ '\n'.join(
+                          str(i)+'. '+step for i, step in enumerate(guide['first_steps'], 1))+'\n',
+                      list_block('Niveaux et prolongements', [
+                          'Sup : '+guide['levels']['sup'],
+                          'Spé : '+guide['levels']['spe'],
+                          'Au-delà : '+guide['levels']['beyond']]),
+                      '**Résultat attendu.** '+guide['expected']+'\n'])
     parts.append('## Exercices corrigés\n')
     for exercise in EXERCISES:
         parts.extend(['### '+exercise['title']+'\n', '*'+exercise['level']+'*\n',

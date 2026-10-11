@@ -702,7 +702,7 @@ n≥ln(ε⁻²−1)/[2ln(fp/fc)], fp>fc
 
 **Spé ; prolongement numérique · TP : fenetres_fft**
 
-**Objets et but.** N valeurs sont acquises à F=128 Hz, aux instants k/F, k=0,…,N−1. La durée DFT est T=N/F et le pas natif F/N. Une fréquence située entre deux cases produit une fuite spectrale. La fenêtre de Hann ou de Blackman réduit les lobes secondaires en élargissant le lobe principal ; le signal observé est le produit xkwk.
+**Objets et but.** N valeurs sont acquises à F=128 Hz, aux instants k/F, k=0,…,N−1. La durée DFT est T=N/F et le pas natif F/N. Une fréquence située entre deux cases produit une fuite spectrale. La fenêtre de Hann ou de Blackman réduit les lobes secondaires en élargissant le lobe principal ; le signal observé est le produit xkwk. Ici xk est la mesure au rang k et wk le coefficient de la fenêtre. FFT désigne le calcul rapide de la transformée de Fourier discrète (DFT). CG est le gain cohérent, moyenne des coefficients de fenêtre ; ENBW est la largeur de bande équivalente de bruit, en Hz.
 
 ```text
 Xj=Σk=0ᴺ⁻¹xkwk e^(−2iπjk/N)
@@ -712,7 +712,7 @@ CG=(1/N)Σwk ; ENBW=FΣwk²/(Σwk)²
 
 **Démonstration.** La fenêtre finie transforme une raie infiniment fine en une copie de son propre spectre. Diviser par Σw corrige le gain cohérent d’une raie sur une case ; cela ne corrige pas exactement tous les biais hors case ni le recouvrement de raies voisines. Les amplitudes DC et Nyquist ne sont pas doublées : ces cases n’ont pas une partenaire distincte dans la représentation monolatérale.
 
-**Lire l’expérience.** Le zero padding n’ajoute aucune mesure. Il échantillonne plus densément le même polynôme trigonométrique et permet de mieux lire un maximum interpolé. Le banc affiche séparément F/N, F/(Nq), le gain cohérent et la bande équivalente de bruit, pour éviter de confondre calibration, interpolation et résolution.
+**Lire l’expérience.** L’ajout de zéros n’ajoute aucune mesure. Il échantillonne plus densément le même polynôme trigonométrique et permet de mieux lire un maximum interpolé. Le banc affiche séparément F/N, F/(Nq), le gain cohérent et la bande équivalente de bruit, pour éviter de confondre calibration, interpolation et résolution.
 
 ## 50. Distinguer DFT et approximation d’une TF continue
 
@@ -755,11 +755,11 @@ Période des maxima de A : 1/Δf ; premiers minima : 1/(2Δf)
 
 **Justification.** Les maxima de |cos θ| se reproduisent après π plutôt qu’après 2π. Les zéros apparaissent à θ=π/2+kπ, donnant les dates (k+1/2)/Δf. Cette distinction évite un facteur deux lorsque l’on mesure l’écart des fréquences à partir de battements acoustiques ou d’un oscilloscope.
 
-## 53. Un chirp ne possède pas une seule fréquence permanente
+## 53. Suivre une fréquence qui varie au cours du temps
 
 **Spé ; prolongement temps–fréquence · TP : spectrogramme**
 
-**Objets et but.** Le chirp est x(t)=cos[2π(f₀t+kt²/2)]. Sa fréquence instantanée est la dérivée de sa phase divisée par 2π : ν(t)=f₀+kt. L’expérience dure 3 s et échantillonne à 128 Hz. Une fenêtre mobile de L valeurs permet de localiser les fréquences au cours du temps.
+**Objets et but.** Le signal à fréquence balayée (chirp) est x(t)=cos[2π(f₀t+kt²/2)]. Sa fréquence instantanée est la dérivée de sa phase divisée par 2π : ν(t)=f₀+kt. L’expérience dure 3 s et échantillonne à 128 Hz. Une fenêtre mobile de L valeurs permet de localiser les fréquences au cours du temps. f₀ est la fréquence initiale en Hz, k la vitesse du balayage en Hz/s ; STFT désigne la transformée de Fourier sur des fenêtres temporelles successives.
 
 ```text
 STFTx(t₀,ν)=∫x(t)w(t−t₀)e^(−2iπνt)dt
@@ -774,7 +774,7 @@ STFTx(t₀,ν)=∫x(t)w(t−t₀)e^(−2iπνt)dt
 
 **Spé ; prolongement temps–fréquence · TP : spectrogramme**
 
-**Propriété ciblée.** Pour un chirp linéaire, une fenêtre de durée τw voit une variation de fréquence |k|τw. Son propre étalement est de l’ordre de 1/τw. Leur comparaison donne un ordre de grandeur pour choisir une fenêtre adaptée au balayage.
+**Propriété ciblée.** Pour un signal à fréquence balayée linéaire, une fenêtre de durée τw voit une variation de fréquence |k|τw. Son propre étalement est de l’ordre de 1/τw. Leur comparaison donne un ordre de grandeur pour choisir une fenêtre adaptée au balayage.
 
 ```text
 Variation dans une fenêtre : |k|τw
@@ -847,7 +847,7 @@ TF(Cff)(ν)=|f̂(ν)|²
 
 **Spé ; prolongement numérique · TP : debruitage**
 
-**Objets et but.** Un signal utile contient une fondamentale et sa deuxième harmonique. Le banc ajoute un bruit blanc puis applique soit une moyenne glissante causale de M valeurs, soit un filtre récursif de pôle ρ=e^(−1/M). Il filtre aussi le signal utile seul : cette référence sépare la déformation du signal du bruit restant.
+**Objets et but.** Un signal utile contient une fondamentale et sa deuxième harmonique. Le banc ajoute un bruit blanc puis applique soit une moyenne glissante causale de M valeurs, soit un filtre récursif de pôle ρ=e^(−1/M). Il filtre aussi le signal utile seul : cette référence sépare la déformation du signal du bruit restant. RMS signifie valeur efficace, racine de la moyenne des carrés ; M est la longueur de mémoire et ρ le coefficient du filtre récursif.
 
 ```text
 Moyenne : yk=(1/M)Σj=0ᴹ⁻¹xk−j
@@ -872,6 +872,1097 @@ Récursif : facteur (1−ρ)/(1+ρ)
 ```
 
 **Justification.** Développer le carré de la somme. Les termes croisés ont une espérance nulle par indépendance et centrage. Pour la moyenne, M coefficients 1/M donnent 1/M. Pour le récursif, hj=(1−ρ)ρʲ, j≥0, et la série géométrique des carrés vaut (1−ρ)²/(1−ρ²)=(1−ρ)/(1+ρ). Un bruit coloré exigerait ses covariances et ne suit pas ce calcul simple.
+
+## Repères avant les 30 expériences
+
+### Laboratoire couche_limite
+
+Un pic se déplace vers le bord de l’intervalle sans perdre de hauteur. L’étudier par dérivation permet de distinguer convergence en chaque point, convergence uniforme et convergence uniforme loin du bord.
+
+**Objets et unités**
+
+- n est le rang entier de la suite et x la position sur [0,1], sans unité. δ fixe un sous-intervalle éloigné de zéro ; la norme uniforme est la borne supérieure des valeurs absolues sur l’intervalle étudié.
+- n entier, x∈[0,1] et fₙ(x)=nx/(1+n²x²) sans unité
+- δ>0 fixe le compact [δ,1] ; u=nx est la coordonnée de loupe
+- Le sommet est calculé analytiquement, pas estimé sur les points du graphe
+
+**Hypothèses**
+
+- Domaine fixe [0,1] pour la convergence simple et uniforme globale
+- La comparaison locale utilise un δ positif fixé avant n→∞
+
+**Techniques**
+
+- Étude d’une dérivée et d’un maximum
+- Quantificateurs de convergence
+- Changement d’échelle u=nx
+
+**Prévoir, manipuler, justifier**
+
+1. Pour n=15, prévoir la position 1/n et la hauteur du pic avant de déplacer les curseurs.
+2. Passer à n=800 puis comparer le tracé global, la loupe et les deux normes ; garder δ=0,03 fixe.
+3. Écrire la preuve de CS, le contre-exemple à CU et la borne 1/(nδ) sur le compact ; expliquer ce qu’un maillage peut manquer.
+
+**Niveaux et prolongements**
+
+- Sup : Dérivation, signe, maximum et lecture de quantificateurs ; entrée progressive vers les suites de fonctions.
+- Spé : Convergence simple et uniforme, norme uniforme (borne supérieure des valeurs absolues) et convergence locale sur les compacts.
+- Au-delà : Couches limites et limites singulières d’équations différentielles.
+
+**Résultat attendu.** Trois conclusions distinctes : CS sur [0,1], échec CU global, CU sur chaque [δ,1].
+
+### Laboratoire concentration
+
+Une suite de fonctions tend vers zéro en chaque point, alors que son aire tend vers un nombre non nul. Un changement d’échelle localise la concentration et montre quelle hypothèse manque pour échanger limite et intégrale.
+
+**Objets et unités**
+
+- fₙ(x)=n²xe^(−nx), x∈[0,1], n entier
+- x₀ est un point fixe où l’on suit la suite numérique fₙ(x₀)
+- Aire exacte, position 1/n, hauteur n/e ; loupe u=nx
+
+**Hypothèses**
+
+- Fonctions positives ; limite simple nulle, y compris en zéro
+- La famille ne possède pas de domination intégrable commune sur [0,1]
+
+**Techniques**
+
+- Exponentielle contre puissance
+- Intégration par parties et changement de variable
+- Vérification des hypothèses de convergence dominée
+
+**Prévoir, manipuler, justifier**
+
+1. Pour n=8, prévoir simultanément hauteur, largeur caractéristique et aire ; ne conclure ni d’après la hauteur seule ni d’après un point.
+2. Comparer n=8 puis n=200 et observer fₙ(x₀) avec x₀=0,2 ; utiliser la loupe pour conserver le profil.
+3. Calculer 1−(n+1)e^(−n) et justifier pourquoi une domination intégrable commune est impossible.
+
+**Niveaux et prolongements**
+
+- Sup : Limites exponentielles, étude de fonction et calcul d’aire.
+- Spé : Convergence dominée, contre-exemple à l’interversion et changement de variable adapté.
+- Au-delà : Convergence de mesures vers une Dirac et concentration de masse.
+
+**Résultat attendu.** Une limite ponctuelle nulle et une limite d’aire égale à 1, réconciliées par une couche de largeur 1/n.
+
+### Laboratoire tp99_original
+
+Soustraire deux fonctions très proches fait disparaître leurs premiers termes de développement. Retrouver le premier terme restant permet de majorer la série sur un intervalle fixé et de justifier sa convergence normale.
+
+**Objets et unités**
+
+- fₙ(x)=cos(x/n)−[1+(x/n)²]^(−1/2)
+- R fixe [−R,R] ; n règle un terme ; N règle la somme des n=1,…,N
+- n⁴fₙ et −π⁴x⁴/270 comparent deux développements locaux distincts
+
+**Hypothèses**
+
+- Majoration Taylor valable pour tout x réel sur un compact fixé
+- Le terme quartique de la somme est une approximation en zéro, pas son expression globale
+- Évaluation stable des petites différences
+
+**Techniques**
+
+- Développements limités et cancellation
+- Critère de Weierstrass
+- Borne d’une queue par une intégrale
+
+**Prévoir, manipuler, justifier**
+
+1. Avec R=1 et n=40, prédire les deux termes quadratiques puis expliquer leur annulation.
+2. Comparer n⁴fₙ à −x⁴/3 ; augmenter ensuite R jusqu’à 4 et distinguer somme et approximation quartique.
+3. Démontrer |fₙ|≤5R⁴/(12n⁴), puis la borne 5R⁴/(36N³) du reste de la somme.
+
+**Niveaux et prolongements**
+
+- Sup : Développements limités usuels, différences de fonctions proches et sommabilité de n⁻⁴.
+- Spé : Convergence normale sur les compacts et sommation contrôlée d’un développement.
+- Au-delà : Conditionnement numérique et calcul de différences par des développements stables.
+
+**Résultat attendu.** Une justification de CN accompagnée d’un reste uniforme et d’une distinction entre identité et développement local.
+
+### Laboratoire geometrie
+
+Approcher une fonction et sa dérivée avec les sommes d’une série géométrique. Calculer les restes permet de justifier la dérivation terme à terme et de comprendre pourquoi les estimations se dégradent près du bord.
+
+**Objets et unités**
+
+- N est le dernier exposant conservé et r le rayon du sous-intervalle d’étude, avec r strictement inférieur à 1. Le reste est la différence entre la fonction exacte et la somme partielle.
+- PN(x)=Σk=0ᴺxᵏ comporte N+1 termes
+- r<1 définit le compact ∣x∣≤r ; R=1 est le rayon de convergence
+- Deux restes affichés : somme et dérivée
+
+**Hypothèses**
+
+- Le compact reste strictement intérieur au disque
+- Les normes des restes sont majorées analytiquement
+
+**Techniques**
+
+- Télescopage
+- Somme géométrique et norme uniforme (borne supérieure des valeurs absolues)
+- Convergence normale de la série dérivée
+
+**Prévoir, manipuler, justifier**
+
+1. Avec r=0,5, prévoir un degré garantissant une erreur de 10⁻³, puis comparer à la borne affichée.
+2. Garder N=20 et déplacer r de 0,5 à 0,95 ; observer la dérivée et la somme séparément.
+3. Calculer les deux queues et expliquer pourquoi le même rayon ne donne pas la même précision pour les dérivées.
+
+**Niveaux et prolongements**
+
+- Sup : Identité géométrique finie, limites et dérivation de polynômes.
+- Spé : Séries entières, convergence normale sur les compacts et opérations terme à terme.
+- Au-delà : Estimations de Cauchy et approximation de fonctions analytiques.
+
+**Résultat attendu.** Un degré choisi à partir d’une borne et une dérivation de série justifiée sur un domaine annoncé.
+
+### Laboratoire arcsin_ex4
+
+Construire un développement en série à partir d’une équation différentielle. Identifier les coefficients puis comparer la somme à la fonction exacte entraîne les techniques de récurrence et de contrôle d’un reste.
+
+**Objets et unités**
+
+- f(x)=arcsin x/√(1−x²), ∣x∣<1
+- N est le nombre de termes impairs ; le degré vaut 2N−1
+- r fixe le compact ; cₖ est le coefficient de x^(2k+1)
+
+**Hypothèses**
+
+- L’analyticité est construite par une série de rayon 1 puis l’unicité de l’EDO
+- Les singularités ±1 restent hors du domaine de contrôle uniforme
+
+**Techniques**
+
+- EDO du premier ordre
+- Identification de coefficients
+- Récurrence et majorant géométrique
+
+**Prévoir, manipuler, justifier**
+
+1. Pour N=4, retrouver c₀,c₁,c₂,c₃ à la main avant de lire le graphe des coefficients.
+2. Comparer r=0,6 et r=0,98 avec N=20 ; repérer l’amplification du reste près du bord.
+3. Calculer (1−x²)PN′−xPN−1 et retrouver son unique terme maximal ; justifier le rayon 1.
+
+**Niveaux et prolongements**
+
+- Sup : Dérivation de composées et récurrence de nombres ; introduction accompagnée de l’EDO.
+- Spé : Développement en série entière par EDO, opérations sur les compacts et contrôle du résidu.
+- Au-delà : Asymptotique des coefficients et singularités analytiques.
+
+**Résultat attendu.** Un DSE démontré avec rayon, parité, récurrence et test algébrique indépendant.
+
+### Laboratoire asymptotique_ex5
+
+Une série entière contient des coefficients difficiles à évaluer directement. Les réécrire avec des exponentielles et des poids de Poisson permet d’étudier le rayon de convergence et un équivalent lorsque la variable devient grande.
+
+**Objets et unités**
+
+- aₙ=(1+2/n²)^(n³)/n!, n≥2 ; S(x)=Σaₙxⁿ
+- λ=e²x ; rₙ=aₙn!/e^(2n) ; x>0
+- N est le dernier rang conservé ; rapport S_N/e^λ et rapport S/e^λ sont distincts
+
+**Hypothèses**
+
+- Transfert asymptotique pour x→+∞ avec coefficients positifs
+- Calculs normalisés en logarithmes ; la somme automatique est tronquée loin après le cœur n≈λ
+
+**Techniques**
+
+- Logarithme et développement limité
+- Cauchy–Hadamard
+- Encadrement des coefficients ou poids de Poisson
+
+**Prévoir, manipuler, justifier**
+
+1. Pour x=2, calculer λ ; examiner quels indices portent l’essentiel de la somme.
+2. Passer à x=30 et N=100 puis augmenter N au-delà de λ ; comparer rapport partiel et rapport de référence.
+3. Démontrer R=∞ et le transfert S(x)~exp(e²x) en séparant un début polynomial d’une queue positive.
+
+**Niveaux et prolongements**
+
+- Sup : Exponentielles, factorielles et ordre de grandeur ; calculs préparatoires accompagnés.
+- Spé : Rayon, équivalents de coefficients et transfert justifié de somme.
+- Au-delà : Concentration de Poisson, approximation de Laplace et arithmétique logarithmique.
+
+**Résultat attendu.** Une preuve de l’équivalent et une troncature argumentée, sans confondre exp(e²x) et exp(2x).
+
+### Laboratoire binomiale_ex10
+
+Prolonger la formule du binôme à un exposant qui n’est pas entier. Suivre les coefficients, leur signe et le reste explique le développement en série entière et prépare le calcul d’une intégrale elliptique.
+
+**Objets et unités**
+
+- p entier de −3 à 3 ; α=p+1/2
+- N est le nombre de termes ; u∈[−r,r], r<1
+- c₀=1 et cₙ₊₁=(α+n)cₙ/(n+1)
+
+**Hypothèses**
+
+- Puissance réelle bien définie pour u<1
+- Les demi-entiers du banc ne donnent pas de polynômes finis
+- Borne de reste par rapport de termes ou borne de Cauchy
+
+**Techniques**
+
+- Dérivation répétée
+- Récurrence multiplicative
+- Rayon et convergence sur les compacts
+
+**Prévoir, manipuler, justifier**
+
+1. Choisir p=0 et retrouver 1,1/2,3/8,5/16 ; comparer à la formule binomiale centrale.
+2. Choisir p=−3 puis p=3 ; prévoir les signes et observer la forte singularité près de u=1.
+3. Justifier le rayon 1 et calculer f_p′ en précisant le signe et le sens du déplacement de p.
+
+**Niveaux et prolongements**
+
+- Sup : Dérivation des puissances et premiers coefficients, avec guidage.
+- Spé : Binôme généralisé, séries entières et singularité au bord.
+- Au-delà : Symboles de Pochhammer, fonctions hypergéométriques et bornes complexes de Cauchy.
+
+**Résultat attendu.** Une formule de coefficients et de dérivées cohérente, avec signes contrôlés.
+
+### Laboratoire elliptique_pendule
+
+La période d’un pendule augmente avec l’amplitude de ses oscillations. Partir de l’énergie puis intégrer une série permet de mesurer l’écart au modèle harmonique et de justifier une correction de ce modèle.
+
+**Objets et unités**
+
+- θ₀ en degrés dans le contrôle, en radians dans les développements
+- ℓ en m, g=9,81 m·s⁻² ; k=sin(θ₀/2)
+- I(k) est sur [0,π], K=I/2 ; T/T₀=I/π ; N compte les termes
+
+**Hypothèses**
+
+- Pendule idéal sans frottement, vitesse initiale nulle
+- Période par quadrature de Gauss ; trajectoire par Runge–Kutta d’ordre 4
+- Pas de passage à θ₀=180° où la période diverge
+
+**Techniques**
+
+- Énergie et intégrale première
+- Série binomiale et Wallis
+- Convergence normale puis borne de queue positive
+
+**Prévoir, manipuler, justifier**
+
+1. Comparer θ₀=10° puis 120° et prédire le signe de la correction à T₀.
+2. Garder θ₀=160° et augmenter N ; changer ensuite ℓ pour vérifier que le rapport T/T₀ ne change pas.
+3. Retrouver T=4√(ℓ/g)K, puis I=2K, et expliquer la divergence près de la séparatrice.
+
+**Niveaux et prolongements**
+
+- Sup : Énergie du pendule et modèle harmonique ; première correction accompagnée.
+- Spé : Intégrale elliptique, échange série–intégrale et contrôle du reste.
+- Au-delà : Séparatrice, fonctions elliptiques et comparaison de solveurs numériques.
+
+**Résultat attendu.** Une période non linéaire calculée avec le bon facteur 2 et une limite des petites oscillations justifiée.
+
+### Laboratoire integrale_sh_ex11
+
+Décomposer une fonction positive en une somme de fonctions dont les aires sont connues. Comparer les aires partielles et le reste apprend à justifier l’intégration d’une série sur un intervalle non borné.
+
+**Objets et unités**
+
+- f(t)=t/sinh t, prolongée en 1 à t=0
+- N modes n=0,…,N−1 ; chaque aire vaut 2/(2n+1)²
+- T borne la fenêtre dessinée ; les aires affichées sont sur [0,+∞[
+
+**Hypothèses**
+
+- Identité de série pour t>0 ; un point isolé ne modifie pas l’intégrale
+- Termes positifs et somme des intégrales absolues finie
+- La série ne converge pas uniformément près de zéro
+
+**Techniques**
+
+- Série géométrique
+- Intégration par parties
+- Théorème d’intégration des séries et comparaison intégrale
+
+**Prévoir, manipuler, justifier**
+
+1. Avec N=3, calculer à la main les trois premières aires et observer ce que le tracé manque près de zéro.
+2. Augmenter N jusqu’à 200 puis T ; suivre séparément la borne de reste de série et la queue au-delà de T.
+3. Démontrer l’interversion et déduire π²/4 de la somme sur les indices impairs.
+
+**Niveaux et prolongements**
+
+- Sup : Séries numériques positives et intégrales élémentaires accompagnées.
+- Spé : Intégration de séries de fonctions, normes L¹/sup et encadrements de restes.
+- Au-delà : Convergence dans des espaces fonctionnels et transformées thermiques.
+
+**Résultat attendu.** Une valeur exacte π²/4 avec une justification d’interversion et deux erreurs de troncature distinguées.
+
+### Laboratoire dominee_ex12
+
+Remplacer un noyau exponentiel par une suite de fonctions plus élémentaires dans une intégrale. Chercher une majoration indépendante du rang permet de justifier le passage à la limite, y compris pour un signal complexe.
+
+**Objets et unités**
+
+- t∈[0,1], n entier ; noyau (1−t/n)ⁿ
+- ω sans dimension dans exp(iωt) ou sin(ωt)
+- In complexe est représentée par Re et Im ; signal à saut en 0,4
+
+**Hypothèses**
+
+- f continue par morceaux, ∣f∣ intégrable
+- Quadrature de Gauss sur chaque intervalle de continuité ; limite calculée analytiquement
+- Pour n=1,t=1, le noyau est défini par 0
+
+**Techniques**
+
+- Convergence simple et domination
+- Intégrales complexes
+- Inégalité de logarithme et borne quantitative
+
+**Prévoir, manipuler, justifier**
+
+1. Choisir la famille affine avec n=1 et prédire le signe de la différence entre les noyaux.
+2. Passer au signal complexe et augmenter n ; lire son chemin d’intégrales dans le plan complexe.
+3. Vérifier la domination par |f| et démontrer |In−I|≤‖f‖₁/[2(n−1)] pour n≥2 ; tester ensuite le saut.
+
+**Niveaux et prolongements**
+
+- Sup : Limite de (1−t/n)ⁿ et intégration de fonctions réelles/complexes, avec accompagnement.
+- Spé : Convergence dominée, fonctions continues par morceaux et contrôle quantitatif.
+- Au-delà : Convergence d’opérateurs intégraux et extrapolation numérique.
+
+**Résultat attendu.** Une interversion justifiée et une borne d’erreur indépendante de la quadrature.
+
+### Laboratoire rc_reponses
+
+Prévoir la tension d’un condensateur soumis à un échelon, une rampe ou une impulsion. Relier l’équation différentielle à la transformée de Laplace permet de traiter l’entrée et la charge initiale séparément.
+
+**Objets et unités**
+
+- τ=RC en s ; u,y,y₀ en V
+- Rampe u=at+b : a en V/s, b en V
+- Un pas a une amplitude A en V ; une impulsion une aire A en V·s
+
+**Hypothèses**
+
+- RC idéal, τ>0, entrée causale
+- y₀=y(0⁻) est explicite ; une impulsion produit un saut A/τ
+- Le transfert décrit la réponse au repos initial, l’état initial ajoute un terme homogène
+
+**Techniques**
+
+- EDO linéaire du premier ordre
+- Laplace unilatérale et fractions simples
+- Convolution causale et contrôle par substitution
+
+**Prévoir, manipuler, justifier**
+
+1. Pour τ=0,8,a=0,7,b=0,4,y₀=0, prévoir la pente finale et le décalage aτ avant de lire la courbe.
+2. Comparer pas, rampe et impulsion, puis imposer y₀=1,2 ; vérifier le départ de chaque sortie.
+3. Écrire Y=[U+τy₀]/(1+τp) et retrouver la solution ; pour l’impulsion, intégrer la maille autour de zéro.
+
+**Niveaux et prolongements**
+
+- Sup : Circuits RC, équation différentielle et constante de temps.
+- Spé : Transformée de Laplace, réponse impulsionnelle et conditions initiales selon filière.
+- Au-delà : Systèmes d’état, distributions causales et identification expérimentale.
+
+**Résultat attendu.** Trois réponses temporelles vérifiées, avec pente/intercept et aire d’impulsion explicités.
+
+### Laboratoire rc_bode
+
+Faire traverser un filtre RC à un signal contenant trois harmoniques. Le gain et la phase de chaque harmonique expliquent la forme de la sortie et donnent un sens concret au diagramme de Bode.
+
+**Objets et unités**
+
+- R est la résistance, C la capacité et τ=RC la constante de temps. H est la fonction de transfert, rapport complexe sortie/entrée ; son module est le gain et son argument le déphasage.
+- τ en s ; fréquence fondamentale ν₁ en Hz ; ω=2πν en rad/s
+- H(iω) est complexe ; GdB=20log₁₀∣H∣ et phase en degrés
+- Signal à trois harmoniques, recomposées avec leur gain et leur phase
+
+**Hypothèses**
+
+- RC idéal en régime permanent
+- Réponse impulsionnelle intégrable, donc axe imaginaire dans le domaine de convergence
+- Transitoire initial non représenté dans cette expérience de Bode
+
+**Techniques**
+
+- Complexes et régime sinusoïdal
+- Asymptotes et coupure
+- Superposition harmonique
+
+**Prévoir, manipuler, justifier**
+
+1. Calculer νc pour τ=0,2 s et prévoir gain et phase vers 0,8 Hz.
+2. Comparer fondamentale sous la coupure et harmoniques filtrées ; modifier τ à fréquence fixe.
+3. Recomposer une somme de trois sinusoïdes et justifier pourquoi la sortie n’est pas une réduction uniforme de l’entrée.
+
+**Niveaux et prolongements**
+
+- Sup : Régime sinusoïdal, gain, phase et diagrammes fréquentiels.
+- Spé : Filtrage harmonique, relation Laplace–Fourier et stabilité.
+- Au-delà : Identification fréquentielle et conception de filtres.
+
+**Résultat attendu.** Une coupure calculée et une déformation expliquée par les gains ET les phases.
+
+### Laboratoire rlc_poles
+
+Un circuit du second ordre peut osciller, revenir sans oscillation ou être à la limite de ces régimes. La position des pôles relie ces comportements à l’équation différentielle et au facteur d’amortissement.
+
+**Objets et unités**
+
+- ω₀ est la pulsation propre et ζ le facteur d’amortissement. Un pôle est une racine du dénominateur de la fonction de transfert ; la partie réelle règle la décroissance et la partie imaginaire l’oscillation.
+- ω₀ en rad/s ; ζ sans unité
+- Entrée pas ou impulsion unitaire ; repos initial
+- Pôles p± en s⁻¹, parties réelle et imaginaire affichées séparément
+
+**Hypothèses**
+
+- Système normalisé y″+2ζω₀y′+ω₀²y=ω₀²u
+- ζ>0, système stable
+- Régime critique traité avec te^(−ω₀t), sans division par des pôles confondus
+
+**Techniques**
+
+- Équation caractéristique
+- Laplace et modes exponentiels
+- Limite critique et calcul de dépassement
+
+**Prévoir, manipuler, justifier**
+
+1. À ω₀=6,ζ=0,15, prévoir le signe des parties réelles et l’existence d’oscillations.
+2. Comparer ζ=0,15,1,1,8 sur le pas ; repérer le pôle lent à fort amortissement.
+3. Calculer ωd et le premier dépassement pour ζ<1 ; retrouver la réponse critique par passage à la limite.
+
+**Niveaux et prolongements**
+
+- Sup : Oscillateur amorti et EDO du second ordre.
+- Spé : Pôles, stabilité, réponse indicielle et identification selon filière.
+- Au-delà : Commande, espace d’état et amortissement optimal suivant un cahier des charges.
+
+**Résultat attendu.** Une classification des trois régimes et un temps de maximum ou de décroissance relié aux pôles.
+
+### Laboratoire dirichlet_abel
+
+Calculer une intégrale oscillante qui ne converge pas absolument. Introduire un amortissement exponentiel permet de dériver sous l’intégrale, puis de distinguer la limite mathématique de la troncature numérique.
+
+**Objets et unités**
+
+- p>0 amortit e^(−pt) ; L est la borne d’intégration
+- Ip=∫₀∞e^(−pt)sin(t)/t dt ; valeur exacte π/2−arctan p
+- sin(t)/t se prolonge en 1 à zéro
+
+**Hypothèses**
+
+- Intégrale non amortie conditionnellement convergente
+- Contrôle uniforme de la queue oscillante ≤2/L
+- Intégrales numériques sur des bornes finies distinctes des formules sur [0,+∞[
+
+**Techniques**
+
+- Dérivation sous intégrale
+- Laplace de sin
+- Intégration par parties et limite d’Abel
+
+**Prévoir, manipuler, justifier**
+
+1. Avec p=0,6,L=40, comparer les trois quantités exactes/amorties/tronquées.
+2. Réduire p à 0,02 puis augmenter L ; distinguer les effets des deux paramètres.
+3. Démontrer Ip′=−1/(1+p²), fixer la constante à p→∞ et justifier p→0 grâce à une borne de queue uniforme.
+
+**Niveaux et prolongements**
+
+- Sup : Intégration par parties, sinus cardinal et oscillations.
+- Spé : Intégrales impropres, dérivation sous intégrale et convergence conditionnelle.
+- Au-delà : Méthodes d’Abel, distributions et quadratures oscillantes.
+
+**Résultat attendu.** La valeur π/2 obtenue avec un passage au bord justifié et des erreurs identifiées.
+
+### Laboratoire porte_sinc
+
+Une impulsion rectangulaire plus courte occupe un spectre plus large. Calculer sa transformée puis déplacer l’impulsion permet de séparer le module du spectre et la phase associée au retard.
+
+**Objets et unités**
+
+- L en s ; t₀ centre temporel en s
+- Porte d’amplitude 1 ; f̂ a l’unité s
+- sincₙ(u)=sin(πu)/(πu), sincₙ(0)=1 ; le PDF écrit aussi sin z/z
+
+**Hypothèses**
+
+- TF bilatérale en Hz, noyau e^(−2iπνt)
+- Module et phase distingués ; phase indéfinie aux zéros
+- Porte idéale discontinue, spectre non borné
+
+**Techniques**
+
+- Intégrale exponentielle
+- Translation et dilatation
+- Limite en zéro et bilan d’aire
+
+**Prévoir, manipuler, justifier**
+
+1. Pour L=1, t₀=0, calculer l’aire et les deux premiers zéros spectraux.
+2. Réduire L à 0,3 puis déplacer t₀ de 0 à 1,3 à L fixé ; distinguer changements de module et de phase.
+3. Démontrer f̂=L sincₙ(Lν)e^(−2iπνt₀), puis préparer une porte d’aire 1 en divisant l’amplitude par L.
+
+**Niveaux et prolongements**
+
+- Sup : Intégration complexe, oscillations et unités de fréquence.
+- Spé : Fourier, phase de retard et distribution de Dirac en introduction.
+- Au-delà : Résolution spectrale, limites de moments et distributions tempérées.
+
+**Résultat attendu.** Une TF normalisée avec aire, premiers zéros et phase de translation cohérents.
+
+### Laboratoire gaussienne
+
+Comparer la durée d’une impulsion gaussienne à la largeur de son spectre. Définir les écarts types à partir de l’énergie permet de calculer leur produit et de relier Fourier à une inégalité de Cauchy–Schwarz.
+
+**Objets et unités**
+
+- σ en s est la largeur de l’amplitude Aexp[−t²/(2σ²)]
+- Δt et Δν sont les écarts types de ∣f∣²/E et ∣f̂∣²/E
+- E=A²σ√π ; Fourier en Hz
+
+**Hypothèses**
+
+- Gaussienne sur ℝ, à moments finis
+- Borne d’incertitude en prolongement selon filière
+- Les demi-largeurs ou premiers zéros sont d’autres mesures
+
+**Techniques**
+
+- Intégrale gaussienne
+- Équation différentielle pour la TF
+- Moments quadratiques et Cauchy–Schwarz
+
+**Prévoir, manipuler, justifier**
+
+1. Pour σ=0,6,A=1, calculer Δt et Δν avant de lire les graphes.
+2. Doubler A puis diviser σ par deux ; séparer énergie et largeurs normalisées.
+3. Démontrer la TF par f′=−tf/σ², puis retrouver ΔtΔν=1/(4π) avec les bonnes densités.
+
+**Niveaux et prolongements**
+
+- Sup : Gaussienne et changements d’échelle, avec calculs de moments accompagnés.
+- Spé : Parseval et inégalité de Cauchy–Schwarz appliqués à un signal régulier.
+- Au-delà : Incertitude de Heisenberg, paquets d’ondes et fonctions de Gabor.
+
+**Résultat attendu.** Une largeur d’énergie correcte et un facteur 4π expliqué par la convention en Hz.
+
+### Laboratoire convolution_portes
+
+Faire glisser deux intervalles et mesurer la longueur de leur intersection. Cette construction donne la convolution de deux portes et explique, par Fourier, pourquoi leurs spectres se multiplient.
+
+**Objets et unités**
+
+- L₁,L₂ et d en s ; amplitude des deux portes égale à 1
+- t sonde le recouvrement de [−L₁/2,L₁/2] et [t−d−L₂/2,t−d+L₂/2]
+- Convolution de dimension s, aire totale L₁L₂
+
+**Hypothèses**
+
+- Convolution bilatérale sur ℝ
+- Portes à support compact, Fubini justifié
+- Triangle si largeurs égales, trapèze sinon
+
+**Techniques**
+
+- Intersection d’intervalles
+- Intégrale et convolution
+- Fubini et produit de TF
+
+**Prévoir, manipuler, justifier**
+
+1. Choisir L₁=L₂=1,d=0 et prévoir support, sommet et aire du triangle.
+2. Passer à L₁=0,6,L₂=2,d=0,5 ; déplacer la sonde et mesurer le plateau.
+3. Retrouver la formule min/max et vérifier l’aire au point spectral ν=0.
+
+**Niveaux et prolongements**
+
+- Sup : Intervalles, aires et fonctions définies par morceaux.
+- Spé : Convolution, changements de variables et théorème de convolution de Fourier.
+- Au-delà : Réponses de systèmes linéaires et B-splines.
+
+**Résultat attendu.** Un triangle ou trapèze normalisé et son produit spectral, avec unités et aire vérifiées.
+
+### Laboratoire gibbs_fourier
+
+Reconstruire un créneau ou un triangle à partir de ses harmoniques. Comparer somme partielle et moyenne de Fejér permet d’expliquer le dépassement près d’un saut et le rôle du mode de convergence.
+
+**Objets et unités**
+
+- S_N est la somme partielle des harmoniques et σ_N la moyenne de Fejér, moyenne des premières sommes partielles. L² désigne ici l’erreur mesurée par l’intégrale de son carré sur une période.
+- N est le dernier indice harmonique, pas le nombre de coefficients non nuls
+- T période en s ; créneau ±1, triangle 0→1, rampe −1→1
+- Fejér pondère par 1−∣k∣/(N+1)
+
+**Hypothèses**
+
+- Signaux périodiques réguliers par morceaux
+- Valeur limite aux sauts = demi-somme latérale
+- La comparaison utilise le même dernier indice N
+
+**Techniques**
+
+- Parité et coefficients de Fourier
+- Convergence normale vs saut
+- Moyenne de Cesàro et noyau positif
+
+**Prévoir, manipuler, justifier**
+
+1. Choisir le créneau, prévoir sa valeur reconstruite au saut et le sens du dépassement.
+2. Comparer N=10 et N=55 puis le triangle ; observer somme partielle et Fejér séparément.
+3. Justifier l’échec de CU pour le créneau, la CN du triangle et le contrôle d’amplitude de Fejér.
+
+**Niveaux et prolongements**
+
+- Sup : Harmoniques et synthèse de signaux, avec coefficients fournis.
+- Spé : Séries de Fourier, convergence aux raccords et norme L².
+- Au-delà : Théorème de Fejér, constantes de Lebesgue et approximation positive.
+
+**Résultat attendu.** Une explication du dépassement persistant et un choix de sommation adapté au signal.
+
+### Laboratoire parseval_spectre
+
+Répartir l’énergie d’un signal périodique entre ses harmoniques. L’orthogonalité et Parseval permettent de contrôler l’énergie conservée par une reconstruction et de retrouver des sommes numériques classiques.
+
+**Objets et unités**
+
+- T est la période, c_n le coefficient complexe de la n-ième harmonique et S_N la reconstruction jusqu’au rang N. L’énergie moyenne est l’intégrale du carré du signal divisée par T.
+- E=(1/T)∫∣f∣²dt ; cₙ normalisés par 1/T
+- N borne les harmoniques conservées ; énergie capturée et reste séparés
+- Triangle 0→1 : moyenne 1/2 ; créneau ±1 : moyenne 0
+
+**Hypothèses**
+
+- Signaux réels périodiques dans L²
+- Les carrés des amplitudes portent un facteur 1/2 hors composante continue
+- La norme moyenne ne décrit pas une erreur maximale
+
+**Techniques**
+
+- Orthogonalité
+- Parseval et Pythagore
+- Séparation d’indices pairs/impairs
+
+**Prévoir, manipuler, justifier**
+
+1. Pour le créneau, calculer l’énergie de la première harmonique avant de lire son pourcentage.
+2. Passer au triangle et repérer la contribution 1/4 de sa moyenne ; augmenter N.
+3. Déduire π²/6 et π⁴/90 avec Parseval puis expliquer pourquoi un faible reste L² ne supprime pas Gibbs.
+
+**Niveaux et prolongements**
+
+- Sup : Produit scalaire, trigonométrie et énergie de sinusoïdes.
+- Spé : Projection, Parseval et sommes classiques de Fourier.
+- Au-delà : Complétude dans L² et compression spectrale.
+
+**Résultat attendu.** Un bilan exact d’énergie et deux sommes numériques obtenues avec les facteurs corrects.
+
+### Laboratoire poisson_noyau
+
+Lisser un créneau en atténuant progressivement ses harmoniques. Une série géométrique fournit le noyau de Poisson ; majorer son reste relie le lissage à la convergence normale et à la convolution.
+
+**Objets et unités**
+
+- r∈[0,1[ ; T période en s ; N dernier indice
+- Pᵣ de masse T ; filtre périodique normalisé par 1/T
+- Chaque harmonique est multipliée par r^∣k∣
+
+**Hypothèses**
+
+- Le banc reste à r≤0,97
+- La limite r→1 se traite après la somme infinie
+- La borne de queue est uniforme en t pour r fixé
+
+**Techniques**
+
+- Deux séries géométriques
+- Critère de Weierstrass
+- Convolution périodique et positivité
+
+**Prévoir, manipuler, justifier**
+
+1. Avec r=0,35, prévoir quelles harmoniques survivent ; vérifier la moyenne inchangée.
+2. Comparer r=0,94,N=70 à r=0,97,N=12 ; observer noyau exact et noyau tronqué.
+3. Démontrer la masse T, le reste≤2r^(N+1)/(1−r) et l’absence de dépassement pour le filtrage exact.
+
+**Niveaux et prolongements**
+
+- Sup : Sommes géométriques complexes et premières harmoniques.
+- Spé : Convergence normale, convolution et contrôle uniforme.
+- Au-delà : Équation de Laplace dans le disque et extension harmonique.
+
+**Résultat attendu.** Un filtre de masse 1 dont précision et effet sur chaque coefficient sont quantifiés.
+
+### Laboratoire poisson_gaussienne
+
+Répéter une impulsion gaussienne dans le temps et reconstruire le même signal par ses raies spectrales. Comparer les deux sommes explique la périodisation et les facteurs de normalisation de Fourier.
+
+**Objets et unités**
+
+- σ et T en s ; N borne les raies ∣k∣≤N
+- cₖ=ŝ(k/T)/T ; c₀=σ√(2π)/T
+- La somme temporelle utilise automatiquement assez de répétitions lointaines
+
+**Hypothèses**
+
+- Gaussienne de Schwartz, TF en Hz
+- Identité exacte, deux approximations tronquées
+- L’écart affiché compare ces troncatures, pas une erreur du théorème
+
+**Techniques**
+
+- Périodisation et coefficients
+- TF gaussienne
+- Fubini et convergence normale
+
+**Prévoir, manipuler, justifier**
+
+1. Avec σ=0,14,T=1,5, prévoir si le signal ressemble à des impulsions séparées.
+2. Augmenter σ à 1 puis réduire N ; comparer c₀ et les raies restantes.
+3. Démontrer cₖ=ŝ(k/T)/T et utiliser l’identité gaussienne pour choisir la somme la plus rapide.
+
+**Niveaux et prolongements**
+
+- Sup : Gaussiennes répétées et lecture de spectre discret.
+- Spé : Sommation de Poisson et normalisations temps–fréquence.
+- Au-delà : Fonctions thêta, accélération de séries et réseaux de Bravais.
+
+**Résultat attendu.** Une identité vérifiée par deux constructions avec sa moyenne et ses facteurs 1/T explicites.
+
+### Laboratoire shannon
+
+Reconstruire une impulsion à partir de mesures prises à intervalles réguliers. Comparer la cadence à la bande du signal distingue les conditions du théorème de Shannon et l’erreur due au nombre fini de mesures.
+
+**Objets et unités**
+
+- s(t)=sincₙ²(Bt)cos(2πf₀t), B,f₀,F en Hz
+- M mesures de chaque côté :2M+1 valeurs ; tₙ=n/F
+- Support spectral jusqu’à W=f₀+B ; marge choisie F>2W
+
+**Hypothèses**
+
+- Signal continu dans L¹∩L²
+- La formule exacte utilise une infinité de mesures
+- La somme affichée est tronquée ; les courbes spectrales conservent le facteur F du peigne
+
+**Techniques**
+
+- Porte/triangle en TF
+- Peigne de Dirac et Shannon
+- Borne de bande vs erreur de troncature
+
+**Prévoir, manipuler, justifier**
+
+1. Avec B=3,f₀=5, dessiner les deux bandes et calculer le seuil strict 16 Hz.
+2. Comparer F=24 et F=12 puis, au-dessus du seuil, M=8 et M=40.
+3. Retrouver les facteurs du peigne et du filtre idéal ; expliquer pourquoi la réussite aux points ne prouve pas une reconstruction entre points.
+
+**Niveaux et prolongements**
+
+- Sup : Mesure discrète et sinc avec un guidage spectral.
+- Spé : Shannon, produits de TF et normalisations selon filière.
+- Au-delà : Espaces de Paley–Wiener, reconstruction stable et échantillonnage non uniforme.
+
+**Résultat attendu.** Un seuil justifié par un support, puis deux erreurs distinctes : repliement et somme finie.
+
+### Laboratoire aliasing
+
+Deux sinusoïdes différentes peuvent donner exactement les mêmes échantillons. Calculer leur fréquence apparente et leur phase permet de comprendre le repliement spectral et la limite d’une mesure discrète.
+
+**Objets et unités**
+
+- f,F en Hz ; phase φ en degrés
+- Échantillons à k/F ; représentant signé dans [−F/2,F/2[
+- Fréquence absolue du motif et phase adaptée sont deux informations
+
+**Hypothèses**
+
+- Sinusoïdes idéales périodiques, illustration d’ambiguïté
+- Elles sont distinctes du paquet à énergie finie du labo Shannon
+- Au bord de Nyquist, la phase n’est pas complètement identifiable
+
+**Techniques**
+
+- Congruence de phases modulo 2π
+- Parité du sinus/cosinus
+- Contre-exemple de mesure
+
+**Prévoir, manipuler, justifier**
+
+1. Avec F=24,f=19,φ=30°, prédire le représentant−5 Hz puis comparer les points.
+2. Choisir f=12 Hz et tester plusieurs phases, dont 0° ; observer une sinusoïde invisible aux instants de mesure.
+3. Écrire l’égalité des arguments modulo 2π et une représentation à fréquence positive avec phase corrigée.
+
+**Niveaux et prolongements**
+
+- Sup : Sinusoïdes, phases et périodicité.
+- Spé : Repliement et limite d’un théorème de reconstruction.
+- Au-delà : Signaux complexes, modulation IQ et bandes repliées.
+
+**Résultat attendu.** Une ambiguïté démontrée par une égalité exacte de mesures et un cas limite interprété.
+
+### Laboratoire anti_repliement
+
+Une perturbation trop rapide peut apparaître comme une fausse fréquence après mesure. Placer un filtre analogique avant l’échantillonneur permet de comparer l’atténuation nécessaire à la cadence choisie.
+
+**Objets et unités**
+
+- F,fc et fréquence parasite en Hz ; utile à 3 Hz
+- n ordre Butterworth ; amplitude parasite sans unité
+- Pôles analogiques en s⁻¹ ; gains complexes avec phase
+
+**Hypothèses**
+
+- Butterworth analogique idéal stable en régime permanent
+- Coupure à−3,01 dB, pas suppression exacte hors bande
+- Le filtre numérique après mesure ne distingue pas des contributions repliées identiques
+
+**Techniques**
+
+- Pôles du demi-plan gauche
+- Inégalités de gain
+- Chaîne analogique puis mesure discrète
+
+**Prévoir, manipuler, justifier**
+
+1. Calculer le repliement de 72 Hz à F=50 Hz avant de regarder les sorties.
+2. Comparer n=1 et n=4 à fc=12 Hz ; suivre le gain utile et le gain parasite.
+3. Déterminer un ordre minimal pour une atténuation spécifiée et expliquer pourquoi fc doit aussi respecter la bande utile.
+
+**Niveaux et prolongements**
+
+- Sup : Filtres, diagrammes de gain et cadence de mesure.
+- Spé : Ordre, pôles et conception selon cahier des charges en physique/SI.
+- Au-delà : Filtres analogiques réels, tolérances et architectures de conversion.
+
+**Résultat attendu.** Une atténuation chiffrée avant mesure avec un compromis utile/parasite clairement annoncé.
+
+### Laboratoire fenetres_fft
+
+Observer une sinusoïde pendant une durée finie et calculer son spectre numérique. Comparer les fenêtres et l’ajout de zéros permet de distinguer fuite spectrale, calibration d’amplitude et résolution.
+
+**Objets et unités**
+
+- FFT désigne l’algorithme rapide de calcul de la transformée de Fourier discrète (DFT). w_k sont les coefficients de la fenêtre ; CG est le gain cohérent, moyenne des w_k, et ENBW la largeur de bande équivalente de bruit, en Hz.
+- F=128 Hz fixe ; N valeurs, durée DFT N/F
+- f en Hz ; fenêtre périodique rect/Hann/Blackman
+- padding ajoute des zéros ; CG et ENBW décrivent gain cohérent et bande de bruit
+
+**Hypothèses**
+
+- Cosinus isolé de phase 0,3 rad ; FFT monolatérale
+- Amplitude corrigée par Σw et doublée hors DC/Nyquist
+- Une raie hors case garde un biais dépendant de la fenêtre
+
+**Techniques**
+
+- DFT et sommes de Riemann
+- Produit temporel/convolution spectrale
+- Calibration d’amplitude et largeur de lobe
+
+**Prévoir, manipuler, justifier**
+
+1. Choisir f=13 Hz,N=256,rect : calculer la case native 26 avant de lire la FFT.
+2. Passer à 13,375 Hz puis comparer les fenêtres ; observer lobe principal et lobes secondaires.
+3. Augmenter uniquement padding ; distinguer F/N et F/(N·padding), et retrouver le facteur de calibrationΣw.
+
+**Niveaux et prolongements**
+
+- Sup : Sinusoïde mesurée et observation finie, introduction numérique.
+- Spé : Fourier/DFT, résolution et calibration selon filière.
+- Au-delà : ENBW, estimateurs spectraux et métrologie du bruit.
+
+**Résultat attendu.** Un spectre avec fréquence, amplitude et limite de résolution explicitement distinguées.
+
+### Laboratoire resolution
+
+Chercher à séparer deux fréquences proches à partir d’une acquisition finie. Faire varier sa durée puis ajouter seulement des zéros permet de distinguer une meilleure résolution d’un affichage plus fin du même spectre.
+
+**Objets et unités**
+
+- Δf est l’écart des deux fréquences en Hz ; T est la durée d’acquisition en s. Le facteur q d’ajout de zéros multiplie le nombre de valeurs de calcul du spectre sans augmenter le nombre N de mesures.
+- F=128 Hz ; N règle la durée T=N/F
+- Deux fréquences 18 et 18+ΔfHz ; amplitudes égales
+- padding règle l’interpolation, pas la durée
+
+**Hypothèses**
+
+- Signal sans bruit et phases initiales nulles
+- Fenêtre de Hann : largeur entre premiers zéros environ 4/T
+- Pas natif 1/T et résolution effective distincts
+
+**Techniques**
+
+- Formule de somme de cosinus
+- Battements
+- Compromis durée/fréquence
+
+**Prévoir, manipuler, justifier**
+
+1. Pour Δf=1 Hz, prévoir l’intervalle entre maxima et le premier zéro d’enveloppe.
+2. Comparer N=64,padding=8 et N=512,padding=1 ; observer le même pas mais des lobes différents.
+3. Exprimer le rôle de Δf·T et annoncer le critère de séparation utilisé, sans faire de 1/T une loi universelle.
+
+**Niveaux et prolongements**
+
+- Sup : Battements et lecture d’enveloppe.
+- Spé : Résolution spectrale, fenêtres et acquisition.
+- Au-delà : Superrésolution paramétrique, estimation et rapport signal/bruit.
+
+**Résultat attendu.** Une comparaison démontrant que durée et interpolation produisent des informations différentes.
+
+### Laboratoire spectrogramme
+
+Suivre un signal dont la fréquence augmente au cours du temps. Calculer des spectres sur une fenêtre mobile révèle le compromis entre localisation temporelle et précision fréquentielle.
+
+**Objets et unités**
+
+- Un signal à fréquence balayée (chirp) possède une fréquence instantanée variable. f₀ et f₁ sont ses fréquences initiale et finale ; L est le nombre de points de la fenêtre mobile. STFT désigne la transformée de Fourier calculée sur ces fenêtres successives.
+- F=128 Hz, durée 3 s ; chirp de f₀ à f₁
+- L points par Hann mobile, avance 8 points
+- Carte en dB relatifs au maximum, FFT locales complétées à 256 points
+
+**Hypothèses**
+
+- Fréquences du signal à fréquence balayée sous 64 Hz
+- Carte relative, sans calibration absolue de puissance
+- Une fenêtre locale ne rend pas exactement stationnaire un signal à fréquence balayée
+
+**Techniques**
+
+- Dérivation de phase
+- Transformée de Fourier à fenêtre
+- Analyse d’échelles temporelle/fréquentielle
+
+**Prévoir, manipuler, justifier**
+
+1. Calculer la pente pour 8→48 Hz en 3 s et prévoir la fréquence à 1,2 s.
+2. Comparer L=16 puis 128 ; repérer largeur fréquentielle et étalement temporel.
+3. Évaluer |k|L/F et F/L, puis expliquer la normalisation relative et le rôle de la ligne analytique.
+
+**Niveaux et prolongements**
+
+- Sup : Phase et fréquence instantanée ; lecture d’une carte guidée.
+- Spé : Analyse temps–fréquence en prolongement du programme selon filière.
+- Au-delà : STFT, ondelettes, réaffectation et signaux non stationnaires.
+
+**Résultat attendu.** Une fenêtre choisie avec deux échelles et une carte dont les unités relatives sont comprises.
+
+### Laboratoire modulation
+
+Transporter un message lent sur une porteuse plus rapide, puis le retrouver par multiplication et filtrage. Les identités trigonométriques expliquent les bandes latérales et les erreurs de phase ou de fréquence du récepteur.
+
+**Objets et unités**
+
+- f_m est la fréquence du message et f_c celle de la porteuse ; m est la profondeur de modulation. Δf et φ sont les erreurs de fréquence et de phase de l’oscillateur utilisé pour retrouver le message.
+- fm et fc en Hz ; m profondeur sans unité
+- Δf est le désaccord local en Hz ; φ phase en degrés
+- Barres positives = amplitudes de cosinus, non poids bilatéraux de Dirac
+
+**Hypothèses**
+
+- AM à porteuse transmise et canal idéal
+- Démodulation par passe-bas idéal supprimant analytiquement les termes autour de 2fc
+- Pour m>1, l’enveloppe signée traverse zéro
+
+**Techniques**
+
+- Produit de cosinus
+- Translation de TF
+- Démodulation et phase
+
+**Prévoir, manipuler, justifier**
+
+1. Avec m=0,7,fm=3,fc=30, prévoir fréquences et amplitudes des trois raies positives.
+2. Comparer φ=0° et 90°, puis Δf=0,8 Hz ; distinguer disparition et battements.
+3. Développer les produits trigonométriques et tester m=1,4 pour expliquer la limite d’une détection d’enveloppe.
+
+**Niveaux et prolongements**
+
+- Sup : Identités trigonométriques, modulation et détection guidées.
+- Spé : Spectre AM et démodulation synchrone selon filière.
+- Au-delà : Modulations IQ, porteuse supprimée et communications numériques.
+
+**Résultat attendu.** Une chaîne d’émission/réception reconstruite avec les facteurs 1/2 et l’effet de phase.
+
+### Laboratoire correlation_retard
+
+Retrouver une impulsion retardée dans un signal bruité. Le maximum de corrélation estime le temps de vol ; un bilan des trajets permet ensuite de convertir ce retard en distance.
+
+**Objets et unités**
+
+- τ est le retard testé, en s ; c est la vitesse de propagation, en m/s. La corrélation mesure la ressemblance entre émission et réception pour ce retard ; le facteur deux de la distance provient du trajet aller-retour.
+- Émission g, réception f ; Cfg(τ)=∫ḡ(t)f(t+τ)dt
+- Cadence 200 Hz, grille de retard 5 ms ; retard en s
+- Vitesse c en m/s ; distance cτ/2 ; graine choisit une réalisation de bruit
+
+**Hypothèses**
+
+- Fenêtre finie de 3 s, signaux réels, bruit gaussien
+- Normalisation par les énergies globales ; module ≤1 par Cauchy–Schwarz
+- Bruit et maxima secondaires peuvent déplacer le pic
+
+**Techniques**
+
+- Produit scalaire glissant
+- Cauchy–Schwarz
+- Temps de vol et convention de corrélation
+
+**Prévoir, manipuler, justifier**
+
+1. Pour un retard 0,6 s et c=350m/s, prévoir la distance et le signe du pic.
+2. Augmenter le bruit puis changer la graine sans changer le retard ; observer la robustesse et ses limites.
+3. Écrire Cfg=Cgg(τ−d), calculer le pas de distance et relier TF(Cff) à |f̂|².
+
+**Niveaux et prolongements**
+
+- Sup : Temps de vol et produit scalaire sur des données.
+- Spé : Corrélation, normalisation et Fourier selon filière.
+- Au-delà : Filtre adapté, radar/sonar et probabilités de détection.
+
+**Résultat attendu.** Un retard de signe fixé, une distance calculée et une limite de précision sans certitude inventée.
+
+### Laboratoire debruitage
+
+Réduire un bruit sans effacer les variations utiles du signal. Comparer une moyenne glissante à un filtre récursif permet de mesurer séparément le bruit résiduel, le retard et la déformation introduite.
+
+**Objets et unités**
+
+- M est le nombre de valeurs moyennées ou l’échelle de mémoire du filtre récursif ; ρ est son coefficient de mémoire. RMS signifie valeur efficace : la racine de la moyenne des carrés sur l’intervalle de bilan.
+- F=128 Hz ; signal sin(2πft)+0,25sin(4πft)
+- M longueur de mémoire ; récursif de pôleρ=e^(−1/M)
+- Écart type du bruit et RMS de sortie ; début du signal exclu du bilan
+
+**Hypothèses**
+
+- Bruit blanc centré indépendant, réalisation reproductible
+- Filtres au repos initial ; transitoire partiellement écarté
+- Bilan théorique stationnaire et RMS finie distincts
+
+**Techniques**
+
+- Convolution discrète et récurrence
+- Linéarité
+- Variance d’une somme indépendante et phase du filtre
+
+**Prévoir, manipuler, justifier**
+
+1. Pour moyenne M=9, prévoir le facteur 1/9 de variance et le retard 4/F.
+2. Comparer mémoire 5 à 31 puis le récursif ; observer bruit résiduel et signal propre filtré.
+3. Démontrer σ²Σh² et les deux facteurs théoriques ; expliquer pourquoi une sortie très lisse peut être une mauvaise mesure du signal utile.
+
+**Niveaux et prolongements**
+
+- Sup : Moyenne, bruit et retards, première expérimentation accompagnée.
+- Spé : Filtres numériques et calcul de variance en lien avec probabilités.
+- Au-delà : Filtrage de Wiener, bruit coloré et estimation optimale.
+
+**Résultat attendu.** Un compromis bruit/distorsion chiffré à partir de deux références distinctes.
+
+
 
 ## Sources
 

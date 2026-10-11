@@ -13,10 +13,10 @@ def exercise(lab, title, level, question, answer):
 
 
 lesson('orbite_kepler', 'Force centrale : du moment cinétique aux trois lois de Kepler', 'Sup → Spé', '''
-<p>Choisir le système : une planète de masse m, assez petite pour que l’étoile de masse M soit immobile. Le référentiel lié à l’étoile est supposé galiléen. La force est <b>F=−GMm r/r³</b>, où r désigne le vecteur étoile–planète et r sa norme. L’origine de l’énergie potentielle est prise à l’infini.</p>
-<p>Le moment de cette force par rapport à l’étoile est nul. Le théorème du moment cinétique donne L=m r×v constant. Le mouvement reste dans le plan perpendiculaire à L, et h=L/m=r²θ̇ est constant. La vitesse aréolaire, c’est-à-dire l’aire balayée par unité de temps, vaut h/2.</p>
+<p>Choisir le système : une planète de masse m, assez petite pour que l’étoile de masse M soit immobile. Le référentiel lié à l’étoile est supposé galiléen. G est la constante de gravitation ; r désigne le vecteur étoile–planète et r sa norme, distingués par le contexte. La force est <b>F=−GMm r/r³</b>. L’origine de l’énergie potentielle est prise à l’infini.</p>
+<p>v est la vitesse et L le moment cinétique de la planète. Le moment de cette force par rapport à l’étoile est nul. Le théorème du moment cinétique donne L=m r×v constant. Le mouvement reste dans le plan perpendiculaire à L, et h=L/m=r²θ̇ est constant. La vitesse aréolaire, c’est-à-dire l’aire balayée par unité de temps, vaut h/2.</p>
 <div class='formula'>ε=v²/2−GM/r ; h=r²θ̇ ; dA/dt=h/2.</div>
-<p>Pour obtenir la trajectoire, poser u=1/r. L’équation de Binet donne u″+u=GM/h², les dérivées étant prises par rapport à θ. La solution est une conique, r=p/(1+e cosθ), avec p=h²/(GM). Le choix de θ=0 au péricentre fixe l’orientation de la conique.</p>
+<p>ε est l’énergie mécanique par unité de masse ; θ est l’angle polaire. Pour obtenir la trajectoire, poser u=1/r. L’équation de Binet donne u″+u=GM/h², les dérivées étant prises par rapport à θ. La solution est une conique, r=p/(1+e cosθ), avec p=h²/(GM). Le choix de θ=0 au péricentre fixe l’orientation de la conique. Pour l’ellipse, a,b sont ses demi-axes ; rp,ra ses distances extrêmes ; T sa période.</p>
 <div class='formula'>Pour une ellipse : p=a(1−e²), rp=a(1−e), ra=a(1+e), ε=−GM/(2a).</div>
 <p>L’aire de l’ellipse vaut πab=πa²√(1−e²). En divisant par h/2, on obtient T²=4π²a³/(GM). Cette démarche relie explicitement le théorème du moment cinétique, l’énergie et les trois lois de Kepler. Une planète sur une ellipse excentrique ne tourne pas à vitesse uniforme.</p>''')
 lesson('orbite_kepler', 'Passer de la trajectoire géométrique à la position au cours du temps', 'Spé · Prolongement', '''
@@ -43,7 +43,7 @@ lesson('deux_corps', 'Système fermé, centre de masse et particule fictive', 'S
 <div class='formula'>T²=4π²a³/[G(m₁+m₂)] ; a₁=(m₂/M)a ; a₂=(m₁/M)a.</div>
 <p>Le demi-grand axe a concerne l’orbite relative, donc a=a₁+a₂. Les deux étoiles ont la même période ; la plus massive décrit la plus petite ellipse autour de G.</p>''')
 lesson('deux_corps', 'Énergie et moment cinétique : les deux décompositions de König', 'Spé', '''
-<p>Dans un référentiel galiléen quelconque, écrire vi=VG+vi*. La condition ∑mivi*=0 annule le terme croisé dans ∑mi vi²/2. On sépare ainsi le mouvement d’ensemble et le mouvement autour du centre de masse.</p>
+<p>vi désigne la vitesse de la masse i, VG celle du centre de masse et vi* la vitesse relative à ce centre. Dans un référentiel galiléen quelconque, écrire vi=VG+vi*. La condition ∑mivi*=0 annule le terme croisé dans ∑mi vi²/2. On sépare ainsi le mouvement d’ensemble et le mouvement autour du centre de masse.</p>
 <div class='formula'>Ec=½M VG²+½μr vrelative².</div>
 <p>Le premier terme décrit la translation de G ; le second décrit le mouvement relatif. L’énergie potentielle mutuelle est −Gm₁m₂/r, comptée <b>une seule fois</b> pour la paire. Dans le référentiel de G, l’énergie mécanique vaut donc E*=½μr ṙ²−Gm₁m₂/r.</p>
 <div class='formula'>Ellipse relative : E*=−Gm₁m₂/(2a) ; L*=μr r×ṙ.</div>
@@ -59,7 +59,7 @@ exercise('deux_corps', 'Une énergie dépendante du référentiel', 'Spé',
          '<p>Le changement galiléen ajoute <b>½M VG²</b> à l’énergie cinétique totale ; la séparation et l’énergie potentielle ne changent pas. Ainsi E=E*+½M VG². L’équation de la séparation dépend uniquement de r₂−r₁ : elle conserve la même conique et la même période.</p>')
 
 lesson('potentiel_effectif', 'Éliminer l’angle pour lire le mouvement radial', 'Spé', '''
-<p>Une force centrale entraîne la conservation h=r²θ̇. Dans l’énergie spécifique, la vitesse en coordonnées polaires vérifie v²=ṙ²+r²θ̇². En remplaçant θ̇ par h/r², on obtient une énergie qui ne dépend plus que de r et de ṙ.</p>
+<p>r est la distance au centre, θ l’angle polaire et h le moment cinétique par unité de masse. Une force centrale entraîne la conservation h=r²θ̇. Dans l’énergie spécifique, la vitesse en coordonnées polaires vérifie v²=ṙ²+r²θ̇². En remplaçant θ̇ par h/r², on obtient une énergie qui ne dépend plus que de r et de ṙ.</p>
 <div class='formula'>ε=½ṙ²+Ueff(r) ; Ueff(r)=h²/(2r²)−GM/r.</div>
 <p>Le terme h²/(2r²) traduit l’énergie du mouvement angulaire. Ce n’est pas une énergie potentielle gravitationnelle supplémentaire. Pour h≠0, il tend vers +∞ quand r tend vers zéro : le moment cinétique empêche d’atteindre le centre dans ce modèle ponctuel.</p>
 <p>Le domaine accessible satisfait Ueff≤ε. Aux rayons où Ueff=ε, ṙ s’annule : le mouvement radial change de sens, sauf dans le cas de l’orbite circulaire. Si ε&lt;0, il existe deux rayons extrêmes ; si ε≥0, aucun rayon maximal ne borne la trajectoire.</p>
@@ -82,7 +82,7 @@ exercise('potentiel_effectif', 'Une condition initiale trop lente', 'Spé',
          '<p>ε=−7/8 et e=3/4. Le point initial est l’apocentre. Le paramètre p=h²=1/4 donne <b>rmin=p/(1+e)=1/7</b>, tandis que rmax=p/(1−e)=1. Comme h≠0, Ueff tend vers +∞ en zéro : une énergie finie ne permet pas d’atteindre le centre.</p>')
 
 lesson('transfert_hohmann', 'Deux changements de vitesse déterminés par l’énergie', 'Spé', '''
-<p>Un transfert de Hohmann relie deux orbites circulaires concentriques, coplanaires et de même sens. Le véhicule quitte la première orbite par une impulsion tangentielle, parcourt une demi-ellipse puis reçoit une deuxième impulsion tangentielle. Les deux cercles sont tangents à l’ellipse.</p>
+<p>Un transfert de Hohmann relie deux orbites circulaires concentriques, coplanaires et de même sens. Le véhicule quitte la première orbite par une impulsion tangentielle, parcourt une demi-ellipse puis reçoit une deuxième impulsion tangentielle. Les deux cercles sont tangents à l’ellipse. r₁,r₂ sont leurs rayons ; a,e le demi-grand axe et l’excentricité du transfert ; G,M la constante de gravitation et la masse centrale ; vt la vitesse de transfert.</p>
 <div class='formula'>a=(r₁+r₂)/2 ; e=|r₂−r₁|/(r₁+r₂) ; vt(r)=√[GM(2/r−1/a)].</div>
 <p>La vitesse circulaire au rayon r vaut vc(r)=√(GM/r). Au départ, Δv₁=vt(r₁)−vc(r₁). À l’arrivée, Δv₂=vc(r₂)−vt(r₂). Lors d’un transfert sortant, les deux impulsions accélèrent ; lors d’un transfert entrant, elles freinent. La quantité de carburant dépend du coût |Δv₁|+|Δv₂|, toujours positif.</p>
 <div class='formula'>τ=π√(a³/GM) ; Δvtotal=|Δv₁|+|Δv₂|.</div>
@@ -200,47 +200,47 @@ exercise('coriolis', 'Un point immobile vu depuis des axes tournants', 'Spé',
 GUIDES = {
     'orbite_kepler': dict(
         purpose='Retrouver les lois de Kepler à partir de deux théorèmes, puis vérifier qu’une ellipse est parcourue à la bonne vitesse.',
-        objects=['a : demi-grand axe de l’ellipse, en unités astronomiques ; e : excentricité, entre 0 et 1.', 'M : masse de l’étoile ; r : distance instantanée ; h : moment cinétique par unité de masse.', 'ε : énergie mécanique par unité de masse, avec énergie potentielle nulle à l’infini.'],
+        objects=['a : demi-grand axe, en UA (1 UA ≈ 150 millions de km) ; e : excentricité sans dimension, entre 0 et 1.', 'M : masse de l’étoile, en masses solaires ; G : constante de gravitation. Le temps est en années.', 'r : distance étoile–planète ; v : vitesse ; h : moment cinétique par unité de masse ; ε : énergie mécanique par unité de masse ; T : période ; L : moment cinétique de la planète.'],
         hypotheses=['Référentiel lié à une étoile supposée fixe et galiléen.', 'Planète de masse négligeable ; interaction gravitationnelle seule.'],
         techniques=['Écrire un moment de force et conclure à la conservation de L.', 'Utiliser ε et h aux points extrêmes.', 'Relier l’aire d’une ellipse à la vitesse aréolaire.'],
-        levels=dict(sup='Énergie mécanique, mouvement circulaire et unités.', spe='Force centrale, Binet, coniques et lois de Kepler.', beyond='Équation de Kepler et résolution numérique à temps uniforme.'),
+        levels=dict(sup='Énergie mécanique, mouvement circulaire et unités.', spe='Réinvestir les forces centrales de MPSI ; Binet et l’équation des coniques sont fournis en complément.', beyond='Équation de Kepler et résolution numérique à temps uniforme.'),
         first_steps=['Choisir l’orbite presque circulaire et repérer la constance de r et de v.', 'Augmenter e sans changer a : comparer la période et les vitesses extrêmes.', 'Lire les douze aires et les écarts des bilans pour contrôler le mouvement calculé.'],
         expected='À a et M fixés, T et ε ne changent pas avec e. Les vitesses varient, mais les aires sur des durées égales restent égales.'),
     'deux_corps': dict(
         purpose='Choisir le bon système pour appliquer la quantité de mouvement et ramener deux trajectoires à une seule orbite relative.',
-        objects=['m₁ et m₂ : masses des étoiles ; M=m₁+m₂.', 'q=m₂/m₁ : rapport des masses ; G : centre de masse.', 'r=r₂−r₁ : séparation ; a : demi-grand axe de cette séparation ; μr : masse réduite.'],
+        objects=['m₁,m₂ : masses des étoiles ; M=m₁+m₂ : masse totale, en masses solaires ; q=m₂/m₁ : rapport sans dimension.', 'G désigne ici le centre de masse ; dans GM, la lettre G désigne la constante de gravitation.', 'r₁,r₂ : positions depuis le centre de masse ; r=r₂−r₁ : séparation ; a : demi-grand axe de cette séparation, en UA ; e : excentricité.', 'μr=m₁m₂/M : masse réduite ; temps en années.'],
         hypotheses=['Système isolé composé de deux masses ponctuelles.', 'Référentiel de G galiléen ; pas de force extérieure.'],
         techniques=['Annuler la somme des forces internes dans un bilan global.', 'Résoudre les relations barycentriques.', 'Décomposer l’énergie cinétique et utiliser Kepler avec la masse totale.'],
-        levels=dict(sup='Quantité de mouvement, centre de masse et interactions mutuelles.', spe='Masse réduite, théorèmes de König et mouvement central relatif.', beyond='Application à la mesure des masses des étoiles binaires.'),
+        levels=dict(sup='Quantité de mouvement, centre de masse et interactions mutuelles.', spe='Réinvestir les bilans ; masse réduite et König général sont des prolongements pour MPSI/MP.', beyond='Application à la mesure des masses des étoiles binaires.'),
         first_steps=['Choisir deux masses égales et comparer leurs deux ellipses.', 'Diminuer q : voir quelle étoile reste proche de G.', 'À masse totale constante, modifier q puis vérifier que la période ne change pas.'],
         expected='Le rapport des distances à G est inverse du rapport des masses. La période dépend de la masse totale ; la décomposition énergétique utilise la masse réduite.'),
     'potentiel_effectif': dict(
         purpose='Lire une trajectoire centrale à partir d’une courbe d’énergie : domaine accessible, rayons extrêmes, stabilité et échappement.',
-        objects=['r₀=1 et GM=1 définissent les unités réduites.', 'η : vitesse tangentielle initiale divisée par la vitesse circulaire.', 'Ueff : énergie gravitationnelle plus énergie angulaire à h fixé ; ε : énergie spécifique du lancement.'],
+        objects=['M : masse centrale ; G : constante de gravitation ; r₀ : distance du lancement. Les unités réduites donnent GM=r₀=1.', 'η : vitesse tangentielle initiale divisée par la vitesse circulaire ; h : moment cinétique par unité de masse.', 'r : distance au centre ; Ueff : énergie gravitationnelle plus énergie angulaire à h fixé ; ε : énergie mécanique par unité de masse.'],
         hypotheses=['Lancement tangent : la vitesse radiale initiale est nulle.', 'Astre ponctuel, force centrale conservative ; h reste constant.'],
         techniques=['Éliminer θ̇ grâce à h=r²θ̇.', 'Résoudre Ueff=ε et interpréter une racine.', 'Étudier un minimum par la dérivée seconde ; discuter le signe de ε.'],
         levels=dict(sup='Énergie et condition d’accessibilité.', spe='Potentiel effectif et classification des coniques.', beyond='Petites oscillations radiales et comparaison avec la fréquence orbitale.'),
         first_steps=['Choisir η=1 : la droite d’énergie touche le minimum du potentiel.', 'Choisir η=1,2 puis repérer les deux rayons extrêmes.', 'Passer à η=1,6 : constater l’absence de rayon maximal et ε>0.'],
         expected='Une vitesse inférieure à la vitesse circulaire commence à l’apocentre. L’échappement exige η≥√2 ; une énergie négative donne une orbite bornée.'),
     'transfert_hohmann': dict(
-        purpose='Concevoir un changement d’orbite avec la relation de vis-viva, puis distinguer coût en vitesse et durée de transfert.',
-        objects=['r₁ et r₂ : rayons des deux orbites circulaires, en multiples de L₀.', 'Δv₁ et Δv₂ : variations tangentielles signées ; leur somme en valeur absolue mesure le coût.', 'τ : temps de parcours de la demi-ellipse.'],
+        purpose='Calculer les deux impulsions nécessaires pour changer d’orbite, puis comparer leur coût en vitesse et le temps de trajet.',
+        objects=['L₀ : unité de longueur (7 000 km autour de la Terre, 1 UA autour du Soleil) ; r₁,r₂ : rayons des orbites.', 'G : constante de gravitation ; M : masse de l’astre ; a : demi-grand axe de l’ellipse de transfert.', 'Δv₁,Δv₂ : changements tangentiels signés de vitesse, en km/s ; |Δv₁|+|Δv₂| : coût total ; τ : durée de la demi-ellipse, affichée en h ou en jours.'],
         hypotheses=['Orbites coplanaires et de même sens, astre unique.', 'Impulsions instantanées ; mouvement libre entre les deux.'],
         techniques=['Déterminer le demi-grand axe avec les deux rayons extrêmes.', 'Comparer vitesse elliptique et vitesse circulaire.', 'Employer une demi-période de Kepler et, en prolongement, une condition de rendez-vous.'],
-        levels=dict(sup='Vitesse circulaire, énergie et ordres de grandeur.', spe='Coniques, relation énergétique de vis-viva et impulsions.', beyond='Fenêtres de transfert interplanétaire et limites de l’optimalité.'),
+        levels=dict(sup='Vitesse circulaire, énergie et ordres de grandeur.', spe='Application accompagnée des bilans d’énergie aux coniques et aux changements de vitesse.', beyond='Fenêtres de transfert interplanétaire et limites de l’optimalité.'),
         first_steps=['Choisir un transfert terrestre vers une orbite haute : identifier les deux tangences.', 'Inverser les deux rayons : vérifier le signe des impulsions et le même coût total.', 'Choisir Soleil : calculer la durée en jours puis comparer à l’ordre de grandeur d’un trajet vers Mars.'],
         expected='Une ellipse seule ne remplace pas les deux impulsions : sans l’impulsion finale, le véhicule repasse par son orbite initiale.'),
     'diffusion_gravitationnelle': dict(
         purpose='Comprendre une assistance gravitationnelle en séparant le calcul dans le référentiel de l’astre et la composition des vitesses.',
-        objects=['v∞ : vitesse relative loin de l’astre ; b : paramètre d’impact.', 'δ : angle entre les directions lointaines entrante et sortante ; rp : distance minimale.', 'V : vitesse de l’astre dans le second référentiel galiléen.'],
+        objects=['G : constante de gravitation ; M : masse de l’astre. Les longueurs, vitesses et temps sont réduits pour avoir GM=1.', 'v∞ : vitesse relative loin de l’astre ; b : distance de l’astre à la droite que suivrait la sonde sans attraction.', 'δ : angle de déviation ; rp : distance minimale ; V : vitesse de l’astre dans le second référentiel galiléen.'],
         hypotheses=['Masse de sonde négligeable, astre à vitesse prescrite.', 'Gravitation newtonienne sans atmosphère ni collision ; unités GM=1.'],
         techniques=['Fixer ε et h à grande distance.', 'Déterminer l’excentricité et les asymptotes d’une hyperbole.', 'Développer la différence de deux normes carrées après un changement galiléen.'],
-        levels=dict(sup='Conservation de l’énergie et composition des vitesses.', spe='Hyperbole gravitationnelle et angle de déviation.', beyond='Gain ou perte d’énergie lors d’une assistance gravitationnelle.'),
+        levels=dict(sup='Conservation de l’énergie et composition des vitesses.', spe='Application accompagnée : hyperbole gravitationnelle, puis composition des vitesses.', beyond='Gain ou perte d’énergie lors d’une assistance gravitationnelle.'),
         first_steps=['À v∞ fixé, réduire b et comparer δ et rp.', 'Mettre V=0 : le gain lointain doit disparaître.', 'Restaurer V puis inverser l’orientation du survol : comparer les gains signés.'],
         expected='La gravitation conserve l’énergie dans le référentiel de l’astre, mais la déviation peut modifier l’énergie cinétique dans un autre référentiel.'),
     'marees': dict(
         purpose='Passer du champ gravitationnel total à sa variation sur un corps, puis contrôler un développement limité par comparaison au champ exact.',
-        objects=['R : rayon du corps, pris égal à 1 ; D/R : distance relative de l’astre.', 'q=M/m : rapport de la masse extérieure à la masse du corps.', 'Δa : accélération d’un point moins accélération du centre.'],
+        objects=['m,R : masse et rayon du corps, pris égaux à 1 ; M : masse de l’astre extérieur ; D : distance entre les centres.', 'q=M/m et D/R sont sans dimension ; les accélérations sont rapportées à la gravité à la surface du corps.', 'Δa : accélération d’un point moins celle du centre ; x : position suivant l’axe dirigé vers l’astre.'],
         hypotheses=['Champ instantané d’un astre ponctuel ; réponse du corps non calculée.', 'Approximation linéaire valable si R/D≪1.'],
         techniques=['Soustraire le mouvement commun du centre.', 'Développer (1−x/D)⁻² au premier ordre.', 'Comparer les lois en D⁻² et D⁻³ ; établir un rapport sans dimension.'],
         levels=dict(sup='Gravitation, différences de forces et analyse dimensionnelle.', spe='Développement limité d’un champ ; étirement et compression.', beyond='Matrice du champ de marée, trace nulle et ordre de grandeur d’une dislocation.'),
@@ -248,15 +248,15 @@ GUIDES = {
         expected='La marée varie comme D⁻³ et possède un effet sur les deux faces du corps. Le dessin montre un champ, pas une forme d’équilibre.'),
     'fusee': dict(
         purpose='Établir une équation de mouvement quand la masse varie, en indiquant explicitement la vitesse de la matière échangée.',
-        objects=['m₀ et mf : masses initiale et finale ; χ=m₀/mf.', 'u : vitesse du gaz par rapport à la fusée ; q : débit de masse éjectée.', 'τ : durée de la poussée ; g : pesanteur uniforme.'],
+        objects=['m₀,mf : masses initiale et finale, en tonnes ; χ=m₀/mf : rapport sans dimension ; m(t) : masse restante.', 'u : vitesse d’éjection relative à la fusée, en m/s ; q : débit de masse éjectée, positif et constant.', 't : temps ; τ : durée de poussée, en s ; g : pesanteur en m/s² ; v : vitesse verticale en m/s.'],
         hypotheses=['Gaz éjecté à vitesse relative et débit constants.', 'Mouvement vertical, absence de traînée et de réaction d’un sol.'],
         techniques=['Construire un système fermé sur la durée dt.', 'Distinguer vitesse relative et galiléenne du gaz.', 'Intégrer un bilan avec masse variable ; comparer des pertes gravitationnelles.'],
-        levels=dict(sup='Bilan de quantité de mouvement et logarithme.', spe='Système ouvert, flux de matière et évolution énergétique.', beyond='Compromis entre poussée, durée et masse de carburant.'),
+        levels=dict(sup='Bilan de quantité de mouvement et logarithme.', spe='Bilans avec matière échangée, selon la filière ; fusée présentée comme application accompagnée.', beyond='Compromis entre poussée, durée et masse de carburant.'),
         first_steps=['Choisir g=0 et vérifier le gain u ln(m₀/mf).', 'Ajouter la pesanteur : comparer les deux courbes de vitesse.', 'Diviser la durée par deux à rapport de masses inchangé : comparer la perte gτ et la poussée.'],
         expected='Le débit fixe la poussée ; le rapport des masses fixe le gain idéal. Une masse initiale plus grande, à même rapport et durée, donne la même vitesse finale.'),
     'coriolis': dict(
         purpose='Reconstruire un mouvement simple dans des axes tournants et vérifier les signes des deux forces d’inertie.',
-        objects=['Ω : vitesse angulaire signée des axes autour de z.', 'v₀ : vitesse constante dans le référentiel galiléen ; vR : vitesse relative aux axes tournants.', '(x₀,y₀) : position initiale commune aux deux repères.'],
+        objects=['Ω : vitesse angulaire signée des axes autour de z, en rad/s ; t : temps en s.', 'v₀ : vitesse constante suivant x dans le référentiel galiléen, en m/s ; vR : vitesse dans les axes tournants.', '(x₀,y₀) : position initiale, en m ; les deux origines coïncident.'],
         hypotheses=['Point libre ; origine commune fixe ; rotation uniforme.', 'Aucune force réelle : toute accélération relative vient du changement de référentiel.'],
         techniques=['Composer puis dériver les vitesses.', 'Calculer Ω×v et Ω×(Ω×r) avec leurs signes.', 'Contrôler la somme des termes d’inertie et utiliser une rotation orthogonale.'],
         levels=dict(sup='Mouvement rectiligne uniforme et changement de coordonnées.', spe='Référentiel non galiléen, Coriolis et force centrifuge.', beyond='Invariant énergétique J dans une rotation uniforme.'),

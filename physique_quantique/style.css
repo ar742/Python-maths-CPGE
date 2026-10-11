@@ -12,3 +12,5 @@
 .metric b{overflow-wrap:anywhere;font-size:23px}.plots .figure:last-child:nth-child(odd){grid-column:1/-1}.formula{overflow-x:auto}.metric small{display:block}#theory-text p{max-width:1050px}
 
 .circuit{margin:0 0 15px;padding:14px 20px;background:white;border:1px solid var(--line);border-radius:10px;overflow-x:auto}.circuit svg{display:block;width:100%;max-width:780px;height:auto}.circuit p{font-size:12px;color:var(--muted);margin:6px 0}.figure .heat-legend{padding:0 20px 14px;font-size:11px;color:var(--muted)}#sources a{overflow-wrap:anywhere}.control:has(input:disabled) label{opacity:.55}
+
+.lab-guide{margin:1rem 0 1.4rem;padding:1rem 1.2rem;background:#f4f7f2;border:1px solid #d7e2d7;border-radius:14px}.lab-guide summary{font-weight:700;cursor:pointer}.guide-purpose{max-width:85ch}.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1.7rem}.guide-grid h3{font-size:1rem;margin:.5rem 0}.guide-grid p,.guide-grid li{line-height:1.55}.guide-grid ul,.guide-grid ol{padding-left:1.4rem;margin:.4rem 0}@media(max-width:760px){.guide-grid{grid-template-columns:1fr}}

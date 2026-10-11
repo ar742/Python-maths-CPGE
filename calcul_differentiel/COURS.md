@@ -8,6 +8,8 @@ Les résultats théoriques et les observations numériques sont distingués. Les
 
 *SUP → SPÉ · FONDATIONS*
 
+La fonction f va de U dans F. h est un accroissement tel que a+h reste dans U ; Df(a) est l’application linéaire cherchée. ∇f est le gradient d’une fonction scalaire ; Jᵢⱼ est le coefficient de ligne i, colonne j de sa jacobienne.
+
 Soient E et F des espaces euclidiens de dimension finie, U ouvert de E et a∈U. La fonction f est différentiable en a s’il existe une application linéaire L telle que le reste soit négligeable devant la taille de l’accroissement.
 
 f(a+h)=f(a)+Df(a)[h]+o(‖h‖), lorsque h→0.
@@ -22,6 +24,8 @@ Pour une fonction scalaire, dans une base orthonormée, Df(a)[h]=∇f(a)·h. Les
 
 *SPÉ · TP DU RECUEIL*
 
+ρ est le rayon, θ l’azimut et φ la colatitude depuis l’axe vertical ; z est l’altitude en cylindrique. Les angles des formules sont en radians. J est la matrice des dérivées de F, avec les variables dans l’ordre indiqué.
+
 Les colonnes d’une jacobienne indiquent comment se déplace l’image lorsqu’une seule coordonnée varie. Pour F(ρ,θ)=(ρ cosθ,ρ sinθ), les colonnes sont radiale et tangentielle, orthogonales et de longueurs 1 et ρ. En cylindrique, ajouter z comme troisième variable donne det J=ρ.
 
 F(ρ,θ,φ)=(ρ cosθ sinφ, ρ sinθ sinφ, ρ cosφ).
@@ -34,7 +38,9 @@ Pour une carte régulière, imposer ρ>0, 0<φ<π et un intervalle azimutal ouve
 
 ## 3 · Changement de variables et intégrale elliptique
 
-*SPÉ · TP PRIORITAIRE*
+*SPÉ · PROLONGEMENT · TP PRIORITAIRE*
+
+a et b sont les demi-axes positifs ; α et β sont deux coefficients réels. Ω est le domaine d’intégration. r et θ sont le rayon réduit et l’angle du quart de disque ; J est la jacobienne de la substitution.
 
 Pour une transformation C¹ bijective à inverse C¹ entre deux ouverts, le changement de variables multiplie la mesure par |det J|. Les frontières négligeables sont traitées séparément. Le domaine d’intégration devient la préimage du domaine initial.
 
@@ -52,6 +58,8 @@ La comparaison « sans jacobienne » montre exactement ce qu’on perd. La quadr
 
 *SPÉ · MÉTHODE*
 
+f et g sont deux applications différentiables composables ; a est le point de départ. Jf et Jg représentent leurs différentielles dans les bases choisies. γ est une courbe du niveau f=c, avec γ(0)=a ; ker désigne le noyau d’une application linéaire.
+
 D(g∘f)(a)=Dg(f(a))∘Df(a), donc J(g∘f)(a)=Jg(f(a)) Jf(a).
 
 **Preuve de la chaîne.** Écrire f(a+h)=f(a)+Lh+r(h) avec r(h)=o(‖h‖), puis développer g au point f(a). La continuité de L donne ‖Lh+r(h)‖=O(‖h‖). Le second reste est donc o(‖h‖), et la partie linéaire vaut Dg(f(a))L.
@@ -63,6 +71,8 @@ La seule inclusion obtenue par dérivation ne suffit pas à démontrer l’égal
 ## 5 · Taylor, Hessienne et classification correcte
 
 *SPÉ · EXERCICE 1*
+
+f est une fonction réelle de plusieurs variables, de classe C² près du point a. h est l’accroissement ; ∇f(a) est le gradient et Hf(a) la matrice des dérivées secondes. hᵀ est la transposée de h ; I est l’identité.
 
 f(a+h)=f(a)+∇f(a)·h+½hᵀHf(a)h+o(‖h‖²), pour f C².
 
@@ -78,6 +88,8 @@ Pour une fonction C³, le reste après Taylor 2 est O(‖h‖³). L’arrondi pe
 
 *SPÉ · TP MATRICIEL*
 
+A et H sont deux matrices carrées de même taille ; H est la direction de variation dans A+tH. GLₙ est l’ensemble des matrices inversibles, Tr la trace et cofᵢⱼ(A) le cofacteur de ligne i, colonne j. inv(A) désigne A⁻¹ ; I est l’identité.
+
 D inv(A)[H]=−A⁻¹HA⁻¹, A∈GLₙ.
 D det(A)[H]=Σᵢⱼ cofᵢⱼ(A) Hᵢⱼ.
 Si A inversible : D det(A)[H]=det(A) Tr(A⁻¹H). À I : D det(I)[H]=Tr H.
@@ -92,6 +104,8 @@ Dans le laboratoire 2×2, le reste du déterminant est exactement t² det H. Pou
 
 *SUP → SPÉ · TP*
 
+A est une matrice réelle n×n ; x et B sont des vecteurs colonnes de ℝⁿ. La transposée est notée ᵀ. S est la partie symétrique de A ; Hf est la Hessienne de f.
+
 f(x)=½xᵀAx−Bᵀx ; S=(A+Aᵀ)/2.
 f(x)=½xᵀSx−Bᵀx ; ∇f=Sx−B ; Hf=S.
 
@@ -104,6 +118,8 @@ Si A symétrique définie positive, compléter le carré : f(x)−f(x*)=½(x−x
 ## 8 · Rayleigh, descente et Newton
 
 *SPÉ · TP ET ALGORITHMES*
+
+A est une matrice réelle symétrique ; λmin et λmax sont ses valeurs propres extrêmes. R est le quotient de Rayleigh. Pour la descente, A est définie positive, B est le terme linéaire, α le pas et x* le minimum ; Hf est la Hessienne.
 
 R(x)=xᵀAx/(xᵀx), x≠0, A symétrique.
 ∇R(x)=2(Ax−R(x)x)/‖x‖² ; λmin≤R(x)≤λmax.
@@ -118,6 +134,8 @@ Dans une base orthonormée de vecteurs propres, R est une moyenne pondérée des
 
 *SPÉ · EXTENSION GUIDÉE DU TXT*
 
+GLₙ regroupe les matrices inversibles, SLₙ celles de déterminant 1 et SOₙ les matrices orthogonales de déterminant 1. Mₙ(ℝ) est l’espace des matrices réelles n×n ; I est l’identité. X=γ′(0) est la vitesse d’une courbe passant par I.
+
 Un groupe de Lie est un groupe muni d’une structure de variété lisse compatible avec le produit et l’inverse. Ici on étudie les groupes de matrices réelles GLₙ, SLₙ et SOₙ. Leur algèbre de Lie est l’espace tangent en l’identité : dérivées γ′(0) de courbes du groupe telles que γ(0)=I.
 
 glₙ=Mₙ(R), dimension n².
@@ -131,6 +149,8 @@ Une direction tangente n’est pas un élément du groupe : I+tX reste souvent h
 ## 10 · Exponentielle, Liouville et crochet
 
 *SPÉ · EXTENSION GUIDÉE DU TXT*
+
+X et Y sont des matrices carrées de même taille ; t et s sont des paramètres réels. E(t)=exp(tX), I est l’identité et Tr la trace. Le crochet [X,Y] est le défaut de commutation XY−YX ; ω décrit la vitesse angulaire dans la formule de Rodrigues.
 
 exp(tX)=Σₖ≥0 tᵏXᵏ/k!, E′(t)=XE(t)=E(t)X.
 exp(tX)⁻¹=exp(−tX) ; det exp(tX)=exp(t Tr X).
@@ -148,7 +168,7 @@ Attention : exp(X+Y)=exp X exp Y requiert XY=YX. Pour un générateur antisymét
 
 ## 11 · Calcul exact de la gaussienne étendue
 
-*SPÉ · EXEMPLE PRIORITAIRE DU TXT*
+*SPÉ · PROLONGEMENT · GAUSSIENNE DU TXT*
 
 A est une matrice réelle symétrique définie positive, B∈Rⁿ. On veut calculer I(A,B)=∫Rⁿ exp(−xᵀAx/2+Bᵀx) dx. La positivité garantit la décroissance quadratique dans toutes les directions.
 
@@ -165,6 +185,8 @@ La densité normalisée est celle d’une gaussienne de moyenne μ et covariance
 ## 12 · Dériver l’intégrale : moments et sensibilité
 
 *SPÉ · EXTENSION GAUSSIENNE*
+
+On reprend l’intégrale I(A,B) précédente, avec A symétrique définie positive, μ=A⁻¹B et Σ=A⁻¹. H est une variation symétrique de A. X désigne le vecteur aléatoire de la densité normalisée ; Φ est la fonction de répartition de la loi normale centrée réduite.
 
 log I=½n log(2π)−½log det A+½BᵀA⁻¹B.
 ∇B log I=μ ; HessB log I=Σ.
@@ -183,7 +205,9 @@ Pour la vérification numérique 2D, le laboratoire tronque à μᵢ±6√Σᵢ�
 
 ## 13 · Green–Riemann : aire et circulation
 
-*SPÉ · EXERCICE 2*
+*SPÉ · PROLONGEMENT · GREEN*
+
+Ω est le domaine plan et ∂Ω son contour ; P et Q sont les deux composantes d’un champ de classe C¹. x et y sont les coordonnées. Le symbole ∮ indique une intégration le long du contour fermé orienté.
 
 ∮∂Ω P dx+Q dy = ∬Ω (∂Q/∂x−∂P/∂y) dxdy.
 
@@ -198,7 +222,9 @@ Ce double calcul est un moyen de vérifier les signes, l’orientation et les pa
 
 ## 14 · Fubini : les hypothèses ont un contenu
 
-*SPÉ · EXERCICE 7*
+*SPÉ · PROLONGEMENT · FUBINI*
+
+εx et εy sont deux coupures positives. I(εx,εy) est l’intégrale de f sur [εx,1]×[εy,1] ; q désigne la limite éventuelle de leur rapport εx/εy. En coordonnées polaires, r est la distance à l’origine et θ l’angle en radians.
 
 Une fonction continue sur un rectangle compact permet les deux ordres d’intégration. Sur un domaine non compact ou avec singularité, Fubini requiert l’intégrabilité absolue ; Tonelli traite séparément les fonctions positives, avec une valeur éventuellement infinie.
 
@@ -224,13 +250,13 @@ Calculer toutes les dérivées directionnelles en 0 de f=x³y/(x⁶+y²), prolon
 
 ### 2 · Le signe en sphérique
 
-Calculer le déterminant pour les variables (ρ,θ,φ), puis pour (ρ,φ,θ).
+En sphérique, ρ est le rayon, θ l’azimut et φ la colatitude ; les angles sont en radians. Calculer le déterminant pour les variables (ρ,θ,φ), puis pour (ρ,φ,θ).
 
 **Correction.** Les colonnes orthogonales ont normes 1, ρsinφ et ρ. Avec l’ordre du TP, l’orientation est négative : −ρ²sinφ. Permuter deux colonnes donne +ρ²sinφ. La mesure est identique : ρ²sinφ pour ρ>0, 0<φ<π.
 
 ### 3 · Pourquoi les pôles sont-ils singuliers ?
 
-Étudier la colonne azimutale de J lorsque φ=0, puis ρ=0.
+J est la jacobienne de la transformation sphérique, avec les variables (ρ,θ,φ). Étudier la colonne azimutale de J lorsque φ=0, puis ρ=0.
 
 **Correction.** À φ=0, la colonne θ est nulle : faire varier l’azimut ne change pas le pôle. À ρ=0, les deux colonnes angulaires sont nulles. Le déterminant s’annule et le théorème d’inversion locale ne s’applique pas ; cela n’empêche pas F d’être lisse.
 
@@ -242,7 +268,7 @@ Calculer ∫Ω(3x³−y²)dxdy, Ω : x,y≥0 et 4x²+9y²≤36.
 
 ### 5 · Une transformation d’aire
 
-Déduire l’aire du quart d’ellipse du changement de variables. Pourquoi le facteur r est-il indispensable ?
+a,b>0 sont les demi-axes ; x=ar cosθ et y=br sinθ, avec 0≤r≤1 et 0≤θ≤π/2. Déduire l’aire du quart d’ellipse du changement de variables. Pourquoi le facteur r est-il indispensable ?
 
 **Correction.** L’aire est ab∫₀¹rdr∫₀^{π/2}dθ=πab/4. Sans r, on obtient πab/2, deux fois trop. Les bandes de rayon r n’ont pas une longueur constante : leur longueur est proportionnelle à r.
 
@@ -266,49 +292,49 @@ Calculer Ddet(A)[H] pour A=diag(1,0) et H quelconque 2×2.
 
 ### 9 · L’ordre des matrices compte
 
-Démontrer Dinv(A)[H] et expliquer pourquoi −A⁻²H est généralement faux.
+A est une matrice inversible et H une matrice de même taille ; on étudie A+tH. Démontrer Dinv(A)[H] et expliquer pourquoi −A⁻²H est généralement faux.
 
 **Correction.** Dériver A inv(A)=I donne H A⁻¹+A Dinv(A)[H]=0, d’où −A⁻¹HA⁻¹. On ne peut déplacer H que s’il commute avec A. Le laboratoire prend une direction H généralement non commutante.
 
 ### 10 · La symétrie oubliée
 
-Quelle est la dérivée de ½xᵀAx−Bᵀx pour A quelconque ?
+x et B sont des vecteurs colonnes réels ; A est une matrice carrée de même dimension. Quelle est la dérivée de ½xᵀAx−Bᵀx pour A quelconque ?
 
 **Correction.** La partie antisymétrique ne contribue pas à xᵀAx. Avec S=(A+Aᵀ)/2, le gradient est Sx−B et la Hessienne S. La formule Ax−B requiert A symétrique. Pour S définie positive, x*=S⁻¹B est l’unique minimum.
 
 ### 11 · Un pas trop grand
 
-Pour A de valeurs propres 1 et 4, trouver les pas assurant la convergence de la descente pour tout départ.
+On applique xₖ₊₁=xₖ−α(Axₖ−B), avec A symétrique définie positive, B fixé et pas α>0. Pour A de valeurs propres 1 et 4, trouver les pas assurant la convergence de la descente pour tout départ.
 
 **Correction.** eₖ₊₁=(I−αA)eₖ. Il faut |1−α|<1 et |1−4α|<1 : 0<α<1/2. À α=1/2, la composante λ=4 oscille ; au-delà elle diverge sauf si sa composante initiale est nulle.
 
 ### 12 · Rayleigh au second ordre
 
-Pour A=diag(λ₁,λ₂), λ₁≤λ₂, calculer R(cos t,sin t)−λ₁.
+R(x)=xᵀAx/(xᵀx) est le quotient de Rayleigh. Pour A=diag(λ₁,λ₂), λ₁≤λ₂, calculer R(cos t,sin t)−λ₁.
 
 **Correction.** La différence vaut (λ₂−λ₁)sin²t=(λ₂−λ₁)t²+O(t⁴). L’erreur de direction est d’ordre |t| mais l’erreur du quotient est d’ordre t². Si λ₁=λ₂, le quotient est constant.
 
 ### 13 · Retrouver slₙ par une différentielle
 
-Montrer que le tangent en I de SLₙ est l’espace des matrices de trace nulle.
+SLₙ est le groupe des matrices réelles n×n de déterminant 1 ; I est l’identité. Montrer que le tangent en I de SLₙ est l’espace des matrices de trace nulle.
 
 **Correction.** Nécessité : pour une courbe det γ=1 avec γ(0)=I, Ddet(I)[γ′(0)]=Tr γ′(0)=0. Réciproque : si Tr X=0, det exp(tX)=exp(tTr X)=1 et (exp(tX))′ à 0 vaut X. La dimension est n²−1.
 
 ### 14 · Rotations et non-commutativité
 
-Pourquoi so₂ est-elle commutative alors que so₃ ne l’est pas ?
+soₙ est l’espace des matrices réelles antisymétriques n×n, muni du crochet [X,Y]=XY−YX. Pourquoi so₂ est-elle commutative alors que so₃ ne l’est pas ?
 
 **Correction.** Toute matrice de so₂ est un multiple de [[0,−1],[1,0]] : les produits commutent. Dans so₃, les générateurs de rotations autour de deux axes différents ont un crochet non nul, correspondant à un troisième axe. Le commutateur de petites rotations commence à l’ordre s².
 
 ### 15 · Gaussienne décentrée
 
-Calculer I pour A=diag(2,3) et B=(2,−3).
+I(A,B)=∫ℝⁿexp(−xᵀAx/2+Bᵀx)dx est l’intégrale gaussienne étendue. Calculer I pour A=diag(2,3) et B=(2,−3).
 
 **Correction.** μ=(1,−1), Σ=diag(1/2,1/3), BᵀA⁻¹B=5. Donc I=(2π/√6)exp(5/2). Compléter le carré ramène le calcul à une gaussienne centrée. La moyenne de la densité normalisée vaut μ.
 
 ### 16 · Des dérivées aux moments
 
-Exprimer ∫xxᵀ exp(−xᵀAx/2+Bᵀx)dx et D_A log I[H].
+A est symétrique définie positive, B un vecteur et H une variation symétrique de A ; I(A,B) est l’intégrale gaussienne de l’exercice précédent. Exprimer ∫xxᵀ exp(−xᵀAx/2+Bᵀx)dx et D_A log I[H].
 
 **Correction.** La Hessienne de I en B est I(Σ+μμᵀ), donc l’intégrale cherchée vaut cette matrice. Pour H symétrique, D_A log I[H]=−½Tr((Σ+μμᵀ)H). Dans un voisinage à positivité uniforme, une gaussienne multipliée par un polynôme domine les dérivées et justifie la dérivation sous l’intégrale.
 
@@ -320,7 +346,7 @@ Calculer ∮y(y+x)dx sur la frontière positive comprise entre y=x² et y=x.
 
 ### 18 · Le chemin de coupure
 
-Pour le contre-exemple de Fubini, faire εx=εyᵖ. Quelles limites pour p<1, p=1, p>1 ?
+On intègre f(x,y)=(x²−y²)/(x²+y²)² sur [εx,1]×[εy,1], puis on fait tendre εy vers 0. Pour le contre-exemple de Fubini, faire εx=εyᵖ. Quelles limites pour p<1, p=1, p>1 ?
 
 **Correction.** Le rapport εx/εy=εy^{p−1} tend vers +∞, 1 ou 0. La limite −π/4+arctan q vaut donc +π/4, 0 ou −π/4. Les valeurs dépendent de la coupure : l’intégrabilité absolue manque, comme le montre le facteur dr/r en polaire.
 

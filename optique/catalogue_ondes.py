@@ -23,7 +23,7 @@ def lab(id_, title, category, intro, controls, presets):
 
 LABS = [
     lab("young", "Young : franges, enveloppe et déséquilibre", "Interférences",
-        "Une même source éclaire deux fentes. Distinguer l'interfrange de la largeur de l'enveloppe, puis supprimer la corrélation de phase sans supprimer l'éclairement.", [
+        'Une même source éclaire deux fentes et produit des franges sous une enveloppe de diffraction. Modifier leur largeur, leur séparation et leur cohérence permet de distinguer interfrange, contraste et largeur de l’enveloppe.', [
             slider("wavelength", "Longueur d'onde dans l'air", 400, 780, 5, 600, "nm"),
             slider("separation", "Distance entre les centres des fentes a", .1, 2, .01, .5, "mm"),
             slider("width", "Largeur de chaque fente b", .01, .09, .001, .04, "mm"),
@@ -36,7 +36,7 @@ LABS = [
                 preset("La somme sans interférence", mode="independent"),
                 preset("Une seule ouverture", mode="single")]),
     lab("reseau", "Réseau : résoudre un doublet spectral", "Interférences",
-        "Sommer N amplitudes et observer un ordre spectral en détail. Le pouvoir de résolution mN résulte de la largeur des maxima et non de leur seule séparation.", [
+        'Additionner les ondes issues de plusieurs fentes pour séparer deux raies proches. Le nombre de fentes et l’ordre d’observation relient la largeur des maxima au pouvoir de résolution du réseau.', [
             slider("wavelength", "Longueur d'onde centrale", 400, 780, 1, 589.3, "nm"),
             slider("doublet", "Écart des deux raies", 0, 2, .01, .6, "nm"),
             slider("pitch", "Pas du réseau d", 1, 10, .1, 2, "µm"),
@@ -49,7 +49,7 @@ LABS = [
                 preset("Ordre deux plus dispersif", count=500, doublet=.6, order=2),
                 preset("Ordre absent", pitch=1, incidence=30, order=3)]),
     lab("diffraction", "Ouvertures : rectangle et apodisation", "Diffraction",
-        "Le plan focal d'une lentille donne la transformée de Fourier de la pupille. Une transmission cosinus réduit les lobes secondaires en élargissant le lobe central.", [
+        'Observer dans un plan focal la lumière transmise par une ouverture. Comparer une transmission uniforme et une transmission adoucie explique le compromis entre largeur du maximum central et intensité des maxima secondaires.', [
             select("aperture", "Pupille", [("rectangle", "Rectangle uniforme"), ("slit", "Fente longue"), ("apodized", "Rectangle apodisé en x : cos(πx/a)")], "rectangle"),
             slider("width", "Largeur horizontale a", .02, 2, .01, .2, "mm"),
             slider("height", "Hauteur verticale b", .02, 2, .01, .8, "mm"),
@@ -59,7 +59,7 @@ LABS = [
                 preset("Fente et premier zéro", aperture="slit", width=.1),
                 preset("Élargir pour atténuer les lobes", aperture="apodized", width=.2, height=.8)]),
     lab("polarisation", "Jones : lame à retard et analyseur", "Polarisation",
-        "Suivre les deux composantes complexes du champ dans une lame sans pertes. L'ellipse et la sphère de Poincaré décrivent l'état avant l'analyseur ; sa transmission fournit une mesure.", [
+        'Faire traverser une lame à retard puis un analyseur à une onde polarisée. Les composantes du champ, l’ellipse et la transmission permettent de relier déphasage, état de polarisation et mesure d’intensité.', [
             select("input", "État incident", [("linear", "Rectiligne"), ("circular", "Circulaire : Ey = i Ex"), ("elliptical", "Elliptique : Ey = i Ex/2")], "linear"),
             slider("input_angle", "Orientation incidente / de l'ellipse", -90, 90, 1, 45, "°"),
             slider("axis", "Orientation de l'axe de la lame", -90, 90, 1, 0, "°"),
@@ -70,7 +70,7 @@ LABS = [
                 preset("Analyser un état circulaire", input="circular", input_angle=0, retardance=0),
                 preset("Extinction de Malus", input="linear", input_angle=0, retardance=0, analyzer=90)]),
     lab("michelson", "Michelson : anneaux et coin d'air", "Interférences",
-        "Relier la translation d'un miroir au facteur deux de la différence de marche. Comparer les anneaux d'égale inclinaison dans un plan focal aux franges d'un coin d'air imagé.", [
+        'Déplacer ou incliner un miroir d’un interféromètre de Michelson. Le calcul de la différence de marche explique le facteur deux de la translation, les anneaux et les franges d’un coin d’air.', [
             select("mode", "Configuration", [("rings", "Lame d'air : égale inclinaison"), ("wedge", "Coin d'air : égale épaisseur")], "rings"),
             slider("wavelength", "Longueur d'onde dans l'air", 400, 780, 1, 546, "nm"),
             slider("gap", "Écart longitudinal équivalent des miroirs e", 0, 1000, 1, 500, "µm"),
@@ -83,7 +83,7 @@ LABS = [
                 preset("Franges du coin", mode="wedge", gap=0, tilt=.15),
                 preset("Coin deux fois plus incliné", mode="wedge", gap=0, tilt=.3)]),
     lab("coherence", "Cohérence : spectre, source étendue et battements", "Interférences",
-        "Une source commune peut perdre du contraste lorsque son spectre ou son étendue augmente. Pour un doublet, les annulations périodiques de visibilité ne sont pas une disparition définitive de la cohérence.", [
+        'Des franges perdent leur contraste lorsque la source possède plusieurs fréquences ou une grande étendue. Sommer les contributions permet de distinguer cohérence temporelle, cohérence spatiale et battements d’un doublet.', [
             select("spectrum", "Spectre / corrélation", [("gaussian", "Spectre gaussien, largeur Δν"), ("doublet", "Deux raies fines d'égales intensités"), ("independent", "Deux sources mutuellement indépendantes")], "gaussian"),
             slider("wavelength", "Longueur d'onde centrale", 400, 780, 1, 589.3, "nm"),
             slider("linewidth", "Largeur spectrale FWHM Δν", .01, 100, .01, 20, "GHz"),
@@ -97,7 +97,7 @@ LABS = [
                 preset("Battements du doublet", spectrum="doublet", doublet=.6, source_width=0, opd=.2894),
                 preset("Source large : facteur spatial", spectrum="gaussian", linewidth=.1, source_width=1.1786, separation=.5)]),
     lab("fabryperot", "Fabry–Perot : coefficient d'Airy et finesse", "Résonateurs",
-        "Sommer une infinité de faisceaux transmis pour obtenir des résonances. Distinguer le coefficient 4R/(1−R)², la finesse spectrale et l'intervalle spectral libre.", [
+        'Une cavité transmet fortement certaines fréquences après de multiples réflexions. Sommer les amplitudes permet de calculer ses résonances et de distinguer leur espacement, leur largeur et la finesse.', [
             slider("length", "Épaisseur de cavité e", .1, 10, .1, 1, "mm"),
             slider("index", "Indice n de la cavité", 1, 2, .01, 1),
             slider("reflectivity", "Réflectivité en intensité R des miroirs", 0, .99, .01, .85),
@@ -109,7 +109,7 @@ LABS = [
                 preset("Sans miroirs réfléchissants", reflectivity=0, detuning=.5),
                 preset("Anti-résonance", reflectivity=.85, detuning=.5)]),
     lab("fourier", "Banc 4f : filtrer vraiment une image", "Imagerie",
-        "Une première lentille place les fréquences spatiales dans son plan focal ; un masque puis une seconde lentille reconstruisent un champ. Comparer les amplitudes, les intensités et le bilan de Parseval.", [
+        'Utiliser deux lentilles et un masque pour modifier les fréquences spatiales d’une image. Suivre le champ puis son intensité explique un filtrage optique et permet de contrôler le bilan de puissance.', [
             select("object", "Objet d'amplitude ou de phase", [("grid", "Grille : traits verticaux et horizontaux"), ("cells", "Deux disques et une mire"), ("phase", "Objet de phase pure")], "grid"),
             select("filter", "Masque du plan de Fourier", [("identity", "Aucun masque"), ("lowpass", "Disque passe-bas"), ("highpass", "Disque passe-haut"), ("vertical", "Fente verticale : |νx| < νc"), ("horizontal", "Fente horizontale : |νy| < νc")], "lowpass"),
             slider("cutoff", "Fréquence spatiale de coupure νc", 5, 80, 1, 20, "mm⁻¹"),
@@ -122,7 +122,7 @@ LABS = [
                 preset("Sélection de l'orientation", filter="vertical", cutoff=8),
                 preset("Rendre visible une phase", object="phase", filter="highpass", cutoff=8)]),
     lab("laser", "Laser : stabilité, seuil et saturation", "Résonateurs",
-        "La géométrie ABCD sélectionne un mode confiné ; l'émission stimulée doit ensuite compenser les pertes. Une cavité stable ne suffit pas à déclencher un laser.", [
+        'Tester si une cavité confine un faisceau, puis si son gain compense les pertes. Séparer ces deux conditions permet de comprendre la stabilité géométrique, le seuil laser et la saturation de la puissance.', [
             slider("length", "Distance entre les miroirs L", 50, 500, 10, 200, "mm"),
             slider("curvature1", "Courbure du miroir 1 : 1/R₁", 0, 10, .1, 2, "m⁻¹"),
             slider("curvature2", "Courbure du miroir 2 : 1/R₂", -10, 10, .1, 2, "m⁻¹"),
@@ -137,7 +137,7 @@ LABS = [
                 preset("Miroir convexe : instabilité", length=200, curvature1=2, curvature2=-5),
                 preset("Cavité confocale, limite marginale", length=200, curvature1=5, curvature2=5)]),
     lab("gaussien", "Faisceau gaussien : waist, diffraction et Gouy", "Lasers",
-        "Un waist étroit produit une divergence plus grande. Le profil transverse change, mais son intégrale conserve la puissance ; la phase contient aussi la courbure du front d'onde et le déphasage de Gouy.", [
+        'Un faisceau plus étroit à son col diverge davantage ensuite. Calculer son profil, sa puissance et sa phase permet de relier largeur transverse, diffraction et déphasage de Gouy dans un modèle paraxial.', [
             slider("waist", "Rayon w₀ à 1/e² d'intensité", 10, 1000, 5, 50, "µm"),
             slider("wavelength", "Longueur d'onde dans le vide", 400, 1550, 5, 633, "nm"),
             slider("index", "Indice du milieu homogène", 1, 2, .01, 1),
@@ -148,7 +148,7 @@ LABS = [
                 preset("Petit waist, forte divergence", waist=10, position=3),
                 preset("Waist large", waist=500, position=2)]),
     lab("airy", "Airy : séparer deux étoiles", "Astronomie",
-        "Une pupille circulaire produit une fonction de Bessel, et deux étoiles indépendantes donnent une somme d'intensités. Comparer une lunette à une pupille annulaire de télescope.", [
+        'Chercher si un instrument sépare deux étoiles indépendantes. Comparer les taches d’une pupille pleine et d’une pupille annulaire relie diffraction, diamètre d’ouverture et contraste entre deux sources.', [
             slider("diameter", "Diamètre de la pupille D", 20, 3000, 10, 200, "mm"),
             slider("wavelength", "Longueur d'onde", 400, 1000, 5, 550, "nm"),
             slider("separation", "Séparation / repère 1,22λ/D", 0, 2.5, .01, 1),
@@ -159,7 +159,7 @@ LABS = [
                 preset("Compagnon faible", separation=1, ratio=.1),
                 preset("Pupille annulaire", obstruction=.4, separation=1)]),
     lab("nonlineaire", "χ² : doubler la fréquence et épuiser la pompe", "Au-delà",
-        "Deux photons de fréquence ω produisent un photon de fréquence 2ω. Comparer l'approximation de pompe constante aux ondes couplées qui conservent l'énergie, et explorer l'accord de phase.", [
+        'Convertir une partie de la lumière incidente en lumière de fréquence double dans un cristal. Comparer pompe supposée constante et ondes couplées permet de suivre l’énergie et de comprendre l’accord de phase.', [
             select("model", "Modèle", [("coupled", "Ondes couplées : déplétion de la pompe"), ("small", "Pompe constante : faible conversion")], "coupled"),
             slider("wavelength", "Longueur d'onde fondamentale dans le vide", 400, 1600, 5, 1064, "nm"),
             slider("intensity", "Intensité fondamentale incidente", .01, 2, .01, .2, "GW·cm⁻²"),

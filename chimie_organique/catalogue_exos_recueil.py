@@ -5,7 +5,7 @@ from commun import lab, select, slider, preset
 LABS = [
     lab('nitrobenzene', 'Nitrobenzène : Lewis, réduction et ordre des substitutions',
         'Exercices du recueil · 531–534',
-        'Suivre le groupe nitro sans perdre ses charges, équilibrer sa réduction en aniline et vérifier une séquence de substitutions sur une cible aromatique à quatre substituants.',
+        'Relier la structure de Lewis du groupe nitro à sa réduction et à une stratégie de substitution aromatique. Vérifier charges, demi-bilans et ordre des étapes permet de construire une cible sans appliquer les règles hors de leurs conditions.',
         [select('mode', 'Question de l’exercice', [
             ('lewis', 'Lewis et mésomérie du groupe nitro'),
             ('reduction', 'Nitro → nitroso → hydroxylamine → aniline'),
@@ -25,7 +25,7 @@ LABS = [
          preset('Friedel–Crafts après nitration : étape incompatible', mode='strategy', route='nitro_first', stage=1)]),
     lab('dipolesnitro', 'Dinitrobenzènes : addition vectorielle des moments dipolaires',
         'Exercices du recueil · 531–534',
-        'Construire géométriquement les dipôles ortho, méta et para avec deux groupes identiques ; distinguer propriété d’une molécule et composition d’un mélange réactionnel.',
+        'Comparer les moments dipolaires des isomères ortho, méta et para avec un modèle vectoriel. Additionner deux contributions permet de distinguer la propriété d’une molécule de la composition d’un mélange de produits.',
         [select('isomer', 'Position du second groupe NO₂', [
             ('ortho', 'Ortho : 1,2'), ('meta', 'Méta : 1,3'), ('para', 'Para : 1,4')], 'ortho'),
          slider('mu0', 'Moment de chaque groupe dans le modèle', 0, 8, .01, 4.03, 'D'),
@@ -36,7 +36,7 @@ LABS = [
          preset('Tourner sans changer la norme', isomer='ortho', mu0=4.03, rotation=90)]),
     lab('e2stereo', 'E2 du recueil : des configurations R/S à l’alcène E/Z',
         'Exercices du recueil · 531–534',
-        'Projeter le 3-bromo-3,4-diméthylhexane suivant C₃–C₄ ; placer Hβ et Br en anti, puis comparer stéréospécificité du produit et choix du carbone β.',
+        'Construire une projection de Newman de l’halogénure étudié, puis placer proton et groupe partant en opposition. Les configurations initiales permettent de prévoir la géométrie de l’alcène et de distinguer choix du site et stéréospécificité.',
         [select('configuration', 'Configuration du substrat (C₃, C₄)', [
             ('SS', '(3S,4S)'), ('RR', '(3R,4R)'),
             ('SR', '(3S,4R)'), ('RS', '(3R,4S)')], 'SS'),

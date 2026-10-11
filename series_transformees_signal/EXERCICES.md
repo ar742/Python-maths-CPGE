@@ -500,7 +500,7 @@
 
 ### Correction guidée
 
-**Corrigé.** La durée d’acquisition reste T=1 s et le pas natif est 1 Hz. Le zero padding donne un pas de lecture 0,125 Hz. Les 128 valeurs mesurées, la fenêtre temporelle, ses lobes et le bruit acquis restent identiques. Le spectre est mieux interpolé ; deux raies que le lobe ne sépare pas ne deviennent pas séparées parce que l’on affiche davantage de points.
+**Corrigé.** La durée d’acquisition reste T=1 s et le pas natif est 1 Hz. L’ajout de zéros donne un pas de lecture 0,125 Hz. Les 128 valeurs mesurées, la fenêtre temporelle, ses lobes et le bruit acquis restent identiques. Le spectre est mieux interpolé ; deux raies que le lobe ne sépare pas ne deviennent pas séparées parce que l’on affiche davantage de points.
 
 ## 51. Mesurer un écart avec des battements
 
@@ -536,7 +536,7 @@
 
 **Spé ; prolongement temps–fréquence · TP : spectrogramme**
 
-**Énoncé.** La carte emploie D=10log₁₀(P/Pmax). Quelle puissance relative représentent −20 dB et −40 dB ? Si l’amplitude du chirp est doublée, la carte renormalisée change-t-elle ?
+**Énoncé.** La carte emploie D=10log₁₀(P/Pmax). Quelle puissance relative représentent −20 dB et −40 dB ? Si l’amplitude du signal à fréquence balayée est doublée, la carte renormalisée change-t-elle ?
 
 ### Correction guidée
 

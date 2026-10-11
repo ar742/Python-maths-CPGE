@@ -19,19 +19,19 @@ def guide(purpose, objects, assumptions, techniques, steps, sup, spe, beyond, ex
 
 LAB_GUIDES = {
     'couche_limite': guide(
-        'Prouver une convergence simple puis repérer le point mobile qui empêche la convergence uniforme. Le but est d’apprendre à calculer une norme, et à distinguer une preuve d’un dessin bien résolu.',
-        'n entier, x∈[0,1] et fₙ(x)=nx/(1+n²x²) sans unité|δ>0 fixe le compact [δ,1] ; u=nx est la coordonnée de loupe|Le sommet est calculé analytiquement, pas estimé sur les points du graphe',
+        'Un pic se déplace vers le bord de l’intervalle sans perdre de hauteur. L’étudier par dérivation permet de distinguer convergence en chaque point, convergence uniforme et convergence uniforme loin du bord.',
+        'n est le rang entier de la suite et x la position sur [0,1], sans unité. δ fixe un sous-intervalle éloigné de zéro ; la norme uniforme est la borne supérieure des valeurs absolues sur l’intervalle étudié.|n entier, x∈[0,1] et fₙ(x)=nx/(1+n²x²) sans unité|δ>0 fixe le compact [δ,1] ; u=nx est la coordonnée de loupe|Le sommet est calculé analytiquement, pas estimé sur les points du graphe',
         'Domaine fixe [0,1] pour la convergence simple et uniforme globale|La comparaison locale utilise un δ positif fixé avant n→∞',
         'Étude d’une dérivée et d’un maximum|Quantificateurs de convergence|Changement d’échelle u=nx',
         ['Pour n=15, prévoir la position 1/n et la hauteur du pic avant de déplacer les curseurs.',
          'Passer à n=800 puis comparer le tracé global, la loupe et les deux normes ; garder δ=0,03 fixe.',
          'Écrire la preuve de CS, le contre-exemple à CU et la borne 1/(nδ) sur le compact ; expliquer ce qu’un maillage peut manquer.'],
         'Dérivation, signe, maximum et lecture de quantificateurs ; entrée progressive vers les suites de fonctions.',
-        'Convergence simple et uniforme, norme sup et convergence locale sur les compacts.',
+        'Convergence simple et uniforme, norme uniforme (borne supérieure des valeurs absolues) et convergence locale sur les compacts.',
         'Couches limites et limites singulières d’équations différentielles.',
         'Trois conclusions distinctes : CS sur [0,1], échec CU global, CU sur chaque [δ,1].'),
     'concentration': guide(
-        'Mettre en défaut une interversion limite–intégrale et localiser la masse perdue par la limite ponctuelle. L’expérience prépare ensuite la notion d’impulsion de Dirac utilisée en signal.',
+        'Une suite de fonctions tend vers zéro en chaque point, alors que son aire tend vers un nombre non nul. Un changement d’échelle localise la concentration et montre quelle hypothèse manque pour échanger limite et intégrale.',
         'fₙ(x)=n²xe^(−nx), x∈[0,1], n entier|x₀ est un point fixe où l’on suit la suite numérique fₙ(x₀)|Aire exacte, position 1/n, hauteur n/e ; loupe u=nx',
         'Fonctions positives ; limite simple nulle, y compris en zéro|La famille ne possède pas de domination intégrable commune sur [0,1]',
         'Exponentielle contre puissance|Intégration par parties et changement de variable|Vérification des hypothèses de convergence dominée',
@@ -43,7 +43,7 @@ LAB_GUIDES = {
         'Convergence de mesures vers une Dirac et concentration de masse.',
         'Une limite ponctuelle nulle et une limite d’aire égale à 1, réconciliées par une couche de largeur 1/n.'),
     'tp99_original': guide(
-        'Reprendre le TP p.99 après les deux expériences de convergence. L’objectif est de transformer une annulation locale en un majorant sommable uniforme sur tout compact, puis de contrôler le reste de série.',
+        'Soustraire deux fonctions très proches fait disparaître leurs premiers termes de développement. Retrouver le premier terme restant permet de majorer la série sur un intervalle fixé et de justifier sa convergence normale.',
         'fₙ(x)=cos(x/n)−[1+(x/n)²]^(−1/2)|R fixe [−R,R] ; n règle un terme ; N règle la somme des n=1,…,N|n⁴fₙ et −π⁴x⁴/270 comparent deux développements locaux distincts',
         'Majoration Taylor valable pour tout x réel sur un compact fixé|Le terme quartique de la somme est une approximation en zéro, pas son expression globale|Évaluation stable des petites différences',
         'Développements limités et cancellation|Critère de Weierstrass|Borne d’une queue par une intégrale',
@@ -55,10 +55,10 @@ LAB_GUIDES = {
         'Conditionnement numérique et calcul de différences par des développements stables.',
         'Une justification de CN accompagnée d’un reste uniforme et d’une distinction entre identité et développement local.'),
     'geometrie': guide(
-        'Utiliser une série dont le reste est exact pour apprendre à choisir un degré et justifier dérivation et intégration terme à terme. Le compact intérieur est une donnée de précision, pas un détail du graphique.',
-        'PN(x)=Σk=0ᴺxᵏ comporte N+1 termes|r<1 définit le compact |x|≤r ; R=1 est le rayon de convergence|Deux restes affichés : somme et dérivée',
+        'Approcher une fonction et sa dérivée avec les sommes d’une série géométrique. Calculer les restes permet de justifier la dérivation terme à terme et de comprendre pourquoi les estimations se dégradent près du bord.',
+        'N est le dernier exposant conservé et r le rayon du sous-intervalle d’étude, avec r strictement inférieur à 1. Le reste est la différence entre la fonction exacte et la somme partielle.|PN(x)=Σk=0ᴺxᵏ comporte N+1 termes|r<1 définit le compact |x|≤r ; R=1 est le rayon de convergence|Deux restes affichés : somme et dérivée',
         'Le compact reste strictement intérieur au disque|Les normes des restes sont majorées analytiquement',
-        'Télescopage|Somme géométrique et norme sup|Convergence normale de la série dérivée',
+        'Télescopage|Somme géométrique et norme uniforme (borne supérieure des valeurs absolues)|Convergence normale de la série dérivée',
         ['Avec r=0,5, prévoir un degré garantissant une erreur de 10⁻³, puis comparer à la borne affichée.',
          'Garder N=20 et déplacer r de 0,5 à 0,95 ; observer la dérivée et la somme séparément.',
          'Calculer les deux queues et expliquer pourquoi le même rayon ne donne pas la même précision pour les dérivées.'],
@@ -67,7 +67,7 @@ LAB_GUIDES = {
         'Estimations de Cauchy et approximation de fonctions analytiques.',
         'Un degré choisi à partir d’une borne et une dérivation de série justifiée sur un domaine annoncé.'),
     'arcsin_ex4': guide(
-        'Résoudre l’exercice 4 prioritaire par une EDO plutôt que des dérivations successives lourdes. Identifier la parité, construire la récurrence et vérifier un polynôme par son résidu.',
+        'Construire un développement en série à partir d’une équation différentielle. Identifier les coefficients puis comparer la somme à la fonction exacte entraîne les techniques de récurrence et de contrôle d’un reste.',
         'f(x)=arcsin x/√(1−x²), |x|<1|N est le nombre de termes impairs ; le degré vaut 2N−1|r fixe le compact ; cₖ est le coefficient de x^(2k+1)',
         'L’analyticité est construite par une série de rayon 1 puis l’unicité de l’EDO|Les singularités ±1 restent hors du domaine de contrôle uniforme',
         'EDO du premier ordre|Identification de coefficients|Récurrence et majorant géométrique',
@@ -79,7 +79,7 @@ LAB_GUIDES = {
         'Asymptotique des coefficients et singularités analytiques.',
         'Un DSE démontré avec rayon, parité, récurrence et test algébrique indépendant.'),
     'asymptotique_ex5': guide(
-        'Résoudre l’exercice 5 prioritaire et prouver le passage de coefficients équivalents à des sommes équivalentes. Une représentation probabiliste explique aussi comment choisir la troncature.',
+        'Une série entière contient des coefficients difficiles à évaluer directement. Les réécrire avec des exponentielles et des poids de Poisson permet d’étudier le rayon de convergence et un équivalent lorsque la variable devient grande.',
         'aₙ=(1+2/n²)^(n³)/n!, n≥2 ; S(x)=Σaₙxⁿ|λ=e²x ; rₙ=aₙn!/e^(2n) ; x>0|N est le dernier rang conservé ; rapport S_N/e^λ et rapport S/e^λ sont distincts',
         'Transfert asymptotique pour x→+∞ avec coefficients positifs|Calculs normalisés en logarithmes ; la somme automatique est tronquée loin après le cœur n≈λ',
         'Logarithme et développement limité|Cauchy–Hadamard|Encadrement des coefficients ou poids de Poisson',
@@ -91,7 +91,7 @@ LAB_GUIDES = {
         'Concentration de Poisson, approximation de Laplace et arithmétique logarithmique.',
         'Une preuve de l’équivalent et une troncature argumentée, sans confondre exp(e²x) et exp(2x).'),
     'binomiale_ex10': guide(
-        'Construire le binôme généralisé de l’exercice 10 pour des demi-entiers positifs et négatifs. Relier dérivées, récurrence, signes des coefficients et domaine de convergence.',
+        'Prolonger la formule du binôme à un exposant qui n’est pas entier. Suivre les coefficients, leur signe et le reste explique le développement en série entière et prépare le calcul d’une intégrale elliptique.',
         'p entier de −3 à 3 ; α=p+1/2|N est le nombre de termes ; u∈[−r,r], r<1|c₀=1 et cₙ₊₁=(α+n)cₙ/(n+1)',
         'Puissance réelle bien définie pour u<1|Les demi-entiers du banc ne donnent pas de polynômes finis|Borne de reste par rapport de termes ou borne de Cauchy',
         'Dérivation répétée|Récurrence multiplicative|Rayon et convergence sur les compacts',
@@ -103,7 +103,7 @@ LAB_GUIDES = {
         'Symboles de Pochhammer, fonctions hypergéométriques et bornes complexes de Cauchy.',
         'Une formule de coefficients et de dérivées cohérente, avec signes contrôlés.'),
     'elliptique_pendule': guide(
-        'Donner une application emblématique à l’intégrale de l’exercice 10 : le pendule à grande amplitude. Relier énergie mécanique, changement de variable, intégrale elliptique et série de correction.',
+        'La période d’un pendule augmente avec l’amplitude de ses oscillations. Partir de l’énergie puis intégrer une série permet de mesurer l’écart au modèle harmonique et de justifier une correction de ce modèle.',
         'θ₀ en degrés dans le contrôle, en radians dans les développements|ℓ en m, g=9,81 m·s⁻² ; k=sin(θ₀/2)|I(k) est sur [0,π], K=I/2 ; T/T₀=I/π ; N compte les termes',
         'Pendule idéal sans frottement, vitesse initiale nulle|Période par quadrature de Gauss ; trajectoire par Runge–Kutta d’ordre 4|Pas de passage à θ₀=180° où la période diverge',
         'Énergie et intégrale première|Série binomiale et Wallis|Convergence normale puis borne de queue positive',
@@ -115,7 +115,7 @@ LAB_GUIDES = {
         'Séparatrice, fonctions elliptiques et comparaison de solveurs numériques.',
         'Une période non linéaire calculée avec le bon facteur 2 et une limite des petites oscillations justifiée.'),
     'integrale_sh_ex11': guide(
-        'Calculer l’intégrale impropre de l’exercice 11 par une série de fonctions. L’objectif est de justifier l’échange, additionner des aires exactes et distinguer reste de série et queue temporelle.',
+        'Décomposer une fonction positive en une somme de fonctions dont les aires sont connues. Comparer les aires partielles et le reste apprend à justifier l’intégration d’une série sur un intervalle non borné.',
         'f(t)=t/sinh t, prolongée en 1 à t=0|N modes n=0,…,N−1 ; chaque aire vaut 2/(2n+1)²|T borne la fenêtre dessinée ; les aires affichées sont sur [0,+∞[',
         'Identité de série pour t>0 ; un point isolé ne modifie pas l’intégrale|Termes positifs et somme des intégrales absolues finie|La série ne converge pas uniformément près de zéro',
         'Série géométrique|Intégration par parties|Théorème d’intégration des séries et comparaison intégrale',
@@ -127,7 +127,7 @@ LAB_GUIDES = {
         'Convergence dans des espaces fonctionnels et transformées thermiques.',
         'Une valeur exacte π²/4 avec une justification d’interversion et deux erreurs de troncature distinguées.'),
     'dominee_ex12': guide(
-        'Appliquer la convergence dominée de l’exercice 12 à des signaux réels, discontinus ou complexes. Obtenir aussi une vitesse de convergence par une inégalité logarithmique.',
+        'Remplacer un noyau exponentiel par une suite de fonctions plus élémentaires dans une intégrale. Chercher une majoration indépendante du rang permet de justifier le passage à la limite, y compris pour un signal complexe.',
         't∈[0,1], n entier ; noyau (1−t/n)ⁿ|ω sans dimension dans exp(iωt) ou sin(ωt)|In complexe est représentée par Re et Im ; signal à saut en 0,4',
         'f continue par morceaux, |f| intégrable|Quadrature de Gauss sur chaque intervalle de continuité ; limite calculée analytiquement|Pour n=1,t=1, le noyau est défini par 0',
         'Convergence simple et domination|Intégrales complexes|Inégalité de logarithme et borne quantitative',
@@ -139,7 +139,7 @@ LAB_GUIDES = {
         'Convergence d’opérateurs intégraux et extrapolation numérique.',
         'Une interversion justifiée et une borne d’erreur indépendante de la quadrature.'),
     'rc_reponses': guide(
-        'Reconstruire le TP RC p.107 en reliant maille, Laplace, convolution et état initial. Chaque entrée fournit une vérification concrète de la solution temporelle et de ses unités.',
+        'Prévoir la tension d’un condensateur soumis à un échelon, une rampe ou une impulsion. Relier l’équation différentielle à la transformée de Laplace permet de traiter l’entrée et la charge initiale séparément.',
         'τ=RC en s ; u,y,y₀ en V|Rampe u=at+b : a en V/s, b en V|Un pas a une amplitude A en V ; une impulsion une aire A en V·s',
         'RC idéal, τ>0, entrée causale|y₀=y(0⁻) est explicite ; une impulsion produit un saut A/τ|Le transfert décrit la réponse au repos initial, l’état initial ajoute un terme homogène',
         'EDO linéaire du premier ordre|Laplace unilatérale et fractions simples|Convolution causale et contrôle par substitution',
@@ -151,8 +151,8 @@ LAB_GUIDES = {
         'Systèmes d’état, distributions causales et identification expérimentale.',
         'Trois réponses temporelles vérifiées, avec pente/intercept et aire d’impulsion explicités.'),
     'rc_bode': guide(
-        'Voir comment gain et phase par harmonique déforment un signal. La réponse temporelle, le diagramme de Bode et le domaine de convergence de Laplace décrivent le même filtre.',
-        'τ en s ; fréquence fondamentale ν₁ en Hz ; ω=2πν en rad/s|H(iω) est complexe ; GdB=20log₁₀|H| et phase en degrés|Signal à trois harmoniques, recomposées avec leur gain et leur phase',
+        'Faire traverser un filtre RC à un signal contenant trois harmoniques. Le gain et la phase de chaque harmonique expliquent la forme de la sortie et donnent un sens concret au diagramme de Bode.',
+        'R est la résistance, C la capacité et τ=RC la constante de temps. H est la fonction de transfert, rapport complexe sortie/entrée ; son module est le gain et son argument le déphasage.|τ en s ; fréquence fondamentale ν₁ en Hz ; ω=2πν en rad/s|H(iω) est complexe ; GdB=20log₁₀|H| et phase en degrés|Signal à trois harmoniques, recomposées avec leur gain et leur phase',
         'RC idéal en régime permanent|Réponse impulsionnelle intégrable, donc axe imaginaire dans le domaine de convergence|Transitoire initial non représenté dans cette expérience de Bode',
         'Complexes et régime sinusoïdal|Asymptotes et coupure|Superposition harmonique',
         ['Calculer νc pour τ=0,2 s et prévoir gain et phase vers 0,8 Hz.',
@@ -163,8 +163,8 @@ LAB_GUIDES = {
         'Identification fréquentielle et conception de filtres.',
         'Une coupure calculée et une déformation expliquée par les gains ET les phases.'),
     'rlc_poles': guide(
-        'Classer les régimes d’un second ordre par ses pôles et prévoir les transitoires. Le pôle double critique est traité comme un vrai cas limite.',
-        'ω₀ en rad/s ; ζ sans unité|Entrée pas ou impulsion unitaire ; repos initial|Pôles p± en s⁻¹, parties réelle et imaginaire affichées séparément',
+        'Un circuit du second ordre peut osciller, revenir sans oscillation ou être à la limite de ces régimes. La position des pôles relie ces comportements à l’équation différentielle et au facteur d’amortissement.',
+        'ω₀ est la pulsation propre et ζ le facteur d’amortissement. Un pôle est une racine du dénominateur de la fonction de transfert ; la partie réelle règle la décroissance et la partie imaginaire l’oscillation.|ω₀ en rad/s ; ζ sans unité|Entrée pas ou impulsion unitaire ; repos initial|Pôles p± en s⁻¹, parties réelle et imaginaire affichées séparément',
         'Système normalisé y″+2ζω₀y′+ω₀²y=ω₀²u|ζ>0, système stable|Régime critique traité avec te^(−ω₀t), sans division par des pôles confondus',
         'Équation caractéristique|Laplace et modes exponentiels|Limite critique et calcul de dépassement',
         ['À ω₀=6,ζ=0,15, prévoir le signe des parties réelles et l’existence d’oscillations.',
@@ -175,7 +175,7 @@ LAB_GUIDES = {
         'Commande, espace d’état et amortissement optimal suivant un cahier des charges.',
         'Une classification des trois régimes et un temps de maximum ou de décroissance relié aux pôles.'),
     'dirichlet_abel': guide(
-        'Calculer l’intégrale de Dirichlet du TP p.107 sans invoquer à tort une domination absolue. Séparer régularisation, troncature et erreur de quadrature.',
+        'Calculer une intégrale oscillante qui ne converge pas absolument. Introduire un amortissement exponentiel permet de dériver sous l’intégrale, puis de distinguer la limite mathématique de la troncature numérique.',
         'p>0 amortit e^(−pt) ; L est la borne d’intégration|Ip=∫₀∞e^(−pt)sin(t)/t dt ; valeur exacte π/2−arctan p|sin(t)/t se prolonge en 1 à zéro',
         'Intégrale non amortie conditionnellement convergente|Contrôle uniforme de la queue oscillante ≤2/L|Intégrales numériques sur des bornes finies distinctes des formules sur [0,+∞[',
         'Dérivation sous intégrale|Laplace de sin|Intégration par parties et limite d’Abel',
@@ -187,7 +187,7 @@ LAB_GUIDES = {
         'Méthodes d’Abel, distributions et quadratures oscillantes.',
         'La valeur π/2 obtenue avec un passage au bord justifié et des erreurs identifiées.'),
     'porte_sinc': guide(
-        'Relier une durée finie, un spectre sinc et la phase d’un retard. L’expérience introduit la convention de Fourier en Hz et l’aire d’une impulsion.',
+        'Une impulsion rectangulaire plus courte occupe un spectre plus large. Calculer sa transformée puis déplacer l’impulsion permet de séparer le module du spectre et la phase associée au retard.',
         'L en s ; t₀ centre temporel en s|Porte d’amplitude 1 ; f̂ a l’unité s|sincₙ(u)=sin(πu)/(πu), sincₙ(0)=1 ; le PDF écrit aussi sin z/z',
         'TF bilatérale en Hz, noyau e^(−2iπνt)|Module et phase distingués ; phase indéfinie aux zéros|Porte idéale discontinue, spectre non borné',
         'Intégrale exponentielle|Translation et dilatation|Limite en zéro et bilan d’aire',
@@ -199,7 +199,7 @@ LAB_GUIDES = {
         'Résolution spectrale, limites de moments et distributions tempérées.',
         'Une TF normalisée avec aire, premiers zéros et phase de translation cohérents.'),
     'gaussienne': guide(
-        'Définir des largeurs temps–fréquence à partir des densités d’énergie, puis montrer l’égalité gaussienne de l’incertitude. L’amplitude et l’écart type sont étudiés séparément.',
+        'Comparer la durée d’une impulsion gaussienne à la largeur de son spectre. Définir les écarts types à partir de l’énergie permet de calculer leur produit et de relier Fourier à une inégalité de Cauchy–Schwarz.',
         'σ en s est la largeur de l’amplitude Aexp[−t²/(2σ²)]|Δt et Δν sont les écarts types de |f|²/E et |f̂|²/E|E=A²σ√π ; Fourier en Hz',
         'Gaussienne sur ℝ, à moments finis|Borne d’incertitude en prolongement selon filière|Les demi-largeurs ou premiers zéros sont d’autres mesures',
         'Intégrale gaussienne|Équation différentielle pour la TF|Moments quadratiques et Cauchy–Schwarz',
@@ -211,7 +211,7 @@ LAB_GUIDES = {
         'Incertitude de Heisenberg, paquets d’ondes et fonctions de Gabor.',
         'Une largeur d’énergie correcte et un facteur 4π expliqué par la convention en Hz.'),
     'convolution_portes': guide(
-        'Calculer une convolution par la géométrie du recouvrement avant d’utiliser le produit spectral. Une sonde mobile rend l’intégrande observable.',
+        'Faire glisser deux intervalles et mesurer la longueur de leur intersection. Cette construction donne la convolution de deux portes et explique, par Fourier, pourquoi leurs spectres se multiplient.',
         'L₁,L₂ et d en s ; amplitude des deux portes égale à 1|t sonde le recouvrement de [−L₁/2,L₁/2] et [t−d−L₂/2,t−d+L₂/2]|Convolution de dimension s, aire totale L₁L₂',
         'Convolution bilatérale sur ℝ|Portes à support compact, Fubini justifié|Triangle si largeurs égales, trapèze sinon',
         'Intersection d’intervalles|Intégrale et convolution|Fubini et produit de TF',
@@ -219,12 +219,12 @@ LAB_GUIDES = {
          'Passer à L₁=0,6,L₂=2,d=0,5 ; déplacer la sonde et mesurer le plateau.',
          'Retrouver la formule min/max et vérifier l’aire au point spectral ν=0.'],
         'Intervalles, aires et fonctions définies par morceaux.',
-        'Convolution, changements de variables et théorème spectral.',
+        'Convolution, changements de variables et théorème de convolution de Fourier.',
         'Réponses de systèmes linéaires et B-splines.',
         'Un triangle ou trapèze normalisé et son produit spectral, avec unités et aire vérifiées.'),
     'gibbs_fourier': guide(
-        'Comparer trois classes de signaux et deux procédés de sommation. Le but est de distinguer convergence L², uniforme, aux sauts et lissage par noyau positif.',
-        'N est le dernier indice harmonique, pas le nombre de coefficients non nuls|T période en s ; créneau ±1, triangle 0→1, rampe −1→1|Fejér pondère par 1−∣k∣/(N+1)',
+        'Reconstruire un créneau ou un triangle à partir de ses harmoniques. Comparer somme partielle et moyenne de Fejér permet d’expliquer le dépassement près d’un saut et le rôle du mode de convergence.',
+        'S_N est la somme partielle des harmoniques et σ_N la moyenne de Fejér, moyenne des premières sommes partielles. L² désigne ici l’erreur mesurée par l’intégrale de son carré sur une période.|N est le dernier indice harmonique, pas le nombre de coefficients non nuls|T période en s ; créneau ±1, triangle 0→1, rampe −1→1|Fejér pondère par 1−∣k∣/(N+1)',
         'Signaux périodiques réguliers par morceaux|Valeur limite aux sauts = demi-somme latérale|La comparaison utilise le même dernier indice N',
         'Parité et coefficients de Fourier|Convergence normale vs saut|Moyenne de Cesàro et noyau positif',
         ['Choisir le créneau, prévoir sa valeur reconstruite au saut et le sens du dépassement.',
@@ -235,8 +235,8 @@ LAB_GUIDES = {
         'Théorème de Fejér, constantes de Lebesgue et approximation positive.',
         'Une explication du dépassement persistant et un choix de sommation adapté au signal.'),
     'parseval_spectre': guide(
-        'Transformer un bilan d’énergie harmonique en sommes classiques. L’expérience met en relation projection orthogonale, puissance moyenne et erreur quadratique.',
-        'E=(1/T)∫|f|²dt ; cₙ normalisés par 1/T|N borne les harmoniques conservées ; énergie capturée et reste séparés|Triangle 0→1 : moyenne 1/2 ; créneau ±1 : moyenne 0',
+        'Répartir l’énergie d’un signal périodique entre ses harmoniques. L’orthogonalité et Parseval permettent de contrôler l’énergie conservée par une reconstruction et de retrouver des sommes numériques classiques.',
+        'T est la période, c_n le coefficient complexe de la n-ième harmonique et S_N la reconstruction jusqu’au rang N. L’énergie moyenne est l’intégrale du carré du signal divisée par T.|E=(1/T)∫|f|²dt ; cₙ normalisés par 1/T|N borne les harmoniques conservées ; énergie capturée et reste séparés|Triangle 0→1 : moyenne 1/2 ; créneau ±1 : moyenne 0',
         'Signaux réels périodiques dans L²|Les carrés des amplitudes portent un facteur 1/2 hors composante continue|La norme moyenne ne décrit pas une erreur maximale',
         'Orthogonalité|Parseval et Pythagore|Séparation d’indices pairs/impairs',
         ['Pour le créneau, calculer l’énergie de la première harmonique avant de lire son pourcentage.',
@@ -247,7 +247,7 @@ LAB_GUIDES = {
         'Complétude dans L² et compression spectrale.',
         'Un bilan exact d’énergie et deux sommes numériques obtenues avec les facteurs corrects.'),
     'poisson_noyau': guide(
-        'Sommer le noyau de Poisson p.108, contrôler sa troncature normale et utiliser sa positivité pour lisser un signal. La limite r→1 se lit comme une approximation de l’identité.',
+        'Lisser un créneau en atténuant progressivement ses harmoniques. Une série géométrique fournit le noyau de Poisson ; majorer son reste relie le lissage à la convergence normale et à la convolution.',
         'r∈[0,1[ ; T période en s ; N dernier indice|Pᵣ de masse T ; filtre périodique normalisé par 1/T|Chaque harmonique est multipliée par r^|k|',
         'Le banc reste à r≤0,97|La limite r→1 se traite après la somme infinie|La borne de queue est uniforme en t pour r fixé',
         'Deux séries géométriques|Critère de Weierstrass|Convolution périodique et positivité',
@@ -259,7 +259,7 @@ LAB_GUIDES = {
         'Équation de Laplace dans le disque et extension harmonique.',
         'Un filtre de masse 1 dont précision et effet sur chaque coefficient sont quantifiés.'),
     'poisson_gaussienne': guide(
-        'Rendre concrète la formule de Poisson p.108 en comparant une périodisation temporelle et ses raies de Fourier. La gaussienne donne un cadre où tous les échanges sont justifiés.',
+        'Répéter une impulsion gaussienne dans le temps et reconstruire le même signal par ses raies spectrales. Comparer les deux sommes explique la périodisation et les facteurs de normalisation de Fourier.',
         'σ et T en s ; N borne les raies |k|≤N|cₖ=ŝ(k/T)/T ; c₀=σ√(2π)/T|La somme temporelle utilise automatiquement assez de répétitions lointaines',
         'Gaussienne de Schwartz, TF en Hz|Identité exacte, deux approximations tronquées|L’écart affiché compare ces troncatures, pas une erreur du théorème',
         'Périodisation et coefficients|TF gaussienne|Fubini et convergence normale',
@@ -271,7 +271,7 @@ LAB_GUIDES = {
         'Fonctions thêta, accélération de séries et réseaux de Bravais.',
         'Une identité vérifiée par deux constructions avec sa moyenne et ses facteurs 1/T explicites.'),
     'shannon': guide(
-        'Partir d’un paquet vraiment à bande limitée et démontrer la reconstruction. Le spectre précède le critère de mesure ; la troncature sinc est isolée du repliement.',
+        'Reconstruire une impulsion à partir de mesures prises à intervalles réguliers. Comparer la cadence à la bande du signal distingue les conditions du théorème de Shannon et l’erreur due au nombre fini de mesures.',
         's(t)=sincₙ²(Bt)cos(2πf₀t), B,f₀,F en Hz|M mesures de chaque côté :2M+1 valeurs ; tₙ=n/F|Support spectral jusqu’à W=f₀+B ; marge choisie F>2W',
         'Signal continu dans L¹∩L²|La formule exacte utilise une infinité de mesures|La somme affichée est tronquée ; les courbes spectrales conservent le facteur F du peigne',
         'Porte/triangle en TF|Peigne de Dirac et Shannon|Borne de bande vs erreur de troncature',
@@ -283,7 +283,7 @@ LAB_GUIDES = {
         'Espaces de Paley–Wiener, reconstruction stable et échantillonnage non uniforme.',
         'Un seuil justifié par un support, puis deux erreurs distinctes : repliement et somme finie.'),
     'aliasing': guide(
-        'Prouver que des fréquences physiques différentes donnent exactement les mêmes mesures. Explorer le signe de la fréquence apparente et la perte de phase à Nyquist.',
+        'Deux sinusoïdes différentes peuvent donner exactement les mêmes échantillons. Calculer leur fréquence apparente et leur phase permet de comprendre le repliement spectral et la limite d’une mesure discrète.',
         'f,F en Hz ; phase φ en degrés|Échantillons à k/F ; représentant signé dans [−F/2,F/2[|Fréquence absolue du motif et phase adaptée sont deux informations',
         'Sinusoïdes idéales périodiques, illustration d’ambiguïté|Elles sont distinctes du paquet à énergie finie du labo Shannon|Au bord de Nyquist, la phase n’est pas complètement identifiable',
         'Congruence de phases modulo 2π|Parité du sinus/cosinus|Contre-exemple de mesure',
@@ -295,7 +295,7 @@ LAB_GUIDES = {
         'Signaux complexes, modulation IQ et bandes repliées.',
         'Une ambiguïté démontrée par une égalité exacte de mesures et un cas limite interprété.'),
     'anti_repliement': guide(
-        'Construire une chaîne où le filtre intervient avant la mesure. Quantifier atténuation du parasite, fidélité de la composante utile et limites d’un filtrage à pente finie.',
+        'Une perturbation trop rapide peut apparaître comme une fausse fréquence après mesure. Placer un filtre analogique avant l’échantillonneur permet de comparer l’atténuation nécessaire à la cadence choisie.',
         'F,fc et fréquence parasite en Hz ; utile à 3 Hz|n ordre Butterworth ; amplitude parasite sans unité|Pôles analogiques en s⁻¹ ; gains complexes avec phase',
         'Butterworth analogique idéal stable en régime permanent|Coupure à−3,01 dB, pas suppression exacte hors bande|Le filtre numérique après mesure ne distingue pas des contributions repliées identiques',
         'Pôles du demi-plan gauche|Inégalités de gain|Chaîne analogique puis mesure discrète',
@@ -307,8 +307,8 @@ LAB_GUIDES = {
         'Filtres analogiques réels, tolérances et architectures de conversion.',
         'Une atténuation chiffrée avant mesure avec un compromis utile/parasite clairement annoncé.'),
     'fenetres_fft': guide(
-        'Mesurer un spectre sur une acquisition finie, calibrer ses amplitudes et distinguer fenêtre, fuite et interpolation par ajout de zéros.',
-        'F=128 Hz fixe ; N valeurs, durée DFT N/F|f en Hz ; fenêtre périodique rect/Hann/Blackman|padding ajoute des zéros ; CG et ENBW décrivent gain cohérent et bande de bruit',
+        'Observer une sinusoïde pendant une durée finie et calculer son spectre numérique. Comparer les fenêtres et l’ajout de zéros permet de distinguer fuite spectrale, calibration d’amplitude et résolution.',
+        'FFT désigne l’algorithme rapide de calcul de la transformée de Fourier discrète (DFT). w_k sont les coefficients de la fenêtre ; CG est le gain cohérent, moyenne des w_k, et ENBW la largeur de bande équivalente de bruit, en Hz.|F=128 Hz fixe ; N valeurs, durée DFT N/F|f en Hz ; fenêtre périodique rect/Hann/Blackman|padding ajoute des zéros ; CG et ENBW décrivent gain cohérent et bande de bruit',
         'Cosinus isolé de phase 0,3 rad ; FFT monolatérale|Amplitude corrigée par Σw et doublée hors DC/Nyquist|Une raie hors case garde un biais dépendant de la fenêtre',
         'DFT et sommes de Riemann|Produit temporel/convolution spectrale|Calibration d’amplitude et largeur de lobe',
         ['Choisir f=13 Hz,N=256,rect : calculer la case native 26 avant de lire la FFT.',
@@ -319,8 +319,8 @@ LAB_GUIDES = {
         'ENBW, estimateurs spectraux et métrologie du bruit.',
         'Un spectre avec fréquence, amplitude et limite de résolution explicitement distinguées.'),
     'resolution': guide(
-        'Comparer des acquisitions ayant le même pas d’affichage mais des durées différentes. Les battements et les lobes expliquent la séparation de fréquences proches.',
-        'F=128 Hz ; N règle la durée T=N/F|Deux fréquences 18 et 18+ΔfHz ; amplitudes égales|padding règle l’interpolation, pas la durée',
+        'Chercher à séparer deux fréquences proches à partir d’une acquisition finie. Faire varier sa durée puis ajouter seulement des zéros permet de distinguer une meilleure résolution d’un affichage plus fin du même spectre.',
+        'Δf est l’écart des deux fréquences en Hz ; T est la durée d’acquisition en s. Le facteur q d’ajout de zéros multiplie le nombre de valeurs de calcul du spectre sans augmenter le nombre N de mesures.|F=128 Hz ; N règle la durée T=N/F|Deux fréquences 18 et 18+ΔfHz ; amplitudes égales|padding règle l’interpolation, pas la durée',
         'Signal sans bruit et phases initiales nulles|Fenêtre de Hann : largeur entre premiers zéros environ 4/T|Pas natif 1/T et résolution effective distincts',
         'Formule de somme de cosinus|Battements|Compromis durée/fréquence',
         ['Pour Δf=1 Hz, prévoir l’intervalle entre maxima et le premier zéro d’enveloppe.',
@@ -331,9 +331,9 @@ LAB_GUIDES = {
         'Superrésolution paramétrique, estimation et rapport signal/bruit.',
         'Une comparaison démontrant que durée et interpolation produisent des informations différentes.'),
     'spectrogramme': guide(
-        'Suivre une fréquence variable et choisir une fenêtre locale. La carte relie dérivation de phase et compromis de localisation dans deux domaines.',
-        'F=128 Hz, durée 3 s ; chirp de f₀ à f₁|L points par Hann mobile, avance 8 points|Carte en dB relatifs au maximum, FFT locales complétées à 256 points',
-        'Fréquences du chirp sous 64 Hz|Carte relative, sans calibration absolue de puissance|Une fenêtre locale ne rend pas exactement stationnaire un chirp',
+        'Suivre un signal dont la fréquence augmente au cours du temps. Calculer des spectres sur une fenêtre mobile révèle le compromis entre localisation temporelle et précision fréquentielle.',
+        'Un signal à fréquence balayée (chirp) possède une fréquence instantanée variable. f₀ et f₁ sont ses fréquences initiale et finale ; L est le nombre de points de la fenêtre mobile. STFT désigne la transformée de Fourier calculée sur ces fenêtres successives.|F=128 Hz, durée 3 s ; chirp de f₀ à f₁|L points par Hann mobile, avance 8 points|Carte en dB relatifs au maximum, FFT locales complétées à 256 points',
+        'Fréquences du signal à fréquence balayée sous 64 Hz|Carte relative, sans calibration absolue de puissance|Une fenêtre locale ne rend pas exactement stationnaire un signal à fréquence balayée',
         'Dérivation de phase|Transformée de Fourier à fenêtre|Analyse d’échelles temporelle/fréquentielle',
         ['Calculer la pente pour 8→48 Hz en 3 s et prévoir la fréquence à 1,2 s.',
          'Comparer L=16 puis 128 ; repérer largeur fréquentielle et étalement temporel.',
@@ -343,8 +343,8 @@ LAB_GUIDES = {
         'STFT, ondelettes, réaffectation et signaux non stationnaires.',
         'Une fenêtre choisie avec deux échelles et une carte dont les unités relatives sont comprises.'),
     'modulation': guide(
-        'Transmettre un message par traduction de son spectre puis le retrouver par mélange synchrone. Comprendre les bandes latérales, la surmodulation et l’accord de l’oscillateur local.',
-        'fm et fc en Hz ; m profondeur sans unité|Δf est le désaccord local en Hz ; φ phase en degrés|Barres positives = amplitudes de cosinus, non poids bilatéraux de Dirac',
+        'Transporter un message lent sur une porteuse plus rapide, puis le retrouver par multiplication et filtrage. Les identités trigonométriques expliquent les bandes latérales et les erreurs de phase ou de fréquence du récepteur.',
+        'f_m est la fréquence du message et f_c celle de la porteuse ; m est la profondeur de modulation. Δf et φ sont les erreurs de fréquence et de phase de l’oscillateur utilisé pour retrouver le message.|fm et fc en Hz ; m profondeur sans unité|Δf est le désaccord local en Hz ; φ phase en degrés|Barres positives = amplitudes de cosinus, non poids bilatéraux de Dirac',
         'AM à porteuse transmise et canal idéal|Démodulation par passe-bas idéal supprimant analytiquement les termes autour de 2fc|Pour m>1, l’enveloppe signée traverse zéro',
         'Produit de cosinus|Translation de TF|Démodulation et phase',
         ['Avec m=0,7,fm=3,fc=30, prévoir fréquences et amplitudes des trois raies positives.',
@@ -355,8 +355,8 @@ LAB_GUIDES = {
         'Modulations IQ, porteuse supprimée et communications numériques.',
         'Une chaîne d’émission/réception reconstruite avec les facteurs 1/2 et l’effet de phase.'),
     'correlation_retard': guide(
-        'Mesurer le retard d’une impulsion codée dans le bruit et relier le résultat à un trajet aller-retour. Le produit scalaire fournit la normalisation et explique le signe du pic.',
-        'Émission g, réception f ; Cfg(τ)=∫ḡ(t)f(t+τ)dt|Cadence 200 Hz, grille de retard 5 ms ; retard en s|Vitesse c en m/s ; distance cτ/2 ; graine choisit une réalisation de bruit',
+        'Retrouver une impulsion retardée dans un signal bruité. Le maximum de corrélation estime le temps de vol ; un bilan des trajets permet ensuite de convertir ce retard en distance.',
+        'τ est le retard testé, en s ; c est la vitesse de propagation, en m/s. La corrélation mesure la ressemblance entre émission et réception pour ce retard ; le facteur deux de la distance provient du trajet aller-retour.|Émission g, réception f ; Cfg(τ)=∫ḡ(t)f(t+τ)dt|Cadence 200 Hz, grille de retard 5 ms ; retard en s|Vitesse c en m/s ; distance cτ/2 ; graine choisit une réalisation de bruit',
         'Fenêtre finie de 3 s, signaux réels, bruit gaussien|Normalisation par les énergies globales ; module ≤1 par Cauchy–Schwarz|Bruit et maxima secondaires peuvent déplacer le pic',
         'Produit scalaire glissant|Cauchy–Schwarz|Temps de vol et convention de corrélation',
         ['Pour un retard 0,6 s et c=350m/s, prévoir la distance et le signe du pic.',
@@ -367,8 +367,8 @@ LAB_GUIDES = {
         'Filtre adapté, radar/sonar et probabilités de détection.',
         'Un retard de signe fixé, une distance calculée et une limite de précision sans certitude inventée.'),
     'debruitage': guide(
-        'Quantifier séparément le bruit restant et la déformation utile. Une moyenne causale et un filtre récursif donnent deux mémoires et deux calculs exacts de variance.',
-        'F=128 Hz ; signal sin(2πft)+0,25sin(4πft)|M longueur de mémoire ; récursif de pôleρ=e^(−1/M)|Écart type du bruit et RMS de sortie ; début du signal exclu du bilan',
+        'Réduire un bruit sans effacer les variations utiles du signal. Comparer une moyenne glissante à un filtre récursif permet de mesurer séparément le bruit résiduel, le retard et la déformation introduite.',
+        'M est le nombre de valeurs moyennées ou l’échelle de mémoire du filtre récursif ; ρ est son coefficient de mémoire. RMS signifie valeur efficace : la racine de la moyenne des carrés sur l’intervalle de bilan.|F=128 Hz ; signal sin(2πft)+0,25sin(4πft)|M longueur de mémoire ; récursif de pôleρ=e^(−1/M)|Écart type du bruit et RMS de sortie ; début du signal exclu du bilan',
         'Bruit blanc centré indépendant, réalisation reproductible|Filtres au repos initial ; transitoire partiellement écarté|Bilan théorique stationnaire et RMS finie distincts',
         'Convolution discrète et récurrence|Linéarité|Variance d’une somme indépendante et phase du filtre',
         ['Pour moyenne M=9, prévoir le facteur 1/9 de variance et le retard 4/F.',

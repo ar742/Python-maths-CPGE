@@ -13,7 +13,7 @@ def guide(purpose, objects, assumptions, techniques, steps, sup, spe, beyond, ex
 
 LAB_GUIDES = {
     'boules_normes': guide(
-        'Une boule rassemble les points situés à moins d’une longueur donnée du centre. Calculer cette longueur avec trois normes, puis prévoir si un même point appartient au losange, au disque ou au carré. Le rayon restant avant le bord permet ensuite de construire une petite boule entièrement contenue dans la grande : c’est le sens concret d’un point intérieur.',
+        'Comparer les distances données par trois normes : leurs boules sont un losange, un disque ou un carré. Construire ensuite une petite boule autour d’un point intérieur à l’aide de la marge jusqu’au bord.',
         'Le point est (x,y)∈ℝ² ; le centre est (0,0) et r>0 est le rayon | Norme 1 : |x|+|y| ; norme 2 : √(x²+y²) ; norme ∞ : max(|x|,|y|) | Pour la norme p, p≥1 ; la marge r−‖(x,y)‖ est la longueur disponible avant le bord',
         'La boule ouverte utilise <r ; la boule fermée utilise ≤r | Une marge positive permet un voisinage intérieur ; une marge nulle place le point sur la sphère | Des normes équivalentes donnent les mêmes ouverts en adaptant les rayons ; leurs boules de rayon 1 ne sont pas égales',
         'Calculer trois normes | Appliquer l’inégalité triangulaire | Choisir un rayon intérieur strictement positif',
@@ -25,7 +25,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : comparer les formes des boules pour des exposants p différents.',
         'Trois calculs de longueur, une décision d’appartenance et un rayon intérieur justifié par une inégalité.'),
     'interieur_frontiere': guide(
-        'Un point intérieur possède un petit disque qui reste dans A. Un point adhérent peut être approché aussi près que l’on veut par des points de A. Un point de frontière peut être approché depuis A et depuis son complémentaire. Classer le centre et le bord d’un disque, puis expliquer pourquoi un trou réduit à un point change la frontière.',
+        'Classer le centre, le bord et un point retiré d’un disque. Utiliser de petits voisinages pour distinguer appartenance, intérieur, adhérence et frontière.',
         'A est un disque ouvert ou fermé, un anneau r/2≤‖z‖≤r, ou un disque ouvert privé du centre | (x,y) est le point testé ; ε>0 règle le rayon du petit disque observé | r>0 est le rayon extérieur ; A°, Ā et Fr(A) désignent intérieur, adhérence et frontière',
         'L’espace de référence est ℝ² avec la longueur euclidienne | « Intérieur » demande l’existence d’un rayon ; « adhérent » demande que tous les rayons rencontrent A | Le dessin d’un voisinage illustre la définition ; les inégalités permettent de conclure pour tous les rayons',
         'Traduire les mots par des boules | Utiliser ∃ε>0 et ∀ε>0 | Calculer intérieur, adhérence et complémentaire',
@@ -37,7 +37,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : pourquoi la frontière de ℚ dans ℝ est toute la droite.',
         'Une classification du centre, des bords et du trou, avec les définitions justifiées par des voisinages.'),
     'adherence_suite': guide(
-        'Dessiner les nombres 1,1/2,1/3,… et chercher ce qui se passe près de zéro. Zéro n’est pas dans cette liste infinie, mais des points de la liste s’en approchent arbitrairement. Distinguer une distance de borne inférieure nulle et une distance réellement obtenue en un point de A, puis expliquer pourquoi ajouter zéro rend l’ensemble compact.',
+        'Approcher zéro avec les nombres 1,1/2,1/3,… : la distance devient arbitrairement petite, mais zéro reste absent. Expliquer pourquoi l’ajouter rend l’ensemble compact.',
         'A={1/n:n≥1} est un ensemble infini ; N compte seulement les premiers points dessinés | x est le réel testé ; ε>0 est le rayon de l’intervalle autour de x | Le choix « ajouter zéro » remplace A par A∪{0}',
         'Sans ajouter zéro, la borne inférieure des distances 1/n vaut 0, sans être une valeur prise ; avec zéro ajouté, le minimum est réalisé en zéro | N ne change pas l’ensemble étudié : tous les n≥1 restent dans sa définition | Dans ℝ, fermé et borné signifie compact ; cela s’applique à A∪{0}, pas à A',
         'Encadrer une suite par 1/n | Distinguer borne inférieure et minimum | Reconnaître un fermé par les limites de ses suites',
@@ -49,7 +49,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : distinguer point isolé et point d’accumulation, où des points distincts s’approchent.',
         'La preuve Ā=A∪{0}, et une explication de distance nulle sans appartenance ni minimum.'),
     'topologie_relative': guide(
-        'Travailler sur un domaine limité à X=[0,1]. Autour de zéro, seuls les points de X comptent : un intervalle [0,b[ peut donc être ouvert relativement à X tout en ne l’étant pas dans ℝ. Construire les voisinages dans les deux domaines pour donner un sens précis au mot « relatif ».',
+        'Construire des voisinages dans ℝ, puis dans le segment [0,1]. Comprendre pourquoi [0,b[ peut être ouvert dans le segment : seuls les points du domaine comptent.',
         'X=[0,1] est le domaine de référence | A=X∩]−1/2,b[ ; si b≤1, A=[0,b[ ; si b>1, A=X | Le voisinage relatif du point x est ]x−ε,x+ε[∩X',
         'Le point x appartient à X ; les voisins extérieurs à X ne sont pas examinés | Un ouvert relatif s’écrit X∩O avec O ouvert dans ℝ | La même partie peut avoir deux intérieurs et deux frontières différents selon le domaine de référence',
         'Intersecter un intervalle avec le domaine | Construire un voisinage relatif | Indiquer l’espace dans chaque conclusion',
@@ -73,7 +73,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : intersections infinies de denses ouverts ; le théorème de Baire est hors programme MP.',
         'Deux calculs d’ensembles infinis et deux contre-exemples qui expliquent les limites des règles finies.'),
     'distance_ensemble': guide(
-        'Chercher le point le plus proche dans une réunion de deux disques. Une distance minimale est un nombre, tandis que les points qui la réalisent peuvent être plusieurs. Calculer les deux distances aux disques pour comprendre cette différence, puis relier la fonction distance à la continuité étudiée en MP.',
+        'Chercher le point le plus proche dans deux disques. Distinguer la distance minimale, qui est un nombre, et les points qui la réalisent, puis justifier la continuité de la fonction distance.',
         'A est la réunion de deux disques fermés de rayon r | La séparation est la distance entre leurs centres ; (x,y) est le point à rapprocher de A | Pour un disque de centre c, la distance vaut max(‖(x,y)−c‖−r,0)',
         'La réunion est fermée non vide dans ℝ² : un point minimisant existe | Sur la médiatrice de deux disques séparés, deux points distincts peuvent réaliser le même minimum | La distance change d’au plus la longueur du déplacement du point : c’est le sens de 1-lipschitzienne',
         'Comparer deux distances calculées | Distinguer un nombre minimal et ses points minimisants | Appliquer l’inégalité triangulaire',
@@ -109,7 +109,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : enveloppe convexe, algorithme du bord et théorème de Carathéodory, hors programme MP.',
         'Un polygone contenant le nuage et une justification de la position du barycentre par ses poids.'),
     'projection_convexe': guide(
-        'Chercher le point le plus proche d’un rectangle ou d’un triangle fermé. Commencer par la projection sur la droite d’un côté, puis vérifier si le point trouvé appartient au côté ; sinon examiner ses extrémités. Cette expérience prolonge la projection orthogonale sur un sous-espace étudiée en MPSI vers des domaines limités.',
+        'Projeter un point sur un rectangle ou un triangle fermé. Calculer d’abord la projection sur la droite d’un côté, puis vérifier le côté et ses extrémités : la projection orthogonale prépare cette méthode.',
         'C est un rectangle ou le triangle de sommets (−1;−0,75),(1;−0,75),(0,1;1,1) | (x,y) est le point à projeter ; p est son point le plus proche dans C | ζ place le point z sur le bord pour examiner ⟨x−p,z−p⟩',
         'La distance est euclidienne et C est fermé, non vide et convexe | La projection sur un convexe général n’est pas un résultat exigible en MP | Pour ce polygone, vérifier l’inégalité aux sommets suffit grâce aux combinaisons convexes',
         'Projeter sur une droite | Vérifier l’appartenance à un segment | Développer un carré de norme',
@@ -121,7 +121,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : projection sur tout convexe fermé et preuve de son unicité, hors programme MP.',
         'Une construction par côtés et sommets, puis une inégalité qui certifie le point le plus proche.'),
     'connexite_chemins': guide(
-        'Deux points peuvent-ils se relier sans sortir de l’ensemble ? Dans le plan privé de zéro, un détour contourne le point retiré ; sur la droite privée de zéro, aucun chemin ne relie un nombre négatif à un nombre positif. Construire le détour puis utiliser le théorème des valeurs intermédiaires pour expliquer l’obstacle sur la droite.',
+        'Relier deux points sans sortir du domaine. Contourner un trou dans le plan, puis utiliser les valeurs intermédiaires pour expliquer pourquoi on ne peut pas traverser zéro sur la droite privée de zéro.',
         'Le domaine est le plan privé de zéro, un anneau, deux disques séparés ou la droite privée de zéro | Dans le plan et l’anneau, r₁,r₂ et l’angle règlent les points ; sur la droite, seuls r₁,r₂ interviennent ; dans les disques, les points sont fixés aux centres | L’écart positif entre les disques est le seul réglage actif de ce mode ; un chemin γ(t) doit rester dans le domaine pour tout t∈[0,1]',
         '« Connexe par arcs » signifie que toute paire de points se relie par un chemin continu | Le détour dans l’anneau doit conserver un rayon entre 1/2 et 1,5 | La connexité générale, sans référence à des chemins, est un prolongement qui n’est pas exigible en MP',
         'Paramétrer deux segments ou un arc de cercle | Vérifier chaque morceau et ses raccords | Appliquer le TVI à une coordonnée',
@@ -133,8 +133,8 @@ LAB_GUIDES = {
         'Prolongement accompagné : homéomorphismes et comparaison de ℝ et ℝ² après retrait d’un point.',
         'Des chemins écrits explicitement et un raisonnement par TVI qui interdit un chemin dans un autre domaine.'),
     'bolzano_weierstrass': guide(
-        'Une suite bornée ne converge pas toujours, mais certaines de ses suites extraites peuvent converger. Avec uₙ=(−1)ⁿ+1/(n+1), séparer les indices pairs et impairs fait apparaître deux limites. Calculer leur erreur avant de conclure, puis retrouver précisément ce que promet le théorème de Bolzano–Weierstrass.',
-        'n commence à zéro ; N est le dernier indice dessiné | Les termes pairs u₂ₖ approchent 1 ; les termes impairs u₂ₖ₊₁ approchent −1 | ε>0 fixe la précision demandée ; l’erreur vaut 1/(n+1)',
+        'Une suite bornée peut osciller. Séparer les indices pairs et impairs d’un exemple, calculer les deux limites et retrouver la conclusion exacte du théorème de Bolzano–Weierstrass.',
+        'uₙ=(−1)ⁿ+1/(n+1) ; n commence à zéro et N est le dernier indice dessiné | Les termes pairs u₂ₖ approchent 1 ; les termes impairs u₂ₖ₊₁ approchent −1 | ε>0 fixe la précision demandée ; l’erreur vaut 1/(n+1)',
         'Une suite extraite conserve l’ordre des indices et en choisit une infinité | Les deux limites distinctes prouvent que la suite complète ne converge pas | BW garantit une extraction convergente d’une suite bornée réelle, complexe ou de dimension finie',
         'Choisir les indices pairs et impairs | Majorer l’erreur par une suite tendant vers zéro | Distinguer limite et valeur d’adhérence',
         ['Pour N=60, écrire u₂ₖ et u₂ₖ₊₁ et prévoir leurs deux limites.',
@@ -157,8 +157,8 @@ LAB_GUIDES = {
         'Prolongement accompagné : loi continue du meilleur rapprochement et convergence presque sûre, hors programme MP.',
         'Une extraction avec indices croissants, une probabilité finie interprétée et une conclusion respectant les limites du modèle.'),
     'cauchy_rationnels': guide(
-        'Calculer la suite de Héron u₀=2, uₙ₊₁=uₙ/2+1/uₙ avec des fractions exactes. Montrer qu’elle décroît vers √2 et estimer sa rapidité. Ce travail relève des suites récurrentes de MPSI ; il permet ensuite, en prolongement, de comprendre une suite de Cauchy dont la limite n’appartient pas à ℚ.',
-        'n≤8 règle le nombre d’étapes de la récurrence | Les valeurs 2,3/2,17/12,577/408,… restent rationnelles | ε fixe la précision demandée ; l’identité d’erreur donne une borne sans dépendre des décimales affichées',
+        'Calculer la suite de Héron avec des fractions exactes et montrer qu’elle décroît vers √2. En prolongement, comprendre pourquoi cette limite sort de ℚ.',
+        'La suite vérifie u₀=2 et uₙ₊₁=(uₙ+2/uₙ)/2 ; n≤8 règle le nombre d’étapes | Les valeurs 2,3/2,17/12,577/408,… restent rationnelles | ε fixe la précision demandée ; l’identité d’erreur donne une borne sans dépendre des décimales affichées',
         'La convergence est d’abord prouvée dans ℝ par monotonie, minoration et passage à la limite | L’irrationalité de √2 se prouve par la parité du numérateur et du dénominateur | Suites de Cauchy, complétude et espaces de Banach sont explicitement hors programme MP',
         'Calculer une récurrence avec fractions | Étudier le signe de uₙ₊₁−uₙ | Passer à la limite et majorer l’erreur',
         ['Avec n=3, retrouver 3/2,17/12,577/408 à la main et vérifier qu’ils sont supérieurs à √2.',
@@ -169,7 +169,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : suite de Cauchy, c’est-à-dire termes tardifs tous proches entre eux, et complétude de ℝ.',
         'Une convergence réelle et une borne d’erreur démontrées ; le complément explique pourquoi la limite manque à ℚ.'),
     'compacts_recouvrements': guide(
-        'Placer des intervalles ouverts autour des points j/m pour couvrir [0,1]. Lorsque deux intervalles se touchent seulement, leur point de contact n’est dans aucun des deux : calculer le rayon nécessaire pour une vraie couverture. Le lien au programme MP passe par les suites et les fermés bornés ; le théorème général sur les recouvrements est un complément.',
+        'Couvrir [0,1] par des intervalles ouverts et calculer le rayon qui évite les trous entre voisins. Relier au critère fermé et borné de MP ; les recouvrements constituent un complément.',
         'm est le nombre de pas et j/m, j=0,…,m, donne m+1 centres | r>0 est le rayon des intervalles ouverts | Les Uₙ=]−1,1−1/n[ couvrent [0,1[ lorsqu’on les prend tous ; N limite les premiers ouverts dessinés',
         'Les intervalles du réseau couvrent [0,1] exactement lorsque r>1/(2m) | Un compact de dimension finie est fermé et borné ; sa définition MP repose sur les suites extraites | La propriété de Borel–Lebesgue par recouvrements est explicitement hors programme MP',
         'Calculer les milieux entre deux centres | Distinguer contact et appartenance à un ouvert | Construire une suite vers une extrémité absente',
@@ -181,8 +181,8 @@ LAB_GUIDES = {
         'Prolongement accompagné : recouvrements ouverts et Borel–Lebesgue, hors programme MP.',
         'Un seuil de couverture strict et une explication séquentielle de la non-compacité du domaine semi-ouvert.'),
     'valeurs_extremes': guide(
-        'Chercher la plus grande valeur de x cosθ+y sinθ sur une ellipse pleine. Sur l’ellipse fermée, elle est obtenue en un point précis. Sur son intérieur, on peut s’en approcher autant que l’on veut sans jamais l’obtenir : c’est une borne supérieure, et non un maximum. Faire varier le domaine pour comprendre le théorème des bornes atteintes.',
-        'L’ellipse fermée vérifie x²/a²+y²/b²≤1 ; son intérieur utilise <1 | a,b sont les demi-axes ; θ indique la direction du calcul | N règle les points intérieurs (1−1/N)p qui approchent le point p maximisant',
+        'Maximiser une fonction linéaire sur une ellipse. Comparer l’ellipse fermée à son intérieur : une borne supérieure peut être approchée sans être atteinte. Retrouver ainsi le rôle de la compacité.',
+        'L’ellipse fermée vérifie x²/a²+y²/b²≤1 ; son intérieur utilise <1 | a,b sont les demi-axes ; θ indique la direction du calcul et fθ(x,y)=x cosθ+y sinθ est la fonction maximisée | N règle les points intérieurs (1−1/N)p qui approchent le point p maximisant',
         'La borne supérieure vaut M=√(a²cos²θ+b²sin²θ) | Sur l’ellipse fermée, p=(a²cosθ/M,b²sinθ/M) appartient au domaine et donne M | Sur l’intérieur, M n’est la valeur d’aucun point ; le domaine n’est pas compact',
         'Poser x=au,y=bv | Appliquer Cauchy–Schwarz avec son cas d’égalité | Distinguer borne supérieure et maximum',
         ['Prendre a=3,b=1,θ=40° : calculer M et les coordonnées de p avant d’observer le point.',
@@ -193,7 +193,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : maximiser une forme linéaire dans chaque direction pour décrire un convexe.',
         'Un maximum avec son point sur le domaine fermé, puis une borne supérieure sans point maximisant sur l’intérieur.'),
     'heine_continuite': guide(
-        'Demander quelle proximité de deux arguments suffit pour rendre leurs images proches. Le choix peut dépendre du point pour la continuité, mais doit fonctionner partout pour la continuité uniforme. Comparer sin(x²) sur un segment et sur ℝ, puis √x près de zéro, avec des paires de points calculées explicitement.',
+        'Choisir la proximité des arguments nécessaire pour rapprocher leurs images. Comparer un choix local à un choix valable partout : c’est la différence entre continuité et continuité uniforme.',
         'Pour sin(x²), R fixe le segment [−R,R] | Les points xₙ=√(2πn),yₙ=√(2πn+π/2) ont des images 0 et 1 | Pour √x sur [0,1], n règle les points proches de zéro ; |√x−√y|≤√|x−y|',
         'Sur [−R,R], |f′|≤2R donne une borne uniforme | Sur ℝ, |xₙ−yₙ| tend vers zéro mais l’écart des images vaut 1 | √x possède un rayon uniforme δ=ε², sans constante de Lipschitz près de zéro',
         'Comparer l’ordre des quantificateurs | Utiliser les accroissements finis | Construire deux suites d’arguments proches',
@@ -229,7 +229,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : décomposition en valeurs singulières, abrégée SVD, et conditionnement ; ces outils ne sont pas exigibles comme tels en MP.',
         'Une borne pour tous les vecteurs et une distinction entre les essais dessinés et le calcul du plus grand agrandissement.'),
     'normes_dimension_infinie': guide(
-        'Une fonction peut rester haute près de 1 tout en ayant une aire très petite. Pour f_N(x)=x^N sur [0,1], calculer la norme uniforme, la norme de convergence en moyenne et celle en moyenne quadratique. Leurs rapports montrent pourquoi les normes ne sont pas toujours équivalentes quand on autorise des degrés sans limite.',
+        'Comparer la hauteur maximale et l’aire sous la courbe de x^N sur [0,1]. Calculer trois normes et comprendre pourquoi leurs rapports changent lorsque le degré augmente sans limite.',
         'N est l’exposant ; toutes les fonctions continues sur [0,1] sont admises | Norme uniforme : max|f| ; norme en moyenne : ∫₀¹|f| | Norme en moyenne quadratique : √∫₀¹|f|² ; les notations sont ‖f‖∞,‖f‖₁,‖f‖₂',
         'Les degrés N ne sont pas bornés : on travaille dans un espace de dimension infinie | Les valeurs exactes sont 1,1/(N+1),1/√(2N+1) | Le calcul intégral reste valable même si le dessin ne résout plus la zone étroite près de 1',
         'Calculer une primitive de puissance | Chercher le maximum en x=1 | Contredire une constante d’équivalence par un rapport non borné',
@@ -241,7 +241,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : espaces Lᵖ et complétion ; les espaces de Banach sont hors programme MP.',
         'Trois normes exactes et une suite qui prouve la non-équivalence, sans dépendre de la finesse du dessin.'),
     'boule_non_compacte': guide(
-        'Dans une boule unité de fonctions, chercher une suite dont aucun choix d’indices ne permet une convergence. Les modes vₙ=e^(int)/√(2π) ont tous norme 1, mais deux modes distincts restent à distance √2. Calculer cette distance pour montrer concrètement pourquoi fermé et borné ne suffit plus en dimension infinie.',
+        'Construire des fonctions de norme 1 qui restent à distance √2 les unes des autres. Aucune extraction ne les rapproche : fermé et borné ne suffit plus en dimension infinie.',
         't∈[0,2π] et vₙ(t)=e^(int)/√(2π) est une fonction complexe | M est le nombre de modes du tableau ; le numéro choisi règle le mode dessiné | La norme 2 vaut √∫₀²π|f(t)|²dt ; le tableau de Gram rassemble les intégrales de produits de modes',
         'Les intégrales exactes donnent norme 1 et distance √2 entre deux indices distincts | Toute suite convergente a des termes tardifs proches entre eux ; ici deux termes distincts restent toujours séparés | La notion de suite de Cauchy n’est pas nécessaire à cette preuve et est hors programme MP',
         'Intégrer une exponentielle complexe | Développer un carré de norme | Réfuter la convergence de toute suite extraite',
@@ -253,7 +253,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : espaces de Hilbert et théorème général de Riesz ; Cauchy et Banach sont hors programme MP.',
         'Une distance exacte qui interdit toute extraction convergente et réfute la compacité de la boule unité.'),
     'denombrer_rationnels': guide(
-        'Peut-on mettre tous les rationnels dans une liste où chacun a un numéro ? Ranger les fractions réduites par |p|+q permet de voir comment procéder sans doublon. Ne pas confondre cette liste avec la densité : être dense signifie rencontrer chaque intervalle ouvert, pas posséder autant de points que ℝ.',
+        'Numéroter les rationnels sans doublon en rangeant les fractions réduites par hauteur. Distinguer cette énumération de la densité, qui signifie rencontrer tout intervalle ouvert.',
         'p est entier, q≥1 et p/q est gardé si pgcd(|p|,q)=1 | H est la plus grande hauteur |p|+q dessinée | La cible x permet de chercher une fraction proche parmi les valeurs visibles',
         'Un ensemble dénombrable est en bijection avec ℕ ; au plus dénombrable signifie fini ou dénombrable | Chaque rationnel réduit apparaît à une hauteur finie | ℕᵖ,ℤ,ℚ dénombrables et ℝ non dénombrable sont au programme MP, mais leurs démonstrations ne sont pas exigibles',
         'Réduire une fraction | Ranger par groupes finis | Séparer dénombrabilité et densité',
@@ -265,7 +265,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : écrire une énumération complète et prouver son caractère bijectif.',
         'Une liste sans fractions répétées et deux explications distinctes de dénombrabilité et de densité.'),
     'diagonale_cantor': guide(
-        'Changer un chiffre de chaque ligne d’un tableau de suites binaires pour fabriquer une suite absente de la liste. Le dessin fait voir les différences ; le raisonnement se poursuit pour tous les rangs. C’est une explication accompagnée de la non-dénombrabilité de ℝ, dont la démonstration n’est pas exigible en MP.',
+        'Changer un chiffre sur chaque ligne d’une liste de suites binaires : la nouvelle suite manque dans la liste. Passer du tableau fini au raisonnement infini pour expliquer la non-dénombrabilité.',
         'N est le nombre de lignes et de colonnes montrées ; la graine reproduit le tableau | La nouvelle suite a pour chiffre dᵢ=1−sᵢ(i) au rang i | Un bit 0 ou 1 devient un chiffre ternaire 0 ou 2 pour représenter un réel',
         'Le théorème suppose une liste de suites infinies ; le tableau visible n’en montre que les premiers chiffres | Au rang i, la nouvelle suite diffère de la ligne i | Les chiffres ternaires 0 et 2 donnent une représentation injective : deux suites distinctes donnent deux réels distincts',
         'Changer le chiffre diagonal | Raisonner par contradiction à un rang quelconque | Majorer la somme des chiffres suivants',
@@ -313,7 +313,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : sinus du topologue et connexité générale, hors des attendus MP sur les arcs.',
         'Des suites vers tous les points du segment limite et une exploration guidée de l’obstacle à un chemin.'),
     'gl_composantes': guide(
-        'Faire varier une matrice réelle inversible et suivre son déterminant. Pour passer d’un signe positif à un signe négatif, un chemin continu doit rencontrer zéro : la matrice devient alors singulière. Comparer avec un chemin complexe qui contourne zéro, puis distinguer déterminant positif et déterminant égal à 1.',
+        'Suivre le déterminant d’une matrice inversible le long d’un chemin. Sur ℝ, changer de signe force à passer par zéro ; sur ℂ, on peut le contourner. Appliquer les valeurs intermédiaires.',
         'A=Q diag(λ,1,2,3)R est une matrice dense 4×4 ; Q,R sont fixes, orthogonales et de déterminant 1 | Sur ℝ, λ=t et det A=6t | Sur ℂ, λ=e^(iθ) et det A=6e^(iθ)',
         't=0 produit une matrice singulière | GL₄⁺(ℝ) désigne det>0 ; SL₄(ℝ) désigne det=1 | La continuité du déterminant et le TVI expliquent l’obstacle réel ; l’étude globale des groupes est un prolongement',
         'Calculer un déterminant | Appliquer le TVI à une fonction réelle continue | Reconnaître une image réciproque d’ouvert',
@@ -337,8 +337,8 @@ LAB_GUIDES = {
         'Prolongement accompagné : comparer groupes orthogonal et spécial linéaire, puis leurs composantes et groupes de Lie.',
         'Deux preuves de fermeture, une borne pour les orthogonales et une famille qui réfute la compacité de SL₄.'),
     'point_fixe': guide(
-        'Résoudre x=cos x en répétant xₙ₊₁=cos xₙ, puis comparer avec xₙ₊₁=qxₙ+0,7. Chercher d’abord une solution constante, étudier le domaine et calculer comment l’erreur évolue. Ces étapes relèvent des suites récurrentes de MPSI ; le théorème général de point fixe dans un espace complet est un complément, non un attendu MP.',
-        'Pour cos, x₀∈[0,1] et l’intervalle reste stable : cos([0,1])⊂[0,1] | Pour l’affine, q est le coefficient et |q| règle le rapport des erreurs | N est le nombre d’itérations ; un point fixe x* vérifie T(x*)=x*',
+        'Résoudre x=cos x par itération, puis comparer avec une application affine. Étudier d’abord le domaine et l’erreur comme en MPSI ; le théorème général des contractions est un complément.',
+        'T est l’application itérée : T(x)=cos x ou T(x)=qx+0,7 ; on calcule xₙ₊₁=T(xₙ) à partir de x₀ | Pour cos, x₀∈[0,1] et l’intervalle reste stable : cos([0,1])⊂[0,1] | Pour l’affine, q est le coefficient et |q| règle le rapport des erreurs | N est le nombre d’itérations ; un point fixe x* vérifie T(x*)=x*',
         'Une limite éventuelle doit satisfaire l’équation du point fixe par continuité | Pour l’affine et q≠1, x*=0,7/(1−q) et xₙ−x*=qⁿ(x₀−x*) | Banach, complétude et contraction sur un espace général sont hors programme MP ; les bornes de ces exemples se lisent avec des suites géométriques',
         'Chercher une solution constante | Vérifier un intervalle stable | Calculer une erreur géométrique et une précision',
         ['Pour cos avec x₀=0,2, vérifier que les itérés restent dans [0,1] et lire leurs alternances autour de la solution.',
@@ -361,7 +361,7 @@ LAB_GUIDES = {
         'Prolongement accompagné : ovales de Cassini et changement de géométrie des ensembles de niveau.',
         'Un seuil exact et des chemins permis ou interdits justifiés par une formule, même au point de contact.'),
     'homeomorphisme': guide(
-        'Une bijection continue permet-elle de revenir continûment aux points de départ ? Sur le cercle, des images proches de (1,0) peuvent correspondre à des angles proches de 0 ou de 2π : l’inverse pose problème. Comparer avec la courbe (t,t²,t³), où retrouver t par la première coordonnée reste continu.',
+        'Retrouver les points de départ d’une bijection continue. Sur le cercle, deux images proches peuvent avoir des angles éloignés ; sur une courbe paramétrée par sa première coordonnée, l’inverse reste continu.',
         'Sur le cercle, f(t)=(cos t,sin t), t∈[0,2π[ | La suite tₙ=2π−1/n donne des images proches de f(0), mais des antécédents loin de zéro | Sur le segment [−1,1], g(t)=(t,t²,t³) et l’inverse sur l’image est (x,y,z)↦x',
         'Un homéomorphisme est une bijection continue dont l’inverse est aussi continu | [0,2π[ n’est pas compact ; [−1,1] l’est | La figure de la courbe représente seulement une projection de ses trois coordonnées',
         'Tester la continuité par une suite | Lire l’inverse sur la première coordonnée | Utiliser images compactes et fermés relatifs',

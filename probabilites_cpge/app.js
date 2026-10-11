@@ -1,17 +1,31 @@
-'use strict';
+"use strict";
+
+function renderGuide(id){
+ const guide=guides[id],box=$('lab-guide');box.replaceChildren();if(!guide)return;
+ const add=(tag,text,parent=box)=>{const e=document.createElement(tag);e.textContent=text;parent.append(e);return e;};
+ add('h3','Pour commencer');add('p',guide.purpose);
+ add('h4','Objets et notations');const objects=add('ul','');guide.objects.forEach(v=>add('li',v,objects));
+ const detail=add('details','');add('summary','Hypothèses, manipulations et repères CPGE',detail);
+ const section=(title,items)=>{add('h4',title,detail);const list=add('ul','',detail);items.forEach(v=>add('li',v,list));};
+ section('Hypothèses',guide.hypotheses);section('Techniques à mobiliser',guide.techniques);
+ add('h4','Trois premières manipulations',detail);const steps=add('ol','',detail);guide.first_steps.forEach(v=>add('li',v,steps));
+ add('h4','Repères sup, spé et prolongements',detail);
+ for(const [key,label] of [['sup','Sup'],['spe','Spé'],['beyond','Au-delà']])add('p',label+' : '+guide.levels[key],detail);
+ add('p','À retenir : '+guide.expected,detail);
+}
 const $ = id => document.getElementById(id);
 const palette = {green:'#23745c',gold:'#c79432',rose:'#b66375',mint:'#8dc9ac',ink:'#17363d'};
 const labs = {
  polarisation:{title:'La moyenne tient, la population se sépare',source:'EXERCICE 6 · PRIORITÉ',intro:'Suivre un processus qui conserve son espérance tout en concentrant sa loi près de 0 et de 1.',lesson:6,
  controls:[['c','État initial c',.01,.99,.01,.35],['lambda','Intensité λ',.01,.99,.01,.25],['steps','Nombre d’étapes',0,500,1,100],['epsilon','Zone centrale : ε',.01,.49,.01,.1]],
  presets:[['Polarisation rapide',{lambda:.6,steps:80}],['Polarisation lente',{lambda:.08,steps:200}],['Départ symétrique',{c:.5}]]},
- extremes:{title:'Le maximum approche la frontière',source:'EXERCICE 7 · PRIORITÉ',intro:'Comprendre les statistiques d’ordre et la vitesse de convergence, puis corriger le biais d’un maximum.',lesson:8,
+ extremes:{title:'Le maximum approche la frontière',source:'EXERCICE 7 · PRIORITÉ',intro:'Trouver la loi d’un maximum en traduisant un événement, puis mesurer son écart à la borne de l’échantillon.',lesson:8,
  controls:[['mode','Variable observée',[['max','Maximum'],['min','Minimum'],['ordre','k-ième valeur'],['ecart','Écart n(1−Mₙ/θ)']],'max'],['n','Taille de l’échantillon n',1,300,1,20],['k','Rang k (mode k-ième)',1,300,1,5],['theta','Borne θ de l’intervalle',.1,10,.1,1]],
  presets:[['Maximum',{mode:'max',n:20}],['Vitesse exponentielle',{mode:'ecart',n:100}],['Rang médian',{mode:'ordre',n:31,k:16}]]},
- arcsinus:{title:'Un cosinus fait émerger la loi arcsinus',source:'EXERCICE 8 · PRIORITÉ · SPECTRE DÉTERMINISTE',intro:'Relier une somme de Riemann, un changement de variable et le spectre de la matrice d’un chemin.',lesson:10,
+ arcsinus:{title:'Un cosinus fait émerger la loi arcsinus',source:'EXERCICE 8 · PRIORITÉ · SPECTRE DÉTERMINISTE',intro:'Partir de valeurs d’un cosinus, obtenir une limite par sommes de Riemann et retrouver les valeurs propres de la matrice d’un chemin.',lesson:10,
  controls:[['n','Dimension / nombre de valeurs',2,300,1,60],['mode','Indice du mode propre',1,300,1,3],['power','Ordre du moment étudié',1,10,1,4]],
  presets:[['Petit spectre',{n:12,mode:3}],['Vers la limite',{n:200,mode:3}],['Moment d’ordre 2',{power:2}]]},
- wigner:{title:'Des matrices aléatoires au demi-cercle',source:'EXERCICE 8 · APPROFONDISSEMENT · WIGNER',intro:'Comparer plusieurs modèles d’entrées et retrouver les moments de Catalan, sans confondre les deux lois spectrales.',lesson:11,
+ wigner:{title:'Des matrices aléatoires au demi-cercle',source:'EXERCICE 8 · APPROFONDISSEMENT · WIGNER',intro:'Comparer les valeurs propres de matrices aléatoires et leurs moments. Le théorème de Wigner est admis en prolongement.',lesson:11,
  controls:[['n','Dimension n',8,180,1,80],['matrices','Matrices indépendantes',1,8,1,3],['law','Loi des entrées',[['gauss','Normale N(0,1)'],['signes','Signes ±1 équiprobables'],['uniforme','Uniforme [−√3,√3]']],'gauss']],
  presets:[['Signes aléatoires',{law:'signes'}],['Entrées uniformes',{law:'uniforme'}],['Plus de matrices',{matrices:8,n:100}]]},
  urne:{title:'La remise change la loi',source:'EXERCICE 4 · FONDATIONS',intro:'Comparer tirages avec et sans remise : même espérance, variance différente, indépendance à justifier.',lesson:0,
@@ -21,6 +35,7 @@ const labs = {
  controls:[['n','Taille d’un bloc n',1,1000,1,100],['p','Probabilité de succès p',0,1,.01,.5],['epsilon','Tolérance ε',.001,1,.001,.1]],
  presets:[['Marche du TP',{n:20,p:.5}],['Événement rare',{n:100,p:.02}],['Grands nombres',{n:1000,p:.5,epsilon:.05}]]}
 };
+let guides={};
 let current='polarisation', token, lessons=[], exercises=[], latest, serial=0, timer, lessonIndex=6;
 const state = Object.fromEntries(Object.entries(labs).map(([id,l])=>[id,Object.fromEntries(l.controls.map(c=>[c[0],Array.isArray(c[2])?c[3]:c[5]]))]));
 const fmt = v => v===null?'—':typeof v==='string'?v:Number.isInteger(v)?String(v):Math.abs(v)<.0001&&v!==0?v.toExponential(3):Number(v.toPrecision(6)).toLocaleString('fr-FR',{maximumFractionDigits:6});
@@ -34,7 +49,7 @@ function showLab(id,params={}){
  current=id;Object.assign(state[id],params);constrain();
  $('course').hidden=true;$('laboratory').hidden=false;
  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.lab===id));
- const lab=labs[id];$('lab-title').textContent=lab.title;$('lab-source').textContent=lab.source;$('lab-intro').textContent=lab.intro;
+ const lab=labs[id];$('lab-title').textContent=lab.title;$('lab-source').textContent=lab.source;$('lab-intro').textContent=lab.intro;renderGuide(id);
  $('reps').disabled=id==='wigner';$('seed-note').textContent=id==='wigner'?'La répétition porte ici sur les matrices indépendantes, et non sur les valeurs propres.':'Une même graine et les mêmes paramètres reproduisent l’expérience dans une même version de NumPy.';
  $('presets').replaceChildren();
  for(const [name,p] of lab.presets){const b=elem('button',name);b.onclick=()=>showLab(id,p);$('presets').append(b);}
@@ -98,7 +113,7 @@ function prepareCourse(sources){
 $('reps').onchange=update;$('seed').onchange=update;$('reroll').onclick=()=>{$('seed').value=(Number($('seed').value)+1)>>>0;update();};
 $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export/'+latest.export_id;a.download=`probabilites-${latest.lab}-${latest.seed}.json`;document.body.append(a);a.click();a.remove();};
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>document.querySelectorAll('canvas').forEach(c=>draw(c,c._data)),100);});
-(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
+(async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();guides=bootstrap.guides;token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
  const names={polarisation:'6 · Polarisation',extremes:'7 · Extrêmes',arcsinus:'8 · Arcsinus',wigner:'8 · Wigner',urne:'Urnes & dépendance',fluctuations:'Fréquences & fluctuations',course:'Cours & exercices'};
  for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);showLab('polarisation');
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();

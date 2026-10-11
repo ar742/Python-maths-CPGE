@@ -50,7 +50,7 @@
 
 ### Correction guidée
 
-**Corrigé.** Dₙ→D∞=diag(1,1,1,0). Comme pour {1/n}, l’adhérence est {Dₙ}∪{D∞}. L’ensemble initial n’est pas fermé et n’est donc pas compact ; son adhérence est fermée bornée dans ℝ¹⁶, donc compacte. Chaque Dₙ est à distance 1/n des matrices singulières, car sa plus petite valeur singulière vaut 1/n ; l’infimum sur tout l’ensemble est zéro, non atteint par un Dₙ.
+**Corrigé.** Dₙ→D∞=diag(1,1,1,0). Comme pour {1/n}, l’adhérence est {Dₙ}∪{D∞}. L’ensemble initial n’est pas fermé et n’est donc pas compact ; son adhérence est fermée bornée dans ℝ¹⁶, donc compacte. Chaque Dₙ est à distance 1/n des matrices singulières, car sa plus petite valeur singulière vaut 1/n ; la borne inférieure sur tout l’ensemble vaut zéro, sans être atteinte par un Dₙ.
 
 ## 6. Accumulation ou isolement ?
 
@@ -280,7 +280,7 @@
 
 ### Correction guidée
 
-**Corrigé.** La norme est continue et atteint un maximum r sur K. Puisque chaque point de K a une norme strictement inférieure à 1, le maximum atteint vérifie r<1. L’ensemble {1−1/n:n≥2}⊂ℝ est borné et inclus dans ]−1,1[, mais son supremum vaut 1, non atteint ; aucune marge r<1 ne le contient. C’est l’atteinte du maximum, non la seule bornitude, qui produit la marge.
+**Corrigé.** La norme est continue et atteint un maximum r sur K. Puisque chaque point de K a une norme strictement inférieure à 1, le maximum atteint vérifie r<1. L’ensemble {1−1/n:n≥2}⊂ℝ est borné et inclus dans ]−1,1[, mais sa borne supérieure vaut 1, sans être atteinte ; aucune marge r<1 ne le contient. C’est l’atteinte du maximum, non la seule bornitude, qui produit la marge.
 
 ## 29. Un minimum quartique non convexe
 
@@ -296,11 +296,11 @@
 
 **Sup → Spé · TP : valeurs_extremes**
 
-**Énoncé.** Sur [0,1], définir f(0)=1 et f(x)=x pour x>0. Déterminer infimum et supremum, puis préciser lesquels sont atteints et pourquoi le théorème des extrema ne s’applique pas.
+**Énoncé.** Sur [0,1], définir f(0)=1 et f(x)=x pour x>0. Déterminer borne inférieure et borne supérieure, puis préciser lesquelles sont atteintes et pourquoi le théorème des extrema ne s’applique pas.
 
 ### Correction guidée
 
-**Corrigé.** L’infimum vaut zéro sans être atteint, puisque toutes les valeurs sont strictement positives et f(1/n)=1/n→0. Le supremum vaut 1, atteint en 0 et 1. Le domaine est compact non vide, mais f est discontinue en zéro : sa limite à droite vaut zéro alors que f(0)=1. La conclusion complète du théorème manque donc.
+**Corrigé.** La borne inférieure vaut zéro sans être atteinte, puisque toutes les valeurs sont strictement positives et f(1/n)=1/n→0. La borne supérieure vaut 1, atteinte en 0 et 1. Le domaine est compact non vide, mais f est discontinue en zéro : sa limite à droite vaut zéro alors que f(0)=1. La conclusion complète du théorème manque donc.
 
 ## 31. Une oscillation qui détruit l’uniformité
 
@@ -340,7 +340,7 @@
 
 ### Correction guidée
 
-**Corrigé.** A est l’image réciproque de {0} par (x,y)↦y ; B celle de {0} par (x,y)↦y−eˣ. Ils sont fermés par continuité. Ils sont disjoints puisque eˣ>0, mais les couples (−n,0),(−n,e⁻ⁿ) ont une distance e⁻ⁿ→0 ; l’infimum vaut zéro. La suite minimisante part à l’infini et n’a aucune extraction convergente dans A×B ; le minimum n’est pas atteint.
+**Corrigé.** A est l’image réciproque de {0} par (x,y)↦y ; B celle de {0} par (x,y)↦y−eˣ. Ils sont fermés par continuité. Ils sont disjoints puisque eˣ>0, mais les couples (−n,0),(−n,e⁻ⁿ) ont une distance e⁻ⁿ→0 ; la borne inférieure vaut zéro. La suite minimisante part à l’infini et n’a aucune extraction convergente dans A×B ; le minimum n’est pas atteint.
 
 ## 35. Une norme d’opérateur obtenue sans tester mille directions
 
