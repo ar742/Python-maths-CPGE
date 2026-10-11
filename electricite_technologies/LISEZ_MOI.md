@@ -32,7 +32,7 @@ Si le port est occupé, ajouter `--port 8784`. Pour garder la main sur le naviga
 
 ## Consulter sans serveur
 
-[COURS.md](COURS.md), [EXERCICES.md](EXERCICES.md), [PARCOURS.md](PARCOURS.md) et les [figures SVG](illustrations/README.md) sont des documents autonomes. Aucun PDF personnel n’est inclus.
+[COURS.md](COURS.md), [EXERCICES.md](EXERCICES.md), [PARCOURS.md](PARCOURS.md), les [figures SVG](illustrations/README.md) et l’[errata des formules](errata.md) sont des documents autonomes. Aucun PDF personnel n’est inclus.
 
 ## Régénérer les documents
 

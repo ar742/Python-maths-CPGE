@@ -14,7 +14,7 @@ Un atelier de physique et de sciences industrielles, construit à partir des fic
 
 Les compléments privilégiés pour les filières technologiques portent sur **la mesure, les ALI réels, la chaîne d’acquisition numérique, la conversion de puissance et les performances d’un asservissement**. L’anti-saturation du PI, la transformée en z, les lignes réparties ou la polarisation détaillée d’un transistor sont accompagnées lorsqu’elles dépassent les attendus de la filière. La matrice [programme et recueil](MATRICE_PROGRAMME.md) distingue ces statuts.
 
-[Lancer l’atelier](LISEZ_MOI.md) · [18 séances guidées](PARCOURS.md) · [Cours](COURS.md) · [Exercices corrigés](EXERCICES.md) · [Figures autonomes](illustrations/README.md)
+[Lancer l’atelier](LISEZ_MOI.md) · [18 séances guidées](PARCOURS.md) · [Cours](COURS.md) · [Exercices corrigés](EXERCICES.md) · [Figures autonomes](illustrations/README.md) · [Errata des formules](errata.md)
 
 Sous Windows, double-cliquer sur **Lancer_Electricite.cmd** à la racine du dépôt. Sous Linux ou macOS :
 
