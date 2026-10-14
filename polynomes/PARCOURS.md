@@ -1,5 +1,7 @@
 # Dix-huit séances de polynômes et géométrie
 
+Pour les complexes et les polynômes à plusieurs variables, commencer par le [parcours progressif sup / spé](PARCOURS_PROGRESSIF.md) : huit séances prioritaires, puis des approfondissements et des prolongements facultatifs. Le présent document rassemble les guides des 36 TP.
+
 Pour chaque TP : prévoir le résultat, effectuer les trois manipulations du guide puis justifier par une identité exacte, un certificat ou une démonstration.
 
 ## Séance 01 — Fractions & Interpolation

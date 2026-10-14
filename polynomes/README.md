@@ -6,6 +6,12 @@ Un neuvième volet de mathématiques pour **maths sup et maths spé**, construit
 
 ![Polynômes : racines complexes, arithmétique et courbes](apercu.png)
 
+**Pour commencer :** ouvrir **Parcours sup / spé** dans l’atelier. Le parcours propose **5 séances de sup, 3 séances de spé, 2 approfondissements et 4 pistes au-delà du programme**, avec accès direct aux TP, tâche à réaliser et acquis attendu. « Incontournable » désigne les techniques travaillées ; les compléments de chaque TP sont distingués explicitement.
+
+[Lire le parcours progressif](PARCOURS_PROGRESSIF.md) · [Ouvrir la page locale](http://127.0.0.1:8784/#parcours)
+
+![Parcours progressif sup et spé](apercu-parcours.png)
+
 | Parcours | Laboratoires |
 |---|---|
 | Fractions & Interpolation — 6 | Fraction du recueil avec pôle triple ; Taylor et parties polaires ; regroupement des pôles conjugués ; trous et pôles ; Runge et Lagrange ; Legendre, Tchebychev, Hermite et quadratures de Gauss. |
@@ -15,7 +21,7 @@ Un neuvième volet de mathématiques pour **maths sup et maths spé**, construit
 
 Les figures montrent des objets différents : cercles et enveloppes de racines, cartes de convergence, courbes algébriques, intersections avec multiplicité, coefficients et contributions arithmétiques. Les identités et certificats sont calculés **exactement** avec SymPy ; les coordonnées, interpolations et cartes sont **numériques**. Les indications **sup / spé / au-delà** relient le TP aux techniques utiles et introduisent les prolongements avant leur utilisation.
 
-[Guide de lancement](LISEZ_MOI.md) · [18 séances guidées](PARCOURS.md) · [Cours](COURS.md) · [Exercices corrigés](EXERCICES.md) · [Recueil et repères](MATRICE_PROGRAMME.md) · [Figures SVG](illustrations/README.md) · [Errata des formules](errata.md)
+[Parcours progressif sup / spé](PARCOURS_PROGRESSIF.md) · [Guide de lancement](LISEZ_MOI.md) · [18 séances guidées](PARCOURS.md) · [Cours](COURS.md) · [Exercices corrigés](EXERCICES.md) · [Recueil et repères](MATRICE_PROGRAMME.md) · [Figures SVG](illustrations/README.md) · [Errata des formules](errata.md)
 
 Sous Windows, double-cliquer sur **Lancer_Polynomes.cmd**, à la racine du dépôt. Sous Linux ou macOS :
 

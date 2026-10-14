@@ -6,6 +6,8 @@
 
 Python **3.10 ou plus récent** est requis. La première ouverture installe NumPy et SymPy si nécessaire ; une connexion Internet est alors nécessaire. Les laboratoires fonctionnent ensuite hors ligne. Fermer la fenêtre de lancement arrête le serveur.
 
+Le bouton **Parcours sup / spé** ouvre les huit séances prioritaires, les approfondissements CPGE et les pistes au-delà du programme. Chaque séance donne un travail et un acquis attendu, avec accès direct au TP. Le bandeau **Dans le parcours progressif** d’un TP permet de revenir à sa séance. Le parcours est aussi disponible hors ligne dans **PARCOURS_PROGRESSIF.md**.
+
 Le menu **Cours & exercices** propose les leçons, les corrections et les figures de référence. **Exporter les résultats** conserve les réglages, valeurs, tableaux, données des figures et hypothèses dans un fichier JSON. Les liens vers les références publiques demandent une connexion.
 
 ## Lancement manuel

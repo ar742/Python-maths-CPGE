@@ -49,7 +49,9 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 - **Dix TP de racines complexes :** Cayley, vrais coefficients complexes, Cauchy, Rouché, Gauss–Lucas, réciproque conjugué, Viète/Newton, bassins de convergence et racines proches.
 - **Dix TP multivariés :** degrés et monômes, intersections avec multiplicité, résultants, Gröbner, singularités, points à l’infini, formes quadratiques, Motzkin et optimisation sur un cercle.
 
-[Présentation](polynomes/README.md) · [Recueil et repères](polynomes/MATRICE_PROGRAMME.md) · [18 séances](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Exercices corrigés](polynomes/EXERCICES.md) · [Errata des formules](polynomes/errata.md). Sous Windows : **`Lancer_Polynomes.cmd`**. Python 3.10+, NumPy et SymPy ; serveur local **http://127.0.0.1:8784**, hors ligne après installation.
+**Parcours progressif sup / spé :** huit séances prioritaires pour les complexes et les polynômes à plusieurs variables, puis deux approfondissements et quatre pistes au-delà du programme. Chaque séance précise le travail, l’acquis attendu et les compléments facultatifs.
+
+[Parcours progressif](polynomes/PARCOURS_PROGRESSIF.md) · [Présentation](polynomes/README.md) · [Recueil et repères](polynomes/MATRICE_PROGRAMME.md) · [18 séances](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Exercices corrigés](polynomes/EXERCICES.md) · [Errata des formules](polynomes/errata.md). Sous Windows : **`Lancer_Polynomes.cmd`**. Python 3.10+, NumPy et SymPy ; serveur local **http://127.0.0.1:8784**, hors ligne après installation.
 
 ## Physique & SI · Atelier 17 · Électricité & Technologies
 
