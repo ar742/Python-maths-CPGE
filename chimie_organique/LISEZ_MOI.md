@@ -20,3 +20,7 @@ python -X utf8 chimie_organique.py --port 8780
 ```
 
 Ouvrir alors <http://127.0.0.1:8780>. Fermer la fenêtre de lancement termine le serveur.
+
+## Parcours progressif sup / spé
+
+Ouvrir **Parcours sup / spé** dans l’atelier : techniques incontournables, approfondissements accompagnés et prolongements au-delà du programme. Chaque séance donne un but, un travail, un acquis attendu et ses limites, avec accès direct aux TP et retour à la séance. Le [parcours autonome](PARCOURS_PROGRESSIF.md) est aussi consultable sans lancer le serveur.

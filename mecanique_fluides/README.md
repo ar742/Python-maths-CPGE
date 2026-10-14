@@ -59,3 +59,9 @@ python -X utf8 mecanique_fluides.py --export-illustrations
 Matplotlib est facultatif et sert seulement à régénérer les figures SVG ; les fichiers fournis se lisent sans cette bibliothèque.
 
 Les vérifications du dépôt exécutent cet atelier sous Windows et Linux, avec Python 3.10 et 3.12. Le PDF de travail reste un document source local ; les figures et développements de cet atelier sont originaux.
+
+## Parcours progressif sup / spé
+
+Le lien **« Parcours sup / spé »** ouvre des séances guidées : techniques incontournables, approfondissements CPGE et branches au-delà du programme. Chaque séance donne son objectif, le travail demandé, l’acquis attendu, les limites et les TP associés. Depuis une expérience, **« Revenir à ma séance »** retrouve l’étape.
+
+Le [parcours autonome](PARCOURS_PROGRESSIF.md) contient les mêmes indications, avec les références officielles et les différences entre filières. Les repères concernent les techniques étudiées, sans rendre obligatoire la totalité d’un TP.

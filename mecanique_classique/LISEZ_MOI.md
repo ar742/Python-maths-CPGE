@@ -20,3 +20,7 @@ La pause et le curseur de lecture permettent d’examiner un état précis. Fair
 Les expériences fonctionnent hors ligne après installation de NumPy. Matplotlib, facultatif, permet de régénérer les figures.
 
 [Douze séances](PARCOURS.md) · [Cours](COURS.md) · [Exercices](EXERCICES.md) · [Présentation complète](README.md).
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

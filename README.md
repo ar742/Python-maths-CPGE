@@ -18,7 +18,7 @@ Dix-neuf ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Dista
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
-**Les neuf ateliers de maths disposent d’un parcours progressif sup / spé**, distinguant techniques incontournables, approfondissements et pistes au-delà. [Choisir son parcours](PARCOURS_MATHS_CPGE.md).
+**Les dix-neuf ateliers disposent d’un parcours progressif sup / spé**, distinguant techniques incontournables, approfondissements et pistes au-delà. Choisir un [parcours de maths](PARCOURS_MATHS_CPGE.md) ou un [parcours de physique et chimie](PARCOURS_PHYSIQUE_CHIMIE_CPGE.md).
 
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
@@ -26,21 +26,21 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md)  · [Sup / spé](optimisation_distances/PARCOURS_PROGRESSIF.md) |
 | 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md)  · [Sup / spé](probabilites_cpge/PARCOURS_PROGRESSIF.md) |
 | 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md)  · [Sup / spé](calcul_differentiel/PARCOURS_PROGRESSIF.md) |
-| 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) |
-| 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) |
+| 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) · [Sup / spé](physique_quantique/PARCOURS_PROGRESSIF.md) |
+| 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) · [Sup / spé](physique_statistique/PARCOURS_PROGRESSIF.md) |
 | 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md)  · [Sup / spé](algebre_lineaire/PARCOURS_PROGRESSIF.md) |
-| 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
-| 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
-| 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
-| 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
+| 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) · [Sup / spé](mecanique_fluides/PARCOURS_PROGRESSIF.md) |
+| 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) · [Sup / spé](electromagnetisme/PARCOURS_PROGRESSIF.md) |
+| 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) · [Sup / spé](optique/PARCOURS_PROGRESSIF.md) |
+| 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) · [Sup / spé](chimie_organique/PARCOURS_PROGRESSIF.md) |
 | 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md)  · [Sup / spé](series_transformees_signal/PARCOURS_PROGRESSIF.md) |
 | 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md)  · [Sup / spé](topologie_ensembles/PARCOURS_PROGRESSIF.md) |
-| 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
+| 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) · [Sup / spé](mecanique_classique/PARCOURS_PROGRESSIF.md) |
 | 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md)  · [Sup / spé](analyse_fonctions/PARCOURS_PROGRESSIF.md) |
-| 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) |
-| 17 · Électricité & Technologies — PTSI / PSI / PT | `Lancer_Electricite.cmd` | [Guide](electricite_technologies/LISEZ_MOI.md) · [Parcours](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) |
+| 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) · [Sup / spé](thermodynamique/PARCOURS_PROGRESSIF.md) |
+| 17 · Électricité & Technologies — PTSI / PSI / PT | `Lancer_Electricite.cmd` | [Guide](electricite_technologies/LISEZ_MOI.md) · [Parcours](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) · [Sup / spé](electricite_technologies/PARCOURS_PROGRESSIF.md) |
 | 18 · Polynômes & Géométrie — maths, volet 09 | `Lancer_Polynomes.cmd` | [Guide](polynomes/LISEZ_MOI.md) · [Parcours](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Errata des formules](polynomes/errata.md)  · [Sup / spé](polynomes/PARCOURS_PROGRESSIF.md) |
-| 19 · Chimie pour l’industrie | `Lancer_Chimie_Industrie.cmd` | [Guide](chimie_industrielle/LISEZ_MOI.md) · [12 séances](chimie_industrielle/PARCOURS.md) · [Cours](chimie_industrielle/COURS.md) |
+| 19 · Chimie pour l’industrie | `Lancer_Chimie_Industrie.cmd` | [Guide](chimie_industrielle/LISEZ_MOI.md) · [12 séances](chimie_industrielle/PARCOURS.md) · [Cours](chimie_industrielle/COURS.md) · [Sup / spé](chimie_industrielle/PARCOURS_PROGRESSIF.md) · [Errata des formules](chimie_industrielle/errata.md) |
 
 ## Chimie · Atelier 19 · Chimie pour l’industrie
 

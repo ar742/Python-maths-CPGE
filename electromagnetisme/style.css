@@ -5,3 +5,6 @@
 .control label{display:flex;gap:10px;justify-content:space-between}.control output{float:none;flex-shrink:0;text-align:right}
 
 .guide-context{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:20px 0;padding:18px;background:#f4edf6;border-radius:8px;font-size:13px}.guide-context ul{padding-left:18px;margin-bottom:0}.guide-context li{margin:6px 0}@media(max-width:700px){.guide-context{grid-template-columns:1fr}}
+
+/* Le parcours reste accessible depuis toutes les vues de l’atelier. */
+.progression-nav{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:1rem 0}.progression-link{display:inline-block;border:1px solid #23745c;border-radius:8px;padding:.55rem .85rem;color:#205a48;text-decoration:none;font-weight:600;background:#f4f7ef}.progression-link:hover{background:#e4eee7}#retour-parcours{color:#205a48}#retour-parcours[hidden]{display:none}

@@ -91,3 +91,7 @@ python -X utf8 chimie_organique.py --export-illustrations
 ```
 
 Sources et programmes : [réactions du recueil](REACTIONS_DU_RECUEIL.md), [cours complémentaire](COURS.md), [matrice](MATRICE_PROGRAMME.md). Le PDF reste dans les fichiers de son auteur et n’est pas redistribué. L’[errata](ERRATA.md) se limite à une formule de Lewis vérifiée dans son contexte, conformément à la demande de l’auteur.
+
+## Parcours progressif sup / spé
+
+Ouvrir **Parcours sup / spé** dans l’atelier : techniques incontournables, approfondissements accompagnés et prolongements au-delà du programme. Chaque séance donne un but, un travail, un acquis attendu et ses limites, avec accès direct aux TP et retour à la séance. Le [parcours autonome](PARCOURS_PROGRESSIF.md) est aussi consultable sans lancer le serveur.

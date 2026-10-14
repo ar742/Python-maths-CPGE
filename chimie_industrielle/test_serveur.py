@@ -216,6 +216,42 @@ class ServeurTests(unittest.TestCase):
             application.make_server(self.port)
 
 
+    def test_progression_covers_labs_and_defines_each_session(self):
+        from urllib.parse import urlparse, parse_qs
+        data = self.bootstrap()
+        labs = {lab['id'] for lab in data['labs']}
+        links = data['progression_links']
+        self.assertEqual({link['id'] for link in links}, labs)
+        sessions = [s for stage in data['progression']['stages'] for s in stage['sessions']]
+        self.assertEqual({lab for s in sessions for lab in s['labs']}, labs)
+        self.assertEqual(len({s['id'] for s in sessions}), len(sessions))
+        self.assertEqual({s['status'] for s in sessions}, {'socle', 'approfondissement', 'prolongement'})
+        for session in sessions:
+            for key in ('title', 'level', 'objective', 'task', 'success', 'limits'):
+                self.assertTrue(session[key].strip(), (session['id'], key))
+            self.assertTrue(session['labs'])
+        for link in links:
+            parsed = urlparse(link['href'])
+            self.assertEqual(parsed.path, '/')
+            self.assertEqual(parse_qs(parsed.query), {'tp': [link['id']]})
+
+    def test_progression_page_assets_and_return_are_served(self):
+        for path, mime in [('/parcours','text/html'),('/parcours.html','text/html'),
+                           ('/parcours.js','text/javascript'),('/parcours.css','text/css')]:
+            status, body, headers = self.request('GET', path)
+            self.assertEqual(status, 200)
+            self.assertTrue(body)
+            self.assertTrue(headers['Content-Type'].startswith(mime))
+        path = '/?tp=nernst_pile&seance=sup_pile'
+        status, body, _ = self.request('GET', path)
+        self.assertEqual(status, 200)
+        self.assertIn('progression-return', body.decode('utf8'))
+        self.assertIn('href="/parcours"', body.decode('utf8'))
+        path = '/parcours.js'
+        _, body, _ = self.request('GET', path)
+        self.assertIn('seance=', body.decode('utf8'))
+
+
 class LancementTests(unittest.TestCase):
     def test_invalid_port_fails_before_opening_any_browser(self):
         for port in ['-1', '65536']:
@@ -253,7 +289,6 @@ class LancementTests(unittest.TestCase):
         self.assertEqual(raised.exception.code, 1)
         connection.close.assert_called_once()
         browser.assert_not_called()
-
 
 if __name__ == '__main__':
     unittest.main()

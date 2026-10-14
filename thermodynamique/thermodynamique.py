@@ -15,6 +15,7 @@ import webbrowser
 from modeles import calculate
 from cours import LESSONS, EXERCISES, SOURCES
 from reperes import LAB_GUIDES
+from parcours_progressif import PROGRESSION, LAB_LINKS
 from catalogue import LABS
 
 ROOT = Path(__file__).resolve().parent
@@ -73,9 +74,13 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/bootstrap":
             self.send({"application": "thermodynamique", "token": self.server.api_token,
                        "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES,
-                       "lab_guides": LAB_GUIDES, "labs": LABS, "figures": figure_metadata()})
+                       "progression": PROGRESSION, "progression_links": LAB_LINKS, "lab_guides": LAB_GUIDES, "labs": LABS, "figures": figure_metadata()})
             return
-        files = {"/": ("index.html", "text/html; charset=utf-8"),
+        files = {"/parcours": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.html": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.css": ("parcours.css", "text/css; charset=utf-8"),
+                 "/parcours.js": ("parcours.js", "text/javascript; charset=utf-8"),
+                 "/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),
                  "/style.css": ("style.css", "text/css; charset=utf-8"),
                  "/app.js": ("app.js", "text/javascript; charset=utf-8"),

@@ -14,3 +14,6 @@
 .scene-tools{display:grid;grid-template-columns:minmax(150px,1fr) minmax(120px,2fr);margin:12px 24px}.scene-tools input{width:100%;min-width:0;margin:0}.scene-tools span{grid-column:1/-1;text-align:right;min-width:0}.scene-tools label{min-width:0}@media(max-width:700px){.scene-tools label,.scene-tools input{grid-column:1/-1}}
 
 .visual #apparatus{height:115px;border-bottom:1px solid #ffffff18}.visual #scene{height:410px}.home-heading>p{max-width:480px}.hero-art{background:linear-gradient(130deg,#173e48,#22626a)}.metric b{font-size:23px}.lab-guide .guide-purpose{max-width:1000px}.lab-guide li{margin-bottom:5px}@media(max-width:760px){.visual #apparatus{height:125px}}
+
+/* Accès aux séances et retour depuis un TP. */
+a.progression-access,.progression-return a{display:inline-block;border:1px solid #b9c9de;border-radius:10px;padding:.65rem 1rem;background:#f7f9fc;color:#20395b;font-weight:700;text-decoration:none}.progression-return{margin:.6rem 0 1rem}.progression-return a:hover,a.progression-access:hover{background:#e8eff8}

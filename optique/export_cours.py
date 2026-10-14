@@ -28,6 +28,8 @@ def numbers(items):
 
 
 def export(path=None):
+    from export_progression import export as export_progression
+    export_progression()
     path = Path(path) if path else Path(__file__).with_name("COURS.md")
     parts = [
         "# Optique — lumière, images et expériences",

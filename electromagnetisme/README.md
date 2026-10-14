@@ -95,3 +95,9 @@ Les ateliers [Fluides & Ondes](../mecanique_fluides/README.md),
 [Physique statistique](../physique_statistique/README.md) et
 [Physique quantique](../physique_quantique/README.md) prolongent respectivement
 la MHD, les aimantations thermiques et les milieux quantiques.
+
+## Parcours progressif sup / spé
+
+Le lien **« Parcours sup / spé »** ouvre des séances guidées : techniques incontournables, approfondissements CPGE et branches au-delà du programme. Chaque séance donne son objectif, le travail demandé, l’acquis attendu, les limites et les TP associés. Depuis une expérience, **« Revenir à ma séance »** retrouve l’étape.
+
+Le [parcours autonome](PARCOURS_PROGRESSIF.md) contient les mêmes indications, avec les références officielles et les différences entre filières. Les repères concernent les techniques étudiées, sans rendre obligatoire la totalité d’un TP.

@@ -65,3 +65,7 @@ python -X utf8 -m unittest -v test_geometrie test_ondes test_entree test_pedagog
 
 En cas d’erreur, lancer manuellement le programme et conserver le message
 affiché : il permet d’identifier la bibliothèque manquante ou le port occupé.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

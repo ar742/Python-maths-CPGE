@@ -26,3 +26,7 @@ python electricite_technologies/electricite.py
 Adresse locale : **http://127.0.0.1:8783**. Python **3.10 ou plus récent**, NumPy ; Matplotlib est nécessaire seulement pour régénérer les illustrations. Après l’installation, l’atelier fonctionne hors ligne. Les résultats peuvent être téléchargés en JSON, avec les paramètres et les hypothèses. Le PDF personnel reste hors du dépôt.
 
 Vérification : depuis ce dossier, `python -X utf8 -m unittest discover -v`. Les tests confrontent les modèles à leurs équilibres, lois de conduction, bilans, limites de stabilité et réponses analytiques ; ils vérifient aussi les contenus et le serveur local.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

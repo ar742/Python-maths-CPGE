@@ -53,3 +53,7 @@ python -X utf8 -m unittest discover -v
 Source principale : extrait **Mécanique, P1–P3, p.265–290** du recueil de A. R. Les pages citées sont les pages imprimées. Le PDF personnel n’est pas redistribué. L’errata autorisé porte exclusivement sur les erreurs de formules vérifiées dans leur contexte.
 
 Repères complémentaires : [programme officiel MPSI, 2021](https://cache.media.education.gouv.fr/file/SPE1-MEN-MESRI-4-2-2021/64/8/spe779_annexe_1373648.pdf) ; [programmes officiels de seconde année, dont MP, 2021](https://www.education.gouv.fr/sites/default/files/document/BO_31_MESRI_1417448.pdf-310026.pdf) ; [MIT OpenCourseWare, Vibrations and Waves](https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/syllabus/). Les cours P1 donnent également les références NASA et ESA relatives aux transferts, à la propulsion et aux survols.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

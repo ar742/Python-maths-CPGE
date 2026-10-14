@@ -85,3 +85,9 @@ Les constantes viennent de [NIST/CODATA 2022](https://physics.nist.gov/cuu/Const
 | [physique_statistique.py](physique_statistique.py) | Serveur HTTP local et commandes de lancement. |
 | [illustrations.py](illustrations.py) | Figures scientifiques SVG. |
 | [test_modeles.py](test_modeles.py), [test_ising.py](test_ising.py) et [test_serveur.py](test_serveur.py) | Vérifications indépendantes. |
+
+## Parcours progressif sup / spé
+
+Le lien **« Parcours sup / spé »** ouvre des séances guidées : techniques incontournables, approfondissements CPGE et branches au-delà du programme. Chaque séance donne son objectif, le travail demandé, l’acquis attendu, les limites et les TP associés. Depuis une expérience, **« Revenir à ma séance »** retrouve l’étape.
+
+Le [parcours autonome](PARCOURS_PROGRESSIF.md) contient les mêmes indications, avec les références officielles et les différences entre filières. Les repères concernent les techniques étudiées, sans rendre obligatoire la totalité d’un TP.

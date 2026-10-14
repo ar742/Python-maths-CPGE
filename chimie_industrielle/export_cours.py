@@ -44,5 +44,7 @@ def export():
             text+='**Repères** — '+' '.join(g['levels'][level] for level in ('sup','spe','beyond'))+'\n\n'
             text+='\n'.join(f'{k+1}. {a}' for k,a in enumerate(g['first_steps']))+'\n\n**À justifier :** '+g['expected']+'\n\n'
     (root/'PARCOURS.md').write_text(text.rstrip()+'\n',encoding='utf8')
+    from export_progression import export as export_parcours
+    export_parcours()
 
 if __name__=='__main__':export();print('Cours, exercices et douze séances exportés.')

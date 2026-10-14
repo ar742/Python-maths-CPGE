@@ -72,6 +72,8 @@ def export(path=None):
         parts.extend(["### " + item["title"], "*" + item["level"] + "* — laboratoire `" + item["lab"] + "`.", prose(item["question"]), prose(item["answer"])])
     parts.extend(["## Sources primaires et programmes", bullets([prose(source) for source in SOURCES])])
     path.write_text("\n\n".join(parts) + "\n", encoding="utf-8", newline="\n")
+    from export_progression import export as export_parcours
+    export_parcours()
     return path
 
 

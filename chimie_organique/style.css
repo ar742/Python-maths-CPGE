@@ -20,3 +20,5 @@
 .guide-context{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:20px 0;padding:18px;background:#eef3ed;border-radius:8px;font-size:13px}.guide-context ul{padding-left:18px;margin-bottom:0}.guide-context li{margin:6px 0}@media(max-width:700px){.guide-context{grid-template-columns:1fr}}
 
 .scene-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.visual-header h3{max-width:650px}.chart{border-top:3px solid #b9d6cf}.lab-card:nth-child(3n+2){border-top:2px solid #e7a46b}.lab-card:nth-child(3n+3){border-top:2px solid #9380b4}.hero-art{position:relative;background:radial-gradient(ellipse at 90% 80%,#215d67,#102d3c 70%)}.guide-level:first-child{border-color:#78b5aa}.guide-level:nth-child(2){border-color:#e3b487}.guide-level:last-child{border-color:#a699bd}
+
+.progression-access{margin:.6rem 0}.progression-access a,.progression-return a{display:inline-block;border:1px solid #b8ccc7;border-radius:8px;padding:.65rem 1rem;background:#f6faf8;color:#226c61;font-weight:700;text-decoration:none}.progression-return{margin:.6rem 0 1rem}.progression-return a:hover,.progression-access a:hover{background:#e5f1ec}

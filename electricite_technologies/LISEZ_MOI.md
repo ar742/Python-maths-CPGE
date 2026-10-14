@@ -43,3 +43,7 @@ python electricite.py --export-illustrations
 ```
 
 Les illustrations livrées sont déjà générées. Leur régénération ne change ni les paramètres initiaux ni les modèles.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

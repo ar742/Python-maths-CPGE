@@ -59,3 +59,7 @@ python -X utf8 -m unittest discover -v
 Source principale : **P22–P24, pages imprimées 450–470**, recueil de A. R. Le PDF personnel n’est pas redistribué. L’errata se limite à des erreurs de formules vérifiées dans leur contexte.
 
 Repères de formation : [programme officiel MP](https://prepas.org/ups.php?document=87) et [programme officiel PC](https://prepas.org/ups.php?document=92). Les développements dépassant les attendus communs sont explicitement accompagnés.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

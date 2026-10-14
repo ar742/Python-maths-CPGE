@@ -30,3 +30,9 @@ python chimie_industrielle/chimie_industrielle.py
 Les six mesures de l’horloge sont issues du recueil. Les constantes et les états de référence sont explicités ; les paramètres cinétiques et les représentations de procédés sont pédagogiques. Les références industrielles situent les applications sans transformer ces simulations en performances d’une installation. Le PDF personnel reste hors du dépôt.
 
 Vérification depuis ce dossier : `python -X utf8 -m unittest discover -v`.
+
+## Parcours progressif sup / spé
+
+Ouvrir **Parcours sup / spé** dans l’atelier : techniques incontournables, approfondissements accompagnés et prolongements au-delà du programme. Chaque séance donne un but, un travail, un acquis attendu et ses limites, avec accès direct aux TP et retour à la séance. Le [parcours autonome](PARCOURS_PROGRESSIF.md) est aussi consultable sans lancer le serveur.
+
+[Errata des formules](errata.md) : corrections vérifiées dans les fiches C6–C8 du recueil, avec pages, conventions et contrôles.

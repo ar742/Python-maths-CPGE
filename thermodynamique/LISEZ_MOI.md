@@ -22,3 +22,7 @@ L’onglet **Cours & exercices** relie chaque leçon à son TP. Les fichiers [CO
 Le bouton **Exporter les résultats** télécharge les paramètres, les courbes, les bilans et les hypothèses au format JSON. Les quatre derniers calculs restent disponibles pendant la session ; un export plus ancien nécessite de refaire le calcul.
 
 Pour régénérer les illustrations : installer `requirements-illustrations.txt`, puis lancer `python thermodynamique.py --export-illustrations`. Ces dépendances sont facultatives pour utiliser les figures déjà fournies.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : techniques prioritaires, applications accompagnées de CPGE et branches au-delà du programme. Dans l’atelier lancé, choisir **Parcours sup / spé**. Chaque séance ouvre directement ses TP et permet de revenir à la séance.

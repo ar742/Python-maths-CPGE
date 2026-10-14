@@ -30,6 +30,58 @@ class ServerTests(unittest.TestCase):
         try:return cm.exception.code
         finally:cm.exception.close()
 
+
+    def test_progression_covers_every_lab_with_distinct_levels(self):
+        from parcours_progressif import PROGRESSION, LAB_LINKS
+        from reperes import LAB_GUIDES
+        links={link['id']:link for link in LAB_LINKS}
+        self.assertEqual(len(links),len(LAB_LINKS))
+        self.assertEqual(set(links),set(LAB_GUIDES))
+        covered=set();sessions=set();statuses=set()
+        for stage in PROGRESSION['stages']:
+            for session in stage['sessions']:
+                self.assertNotIn(session['id'],sessions);sessions.add(session['id'])
+                statuses.add(session['status'])
+                self.assertTrue(session['labs'])
+                for field in ['objective','task','success','limits']:
+                    self.assertGreater(len(session[field]),25)
+                for lab in session['labs']:
+                    self.assertIn(lab,links);covered.add(lab)
+                    self.assertEqual(links[lab]['href'],'/?tp='+lab)
+        self.assertEqual(covered,set(links))
+        self.assertEqual(statuses,{'socle','approfondissement','prolongement'})
+        json.dumps(PROGRESSION,allow_nan=False)
+        with self.request('/api/bootstrap') as response:
+            data=json.load(response)
+        self.assertEqual(data['progression'],PROGRESSION)
+        self.assertEqual(data['progression_links'],LAB_LINKS)
+
+    def test_progression_routes_assets_and_direct_entries(self):
+        from parcours_progressif import LAB_LINKS
+        for path in ['/parcours','/parcours.html','/parcours.js','/parcours.css','/?tp=unknown&seance=unknown']+[l['href'] for l in LAB_LINKS]:
+            with self.request(path) as response:
+                self.assertEqual(response.status,200)
+                self.assertGreater(len(response.read()),100)
+                self.assertIn("script-src 'self'",response.headers['Content-Security-Policy'])
+        for path in ['/parcours_progressif.py','/export_progression.py']:
+            with self.assertRaises(HTTPError) as caught:
+                self.request(path)
+            self.assertEqual(caught.exception.code,404)
+            caught.exception.close()
+
+    def test_progression_document_and_generator_stay_consistent(self):
+        from pathlib import Path
+        from parcours_progressif import PROGRESSION
+        root=Path(__file__).resolve().parent
+        document=(root/'PARCOURS_PROGRESSIF.md').read_text(encoding='utf8')
+        for stage in PROGRESSION['stages']:
+            for session in stage['sessions']:
+                self.assertIn(session['title'],document)
+                self.assertIn(session['limits'],document)
+        self.assertIn('export_progression()', (root/'export_cours.py').read_text(encoding='utf8'))
+        self.assertIn("'/parcours#'", (root/'app.js').read_text(encoding='utf8'))
+        self.assertIn('Parcours sup / spé',(root/'index.html').read_text(encoding='utf8'))
+
     def test_bootstrap(self):
         with self.request('/api/bootstrap') as r:data=json.load(r)
         self.assertEqual(data['application'],'electromagnetisme')

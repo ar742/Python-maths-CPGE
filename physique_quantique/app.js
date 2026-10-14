@@ -114,7 +114,7 @@ $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>document.querySelectorAll('canvas').forEach(c=>draw(c,c._data)),100);});
 (async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;labGuides=bootstrap.lab_guides||{};
  const names={"boite": "Boîte cubique", "heisenberg": "Heisenberg", "diffusion": "Marche & tunnel", "oscillateur": "Oscillateur", "intrication": "Intrication", "josephson": "Josephson & SQUID", "rabi": "RMN & Rabi", "bloch": "Sphère de Bloch", "circuits": "Circuits quantiques", "course": "Cours & exercices"};
- for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);showLab('boite');
+ for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);const query=new URLSearchParams(location.search),target=query.get('tp');showLab(Object.hasOwn(labs,target)?target:'boite');progressionReturn(query,bootstrap.progression);
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();
 
 
@@ -146,4 +146,9 @@ function renderCircuit(r){
  if(bell){svg+=gate(150,35,'H')+'<path d="M320 35V85" stroke="#17363d" stroke-width="2"/><circle cx="320" cy="35" r="5" fill="#17363d"/><circle cx="320" cy="85" r="15" fill="white" stroke="#17363d" stroke-width="2"/><path d="M308 85H332M320 73V97" stroke="#17363d"/><text x="440" y="58" font-size="16" fill="#23745c">(|00⟩ + |11⟩) / √2</text>';}
  else{svg+=gate(115,35,'H')+gate(115,85,'H');for(let i=0;i<n;i++){const x=190+110*i;svg+=`<rect x="${x-23}" y="16" width="46" height="89" rx="5" fill="#fff8e8" stroke="#c79432"/><text x="${x}" y="66" text-anchor="middle" fill="#17363d">O</text><rect x="${x+28}" y="16" width="46" height="89" rx="5" fill="#edf4ec" stroke="#23745c"/><text x="${x+51}" y="66" text-anchor="middle" fill="#17363d">D</text>`;}}
  svg+='</g></svg>';box.innerHTML=svg;box.append(elem('p',bell?'H sur q₀, puis CNOT avec q₀ comme contrôle et q₁ comme cible. Ordre des bases : |q₀q₁⟩.':'Préparation uniforme, oracle O qui inverse le signe de la cible, puis diffusion D = 2|s⟩⟨s| − I. Chaque paire O, D compte pour une itération.'));
+}
+
+function progressionReturn(query,progression){
+ const id=query.get('seance'),link=document.getElementById('retour-parcours');
+ if(link&&progression.stages.some(stage=>stage.sessions.some(session=>session.id===id))){link.href='/parcours#'+encodeURIComponent(id);link.hidden=false;}
 }

@@ -15,3 +15,9 @@ Selon le système, utiliser `python3` au lieu de `python`. Pour choisir une autr
 Les expériences fonctionnent hors ligne après installation. GitHub présente les sources, le cours et les illustrations ; les calculs sont exécutés sur votre ordinateur. Ouvrir `index.html` seul ne lance pas Python.
 
 Commencer par [le parcours de sept séances](PARCOURS.md), puis consulter [le cours et les corrections](COURS.md). Les résultats s'exportent en JSON depuis chaque laboratoire.
+
+## Parcours progressif sup / spé
+
+Le lien **« Parcours sup / spé »** ouvre des séances guidées : techniques incontournables, approfondissements CPGE et branches au-delà du programme. Chaque séance donne son objectif, le travail demandé, l’acquis attendu, les limites et les TP associés. Depuis une expérience, **« Revenir à ma séance »** retrouve l’étape.
+
+Le [parcours autonome](PARCOURS_PROGRESSIF.md) contient les mêmes indications, avec les références officielles et les différences entre filières. Les repères concernent les techniques étudiées, sans rendre obligatoire la totalité d’un TP.
