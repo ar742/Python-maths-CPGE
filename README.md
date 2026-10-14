@@ -11,10 +11,10 @@ Les notations et, en physique, les unités sont expliquées avant les calculs.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Dix-sept ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Dix-huit ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques), **Chaleur & Transferts — Thermodynamique** et **Électricité & Technologies — PTSI / PSI / PT**. Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques), **Chaleur & Transferts — Thermodynamique**, **Électricité & Technologies — PTSI / PSI / PT** et **Polynômes & Géométrie** (neuvième volet de mathématiques). Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
@@ -37,6 +37,19 @@ matricielles, écoulements, acoustique, champs, conversion électromagnétique, 
 | 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md) |
 | 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) |
 | 17 · Électricité & Technologies — PTSI / PSI / PT | `Lancer_Electricite.cmd` | [Guide](electricite_technologies/LISEZ_MOI.md) · [Parcours](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) |
+| 18 · Polynômes & Géométrie — maths, volet 09 | `Lancer_Polynomes.cmd` | [Guide](polynomes/LISEZ_MOI.md) · [Parcours](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Errata des formules](polynomes/errata.md) |
+
+## Mathématiques · Atelier 18 · Polynômes & Géométrie
+
+**36 laboratoires interactifs, 72 leçons, 108 exercices corrigés et 36 figures scientifiques**, à partir de **M17, pages 165–172**, de l’**exercice 5 des complexes, p.31**, et de l’**exercice 8 d’arithmétique, p.39**. Chaque TP définit ses objets et notations, donne trois premières manipulations et relie les observations aux identités exactes et aux preuves.
+
+![Polynômes : racines complexes, arithmétique et courbes](polynomes/apercu.png)
+
+- **Fractions et arithmétique :** pôles multiples, Lagrange et Runge, Euclide/Bézout/Gauss, algèbres quotients, Möbius, corps finis, cyclotomie et Bernoulli.
+- **Dix TP de racines complexes :** Cayley, vrais coefficients complexes, Cauchy, Rouché, Gauss–Lucas, réciproque conjugué, Viète/Newton, bassins de convergence et racines proches.
+- **Dix TP multivariés :** degrés et monômes, intersections avec multiplicité, résultants, Gröbner, singularités, points à l’infini, formes quadratiques, Motzkin et optimisation sur un cercle.
+
+[Présentation](polynomes/README.md) · [Recueil et repères](polynomes/MATRICE_PROGRAMME.md) · [18 séances](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Exercices corrigés](polynomes/EXERCICES.md) · [Errata des formules](polynomes/errata.md). Sous Windows : **`Lancer_Polynomes.cmd`**. Python 3.10+, NumPy et SymPy ; serveur local **http://127.0.0.1:8784**, hors ligne après installation.
 
 ## Physique & SI · Atelier 17 · Électricité & Technologies
 

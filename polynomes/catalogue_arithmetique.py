@@ -1,0 +1,35 @@
+"""Dix expériences exactes : divisibilité, arithmétique et sommes."""
+from commun import slider, select, preset, lab
+CATEGORY = 'Arithmétique & Divisibilité'
+LABS = [
+lab('euclide_bezout','Euclide : du reste au certificat de Bézout',CATEGORY,'Suivre chaque division, puis vérifier une identité exacte AU+BV=D.',
+    [select('cas','Polynômes de départ',[('tp','TP : X⁴ et (X−1)(X−2)(X−3)'),('composition','Exercice 1 : reste par composition'),('commun','Deux polynômes avec un facteur commun')],'commun'),slider('translation','Translation de X',-2,2,1,0,integer=True),slider('scale','Coefficient multiplicatif de A',1,4,1,1,integer=True)],
+    [preset('Un facteur quadratique commun',cas='commun',translation=0,scale=1),preset('Le TP de la fiche',cas='tp',translation=0,scale=1),preset('Le reste de l’exercice 1',cas='composition',translation=0,scale=1)]),
+lab('gauss_eisenstein','Gauss : contenu et preuves d’irréductibilité',CATEGORY,'Séparer le contenu entier et le polynôme primitif; comparer des critères qui prouvent réellement l’irréductibilité.',
+    [select('cas','Famille étudiée',[('eisenstein','Eisenstein après translation'),('reduction','X⁴+X+1 : réduction modulo 2'),('sans_racine','X⁴+4 : aucune racine rationnelle')],'eisenstein'),slider('n','Degré n',3,8,1,5,integer=True),select('p','Nombre premier p',[('2','2'),('3','3'),('5','5')],'3'),slider('translation','Translation t',-2,2,1,1,integer=True),slider('content','Contenu entier c',1,6,1,3,integer=True)],
+    [preset('Eisenstein en X−1',cas='eisenstein',n=5,p='3',translation=1,content=3),preset('Certificat dans F₂',cas='reduction',content=2),preset('Pas de racine ne suffit pas',cas='sans_racine',content=1)]),
+lab('inverse_quotient','Inverser dans une algèbre quotient',CATEGORY,'Trouver un inverse par Bézout, ou un diviseur de zéro qui explique son absence.',
+    [select('field','Corps des coefficients',[('Q','Rationnels ℚ'),('2','Corps F₂'),('3','Corps F₃'),('5','Corps F₅')],'Q'),slider('a','Coefficient a de A=X²+aX+b',-2,3,1,1,integer=True),slider('b','Coefficient b de A',-2,3,1,1,integer=True),select('modulus','Polynôme M',[('generic','M=X⁴+X+1'),('split','M=(X²+1)(X²+X+1)')],'generic')],
+    [preset('Inverse rationnel de degré 3',field='Q',a=1,b=1,modulus='generic'),preset('Un diviseur de zéro',field='Q',a=0,b=1,modulus='split'),preset('Calcul exact dans F₂',field='2',a=1,b=0,modulus='generic')]),
+lab('restes_chinois','Restes chinois : recoller deux congruences',CATEGORY,'Construire les idempotents et une solution unique modulo le produit de deux polynômes premiers entre eux.',
+    [select('cas','Modules',[('coprime','X²+1 et X³−X+1'),('compatible','Modules non premiers : restes compatibles'),('incompatible','Modules non premiers : restes incompatibles')],'coprime'),slider('a','Paramètre entier a',-3,3,1,2,integer=True),slider('b','Paramètre entier b',-3,3,1,-1,integer=True)],
+    [preset('Deux conditions indépendantes',cas='coprime',a=2,b=-1),preset('Un facteur commun compatible',cas='compatible'),preset('Une obstruction à expliquer',cas='incompatible')]),
+lab('mobius_diviseurs','Möbius : inverser une somme sur les diviseurs',CATEGORY,'Décomposer une convolution et reconstruire une fonction arithmétique sans approximation.',
+    [slider('n','Entier n',1,120,1,30,integer=True),select('fonction','Fonction g',[('phi','Indicatrice d’Euler φ'),('power','g(n)=nᵏ'),('unit','g(n)=1')],'phi'),slider('k','Exposant k',0,3,1,2,integer=True)],
+    [preset('Retrouver φ(30)',n=30,fonction='phi'),preset('Un entier avec un carré',n=36,fonction='power',k=2),preset('L’unité de convolution',n=1,fonction='unit')]),
+lab('irreductibles_fp','Compter les irréductibles sur Fₚ',CATEGORY,'Passer de pⁿ à un nombre de polynômes grâce à Möbius, puis contrôler les petits cas par une énumération.',
+    [select('p','Nombre premier p',[('2','2'),('3','3'),('5','5')],'2'),slider('n','Degré n',1,8,1,6,integer=True)],
+    [preset('Sixième degré sur F₂',p='2',n=6),preset('Cubiques sur F₃',p='3',n=3),preset('Quadratiques sur F₅',p='5',n=2)]),
+lab('frobenius_fp','Frobenius : factoriser X^(pⁿ)−X',CATEGORY,'Voir pourquoi les facteurs sont simples et pourquoi leurs degrés divisent n.',
+    [select('p','Nombre premier p',[('2','2'),('3','3')],'2'),slider('n','Exposant n',1,4,1,3,integer=True)],
+    [preset('Huit éléments : F₂ et n=3',p='2',n=3),preset('Neuf éléments : F₃ et n=2',p='3',n=2),preset('Degrés 1, 2 et 4',p='2',n=4)]),
+lab('cyclotomie','Cyclotomie : racines de l’unité et Möbius',CATEGORY,'Reconstruire Φₙ par les diviseurs et repérer les racines primitives sur le cercle unité.',
+    [slider('n','Ordre n',2,30,1,12,integer=True)],
+    [preset('Douzièmes racines',n=12),preset('Un ordre premier',n=11),preset('Trois facteurs premiers',n=30)]),
+lab('bernoulli_faulhaber','Bernoulli : transformer une somme en polynôme',CATEGORY,'Utiliser une différence finie qui télescope pour calculer exactement les sommes de puissances.',
+    [slider('power','Puissance p',1,9,1,4,integer=True),slider('N','Dernier entier N',1,30,1,10,integer=True),slider('shift','Translation a dans Bₚ₊₁(X+a)',0,2,.25,0)],
+    [preset('Somme des quatrièmes puissances',power=4,N=10,shift=0),preset('Somme des cubes',power=3,N=20,shift=0),preset('Comparer des polynômes translatés',power=7,N=8,shift=.5)]),
+lab('euler_maclaurin','Euler–Maclaurin : corriger une intégrale',CATEGORY,'Comparer une somme, son intégrale et les corrections successives; distinguer amélioration et borne garantie.',
+    [select('fonction','Fonction f',[('inverse','f(x)=1/x'),('exponential','f(x)=exp(−x/3)'),('polynomial','f(x)=xᵈ')],'inverse'),slider('N','Borne entière N',2,30,1,12,integer=True),slider('order','Nombre k de corrections',0,4,1,2,integer=True),slider('degree','Degré d pour xᵈ',2,9,1,6,integer=True)],
+    [preset('Somme harmonique',fonction='inverse',N=12,order=2),preset('Une somme polynomiale exacte',fonction='polynomial',N=8,degree=6,order=3),preset('Décroissance exponentielle',fonction='exponential',N=20,order=2)])
+]
