@@ -18,3 +18,7 @@ Commencer par **Explorer les définitions** : comparer les normes puis tester un
 Les expériences, les cours et les figures fonctionnent hors ligne une fois NumPy installé. Matplotlib est un complément facultatif pour régénérer les illustrations ; il n’est pas nécessaire à l’utilisation du laboratoire.
 
 [Parcours et missions](PARCOURS.md) · [Cours](COURS.md) · [Exercices](EXERCICES.md) · [Présentation complète](README.md).
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

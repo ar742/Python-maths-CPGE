@@ -22,3 +22,7 @@ python series_transformees_signal.py --port 8781
 Choisir un laboratoire, lire **But du TP et lien avec le cours**, essayer les trois premières manipulations et confronter la conjecture aux démonstrations. Les préréglages montrent des cas contrastés ; les curseurs changent les paramètres et recalculent les résultats. **Cours & exercices** donne les corrections guidées ; **Exporter les résultats JSON** conserve les calculs affichés.
 
 [Programme complet](README.md) · [Missions](PARCOURS.md).
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

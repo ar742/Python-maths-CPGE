@@ -11,33 +11,50 @@ Les notations et, en physique, les unités sont expliquées avant les calculs.
 
 Ce dépôt complète les ateliers de physique de
 [Symfony-Physique-objets](https://github.com/ar742/Symfony-Physique-objets).
-Dix-huit ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
+Dix-neuf ateliers sont disponibles : **Rubik & Groupes**, **Optimisation & Distances**,
 **Probabilités & Expériences**, **Calcul différentiel & Transformations**,
 **Physique quantique & Qubits**, **Physique statistique & Équilibres**,
-**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques), **Chaleur & Transferts — Thermodynamique**, **Électricité & Technologies — PTSI / PSI / PT** et **Polynômes & Géométrie** (neuvième volet de mathématiques). Ils relient groupes,
+**Algèbre & Réductions** (cinquième volet de mathématiques), **Fluides & Ondes**, **Champs & Matière — Électromagnétisme**, **Lumière & Images — Optique**, **Liaisons & Synthèses — Chimie organique**, **Séries & Signaux** (sixième volet de mathématiques), **Topologie & Ensembles** (septième volet de mathématiques), **Mécanique & Mouvements**, **Fonctions & Équations** (huitième volet de mathématiques), **Chaleur & Transferts — Thermodynamique**, **Électricité & Technologies — PTSI / PSI / PT**, **Polynômes & Géométrie** (neuvième volet de mathématiques) et **Chimie pour l’industrie**. Ils relient groupes,
 extrema, modèles aléatoires, espaces tangents, ondes, états thermiques et structures
 matricielles, écoulements, acoustique, champs, conversion électromagnétique, instruments, formation des images, structure moléculaire, stratégies de synthèse, séries, transformées, analyse du signal, voisinages, compacité, connexité, orbites, oscillations non linéaires et mouvements des solides.
 
+**Les neuf ateliers de maths disposent d’un parcours progressif sup / spé**, distinguant techniques incontournables, approfondissements et pistes au-delà. [Choisir son parcours](PARCOURS_MATHS_CPGE.md).
+
 | Atelier | Lancement Windows | Programme et parcours |
 | --- | --- | --- |
-| 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Premier parcours](PREMIER-PARCOURS.md) · [TP guidés](rubik_groupes/PARCOURS.md) · [Cours](rubik_groupes/COURS.md) |
-| 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md) |
-| 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md) |
-| 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md) |
+| 01 · Rubik & Groupes | `Lancer_Rubik.cmd` | [Guide](rubik_groupes/LISEZ_MOI.md) · [Premier parcours](PREMIER-PARCOURS.md) · [TP guidés](rubik_groupes/PARCOURS.md) · [Cours](rubik_groupes/COURS.md)  · [Sup / spé](rubik_groupes/PARCOURS_PROGRESSIF.md) |
+| 02 · Optimisation & Distances | `Lancer_Optimisation.cmd` | [Guide](optimisation_distances/LISEZ_MOI.md) · [Parcours](optimisation_distances/PARCOURS.md) · [Cours](optimisation_distances/COURS.md)  · [Sup / spé](optimisation_distances/PARCOURS_PROGRESSIF.md) |
+| 03 · Probabilités & Expériences | `Lancer_Probabilites.cmd` | [Guide](probabilites_cpge/LISEZ_MOI.md) · [Parcours](probabilites_cpge/PARCOURS.md) · [Cours](probabilites_cpge/COURS.md)  · [Sup / spé](probabilites_cpge/PARCOURS_PROGRESSIF.md) |
+| 04 · Calcul différentiel & Transformations | `Lancer_Calcul_Differentiel.cmd` | [Guide](calcul_differentiel/LISEZ_MOI.md) · [Parcours](calcul_differentiel/PARCOURS.md) · [Cours](calcul_differentiel/COURS.md)  · [Sup / spé](calcul_differentiel/PARCOURS_PROGRESSIF.md) |
 | 05 · Physique quantique & Qubits | `Lancer_Physique_Quantique.cmd` | [Guide](physique_quantique/LISEZ_MOI.md) · [Parcours](physique_quantique/PARCOURS.md) · [Cours](physique_quantique/COURS.md) |
 | 06 · Physique statistique & Équilibres | `Lancer_Physique_Statistique.cmd` | [Guide](physique_statistique/LISEZ_MOI.md) · [Parcours](physique_statistique/PARCOURS.md) · [Cours](physique_statistique/COURS.md) |
-| 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md) |
+| 07 · Algèbre & Réductions — maths, volet 05 | `Lancer_Algebre_Lineaire.cmd` | [Guide](algebre_lineaire/LISEZ_MOI.md) · [Parcours](algebre_lineaire/PARCOURS.md) · [Cours](algebre_lineaire/COURS.md)  · [Sup / spé](algebre_lineaire/PARCOURS_PROGRESSIF.md) |
 | 08 · Fluides & Ondes | `Lancer_Mecanique_Fluides.cmd` | [Guide](mecanique_fluides/LISEZ_MOI.md) · [Parcours](mecanique_fluides/PARCOURS.md) · [Cours](mecanique_fluides/COURS.md) |
 | 09 · Champs & Matière — Électromagnétisme | `Lancer_Electromagnetisme.cmd` | [Guide](electromagnetisme/LISEZ_MOI.md) · [Parcours](electromagnetisme/PARCOURS.md) · [Cours](electromagnetisme/COURS.md) |
 | 10 · Lumière & Images — Optique | `Lancer_Optique.cmd` | [Guide](optique/LISEZ_MOI.md) · [Parcours](optique/PARCOURS.md) · [Cours](optique/COURS.md) |
 | 11 · Liaisons & Synthèses — Chimie organique | `Lancer_Chimie_Organique.cmd` | [Guide](chimie_organique/LISEZ_MOI.md) · [Réactions du recueil](chimie_organique/REACTIONS_DU_RECUEIL.md) · [Parcours](chimie_organique/PARCOURS_REACTIONS.md) |
-| 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md) |
-| 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md) |
+| 12 · Séries & Signaux — maths, volet 06 | `Lancer_Series_Signaux.cmd` | [Guide](series_transformees_signal/LISEZ_MOI.md) · [Parcours](series_transformees_signal/PARCOURS.md) · [Cours](series_transformees_signal/COURS.md)  · [Sup / spé](series_transformees_signal/PARCOURS_PROGRESSIF.md) |
+| 13 · Topologie & Ensembles — maths, volet 07 | `Lancer_Topologie.cmd` | [Guide](topologie_ensembles/LISEZ_MOI.md) · [Parcours](topologie_ensembles/PARCOURS.md) · [Cours](topologie_ensembles/COURS.md)  · [Sup / spé](topologie_ensembles/PARCOURS_PROGRESSIF.md) |
 | 14 · Mécanique & Mouvements | `Lancer_Mecanique.cmd` | [Guide](mecanique_classique/LISEZ_MOI.md) · [Parcours](mecanique_classique/PARCOURS.md) · [Cours](mecanique_classique/COURS.md) |
-| 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md) |
+| 15 · Fonctions & Équations — maths, volet 08 | `Lancer_Analyse_Fonctions.cmd` | [Guide](analyse_fonctions/LISEZ_MOI.md) · [Parcours](analyse_fonctions/PARCOURS.md) · [Cours](analyse_fonctions/COURS.md)  · [Sup / spé](analyse_fonctions/PARCOURS_PROGRESSIF.md) |
 | 16 · Chaleur & Transferts — Thermodynamique | `Lancer_Thermodynamique.cmd` | [Guide](thermodynamique/LISEZ_MOI.md) · [Parcours](thermodynamique/PARCOURS.md) · [Cours](thermodynamique/COURS.md) |
 | 17 · Électricité & Technologies — PTSI / PSI / PT | `Lancer_Electricite.cmd` | [Guide](electricite_technologies/LISEZ_MOI.md) · [Parcours](electricite_technologies/PARCOURS.md) · [Cours](electricite_technologies/COURS.md) |
-| 18 · Polynômes & Géométrie — maths, volet 09 | `Lancer_Polynomes.cmd` | [Guide](polynomes/LISEZ_MOI.md) · [Parcours](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Errata des formules](polynomes/errata.md) |
+| 18 · Polynômes & Géométrie — maths, volet 09 | `Lancer_Polynomes.cmd` | [Guide](polynomes/LISEZ_MOI.md) · [Parcours](polynomes/PARCOURS.md) · [Cours](polynomes/COURS.md) · [Errata des formules](polynomes/errata.md)  · [Sup / spé](polynomes/PARCOURS_PROGRESSIF.md) |
+| 19 · Chimie pour l’industrie | `Lancer_Chimie_Industrie.cmd` | [Guide](chimie_industrielle/LISEZ_MOI.md) · [12 séances](chimie_industrielle/PARCOURS.md) · [Cours](chimie_industrielle/COURS.md) |
+
+## Chimie · Atelier 19 · Chimie pour l’industrie
+
+**24 laboratoires, 48 leçons, 72 TD corrigés et 24 figures scientifiques**, à partir des fiches **C6–C8, pages 545–570**, avec des applications industrielles, techniques et de recherche.
+
+![Chimie pour l’industrie : bilans, réacteurs et cellules](chimie_industrielle/apercu.png)
+
+- **Thermochimie :** Hess, récupération de chaleur, ammoniac, CO₂ vers méthanol, zinc, ciment, distillation et solidification.
+- **Cinétique :** horloge iodée, Arrhénius, cuve/piston, sélectivité, surfaces, AEQS, équilibre thermique et diffusion dans un grain.
+- **Électrochimie :** électrolyse H₂, piles et batteries, corrosion, dépôts, complexation et dosage.
+
+Chaque expérience explique ses variables et ses unités, donne trois gestes et contrôle un bilan. Les données mesurées et les paramètres pédagogiques sont distingués. Sous Windows : **`Lancer_Chimie_Industrie.cmd`** ; adresse locale **http://127.0.0.1:8786**.
+
+[Présentation](chimie_industrielle/README.md) · [12 séances](chimie_industrielle/PARCOURS.md) · [Cours](chimie_industrielle/COURS.md) · [TD](chimie_industrielle/EXERCICES.md) · [Applications et références](chimie_industrielle/APPLICATIONS_INDUSTRIELLES.md).
 
 ## Mathématiques · Atelier 18 · Polynômes & Géométrie
 

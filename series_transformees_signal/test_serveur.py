@@ -47,6 +47,36 @@ class ServeurTests(unittest.TestCase):
     def authorized(self):
         return {'X-CPGE-Token': self.bootstrap()['token'], 'Origin': self.base}
 
+    def test_progression_has_valid_destinations_and_distinct_levels(self):
+        data=self.bootstrap()
+        progression=data['progression']
+        links={link['id']:link for link in data['progression_links']}
+        self.assertEqual(set(links),set(data['lab_guides']))
+        statuses=set();sessions=set();covered=set()
+        for stage in progression['stages']:
+            for session in stage['sessions']:
+                self.assertNotIn(session['id'],sessions);sessions.add(session['id'])
+                statuses.add(session['status'])
+                self.assertTrue(session['objective'] and session['task'] and session['success'] and session['limits'])
+                self.assertTrue(session['labs'])
+                for lab in session['labs']:
+                    self.assertIn(lab,links);covered.add(lab)
+                    self.assertEqual(links[lab]['href'],'/?tp='+lab)
+        self.assertEqual(statuses,{'socle','approfondissement','prolongement'})
+        self.assertEqual(covered,set(links))
+        json.dumps(progression,allow_nan=False)
+
+    def test_progression_routes_and_direct_lab_entry_preserve_security_headers(self):
+        for path in ['/parcours','/parcours.html','/parcours.js','/parcours.css','/?tp=unknown&seance=sup']:
+            status,body,headers=self.request("GET",path)
+            self.assertEqual(status,200)
+            self.assertIn("script-src 'self'",headers["Content-Security-Policy"])
+            self.assertGreater(len(body),100)
+
+    def test_progression_python_source_is_not_exposed(self):
+        status,_,_=self.request("GET","/parcours_progressif.py")
+        self.assertEqual(status,404)
+
     def test_pedagogical_content_and_links_to_experiences(self):
         data = self.bootstrap()
         self.assertEqual(data['application'], 'series_transformees_signal')

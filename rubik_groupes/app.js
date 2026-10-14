@@ -350,7 +350,19 @@ async function initialize() {
   $("#cube-stage").onpointerdown=e=>{drag=[e.clientX,e.clientY,yaw,pitch];$("#cube-stage").setPointerCapture(e.pointerId);};
   $("#cube-stage").onpointermove=e=>{if(!drag)return;yaw=drag[2]+(e.clientX-drag[0])*.009;pitch=Math.max(-1.35,Math.min(1.35,drag[3]+(e.clientY-drag[1])*.007));drawCube();};
   $("#cube-stage").onpointerup=()=>drag=null;$("#cube-stage").onpointercancel=()=>drag=null;
-  setRoute('cours');updateState();
+  openProgressionTarget(new URLSearchParams(location.search));updateState();
 }
 
 initialize().catch(error=>{$("#content").innerHTML=`<section class="section-card card"><h2>Connexion au programme Python</h2><p>${esc(error.message)}</p><p>Relancez le fichier Lancer_Rubik.cmd puis ouvrez l'adresse affichée.</p></section>`;});
+
+// La navigation seule ne modifie ni le cube ni son historique sauvegardé.
+function openProgressionTarget(query){
+  const target=query.get('tp'),index=boot.lessons.findIndex(lesson=>lesson.id===target);
+  if(target==='invariants'){setRoute('resolution');const section=document.querySelectorAll('#content .section-card')[1];if(section)section.scrollIntoView({block:'start'});}
+  else if(index>=0){lessonIndex=index;setRoute('cours');}
+  else if(target==='analyse'||target==='compare'){setRoute('labo');const heading=document.querySelectorAll('#content .section-card')[target==='compare'?1:0];if(heading)heading.scrollIntoView({block:'start'});}
+  else if(target==='resolution'){setRoute('resolution');}
+  else setRoute('cours');
+  const id=query.get('seance'),link=document.getElementById('retour-parcours');
+  if(link&&boot.progression.stages.some(stage=>stage.sessions.some(session=>session.id===id))){link.href='/parcours#'+encodeURIComponent(id);link.hidden=false;}
+}

@@ -76,3 +76,7 @@ python topologie_ensembles.py --export-illustrations
 ```
 
 Les fichiers `catalogue_*.py` définissent les expériences, `modeles_*.py` leurs calculs, `cours.py` les leçons et exercices et `reperes.py` leurs introductions. `exporter_cours.py` régénère les deux recueils Markdown. Le PDF source n’est pas distribué dans le dépôt.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

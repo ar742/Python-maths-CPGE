@@ -108,3 +108,7 @@ Les sources primaires figurent dans [le cours](COURS.md). Le PDF personnel n’e
 | [cours.py](cours.py) | Définitions, exemples résolus et exercices corrigés. |
 | [reperes.py](reperes.py) | Buts des TP, techniques du cours, progression sup/spé/au-delà et premiers gestes. |
 | [algebre_lineaire.py](algebre_lineaire.py) | Serveur local et lancement. |
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

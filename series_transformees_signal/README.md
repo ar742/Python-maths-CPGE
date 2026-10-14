@@ -77,3 +77,7 @@ python series_transformees_signal.py --export-illustrations
 ```
 
 Les fichiers `catalogue_*.py` définissent les expériences ; `modeles_*.py` portent les calculs, `cours.py` les démonstrations et exercices, `reperes.py` les introductions guidées. Aucune copie du PDF source n’est distribuée.
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

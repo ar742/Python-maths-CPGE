@@ -60,3 +60,7 @@ python -X utf8 -m unittest discover -v
 Source principale : extrait du recueil de A. R., **p.48, 52 et 56–72**, fonctions et fiches M5–M6. Les numéros sont les pages imprimées ; le PDF personnel n’est pas redistribué. L’errata autorisé porte uniquement sur des formules vérifiées dans le contexte des pages.
 
 Repères : [programme MPSI](https://prepas.org/ups.php?document=69), [programme MP](https://prepas.org/ups.php?document=85), [NIST DLMF : gamma et bêta](https://dlmf.nist.gov/5), [zêta](https://dlmf.nist.gov/25) et [polynômes orthogonaux](https://dlmf.nist.gov/18).
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

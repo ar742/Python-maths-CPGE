@@ -84,3 +84,9 @@ Les martingales, les intervalles statistiques et les matrices aléatoires sont d
 signalées ; les adapter à la filière suivie. Les simulations ne remplacent pas les démonstrations.
 
 [Revenir aux trois volets](../README.md)
+
+## Parcours progressif sup / spé
+
+Ouvrir **« Parcours sup / spé »** dans l’atelier pour suivre les séances prioritaires, puis choisir les approfondissements et les prolongements au-delà du programme. Chaque séance précise le but, le travail attendu, les limites et les TP associés. Un lien permet de revenir à la séance depuis le TP.
+
+Le [parcours autonome](PARCOURS_PROGRESSIF.md) contient les mêmes indications. Les repères sont ceux de MPSI / MP ; le socle porte sur les techniques, sans rendre obligatoire tout le contenu d’un laboratoire.

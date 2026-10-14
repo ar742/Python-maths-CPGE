@@ -14,6 +14,7 @@ import webbrowser
 
 from mathematiques import calculate
 from reperes import LAB_GUIDES
+from parcours_progressif import PROGRESSION, LAB_LINKS
 from cours import LESSONS, EXERCISES, SOURCES
 
 ROOT = Path(__file__).resolve().parent
@@ -60,10 +61,14 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/bootstrap":
             self.send({"application": "calcul-differentiel", "token": self.server.api_token,
-                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES, "guides": LAB_GUIDES})
+                       "lessons": LESSONS, "exercises": EXERCISES, "sources": SOURCES, "guides": LAB_GUIDES, "progression": PROGRESSION, "progression_links": LAB_LINKS})
             return
         files = {"/": ("index.html", "text/html; charset=utf-8"),
                  "/index.html": ("index.html", "text/html; charset=utf-8"),
+                 "/parcours": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.html": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.js": ("parcours.js", "text/javascript; charset=utf-8"),
+                 "/parcours.css": ("parcours.css", "text/css; charset=utf-8"),
                  "/style.css": ("style.css", "text/css; charset=utf-8"),
                  "/app.js": ("app.js", "text/javascript; charset=utf-8"),
                  "/favicon.svg": ("favicon.svg", "image/svg+xml")}

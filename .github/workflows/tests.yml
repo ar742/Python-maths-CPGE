@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Tests du moteur et du serveur local
-        run: python -X utf8 -m unittest -v test_cube
+        run: python -X utf8 -m unittest -v test_cube test_parcours_progressif
   optimisation:
     name: Optimisation — ${{ matrix.os }} — Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
@@ -53,7 +53,7 @@ jobs:
       - name: Installer NumPy
         run: python -m pip install -r requirements.txt
       - name: Tests des extrema et du serveur local
-        run: python -X utf8 -m unittest -v test_mathematiques
+        run: python -X utf8 -m unittest -v test_mathematiques test_parcours_progressif
   probabilites:
     name: Probabilités — ${{ matrix.os }} — Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
@@ -75,7 +75,7 @@ jobs:
       - name: Installer NumPy
         run: python -m pip install -r requirements.txt
       - name: Tests des lois, des moments et du serveur local
-        run: python -X utf8 -m unittest -v test_mathematiques
+        run: python -X utf8 -m unittest -v test_mathematiques test_parcours_progressif
   differentiel:
     name: Calcul différentiel — ${{ matrix.os }} — Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
@@ -97,7 +97,7 @@ jobs:
       - name: Installer NumPy et le complément SymPy
         run: python -m pip install -r requirements.txt -r requirements-symbolique.txt
       - name: Tests des différentielles, intégrales, groupes et serveur
-        run: python -X utf8 -m unittest -v test_mathematiques
+        run: python -X utf8 -m unittest -v test_mathematiques test_parcours_progressif
       - name: Vérifier le TP symbolique
         run: python -X utf8 tp_symbolique.py
   quantique:
@@ -418,4 +418,27 @@ jobs:
       - name: Installer NumPy et SymPy
         run: python -m pip install -r requirements.txt
       - name: Tests des fractions, arithmetique, racines, geometrie et serveur
+        run: python -X utf8 -m unittest discover -v
+
+  chimie_industrielle:
+    name: Chimie industrie — ${{ matrix.os }} — Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    defaults:
+      run:
+        working-directory: chimie_industrielle
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer NumPy et SymPy
+        run: python -m pip install -r requirements.txt
+      - name: Tests des bilans, procédés, cinétique, redox, contenus et serveur
         run: python -X utf8 -m unittest discover -v

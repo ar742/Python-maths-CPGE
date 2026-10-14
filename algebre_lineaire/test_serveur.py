@@ -26,6 +26,40 @@ class ServerTests(unittest.TestCase):
         h={"Content-Type":"application/json","X-Algebre-Token":self.server.api_token};h.update(headers or {})
         return urlopen(Request(self.url+path,data=payload,headers=h),timeout=10)
 
+    def test_progression_has_valid_destinations_and_distinct_levels(self):
+        with self.request("/api/bootstrap") as response:
+            data=json.load(response)
+        progression=data['progression']
+        links={link['id']:link for link in data['progression_links']}
+        self.assertEqual(set(links),set(data['lab_guides']))
+        statuses=set();sessions=set();covered=set()
+        for stage in progression['stages']:
+            for session in stage['sessions']:
+                self.assertNotIn(session['id'],sessions);sessions.add(session['id'])
+                statuses.add(session['status'])
+                self.assertTrue(session['objective'] and session['task'] and session['success'] and session['limits'])
+                self.assertTrue(session['labs'])
+                for lab in session['labs']:
+                    self.assertIn(lab,links);covered.add(lab)
+                    self.assertEqual(links[lab]['href'],'/?tp='+lab)
+        self.assertEqual(statuses,{'socle','approfondissement','prolongement'})
+        self.assertEqual(covered,set(links))
+        json.dumps(progression,allow_nan=False)
+
+    def test_progression_routes_and_direct_lab_entry_preserve_security_headers(self):
+        for path in ['/parcours','/parcours.html','/parcours.js','/parcours.css','/?tp=unknown&seance=sup']:
+            with self.request(path) as response:
+                body=response.read()
+                self.assertEqual(response.status,200)
+                self.assertIn("script-src 'self'",response.headers["Content-Security-Policy"])
+            self.assertGreater(len(body),100)
+
+    def test_progression_python_source_is_not_exposed(self):
+        with self.assertRaises(HTTPError) as caught:
+            self.request("/parcours_progressif.py")
+        self.assertEqual(caught.exception.code,404)
+        caught.exception.close()
+
     def test_bootstrap(self):
         with self.request("/api/bootstrap") as r:data=json.load(r)
         self.assertEqual(data["application"],"algebre-lineaire")

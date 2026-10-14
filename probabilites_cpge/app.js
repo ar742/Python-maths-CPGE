@@ -115,5 +115,7 @@ $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>document.querySelectorAll('canvas').forEach(c=>draw(c,c._data)),100);});
 (async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();guides=bootstrap.guides;token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;
  const names={polarisation:'6 · Polarisation',extremes:'7 · Extrêmes',arcsinus:'8 · Arcsinus',wigner:'8 · Wigner',urne:'Urnes & dépendance',fluctuations:'Fréquences & fluctuations',course:'Cours & exercices'};
- for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);showLab('polarisation');
+ for(const [id,name]of Object.entries(names)){const b=elem('button',name);b.dataset.lab=id;b.onclick=()=>id==='course'?showCourse():showLab(id);$('tabs').append(b);}prepareCourse(bootstrap.sources);const query=new URLSearchParams(location.search),target=query.get('tp');showLab(Object.hasOwn(labs,target)?target:'polarisation');setProgressionReturn(query.get('seance'),bootstrap.progression);
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();
+
+function setProgressionReturn(id,progression){const link=document.getElementById('retour-parcours');if(link&&progression.stages.some(stage=>stage.sessions.some(session=>session.id===id))){link.href='/parcours#'+encodeURIComponent(id);link.hidden=false;}}

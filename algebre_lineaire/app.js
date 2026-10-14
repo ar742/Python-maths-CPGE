@@ -115,7 +115,7 @@ $('export').onclick=()=>{if(!latest)return;const a=elem('a');a.href='/api/export
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{document.querySelectorAll('canvas').forEach(c=>c._scene?drawScene(c):c._data?draw(c,c._data):null);drawHero();document.querySelectorAll('.mini-figure').forEach(c=>drawMini(c));},100);});
 (async()=>{try{const r=await fetch('/api/bootstrap');if(!r.ok)throw Error('Le serveur Python ne répond pas.');const bootstrap=await r.json();token=bootstrap.token;lessons=bootstrap.lessons;exercises=bootstrap.exercises;labGuides=bootstrap.lab_guides||{};
  $('course-count').textContent=lessons.length+' LEÇONS · MÉTHODES ET PREUVES';$('exercise-count').textContent=exercises.length+' exercices, avec corrections guidées';
- prepareNavigation();prepareCourse(bootstrap.sources);prepareHome();drawHero();const target=location.hash.slice(1);if(target==='course')showCourse(0);else if(labs[target])showLab(target);else showHome();
+ prepareNavigation();prepareCourse(bootstrap.sources);prepareHome();drawHero();const target=new URLSearchParams(location.search).get('tp')||location.hash.slice(1);if(target==='course')showCourse(0);else if(Object.prototype.hasOwnProperty.call(labs,target))showLab(target);else showHome();
 }catch(e){$('error').hidden=false;$('error').textContent=e.message;$('status').textContent='Lancez le programme Python pour ouvrir l’atelier.';}})();
 
 
@@ -159,3 +159,7 @@ function renderLessonExtras(l,target){
 function renderWorkedExample(l,target){
  if(l.worked_example){const w=l.worked_example,box=elem('section',undefined,'worked-example');box.append(elem('span','EXEMPLE RÉSOLU','eyebrow'),elem('h3',w.title),elem('p',w.setup));const ol=elem('ol');for(const step of w.steps||[])ol.append(elem('li',step));box.append(ol,elem('p',w.conclusion,'worked-conclusion'));target.append(box);}if(l.questions?.length){const box=elem('section',undefined,'lesson-questions');box.append(elem('h3','Vérifier sa compréhension'));const ol=elem('ol');for(const q of l.questions)ol.append(elem('li',q));box.append(ol);target.append(box);}
 }
+
+// Le retour utilise uniquement une ancre de séance, sans modifier les paramètres du TP.
+const parcoursSession=new URLSearchParams(location.search).get('seance');
+if(parcoursSession&&/^[a-z0-9_]+$/.test(parcoursSession)){const back=document.getElementById('progression-return');back.hidden=false;back.querySelector('a').href='/parcours#'+encodeURIComponent(parcoursSession);}

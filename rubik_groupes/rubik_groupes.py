@@ -19,6 +19,7 @@ import webbrowser
 
 import cube
 from reperes import LAB_GUIDES
+from parcours_progressif import PROGRESSION, LAB_LINKS
 from cours import EXERCISES, LESSONS, PRESETS, SOURCES
 
 ROOT = Path(__file__).resolve().parent
@@ -147,7 +148,7 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path == "/api/bootstrap":
             self.send({"token": self.server.api_token, "lessons": LESSONS, "exercises": EXERCISES,
-                       "presets": PRESETS, "sources": SOURCES, "guides": LAB_GUIDES, "identity": cube.info(cube.IDENTITY),
+                       "presets": PRESETS, "sources": SOURCES, "guides": LAB_GUIDES, "progression": PROGRESSION, "progression_links": LAB_LINKS, "identity": cube.info(cube.IDENTITY),
                        "geometry": cube.GEOMETRY, "faces": cube.FACES, "colors": cube.COLORS,
                        "corners": cube.CORNER_NAMES, "edges": cube.EDGE_NAMES,
                        "group_size": str(cube.GROUP_SIZE),
@@ -155,6 +156,10 @@ class Handler(BaseHTTPRequestHandler):
             return
         resources = {"/": ("index.html", "text/html; charset=utf-8"),
                      "/index.html": ("index.html", "text/html; charset=utf-8"),
+                 "/parcours": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.html": ("parcours.html", "text/html; charset=utf-8"),
+                 "/parcours.js": ("parcours.js", "text/javascript; charset=utf-8"),
+                 "/parcours.css": ("parcours.css", "text/css; charset=utf-8"),
                      "/style.css": ("style.css", "text/css; charset=utf-8"),
                      "/app.js": ("app.js", "text/javascript; charset=utf-8"),
                      "/favicon.svg": ("favicon.svg", "image/svg+xml")}

@@ -29,6 +29,8 @@ def markdown(html):
     return re.sub(r'\n{3,}','\n\n',''.join(parser.output)).strip()
 
 def export(destination):
+    from export_progression import export as export_progression
+    export_progression()
     destination=Path(destination)
     text='# Topologie & Ensembles · Cours et démonstrations\n\n60 leçons originales, avec variables, hypothèses, preuves et applications. [Laboratoires et lancement](README.md).\n\n'
     text+='\n\n'.join(f"## {l['title']}\n\n**{l['level']} · TP : {l['lab']}**\n\n{markdown(l['html'])}" for l in LESSONS)

@@ -38,3 +38,7 @@ python algebre_lineaire.py --port 8773
 Le terminal indique l’adresse à ouvrir. `--no-browser` permet de lancer le serveur sans ouvrir automatiquement le navigateur. Ouvrir `index.html` seul ne lance pas les calculs.
 
 [Présentation](README.md) · [Cours autonome](COURS.md) · [Galerie scientifique](illustrations/README.md)
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

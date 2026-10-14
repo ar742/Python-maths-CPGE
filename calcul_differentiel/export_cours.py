@@ -60,5 +60,7 @@ def export_parcours(path=None):
 
 
 if __name__ == '__main__':
+    from export_progression import export as export_progression
+    export_progression()
     print(export())
     print(export_parcours())

@@ -42,6 +42,8 @@ def worked_block(example):
 
 
 def export(path=None):
+    from export_progression import export as export_progression
+    export_progression()
     path = Path(path) if path else Path(__file__).with_name('COURS.md')
     parts = ['# Algèbre & Réductions — cours et exercices\n',
              'Maths, volet 05 · Atelier 07 de Python-maths-CPGE. Dix-sept laboratoires : structures, réduction, représentations, oscillateurs, probabilités et réseaux.\n',

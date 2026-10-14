@@ -39,3 +39,6 @@ textarea:focus-visible,select:focus-visible{outline:3px solid var(--gold);outlin
 .guide-note{font-size:11px;line-height:1.65;color:var(--muted);margin:11px 0 18px}.guide-lessons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.guide-lessons>span{font-size:12px;line-height:1.6;margin-right:5px}.guide-lessons button{font-size:11px;padding:7px 10px;max-width:100%;text-align:left;white-space:normal}
 .guide-start{border-top:1px solid var(--line);padding-top:14px;margin-top:17px}.guide-start summary{font-size:13px;color:var(--green)}.guide-start ol{padding-left:22px;margin:15px 0 0}.guide-start li{font-size:13px;line-height:1.75;margin:8px 0}
 @media(max-width:780px){.lab-guide{padding:21px 19px}.guide-levels{grid-template-columns:1fr}.guide-tools ul{display:block}.guide-tools li{margin:8px 0}.guide-purpose{font-size:14px}.guide-lessons{align-items:flex-start}.guide-lessons>span{width:100%}}
+
+/* Navigation du parcours : même priorité visuelle que le cours. */
+.progression-access{margin:.6rem 0}.progression-access a,a.progression-access,.progression-return a{display:inline-block;border:1px solid #b9c9de;border-radius:10px;padding:.65rem 1rem;background:#f7f9fc;color:#20395b;font-weight:700;text-decoration:none}.progression-return{margin:.6rem 0 1rem}.progression-return a:hover,.progression-access a:hover,a.progression-access:hover{background:#e8eff8}

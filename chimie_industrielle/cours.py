@@ -1,0 +1,14 @@
+"""Leçons et exercices reliés aux trois fiches sources et aux procédés."""
+from contenu_thermo import LESSONS as LT,EXERCISES as ET
+from contenu_cinetique import LESSONS as LC,EXERCISES as EC
+from contenu_redox import LESSONS as LR,EXERCISES as ER
+LESSONS=LT+LC+LR
+EXERCISES=ET+EC+ER
+SOURCES=[
+'<b>Recueil de A. R.</b> : C6, p.545–550 (cinétique et éthanal), C7, p.551–561 (électrochimie), C8, p.562–570 (thermochimie, zinc et phases). Les six seuils de l’horloge viennent du TP p.546. Les figures de l’atelier sont calculées à partir des modèles.',
+'<b>Repères de programme :</b> les bilans, les unités, les lois de vitesse et Nernst sont réinvestis en sup. Équilibres thermochimiques, réacteurs continus et courbes courant–potentiel structurent la progression de spé selon la filière. <a href="https://cache.media.education.gouv.fr/file/SPE1-MEN-MESRI-4-2-2021/65/0/spe780_annexe_1373650.pdf" target="_blank" rel="noopener">Programme PCSI</a> · <a href="https://cache.media.education.gouv.fr/file/31/23/0/ensecsup703_annexes_1417230.pdf" target="_blank" rel="noopener">Programme PC</a>.',
+'<b>Industrie et recherche :</b> <a href="https://www.iea.org/reports/ammonia-technology-roadmap" target="_blank" rel="noopener">IEA, ammoniac</a> · <a href="https://www.iea.org/reports/global-hydrogen-review-2025" target="_blank" rel="noopener">IEA, hydrogène 2025</a> · <a href="https://www.iea.org/energy-system/industry/cement" target="_blank" rel="noopener">IEA, ciment</a>. Ces références situent les applications; les modèles ne reproduisent pas les performances d’une installation.',
+'<b>Catalyse et conversion :</b> <a href="https://www.energy.gov/science/doe-explainscatalysts" target="_blank" rel="noopener">DOE, catalyse</a> · <a href="https://www.energy.gov/hgeo/catalytic-conversion-pathway" target="_blank" rel="noopener">DOE, valorisation catalytique du CO₂</a> · <a href="https://www.energy.gov/cmei/ito/articles/partnerships-driving-innovation-chemical-manufacturing" target="_blank" rel="noopener">DOE, cinétique et procédés</a>.',
+'<b>Énergie et électrochimie :</b> <a href="https://www.energy.gov/cmei/fuels/articles/doe-releases-assessment-electrolysis-technology-highlighting-pathways-cut-cost" target="_blank" rel="noopener">DOE, électrolyse</a> · <a href="https://www.energy.gov/eere/fuelcells/articles/fuel-cell-101" target="_blank" rel="noopener">DOE, piles à combustible</a> · <a href="https://www.hse.gov.uk/pubns/indg254.htm" target="_blank" rel="noopener">HSE, bilans et emballement thermique</a>.',
+'<b>Données et limites :</b> <a href="https://webbook.nist.gov/chemistry/" target="_blank" rel="noopener">NIST Chemistry WebBook</a>. Les états physiques et températures de référence sont précisés dans le TP. Les paramètres cinétiques, les courbes de polarisation et le diagramme d’alliage sont didactiques. Aucune analyse complète du cycle de vie n’est déduite d’un seul bilan de réaction.'
+]

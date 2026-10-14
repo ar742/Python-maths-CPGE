@@ -18,3 +18,7 @@ Commencer par **Frullani**, **Euler / RK4** ou **Faà di Bruno**. Lire les objec
 Mettre le dessin en pause, déplacer le curseur ou survoler une courbe pour lire les valeurs. Le curseur de lecture ne représente pas un temps physique ; les axes précisent les variables. « Exporter les résultats » télécharge les paramètres, données et hypothèses au format JSON.
 
 [Quatorze séances](PARCOURS.md) · [Cours](COURS.md) · [Exercices](EXERCICES.md) · [Présentation complète](README.md).
+
+## Parcours progressif sup / spé
+
+[Lire le parcours](PARCOURS_PROGRESSIF.md) : séances prioritaires, approfondissements accessibles avec les outils de CPGE et branches au-delà du programme. Dans l’atelier lancé, utiliser **Parcours sup / spé**; chaque séance ouvre directement ses TP et propose un retour à la séance.

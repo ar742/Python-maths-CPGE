@@ -14,6 +14,8 @@ def markdown(text):
     text=re.sub(r'</?(?:b|strong)>','**',text);text=re.sub(r'</?(?:i|em)>','*',text)
     return re.sub(r'\n{3,}','\n\n',html.unescape(re.sub(r'</?[A-Za-z][^>]*>','',text))).strip()
 def export():
+    from export_progression import export as export_progression
+    export_progression()
     root=Path(__file__).parent
     text='# Fonctions & Équations — 56 leçons\n\nRecueil de A. R., Fonctions et fiches M5–M6. Chaque cours est relié à un laboratoire ; les approximations et les prolongements sont explicités.\n\n'
     for i,l in enumerate(LESSONS,1):text+=f'## {i:02d}. {l["title"]}\n\n{l["level"]} · Laboratoire `{l["lab"]}`\n\n'+markdown(l['html'])+'\n\n'

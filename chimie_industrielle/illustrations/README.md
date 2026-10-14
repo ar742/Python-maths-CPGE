@@ -1,0 +1,28 @@
+# Figures de Chimie pour l’industrie
+
+24 figures SVG issues des modèles des laboratoires : bilans énergétiques, réacteurs, surfaces catalytiques, grains poreux, cellules électrochimiques et diagrammes de phases. Les paramètres sont ceux des exemples initiaux ; le TP donne les définitions et les preuves.
+
+- [Chaleur de combustion et récupération](01_hess_combustion.svg)
+- [Échauffement adiabatique d’une réaction](02_temperature_adiabatique.svg)
+- [Ammoniac : température, pression et conversion](03_haber_bosch.svg)
+- [CO₂ vers méthanol : rendement et recyclage](04_methanol_co2.svg)
+- [Extraire le zinc : trois états, deux réducteurs](05_ellingham_zinc.svg)
+- [Ciment : calcination et capture du CO₂](06_calcination_ciment.svg)
+- [Distillation : liquide, vapeur et règle du levier](07_distillation_ideale.svg)
+- [Solidification : composition et fraction solide](08_alliage_solidification.svg)
+- [Une horloge chimique pour identifier une loi de vitesse](09_horloge_iode.svg)
+- [Accélérer sans déplacer l’équilibre](10_arrhenius_catalyse.svg)
+- [Choisir un temps de séjour et un réacteur](11_reacteurs_residence.svg)
+- [Arrêter au bon moment pour conserver l’intermédiaire](12_selectivite_successive.svg)
+- [Une surface saturée peut ralentir la production](13_catalyse_surface.svg)
+- [Une chaîne radicalaire produit un ordre non entier](14_ethanal_aeqs.svg)
+- [Chaleur produite et chaleur évacuée : quel équilibre ?](15_emballement_thermique.svg)
+- [Un catalyseur poreux ne travaille pas toujours partout](16_diffusion_grain.svg)
+- [Pile Daniell : travail et quotient réactionnel](17_nernst_pile.svg)
+- [Hydrogène : Faraday, tension et bilan énergétique](18_electrolyse_h2.svg)
+- [Pile à combustible : puissance et pertes](19_pile_combustible.svg)
+- [Batterie : état de charge et énergie délivrée](20_batterie_intercalation.svg)
+- [Corrosion : potentiel mixte et anode sacrificielle](21_corrosion_protection.svg)
+- [Cuivrage : épaisseur, charge et transport](22_electrodepot.svg)
+- [Hydrométallurgie : complexer pour changer la sélectivité](23_cuivre_complexation.svg)
+- [Contrôle industriel : dosage d’un halogénure](24_dosage_potentiometrique.svg)
